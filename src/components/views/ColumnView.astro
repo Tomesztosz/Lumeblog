@@ -34,7 +34,7 @@ const posts = await getPosts(lang, column);
     <div class="wrap">
       <div class="section-head">
         <h2>{t.allInColumn}</h2>
-        <p class="mono">{t.newestFirst}</p>
+        {posts.length > 0 && <p class="mono">{t.newestFirst}</p>}
       </div>
       {
         posts.length > 0 ? (

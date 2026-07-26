@@ -60,6 +60,11 @@ párjára* visz — cikknél a `translationKey` alapján, ha nincs pár, a mási
 
 Az olvasási időt a szövegből számoljuk (kb. 200 szó/perc); a `minutes` mezővel felülírható.
 
+**Poszt törlésekor:** az Astro tartalom-gyorsítótára a `node_modules/.astro/data-store.json`-ban
+él, és a törlést nem mindig veszi észre — a törölt cikk kísértetként tovább épül. Ha ilyet
+látsz, `rm -rf node_modules/.astro dist` és újra build. A Cloudflare tiszta klónból épít,
+tehát ott ez nem fordulhat elő.
+
 ## Szerkesztői szabályok (a briefből)
 
 - Nincs megjelenésnapi hajsza, nincs hype. A tárgy > a hírek.

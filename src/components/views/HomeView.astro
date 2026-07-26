@@ -72,7 +72,7 @@ const posts = (await getPosts(lang)).slice(0, 3);
     <div class="wrap">
       <div class="section-head">
         <h2>{t.latest}</h2>
-        <p class="mono">{t.newestFirst}</p>
+        {posts.length > 0 && <p class="mono">{t.newestFirst}</p>}
       </div>
       {
         posts.length > 0 ? (
@@ -82,7 +82,7 @@ const posts = (await getPosts(lang)).slice(0, 3);
             ))}
           </div>
         ) : (
-          <p class="empty-note">{t.noPostsYet}</p>
+          <p class="empty-note">{t.noPostsYetHome}</p>
         )
       }
     </div>

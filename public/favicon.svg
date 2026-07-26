@@ -1,7 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- A márkajel: a fejléc világító pontja, sötét számlapon. -->
+  <!-- A márkajel: sötét számlap, sárgaréz tok, világító indexek és mutatók,
+       klasszikus 10:10-es állásban.
+       Csak 12-es és 6-os index: 16 px-es böngészőfülön a 3-as és 9-es index
+       összeolvadna a majdnem vízszintes mutatókkal. -->
   <rect width="64" height="64" rx="12" fill="#13100B"/>
-  <circle cx="32" cy="32" r="23" fill="none" stroke="#8A6C34" stroke-width="3"/>
-  <circle cx="32" cy="32" r="9" fill="#CDE9A0"/>
-  <circle cx="32" cy="32" r="14" fill="#CDE9A0" opacity="0.22"/>
+
+  <!-- tok -->
+  <circle cx="32" cy="32" r="25.5" fill="none" stroke="#8A6C34" stroke-width="4.5"/>
+  <circle cx="32" cy="32" r="22.5" fill="#0E0B07"/>
+
+  <!-- indexek 12 / 6 -->
+  <g fill="#CDE9A0">
+    <rect x="29.75" y="11.5" width="4.5" height="7" rx="2.25"/>
+    <rect x="29.75" y="11.5" width="4.5" height="7" rx="2.25" transform="rotate(180 32 32)"/>
+  </g>
+
+  <!-- mutatók 10:10 -->
+  <rect x="30" y="20" width="4" height="13.5" rx="2" fill="#CDE9A0"
+        transform="rotate(300 32 32)"/>
+  <rect x="30.3" y="16" width="3.4" height="17.5" rx="1.7" fill="#CDE9A0"
+        transform="rotate(60 32 32)"/>
+
+  <circle cx="32" cy="32" r="2.6" fill="#8A6C34"/>
 </svg>

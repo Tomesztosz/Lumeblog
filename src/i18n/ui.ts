@@ -124,6 +124,7 @@ export const UI = {
     backToColumn: 'Vissza a rovathoz',
     sources: 'Források',
     noPostsYet: 'Ebben a rovatban még nincs írás. Hamarosan.',
+    noPostsYetHome: 'Az első írás hamarosan.',
     readOn: 'Tovább',
   },
 
@@ -179,6 +180,7 @@ export const UI = {
     backToColumn: 'Back to the column',
     sources: 'Sources',
     noPostsYet: 'No pieces in this column yet. Soon.',
+    noPostsYetHome: 'The first piece is coming soon.',
     readOn: 'Read on',
   },
 } as const;
