@@ -439,7 +439,21 @@ body.dark .foot-brand .mark{ color:var(--lume-glow); text-shadow:0 0 10px color-
 
 /* ============================================================ RESPONSIVE */
 @media (max-width:860px){
-  .nav{ display:none; }
+  /* A menü nem tűnik el, csak lekerül egy második, halk sorba a fejléc alá.
+     Nincs hamburger és nincs JS — a „lámpa le" marad az egyetlen bátor elem. */
+  .header-row{ flex-wrap:wrap; height:auto; min-height:62px; row-gap:0; padding-top:10px; }
+  .nav{
+    order:3; width:100%; margin-left:0; gap:24px;
+    margin-top:10px; padding:11px 0 10px;
+    border-top:1px solid var(--line-soft);
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .nav::-webkit-scrollbar{ display:none; }
+  .nav a{
+    white-space:nowrap; padding:7px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+  }
   .hero-grid{ grid-template-columns:1fr; gap:44px; }
   .dial-wrap{ order:-1; }
   .dial{ max-width:280px; }
@@ -453,7 +467,8 @@ body.dark .foot-brand .mark{ color:var(--lume-glow); text-shadow:0 0 10px color-
 }
 @media (max-width:520px){
   .wrap{ padding:0 20px; }
-  .header-row{ height:62px; }
+  .header-row{ min-height:56px; }
+  .nav{ gap:20px; }
   .brand .mark{ font-size:20px; }
   .hero{ padding:52px 0 44px; }
 }
