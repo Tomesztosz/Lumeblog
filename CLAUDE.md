@@ -73,7 +73,14 @@ Az olvasási időt a szövegből számoljuk (kb. 200 szó/perc); a `minutes` mez
 
 Paletta, tipográfia és a „lámpa le" aláírás-elem: lásd a briefet. A tokenek a
 `src/styles/global.css` tetején vannak (`:root` = nappali, `body.dark` = lámpa le).
-Színt sose írj be közvetlenül — mindig tokenből.
+**Színt és betűcsaládot sose írj be közvetlenül** — mindig tokenből
+(`--paper`, `--ink`, `--brass`, `--lume-glow`, `--font-serif`, `--font-sans`, `--font-mono`).
+
+A betűk saját kiszolgálásból jönnek (`@fontsource*` csomagok, a `global.css` tetején
+importálva), nem a Google CDN-jéről — így nem megy látogatói IP a Google-höz, és gyorsabb
+is. Csak a ténylegesen használt tengelyek töltődnek: Fraunces wght+opsz (normal és dőlt),
+Hanken Grotesk wght, Plex Mono 400/500. Az ékezetes karakterek (`ő`, `ű`) a latin-ext
+alhalmazból jönnek, amit a böngésző csak akkor tölt le, ha kell.
 
 A „lámpa le" állapot **szándékosan nem tárolódik**: minden oldalbetöltés nappali nézetben
 indul (a brief kimondja: nincs localStorage). Ha ez zavaró lesz több oldalon böngészve,
@@ -82,11 +89,24 @@ ez az egy döntés, amit érdemes újratárgyalni.
 A képek helyén egyelőre SVG-motívumok állnak (`components/PostMedia.astro`) — ez az
 egyetlen hely, ahol a valódi makrófotókra kell majd cserélni.
 
+## Publikálás
+
+Cloudflare Pages, a GitHub-repóhoz kötve: minden `master`-re küldött push automatikusan
+deployol. Build parancs `npm run build`, kimeneti mappa `dist`.
+
+- **A domain az `astro.config.mjs` `site` mezőjében van** (`https://lumeblog.com`). Ebből
+  képződik a canonical, a hreflang, a sitemap és az RSS minden URL-je — ha a domain
+  változik, itt az egy sor átírása elég.
+- `public/` — ami változtatás nélkül kerül a gyökérbe: `favicon.svg`, `apple-touch-icon.png`,
+  `og-image.png`, `robots.txt`, `_headers` (Cloudflare cache-szabályok).
+- Az ikonokat és az OG-képet a `node scripts/gen-icons.mjs` generálja a `favicon.svg`-ből.
+  Csak akkor kell újrafuttatni, ha a márkajel változik.
+- `sitemap-index.xml` és `sitemap-0.xml` automatikus (`@astrojs/sitemap`), hreflang-párokkal.
+- RSS: `/rss.xml` (HU) és `/en/rss.xml` (EN), a `src/pages/*/rss.xml.ts` fájlokból.
+
 ## Ami még nincs kész
 
-- Valódi fotók, logó / wordmark.
+- Valódi fotók, logó / wordmark (a favicon egyelőre a fejléc világító pontja).
 - Hírlevél bekötése (Buttondown / MailerLite) — a `Subscribe.astro` most csak felület,
   az e-mail nem hagyja el az oldalt.
-- `sitemap.xml` / RSS.
-- Publikálás: Netlify vagy Cloudflare Pages, build parancs `npm run build`, kimenet `dist`.
-  Előtte az `astro.config.mjs`-ben a `site` mezőt a valódi domainre kell állítani.
+- A három minta-poszt még ellenőrizetlen; publikálás előtt vagy forrásolni, vagy törölni.

@@ -1,9 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
-// A site URL-t a valódi domainre kell cserélni publikálás előtt (sitemap / canonical).
 export default defineConfig({
-  site: 'https://lume.example',
+  site: 'https://lumeblog.com',
   i18n: {
     locales: ['hu', 'en'],
     defaultLocale: 'hu',
@@ -11,6 +11,14 @@ export default defineConfig({
       prefixDefaultLocale: false, // HU a gyökéren, EN a /en/ alatt
     },
   },
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'hu',
+        locales: { hu: 'hu-HU', en: 'en-GB' },
+      },
+    }),
+  ],
   build: {
     format: 'directory',
   },

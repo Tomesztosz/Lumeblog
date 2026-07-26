@@ -34,6 +34,7 @@ const t = UI[lang];
           <a href={aboutUrl(lang)}>{t.about}</a>
           <a href={`${langBase(lang)}#subscribe`}>{t.footNewsletter}</a>
           <a href={`${langBase(lang)}#latest`}>{t.footArchive}</a>
+          <a href={lang === 'hu' ? '/rss.xml' : '/en/rss.xml'}>RSS</a>
         </div>
       </div>
     </div>
