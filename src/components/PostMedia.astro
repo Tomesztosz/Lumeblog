@@ -1,47 +1,93 @@
 ---
-/* Rovatonkénti SVG-motívum a fotó helyén.
-   Ha egy poszt frontmatterében később valódi kép lesz, ez a komponens
-   az egyetlen hely, ahol ki kell cserélni. */
+/* Nyitókép. Ha a poszt frontmatterében van `cover`, azt mutatjuk (a forrás
+   megjelölésével); ha nincs, a rovat SVG-motívuma áll a helyén. */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import { type ColumnKey } from '../i18n/ui';
+
+export interface Cover {
+  src: ImageMetadata;
+  alt: string;
+  credit: string;
+  creditUrl?: string;
+  license?: string;
+  licenseUrl?: string;
+}
 
 interface Props {
   column: ColumnKey;
   href?: string;
+  cover?: Cover;
+  /** 'card' a listákba, 'lead' a cikk élére (nagyobb, szélesebb). */
+  variant?: 'card' | 'lead';
 }
-const { column, href } = Astro.props;
+const { column, href, cover, variant = 'card' } = Astro.props;
 const Tag = href ? 'a' : 'div';
+const widths = variant === 'lead' ? [560, 900, 1400] : [280, 560, 840];
+const sizes =
+  variant === 'lead' ? '(max-width: 860px) 100vw, 820px' : '(max-width: 860px) 100vw, 360px';
 ---
 
-<Tag class="post-media" href={href} aria-hidden="true" tabindex={href ? -1 : undefined}>
+<figure class:list={['media-figure', `media-${variant}`]}>
+  <Tag class="post-media" href={href} aria-hidden={cover ? undefined : 'true'} tabindex={href ? -1 : undefined}>
+    {
+      cover ? (
+        <Image src={cover.src} alt={cover.alt} widths={widths} sizes={sizes} loading="lazy" />
+      ) : (
+        <>
+          {column === 'in-hand' && (
+            <svg viewBox="0 0 100 100" fill="none">
+              <circle class="glow-ring" cx="50" cy="50" r="34" stroke-width="2" />
+              <circle cx="50" cy="50" r="2.5" fill="currentColor" class="glow-ring" />
+              <line class="glow-ring" x1="50" y1="50" x2="50" y2="26" stroke-width="2" />
+              <line class="glow-ring" x1="50" y1="50" x2="66" y2="58" stroke-width="2" />
+            </svg>
+          )}
+          {column === 'origins' && (
+            <svg viewBox="0 0 100 100" fill="none">
+              <circle class="glow-ring" cx="50" cy="50" r="34" stroke-width="2" />
+              <path class="glow-ring" d="M50 20 A30 30 0 0 1 80 50" stroke-width="2" />
+              <circle cx="50" cy="50" r="2.5" fill="currentColor" class="glow-ring" />
+            </svg>
+          )}
+          {column === 'movement' && (
+            <svg viewBox="0 0 100 100" fill="none">
+              <circle class="glow-ring" cx="50" cy="50" r="30" stroke-width="2" />
+              <circle class="glow-ring" cx="50" cy="50" r="14" stroke-width="2" />
+              <line class="glow-ring" x1="50" y1="20" x2="50" y2="30" stroke-width="2" />
+              <line class="glow-ring" x1="50" y1="70" x2="50" y2="80" stroke-width="2" />
+              <line class="glow-ring" x1="20" y1="50" x2="30" y2="50" stroke-width="2" />
+              <line class="glow-ring" x1="70" y1="50" x2="80" y2="50" stroke-width="2" />
+            </svg>
+          )}
+        </>
+      )
+    }
+  </Tag>
+
   {
-    column === 'in-hand' && (
-      <svg viewBox="0 0 100 100" fill="none">
-        <circle class="glow-ring" cx="50" cy="50" r="34" stroke-width="2" />
-        <circle cx="50" cy="50" r="2.5" fill="currentColor" class="glow-ring" />
-        <line class="glow-ring" x1="50" y1="50" x2="50" y2="26" stroke-width="2" />
-        <line class="glow-ring" x1="50" y1="50" x2="66" y2="58" stroke-width="2" />
-      </svg>
+    cover && (
+      <figcaption class="media-credit mono">
+        {cover.creditUrl ? (
+          <a href={cover.creditUrl} rel="noopener noreferrer nofollow" target="_blank">
+            {cover.credit}
+          </a>
+        ) : (
+          cover.credit
+        )}
+        {cover.license && (
+          <>
+            {' · '}
+            {cover.licenseUrl ? (
+              <a href={cover.licenseUrl} rel="noopener noreferrer nofollow license" target="_blank">
+                {cover.license}
+              </a>
+            ) : (
+              cover.license
+            )}
+          </>
+        )}
+      </figcaption>
     )
   }
-  {
-    column === 'origins' && (
-      <svg viewBox="0 0 100 100" fill="none">
-        <circle class="glow-ring" cx="50" cy="50" r="34" stroke-width="2" />
-        <path class="glow-ring" d="M50 20 A30 30 0 0 1 80 50" stroke-width="2" />
-        <circle cx="50" cy="50" r="2.5" fill="currentColor" class="glow-ring" />
-      </svg>
-    )
-  }
-  {
-    column === 'movement' && (
-      <svg viewBox="0 0 100 100" fill="none">
-        <circle class="glow-ring" cx="50" cy="50" r="30" stroke-width="2" />
-        <circle class="glow-ring" cx="50" cy="50" r="14" stroke-width="2" />
-        <line class="glow-ring" x1="50" y1="20" x2="50" y2="30" stroke-width="2" />
-        <line class="glow-ring" x1="50" y1="70" x2="50" y2="80" stroke-width="2" />
-        <line class="glow-ring" x1="20" y1="50" x2="30" y2="50" stroke-width="2" />
-        <line class="glow-ring" x1="70" y1="50" x2="80" y2="50" stroke-width="2" />
-      </svg>
-    )
-  }
-</Tag>
+</figure>

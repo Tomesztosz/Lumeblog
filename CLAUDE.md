@@ -17,9 +17,11 @@ npm run preview  # a kész build megtekintése
 
 ```
 src/
+  site.ts                élesítési kapcsolók: LAUNCHED, MailerLite-URL
   i18n/ui.ts             MINDEN felületi szöveg és útvonal-szelet, HU+EN
   content.config.ts      a poszt-frontmatter sémája (zod)
   content/posts/hu|en/   egy poszt = egy .md fájl
+  content/posts/_images/ a cikkek nyitóképei (az aláhúzás miatt nem poszt)
   lib/posts.ts           lekérdezés, rendezés, olvasási idő, URL-képzés
   styles/global.css      design tokenek + minden stílus
   layouts/Base.astro     <head>, fejléc, lábléc, „lámpa le" kapcsoló
@@ -65,6 +67,17 @@ Az olvasási időt a szövegből számoljuk (kb. 200 szó/perc); a `minutes` mez
 látsz, `rm -rf node_modules/.astro dist` és újra build. A Cloudflare tiszta klónból épít,
 tehát ott ez nem fordulhat elő.
 
+## Képek és forrásmegjelölés
+
+A nyitóképek a `src/content/posts/_images/` alatt élnek, a frontmatterből
+`cover.src: '../_images/fajlnev.jpg'` alakban hivatkozva. Innen az Astro maga csinál
+WebP-változatokat több méretben, és a `srcset`-et is kitölti — nem kell kézzel méretezni.
+
+**A `cover.credit` kötelező, ha van kép.** A séma nem enged forrás nélküli képet átmenni
+a buildon, mert az induló cikkek képei nem sajátok. A hitel *mindenhol* megjelenik, ahol
+a kép: a cikk élén és a listakártyákon is. A `license` / `licenseUrl` mezőket töltsd ki,
+ha a licenc megköveteli (CC BY, CC BY-SA); ha egyedi engedélyed van, `license: 'engedéllyel'`.
+
 ## Szerkesztői szabályok (a briefből)
 
 - Nincs megjelenésnapi hajsza, nincs hype. A tárgy > a hírek.
@@ -96,12 +109,21 @@ egyetlen hely, ahol a valódi makrófotókra kell majd cserélni.
 
 ## Publikálás
 
-Cloudflare Pages, a GitHub-repóhoz kötve: minden `master`-re küldött push automatikusan
+Cloudflare Pages, a GitHub-repóhoz kötve: minden `main`-re küldött push automatikusan
 deployol. Build parancs `npm run build`, kimeneti mappa `dist`.
+
+**Élesítéskor egyetlen kapcsoló:** `src/site.ts` → `LAUNCHED = true`. Amíg `false`, minden
+oldal `noindex`, és a `robots.txt` mindent tilt — a domain még nincs megvéve, félkész
+állapotot nem akarunk indexelve látni. Ha `true`, a robots.txt engedélyezővé vált és
+kiírja a sitemap címét.
 
 - **A domain az `astro.config.mjs` `site` mezőjében van** (`https://lumeblog.com`). Ebből
   képződik a canonical, a hreflang, a sitemap és az RSS minden URL-je — ha a domain
   változik, itt az egy sor átírása elég.
+- **Hírlevél:** MailerLite. A `src/site.ts` `MAILERLITE_FORM_ACTION` mezőjébe kell a
+  beágyazott űrlap `action` URL-je (MailerLite → Forms → Embedded forms). Amíg üres,
+  a sáv csak felület, az e-mail nem hagyja el az oldalt. A `fields[language]` rejtett
+  mező viszi a nyelvet, hogy a HU és EN feliratkozók szétválaszthatók legyenek.
 - `public/` — ami változtatás nélkül kerül a gyökérbe: `favicon.svg`, `apple-touch-icon.png`,
   `og-image.png`, `robots.txt`, `_headers` (Cloudflare cache-szabályok).
 - Az ikonokat és az OG-képet a `node scripts/gen-icons.mjs` generálja a `favicon.svg`-ből.
@@ -111,7 +133,10 @@ deployol. Build parancs `npm run build`, kimeneti mappa `dist`.
 
 ## Ami még nincs kész
 
-- Valódi fotók, logó / wordmark (a favicon egyelőre a fejléc világító pontja).
-- Hírlevél bekötése (Buttondown / MailerLite) — a `Subscribe.astro` most csak felület,
-  az e-mail nem hagyja el az oldalt.
-- A három minta-poszt még ellenőrizetlen; publikálás előtt vagy forrásolni, vagy törölni.
+- **Domain** — a `lumeblog.com` még nincs megvéve; az élesítés előtt kell megvenni.
+- **MailerLite-URL** — a `src/site.ts`-be kell bemásolni a beágyazott űrlap `action`-jét.
+- **Első cikk** — ezzel megyünk élesbe, addig `LAUNCHED = false`.
+- Logó / wordmark (a favicon egyelőre a számlap-márkajel).
+- *Ötlet, nem terv:* AI-val modellezett terrajzok a szerkezetekről a Szerkezet rovathoz.
+  Ha ez megvalósul, ugyanaz a `cover` mechanizmus viszi, csak a `credit`-be a
+  „saját, AI-val készült ábra" jellegű megjelölés kerül.

@@ -1,13 +1,16 @@
 ---
-/* Hírlevél-sáv. Jelenleg csak felület: az e-mail nem hagyja el az oldalt.
-   Bekötéskor (Buttondown / MailerLite) elég a <form action> és a submit-kezelés. */
+/* Hírlevél-sáv, MailerLite-ra kötve.
+   A MAILERLITE_FORM_ACTION-t a src/site.ts-ben kell kitölteni; amíg üres,
+   a sáv csak felület: az e-mail nem hagyja el az oldalt. */
 import { UI, type Lang } from '../i18n/ui';
+import { MAILERLITE_FORM_ACTION } from '../site';
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
 const t = UI[lang];
+const action = MAILERLITE_FORM_ACTION;
 ---
 
 <div class="subscribe" id="subscribe">
@@ -15,30 +18,66 @@ const t = UI[lang];
     <h4>{t.subTitle}</h4>
     <p>{t.subNote}</p>
   </div>
-  <div class="sub-form" id="subForm">
-    <input type="email" id="subEmail" placeholder={t.subPlaceholder} aria-label="E-mail" />
-    <button id="subBtn">{t.subButton}</button>
-  </div>
+
+  <form class="sub-form" id="subForm" action={action || undefined} method="post" novalidate>
+    <input
+      type="email"
+      id="subEmail"
+      name="fields[email]"
+      placeholder={t.subPlaceholder}
+      aria-label="E-mail"
+      required
+    />
+    <!-- MailerLite a rejtett mezőből tudja, melyik nyelvi listára megy -->
+    <input type="hidden" name="fields[language]" value={lang} />
+    <input type="hidden" name="ml-submit" value="1" />
+    <input type="hidden" name="anticsrf" value="true" />
+    <button type="submit" id="subBtn">{t.subButton}</button>
+  </form>
+
   <p class="sub-done" id="subDone" style="display:none">{t.subDone}</p>
+  <p class="sub-error" id="subError" style="display:none">{t.subError}</p>
 </div>
 
 <script>
-  /* front-end only, no data leaves the page */
-  const btn = document.getElementById('subBtn');
+  const form = document.getElementById('subForm') as HTMLFormElement | null;
   const emailIn = document.getElementById('subEmail') as HTMLInputElement | null;
-  const form = document.getElementById('subForm');
   const done = document.getElementById('subDone');
+  const error = document.getElementById('subError');
 
-  if (btn && emailIn && form && done) {
-    btn.addEventListener('click', () => {
-      const v = (emailIn.value || '').trim();
-      if (v.indexOf('@') < 1) {
+  if (form && emailIn && done && error) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      error.style.display = 'none';
+
+      const value = (emailIn.value || '').trim();
+      if (!emailIn.checkValidity() || value.indexOf('@') < 1) {
         emailIn.focus();
         emailIn.style.borderColor = 'var(--brass)';
         return;
       }
-      form.style.display = 'none';
-      done.style.display = 'block';
+
+      const action = form.getAttribute('action');
+      if (!action) {
+        /* Nincs még bekötve a MailerLite — az e-mail nem megy sehova. */
+        form.style.display = 'none';
+        done.style.display = 'block';
+        return;
+      }
+
+      try {
+        /* A MailerLite beágyazott végpontja nem ad CORS-fejlécet, ezért
+           no-cors: a választ nem tudjuk elolvasni, de a beküldés megtörténik. */
+        await fetch(action, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: new FormData(form),
+        });
+        form.style.display = 'none';
+        done.style.display = 'block';
+      } catch {
+        error.style.display = 'block';
+      }
     });
   }
 </script>

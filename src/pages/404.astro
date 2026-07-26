@@ -10,10 +10,10 @@ import { COLUMN_KEYS, COLUMNS, columnUrl } from '../i18n/ui';
     <div class="wrap wrap-narrow">
       <p class="eyebrow mono">404</p>
       <h1>Ez a számlap üres.</h1>
-      <p class="lede">
+      <p class="lede lede-hu">
         A keresett oldal nincs meg. Lehet, hogy elírás történt, vagy azóta elköltözött.
       </p>
-      <p class="lede" lang="en" style="margin-top:-18px">
+      <p class="lede-en" lang="en">
         This page doesn't exist. Either the address has a typo, or it has moved since.
       </p>
     </div>
@@ -21,8 +21,8 @@ import { COLUMN_KEYS, COLUMNS, columnUrl } from '../i18n/ui';
 
   <section class="section">
     <div class="wrap wrap-narrow">
-      <p class="mono" style="margin-bottom:18px">Innen tovább / From here</p>
-      <div class="fourofour-links">
+      <p class="mono nfnf-label">Innen tovább / From here</p>
+      <div class="nfnf-links">
         <a href="/">Főoldal</a>
         <a href="/en/" lang="en">Home (English)</a>
         {COLUMN_KEYS.map((key) => <a href={columnUrl('hu', key)}>{COLUMNS[key].hu.name}</a>)}
@@ -33,12 +33,27 @@ import { COLUMN_KEYS, COLUMNS, columnUrl } from '../i18n/ui';
 </Base>
 
 <style>
-  .fourofour-links {
+  .lede-hu {
+    margin-bottom: 14px;
+  }
+  /* Az angol változat halkabban, a magyar alatt — nem versenyez vele. */
+  .lede-en {
+    margin: 0;
+    max-width: 46ch;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    opacity: 0.72;
+  }
+  .nfnf-label {
+    margin: 0 0 18px;
+  }
+  .nfnf-links {
     display: flex;
     flex-wrap: wrap;
     gap: 12px 10px;
   }
-  .fourofour-links a {
+  .nfnf-links a {
     border: 1px solid var(--line);
     border-radius: 999px;
     padding: 9px 16px;
@@ -46,7 +61,7 @@ import { COLUMN_KEYS, COLUMNS, columnUrl } from '../i18n/ui';
     color: var(--ink-soft);
     transition: color 0.25s, border-color 0.25s;
   }
-  .fourofour-links a:hover {
+  .nfnf-links a:hover {
     color: var(--ink);
     border-color: var(--brass);
   }

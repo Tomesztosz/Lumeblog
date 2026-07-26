@@ -43,7 +43,7 @@ const altUrl = twin ? urlOf(twin) : columnUrl(otherLang(lang), post.data.column)
         <p class="standfirst">{post.data.description}</p>
       </header>
 
-      <PostMedia column={post.data.column} />
+      <PostMedia column={post.data.column} cover={post.data.cover} variant="lead" />
 
       <div class="article-body">
         <Content />
@@ -78,10 +78,6 @@ const altUrl = twin ? urlOf(twin) : columnUrl(otherLang(lang), post.data.column)
 </Base>
 
 <style>
-  .article .post-media {
-    aspect-ratio: 16 / 7;
-    margin-bottom: 40px;
-  }
   .article-head .tag {
     text-decoration: none;
   }

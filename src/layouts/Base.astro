@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { UI, otherLang, type ColumnKey, type Lang } from '../i18n/ui';
+import { LAUNCHED } from '../site';
 import '../styles/global.css';
 
 interface Props {
@@ -30,6 +31,8 @@ const ogImage = new URL('/og-image.png', Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
+    {/* Amíg nincs domain és első cikk, ne indexelje senki. Kapcsoló: src/site.ts */}
+    {!LAUNCHED && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang={lang} href={canonical} />
     <link rel="alternate" hreflang={otherLang(lang)} href={alternate} />

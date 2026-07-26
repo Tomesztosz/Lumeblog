@@ -110,6 +110,7 @@ export const UI = {
     subPlaceholder: 'te@pelda.hu',
     subButton: 'Feliratkozom',
     subDone: 'Fent vagy a listán.',
+    subError: 'Most nem sikerült. Próbáld újra kicsit később.',
 
     /* lábléc */
     footColumns: 'Rovatok',
@@ -168,6 +169,7 @@ export const UI = {
     subPlaceholder: 'you@example.com',
     subButton: 'Subscribe',
     subDone: "You're on the list.",
+    subError: "That didn't go through. Please try again in a moment.",
 
     footColumns: 'Columns',
     footJournal: 'The journal',

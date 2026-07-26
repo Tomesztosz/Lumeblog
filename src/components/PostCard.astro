@@ -15,7 +15,7 @@ const url = urlOf(post);
 ---
 
 <article class={variant === 'row' ? 'post post-row' : 'post'}>
-  <PostMedia column={post.data.column} href={url} />
+  <PostMedia column={post.data.column} href={url} cover={post.data.cover} />
   <div>
     <div class="post-meta">
       <span class="tag">{COLUMNS[post.data.column][lang].name}</span>
