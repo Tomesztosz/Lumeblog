@@ -1,0 +1,52 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostCard from '../PostCard.astro';
+import { COLUMNS, UI, columnUrl, otherLang, type ColumnKey, type Lang } from '../../i18n/ui';
+import { getPosts } from '../../lib/posts';
+
+interface Props {
+  lang: Lang;
+  column: ColumnKey;
+}
+const { lang, column } = Astro.props;
+const t = UI[lang];
+const c = COLUMNS[column][lang];
+
+const posts = await getPosts(lang, column);
+---
+
+<Base
+  lang={lang}
+  title={c.name}
+  description={c.blurb}
+  altUrl={columnUrl(otherLang(lang), column)}
+  active={column}
+>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow mono">{c.name}</p>
+      <h1>{c.title}</h1>
+      <p class="lede">{c.blurb}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{t.allInColumn}</h2>
+        <p class="mono">{t.newestFirst}</p>
+      </div>
+      {
+        posts.length > 0 ? (
+          <div class="post-list">
+            {posts.map((post) => (
+              <PostCard post={post} variant="row" />
+            ))}
+          </div>
+        ) : (
+          <p class="empty-note">{t.noPostsYet}</p>
+        )
+      }
+    </div>
+  </section>
+</Base>

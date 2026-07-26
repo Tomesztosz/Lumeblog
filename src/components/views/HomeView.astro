@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+import Dial from '../Dial.astro';
+import PostCard from '../PostCard.astro';
+import Subscribe from '../Subscribe.astro';
+import {
+  COLUMN_KEYS,
+  COLUMNS,
+  UI,
+  columnUrl,
+  langBase,
+  otherLang,
+  type Lang,
+} from '../../i18n/ui';
+import { getPosts } from '../../lib/posts';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = UI[lang];
+
+const posts = (await getPosts(lang)).slice(0, 3);
+---
+
+<Base lang={lang} altUrl={langBase(otherLang(lang))}>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow mono">{t.eyebrow}</p>
+        <h1>{t.heroTitleBefore}<em>{t.heroTitleEm}</em></h1>
+        <p class="lede">{t.heroLede}</p>
+        <div class="actions">
+          <a class="btn-primary" href="#latest">{t.readLatest}</a>
+          <button class="link-ghost" id="heroLights">
+            <span id="heroLightsLabel">{t.heroLightsOff}</span>
+            <span class="arw">→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="dial-wrap">
+        <Dial lang={lang} />
+      </div>
+    </div>
+  </section>
+
+  <!-- A HETI HÁROM -->
+  <section class="section" id="columns">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{t.weeklyThree}</h2>
+        <p class="mono">{t.weeklyDays}</p>
+      </div>
+      <div class="cols">
+        {
+          COLUMN_KEYS.map((key) => (
+            <a class="col" href={columnUrl(lang, key)}>
+              <p class="clabel mono">{COLUMNS[key][lang].name}</p>
+              <h3>{COLUMNS[key][lang].title}</h3>
+              <p>{COLUMNS[key][lang].blurb}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGFRISSEBB -->
+  <section class="section" id="latest">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{t.latest}</h2>
+        <p class="mono">{t.newestFirst}</p>
+      </div>
+      {
+        posts.length > 0 ? (
+          <div class="posts">
+            {posts.map((post) => (
+              <PostCard post={post} />
+            ))}
+          </div>
+        ) : (
+          <p class="empty-note">{t.noPostsYet}</p>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- AMIBEN HISZÜNK + HÍRLEVÉL -->
+  <section class="section ethos" id="ethos">
+    <div class="wrap">
+      <p class="eyebrow mono" style="margin-bottom:22px">{t.ethosEyebrow}</p>
+      <p class="ethos-line">{t.ethosLineBefore}<b>{t.ethosLineBold}</b></p>
+      <Subscribe lang={lang} />
+    </div>
+  </section>
+</Base>

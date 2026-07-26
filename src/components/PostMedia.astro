@@ -1,0 +1,47 @@
+---
+/* Rovatonkénti SVG-motívum a fotó helyén.
+   Ha egy poszt frontmatterében később valódi kép lesz, ez a komponens
+   az egyetlen hely, ahol ki kell cserélni. */
+import { type ColumnKey } from '../i18n/ui';
+
+interface Props {
+  column: ColumnKey;
+  href?: string;
+}
+const { column, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag class="post-media" href={href} aria-hidden="true" tabindex={href ? -1 : undefined}>
+  {
+    column === 'in-hand' && (
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle class="glow-ring" cx="50" cy="50" r="34" stroke-width="2" />
+        <circle cx="50" cy="50" r="2.5" fill="currentColor" class="glow-ring" />
+        <line class="glow-ring" x1="50" y1="50" x2="50" y2="26" stroke-width="2" />
+        <line class="glow-ring" x1="50" y1="50" x2="66" y2="58" stroke-width="2" />
+      </svg>
+    )
+  }
+  {
+    column === 'origins' && (
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle class="glow-ring" cx="50" cy="50" r="34" stroke-width="2" />
+        <path class="glow-ring" d="M50 20 A30 30 0 0 1 80 50" stroke-width="2" />
+        <circle cx="50" cy="50" r="2.5" fill="currentColor" class="glow-ring" />
+      </svg>
+    )
+  }
+  {
+    column === 'movement' && (
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle class="glow-ring" cx="50" cy="50" r="30" stroke-width="2" />
+        <circle class="glow-ring" cx="50" cy="50" r="14" stroke-width="2" />
+        <line class="glow-ring" x1="50" y1="20" x2="50" y2="30" stroke-width="2" />
+        <line class="glow-ring" x1="50" y1="70" x2="50" y2="80" stroke-width="2" />
+        <line class="glow-ring" x1="20" y1="50" x2="30" y2="50" stroke-width="2" />
+        <line class="glow-ring" x1="70" y1="50" x2="80" y2="50" stroke-width="2" />
+      </svg>
+    )
+  }
+</Tag>

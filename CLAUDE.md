@@ -1,0 +1,92 @@
+# Lume — órás napló
+
+Kétnyelvű (HU / EN) órás blog. Astro statikus oldal. Heti 3 poszt.
+A projekt szándéka és design-nyelve: [lume-brief.md](lume-brief.md) — az az elsődleges forrás.
+
+**Magyarul válaszolj.**
+
+## Parancsok
+
+```bash
+npm run dev      # fejlesztői szerver: http://localhost:4321
+npm run build    # statikus build a dist/ mappába
+npm run preview  # a kész build megtekintése
+```
+
+## Szerkezet
+
+```
+src/
+  i18n/ui.ts             MINDEN felületi szöveg és útvonal-szelet, HU+EN
+  content.config.ts      a poszt-frontmatter sémája (zod)
+  content/posts/hu|en/   egy poszt = egy .md fájl
+  lib/posts.ts           lekérdezés, rendezés, olvasási idő, URL-képzés
+  styles/global.css      design tokenek + minden stílus
+  layouts/Base.astro     <head>, fejléc, lábléc, „lámpa le" kapcsoló
+  components/            Dial, PostCard, PostMedia, Subscribe, Header, Footer
+  components/views/      HomeView, ColumnView, PostView, AboutView (nyelvfüggetlen)
+  pages/                 csak routing: minden oldal egy view-t hív egy `lang` proppal
+```
+
+**Alapelv:** egy oldal *kinézete* egy view-ban van, nem a `pages/` alatt. A `pages/`
+fájlok szinte üresek — csak eldöntik, melyik nyelv és melyik rovat. Ha egy oldal
+tartalmát módosítod, a view-t vagy az `i18n/ui.ts`-t módosítsd.
+
+**Szöveg sosem kerül közvetlenül sablonba.** Minden felületi string az `i18n/ui.ts`-ben
+van, nyelvenként. Új szöveg → oda, mindkét nyelvre.
+
+## Útvonalak
+
+| | HU | EN |
+|---|---|---|
+| főoldal | `/` | `/en/` |
+| Kézben | `/kezben/` | `/en/in-hand/` |
+| Eredet | `/eredet/` | `/en/origins/` |
+| Szerkezet | `/szerkezet/` | `/en/movement/` |
+| cikk | `/kezben/lorier-neptune/` | `/en/in-hand/lorier-neptune/` |
+| Rólam | `/rolam/` | `/en/about/` |
+
+A rovat kulcsa nyelvfüggetlen (`in-hand` / `origins` / `movement`); a látható név és az
+URL-szelet az `i18n/ui.ts` `COLUMNS` táblájából jön. A nyelvváltó gomb a *jelenlegi oldal
+párjára* visz — cikknél a `translationKey` alapján, ha nincs pár, a másik nyelvű rovatra.
+
+## Új poszt írása
+
+1. Új fájl: `src/content/posts/hu/<slug>.md` (és a párja `en/<slug>.md`).
+2. A fájlnév lesz az URL-szelet, ha a frontmatterben nincs `slug`.
+3. Frontmatter — a séma `src/content.config.ts`-ben, sablon: [docs/uj-poszt-sablon.md](docs/uj-poszt-sablon.md).
+4. `draft: true` → nem kerül bele a buildbe.
+5. Ha a HU és EN változat ugyanaz a cikk, adj nekik közös `translationKey`-t.
+
+Az olvasási időt a szövegből számoljuk (kb. 200 szó/perc); a `minutes` mezővel felülírható.
+
+## Szerkesztői szabályok (a briefből)
+
+- Nincs megjelenésnapi hajsza, nincs hype. A tárgy > a hírek.
+- **Kitalált forrás vagy tény tilos.** Amit nem lehet ellenőrizni, az vagy bizonytalanként
+  jelölve megy be, vagy kimarad. A források a frontmatter `sources` tömbjébe kerülnek, és
+  a cikk alján automatikusan megjelennek.
+- A jelenlegi 3 minta-poszt tetején ott a figyelmeztetés, hogy még ellenőrizetlen. Valódi
+  publikálás előtt vagy ellenőrizni kell őket, vagy törölni.
+
+## Design-nyelv
+
+Paletta, tipográfia és a „lámpa le" aláírás-elem: lásd a briefet. A tokenek a
+`src/styles/global.css` tetején vannak (`:root` = nappali, `body.dark` = lámpa le).
+Színt sose írj be közvetlenül — mindig tokenből.
+
+A „lámpa le" állapot **szándékosan nem tárolódik**: minden oldalbetöltés nappali nézetben
+indul (a brief kimondja: nincs localStorage). Ha ez zavaró lesz több oldalon böngészve,
+ez az egy döntés, amit érdemes újratárgyalni.
+
+A képek helyén egyelőre SVG-motívumok állnak (`components/PostMedia.astro`) — ez az
+egyetlen hely, ahol a valódi makrófotókra kell majd cserélni.
+
+## Ami még nincs kész
+
+- Valódi fotók, logó / wordmark.
+- Hírlevél bekötése (Buttondown / MailerLite) — a `Subscribe.astro` most csak felület,
+  az e-mail nem hagyja el az oldalt.
+- `sitemap.xml` / RSS.
+- Publikálás: Netlify vagy Cloudflare Pages, build parancs `npm run build`, kimenet `dist`.
+  Előtte az `astro.config.mjs`-ben a `site` mezőt a valódi domainre kell állítani.

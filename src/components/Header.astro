@@ -1,0 +1,56 @@
+---
+import {
+  COLUMN_KEYS,
+  COLUMNS,
+  UI,
+  aboutUrl,
+  columnUrl,
+  langBase,
+  otherLang,
+  type ColumnKey,
+  type Lang,
+} from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  /** A jelenlegi oldal megfelelője a másik nyelven. */
+  altUrl: string;
+  /** Melyik menüpont aktív. */
+  active?: ColumnKey | 'about';
+}
+
+const { lang, altUrl, active } = Astro.props;
+const t = UI[lang];
+---
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href={langBase(lang)} aria-label="Lume">
+      <span class="dot"></span>
+      <span class="mark">LUME</span>
+    </a>
+
+    <nav class="nav" aria-label={t.navAriaLabel}>
+      {
+        COLUMN_KEYS.map((key) => (
+          <a href={columnUrl(lang, key)} aria-current={active === key ? 'page' : undefined}>
+            {COLUMNS[key][lang].name}
+          </a>
+        ))
+      }
+      <a href={aboutUrl(lang)} aria-current={active === 'about' ? 'page' : undefined}>{t.about}</a>
+    </nav>
+
+    <div class="controls">
+      <a class="ctl lang" href={altUrl} hreflang={otherLang(lang)} aria-label={t.langSwitchLabel}>
+        {t.langSwitchText}
+      </a>
+      <button class="ctl lights" id="lightsBtn" aria-pressed="false">
+        <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          ><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg
+        >
+        <span id="lightsLabel">{t.lightsOff}</span>
+      </button>
+    </div>
+  </div>
+</header>

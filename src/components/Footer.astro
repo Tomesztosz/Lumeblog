@@ -1,0 +1,45 @@
+---
+import {
+  COLUMN_KEYS,
+  COLUMNS,
+  UI,
+  aboutUrl,
+  columnUrl,
+  langBase,
+  type Lang,
+} from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = UI[lang];
+---
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="mark">LUME</span>
+        <p>{t.tagline}</p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h5>{t.footColumns}</h5>
+          {COLUMN_KEYS.map((key) => <a href={columnUrl(lang, key)}>{COLUMNS[key][lang].name}</a>)}
+        </div>
+        <div>
+          <h5>{t.footJournal}</h5>
+          <a href={aboutUrl(lang)}>{t.about}</a>
+          <a href={`${langBase(lang)}#subscribe`}>{t.footNewsletter}</a>
+          <a href={`${langBase(lang)}#latest`}>{t.footArchive}</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>{t.footCopy}</span>
+      <span>{t.footPlace}</span>
+    </div>
+  </div>
+</footer>

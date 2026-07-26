@@ -1,0 +1,44 @@
+---
+/* Hírlevél-sáv. Jelenleg csak felület: az e-mail nem hagyja el az oldalt.
+   Bekötéskor (Buttondown / MailerLite) elég a <form action> és a submit-kezelés. */
+import { UI, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = UI[lang];
+---
+
+<div class="subscribe" id="subscribe">
+  <div class="stext">
+    <h4>{t.subTitle}</h4>
+    <p>{t.subNote}</p>
+  </div>
+  <div class="sub-form" id="subForm">
+    <input type="email" id="subEmail" placeholder={t.subPlaceholder} aria-label="E-mail" />
+    <button id="subBtn">{t.subButton}</button>
+  </div>
+  <p class="sub-done" id="subDone" style="display:none">{t.subDone}</p>
+</div>
+
+<script>
+  /* front-end only, no data leaves the page */
+  const btn = document.getElementById('subBtn');
+  const emailIn = document.getElementById('subEmail') as HTMLInputElement | null;
+  const form = document.getElementById('subForm');
+  const done = document.getElementById('subDone');
+
+  if (btn && emailIn && form && done) {
+    btn.addEventListener('click', () => {
+      const v = (emailIn.value || '').trim();
+      if (v.indexOf('@') < 1) {
+        emailIn.focus();
+        emailIn.style.borderColor = 'var(--brass)';
+        return;
+      }
+      form.style.display = 'none';
+      done.style.display = 'block';
+    });
+  }
+</script>

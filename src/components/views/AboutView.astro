@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+import Subscribe from '../Subscribe.astro';
+import { UI, aboutUrl, otherLang, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = UI[lang];
+
+const copy = {
+  hu: {
+    eyebrow: 'Rólam',
+    title: 'Egy napló, nem egy hírportál.',
+    lede: 'A Lume azért van, hogy megtanuljak órát olvasni — és hogy aki szeretne, velem tartson.',
+    body: [
+      'Nem újságíróként írom, hanem tanulóként. A cél a saját tudásom bővítése: mit csinál egy kis független műhely, honnan jött valójában egy régi ház, és hogyan működik a mechanika a számlap alatt. Ami közben összeáll, azt itt leírom, hogy másnak is olvasható legyen.',
+      'Hetente három írás jelenik meg, mindegyik egy-egy rovatba: Kézben, Eredet, Szerkezet. Nincs megjelenésnapi hajsza, nincs hype, nincs találgatás a következő kiadásról. A tárgy érdekel, nem a hírciklus.',
+      'A research pontossága nem alku tárgya. Ha egy állítás mögött nem áll ellenőrizhető forrás, akkor vagy odaírom, hogy bizonytalan, vagy nem kerül bele. A cikkek végén ott vannak a felhasznált források.',
+      'A napló magyarul és angolul is fut. A pénzügyi hátterem miatt időnként megjelenik egy különkiadás is: az órák mint érték — ritkán, és mindig számokkal alátámasztva.',
+    ],
+  },
+  en: {
+    eyebrow: 'About',
+    title: 'A journal, not a news site.',
+    lede: 'Lume exists so that I can learn to read a watch — and so anyone who wants to can come along.',
+    body: [
+      "I don't write this as a journalist but as a student. The point is to widen my own knowledge: what a small independent maker actually does, where an old house really came from, and how the mechanics under the dial work. Whatever comes together along the way gets written down here, so it's legible to someone else too.",
+      'Three pieces a week, one per column: In Hand, Origins, Movement. No release-day scramble, no hype, no guessing about the next reference. The object is the subject, not the news cycle.',
+      "Accuracy in the research is not negotiable. If a claim has no verifiable source behind it, I either mark it as uncertain or leave it out. Sources are listed at the end of each piece.",
+      'The journal runs in Hungarian and English. Because of my background in quantitative finance there is the occasional special: watches as an asset — rarely, and always with the numbers attached.',
+    ],
+  },
+}[lang];
+---
+
+<Base
+  lang={lang}
+  title={copy.eyebrow}
+  description={copy.lede}
+  altUrl={aboutUrl(otherLang(lang))}
+  active="about"
+>
+  <section class="page-head">
+    <div class="wrap wrap-narrow">
+      <p class="eyebrow mono">{copy.eyebrow}</p>
+      <h1>{copy.title}</h1>
+      <p class="lede">{copy.lede}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap wrap-narrow">
+      <div class="article-body">
+        {copy.body.map((p) => <p>{p}</p>)}
+      </div>
+      <Subscribe lang={lang} />
+    </div>
+  </section>
+</Base>

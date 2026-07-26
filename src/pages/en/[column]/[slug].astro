@@ -1,0 +1,20 @@
+---
+import PostView from '../../../components/views/PostView.astro';
+import { COLUMNS } from '../../../i18n/ui';
+import { getPosts, slugOf } from '../../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts('en');
+  return posts.map((post) => ({
+    params: {
+      column: COLUMNS[post.data.column].en.slug,
+      slug: slugOf(post),
+    },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<PostView post={post} />

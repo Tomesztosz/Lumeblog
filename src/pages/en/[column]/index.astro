@@ -1,0 +1,15 @@
+---
+import ColumnView from '../../../components/views/ColumnView.astro';
+import { COLUMN_KEYS, COLUMNS } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return COLUMN_KEYS.map((key) => ({
+    params: { column: COLUMNS[key].en.slug },
+    props: { key },
+  }));
+}
+
+const { key } = Astro.props;
+---
+
+<ColumnView lang="en" column={key} />

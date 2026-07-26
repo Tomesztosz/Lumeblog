@@ -1,0 +1,28 @@
+---
+import PostMedia from './PostMedia.astro';
+import { COLUMNS, UI, formatDate } from '../i18n/ui';
+import { minutesOf, urlOf, type Post } from '../lib/posts';
+
+interface Props {
+  post: Post;
+  /** 'card' a rácsba, 'row' a rovat-listaoldalra. */
+  variant?: 'card' | 'row';
+}
+const { post, variant = 'card' } = Astro.props;
+const lang = post.data.lang;
+const t = UI[lang];
+const url = urlOf(post);
+---
+
+<article class={variant === 'row' ? 'post post-row' : 'post'}>
+  <PostMedia column={post.data.column} href={url} />
+  <div>
+    <div class="post-meta">
+      <span class="tag">{COLUMNS[post.data.column][lang].name}</span>
+      <span class="dotsep mono">{formatDate(post.data.date, lang)}</span>
+      <span class="dotsep mono">{t.minutes(minutesOf(post))}</span>
+    </div>
+    <h3><a href={url}>{post.data.title}</a></h3>
+    <p>{post.data.description}</p>
+  </div>
+</article>

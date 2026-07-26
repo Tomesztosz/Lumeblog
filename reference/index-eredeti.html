@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="hu" data-lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lume — Órás napló / A watch journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LUME — design tokens
+   Signature: aged Super-LumiNova glow, revealed by "lights off"
+   ============================================================ */
+:root{
+  /* Heritage / lights-on (warm vellum, not the usual cream) */
+  --paper:      #E6DAC1;
+  --paper-2:    #EFE6D2;   /* raised cards */
+  --dial-face:  #F1E9D6;
+  --ink:        #2A231D;   /* warm espresso near-black */
+  --ink-soft:   #6A5E50;
+  --line:       rgba(42,35,29,0.16);
+  --line-soft:  rgba(42,35,29,0.09);
+  --brass:      #8F6E31;   /* aged brass / old gold — heritage accent */
+  --brass-deep: #6F5424;
+  --lume-mark:  #7B885A;   /* unlit, aged luminova olive */
+  --lume-glow:  #7B885A;   /* no glow while lights are on */
+  --glow-blur:  0px;
+  --field:      #F3ECDA;
+  --hint:       0;         /* lights-button pulse opacity */
+}
+body.dark{
+  /* Lume / lights-off (warm candlelit dark, everything quiets down but the lume) */
+  --paper:      #13100B;
+  --paper-2:    #1B1610;
+  --dial-face:  #0E0B07;
+  --ink:        #B6AB94;
+  --ink-soft:   #7E7461;
+  --line:       rgba(198,186,160,0.14);
+  --line-soft:  rgba(198,186,160,0.07);
+  --brass:      #8A6C34;
+  --brass-deep: #6E5528;
+  --lume-mark:  #CDE9A0;
+  --lume-glow:  #CDE9A0;   /* glowing aged luminova */
+  --glow-blur:  7px;
+  --field:      #1F1912;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Hanken Grotesk', system-ui, sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  transition:background-color .7s ease, color .7s ease;
+  overflow-x:hidden;
+}
+/* warm ambient depth */
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(120% 90% at 78% 8%, rgba(143,110,49,0.10), transparent 55%);
+  transition:opacity .7s ease, background .7s ease;
+}
+body.dark::before{
+  background:radial-gradient(115% 80% at 76% 12%, rgba(205,233,160,0.06), transparent 52%),
+             radial-gradient(140% 120% at 50% 120%, rgba(0,0,0,0.55), transparent 60%);
+}
+
+/* language visibility */
+html[data-lang="hu"] .en{ display:none; }
+html[data-lang="en"] .hu{ display:none; }
+
+.wrap{ max-width:1120px; margin:0 auto; padding:0 28px; position:relative; z-index:1; }
+
+/* type helpers */
+.mono{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--ink-soft); font-weight:500;
+}
+.serif{ font-family:'Fraunces', Georgia, serif; font-weight:500; }
+
+a{ color:inherit; text-decoration:none; }
+
+/* focus visibility */
+a:focus-visible, button:focus-visible, input:focus-visible{
+  outline:2px solid var(--brass); outline-offset:3px; border-radius:2px;
+}
+
+/* ============================================================ HEADER */
+.site-header{
+  position:sticky; top:0; z-index:20;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:saturate(1.1) blur(8px);
+  border-bottom:1px solid var(--line-soft);
+  transition:background-color .7s ease, border-color .7s ease;
+}
+.header-row{
+  display:flex; align-items:center; justify-content:space-between;
+  height:70px; gap:22px;
+}
+.brand{ display:flex; align-items:baseline; gap:10px; }
+.brand .mark{
+  font-family:'Fraunces', serif; font-weight:600; font-size:23px;
+  letter-spacing:.30em; text-indent:.30em; color:var(--ink);
+  transition:color .7s ease, text-shadow .7s ease;
+}
+body.dark .brand .mark{
+  color:var(--lume-glow);
+  text-shadow:0 0 12px color-mix(in srgb, var(--lume-glow) 55%, transparent);
+}
+.brand .dot{
+  width:7px; height:7px; border-radius:50%;
+  background:var(--lume-mark); align-self:center;
+  transition:background .7s ease, box-shadow .7s ease;
+}
+body.dark .brand .dot{ box-shadow:0 0 9px 1px var(--lume-glow); }
+
+.nav{ display:flex; gap:26px; margin-left:auto; }
+.nav a{
+  font-size:14px; font-weight:500; color:var(--ink-soft);
+  position:relative; padding:4px 0; transition:color .25s ease;
+}
+.nav a::after{
+  content:""; position:absolute; left:0; bottom:0; height:1px; width:0;
+  background:var(--brass); transition:width .3s ease;
+}
+.nav a:hover{ color:var(--ink); }
+.nav a:hover::after{ width:100%; }
+
+.controls{ display:flex; align-items:center; gap:10px; }
+.ctl{
+  font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; font-weight:500;
+  background:transparent; color:var(--ink-soft);
+  border:1px solid var(--line); border-radius:999px;
+  padding:8px 13px; cursor:pointer; line-height:1;
+  display:inline-flex; align-items:center; gap:7px;
+  transition:color .25s, border-color .25s, background .25s;
+}
+.ctl:hover{ color:var(--ink); border-color:var(--brass); }
+.ctl .glyph{ width:13px; height:13px; display:inline-block; }
+.ctl.lights{ position:relative; }
+.ctl.lights::before{
+  content:""; position:absolute; inset:-3px; border-radius:999px;
+  box-shadow:0 0 0 0 var(--brass); opacity:calc(var(--hint));
+  animation:pulse 2.4s ease-out infinite;
+}
+@keyframes pulse{
+  0%{ box-shadow:0 0 0 0 color-mix(in srgb,var(--brass) 60%, transparent); }
+  70%{ box-shadow:0 0 0 10px transparent; }
+  100%{ box-shadow:0 0 0 0 transparent; }
+}
+body.dark .ctl.lights{ color:var(--lume-glow); border-color:color-mix(in srgb,var(--lume-glow) 40%, transparent); }
+
+/* ============================================================ HERO */
+.hero{ padding:78px 0 64px; }
+.hero-grid{
+  display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
+}
+.hero .eyebrow{ margin:0 0 22px; }
+.hero h1{
+  font-family:'Fraunces', serif; font-weight:500;
+  font-size:clamp(42px, 6vw, 72px); line-height:1.02; letter-spacing:-0.01em;
+  margin:0 0 24px; color:var(--ink);
+  font-variation-settings:"opsz" 120, "SOFT" 40;
+  transition:color .7s ease;
+}
+.hero h1 em{
+  font-style:italic; color:var(--brass);
+  transition:color .7s ease, text-shadow .7s ease;
+}
+body.dark .hero h1 em{
+  color:var(--lume-glow);
+  text-shadow:0 0 16px color-mix(in srgb,var(--lume-glow) 45%, transparent);
+}
+.lede{ font-size:18.5px; color:var(--ink-soft); max-width:44ch; margin:0 0 34px; }
+.actions{ display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.btn-primary{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--ink); color:var(--paper);
+  font-weight:600; font-size:14.5px; letter-spacing:.01em;
+  padding:14px 22px; border-radius:2px; border:1px solid var(--ink);
+  transition:transform .25s cubic-bezier(.2,.7,.3,1), background .3s, color .3s, box-shadow .3s;
+}
+.btn-primary:hover{ transform:translateY(-2px); }
+body.dark .btn-primary{
+  background:transparent; color:var(--lume-glow);
+  border-color:color-mix(in srgb,var(--lume-glow) 55%, transparent);
+  box-shadow:0 0 18px -4px color-mix(in srgb,var(--lume-glow) 40%, transparent);
+}
+.link-ghost{
+  background:none; border:none; cursor:pointer; padding:0;
+  font-family:'Hanken Grotesk', sans-serif; font-size:14.5px; font-weight:500;
+  color:var(--ink-soft); display:inline-flex; align-items:center; gap:8px;
+  transition:color .25s, gap .25s;
+}
+.link-ghost:hover{ color:var(--brass); gap:12px; }
+.link-ghost .arw{ transition:transform .25s; }
+.link-ghost:hover .arw{ transform:translateX(2px); }
+
+/* dial motif */
+.dial-wrap{ display:flex; justify-content:center; }
+.dial{ width:100%; max-width:360px; height:auto; overflow:visible; }
+.case-ring{ fill:none; stroke:var(--brass); transition:stroke .7s ease; }
+.case-ring-in{ fill:none; stroke:var(--brass-deep); opacity:.6; transition:stroke .7s ease; }
+.dial-face{ fill:var(--dial-face); transition:fill .7s ease; }
+.index{
+  fill:var(--lume-mark);
+  transition:fill .7s ease, filter .7s ease;
+}
+body.dark .index{ filter:drop-shadow(0 0 var(--glow-blur) var(--lume-glow)); }
+.hand-lume{
+  fill:var(--lume-mark);
+  transition:fill .7s ease, filter .7s ease;
+}
+body.dark .hand-lume{ filter:drop-shadow(0 0 6px var(--lume-glow)); }
+.seconds{ stroke:var(--brass); fill:var(--brass); transition:stroke .7s, fill .7s; }
+.cap{ fill:var(--brass); transition:fill .7s ease; }
+.dial-word{
+  fill:var(--ink-soft);
+  font-family:'Fraunces', serif; font-weight:600;
+  letter-spacing:2.5px; transition:fill .7s ease;
+}
+body.dark .dial-word{ fill:color-mix(in srgb,var(--lume-glow) 80%, transparent); }
+.dial-est{ fill:var(--ink-soft); font-family:'IBM Plex Mono', monospace; letter-spacing:1.5px; transition:fill .7s ease; }
+
+/* ============================================================ COLUMNS */
+.section{ padding:66px 0; border-top:1px solid var(--line-soft); }
+.section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:40px; gap:20px; flex-wrap:wrap; }
+.section-head h2{
+  font-family:'Fraunces', serif; font-weight:500; font-size:clamp(26px,3.2vw,34px);
+  margin:0; letter-spacing:-.01em; color:var(--ink); transition:color .7s ease;
+}
+.cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+.col{
+  background:var(--paper); padding:34px 30px 38px;
+  transition:background .7s ease, transform .3s ease;
+  position:relative;
+}
+.col:hover{ background:var(--paper-2); }
+.col .clabel{ margin:0 0 18px; color:var(--brass); transition:color .7s ease; }
+body.dark .col .clabel{ color:var(--lume-glow); text-shadow:0 0 10px color-mix(in srgb,var(--lume-glow) 35%,transparent); }
+.col h3{ font-family:'Fraunces', serif; font-weight:500; font-size:23px; margin:0 0 12px; color:var(--ink); transition:color .7s ease; }
+.col p{ margin:0; font-size:15.5px; color:var(--ink-soft); }
+
+/* ============================================================ LATEST */
+.posts{ display:grid; grid-template-columns:repeat(3,1fr); gap:34px; }
+.post{ display:flex; flex-direction:column; }
+.post-media{
+  aspect-ratio:4/3; border-radius:3px; overflow:hidden;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(135deg, color-mix(in srgb,var(--brass) 14%, transparent), transparent 60%),
+    var(--paper-2);
+  display:flex; align-items:center; justify-content:center;
+  transition:background .7s ease, border-color .7s ease;
+  margin-bottom:18px; position:relative;
+}
+.post-media svg{ width:56%; height:56%; opacity:.5; }
+.post-media .glow-ring{ stroke:var(--lume-mark); transition:stroke .7s; }
+body.dark .post-media .glow-ring{ filter:drop-shadow(0 0 5px var(--lume-glow)); stroke:var(--lume-glow); }
+.post-meta{ display:flex; gap:14px; align-items:center; margin-bottom:12px; }
+.tag{
+  font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--brass); font-weight:500;
+  transition:color .7s ease;
+}
+body.dark .tag{ color:var(--lume-glow); }
+.post-meta .dotsep{ font-size:11px; color:var(--ink-soft); }
+.post h3{
+  font-family:'Fraunces', serif; font-weight:500; font-size:20.5px; line-height:1.22;
+  margin:0 0 10px; color:var(--ink); transition:color .3s;
+}
+.post:hover h3{ color:var(--brass); }
+body.dark .post:hover h3{ color:var(--lume-glow); }
+.post p{ margin:0; font-size:14.5px; color:var(--ink-soft); }
+
+/* ============================================================ ETHOS + SUBSCRIBE */
+.ethos{ text-align:left; }
+.ethos-line{
+  font-family:'Fraunces', serif; font-weight:400; font-size:clamp(24px,3.4vw,38px);
+  line-height:1.28; letter-spacing:-.01em; max-width:20ch; color:var(--ink);
+  margin:0; transition:color .7s ease;
+}
+.ethos-line b{ font-weight:500; color:var(--brass); transition:color .7s ease; }
+body.dark .ethos-line b{ color:var(--lume-glow); }
+
+.subscribe{
+  margin-top:52px; padding:36px 34px;
+  border:1px solid var(--line); border-radius:4px;
+  display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
+  background:var(--paper-2); transition:background .7s ease, border-color .7s ease;
+}
+.subscribe .stext h4{ font-family:'Fraunces', serif; font-weight:500; font-size:21px; margin:0 0 6px; color:var(--ink); }
+.subscribe .stext p{ margin:0; font-size:14px; color:var(--ink-soft); }
+.sub-form{ display:flex; gap:10px; align-items:center; }
+.sub-form input{
+  font-family:'Hanken Grotesk', sans-serif; font-size:14.5px;
+  background:var(--field); color:var(--ink);
+  border:1px solid var(--line); border-radius:2px; padding:13px 15px; min-width:210px;
+  transition:background .7s ease, border-color .3s, color .7s ease;
+}
+.sub-form input::placeholder{ color:var(--ink-soft); }
+.sub-form button{
+  font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:14.5px;
+  background:var(--brass); color:#fff; border:1px solid var(--brass);
+  padding:13px 20px; border-radius:2px; cursor:pointer; white-space:nowrap;
+  transition:transform .2s, background .3s;
+}
+.sub-form button:hover{ transform:translateY(-1px); background:var(--brass-deep); }
+.sub-done{ font-size:14.5px; color:var(--brass); font-weight:600; }
+body.dark .sub-done{ color:var(--lume-glow); }
+
+/* ============================================================ FOOTER */
+footer{ border-top:1px solid var(--line-soft); padding:52px 0 46px; margin-top:20px; }
+.foot-grid{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; align-items:flex-start; }
+.foot-brand .mark{
+  font-family:'Fraunces', serif; font-weight:600; font-size:20px;
+  letter-spacing:.3em; text-indent:.3em; color:var(--ink); transition:color .7s;
+}
+body.dark .foot-brand .mark{ color:var(--lume-glow); text-shadow:0 0 10px color-mix(in srgb,var(--lume-glow) 45%,transparent); }
+.foot-brand p{ margin:10px 0 0; font-size:13.5px; color:var(--ink-soft); max-width:30ch; }
+.foot-cols{ display:flex; gap:56px; }
+.foot-cols h5{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 14px; font-weight:500; }
+.foot-cols a{ display:block; font-size:14px; color:var(--ink); margin-bottom:9px; opacity:.85; transition:opacity .2s,color .2s; }
+.foot-cols a:hover{ opacity:1; color:var(--brass); }
+.foot-base{
+  margin-top:40px; padding-top:22px; border-top:1px solid var(--line-soft);
+  display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  font-size:12.5px; color:var(--ink-soft);
+}
+
+/* ============================================================ RESPONSIVE */
+@media (max-width:860px){
+  .nav{ display:none; }
+  .hero-grid{ grid-template-columns:1fr; gap:44px; }
+  .dial-wrap{ order:-1; }
+  .dial{ max-width:280px; }
+  .cols{ grid-template-columns:1fr; }
+  .posts{ grid-template-columns:1fr; gap:38px; }
+  .subscribe{ flex-direction:column; align-items:flex-start; }
+  .sub-form{ width:100%; }
+  .sub-form input{ flex:1; min-width:0; }
+}
+@media (max-width:520px){
+  .wrap{ padding:0 20px; }
+  .header-row{ height:62px; }
+  .brand .mark{ font-size:20px; }
+  .hero{ padding:52px 0 44px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top" aria-label="Lume">
+      <span class="dot"></span>
+      <span class="mark">LUME</span>
+    </a>
+    <nav class="nav" aria-label="Rovatok">
+      <a href="#latest"><span class="hu">Kézben</span><span class="en">In Hand</span></a>
+      <a href="#latest"><span class="hu">Eredet</span><span class="en">Origins</span></a>
+      <a href="#latest"><span class="hu">Szerkezet</span><span class="en">Movement</span></a>
+      <a href="#ethos"><span class="hu">Rólunk</span><span class="en">About</span></a>
+    </nav>
+    <div class="controls">
+      <button class="ctl lang" id="langBtn" aria-label="Nyelvváltás">EN</button>
+      <button class="ctl lights" id="lightsBtn" aria-pressed="false">
+        <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <span id="lightsLabel">Lámpa le</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow mono"><span class="hu">Órás napló</span><span class="en">A watch journal</span></p>
+        <h1>
+          <span class="hu">Tanulj meg <em>órát olvasni.</em></span>
+          <span class="en">Learn to <em>read a watch.</em></span>
+        </h1>
+        <p class="lede">
+          <span class="hu">A lume az a halk fény, amitől a számlap sötétben is olvasható marad. Ez a napló ugyanezt csinálja magukkal az órákkal: olvashatóvá teszi őket — a kis független műhelyeket, a régi házak igazi történetét, és a számlap alatt dolgozó gépezetet.</span>
+          <span class="en">Lume is the quiet glow that keeps a dial legible in the dark. This journal does the same for the watches themselves — it makes them legible: the small independent makers, the real histories of the old houses, and the machinery under the dial.</span>
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="#latest">
+            <span class="hu">Olvasd a legfrissebbet</span><span class="en">Read the latest</span>
+          </a>
+          <button class="link-ghost" id="heroLights">
+            <span id="heroLightsLabel">vagy oltsd le a villanyt</span>
+            <span class="arw">→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="dial-wrap">
+        <svg class="dial" viewBox="0 0 400 400" role="img" aria-label="Vintage számlap világító indexekkel">
+          <circle class="case-ring" cx="200" cy="200" r="192" stroke-width="7"/>
+          <circle class="case-ring-in" cx="200" cy="200" r="180" stroke-width="1.5"/>
+          <circle class="dial-face" cx="200" cy="200" r="176"/>
+          <!-- hour indices -->
+          <g id="indices"></g>
+          <!-- dial text -->
+          <text class="dial-word" x="200" y="132" text-anchor="middle" font-size="17">LUME</text>
+          <text class="dial-est" x="200" y="286" text-anchor="middle" font-size="9">EST. MMXXVI</text>
+          <!-- hands (live time, set by JS) -->
+          <rect class="hand-lume" id="hourHand" x="196" y="112" width="8" height="98" rx="4"/>
+          <rect class="hand-lume" id="minHand" x="197.5" y="66" width="5" height="146" rx="2.5"/>
+          <g class="seconds" id="secHand">
+            <rect x="199" y="70" width="2" height="150" rx="1"/>
+            <rect x="197" y="212" width="6" height="26" rx="1"/>
+          </g>
+          <circle class="cap" cx="200" cy="200" r="7"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLUMNS -->
+  <section class="section" id="columns">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="hu">A heti három</span><span class="en">The weekly three</span></h2>
+        <p class="mono"><span class="hu">Hétfő · Szerda · Péntek</span><span class="en">Mon · Wed · Fri</span></p>
+      </div>
+      <div class="cols">
+        <div class="col">
+          <p class="clabel mono"><span class="hu">Kézben</span><span class="en">In Hand</span></p>
+          <h3><span class="hu">A hét microbrandje</span><span class="en">The week's microbrand</span></h3>
+          <p><span class="hu">Egy kis műhely egy órája, kézbe véve és sokáig nézve.</span><span class="en">One watch from one small maker, taken in hand and looked at for a long time.</span></p>
+        </div>
+        <div class="col">
+          <p class="clabel mono"><span class="hu">Eredet</span><span class="en">Origins</span></p>
+          <h3><span class="hu">Márkatörténelem</span><span class="en">Brand history</span></h3>
+          <p><span class="hu">Honnan jött valójában egy ház vagy egy referencia — a legenda mögötti tényekkel.</span><span class="en">Where a house or a reference actually came from — with the facts behind the legend.</span></p>
+        </div>
+        <div class="col">
+          <p class="clabel mono"><span class="hu">Szerkezet</span><span class="en">Movement</span></p>
+          <h3><span class="hu">Mérnöki megközelítés</span><span class="en">The engineering</span></h3>
+          <p><span class="hu">A számlap alatti mechanika, alkatrészenként: gátlómű, kronográf, GMT, spirál.</span><span class="en">The mechanics under the dial, one piece at a time: escapement, chronograph, GMT, hairspring.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST -->
+  <section class="section" id="latest">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="hu">Legfrissebb</span><span class="en">Latest</span></h2>
+        <p class="mono"><span class="hu">Legújabb elöl</span><span class="en">Newest first</span></p>
+      </div>
+      <div class="posts">
+
+        <article class="post">
+          <a class="post-media" href="#" aria-hidden="true" tabindex="-1">
+            <svg viewBox="0 0 100 100" fill="none"><circle class="glow-ring" cx="50" cy="50" r="34" stroke-width="2"/><circle cx="50" cy="50" r="2.5" fill="currentColor" class="glow-ring"/><line class="glow-ring" x1="50" y1="50" x2="50" y2="26" stroke-width="2"/><line class="glow-ring" x1="50" y1="50" x2="66" y2="58" stroke-width="2"/></svg>
+          </a>
+          <div class="post-meta">
+            <span class="tag"><span class="hu">Kézben</span><span class="en">In Hand</span></span>
+            <span class="dotsep mono">2026.07.24</span>
+            <span class="dotsep mono"><span class="hu">6 perc</span><span class="en">6 min</span></span>
+          </div>
+          <h3><a href="#"><span class="hu">A Lorier Neptune, és a búvárórák bája, amelyek sosem merülnek</span><span class="en">The Lorier Neptune, and the appeal of dive watches that never dive</span></a></h3>
+          <p><span class="hu">Egy 500 méteres tanúsítvány egy csuklón, amely sosem lát mélyebb vizet a mosogatónál — és miért mégis pont ez a lényeg.</span><span class="en">A 500-metre rating on a wrist that never sees water deeper than the sink — and why that's exactly the point.</span></p>
+        </article>
+
+        <article class="post">
+          <a class="post-media" href="#" aria-hidden="true" tabindex="-1">
+            <svg viewBox="0 0 100 100" fill="none"><circle class="glow-ring" cx="50" cy="50" r="34" stroke-width="2"/><path class="glow-ring" d="M50 20 A30 30 0 0 1 80 50" stroke-width="2"/><circle cx="50" cy="50" r="2.5" fill="currentColor" class="glow-ring"/></svg>
+          </a>
+          <div class="post-meta">
+            <span class="tag"><span class="hu">Eredet</span><span class="en">Origins</span></span>
+            <span class="dotsep mono">2026.07.22</span>
+            <span class="dotsep mono"><span class="hu">9 perc</span><span class="en">9 min</span></span>
+          </div>
+          <h3><a href="#"><span class="hu">El Primero: a kronográf, amely egy padláson vészelte át a kvarcéveket</span><span class="en">El Primero: the chronograph that survived the quartz years in an attic</span></a></h3>
+          <p><span class="hu">Amikor a menedzsment leállította a gyártást, egy órásmester nem selejtezte le a szerszámokat — elfalazta őket.</span><span class="en">When management killed the movement, one watchmaker didn't scrap the tooling — he hid it behind a wall.</span></p>
+        </article>
+
+        <article class="post">
+          <a class="post-media" href="#" aria-hidden="true" tabindex="-1">
+            <svg viewBox="0 0 100 100" fill="none"><circle class="glow-ring" cx="50" cy="50" r="30" stroke-width="2"/><circle class="glow-ring" cx="50" cy="50" r="14" stroke-width="2"/><line class="glow-ring" x1="50" y1="20" x2="50" y2="30" stroke-width="2"/><line class="glow-ring" x1="50" y1="70" x2="50" y2="80" stroke-width="2"/><line class="glow-ring" x1="20" y1="50" x2="30" y2="50" stroke-width="2"/><line class="glow-ring" x1="70" y1="50" x2="80" y2="50" stroke-width="2"/></svg>
+          </a>
+          <div class="post-meta">
+            <span class="tag"><span class="hu">Szerkezet</span><span class="en">Movement</span></span>
+            <span class="dotsep mono">2026.07.20</span>
+            <span class="dotsep mono"><span class="hu">7 perc</span><span class="en">7 min</span></span>
+          </div>
+          <h3><a href="#"><span class="hu">Az oszlopkerék: hogyan dönt egy kronográf az indulásról</span><span class="en">The column wheel: how a chronograph decides to start</span></a></h3>
+          <p><span class="hu">A drágább megoldás, amit sokszor egy hídon keresztül lehet megcsodálni — és hogy miért érződik másképp a nyomógomb.</span><span class="en">The pricier solution you can often admire through a caseback — and why it makes the pusher feel different.</span></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ETHOS + SUBSCRIBE -->
+  <section class="section ethos" id="ethos">
+    <div class="wrap">
+      <p class="eyebrow mono" style="margin-bottom:22px"><span class="hu">Amiben hiszünk</span><span class="en">What this is</span></p>
+      <p class="ethos-line">
+        <span class="hu">Semmi megjelenésnapi hajsza. Semmi hype. Átgondolt írások, <b>elfogultan a tárgy felé.</b></span>
+        <span class="en">No release-day scramble. No hype. Considered pieces, <b>biased toward the object.</b></span>
+      </p>
+
+      <div class="subscribe">
+        <div class="stext">
+          <h4><span class="hu">Új írások hetente, a postaládádba.</span><span class="en">New pieces weekly, in your inbox.</span></h4>
+          <p><span class="hu">Semmi más. Bármikor leiratkozhatsz.</span><span class="en">Nothing else. Unsubscribe whenever.</span></p>
+        </div>
+        <div class="sub-form" id="subForm">
+          <input type="email" id="subEmail" placeholder="te@pelda.hu" aria-label="E-mail">
+          <button id="subBtn"><span class="hu">Feliratkozom</span><span class="en">Subscribe</span></button>
+        </div>
+        <p class="sub-done" id="subDone" style="display:none">
+          <span class="hu">Fent vagy a listán.</span><span class="en">You're on the list.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="mark">LUME</span>
+        <p><span class="hu">Órás napló. Magyarul és angolul.</span><span class="en">A watch journal. In Hungarian and English.</span></p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h5><span class="hu">Rovatok</span><span class="en">Columns</span></h5>
+          <a href="#latest"><span class="hu">Kézben</span><span class="en">In Hand</span></a>
+          <a href="#latest"><span class="hu">Eredet</span><span class="en">Origins</span></a>
+          <a href="#latest"><span class="hu">Szerkezet</span><span class="en">Movement</span></a>
+        </div>
+        <div>
+          <h5><span class="hu">A napló</span><span class="en">The journal</span></h5>
+          <a href="#ethos"><span class="hu">Rólunk</span><span class="en">About</span></a>
+          <a href="#ethos"><span class="hu">Hírlevél</span><span class="en">Newsletter</span></a>
+          <a href="#top"><span class="hu">Archívum</span><span class="en">Archive</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Lume</span>
+      <span><span class="hu">Lassan írva, Budapesten.</span><span class="en">Written slowly, in Budapest.</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var body = document.body;
+  var state = { lang: 'hu', lights: 'on', hinted: false };
+
+  /* build 12 dial indices (12/3/6/9 wider) */
+  var g = document.getElementById('indices');
+  for(var i=0;i<12;i++){
+    var major = (i%3===0);
+    var w = major ? 9 : 5;
+    var h = major ? 26 : 18;
+    var x = 200 - w/2;
+    var r = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    r.setAttribute('class','index');
+    r.setAttribute('x', x); r.setAttribute('y', 40);
+    r.setAttribute('width', w); r.setAttribute('height', h);
+    r.setAttribute('rx', w/2);
+    r.setAttribute('transform','rotate('+(i*30)+' 200 200)');
+    g.appendChild(r);
+  }
+
+  /* live clock — hands always show the current local time */
+  var hourHand = document.getElementById('hourHand');
+  var minHand  = document.getElementById('minHand');
+  var secHand  = document.getElementById('secHand');
+  function setHands(){
+    var now = new Date();
+    var ms  = now.getMilliseconds();
+    var s   = now.getSeconds();
+    var m   = now.getMinutes();
+    var h   = now.getHours() % 12;
+    var secAngle  = (s + ms/1000) * 6;   /* 6° per second */
+    var minAngle  = (m + s/60) * 6;      /* 6° per minute, drifts with seconds */
+    var hourAngle = (h + m/60) * 30;     /* 30° per hour, drifts with minutes */
+    hourHand.setAttribute('transform','rotate('+hourAngle+' 200 200)');
+    minHand.setAttribute('transform','rotate('+minAngle+' 200 200)');
+    secHand.setAttribute('transform','rotate('+secAngle+' 200 200)');
+  }
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion){
+    setHands();
+    setInterval(setHands, 1000);   /* tick once per second, no continuous sweep */
+  } else {
+    (function tick(){ setHands(); requestAnimationFrame(tick); })();  /* smooth sweep */
+  }
+
+  var langBtn   = document.getElementById('langBtn');
+  var lightsBtn = document.getElementById('lightsBtn');
+  var lightsLbl = document.getElementById('lightsLabel');
+  var heroLbl   = document.getElementById('heroLightsLabel');
+  var emailIn   = document.getElementById('subEmail');
+
+  var LABELS = {
+    hu: { other:'EN', on:'Lámpa le', off:'Lámpa fel', heroOn:'vagy oltsd le a villanyt', heroOff:'vagy kapcsold fel a lámpát', ph:'te@pelda.hu' },
+    en: { other:'HU', on:'Lights off', off:'Lights on', heroOn:'or turn the lights off', heroOff:'or turn the lights on', ph:'you@example.com' }
+  };
+
+  function render(){
+    root.setAttribute('data-lang', state.lang);
+    root.setAttribute('lang', state.lang);
+    langBtn.textContent = LABELS[state.lang].other;
+    lightsLbl.textContent = state.lights==='on' ? LABELS[state.lang].on : LABELS[state.lang].off;
+    if(heroLbl) heroLbl.textContent = state.lights==='on' ? LABELS[state.lang].heroOn : LABELS[state.lang].heroOff;
+    lightsBtn.setAttribute('aria-pressed', state.lights==='off');
+    if(emailIn) emailIn.setAttribute('placeholder', LABELS[state.lang].ph);
+    root.style.setProperty('--hint', state.hinted ? '0' : '1');
+  }
+
+  langBtn.addEventListener('click', function(){
+    state.lang = state.lang==='hu' ? 'en' : 'hu';
+    render();
+  });
+
+  function toggleLights(){
+    state.lights = state.lights==='on' ? 'off' : 'on';
+    state.hinted = true;
+    body.classList.toggle('dark', state.lights==='off');
+    render();
+  }
+  lightsBtn.addEventListener('click', toggleLights);
+  document.getElementById('heroLights').addEventListener('click', toggleLights);
+
+  /* subscribe (front-end only, no data leaves the page) */
+  document.getElementById('subBtn').addEventListener('click', function(){
+    var v = (emailIn.value||'').trim();
+    if(v.indexOf('@') < 1){ emailIn.focus(); emailIn.style.borderColor='var(--brass)'; return; }
+    document.getElementById('subForm').style.display='none';
+    document.getElementById('subDone').style.display='block';
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
