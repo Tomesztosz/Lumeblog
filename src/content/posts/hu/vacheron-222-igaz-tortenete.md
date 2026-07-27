@@ -6,6 +6,11 @@ column: 'origins'
 lang: 'hu'
 translationKey: 'vacheron-222'
 minutes: 9
+cover:
+  src: '../_images/vacheron-222-nyitokep.jpg'
+  alt: 'Jörg Hysek tervező mosolyogva egy lépcsőn, mellette a Vacheron Constantin 222 acél változata kék számlappal'
+  credit: 'Fotók: forrás megadandó · összeállítás: Lume'
+  license: 'jogtisztázás alatt'
 sources:
   - label: 'Vacheron Constantin: Historiques 222, hivatalos oldal és sajtóanyag (2022, 2025)'
   - label: 'A Collected Man: The Story of the Vacheron Constantin 222 (Christian Selmoni közléseivel)'

@@ -6,6 +6,11 @@ column: 'origins'
 lang: 'en'
 translationKey: 'vacheron-222'
 minutes: 9
+cover:
+  src: '../_images/vacheron-222-nyitokep.jpg'
+  alt: 'The designer Jörg Hysek smiling on a staircase, beside the steel Vacheron Constantin 222 with a blue dial'
+  credit: 'Photos: sources to be added · composite: Lume'
+  license: 'permission pending'
 sources:
   - label: 'Vacheron Constantin: Historiques 222, official page and press materials (2022, 2025)'
   - label: 'A Collected Man: The Story of the Vacheron Constantin 222 (with remarks from Christian Selmoni)'
