@@ -402,6 +402,13 @@ body.dark .article-body blockquote{ border-left-color:var(--lume-glow); }
 }
 .article-body p:has(> img){ margin:36px 0; }
 
+/* Cikkbe ágyazott interaktív modell. A magasságot a keret maga jelenti vissza
+   (lume:height üzenet a Base.astro-nak), ezért nincs belső görgetősáv. */
+.article-body iframe{
+  display:block; width:100%; border:0; margin:36px 0;
+  color-scheme:normal; /* a keret a napló saját lámpáját követi, nem a rendszerét */
+}
+
 .article-body p:has(> img) > em,
 .article-body p:has(> img) + p:has(> em:only-child) > em{
   display:block; margin-top:8px;

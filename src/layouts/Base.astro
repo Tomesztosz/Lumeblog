@@ -92,15 +92,47 @@ const ogImage = new URL('/og-image.png', Astro.site);
           document.documentElement.style.setProperty('--hint', hinted ? '0' : '1');
         }
 
+        /* A cikkbe ágyazott modellek (iframe) is kövessék a lámpát. */
+        function tellFrames() {
+          var frames = document.querySelectorAll('iframe');
+          for (var i = 0; i < frames.length; i++) {
+            try {
+              frames[i].contentWindow.postMessage(
+                { type: 'lume:lights', dark: lights === 'off' },
+                '*'
+              );
+            } catch (e) {
+              /* más eredetű keret — nem a mienk, hagyjuk */
+            }
+          }
+        }
+
         function toggleLights() {
           lights = lights === 'on' ? 'off' : 'on';
           hinted = true;
           body.classList.toggle('dark', lights === 'off');
           render();
+          tellFrames();
         }
 
         lightsBtn.addEventListener('click', toggleLights);
         if (heroBtn) heroBtn.addEventListener('click', toggleLights);
+
+        window.addEventListener('message', function (event) {
+          if (!event.data) return;
+          /* A keret jelzi, hogy betöltött — küldjük neki a jelenlegi állapotot. */
+          if (event.data.type === 'lume:ready') tellFrames();
+          /* A keret megmondja, mekkora — így nincs belső görgetősáv. */
+          if (event.data.type === 'lume:height' && event.data.height > 0) {
+            var frames = document.querySelectorAll('iframe');
+            for (var i = 0; i < frames.length; i++) {
+              if (frames[i].contentWindow === event.source) {
+                frames[i].style.height = event.data.height + 'px';
+              }
+            }
+          }
+        });
+
         render();
       })();
     </script>
