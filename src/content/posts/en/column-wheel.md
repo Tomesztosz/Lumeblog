@@ -49,12 +49,8 @@ There are two kinds of clutch: horizontal and vertical. On the horizontal kind, 
 
 You will find a column wheel in classic, higher-end chronographs: the Rolex Daytona's calibre 4130, the Zenith El Primero (where you can see the column wheel above the word "Manufacture" on the rotor), or Patek Philippe's chronographs.
 
-<!-- IMAGE SLOT — the column wheel of the Zenith El Primero. Once you have the photo, put the
-     file in src/content/posts/_images/ and replace this comment with these two lines:
-
-![The column wheel of the Zenith El Primero behind the rotor](../_images/el-primero-oszlopkerek.jpg)
-*The column wheel of the Zenith El Primero, glimpsed behind the rotor. Photo: NAME / SOURCE, licence*
--->
+![The chronograph side of the Zenith El Primero calibre 400, with gold-toned wheels and blued screws](../_images/el-primero-400.png)
+*The Zenith El Primero calibre 400. Photo: source to be added*
 
 And a lovely history lesson on how the cam is not "worse": NASA certified the Omega Speedmaster for space flight in 1965, back when it still ran the column-wheel calibre 321. Omega later switched to cam movements, and NASA approved those too. In other words, both solutions passed the test of space, which is fairly convincing proof that the cam is not inferior.
 
