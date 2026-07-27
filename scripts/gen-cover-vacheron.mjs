@@ -15,8 +15,9 @@ import { existsSync } from 'node:fs';
 const SRC = 'articles/pictures/';
 const WATCH = SRC + 'j_6kfPQ7SBG2PQ-Uw4_3pw.png.transform.vacdetailhd.avif';
 const HYSEK = SRC + 'Jorg-Hysek-Watch-Designer.jpg';
-/* A márkanév, ha megérkezett. Enélkül a kép a nélkül készül el. */
-const WORDMARK = SRC + 'vacheron-wordmark.png';
+/* A márkanév. Világos rajz fekete alapon, tehát a világosságából egyenesen
+   maszk lesz — nem kell megfordítani, mint a Loriernél. */
+const WORDMARK = SRC + 'Vacheron-Constantin-Logo-1101604455.jpg';
 
 const OUT = 'src/content/posts/_images/vacheron-222-nyitokep.jpg';
 
@@ -68,7 +69,7 @@ for (let y = 0; y < info.height; y++) {
     }
   }
 }
-const WATCH_H = 555;
+const WATCH_H = 500;
 const watch = await sharp(cut)
   .extract({ left: minX, top: minY, width: maxX - minX + 1, height: maxY - minY + 1 })
   .resize({ height: WATCH_H })
@@ -80,17 +81,33 @@ const wm = await sharp(watch).metadata();
 const WATCH_CX = 900;
 const layers = [
   { input: veil, top: 0, left: 0 },
-  { input: watch, top: Math.round((H - WATCH_H) / 2) - 34, left: Math.round(WATCH_CX - wm.width / 2) },
+  { input: watch, top: Math.round((H - WATCH_H) / 2) - 48, left: Math.round(WATCH_CX - wm.width / 2) },
 ];
 
-/* 4) A márkanév, ha van. Középen alul, a napló papírszínében. */
+/* 4) A márkanév alul, középen, a napló papírszínében.
+      Középre kell, mert a kártyák 4:3-ban középre vágnak, és egy félbevágott
+      márkanév hibának látszik. A logófájl körül fekete margó van, ezért a
+      világos képpontok befoglalóját megmérjük, nem a fájl méretét vesszük. */
 if (existsSync(WORDMARK)) {
-  const MARK_W = 300;
-  const mMeta = await sharp(WORDMARK).metadata();
-  const MARK_H = Math.round((mMeta.height / mMeta.width) * MARK_W);
+  const { data: g, info: gi } = await sharp(WORDMARK).greyscale().raw().toBuffer({ resolveWithObject: true });
+  let mnX = gi.width, mxX = -1, mnY = gi.height, mxY = -1;
+  for (let y = 0; y < gi.height; y++) {
+    for (let x = 0; x < gi.width; x++) {
+      if (g[y * gi.width + x] > 60) {
+        if (x < mnX) mnX = x; if (x > mxX) mxX = x;
+        if (y < mnY) mnY = y; if (y > mxY) mxY = y;
+      }
+    }
+  }
+  const box = { left: mnX, top: mnY, width: mxX - mnX + 1, height: mxY - mnY + 1 };
+
+  const MARK_W = 290;
+  const MARK_H = Math.round((box.height / box.width) * MARK_W);
   const mask = await sharp(WORDMARK)
+    .extract(box)
     .resize(MARK_W, MARK_H)
     .greyscale()
+    .linear(1.3, -18) // a tömörítés szürke szélei ne derengjenek
     .toColourspace('b-w')
     .raw()
     .toBuffer();
@@ -100,7 +117,8 @@ if (existsSync(WORDMARK)) {
     .joinChannel(mask, { raw: { width: MARK_W, height: MARK_H, channels: 1 } })
     .png()
     .toBuffer();
-  layers.push({ input: mark, top: H - MARK_H - 40, left: Math.round((W - MARK_W) / 2) });
+  layers.push({ input: mark, top: H - MARK_H - 30, left: Math.round((W - MARK_W) / 2) });
+  console.log(`márkanév: ${MARK_W}x${MARK_H}`);
 } else {
   console.log('(a márkanév fájl még nincs meg: ' + WORDMARK + ')');
 }
