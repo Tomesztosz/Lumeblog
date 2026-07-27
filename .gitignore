@@ -6,3 +6,6 @@ dist/
 .DS_Store
 .claude/settings.local.json
 *.tmp.*
+
+# Nyers kéziratok. A kész cikk a src/content/posts/ alatt él.
+articles/
