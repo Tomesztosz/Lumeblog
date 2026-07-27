@@ -6,6 +6,11 @@ column: 'in-hand'
 lang: 'hu'
 translationKey: 'lorier-kezdes'
 minutes: 8
+cover:
+  src: '../_images/lorier-alapitok.jpg'
+  alt: 'Lauren és Lorenzo Ortega, a Lorier alapítói egy sziklás parkrészletben; a kép alján a márka LORIER felirata'
+  credit: 'Fotó: Luxe Digital · wordmark: Lorier · összeállítás: Lume'
+  license: 'jogtisztázás alatt'
 sources:
   - label: 'Lorier: About / FAQ (lorierwatches.com)'
   - label: 'Luxe Digital: interjú Lorenzo és Lauren Ortegával'

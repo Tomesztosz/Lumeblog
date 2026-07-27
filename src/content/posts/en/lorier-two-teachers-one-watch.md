@@ -6,6 +6,11 @@ column: 'in-hand'
 lang: 'en'
 translationKey: 'lorier-kezdes'
 minutes: 8
+cover:
+  src: '../_images/lorier-alapitok.jpg'
+  alt: 'Lauren and Lorenzo Ortega, the founders of Lorier, in a rocky park setting; the LORIER wordmark sits along the bottom of the image'
+  credit: 'Photo: Luxe Digital · wordmark: Lorier · composite: Lume'
+  license: 'permission pending'
 sources:
   - label: 'Lorier: About / FAQ (lorierwatches.com)'
   - label: 'Luxe Digital: interview with Lorenzo and Lauren Ortega'
