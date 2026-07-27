@@ -401,8 +401,11 @@ body.dark .article-body blockquote{ border-left-color:var(--lume-glow); }
    oszlopszélességben ezer képpontnál is magasabb lenne, és szétverné a
    cikk ritmusát. Ilyenkor a kép a magasságához igazodik, és középre áll. */
 .article-body img{
-  max-width:100%; height:auto; display:block;
-  max-height:620px; margin-inline:auto;
+  /* width és height EGYARÁNT auto kell: az Astro kiírja a kép valódi méretét
+     width/height attribútumként, és ha csak a magasságot engedjük szabadon,
+     a max-height összenyomja a képet — a szélessége marad az attribútumé. */
+  width:auto; height:auto; max-width:100%; max-height:620px;
+  display:block; margin-inline:auto;
 }
 .article-body p:has(> img){ margin:36px 0; }
 
