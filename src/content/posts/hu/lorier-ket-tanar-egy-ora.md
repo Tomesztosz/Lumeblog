@@ -47,36 +47,23 @@ Ez a „társ, nem trófea" hozzáállás az, ami miatt a Lorier ide, a napló e
 
 A mostani, újraindított alapkollekció négy órából áll. Mindegyik egy-egy klasszikus archetípus mértéktartó újragondolása, és mind Miyota automata szerkezettel jár.
 
-<!-- KÉP HELYE — Lorier Neptune. Ha megvan a fotó, tedd a fájlt a
-     src/content/posts/_images/ mappába, és cseréld ki ezt a kommentet erre a két sorra:
-
-![Fekete számlapú Lorier Neptune búvóóra](../_images/lorier-neptune.jpg)
-*Neptune. Fotó: NÉV / FORRÁS, licenc*
--->
+![Fekete számlapú Lorier Neptune búvóóra acél karkötőn](../_images/lorier-neptune-hu.png)
+*Neptune. Listaár 699 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier.*
 
 A **Neptune** a búváróra, és ez az az óra, amelyik 2019-ben felrakta a Loriert a térképre. A huszadik század közepének merülőóráit idézi: fekete számlap, fekete alumínium lünettabetét, arany árnyalatú mutatókkal és indexkeretekkel. A ház igazi, mindennapra szánt búvárórája.
 
-<!-- KÉP HELYE — Lorier Astra:
-
-![Ezüst pie-pan számlapú Lorier Astra öltönyóra](../_images/lorier-astra.jpg)
-*Astra. Fotó: NÉV / FORRÁS, licenc*
--->
+![Ezüst pie-pan számlapú Lorier Astra öltönyóra acél karkötőn](../_images/lorier-astra-hu.png)
+*Astra. Listaár 699 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier.*
 
 Az **Astra** a klasszikus, hatvanas évekbeli öltönyóra Lorier-féle válasza: 36 mm-es tok, ezüst „pie-pan" számlap, nyomtatott célkereszttel. A legszebb trükkje sötétben mutatkozik meg, amikor a végig lumézott percskála a mutatókkal együtt kezd derengeni. (A napló neve után nehéz nem megkedvelni.)
 
-<!-- KÉP HELYE — Lorier Falcon:
-
-![3-6-9-es számlapú Lorier Falcon terepóra](../_images/lorier-falcon.jpg)
-*Falcon. Fotó: NÉV / FORRÁS, licenc*
--->
+![3-6-9-es számlapú Lorier Falcon terepóra acél karkötőn](../_images/lorier-falcon-hu.png)
+*Falcon. Listaár 699 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier.*
 
 A **Falcon** a terepóra: szintén 36 mm, 3-6-9-es számlappal, amely a Rolex Explorerre kacsint, de saját utat jár egy nagy, nyíl alakú óramutatóval és egy dauphine percmutatóval. A legkompaktabb darab, a „vedd fel és felejtsd el" típus.
 
-<!-- KÉP HELYE — Lorier Hyperion:
-
-![Lorier Hyperion GMT óra a második időzóna mutatójával](../_images/lorier-hyperion.jpg)
-*Hyperion. Fotó: NÉV / FORRÁS, licenc*
--->
+![Lorier Hyperion GMT óra kétszínű lünettával, acél karkötőn](../_images/lorier-hyperion-hu.png)
+*Hyperion. Listaár 799 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier.*
 
 A **Hyperion** a GMT: 39 mm, egy második időzónával a sokat utazóknak. A négyes „világjárója".
 

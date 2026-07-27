@@ -395,9 +395,10 @@ body.dark .article-body blockquote{ border-left-color:var(--lume-glow); }
    Szerkesztői konvenció: a kép alá közvetlenül egy dőlt sor kerül — az lesz
    a kredit. A markdown ezt ugyanabba a bekezdésbe teszi, ha nincs köztük üres
    sor, és két bekezdésbe, ha van; mindkettőt ugyanúgy szedjük. */
+/* Nincs keret: a cikkbe tett képek szabadon álló, hátterüktől megfosztott
+   tárgyak, köréjük rajzolt téglalap hazugság lenne. */
 .article-body img{
   width:100%; height:auto; display:block;
-  border:1px solid var(--line); border-radius:3px;
 }
 .article-body p:has(> img){ margin:36px 0; }
 

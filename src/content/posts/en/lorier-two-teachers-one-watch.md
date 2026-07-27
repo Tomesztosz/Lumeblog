@@ -47,36 +47,23 @@ This "companion, not trophy" attitude is why Lorier belongs here, on the journal
 
 The current, relaunched core collection is four watches. Each is a restrained rethinking of a classic archetype, and all of them run on a Miyota automatic movement.
 
-<!-- IMAGE SLOT — Lorier Neptune. Once you have the photo, put the file in
-     src/content/posts/_images/ and replace this comment with these two lines:
-
-![Lorier Neptune dive watch with a black dial](../_images/lorier-neptune.jpg)
-*Neptune. Photo: NAME / SOURCE, licence*
--->
+![Lorier Neptune dive watch with a black dial on a steel bracelet](../_images/lorier-neptune-en.png)
+*Neptune. List price $699. Photo: Lorier.*
 
 The **Neptune** is the diver, and it's the watch that put Lorier on the map in 2019. It channels the dive watches of the mid-twentieth century: a black dial, a black aluminium bezel insert, with gold-tone hands and index frames. The house's true, everyday diver.
 
-<!-- IMAGE SLOT — Lorier Astra:
-
-![Lorier Astra dress watch with a silver pie-pan dial](../_images/lorier-astra.jpg)
-*Astra. Photo: NAME / SOURCE, licence*
--->
+![Lorier Astra dress watch with a silver pie-pan dial on a steel bracelet](../_images/lorier-astra-en.png)
+*Astra. List price $699. Photo: Lorier.*
 
 The **Astra** is Lorier's answer to the classic 1960s dress watch: a 36 mm case, a silver "pie-pan" dial with a printed crosshair. Its finest trick shows itself in the dark, when the fully lumed minute track begins to glow in step with the hands. (After the name of this journal, it's hard not to be fond of it.)
 
-<!-- IMAGE SLOT — Lorier Falcon:
-
-![Lorier Falcon field watch with a 3-6-9 dial](../_images/lorier-falcon.jpg)
-*Falcon. Photo: NAME / SOURCE, licence*
--->
+![Lorier Falcon field watch with a 3-6-9 dial on a steel bracelet](../_images/lorier-falcon-en.png)
+*Falcon. List price $699. Photo: Lorier.*
 
 The **Falcon** is the field watch: also 36 mm, with a 3-6-9 dial that nods to the Rolex Explorer, though it goes its own way with a big arrow-shaped hour hand and a dauphine minute hand. The most compact of the set, the "put it on and forget it" piece.
 
-<!-- IMAGE SLOT — Lorier Hyperion:
-
-![Lorier Hyperion GMT watch with its second time-zone hand](../_images/lorier-hyperion.jpg)
-*Hyperion. Photo: NAME / SOURCE, licence*
--->
+![Lorier Hyperion GMT watch with a two-tone bezel on a steel bracelet](../_images/lorier-hyperion-en.png)
+*Hyperion. List price $799. Photo: Lorier.*
 
 The **Hyperion** is the GMT: 39 mm, with a second time zone for those who travel a lot. The globetrotter of the four.
 
