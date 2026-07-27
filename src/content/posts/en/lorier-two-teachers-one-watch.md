@@ -7,8 +7,8 @@ lang: 'en'
 translationKey: 'lorier-kezdes'
 minutes: 8
 cover:
-  src: '../_images/lorier-alapitok.jpg'
-  alt: 'Lauren and Lorenzo Ortega, the founders of Lorier, in a rocky park setting; the LORIER wordmark sits along the bottom of the image'
+  src: '../_images/lorier-alapitok-lockup.jpg'
+  alt: 'Lauren and Lorenzo Ortega, the founders of Lorier, in a rocky park setting; the Lorier chevron mark and LORIER wordmark sit along the bottom of the image'
   credit: 'Photo: Luxe Digital · wordmark: Lorier · composite: Lume'
   license: 'permission pending'
 sources:

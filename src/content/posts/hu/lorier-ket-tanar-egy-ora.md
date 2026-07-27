@@ -7,8 +7,8 @@ lang: 'hu'
 translationKey: 'lorier-kezdes'
 minutes: 8
 cover:
-  src: '../_images/lorier-alapitok.jpg'
-  alt: 'Lauren és Lorenzo Ortega, a Lorier alapítói egy sziklás parkrészletben; a kép alján a márka LORIER felirata'
+  src: '../_images/lorier-alapitok-lockup.jpg'
+  alt: 'Lauren és Lorenzo Ortega, a Lorier alapítói egy sziklás parkrészletben; a kép alján a márka jele és LORIER felirata'
   credit: 'Fotó: Luxe Digital · wordmark: Lorier · összeállítás: Lume'
   license: 'jogtisztázás alatt'
 sources:

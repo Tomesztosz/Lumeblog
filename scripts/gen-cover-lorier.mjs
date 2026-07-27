@@ -1,6 +1,6 @@
 /* A Lorier-cikk nyitóképe: az alapítókról készült fotó + a márka wordmarkja.
    Futtatás: node scripts/gen-cover-lorier.mjs
-   Kimenet:  src/content/posts/_images/lorier-alapitok.jpg
+   Kimenet:  src/content/posts/_images/lorier-alapitok-lockup.jpg
 
    Két döntés, amit érdemes tudni, ha valaki újra hozzányúl:
 
@@ -19,7 +19,7 @@ const SRC = 'articles/pictures/';
 const PHOTO =
   SRC + 'lorier-watches-founders-lauren-lorenzo-ortega-interview-luxe-digital-2x1-1280.avif';
 const LOGO = SRC + 'ad11a78a-a130-46c2-ab5d-97fdb75074ae-3591168409.webp';
-const OUT = 'src/content/posts/_images/lorier-alapitok.jpg';
+const OUT = 'src/content/posts/_images/lorier-alapitok-lockup.jpg';
 
 const W = 1600;
 const H = 700; // 16:7 — ez a cikk élén lévő kép aránya
