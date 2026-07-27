@@ -24,15 +24,32 @@ const OUT = 'src/content/posts/_images/vacheron-222-nyitokep.jpg';
 const W = 1600;
 const H = 700; // 16:7 — ez a cikk élén lévő kép aránya
 
-/* 1) A tervező a háttérben. A kivágást úgy választjuk meg, hogy az arca a bal
-      harmadba essen, és ne kerüljön az óra mögé. A kép eleve fekete-fehér;
-      a meleg tónust nem befestéssel, hanem egy halvány sárgaréz réteggel
-      adjuk rá, mert a tint tönkretenné a tónusokat. */
-const bg = await sharp(HYSEK)
-  .extract({ left: 300, top: 150, width: 1300, height: 569 })
-  .resize(W, H)
+/* 1) A tervező a háttérben.
+      A méret és a hely a KÁRTYANÉZETHEZ van igazítva: a listákon ugyanez a kép
+      4:3-ban, középre vágva jelenik meg, vagyis csak a 333–1266 közötti sáv
+      látszik. Ha Hysek arca a sáv szélére esik, a kártyán egy félbevágott fej
+      marad. Ezért a portré 0,8-szeresre kicsinyítve kerül fel, balra zárva —
+      így az arca a 368–584 közötti sávban ül, jó ráhagyással a vágáson belül.
+      A kép jobb széle a sötét alapba fut; ott a fátyol úgyis majdnem tömör.
+
+      A meleg tónust nem befestéssel adjuk rá, hanem egy halvány sárgaréz
+      réteggel: a tint tönkretenné a fekete-fehér portré tónusait. */
+const BG_W = 1280;
+const portrait = await sharp(HYSEK)
+  .resize({ width: BG_W })
+  .extract({ left: 0, top: 40, width: BG_W, height: H })
   .greyscale()
   .linear(1.06, -8)
+  .png()
+  .toBuffer();
+
+/* A create:-ből induló képnek nincs bemeneti formátuma, ezért a formátumot
+   itt ki kell mondani — különben nyers puffer jön ki, amit a sharp nem vesz be. */
+const bg = await sharp({
+  create: { width: W, height: H, channels: 3, background: '#13100B' },
+})
+  .composite([{ input: portrait, top: 0, left: 0 }])
+  .png()
   .toBuffer();
 
 /* 2) Sötétítés: balról jobbra egyre mélyebb, hogy az óra köré csend legyen.
@@ -41,8 +58,8 @@ const veil = Buffer.from(`
 <svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   <defs>
     <linearGradient id="side" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#13100B" stop-opacity="0.30"/>
-      <stop offset="26%"  stop-color="#13100B" stop-opacity="0.44"/>
+      <stop offset="0%"   stop-color="#13100B" stop-opacity="0.26"/>
+      <stop offset="30%"  stop-color="#13100B" stop-opacity="0.38"/>
       <stop offset="46%"  stop-color="#13100B" stop-opacity="0.80"/>
       <stop offset="70%"  stop-color="#13100B" stop-opacity="0.93"/>
       <stop offset="100%" stop-color="#13100B" stop-opacity="0.95"/>
@@ -76,9 +93,9 @@ const watch = await sharp(cut)
   .toBuffer();
 const wm = await sharp(watch).metadata();
 
-/* Az óra a középvonaltól kissé jobbra: így Hyseknek marad hely balra, és a
-   kártyák 4:3-as középső sávjából (333–1266 képpont) még bőven nem lóg ki. */
-const WATCH_CX = 900;
+/* Az óra pontosan a képközépen: a kártyák 4:3-as vágása is a középvonalra
+   szimmetrikus, tehát ott az óra és alatta a márkanév középen marad. */
+const WATCH_CX = W / 2;
 const layers = [
   { input: veil, top: 0, left: 0 },
   { input: watch, top: Math.round((H - WATCH_H) / 2) - 48, left: Math.round(WATCH_CX - wm.width / 2) },
