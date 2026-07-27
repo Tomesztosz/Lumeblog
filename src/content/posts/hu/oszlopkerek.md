@@ -49,8 +49,8 @@ Kétféle tengelykapcsoló van: vízszintes és függőleges. A vízszintesnél 
 
 Oszlopkereket a klasszikus, magasabb kategóriás kronográfokban találsz: ilyen a Rolex Daytona 4130-as kalibere, a Zenith El Primero (nála a rotor „Manufacture" felirata fölött látszik az oszlopkerék), vagy a Patek Philippe kronográfjai.
 
-![A Zenith El Primero 400-as kaliberének kronográf-oldala, aranyszínű kerekekkel és kékített csavarokkal](../_images/el-primero-400.png)
-*A Zenith El Primero 400-as kalibere. Fotó: forrás megadandó*
+![A Zenith El Primero 400-as kalibere, rajta megjelölve az oszlopkerék: kékes acél pillérek gyűrűje egy rögzítő csavar körül](../_images/el-primero-400-hu.png)
+*A Zenith El Primero 400-as kalibere. A pillérek gyűrűjére jobbról fekszik rá a kapcsolókar csőre. A kiemelés a szerkesztőségé. Fotó: forrás megadandó*
 
 És egy szép történelmi lecke arról, hogy a bütyök nem „rosszabb": az Omega Speedmastert a NASA 1965-ben minősítette az űrrepülésre, akkor még az oszlopkerekes 321-es kaliberrel. Az Omega később bütykös szerkezetre váltott, és a NASA azt is jóváhagyta. Vagyis mindkét megoldás kiállta az űr próbáját, ami elég meggyőzően cáfolja, hogy a bütyök alsóbbrendű lenne.
 
