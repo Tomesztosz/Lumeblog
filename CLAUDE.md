@@ -120,10 +120,11 @@ kiírja a sitemap címét.
 - **A domain az `astro.config.mjs` `site` mezőjében van** (`https://lumeblog.com`). Ebből
   képződik a canonical, a hreflang, a sitemap és az RSS minden URL-je — ha a domain
   változik, itt az egy sor átírása elég.
-- **Hírlevél:** MailerLite. A `src/site.ts` `MAILERLITE_FORM_ACTION` mezőjébe kell a
-  beágyazott űrlap `action` URL-je (MailerLite → Forms → Embedded forms). Amíg üres,
-  a sáv csak felület, az e-mail nem hagyja el az oldalt. A `fields[language]` rejtett
-  mező viszi a nyelvet, hogy a HU és EN feliratkozók szétválaszthatók legyenek.
+- **Hírlevél: egyelőre nincs kirakva.** Nincs mit kiküldeni, amíg csak pár cikk van;
+  az olvasó RSS-sel követ. A `Subscribe.astro` komponens készen áll (MailerLite-ra
+  kötve, nyelvet vivő rejtett mezővel) — visszatenni annyi, hogy importálod a
+  `HomeView`-ba és/vagy az `AboutView`-ba a `.ethos-follow` bekezdés helyére, és
+  kitöltöd a `MAILERLITE_FORM_ACTION`-t a `src/site.ts`-ben.
 - `public/` — ami változtatás nélkül kerül a gyökérbe: `favicon.svg`, `apple-touch-icon.png`,
   `og-image.png`, `robots.txt`, `_headers` (Cloudflare cache-szabályok).
 - Az ikonokat és az OG-képet a `node scripts/gen-icons.mjs` generálja a `favicon.svg`-ből.
@@ -134,8 +135,7 @@ kiírja a sitemap címét.
 ## Ami még nincs kész
 
 - **Domain** — a `lumeblog.com` még nincs megvéve; az élesítés előtt kell megvenni.
-- **MailerLite-URL** — a `src/site.ts`-be kell bemásolni a beágyazott űrlap `action`-jét.
-- **Első cikk** — ezzel megyünk élesbe, addig `LAUNCHED = false`.
+- **Hírlevél** — szándékosan elhalasztva, amíg nincs mit kiküldeni.
 - Logó / wordmark (a favicon egyelőre a számlap-márkajel).
 - *Ötlet, nem terv:* AI-val modellezett terrajzok a szerkezetekről a Szerkezet rovathoz.
   Ha ez megvalósul, ugyanaz a `cover` mechanizmus viszi, csak a `credit`-be a

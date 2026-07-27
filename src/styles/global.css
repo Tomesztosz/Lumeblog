@@ -443,6 +443,18 @@ body.dark .article-body blockquote{ border-left-color:var(--lume-glow); }
 .ethos-line b{ font-weight:500; color:var(--brass); transition:color .7s ease; }
 body.dark .ethos-line b{ color:var(--lume-glow); }
 
+/* Hírlevél helyett egyelőre ennyi: az RSS csendes felajánlása. */
+.ethos-follow{
+  margin:34px 0 0; font-size:15px; color:var(--ink-soft);
+}
+/* a cikktörzsben a `.article-body > *` nullázná a felső margót */
+.article-body .ethos-follow{ margin-top:34px; }
+.ethos-follow a{
+  color:var(--brass); text-decoration:underline;
+  text-underline-offset:3px; text-decoration-thickness:1px;
+}
+body.dark .ethos-follow a{ color:var(--lume-glow); }
+
 .subscribe{
   margin-top:52px; padding:36px 34px;
   border:1px solid var(--line); border-radius:4px;

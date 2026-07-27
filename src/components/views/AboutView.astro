@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Subscribe from '../Subscribe.astro';
 import { UI, aboutUrl, otherLang, type Lang } from '../../i18n/ui';
 
 interface Props {
@@ -54,8 +53,10 @@ const copy = {
     <div class="wrap wrap-narrow">
       <div class="article-body">
         {copy.body.map((p) => <p>{p}</p>)}
+        <p class="ethos-follow">
+          {t.followVia} <a href={lang === 'hu' ? '/rss.xml' : '/en/rss.xml'}>RSS</a>.
+        </p>
       </div>
-      <Subscribe lang={lang} />
     </div>
   </section>
 </Base>

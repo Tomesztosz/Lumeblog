@@ -2,7 +2,6 @@
 import Base from '../../layouts/Base.astro';
 import Dial from '../Dial.astro';
 import PostCard from '../PostCard.astro';
-import Subscribe from '../Subscribe.astro';
 import {
   COLUMN_KEYS,
   COLUMNS,
@@ -88,12 +87,14 @@ const posts = (await getPosts(lang)).slice(0, 3);
     </div>
   </section>
 
-  <!-- AMIBEN HISZÜNK + HÍRLEVÉL -->
+  <!-- AMIBEN HISZÜNK -->
   <section class="section ethos" id="ethos">
     <div class="wrap">
       <p class="eyebrow mono" style="margin-bottom:22px">{t.ethosEyebrow}</p>
       <p class="ethos-line">{t.ethosLineBefore}<b>{t.ethosLineBold}</b></p>
-      <Subscribe lang={lang} />
+      <p class="ethos-follow">
+        {t.followVia} <a href={lang === 'hu' ? '/rss.xml' : '/en/rss.xml'}>RSS</a>.
+      </p>
     </div>
   </section>
 </Base>

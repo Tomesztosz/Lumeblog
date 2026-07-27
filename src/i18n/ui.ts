@@ -112,9 +112,13 @@ export const UI = {
     subDone: 'Fent vagy a listán.',
     subError: 'Most nem sikerült. Próbáld újra kicsit később.',
 
+    /* követés — hírlevél helyett egyelőre csak RSS */
+    followVia: 'Az új írásokat itt tudod követni:',
+
     /* lábléc */
     footColumns: 'Rovatok',
     footJournal: 'A napló',
+    /* parkolva: a hírlevél-sáv egyelőre nincs kirakva az oldalra */
     footNewsletter: 'Hírlevél',
     footArchive: 'Archívum',
     footCopy: '© 2026 Lume',
@@ -170,6 +174,8 @@ export const UI = {
     subButton: 'Subscribe',
     subDone: "You're on the list.",
     subError: "That didn't go through. Please try again in a moment.",
+
+    followVia: 'You can follow new pieces here:',
 
     footColumns: 'Columns',
     footJournal: 'The journal',
