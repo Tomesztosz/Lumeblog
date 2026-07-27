@@ -16,12 +16,8 @@ sources:
 
 Let's start with the name, because the whole story hides there. Why "222"? Because in 1977 Vacheron Constantin was celebrating its 222nd birthday. The house was founded in 1755, and when, 222 years later, it launched a bold new sports watch, it simply put the anniversary on the dial. A number that is really a date. And a watch that hides an even bigger misunderstanding.
 
-<!-- IMAGE SLOT — Vacheron Constantin 222 "Jumbo" (1977). Once you have the photo, put the
-     file in src/content/posts/_images/ and replace this comment with these two lines:
-
-![Vacheron Constantin 222 "Jumbo", 1977, on an integrated steel bracelet](../_images/vacheron-222-jumbo.jpg)
-*The Vacheron Constantin 222 "Jumbo" (1977). Photo: NAME / SOURCE, licence*
--->
+![Vacheron Constantin 222 with a dark dial and fluted bezel on an integrated steel bracelet](../_images/vacheron-222-jumbo.png)
+*The Vacheron Constantin 222. Photo: source to be added*
 
 ## A genre is born, and a stubborn myth
 
@@ -41,11 +37,8 @@ Hysek was born in East Berlin in 1953, and moved to Geneva with his family at th
 
 The design itself was confident. Hysek started from the tonneau cases of the early twentieth century and translated them into the language of the seventies: an integrated, flat-link metal bracelet, a fluted bezel, and in the lower right corner Vacheron's signature, the Maltese cross. The case was of monobloc construction, meaning the movement had to be fitted from above, and thanks to the screw-down bezel it was water-resistant to 120 metres.
 
-<!-- IMAGE SLOT — the Maltese cross in the lower right corner of the case:
-
-![The Maltese cross in the lower right corner of the Vacheron 222 case](../_images/vacheron-222-maltai-kereszt.jpg)
-*The Maltese cross, Vacheron's signature, in the lower right corner of the case. Photo: NAME / SOURCE, licence*
--->
+![Close-up of the Vacheron 222 case with the inlaid Maltese cross at its corner](../_images/vacheron-222-maltai-kereszt.png)
+*The Maltese cross, Vacheron's signature, at the corner of the case. Photo: source to be added*
 
 Production followed the "horizontal" model typical of the era: each component was made by a master of its own field. The dial came from Stern, the movement from Jaeger-LeCoultre, the bracelet from Gay Frères. The 222 was made in three sizes; the most coveted by collectors is the 37 mm "Jumbo", with a stylised 222 engraving on its caseback.
 
@@ -59,10 +52,7 @@ The 222 never earned the adoration and fame of the Royal Oak and the Nautilus. I
 
 In the end, the house itself returned to it. In 2022, in the Historiques series, the 37 mm Jumbo was reborn in 18-karat yellow gold, faithful to the original, right down to references to the greenish tint of the old tritium lume. And in 2025 came what collectors had waited for most: the steel version, with a blue dial, a case barely 7.95 mm thick, and an in-house calibre.
 
-<!-- IMAGE SLOT — the 2022 Historiques 222 in yellow gold:
-
-![The 2022 Vacheron Constantin Historiques 222 in yellow gold](../_images/vacheron-historiques-222.jpg)
-*The 2022 Historiques 222, a faithful reinterpretation of the original. Photo: NAME / SOURCE, licence*
--->
+![The yellow-gold version of the Vacheron Constantin 222 with a champagne dial](../_images/vacheron-historiques-222.png)
+*The 222 in yellow gold. Photo: source to be added*
 
 The 222 is exactly the kind of watch this column exists for. It matters not because of how loud it is, but because the real story is better than the legend pinned on it.

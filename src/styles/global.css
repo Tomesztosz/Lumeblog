@@ -396,9 +396,13 @@ body.dark .article-body blockquote{ border-left-color:var(--lume-glow); }
    a kredit. A markdown ezt ugyanabba a bekezdésbe teszi, ha nincs köztük üres
    sor, és két bekezdésbe, ha van; mindkettőt ugyanúgy szedjük. */
 /* Nincs keret: a cikkbe tett képek szabadon álló, hátterüktől megfosztott
-   tárgyak, köréjük rajzolt téglalap hazugság lenne. */
+   tárgyak, köréjük rajzolt téglalap hazugság lenne.
+   A magassági korlát az álló képek miatt kell: egy karkötős óra teljes
+   oszlopszélességben ezer képpontnál is magasabb lenne, és szétverné a
+   cikk ritmusát. Ilyenkor a kép a magasságához igazodik, és középre áll. */
 .article-body img{
-  width:100%; height:auto; display:block;
+  max-width:100%; height:auto; display:block;
+  max-height:620px; margin-inline:auto;
 }
 .article-body p:has(> img){ margin:36px 0; }
 

@@ -2,10 +2,12 @@ import sharp from 'sharp';
 
 /* Peremről induló kitöltés: csak az a világos pixel lesz átlátszó, ami a
    képszélről elérhető. Így a számlap és a karkötő világos részei megmaradnak. */
-export async function cutout(path, tol = 26) {
+export async function cutout(path, tol = 26, bgColor = null) {
   const { data, info } = await sharp(path).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   const { width: W, height: H, channels: C } = info;
-  const bg = [data[0], data[1], data[2]];
+  /* Alapból a bal felső képpont a háttér. Ha a kép egy kivágás, és ott már a
+     tárgy van, a hívó megadhatja a háttérszínt explicit módon. */
+  const bg = bgColor ?? [data[0], data[1], data[2]];
   const isBg = (i) =>
     Math.abs(data[i] - bg[0]) < tol &&
     Math.abs(data[i + 1] - bg[1]) < tol &&
