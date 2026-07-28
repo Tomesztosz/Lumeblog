@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://lumeblog.com',
+  site: 'https://lumejournal.com',
   i18n: {
     locales: ['hu', 'en'],
     defaultLocale: 'hu',

@@ -9,7 +9,7 @@ minutes: 9
 cover:
   src: '../_images/vacheron-222-nyitokep.jpg'
   alt: 'Jörg Hysek tervező mosolyogva egy lépcsőn, mellette a Vacheron Constantin 222 acél változata kék számlappal'
-  credit: 'Fotók: forrás megadandó · összeállítás: Lume'
+  credit: 'Fotók: Vacheron Constantin (óra, márkajel) · Oracle of Time (Jörg Hysek) · összeállítás: Lume'
   license: 'jogtisztázás alatt'
 sources:
   - label: 'Vacheron Constantin: Historiques 222, hivatalos oldal és sajtóanyag (2022, 2025)'
@@ -22,7 +22,7 @@ sources:
 Kezdjük a névvel, mert az egész történet ott bújik meg. Miért „222"? Mert 1977-ben a Vacheron Constantin a 222. születésnapját ünnepelte. A ház 1755-ben alakult, és amikor 222 évvel később kidobott egy merész, új sportórát, egyszerűen ráírta az évfordulót. Egy szám, ami valójában egy dátum. És egy óra, ami mögött egy ennél is nagyobb félreértés lapul.
 
 ![Vacheron Constantin 222 sötét számlappal, bordázott lünettával, integrált acél szíjon](../_images/vacheron-222-jumbo.png)
-*A Vacheron Constantin 222. Fotó: forrás megadandó*
+*A Vacheron Constantin 222. Fotó: Chrono24 (chrono24.com)*
 
 ## Egy műfaj születése, és egy makacs tévhit
 
@@ -43,7 +43,7 @@ Hysek 1953-ban született Kelet-Berlinben, és hétévesen, nem sokkal a berlini
 Maga a terv magabiztos volt. Hysek a huszadik század eleji tonneau-tokokból indult ki, és a hetvenes évek nyelvére fordította le: integrált, lapos szemű fémszíj, bordázott lünetta, és a jobb alsó sarokban a Vacheron védjegye, a máltai kereszt. A tok monoblokk kialakítású volt, vagyis a szerkezetet felülről kellett belehelyezni, és a csavaros lünettának köszönhetően 120 méterig vízálló.
 
 ![Közeli felvétel a Vacheron 222 tokjáról, sarkában a berakott máltai kereszttel](../_images/vacheron-222-maltai-kereszt.png)
-*A máltai kereszt, a Vacheron védjegye, a tok sarkában. Fotó: forrás megadandó*
+*A máltai kereszt, a Vacheron védjegye, a tok sarkában. Fotó: Chrono24 (chrono24.com)*
 
 A gyártás a korszak jellemző „vízszintes" modelljét követte: minden alkatrészt a maga szakterületének mestere készített. A számlap a Sterntől jött, a szerkezet a Jaeger-LeCoultre-től, a szíj a Gay Frères-től. A 222 három méretben készült; a gyűjtők számára a legkívánatosabb a 37 mm-es „Jumbo", a hátlapján stilizált 222-es véséssel.
 
@@ -58,6 +58,6 @@ A 222 sosem kapta meg azt a rajongást és hírnevet, amit a Royal Oak és a Nau
 A ház végül maga is visszatért hozzá. 2022-ben, a Historiques sorozatban, 18 karátos sárgaaranyban éledt újra a 37 mm-es Jumbo, hűen az eredetihez, egészen a régi tríciumos lume zöldes árnyalatára tett utalásokig. 2025-ben pedig megjött az, amire a gyűjtők a legjobban vártak: az acélváltozat, kék számlappal, alig 7,95 mm vastag tokban és egy házon belüli kaliberrel.
 
 ![A Vacheron Constantin 222 sárgaarany változata, pezsgőszínű számlappal](../_images/vacheron-historiques-222.png)
-*A 222 sárgaarany változata. Fotó: forrás megadandó*
+*A 222 sárgaarany változata. Fotó: Chrono24 (chrono24.com)*
 
 A 222 pont az a fajta óra, amiért ez a rovat létezik. Nem attól fontos, mennyire hangos, hanem attól, hogy a valódi története jobb, mint a legenda, amit ráaggattak.
