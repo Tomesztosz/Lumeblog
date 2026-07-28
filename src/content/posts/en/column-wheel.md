@@ -6,6 +6,10 @@ column: 'movement'
 lang: 'en'
 translationKey: 'oszlopkerek'
 minutes: 8
+cover:
+  src: '../_images/oszlopkerek-nyitokep.jpg'
+  alt: 'A stylised drawing of a chronograph movement with brass wheels and faintly glowing green jewels on a dark background'
+  credit: 'Own illustration'
 sources:
   - label: 'Watchfinder & Co.: Getting Technical, Column Wheel'
   - label: 'Univaque; Rotate Watches; Argos Watch: comparisons of the column wheel and the cam'

@@ -6,6 +6,10 @@ column: 'movement'
 lang: 'hu'
 translationKey: 'oszlopkerek'
 minutes: 8
+cover:
+  src: '../_images/oszlopkerek-nyitokep.jpg'
+  alt: 'Egy kronográfszerkezet stilizált ábrája sárgaréz kerekekkel és halványan derengő zöld kövekkel, sötét háttéren'
+  credit: 'Saját ábra'
 sources:
   - label: 'Watchfinder & Co.: Getting Technical, Column Wheel'
   - label: 'Univaque; Rotate Watches; Argos Watch: az oszlopkerék és a bütyök összehasonlítása'
