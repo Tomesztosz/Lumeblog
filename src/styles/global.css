@@ -316,6 +316,21 @@ body.dark .tag{ color:var(--lume-glow); }
 body.dark .post:hover h3{ color:var(--lume-glow); }
 .post p{ margin:0; font-size:14.5px; color:var(--ink-soft); }
 
+/* Látható jelzés, hogy a kártya mögött egy teljes cikk van. Enélkül a
+   rovat-listaoldal félbevágott cikknek látszik — érintőképernyőn nincs
+   hover, tehát a cím színváltása semmit nem árul el. */
+.post-more{ margin-top:14px !important; }
+.post-more a{
+  font-family:var(--font-mono);
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--brass); display:inline-flex; align-items:center; gap:8px;
+  padding:6px 0; transition:gap .25s, color .25s;
+}
+body.dark .post-more a{ color:var(--lume-glow); }
+.post-more a:hover{ gap:12px; }
+.post-more .arw{ transition:transform .25s; }
+.post-more a:hover .arw{ transform:translateX(2px); }
+
 /* rovat-listaoldal: soros elrendezés */
 .post-list{ display:flex; flex-direction:column; }
 .post-row{
@@ -538,8 +553,11 @@ body.dark .foot-brand .mark{ color:var(--lume-glow); text-shadow:0 0 10px color-
   .dial{ max-width:280px; }
   .cols{ grid-template-columns:1fr; }
   .posts{ grid-template-columns:1fr; gap:38px; }
-  .post-row{ grid-template-columns:1fr; gap:18px; }
-  .post-row .media-figure{ max-width:280px; }
+  /* A rovat-listaoldalon a kép kisebb, mint a cikk élén: így a sor
+     tartalomjegyzék-tételnek látszik, nem egy megkezdett cikknek. */
+  .post-row{ grid-template-columns:1fr; gap:14px; }
+  .post-row .media-figure{ max-width:190px; }
+  .post-row h3{ font-size:21px; }
   .subscribe{ flex-direction:column; align-items:flex-start; }
   .sub-form{ width:100%; }
   .sub-form input{ flex:1; min-width:0; }

@@ -24,5 +24,6 @@ const url = urlOf(post);
     </div>
     <h3><a href={url}>{post.data.title}</a></h3>
     <p>{post.data.description}</p>
+    <p class="post-more"><a href={url}>{t.readOn} <span class="arw">→</span></a></p>
   </div>
 </article>
