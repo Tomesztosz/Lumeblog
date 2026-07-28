@@ -12,13 +12,15 @@ cover:
   credit: 'Photo: Luxe Digital · wordmark: Lorier · composite: Lume'
   license: 'permission pending'
 sources:
-  - label: 'Lorier: About / FAQ (lorierwatches.com)'
+  - label: 'Lorier: About / FAQ'
+    url: 'https://lorierwatches.com/'
   - label: 'Luxe Digital: interview with Lorenzo and Lauren Ortega'
   - label: 'Hypebeast: Lorier founders interview (Lauren & Lorenzo Ortega)'
   - label: 'Mainspring Watch Magazine: Ortega / Lorier profile'
   - label: 'Worn & Wound: acquisition announcement and the relaunched core collection reveal (2026)'
   - label: 'Gear Patrol; Two Broke Watch Snobs: the 2026 relaunch and the Miyota calibres (9039 / 9075)'
-  - label: 'Lorier: official product pages (lorierwatches.com)'
+  - label: 'Lorier: official product pages'
+    url: 'https://lorierwatches.com/'
 ---
 
 Most good watches are born because someone couldn't find the one they were looking for. Two New York teachers couldn't either, so they poured their savings and a lot of tired evenings into making it themselves. I'm starting this journal with their brand, **Lorier**, because that is exactly the question I care about: why anyone sets out to build something of their own, whether it's a watch or a page like this one.
@@ -48,22 +50,22 @@ This "companion, not trophy" attitude is why Lorier belongs here, on the journal
 The current, relaunched core collection is four watches. Each is a restrained rethinking of a classic archetype, and all of them run on a Miyota automatic movement.
 
 ![Lorier Neptune dive watch with a black dial on a steel bracelet](../_images/lorier-neptune-en.png)
-*Neptune. List price $699. Photo: Lorier.*
+*Neptune. List price $699. Photo: Lorier (lorierwatches.com), used with permission.*
 
 The **Neptune** is the diver, and it's the watch that put Lorier on the map in 2019. It channels the dive watches of the mid-twentieth century: a black dial, a black aluminium bezel insert, with gold-tone hands and index frames. The house's true, everyday diver.
 
 ![Lorier Astra dress watch with a silver pie-pan dial on a steel bracelet](../_images/lorier-astra-en.png)
-*Astra. List price $699. Photo: Lorier.*
+*Astra. List price $699. Photo: Lorier (lorierwatches.com), used with permission.*
 
 The **Astra** is Lorier's answer to the classic 1960s dress watch: a 36 mm case, a silver "pie-pan" dial with a printed crosshair. Its finest trick shows itself in the dark, when the fully lumed minute track begins to glow in step with the hands. (After the name of this journal, it's hard not to be fond of it.)
 
 ![Lorier Falcon field watch with a 3-6-9 dial on a steel bracelet](../_images/lorier-falcon-en.png)
-*Falcon. List price $699. Photo: Lorier.*
+*Falcon. List price $699. Photo: Lorier (lorierwatches.com), used with permission.*
 
 The **Falcon** is the field watch: also 36 mm, with a 3-6-9 dial that nods to the Rolex Explorer, though it goes its own way with a big arrow-shaped hour hand and a dauphine minute hand. The most compact of the set, the "put it on and forget it" piece.
 
 ![Lorier Hyperion GMT watch with a two-tone bezel on a steel bracelet](../_images/lorier-hyperion-en.png)
-*Hyperion. List price $799. Photo: Lorier.*
+*Hyperion. List price $799. Photo: Lorier (lorierwatches.com), used with permission.*
 
 The **Hyperion** is the GMT: 39 mm, with a second time zone for those who travel a lot. The globetrotter of the four.
 

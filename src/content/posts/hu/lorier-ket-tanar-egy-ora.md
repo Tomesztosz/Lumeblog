@@ -12,13 +12,15 @@ cover:
   credit: 'Fotó: Luxe Digital · wordmark: Lorier · összeállítás: Lume'
   license: 'jogtisztázás alatt'
 sources:
-  - label: 'Lorier: About / FAQ (lorierwatches.com)'
+  - label: 'Lorier: About / FAQ'
+    url: 'https://lorierwatches.com/'
   - label: 'Luxe Digital: interjú Lorenzo és Lauren Ortegával'
   - label: 'Hypebeast: Lorier founders interview (Lauren & Lorenzo Ortega)'
   - label: 'Mainspring Watch Magazine: Ortega / Lorier profil'
   - label: 'Worn & Wound: közlemény a Lorier felvásárlásáról, és az újraindított alapkollekció bemutatása (2026)'
   - label: 'Gear Patrol; Two Broke Watch Snobs: a 2026-os relaunch és a Miyota kaliberek (9039 / 9075)'
-  - label: 'Lorier: hivatalos termékoldalak (lorierwatches.com)'
+  - label: 'Lorier: hivatalos termékoldalak'
+    url: 'https://lorierwatches.com/'
 ---
 
 A legtöbb jó óra abból születik, hogy valaki nem találta meg, amit keresett. Két New York-i tanár sem találta, így hát minden megtakarításukat és egy csomó fáradt estét beleölve megcsinálták maguknak. Ezzel a márkával, a **Lorier**-vel kezdem ezt a naplót, mert pontosan ez a kérdés érdekel: miért fog bárki hozzá valami sajáthoz, legyen az egy óra vagy épp egy ilyen oldal.
@@ -48,22 +50,22 @@ Ez a „társ, nem trófea" hozzáállás az, ami miatt a Lorier ide, a napló e
 A mostani, újraindított alapkollekció négy órából áll. Mindegyik egy-egy klasszikus archetípus mértéktartó újragondolása, és mind Miyota automata szerkezettel jár.
 
 ![Fekete számlapú Lorier Neptune búvóóra acél karkötőn](../_images/lorier-neptune-hu.png)
-*Neptune. Listaár 699 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier.*
+*Neptune. Listaár 699 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier (lorierwatches.com), engedéllyel.*
 
 A **Neptune** a búváróra, és ez az az óra, amelyik 2019-ben felrakta a Loriert a térképre. A huszadik század közepének merülőóráit idézi: fekete számlap, fekete alumínium lünettabetét, arany árnyalatú mutatókkal és indexkeretekkel. A ház igazi, mindennapra szánt búvárórája.
 
 ![Ezüst pie-pan számlapú Lorier Astra öltönyóra acél karkötőn](../_images/lorier-astra-hu.png)
-*Astra. Listaár 699 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier.*
+*Astra. Listaár 699 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier (lorierwatches.com), engedéllyel.*
 
 Az **Astra** a klasszikus, hatvanas évekbeli öltönyóra Lorier-féle válasza: 36 mm-es tok, ezüst „pie-pan" számlap, nyomtatott célkereszttel. A legszebb trükkje sötétben mutatkozik meg, amikor a végig lumézott percskála a mutatókkal együtt kezd derengeni. (A napló neve után nehéz nem megkedvelni.)
 
 ![3-6-9-es számlapú Lorier Falcon terepóra acél karkötőn](../_images/lorier-falcon-hu.png)
-*Falcon. Listaár 699 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier.*
+*Falcon. Listaár 699 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier (lorierwatches.com), engedéllyel.*
 
 A **Falcon** a terepóra: szintén 36 mm, 3-6-9-es számlappal, amely a Rolex Explorerre kacsint, de saját utat jár egy nagy, nyíl alakú óramutatóval és egy dauphine percmutatóval. A legkompaktabb darab, a „vedd fel és felejtsd el" típus.
 
 ![Lorier Hyperion GMT óra kétszínű lünettával, acél karkötőn](../_images/lorier-hyperion-hu.png)
-*Hyperion. Listaár 799 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier.*
+*Hyperion. Listaár 799 $; a forintos érték az MNB 2026.07.24-i árfolyamán. Fotó: Lorier (lorierwatches.com), engedéllyel.*
 
 A **Hyperion** a GMT: 39 mm, egy második időzónával a sokat utazóknak. A négyes „világjárója".
 
