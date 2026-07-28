@@ -4,11 +4,14 @@
    ============================================================ */
 
 /**
- * Amíg `false`, minden oldal `noindex`, és a robots.txt mindent tilt.
- * A domain megvásárlása és az első cikk után állítsd `true`-ra — ez az
- * egyetlen kapcsoló, ami az oldalt keresőknek láthatóvá teszi.
+ * Az oldal ÉLES: a keresők indexelhetik, a robots.txt engedélyező.
+ *
+ * Ha valamiért vissza kell venni (nagyobb átalakítás, jogi kérés egy képre),
+ * elég ezt `false`-ra állítani: onnantól minden oldal `noindex`, és a
+ * robots.txt mindent tilt. A már beindexelt oldalak kiesése napokat vesz
+ * igénybe, tehát ez nem azonnali visszavonás.
  */
-export const LAUNCHED = false;
+export const LAUNCHED = true;
 
 /**
  * A hírlevél EGYELŐRE NINCS KIRAKVA az oldalra — nincs mit kiküldeni, amíg

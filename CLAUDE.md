@@ -112,12 +112,11 @@ egyetlen hely, ahol a valódi makrófotókra kell majd cserélni.
 Cloudflare Pages, a GitHub-repóhoz kötve: minden `main`-re küldött push automatikusan
 deployol. Build parancs `npm run build`, kimeneti mappa `dist`.
 
-**Élesítéskor egyetlen kapcsoló:** `src/site.ts` → `LAUNCHED = true`. Amíg `false`, minden
-oldal `noindex`, és a `robots.txt` mindent tilt — a domain még nincs megvéve, félkész
-állapotot nem akarunk indexelve látni. Ha `true`, a robots.txt engedélyezővé vált és
-kiírja a sitemap címét.
+**Az oldal éles.** A kapcsoló `src/site.ts` → `LAUNCHED`. Ha `false`, minden oldal
+`noindex` és a `robots.txt` mindent tilt; ha `true`, a robots.txt engedélyező és kiírja
+a sitemap címét.
 
-- **A domain az `astro.config.mjs` `site` mezőjében van** (`https://lumeblog.com`). Ebből
+- **A domain az `astro.config.mjs` `site` mezőjében van** (`https://lumejournal.com`). Ebből
   képződik a canonical, a hreflang, a sitemap és az RSS minden URL-je — ha a domain
   változik, itt az egy sor átírása elég.
 - **Hírlevél: egyelőre nincs kirakva.** Nincs mit kiküldeni, amíg csak pár cikk van;
@@ -134,7 +133,12 @@ kiírja a sitemap címét.
 
 ## Ami még nincs kész
 
-- **Domain** — a `lumeblog.com` még nincs megvéve; az élesítés előtt kell megvenni.
+- **Képengedélyek.** Engedélyünk a Lorier anyagaira van (négy termékfotó + wordmark).
+  A többi kép forrása meg van jelölve, de engedély nincs rá: Luxe Digital (a Lorier-cikk
+  nyitóképén az alapítók fotója), Chrono24 (Vacheron-törzsképek), Vacheron Constantin
+  és Oracle of Time (a Vacheron-nyitókép), Monochrome Watches (El Primero). A szerző ezt
+  tudva döntött az élesítés mellett. Ha bármelyikre kérés érkezik, a kép kivétele annyi,
+  hogy a `cover` blokkot vagy a képsort törlöd — a rovat SVG-motívuma áll a helyére.
 - **Hírlevél** — szándékosan elhalasztva, amíg nincs mit kiküldeni.
 - Logó / wordmark (a favicon egyelőre a számlap-márkajel).
 - *Ötlet, nem terv:* AI-val modellezett terrajzok a szerkezetekről a Szerkezet rovathoz.
