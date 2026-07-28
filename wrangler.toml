@@ -1,0 +1,16 @@
+# Cloudflare-beállítás a statikus oldalhoz.
+#
+# A Cloudflare újabb felülete a Workers-folyamatba vezet, ami `npx wrangler deploy`-jal
+# telepít, és ehhez kell ez a fájl. Nincs benne futtatható szkript: a Worker csak a
+# `dist/` tartalmát szolgálja ki (Workers Static Assets).
+#
+# A klasszikus Pages-folyamat ettől függetlenül működik, ott ez a fájl nem zavar.
+
+name = "lumejournal"
+compatibility_date = "2026-07-28"
+
+[assets]
+directory = "./dist"
+
+# A saját 404-es oldalunk jelenjen meg ismeretlen cím esetén, ne a Cloudflare-é.
+not_found_handling = "404-page"
