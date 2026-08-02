@@ -1,0 +1,50 @@
+# Ütemezett megjelenés.
+#
+# Az oldal statikus: a fájlok akkor készülnek el, amikor buildelünk. Ha egy
+# cikk vasárnap kerül fel, de hétfői dátummal, akkor hétfőn valakinek kérnie
+# kell egy újraépítést — különben a vasárnapi állapot marad kint.
+#
+# Ez a munkafolyamat hétfőn, szerdán és pénteken reggel megnézi, hogy van-e
+# aznapra datált cikk, és csak akkor kér újraépítést. Így nem szemeteljük tele
+# a naplót fölösleges commitokkal.
+#
+# A push maga indítja a Cloudflare buildjét, mint bármelyik másik push.
+
+name: Ütemezett megjelenés
+
+on:
+  schedule:
+    # 05:00 UTC = 07:00 Budapest nyári időszámításkor (télen 06:00).
+    # Hétfő, szerda, péntek — a napló heti ritmusa.
+    - cron: '0 5 * * 1,3,5'
+  # Kézzel is indítható a GitHub felületén (Actions → Run workflow),
+  # ha valamit azonnal ki kell tenni.
+  workflow_dispatch:
+
+jobs:
+  megjelenes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Van-e mai dátumú cikk?
+        id: ellenorzes
+        run: |
+          MA=$(date -u +%F)
+          echo "Mai dátum (UTC): $MA"
+          if grep -rlx "date: $MA" src/content/posts/ ; then
+            echo "talalat=igen" >> "$GITHUB_OUTPUT"
+          else
+            echo "Ma nincs megjelenő cikk."
+            echo "talalat=nem" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Újraépítés kérése
+        if: steps.ellenorzes.outputs.talalat == 'igen'
+        run: |
+          git config user.name "Lume ütemező"
+          git config user.email "actions@users.noreply.github.com"
+          git commit --allow-empty -m "Ütemezett megjelenés: $(date -u +%F)"
+          git push

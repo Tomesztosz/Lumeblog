@@ -62,6 +62,21 @@ párjára* visz — cikknél a `translationKey` alapján, ha nincs pár, a mási
 
 Az olvasási időt a szövegből számoljuk (kb. 200 szó/perc); a `minutes` mezővel felülírható.
 
+## Ütemezett megjelenés
+
+**A jövőre datált cikk éles buildben nem kerül ki.** Így lehet hétvégén feltölteni azt,
+ami hétfőn jelenik meg. A szűrés a `lib/posts.ts`-ben van, és mindenhol érvényesül:
+a listákon, az RSS-ben és a sitemapben is — a jövőbeli cikkhez oldal sem generálódik.
+
+**Fejlesztés közben (`npm run dev`) viszont minden látszik**, hogy a készülő írásokat
+meg tudd nézni a saját gépeden, mielőtt élesbe kerülnek.
+
+Mivel az oldal statikus, a dátum önmagában nem elég: kell egy újraépítés is azon a
+napon. Ezt a `.github/workflows/utemezett-megjelenes.yml` intézi — hétfőn, szerdán és
+pénteken 05:00 UTC-kor (nyáron 07:00, télen 06:00 magyar idő) megnézi, van-e aznapra
+datált cikk, és csak akkor kér újraépítést. A GitHub felületén kézzel is indítható
+(Actions → Ütemezett megjelenés → Run workflow), ha valamit azonnal ki kell tenni.
+
 **Poszt törlésekor:** az Astro tartalom-gyorsítótára a `node_modules/.astro/data-store.json`-ban
 él, és a törlést nem mindig veszi észre — a törölt cikk kísértetként tovább épül. Ha ilyet
 látsz, `rm -rf node_modules/.astro dist` és újra build. A Cloudflare tiszta klónból épít,

@@ -50,13 +50,8 @@ A Furlan Marri néhány év alatt eljutott a Kickstartertől az aukciósházakig
 
 2025-ben a Sotheby's egyik aukciójára a Furlan Marri egyetlen, egyedi darabot készített: a Disco Volante **AREA 51**-et. A tokja **tantálból** van, egy sötét, kékesszürke, ritka fém, amely rendkívül kemény, sűrű és korrózióálló, cserébe pokolian nehéz megmunkálni. Épp ezért ritkaság az órákban: pár nagy ház nyúlt hozzá (Panerai, F.P. Journe), egy microbrandtől viszont merész gesztus.
 
-<!-- KÉP HELYE — Disco Volante AREA 51 (tantáltok, meteoritszámlap). Ehhez még nem
-     érkezett fájl. Ha megvan, tedd a src/content/posts/_images/ mappába, és
-     cseréld ki ezt a kommentet erre a két sorra:
-
-![A Furlan Marri Disco Volante AREA 51, tantáltokkal és meteoritszámlappal](../_images/furlan-marri-area51-tantal.jpg)
-*Disco Volante AREA 51: egyedi darab, tantáltok, meteoritszámlap, 2025. Fotó: NÉV / FORRÁS*
--->
+![A Furlan Marri Disco Volante AREA 51 szürke meteoritszámlappal és szürke szíjon, sötét, meteoritmintás háttér előtt](../_images/furlan-marri-area51-tantal.jpg)
+*Disco Volante AREA 51: egyedi darab, tantáltok, meteoritszámlap, 2025. Fotó: EveryWatch (everywatch.com)*
 
 A számlap ráadásul valódi **meteorit**, és az egész a márka játékos „repülő csészealj" témájára játszik rá: egy darab az űrből, egy csészealj alakú tokban. Egy egyedi tantálóra egy microbrandtől, aukciósháznak, négy évvel a 35 másodperces indulás után. Ennél tömörebben nehéz összefoglalni, mennyit nőtt ez a márka.
 
