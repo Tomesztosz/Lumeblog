@@ -24,10 +24,10 @@ const MAX_W_ALPHA = 900;
 
 const JOBS = [
   // Furlan Marri
-  { in: 'mr.grey_forrás_gphg.org.jpg', out: 'furlan-marri-mr-grey.png', mode: 'cutout', tol: 65 },
+  { in: 'mr.grey_forrás_gphg.org.jpg', out: 'furlan-marri-mr-grey.png', mode: 'alpha' },
   { in: 'disco_volante_forrás_furlanmarri.com', out: 'furlan-marri-disco-volante.png', mode: 'alpha' },
   { in: 'secular_calendar_forrás_furlanmarri.com', out: 'furlan-marri-secular-perpetual.png', mode: 'alpha' },
-  { in: 'Area_51_forrás_everywatch.com', out: 'furlan-marri-area51-tantal.jpg', mode: 'photo' },
+  { in: 'Area_51_forrás_everywatch.com', out: 'furlan-marri-area51-tantal.png', mode: 'alpha' },
 
   // Omega Speedmaster
   { in: '1957_omega speedmaster;_forrás_ fratellowatches.com', out: 'speedmaster-ck2915.jpg', mode: 'photo' },

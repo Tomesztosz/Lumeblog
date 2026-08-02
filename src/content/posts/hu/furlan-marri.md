@@ -6,6 +6,13 @@ column: 'in-hand'
 lang: 'hu'
 translationKey: 'furlan-marri'
 minutes: 8
+cover:
+  src: '../_images/furlan-marri-nyitokep.jpg'
+  alt: 'Andrea Furlan és Hamad Al Marri, a Furlan Marri alapítói, meleg papírszínű háttér előtt; balra a márkanév'
+  # A kártyák 4:3-ra vágnak: jobbra fókuszálva a márkanév kimarad a vágásból,
+  # így nem félbevágva jelenik meg.
+  focus: 'right'
+  credit: 'Alapítók fotói: Furlan Marri (furlanmarri.com) · összeállítás: Lume'
 sources:
   - label: 'Furlan Marri: Our Story és hivatalos oldal'
     url: 'https://furlanmarri.com/'
@@ -50,7 +57,7 @@ A Furlan Marri néhány év alatt eljutott a Kickstartertől az aukciósházakig
 
 2025-ben a Sotheby's egyik aukciójára a Furlan Marri egyetlen, egyedi darabot készített: a Disco Volante **AREA 51**-et. A tokja **tantálból** van, egy sötét, kékesszürke, ritka fém, amely rendkívül kemény, sűrű és korrózióálló, cserébe pokolian nehéz megmunkálni. Épp ezért ritkaság az órákban: pár nagy ház nyúlt hozzá (Panerai, F.P. Journe), egy microbrandtől viszont merész gesztus.
 
-![A Furlan Marri Disco Volante AREA 51 szürke meteoritszámlappal és szürke szíjon, sötét, meteoritmintás háttér előtt](../_images/furlan-marri-area51-tantal.jpg)
+![A Furlan Marri Disco Volante AREA 51 szürke meteoritszámlappal, szürke bőrszíjon](../_images/furlan-marri-area51-tantal.png)
 *Disco Volante AREA 51: egyedi darab, tantáltok, meteoritszámlap, 2025. Fotó: EveryWatch (everywatch.com)*
 
 A számlap ráadásul valódi **meteorit**, és az egész a márka játékos „repülő csészealj" témájára játszik rá: egy darab az űrből, egy csészealj alakú tokban. Egy egyedi tantálóra egy microbrandtől, aukciósháznak, négy évvel a 35 másodperces indulás után. Ennél tömörebben nehéz összefoglalni, mennyit nőtt ez a márka.

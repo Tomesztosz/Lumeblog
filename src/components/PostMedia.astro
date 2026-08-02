@@ -12,6 +12,8 @@ export interface Cover {
   creditUrl?: string;
   license?: string;
   licenseUrl?: string;
+  /** CSS object-position a kártyák 4:3-as vágásához. Lásd a content.config.ts-t. */
+  focus?: string;
 }
 
 interface Props {
@@ -26,13 +28,24 @@ const Tag = href ? 'a' : 'div';
 const widths = variant === 'lead' ? [560, 900, 1400] : [280, 560, 840];
 const sizes =
   variant === 'lead' ? '(max-width: 860px) 100vw, 820px' : '(max-width: 860px) 100vw, 360px';
+
+/* A vágásirány csak a kártyákon számít: ott vágja a böngésző 4:3-ra a képet.
+   A cikk élén a kép a maga arányában áll, ott nincs mit eltolni. */
+const focusStyle = variant === 'card' && cover?.focus ? `object-position:${cover.focus}` : undefined;
 ---
 
 <figure class:list={['media-figure', `media-${variant}`]}>
   <Tag class="post-media" href={href} aria-hidden={cover ? undefined : 'true'} tabindex={href ? -1 : undefined}>
     {
       cover ? (
-        <Image src={cover.src} alt={cover.alt} widths={widths} sizes={sizes} loading="lazy" />
+        <Image
+          src={cover.src}
+          alt={cover.alt}
+          widths={widths}
+          sizes={sizes}
+          loading="lazy"
+          style={focusStyle}
+        />
       ) : (
         <>
           {column === 'in-hand' && (

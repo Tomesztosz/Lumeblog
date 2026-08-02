@@ -40,6 +40,14 @@ const posts = defineCollection({
           src: image(),
           /** Mit ábrázol — képernyőolvasóknak és ha nem tölt be a kép. */
           alt: z.string(),
+          /**
+           * Hova nézzen a kártya, amikor 4:3-ra vágja a képet. CSS
+           * `object-position` érték, pl. `'right'`, `'left'`, `'70% center'`.
+           * Alapból középre vág. Akkor kell, ha a kép egyik szélén olyasmi van
+           * (felirat, márkanév), amit a középre vágás félbevágna.
+           * A cikk élén nincs hatása: ott a kép a maga arányában áll.
+           */
+          focus: z.string().optional(),
           /** Kinek a képe: fotós vagy forrás neve, ahogy ő kéri. */
           credit: z.string(),
           /** Hivatkozás az eredetire (fotós oldala, gyűjtemény, Wikimedia-lap). */

@@ -6,6 +6,13 @@ column: 'in-hand'
 lang: 'en'
 translationKey: 'furlan-marri'
 minutes: 8
+cover:
+  src: '../_images/furlan-marri-nyitokep.jpg'
+  alt: 'Andrea Furlan and Hamad Al Marri, the founders of Furlan Marri, against a warm paper background, with the brand name on the left'
+  # Cards crop to 4:3: focusing right keeps the brand name out of the crop,
+  # so it never appears sliced in half.
+  focus: 'right'
+  credit: 'Founder photos: Furlan Marri (furlanmarri.com) · composite: Lume'
 sources:
   - label: 'Furlan Marri: Our Story and official site'
     url: 'https://furlanmarri.com/'
@@ -50,7 +57,7 @@ In just a few years Furlan Marri went from Kickstarter to the auction houses, wi
 
 In 2025, for one of Sotheby's auctions, Furlan Marri made a single, unique piece: the Disco Volante **AREA 51**. Its case is made of **tantalum**, a dark, bluish-grey, rare metal that is extremely hard, dense and corrosion-resistant, but fiendishly difficult to machine. That is exactly why it is a rarity in watches: a few large houses have reached for it (Panerai, F.P. Journe), but from a microbrand it is a bold gesture.
 
-![The Furlan Marri Disco Volante AREA 51 with a grey meteorite dial on a grey strap, against a dark meteorite-patterned background](../_images/furlan-marri-area51-tantal.jpg)
+![The Furlan Marri Disco Volante AREA 51 with a grey meteorite dial on a grey leather strap](../_images/furlan-marri-area51-tantal.png)
 *Disco Volante AREA 51: a unique piece, a tantalum case, a meteorite dial, 2025. Photo: EveryWatch (everywatch.com)*
 
 The dial, moreover, is real **meteorite**, and the whole thing plays on the brand's playful "flying saucer" theme: a piece from space, in a saucer-shaped case. A one-off tantalum watch from a microbrand, for an auction house, four years after a 35-second launch. It is hard to sum up more concisely how much this brand has grown.
