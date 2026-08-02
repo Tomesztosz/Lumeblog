@@ -24,7 +24,7 @@ const MAX_W_ALPHA = 900;
 
 const JOBS = [
   // Furlan Marri
-  { in: 'mr.grey_forrás_gphg.org.jpg', out: 'furlan-marri-mr-grey.png', mode: 'cutout', tol: 26 },
+  { in: 'mr.grey_forrás_gphg.org.jpg', out: 'furlan-marri-mr-grey.png', mode: 'cutout', tol: 65 },
   { in: 'disco_volante_forrás_furlanmarri.com', out: 'furlan-marri-disco-volante.png', mode: 'alpha' },
   { in: 'secular_calendar_forrás_furlanmarri.com', out: 'furlan-marri-secular-perpetual.png', mode: 'alpha' },
   { in: 'Area_51_forrás_everywatch.com', out: 'furlan-marri-area51-tantal.jpg', mode: 'photo' },
