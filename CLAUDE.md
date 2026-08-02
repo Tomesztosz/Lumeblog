@@ -73,7 +73,7 @@ meg tudd nézni a saját gépeden, mielőtt élesbe kerülnek.
 
 Mivel az oldal statikus, a dátum önmagában nem elég: kell egy újraépítés is azon a
 napon. Ezt a `.github/workflows/utemezett-megjelenes.yml` intézi — hétfőn, szerdán és
-pénteken 05:00 UTC-kor (nyáron 07:00, télen 06:00 magyar idő) megnézi, van-e aznapra
+pénteken 03:00 UTC-kor (nyáron 05:00, télen 04:00 magyar idő) megnézi, van-e aznapra
 datált cikk, és csak akkor kér újraépítést. A GitHub felületén kézzel is indítható
 (Actions → Ütemezett megjelenés → Run workflow), ha valamit azonnal ki kell tenni.
 
