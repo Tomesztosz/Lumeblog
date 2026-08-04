@@ -1,7 +1,7 @@
 ---
 title: 'Nem az űrbe tervezték: az Omega Speedmaster igaz története'
 description: 'A leghíresebb űróra sosem az űrbe készült: 1957-ben versenykronográf volt. A NASA sem rendelte, hanem kíméletlen teszttel választotta ki, és az első óra a Holdon nem is Armstrongé volt.'
-date: 2026-08-05
+date: 2026-08-04
 column: 'origins'
 lang: 'hu'
 translationKey: 'speedmaster'
@@ -22,8 +22,8 @@ sources:
 
 A világ leghíresebb űrórája sosem készült az űrbe. 1957-ben, amikor az Omega bemutatta a Speedmastert, versenykronográf volt, autóversenyzőknek szánva. A NASA nem rendelte meg, hanem egyszerűen megvette a boltban, és kíméletlen teszttel választotta ki. És ha már a legendáknál tartunk: az első óra a Holdon nem is Neil Armstrongé volt. Kezdjük az elejéről.
 
-![Korai Omega Speedmaster fekete számlappal, tárlós felvételen](../_images/speedmaster-ck2915.jpg)
-*Az első Speedmaster, a CK2915 (1957), broad arrow mutatókkal. Fotó: Fratello Watches (fratellowatches.com)*
+![Korai Omega Speedmaster fekete számlappal és fekete bőrszíjjal, háttér nélkül](../_images/speedmaster-ck2915.png)
+*Az első Speedmaster, a CK2915 (1957), broad arrow mutatókkal. Forrásfotó: Fratello Watches (fratellowatches.com); háttérleválasztás és képkiegészítés: Lume, AI-segítséggel.*
 
 ## Egy versenyóra 1957-ből
 
@@ -54,8 +54,8 @@ Egy manuális, 14 másodperces hajtóműégetéssel állították helyre a pály
 
 Ez a díj később az órákban is visszaköszönt. Az Omega több „Silver Snoopy Award" különkiadást is készített: 2003-ban egy 5441 darabos szériát (a szám az Apollo 13 űrben töltött idejére utal), 2015-ben egy fehér számlapos, 1970 darabos változatot „mit tennél 14 másodperc alatt?" felirattal, majd 2020-ban az ötvenedik évfordulóra egy olyat, amelynek a zafírhátlapján egy animált Snoopy kerüli meg a Holdat, valahányszor elindítod a kronográfot.
 
-![Az Omega Speedmaster Silver Snoopy Award fehér számlappal és kék lünettával](../_images/speedmaster-snoopy.jpg)
-*A 2020-as „Silver Snoopy Award", animált hátlappal. Fotó: Chrono24 (chrono24.com)*
+![Az Omega Speedmaster Silver Snoopy Award fehér számlappal és kék lünettával, háttér nélkül](../_images/speedmaster-snoopy.png)
+*A 2020-as „Silver Snoopy Award", animált hátlappal. Forrásfotó: Chrono24 (chrono24.com); háttérleválasztás és képkiegészítés: Lume, AI-segítséggel.*
 
 ## Az óra, ami alig változott
 

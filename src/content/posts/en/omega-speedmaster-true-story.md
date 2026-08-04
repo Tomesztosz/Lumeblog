@@ -1,7 +1,7 @@
 ---
 title: 'Never made for space: the true story of the Omega Speedmaster'
 description: "The most famous space watch was never made for space: in 1957 it was a racing chronograph. NASA did not commission it either, but chose it through brutal testing, and the first watch on the Moon was not even Armstrong's."
-date: 2026-08-05
+date: 2026-08-04
 column: 'origins'
 lang: 'en'
 translationKey: 'speedmaster'
@@ -22,8 +22,8 @@ sources:
 
 The world's most famous space watch was never made for space. In 1957, when Omega introduced the Speedmaster, it was a racing chronograph, meant for motor-racing drivers. NASA did not order it; it simply bought one off the shelf and chose it through brutal testing. And while we are on the subject of legends: the first watch on the Moon was not even Neil Armstrong's. Let's start at the beginning.
 
-![An early Omega Speedmaster with a black dial, photographed on a stand](../_images/speedmaster-ck2915.jpg)
-*The first Speedmaster, the CK2915 (1957), with broad arrow hands. Photo: Fratello Watches (fratellowatches.com)*
+![An early Omega Speedmaster with a black dial and black leather strap, isolated from the background](../_images/speedmaster-ck2915.png)
+*The first Speedmaster, the CK2915 (1957), with broad arrow hands. Source photo: Fratello Watches (fratellowatches.com); background extraction and image completion: Lume, with AI assistance.*
 
 ## A racing watch from 1957
 
@@ -54,8 +54,8 @@ They restored the trajectory with a manual, 14-second engine burn, and they time
 
 This award later came back on the watches themselves. Omega made several "Silver Snoopy Award" special editions: in 2003 a run of 5,441 pieces (the number refers to the time Apollo 13 spent in space), in 2015 a white-dial version of 1,970 pieces with the words "What could you do in 14 seconds?", and in 2020, for the fiftieth anniversary, one whose sapphire caseback shows an animated Snoopy orbiting the Moon every time you start the chronograph.
 
-![The Omega Speedmaster Silver Snoopy Award with a white dial and a blue bezel](../_images/speedmaster-snoopy.jpg)
-*The 2020 "Silver Snoopy Award", with its animated caseback. Photo: Chrono24 (chrono24.com)*
+![The Omega Speedmaster Silver Snoopy Award with a white dial and a blue bezel, isolated from the background](../_images/speedmaster-snoopy.png)
+*The 2020 "Silver Snoopy Award", with its animated caseback. Source photo: Chrono24 (chrono24.com); background extraction and image completion: Lume, with AI assistance.*
 
 ## The watch that has barely changed
 
