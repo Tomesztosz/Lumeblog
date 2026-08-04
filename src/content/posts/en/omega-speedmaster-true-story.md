@@ -1,11 +1,15 @@
 ---
 title: 'Never made for space: the true story of the Omega Speedmaster'
 description: "The most famous space watch was never made for space: in 1957 it was a racing chronograph. NASA did not commission it either, but chose it through brutal testing, and the first watch on the Moon was not even Armstrong's."
-date: 2026-08-05
+date: 2026-08-04
 column: 'origins'
 lang: 'en'
 translationKey: 'speedmaster'
 minutes: 12
+cover:
+  src: '../_images/omega-speedmaster-nyitokep.png'
+  alt: 'Omega Speedmaster in front of the Moon on a warm, vintage-style background'
+  credit: 'Lume — original composition'
 sources:
   - label: 'Omega: official Speedmaster history'
     url: 'https://www.omegawatches.com/'
