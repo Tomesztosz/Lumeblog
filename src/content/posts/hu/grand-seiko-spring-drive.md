@@ -1,7 +1,7 @@
 ---
 title: 'Se nem kvarc, se nem mechanikus: a Grand Seiko Spring Drive'
 description: 'Van egy óra, amelyben nincs elem, mégis van benne kvarckristály. Nincs benne gátlómű, mégis rugó hajtja, és a másodpercmutatója tökéletesen siklik. Ez a Spring Drive, és egyetlen mérnök 28 évébe telt.'
-date: 2026-08-06
+date: 2026-08-07
 column: 'movement'
 lang: 'hu'
 translationKey: 'spring-drive'
