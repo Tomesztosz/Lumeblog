@@ -1,11 +1,16 @@
 ---
 title: 'Se nem kvarc, se nem mechanikus: a Grand Seiko Spring Drive'
 description: 'Van egy óra, amelyben nincs elem, mégis van benne kvarckristály. Nincs benne gátlómű, mégis rugó hajtja, és a másodpercmutatója tökéletesen siklik. Ez a Spring Drive, és egyetlen mérnök 28 évébe telt.'
-date: 2026-08-07
+date: 2026-08-06
 column: 'movement'
 lang: 'hu'
 translationKey: 'spring-drive'
 minutes: 9
+cover:
+  src: '../_images/grand-seiko-spring-drive-nyitokep.png'
+  alt: 'Grand Seiko Spring Drive szerkezet Yoshikazu Akahane portréjával, műszaki rajzos háttéren'
+  focus: 'left center'
+  credit: 'Lume — saját, AI-val segített összeállítás'
 sources:
   - label: 'Grand Seiko; Seiko: hivatalos Spring Drive-oldalak és a 9R-kaliberek'
     url: 'https://www.grand-seiko.com/'

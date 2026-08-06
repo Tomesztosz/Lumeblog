@@ -1,11 +1,16 @@
 ---
 title: 'Neither quartz nor mechanical: the Grand Seiko Spring Drive'
 description: 'There is a watch with no battery, yet a quartz crystal inside. It has no escapement, yet a mainspring drives it, and its seconds hand glides perfectly. This is Spring Drive, and it took one engineer 28 years.'
-date: 2026-08-07
+date: 2026-08-06
 column: 'movement'
 lang: 'en'
 translationKey: 'spring-drive'
 minutes: 9
+cover:
+  src: '../_images/grand-seiko-spring-drive-nyitokep.png'
+  alt: 'Grand Seiko Spring Drive movement with a portrait of Yoshikazu Akahane on a technical drawing background'
+  focus: 'left center'
+  credit: 'Lume — original AI-assisted composition'
 sources:
   - label: 'Grand Seiko; Seiko: official Spring Drive pages and the 9R calibers'
     url: 'https://www.grand-seiko.com/'
