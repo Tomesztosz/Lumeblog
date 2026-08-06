@@ -50,7 +50,7 @@ This is where the name comes from. The Tri-Synchro Regulator manages three energ
 
 And here is the striking part. Because the glide wheel spins continuously in one direction, and it drives the seconds hand directly, the hand does not step and does not beat, but glides perfectly across the dial. This is Spring Drive's signature, which Grand Seiko calls "the natural flow of time". A single glance is enough to recognise it: not the small steps of quartz, nor the fine sweep of a mechanical watch, but a completely smooth, unstoppable motion.
 
-![The Grand Seiko Snowflake with a white, snow-textured dial on a titanium bracelet](../_images/grand-seiko-snowflake.jpg)
+![The Grand Seiko Snowflake with a white, snow-textured dial on a titanium bracelet](../_images/grand-seiko-snowflake-transparent.png)
 *The Grand Seiko "Snowflake" (SBGA211), one of the emblematic Spring Drive pieces. Photo: Arlington Watch Works (arlingtonwatchworks.com)*
 
 The accuracy, meanwhile, is close to quartz: most calibers run within ±1 second a day (the top versions within ±10 seconds a month), which is far more accurate than a COSC-certified chronometer.

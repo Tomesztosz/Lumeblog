@@ -50,7 +50,7 @@ Innen jön a név is. A Tri-Synchro Regulator három energiát kezel: a rugó me
 
 És itt van a látványos rész. Mivel a siklókerék folyamatosan, egy irányba pörög, és közvetlenül ez hajtja a másodpercmutatót, a mutató nem lép és nem ver, hanem tökéletesen siklik a számlapon. Ez a Spring Drive aláírása, amit a Grand Seiko az „idő természetes folyásaként" emleget. Egy pillantás elég a felismeréshez: se a kvarc kis lépései, se a mechanikus finom söprése, hanem egy egészen sima, megállíthatatlan mozgás.
 
-![A Grand Seiko Snowflake fehér, hótextúrás számlappal, titán karkötőn](../_images/grand-seiko-snowflake.jpg)
+![A Grand Seiko Snowflake fehér, hótextúrás számlappal, titán karkötőn](../_images/grand-seiko-snowflake-transparent.png)
 *A Grand Seiko „Snowflake" (SBGA211), a Spring Drive egyik emblematikus darabja. Fotó: Arlington Watch Works (arlingtonwatchworks.com)*
 
 A pontosság pedig kvarcközeli: a legtöbb kaliber napi ±1 másodpercen belül jár (a csúcsváltozatok havi ±10 másodpercen belül), ami jóval pontosabb egy COSC-tanúsítvánnyal rendelkező kronométernél is.
