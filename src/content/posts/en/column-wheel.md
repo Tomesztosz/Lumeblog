@@ -1,6 +1,8 @@
 ---
 title: 'The column wheel: how a chronograph decides to start'
 description: 'From the outside a chronograph is simple: press it, it runs; press it, it stops. Inside, though, something has to sequence all of that precisely. The finest solution is a tiny, turret-like wheel.'
+seoTitle: 'Column Wheel: How a Mechanical Chronograph Works'
+seoDescription: 'What is a column wheel, and how does it control a mechanical chronograph? Explore its operation, the vertical clutch and an interactive El Primero 400.'
 date: 2026-07-30
 column: 'movement'
 lang: 'en'

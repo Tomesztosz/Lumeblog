@@ -25,9 +25,11 @@ interface Props {
 }
 const { column, href, cover, variant = 'card' } = Astro.props;
 const Tag = href ? 'a' : 'div';
-const widths = variant === 'lead' ? [560, 900, 1400] : [280, 560, 840];
+const widths = variant === 'lead' ? [560, 840, 1400] : [280, 560, 840];
 const sizes =
   variant === 'lead' ? '(max-width: 860px) 100vw, 820px' : '(max-width: 860px) 100vw, 360px';
+const loading = variant === 'lead' ? 'eager' : 'lazy';
+const fetchpriority = variant === 'lead' ? 'high' : 'auto';
 
 /* A vágásirány csak a kártyákon számít: ott vágja a böngésző 4:3-ra a képet.
    A cikk élén a kép a maga arányában áll, ott nincs mit eltolni. */
@@ -43,7 +45,8 @@ const focusStyle = variant === 'card' && cover?.focus ? `object-position:${cover
           alt={cover.alt}
           widths={widths}
           sizes={sizes}
-          loading="lazy"
+          loading={loading}
+          fetchpriority={fetchpriority}
           style={focusStyle}
         />
       ) : (

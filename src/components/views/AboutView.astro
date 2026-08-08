@@ -13,6 +13,9 @@ const copy = {
     eyebrow: 'Rólam',
     title: 'Egy napló, nem egy hírportál.',
     lede: 'A Lume azért van, hogy megtanuljak órát olvasni — és hogy aki szeretne, velem tartson.',
+    seoTitle: 'A Lume órás naplóról',
+    seoDescription:
+      'A Lume kétnyelvű órás napló microbrandekről, óratörténetről és szerkezetekről, heti három forrásokra épülő történettel.',
     body: [
       'Nem újságíróként írom, hanem tanulóként. A cél a saját tudásom bővítése: mit csinál egy kis független műhely, honnan jött valójában egy régi ház, és hogyan működik a mechanika a számlap alatt. Ami közben összeáll, azt itt leírom, hogy másnak is olvasható legyen.',
       'Hetente három írás jelenik meg, mindegyik egy-egy rovatba: Kézben, Eredet, Szerkezet. Nincs megjelenésnapi hajsza, nincs hype, nincs találgatás a következő kiadásról. A tárgy érdekel, nem a hírciklus.',
@@ -24,6 +27,9 @@ const copy = {
     eyebrow: 'About',
     title: 'A journal, not a news site.',
     lede: 'Lume exists so that I can learn to read a watch — and so anyone who wants to can come along.',
+    seoTitle: 'About Lume Watch Journal',
+    seoDescription:
+      'Lume is a bilingual watch journal about microbrands, watch history and movements, publishing three carefully sourced stories every week.',
     body: [
       "I don't write this as a journalist but as a student. The point is to widen my own knowledge: what a small independent maker actually does, where an old house really came from, and how the mechanics under the dial work. Whatever comes together along the way gets written down here, so it's legible to someone else too.",
       'Three pieces a week, one per column: In Hand, Origins, Movement. No release-day scramble, no hype, no guessing about the next reference. The object is the subject, not the news cycle.',
@@ -36,8 +42,8 @@ const copy = {
 
 <Base
   lang={lang}
-  title={copy.eyebrow}
-  description={copy.lede}
+  title={copy.seoTitle}
+  description={copy.seoDescription}
   altUrl={aboutUrl(otherLang(lang))}
   active="about"
 >

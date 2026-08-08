@@ -1,6 +1,8 @@
 ---
 title: 'Two teachers, one watch, and the nerve to begin'
 description: 'Lorier began as the passion project of two New York teachers. The first piece in Lume is about why anyone starts something of their own: a watch, or a journal like this one.'
+seoTitle: 'Lorier Watches: Two Teachers Build a Watch Brand'
+seoDescription: 'The story of Lorier Watches and how two New York teachers built an independent brand around affordable, vintage-inspired mechanical watches.'
 date: 2026-07-26
 column: 'in-hand'
 lang: 'en'

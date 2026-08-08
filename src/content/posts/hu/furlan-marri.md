@@ -1,6 +1,8 @@
 ---
 title: 'A Furlan Marri: 35 másodperctől a tantál csészealjig'
 description: 'Két barát a lockdownban indított márkát, amely 35 másodperc alatt telt be a Kickstarteren. Négy évvel később már egyedi, tantálból készült órát csinálnak meteoritszámlappal. Ez a Furlan Marri íve.'
+seoTitle: 'Furlan Marri: egy független óramárka története'
+seoDescription: 'A Furlan Marri története a 35 másodperces Kickstarter-sikertől a Disco Volantén át az egyedi tantál- és meteoritóráig.'
 date: 2026-08-03
 column: 'in-hand'
 lang: 'hu'

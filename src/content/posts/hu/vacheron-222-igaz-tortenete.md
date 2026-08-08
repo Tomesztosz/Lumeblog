@@ -1,6 +1,8 @@
 ---
 title: 'Nem Genta tervezte: a Vacheron Constantin 222 igaz története'
 description: 'A hetvenes évek acél luxus-sportóra hulláma három nagy nevet szült. A harmadik, a Vacheron 222 a legkevésbé ismert, és a története még a nevénél is érdekesebb.'
+seoTitle: 'Vacheron Constantin 222: történet és tervező'
+seoDescription: 'A Vacheron Constantin 222 története: Jörg Hysek terve, az 1977-es eredeti modell és a Historiques 222 visszatérése.'
 date: 2026-07-28
 column: 'origins'
 lang: 'hu'

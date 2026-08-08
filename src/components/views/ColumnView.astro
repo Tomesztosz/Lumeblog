@@ -17,8 +17,8 @@ const posts = await getPosts(lang, column);
 
 <Base
   lang={lang}
-  title={c.name}
-  description={c.blurb}
+  title={c.seoTitle}
+  description={c.seoDescription}
   altUrl={columnUrl(otherLang(lang), column)}
   active={column}
 >

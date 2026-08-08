@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import StructuredData from '../components/StructuredData.astro';
 import { UI, otherLang, type ColumnKey, type Lang } from '../i18n/ui';
 import { LAUNCHED } from '../site';
 import '../styles/global.css';
@@ -22,6 +23,34 @@ const pageDescription = description ?? t.siteDescription;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const alternate = new URL(altUrl, Astro.site);
 const ogImage = new URL('/og-image.png', Astro.site);
+const organizationId = new URL('/#organization', Astro.site).href;
+const websiteId = new URL('/#website', Astro.site).href;
+const siteStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': organizationId,
+      name: 'Lume',
+      url: new URL('/', Astro.site).href,
+      logo: {
+        '@type': 'ImageObject',
+        url: new URL('/apple-touch-icon.png', Astro.site).href,
+        width: 180,
+        height: 180,
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      name: 'Lume',
+      alternateName: 'Lume Journal',
+      url: new URL('/', Astro.site).href,
+      inLanguage: ['hu-HU', 'en-GB'],
+      publisher: { '@id': organizationId },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -47,6 +76,8 @@ const ogImage = new URL('/og-image.png', Astro.site);
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
+
+    <StructuredData data={siteStructuredData} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

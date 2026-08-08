@@ -1,6 +1,8 @@
 ---
 title: "It wasn't a Genta: the true story of the Vacheron Constantin 222"
 description: 'The 1970s wave of steel luxury sports watches produced three great names. The third, the Vacheron 222, is the least known, and its story is even more interesting than its name.'
+seoTitle: 'Vacheron Constantin 222: History and Designer'
+seoDescription: 'The history of the Vacheron Constantin 222: Jörg Hysek’s 1977 design, the original reference and the return of the Historiques 222.'
 date: 2026-07-28
 column: 'origins'
 lang: 'en'

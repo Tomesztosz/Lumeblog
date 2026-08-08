@@ -1,6 +1,8 @@
 ---
 title: 'Se nem kvarc, se nem mechanikus: a Grand Seiko Spring Drive'
 description: 'Van egy óra, amelyben nincs elem, mégis van benne kvarckristály. Nincs benne gátlómű, mégis rugó hajtja, és a másodpercmutatója tökéletesen siklik. Ez a Spring Drive, és egyetlen mérnök 28 évébe telt.'
+seoTitle: 'Grand Seiko Spring Drive: működése és története'
+seoDescription: 'Hogyan működik a Grand Seiko Spring Drive? A rugó, a kvarc és a Tri-Synchro Regulator története Yoshikazu Akahane 28 éves fejlesztésétől.'
 date: 2026-08-07
 column: 'movement'
 lang: 'hu'

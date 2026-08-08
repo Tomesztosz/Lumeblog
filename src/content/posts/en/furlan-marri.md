@@ -1,6 +1,8 @@
 ---
 title: 'Furlan Marri: from 35 seconds to a tantalum flying saucer'
 description: 'Two friends launched a brand during lockdown that filled its Kickstarter goal in 35 seconds. Four years later they are making a one-off watch in tantalum with a meteorite dial. This is the arc of Furlan Marri.'
+seoTitle: 'Furlan Marri: The Story of an Independent Watch Brand'
+seoDescription: 'The Furlan Marri story, from a Kickstarter goal reached in 35 seconds to the Disco Volante and a unique tantalum watch with a meteorite dial.'
 date: 2026-08-03
 column: 'in-hand'
 lang: 'en'

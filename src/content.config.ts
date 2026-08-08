@@ -9,8 +9,12 @@ const posts = defineCollection({
     z.object({
       /** Cikk címe. */
       title: z.string(),
-      /** Felvezető — a listákban és a <meta description>-ben is ez megy. */
+      /** Látható felvezető — listákban és a cikk elején; SEO-leírás híján meta fallback. */
       description: z.string(),
+      /** Keresőtalálati cím. A látható szerkesztői címet nem változtatja meg. */
+      seoTitle: z.string().optional(),
+      /** Keresőtalálati leírás. A cikk látható felvezetőjét nem változtatja meg. */
+      seoDescription: z.string().optional(),
       /** Megjelenés dátuma (ISO: 2026-08-03). */
       date: z.coerce.date(),
       /** Rovat: 'in-hand' | 'origins' | 'movement' — nyelvfüggetlen kulcs. */

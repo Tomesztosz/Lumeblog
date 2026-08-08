@@ -1,6 +1,8 @@
 ---
 title: 'Az oszlopkerék: hogyan dönt egy kronográf az indulásról'
 description: 'Egy kronográf kívülről egyszerű: nyomd meg, indul; nyomd meg, megáll. Belül viszont valaminek pontos sorrendben kell levezényelnie mindezt. A legszebb megoldás egy aprócska, toronyszerű kerék.'
+seoTitle: 'Oszlopkerék: így működik a mechanikus kronográf'
+seoDescription: 'Mi az oszlopkerék, és hogyan vezérli a mechanikus kronográfot? Működés, függőleges kuplung és az El Primero 400 interaktív modellen.'
 date: 2026-07-30
 column: 'movement'
 lang: 'hu'

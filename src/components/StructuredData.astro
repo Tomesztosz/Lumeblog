@@ -1,0 +1,13 @@
+---
+interface Props {
+  data: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { data } = Astro.props;
+
+/* A '<' karaktert kódoljuk, hogy frontmatterből érkező szöveg se tudja
+   idő előtt lezárni a script elemet. A JSON tartalma ettől változatlan. */
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" set:html={json} />

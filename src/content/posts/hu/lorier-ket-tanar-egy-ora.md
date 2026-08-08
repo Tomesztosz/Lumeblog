@@ -1,6 +1,8 @@
 ---
 title: 'Két tanár, egy óra, és a kezdés bátorsága'
 description: 'A Lorier két New York-i tanár szenvedélyprojektjeként indult. Az első Lume-írás arról szól, miért fog bárki hozzá valami sajáthoz: egy órához vagy épp egy naplóhoz.'
+seoTitle: 'Lorier órák: két tanár független óramárkája'
+seoDescription: 'A Lorier órák története: hogyan alapított két New York-i tanár megfizethető, vintage ihletésű független óramárkát.'
 date: 2026-07-26
 column: 'in-hand'
 lang: 'hu'

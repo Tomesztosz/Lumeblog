@@ -1,6 +1,8 @@
 ---
 title: 'Neither quartz nor mechanical: the Grand Seiko Spring Drive'
 description: 'There is a watch with no battery, yet a quartz crystal inside. It has no escapement, yet a mainspring drives it, and its seconds hand glides perfectly. This is Spring Drive, and it took one engineer 28 years.'
+seoTitle: 'Grand Seiko Spring Drive: How It Works'
+seoDescription: 'How does Grand Seiko Spring Drive work? Explore the mainspring, quartz crystal and Tri-Synchro Regulator, plus Yoshikazu Akahane’s 28-year quest.'
 date: 2026-08-07
 column: 'movement'
 lang: 'en'

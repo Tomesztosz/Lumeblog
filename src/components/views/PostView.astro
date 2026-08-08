@@ -1,7 +1,9 @@
 ---
 import { render } from 'astro:content';
+import { getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import PostMedia from '../PostMedia.astro';
+import StructuredData from '../StructuredData.astro';
 import { COLUMNS, UI, columnUrl, formatDate, otherLang } from '../../i18n/ui';
 import { getTranslation, minutesOf, urlOf, type Post } from '../../lib/posts';
 
@@ -18,17 +20,73 @@ const { Content } = await render(post);
 /* A nyelvváltó a párcikkre visz, ha van; ha nincs, a másik nyelvű rovatra. */
 const twin = await getTranslation(post, otherLang(lang));
 const altUrl = twin ? urlOf(twin) : columnUrl(otherLang(lang), post.data.column);
+
+const canonical = new URL(urlOf(post), Astro.site).href;
+const columnHref = new URL(columnUrl(lang, post.data.column), Astro.site).href;
+const organizationId = new URL('/#organization', Astro.site).href;
+const websiteId = new URL('/#website', Astro.site).href;
+const coverImage = post.data.cover
+  ? await getImage({
+      src: post.data.cover.src,
+      width: Math.min(1200, post.data.cover.src.width),
+      format: 'webp',
+    })
+  : undefined;
+
+const articleStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      '@id': `${canonical}#article`,
+      headline: post.data.title,
+      description: post.data.seoDescription ?? post.data.description,
+      datePublished: post.data.date.toISOString(),
+      inLanguage: lang === 'hu' ? 'hu-HU' : 'en-GB',
+      articleSection: c.name,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+      isPartOf: { '@id': websiteId },
+      publisher: { '@id': organizationId },
+      ...(coverImage ? { image: new URL(coverImage.src, Astro.site).href } : {}),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${canonical}#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Lume',
+          item: new URL(lang === 'hu' ? '/' : '/en/', Astro.site).href,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: c.name,
+          item: columnHref,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: post.data.title,
+          item: canonical,
+        },
+      ],
+    },
+  ],
+};
 ---
 
 <Base
   lang={lang}
-  title={post.data.title}
-  description={post.data.description}
+  title={post.data.seoTitle ?? post.data.title}
+  description={post.data.seoDescription ?? post.data.description}
   altUrl={altUrl}
   active={post.data.column}
 >
   <Fragment slot="head">
     <meta property="article:published_time" content={post.data.date.toISOString()} />
+    <StructuredData data={articleStructuredData} />
   </Fragment>
 
   <article class="article">

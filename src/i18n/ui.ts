@@ -12,7 +12,14 @@ export const DEFAULT_LANG: Lang = 'hu';
 export const COLUMN_KEYS = ['in-hand', 'origins', 'movement'] as const;
 export type ColumnKey = (typeof COLUMN_KEYS)[number];
 
-type ColumnCopy = { slug: string; name: string; title: string; blurb: string };
+type ColumnCopy = {
+  slug: string;
+  name: string;
+  title: string;
+  blurb: string;
+  seoTitle: string;
+  seoDescription: string;
+};
 
 export const COLUMNS: Record<ColumnKey, Record<Lang, ColumnCopy>> = {
   'in-hand': {
@@ -21,12 +28,18 @@ export const COLUMNS: Record<ColumnKey, Record<Lang, ColumnCopy>> = {
       name: 'Kézben',
       title: 'A hét microbrandje',
       blurb: 'Egy kis műhely egy órája, kézbe véve és sokáig nézve.',
+      seoTitle: 'Microbrand órák kézben',
+      seoDescription:
+        'Független és microbrand órák részletes bemutatói: modellek, alapítók, formaterv és az élmény, amit az óra valóban a csuklón nyújt.',
     },
     en: {
       slug: 'in-hand',
       name: 'In Hand',
       title: "The week's microbrand",
       blurb: 'One watch from one small maker, taken in hand and looked at for a long time.',
+      seoTitle: 'Independent and Microbrand Watches',
+      seoDescription:
+        'In-depth stories about independent and microbrand watches: their models, founders, design and what the watches are really like on the wrist.',
     },
   },
   origins: {
@@ -35,12 +48,18 @@ export const COLUMNS: Record<ColumnKey, Record<Lang, ColumnCopy>> = {
       name: 'Eredet',
       title: 'Márkatörténelem',
       blurb: 'Honnan jött valójában egy ház vagy egy referencia — a legenda mögötti tényekkel.',
+      seoTitle: 'Óramárkák és ikonikus modellek története',
+      seoDescription:
+        'Óramárkák és ikonikus modellek eredete ellenőrizhető forrásokkal: tervezők, mérföldkövek és a legendák mögött álló valódi történetek.',
     },
     en: {
       slug: 'origins',
       name: 'Origins',
       title: 'Brand history',
       blurb: 'Where a house or a reference actually came from — with the facts behind the legend.',
+      seoTitle: 'Watch Brand and Model Histories',
+      seoDescription:
+        'The origins of watch brands and iconic models, researched through verifiable sources: designers, milestones and the facts behind the legends.',
     },
   },
   movement: {
@@ -49,12 +68,18 @@ export const COLUMNS: Record<ColumnKey, Record<Lang, ColumnCopy>> = {
       name: 'Szerkezet',
       title: 'Mérnöki megközelítés',
       blurb: 'A számlap alatti mechanika, alkatrészenként: gátlómű, kronográf, GMT, spirál.',
+      seoTitle: 'Óraszerkezetek: működés és mérnöki megoldások',
+      seoDescription:
+        'Mechanikus és hibrid óraszerkezetek működése érthetően: kronográf, oszlopkerék, gátlómű, Spring Drive és más mérnöki megoldások.',
     },
     en: {
       slug: 'movement',
       name: 'Movement',
       title: 'The engineering',
       blurb: 'The mechanics under the dial, one piece at a time: escapement, chronograph, GMT, hairspring.',
+      seoTitle: 'Watch Movements: Mechanics and Engineering',
+      seoDescription:
+        'How mechanical and hybrid watch movements work: chronographs, column wheels, escapements, Spring Drive and other engineering solutions explained.',
     },
   },
 };

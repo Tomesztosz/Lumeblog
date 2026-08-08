@@ -1,6 +1,8 @@
 ---
 title: 'Nem az űrbe tervezték: az Omega Speedmaster igaz története'
 description: 'A leghíresebb űróra sosem az űrbe készült: 1957-ben versenykronográf volt. A NASA sem rendelte, hanem kíméletlen teszttel választotta ki, és az első óra a Holdon nem is Armstrongé volt.'
+seoTitle: 'Omega Speedmaster: a versenypályától a Holdig'
+seoDescription: 'Az Omega Speedmaster története 1957-től a NASA tesztjein át az Apollo–11 holdraszállásáig, és ami az első holdóráról kevésbé ismert.'
 date: 2026-08-05
 column: 'origins'
 lang: 'hu'
