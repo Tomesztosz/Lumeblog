@@ -3,7 +3,7 @@ title: "A Kurono Tokyo: amikor egy mester úgy dönt, hogy elérhető lesz"
 description: "Hajime Asaoka egy George Daniels-könyvből tanult meg órát készíteni, és megépítette Japán első tourbillonját. Aztán csinált egy második márkát, hogy ne csak a milliomosok viselhessék a munkáját. Ez a Kurono Tokyo."
 seoTitle: "Kurono Tokyo és Hajime Asaoka története"
 seoDescription: "Hajime Asaoka egy könyvből tanult órát készíteni, majd létrehozta a Kurono Tokyót, hogy független órásdizájnja többek számára elérhető legyen."
-date: 2026-08-09
+date: 2026-08-10
 column: 'in-hand'
 lang: 'hu'
 translationKey: 'kurono-tokyo'

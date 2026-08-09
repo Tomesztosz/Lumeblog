@@ -3,7 +3,7 @@ title: "Kurono Tokyo: when a master decides to become attainable"
 description: "Hajime Asaoka taught himself watchmaking from a George Daniels book and built Japan's first tourbillon. Then he created a second brand so that his work would not be reserved for millionaires. This is Kurono Tokyo."
 seoTitle: "Kurono Tokyo and the Story of Hajime Asaoka"
 seoDescription: "Hajime Asaoka learned watchmaking from a book, then created Kurono Tokyo to make independent Japanese watch design attainable to more collectors."
-date: 2026-08-09
+date: 2026-08-10
 column: 'in-hand'
 lang: 'en'
 translationKey: 'kurono-tokyo'
