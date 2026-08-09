@@ -12,7 +12,7 @@ draft: false
 cover:
   src: '../_images/kurono-tokyo-hero.png'
   alt: 'Hajime Asaoka portréja Kurono Tokyo felirattal, japán tusfestést idéző háttéren'
-  focus: 'center center'
+  focus: 'left center'
   credit: 'Lume — saját összeállítás'
 sources:
   - label: 'Kurono Tokyo: hivatalos oldal és a Hajime Asaoka-életrajz'
@@ -38,7 +38,7 @@ A fordulat akkor jött, amikor tervezett egy órát, és rájött, hogy magát a
 
 Amit ezután csinált, arról a szakma is felkapta a fejét. 2009-ben bemutatta Japán első, saját fejlesztésű tourbillonos karóráját. Vegyük észre, mit jelent ez: valaki, akinek nincs órásipari képzettsége, első komoly munkájaként pont azt a komplikációt építette meg, amit a legtöbb órásmester a szakma csúcsának tart. 2011-től árulta a saját neve alatt az óráit, 2015-ben pedig felvették az AHCI-be, a független alkotó órásmesterek svájci akadémiájába, ahová rajta kívül csak egyetlen japán tag került be. Nem véletlenül emlegetik „Japán Philippe Dufourjaként".
 
-![A Hajime Asaoka Tsunami](../_images/hajime-asaoka-tsunami.jpg)
+![A Hajime Asaoka Tsunami](../_images/hajime-asaoka-tsunami-transparent.png)
 *A Hajime Asaoka Tsunami, 37 mm-es háromjáratú óra, hátoldalán a hatalmas, 15 mm-es billegővel. Fotó: Hajime Asaoka (hajimeasaoka.com)*
 
 Az atelier-darabjai (a háromjáratú Tsunami, a Project T tourbillon és a Chronograph) mind kézzel készülnek, hónapok alatt. Évi néhány darab, tízezer dolláros nagyságrendtől fölfelé.

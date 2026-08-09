@@ -12,7 +12,7 @@ draft: false
 cover:
   src: '../_images/kurono-tokyo-hero.png'
   alt: 'Portrait of Hajime Asaoka with Kurono Tokyo lettering on a Japanese ink-inspired background'
-  focus: 'center center'
+  focus: 'left center'
   credit: 'Lume — original composition'
 sources:
   - label: 'Kurono Tokyo: official website and Hajime Asaoka biography'
@@ -38,7 +38,7 @@ The turning point came when he designed a watch and realised he wanted to unders
 
 What he did next made the industry look up. In 2009 he presented Japan's first wristwatch with an in-house tourbillon movement. Consider what that means: someone with no formal training in watchmaking took, as his first serious work, precisely the complication most watchmakers regard as the summit of the craft. From 2011 he sold watches under his own name, and in 2015 he was admitted to the AHCI, the Swiss academy of independent creative watchmakers, where he is one of only two Japanese members. It is no accident that people call him "the Philippe Dufour of Japan".
 
-![The Hajime Asaoka Tsunami](../_images/hajime-asaoka-tsunami.jpg)
+![The Hajime Asaoka Tsunami](../_images/hajime-asaoka-tsunami-transparent.png)
 *The Hajime Asaoka Tsunami, a 37 mm three-hander with an enormous 15 mm balance wheel on the back. Photo: Hajime Asaoka (hajimeasaoka.com)*
 
 His atelier pieces (the three-hand Tsunami, the Project T tourbillon and the Chronograph) are all made by hand, over months. A few pieces a year, starting in the tens of thousands of dollars.
