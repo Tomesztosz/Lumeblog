@@ -3,7 +3,7 @@ title: "Az ember, aki miatt a férfiak karórát hordanak"
 description: "Alberto Santos-Dumont körberepülte az Eiffel-tornyot, megépítette a világ első sorozatgyártott repülőgépét, és nem kért szabadalmat egyikre sem. Közben megkért egy barátot, hogy találjon ki valamit, amitől nem kell elengednie a kormányt."
 seoTitle: "Cartier Santos-Dumont: az első férfi karóra története"
 seoDescription: "Alberto Santos-Dumont repülései, Louis Cartier 1904-es órája és az a történet, amely elfogadottá tette a férfi karórát."
-date: 2026-08-11
+date: 2026-08-12
 column: 'origins'
 lang: 'hu'
 translationKey: 'santos-dumont'

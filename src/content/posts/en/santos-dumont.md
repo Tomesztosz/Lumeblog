@@ -3,7 +3,7 @@ title: "The man who put watches on men's wrists"
 description: "Alberto Santos-Dumont flew around the Eiffel Tower, built the world's first series-produced aeroplane, and patented none of it. Along the way he asked a friend to devise something that would let him keep both hands on the controls."
 seoTitle: "Cartier Santos-Dumont: the first men's wristwatch story"
 seoDescription: "Alberto Santos-Dumont's flights, Louis Cartier's 1904 watch and the story that made the wristwatch acceptable for men."
-date: 2026-08-11
+date: 2026-08-12
 column: 'origins'
 lang: 'en'
 translationKey: 'santos-dumont'
