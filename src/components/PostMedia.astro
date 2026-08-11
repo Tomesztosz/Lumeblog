@@ -7,6 +7,8 @@ import { type ColumnKey } from '../i18n/ui';
 
 export interface Cover {
   src: ImageMetadata;
+  /** Opcionális, eleve 4:3-ra komponált kártyakép. */
+  cardSrc?: ImageMetadata;
   alt: string;
   credit: string;
   creditUrl?: string;
@@ -30,6 +32,8 @@ const sizes =
   variant === 'lead' ? '(max-width: 860px) 100vw, 820px' : '(max-width: 860px) 100vw, 360px';
 const loading = variant === 'lead' ? 'eager' : 'lazy';
 const fetchpriority = variant === 'lead' ? 'high' : 'auto';
+const imageSource =
+  cover && variant === 'card' && cover.cardSrc ? cover.cardSrc : cover?.src;
 
 /* A vágásirány csak a kártyákon számít: ott vágja a böngésző 4:3-ra a képet.
    A cikk élén a kép a maga arányában áll, ott nincs mit eltolni. */
@@ -39,9 +43,9 @@ const focusStyle = variant === 'card' && cover?.focus ? `object-position:${cover
 <figure class:list={['media-figure', `media-${variant}`]}>
   <Tag class="post-media" href={href} aria-hidden={cover ? undefined : 'true'} tabindex={href ? -1 : undefined}>
     {
-      cover ? (
+      cover && imageSource ? (
         <Image
-          src={cover.src}
+          src={imageSource}
           alt={cover.alt}
           widths={widths}
           sizes={sizes}

@@ -42,6 +42,8 @@ const posts = defineCollection({
       cover: z
         .object({
           src: image(),
+          /** Külön 4:3-as kép a lista- és kezdőlapi kártyákhoz. */
+          cardSrc: image().optional(),
           /** Mit ábrázol — képernyőolvasóknak és ha nem tölt be a kép. */
           alt: z.string(),
           /**

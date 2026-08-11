@@ -11,13 +11,13 @@ minutes: 14
 draft: false
 cover:
   src: '../_images/cartier-santos-dumont-hero.png'
+  cardSrc: '../_images/cartier-santos-dumont-card.png'
   alt: 'Portraits of Louis Cartier and Alberto Santos-Dumont with aircraft and watch drawings'
   focus: 'center center'
   credit: 'Lume — original composition, modified with AI assistance'
 sources:
   - label: 'Britannica; Wikipedia: Alberto Santos-Dumont, the Deutsch Prize, the 14-bis and the Demoiselle'
-  - label: 'Museu Paulista, University of São Paulo: Airship No. 6 at the Eiffel Tower, 1901'
-    url: 'https://commons.wikimedia.org/wiki/File:Contorno_da_Torre_Eiffel_com_o_Dirig%C3%ADvel_N%C2%BA6_-_1-13655-0000-0000,_Acervo_do_Museu_Paulista_da_USP.jpg'
+  - label: 'Archival photograph: Airship No. 6 at the Eiffel Tower, 1901'
   - label: 'Airscape Magazine; Amusing Planet; Heroes of Innovation: the airships, patents and later years'
   - label: "Quill & Pad: The World's First Pilot's Watch, Cartier Santos-Dumont 1904–2018"
   - label: 'Monochrome Watches: History of the Pilot Watch, Cartier Santos 1904'
@@ -43,7 +43,7 @@ He turned first to airships, and not merely as others had: he is essentially the
 The great moment came on October 19, 1901. He rose from Saint-Cloud in his airship No. 6, rounded the Eiffel Tower and returned, covering roughly eleven kilometres in under half an hour. With it he won the 100,000-franc Deutsch Prize and became world famous. And he gave the prize money away, distributing it among his workers and the poor of Paris.
 
 ![Airship No. 6 around the Eiffel Tower](../_images/santos-dumont-airship-no6.jpg)
-*Airship No. 6 rounding the Eiffel Tower, 1901. Photo: Museu Paulista da USP / Wikimedia Commons, public domain.*
+*Airship No. 6 rounding the Eiffel Tower, 1901. Archival photograph, public domain.*
 
 ## The other man in the story: Louis Cartier
 
@@ -53,8 +53,8 @@ Louis Cartier was born in Paris in 1875. His grandfather, Louis-François Cartie
 
 The house already carried weight: it was King Edward VII of England who called Cartier "the jeweller of kings and the king of jewellers". And Louis's motto is precisely why this story could happen at all: never imitate, always innovate.
 
-![Louis Cartier](../_images/louis-cartier.jpg)
-*Louis Cartier, the creative head of the house and the maker of the Santos. Photo: Richard Jean-Jacques (richardjeanjacques.com).*
+![Louis Cartier with the background removed](../_images/louis-cartier-transparent.png)
+*Louis Cartier, the creative head of the house and the maker of the Santos. Source photo: Richard Jean-Jacques (richardjeanjacques.com); background extraction: Lume, with AI assistance.*
 
 One thing, though, he lacked: the movement. Cartier was a jeweller, not a watch manufacturer, so Louis joined forces with the watchmaker Edmond Jaeger, who brought the expertise and the calibers. The relationship was formalised by contract in 1907, with Jaeger supplying Cartier's watch movements exclusively, and it was from this thread that Jaeger-LeCoultre eventually grew. So behind the Santos stands the meeting of two separate crafts: Parisian form and Swiss watchmaking.
 

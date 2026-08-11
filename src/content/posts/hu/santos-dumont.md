@@ -11,13 +11,13 @@ minutes: 14
 draft: false
 cover:
   src: '../_images/cartier-santos-dumont-hero.png'
+  cardSrc: '../_images/cartier-santos-dumont-card.png'
   alt: 'Louis Cartier és Alberto Santos-Dumont portréja, repülőgép- és óratervrajzokkal'
   focus: 'center center'
   credit: 'Lume — saját összeállítás, AI-segítséggel módosítva'
 sources:
   - label: 'Britannica; Wikipedia: Alberto Santos-Dumont életrajza, a Deutsch-díj, a 14-bis és a Demoiselle'
-  - label: 'Museu Paulista, Universidade de São Paulo: a 6-os léghajó az Eiffel-toronynál, 1901'
-    url: 'https://commons.wikimedia.org/wiki/File:Contorno_da_Torre_Eiffel_com_o_Dirig%C3%ADvel_N%C2%BA6_-_1-13655-0000-0000,_Acervo_do_Museu_Paulista_da_USP.jpg'
+  - label: 'Archív fénykép: a 6-os léghajó az Eiffel-toronynál, 1901'
   - label: 'Airscape Magazine; Amusing Planet; Heroes of Innovation: a léghajók, a szabadalmak és a kései évek'
   - label: "Quill & Pad: The World's First Pilot's Watch, Cartier Santos-Dumont 1904–2018"
   - label: 'Monochrome Watches: History of the Pilot Watch, Cartier Santos 1904'
@@ -43,7 +43,7 @@ Előbb a léghajókkal foglalkozott, és nem csak úgy, ahogy mások: gyakorlati
 A nagy pillanat 1901. október 19-én jött el. A 6-os számú léghajójával Saint-Cloud-ból a levegőbe emelkedett, megkerülte az Eiffel-tornyot, és visszatért, körülbelül tizenegy kilométert téve meg fél óránál rövidebb idő alatt. Ezzel megnyerte a 100 000 frankos Deutsch-díjat, és világhírű lett. A díj pénzét pedig szétosztotta: a munkásainak és Párizs szegényeinek adta.
 
 ![A 6-os léghajó az Eiffel-torony körül](../_images/santos-dumont-airship-no6.jpg)
-*A 6-os számú léghajó az Eiffel-torony körül, 1901. Fotó: Museu Paulista da USP / Wikimedia Commons, közkincs.*
+*A 6-os számú léghajó az Eiffel-torony körül, 1901. Archív fotó, közkincs.*
 
 ## A másik ember a történetben: Louis Cartier
 
@@ -53,8 +53,8 @@ Louis Cartier 1875-ben született Párizsban. A nagyapja, Louis-François Cartie
 
 A háznak már akkor is súlya volt: VII. Eduárd angol király nevezte a Cartier-t „a királyok ékszerészének és az ékszerészek királyának". Louis mottója pedig pontosan az, amiért ez a történet megtörténhetett: soha ne utánozz, mindig újíts.
 
-![Louis Cartier](../_images/louis-cartier.jpg)
-*Louis Cartier, a ház kreatív vezetője és a Santos megalkotója. Fotó: Richard Jean-Jacques (richardjeanjacques.com).*
+![Louis Cartier háttér nélkül](../_images/louis-cartier-transparent.png)
+*Louis Cartier, a ház kreatív vezetője és a Santos megalkotója. Forrásfotó: Richard Jean-Jacques (richardjeanjacques.com); háttérleválasztás: Lume, AI-segítséggel.*
 
 Egy dolog viszont hiányzott neki: a szerkezet. A Cartier ékszerész volt, nem óragyártó, ezért Louis összeállt Edmond Jaeger órásmesterrel, aki a szaktudást és a kalibereket adta. A kapcsolat 1907-ben szerződéssel is megerősödött (Jaeger kizárólagosan szállította a Cartier-óraszerkezeteket), és végül ebből a szálból nőtt ki a Jaeger-LeCoultre. Vagyis a Santos mögött két külön mesterség találkozása áll: a párizsi formaérzék és a svájci óragyártás.
 
