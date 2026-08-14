@@ -73,6 +73,7 @@ body.dark{ --paper:#13100B; --paper-2:#1B1610; --ink:#B6AB94; --ink-soft:#7E7461
 body.dark .hand, body.dark .hand-tip{ fill:var(--lume-bright); }
 body.dark .btn{ background:transparent; color:var(--lume-bright); border-color:color-mix(in srgb,var(--lume-bright) 45%,transparent); }
 body.dark .btn.ghost{ color:var(--ink); border-color:var(--line); }
+.embedded #darkBtn{ display:none; }
 </style>
 </head>
 <body>
@@ -294,9 +295,40 @@ body.dark .btn.ghost{ color:var(--ink); border-color:var(--line); }
   document.getElementById('slowBtn').addEventListener('click', function(){
     slow=!slow; this.textContent=tr('slow')+': '+(slow?tr('on'):tr('off'));
   });
-  document.getElementById('darkBtn').addEventListener('click', function(){
-    var dk=document.body.classList.toggle('dark'); this.textContent=dk?tr('lightsOn'):tr('lightsOff');
+  var darkBtn=document.getElementById('darkBtn');
+  function setDark(on){
+    document.body.classList.toggle('dark', on);
+    darkBtn.textContent=on?tr('lightsOn'):tr('lightsOff');
+  }
+  darkBtn.addEventListener('click', function(){
+    setDark(!document.body.classList.contains('dark'));
   });
+
+  /* Beágyazva a Lume oldal lámpakapcsolóját követi. */
+  var embedded=window.parent!==window;
+  if(embedded){
+    document.body.classList.add('embedded');
+
+    window.addEventListener('message', function(e){
+      if(e.source!==window.parent) return;
+      if(!e.data || e.data.type!=='lume:lights') return;
+      setDark(!!e.data.dark);
+    });
+
+    var lastH=0;
+    function reportHeight(){
+      var h=Math.ceil(document.querySelector('.card').getBoundingClientRect().height)+2;
+      if(h!==lastH){
+        lastH=h;
+        window.parent.postMessage({type:'lume:height',height:h},'*');
+      }
+    }
+    new ResizeObserver(reportHeight).observe(document.querySelector('.card'));
+    window.addEventListener('load',reportHeight);
+    reportHeight();
+
+    window.parent.postMessage({type:'lume:ready'},'*');
+  }
 })();
 </script>
 </body>
