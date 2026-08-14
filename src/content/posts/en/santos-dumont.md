@@ -132,3 +132,5 @@ If you look only at the watch, you see an elegant, square Cartier that remains o
 But behind the object stands a man who wanted to own nothing of what he invented, who gave away his prizes, and who asked for a wristwatch so that he could keep both hands on the controls. This watch is not an icon because a famous man wore it, but because it was made for a specific, serious job, and in doing so it accidentally rewrote what a man wears on his wrist.
 
 The object, not the hype. And sometimes behind the object stands an entire life's work.
+
+*Fact-checking: Bálint P.*

@@ -132,3 +132,5 @@ Ha valaki csak az órát nézi, egy elegáns, szögletes Cartier-t lát, ami má
 De a tárgy mögött ott van egy ember, aki nem akart tulajdonolni semmit abból, amit feltalált, aki szétosztotta a díjait, és aki azért kért egy karórát, hogy közben mindkét kezével foghassa a kormányt. Ez az óra nem attól ikon, hogy egy híres ember viselte, hanem attól, hogy egy konkrét, komoly munkához készült, és ezzel véletlenül átírta azt, hogy mit hord a férfi a csuklóján.
 
 A tárgy, nem a hype. És néha a tárgy mögött egy egész életmű áll.
+
+*Fact check: Bálint P.*
