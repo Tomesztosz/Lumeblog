@@ -3,7 +3,7 @@ title: "A Christopher Ward, és a kérdés, hogy meddig microbrand egy microbran
 description: "Egy csónakázás a Temzén, egy átalakított tyúkól, és húsz évvel később egy óra, amely óránként megszólal. A Christopher Ward mostanra kinőtte azt a kategóriát, amelyben felnőtt."
 seoTitle: "Christopher Ward: kinőtte már a microbrand kategóriát?"
 seoDescription: "A Christopher Ward útja a tyúkóltól az SH21-en, a Bel Cantón és a Twelve-ön át a C12 Locóig — és a kérdésig, hogy microbrand-e még."
-date: 2026-08-16
+date: 2026-08-17
 column: 'in-hand'
 lang: 'hu'
 translationKey: 'christopher-ward'

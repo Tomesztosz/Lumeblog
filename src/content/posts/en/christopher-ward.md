@@ -3,7 +3,7 @@ title: "Christopher Ward, and the question of how long a microbrand stays micro"
 description: "A boat trip on the Thames, a converted chicken shed, and twenty years later a watch that chimes on the hour. Christopher Ward has now outgrown the category it grew up in."
 seoTitle: "Christopher Ward: Has It Outgrown the Microbrand Label?"
 seoDescription: "Christopher Ward's road from a chicken shed to the SH21, Bel Canto, Twelve and C12 Loco — and the question of whether it is still a microbrand."
-date: 2026-08-16
+date: 2026-08-17
 column: 'in-hand'
 lang: 'en'
 translationKey: 'christopher-ward'
