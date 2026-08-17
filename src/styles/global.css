@@ -379,7 +379,7 @@ body.dark .workshop-facts i{ background:var(--lume-glow); box-shadow:0 0 8px var
   transition:fill .7s ease, stroke .7s ease, filter .7s ease;
 }
 .workshop-mark-ring-small{ stroke:var(--line); stroke-width:1.5; }
-.workshop-mark-teeth rect{ fill:var(--lume-mark); transform-box:fill-box; transform-origin:center; transition:fill .7s, filter .7s; }
+.workshop-mark-teeth rect{ fill:var(--lume-mark); transition:fill .7s, filter .7s; }
 .workshop-mark-hand{ fill:none; stroke:var(--brass-deep); stroke-width:5; stroke-linecap:round; }
 .workshop-mark-cap{ fill:var(--brass); }
 .workshop-mark-spring{ fill:none; stroke:var(--ink-soft); stroke-width:2; opacity:.55; }
