@@ -14,8 +14,9 @@ model:
   description: 'Indítsd el a kronográfot, és figyeld meg, hogyan kapcsolja egyetlen kerék összehangolt sorrendbe a karokat.'
   level: 'intermediate'
 cover:
-  src: '../_images/oszlopkerek-nyitokep.jpg'
-  alt: 'Egy kronográfszerkezet stilizált ábrája sárgaréz kerekekkel és halványan derengő zöld kövekkel, sötét háttéren'
+  src: '../_images/oszlopkerek-hero-hu.png'
+  cardSrc: '../_images/oszlopkerek-nyitokep.jpg'
+  alt: 'Az oszlopkerék című nyitókép egy bronzszínű oszlopkerékkel és mechanikus kronográfszerkezettel'
   credit: 'Saját ábra'
 sources:
   - label: 'Watchfinder & Co.: Getting Technical, Column Wheel'

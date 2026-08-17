@@ -14,8 +14,9 @@ model:
   description: 'Start the chronograph and watch a single wheel coordinate its levers in one precise sequence.'
   level: 'intermediate'
 cover:
-  src: '../_images/oszlopkerek-nyitokep.jpg'
-  alt: 'A stylised drawing of a chronograph movement with brass wheels and faintly glowing green jewels on a dark background'
+  src: '../_images/oszlopkerek-hero-en.png'
+  cardSrc: '../_images/oszlopkerek-nyitokep.jpg'
+  alt: 'Column Wheel hero image showing a polished column wheel inside a mechanical chronograph movement'
   credit: 'Own illustration'
 sources:
   - label: 'Watchfinder & Co.: Getting Technical, Column Wheel'
