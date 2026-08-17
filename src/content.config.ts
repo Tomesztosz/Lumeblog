@@ -31,6 +31,24 @@ const posts = defineCollection({
       draft: z.boolean().default(false),
 
       /**
+       * Interaktív modell a Lume Műhelyhez. Ha ez a blokk jelen van, a cikk
+       * automatikusan bekerül a kétnyelvű Műhely-listába; nincs külön kézzel
+       * karbantartott gyűjtemény.
+       */
+      model: z
+        .object({
+          /** A `public/widgets/` alatt kiszolgált, önálló HTML-modell útvonala. */
+          src: z.string().startsWith('/widgets/'),
+          /** Rövid cím a Műhely kártyáján. */
+          title: z.string(),
+          /** Egy mondat arról, mit lehet a modellen megfigyelni. */
+          description: z.string(),
+          /** Tájékozódási pont, nem vizsga vagy műszaki minősítés. */
+          level: z.enum(['foundation', 'intermediate', 'advanced']),
+        })
+        .optional(),
+
+      /**
        * Nyitókép. Ha nincs megadva, a rovat SVG-motívuma jelenik meg helyette.
        * A fájl a `src/content/posts/_images/` alá kerül, hivatkozás:
        * `cover: { src: '../_images/fajlnev.jpg', ... }`.

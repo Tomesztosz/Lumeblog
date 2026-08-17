@@ -1,0 +1,147 @@
+---
+import { Image } from 'astro:assets';
+import { UI, formatDate, type Lang } from '../i18n/ui';
+import { modelSrc, urlOf, type ModelPost } from '../lib/posts';
+
+interface Props {
+  post: ModelPost;
+  index?: number;
+  featured?: boolean;
+  variant?: 'entry' | 'spotlight';
+}
+
+const { post, index = 0, featured = false, variant = 'entry' } = Astro.props;
+const lang: Lang = post.data.lang;
+const t = UI[lang];
+const model = post.data.model;
+const cover = post.data.cover;
+const imageSource = cover?.cardSrc ?? cover?.src;
+const anchor = post.data.translationKey ?? post.id.split('/').pop()!;
+const source = modelSrc(post);
+const number = String(index + 1).padStart(2, '0');
+---
+
+<article class:list={['workshop-model', `workshop-model-${variant}`, { 'is-featured': featured }]} id={anchor}>
+  <div class="workshop-model-copy">
+    <div class="workshop-model-meta">
+      <span class="tag">{featured ? t.workshopNewest : number}</span>
+      <span class="dotsep mono">{t.workshopLevel[model.level]}</span>
+      <span class="dotsep mono">{formatDate(post.data.date, lang)}</span>
+    </div>
+    <h2>{model.title}</h2>
+    <p>{model.description}</p>
+    <a class="workshop-read" href={urlOf(post)}>
+      {t.workshopRead} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <div
+    class="workshop-demo"
+    data-workshop-demo
+    data-src={source}
+    data-title={model.title}
+  >
+    <div class="workshop-poster" data-workshop-poster>
+      {
+        imageSource ? (
+          <Image
+            src={imageSource}
+            alt={cover!.alt}
+            widths={[420, 720, 1080]}
+            sizes={variant === 'spotlight' ? '(max-width: 860px) 100vw, 500px' : '(max-width: 860px) 100vw, 620px'}
+            loading="lazy"
+          />
+        ) : (
+          <div class="workshop-placeholder" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+        )
+      }
+      <button
+        class="workshop-launch"
+        type="button"
+        data-workshop-open
+        aria-expanded="false"
+        aria-label={`${t.workshopLoad}: ${model.title}`}
+      >
+        <span class="workshop-launch-icon" aria-hidden="true">▶</span>
+        <span>{t.workshopLoad}</span>
+      </button>
+    </div>
+
+    {
+      cover && (
+        <p class="workshop-image-credit" data-workshop-credit>
+          {cover.creditUrl ? (
+            <a href={cover.creditUrl} rel="noopener noreferrer nofollow" target="_blank">{cover.credit}</a>
+          ) : (
+            cover.credit
+          )}
+        </p>
+      )
+    }
+
+    <div class="workshop-live" data-workshop-live hidden>
+      <div class="workshop-live-bar">
+        <span><i aria-hidden="true"></i>{t.workshopLive}</span>
+        <button type="button" data-workshop-close>{t.workshopClose}</button>
+      </div>
+      <div data-workshop-frame></div>
+    </div>
+
+    <noscript>
+      <p class="workshop-noscript"><a href={source}>{t.workshopLoad} →</a></p>
+    </noscript>
+  </div>
+</article>
+
+<script>
+  function bindWorkshopModels() {
+    const demos = document.querySelectorAll<HTMLElement>('[data-workshop-demo]:not([data-workshop-bound])');
+
+    demos.forEach((demo) => {
+      demo.dataset.workshopBound = 'true';
+      const poster = demo.querySelector<HTMLElement>('[data-workshop-poster]');
+      const credit = demo.querySelector<HTMLElement>('[data-workshop-credit]');
+      const live = demo.querySelector<HTMLElement>('[data-workshop-live]');
+      const frameHost = demo.querySelector<HTMLElement>('[data-workshop-frame]');
+      const open = demo.querySelector<HTMLButtonElement>('[data-workshop-open]');
+      const close = demo.querySelector<HTMLButtonElement>('[data-workshop-close]');
+
+      if (!poster || !live || !frameHost || !open || !close) return;
+
+      function shut() {
+        frameHost.replaceChildren();
+        live.hidden = true;
+        poster.hidden = false;
+        if (credit) credit.hidden = false;
+        open.setAttribute('aria-expanded', 'false');
+        open.focus();
+      }
+
+      open.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = demo.dataset.src ?? '';
+        iframe.title = demo.dataset.title ?? '';
+        iframe.loading = 'eager';
+        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+        iframe.setAttribute('width', '100%');
+        iframe.setAttribute('height', '760');
+        frameHost.replaceChildren(iframe);
+        poster.hidden = true;
+        if (credit) credit.hidden = true;
+        live.hidden = false;
+        open.setAttribute('aria-expanded', 'true');
+        close.focus();
+      });
+
+      close.addEventListener('click', shut);
+      live.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') shut();
+      });
+    });
+  }
+
+  bindWorkshopModels();
+  document.addEventListener('astro:page-load', bindWorkshopModels);
+</script>

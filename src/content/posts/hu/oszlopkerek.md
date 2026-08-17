@@ -8,6 +8,11 @@ column: 'movement'
 lang: 'hu'
 translationKey: 'oszlopkerek'
 minutes: 8
+model:
+  src: '/widgets/oszlopkerek.html'
+  title: 'Az oszlopkerék működés közben'
+  description: 'Indítsd el a kronográfot, és figyeld meg, hogyan kapcsolja egyetlen kerék összehangolt sorrendbe a karokat.'
+  level: 'intermediate'
 cover:
   src: '../_images/oszlopkerek-nyitokep.jpg'
   alt: 'Egy kronográfszerkezet stilizált ábrája sárgaréz kerekekkel és halványan derengő zöld kövekkel, sötét háttéren'

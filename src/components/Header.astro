@@ -7,6 +7,7 @@ import {
   columnUrl,
   langBase,
   otherLang,
+  workshopUrl,
   type ColumnKey,
   type Lang,
 } from '../i18n/ui';
@@ -16,7 +17,7 @@ interface Props {
   /** A jelenlegi oldal megfelelője a másik nyelven. */
   altUrl: string;
   /** Melyik menüpont aktív. */
-  active?: ColumnKey | 'about';
+  active?: ColumnKey | 'about' | 'workshop';
 }
 
 const { lang, altUrl, active } = Astro.props;
@@ -38,6 +39,7 @@ const t = UI[lang];
           </a>
         ))
       }
+      <a href={workshopUrl(lang)} aria-current={active === 'workshop' ? 'page' : undefined}>{t.workshop}</a>
       <a href={aboutUrl(lang)} aria-current={active === 'about' ? 'page' : undefined}>{t.about}</a>
     </nav>
 

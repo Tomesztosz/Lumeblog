@@ -6,6 +6,7 @@ import {
   aboutUrl,
   columnUrl,
   langBase,
+  workshopUrl,
   type Lang,
 } from '../i18n/ui';
 
@@ -31,6 +32,7 @@ const t = UI[lang];
         </div>
         <div>
           <h5>{t.footJournal}</h5>
+          <a href={workshopUrl(lang)}>{t.workshop}</a>
           <a href={aboutUrl(lang)}>{t.about}</a>
           <a href={`${langBase(lang)}#latest`}>{t.footArchive}</a>
           <a href={lang === 'hu' ? '/rss.xml' : '/en/rss.xml'}>RSS</a>

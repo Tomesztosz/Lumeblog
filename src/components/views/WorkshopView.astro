@@ -1,0 +1,97 @@
+---
+import Base from '../../layouts/Base.astro';
+import StructuredData from '../StructuredData.astro';
+import WorkshopModel from '../WorkshopModel.astro';
+import { UI, otherLang, workshopUrl, type Lang } from '../../i18n/ui';
+import { getModelPosts, urlOf } from '../../lib/posts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = UI[lang];
+const models = await getModelPosts(lang);
+const canonical = new URL(workshopUrl(lang), Astro.site).href;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${canonical}#collection`,
+  name: t.workshopSeoTitle,
+  description: t.workshopSeoDescription,
+  url: canonical,
+  inLanguage: lang === 'hu' ? 'hu-HU' : 'en-GB',
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: models.length,
+    itemListElement: models.map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: post.data.model.title,
+      url: new URL(urlOf(post), Astro.site).href,
+    })),
+  },
+};
+---
+
+<Base
+  lang={lang}
+  title={t.workshopSeoTitle}
+  description={t.workshopSeoDescription}
+  altUrl={workshopUrl(otherLang(lang))}
+  active="workshop"
+>
+  <Fragment slot="head">
+    <StructuredData data={structuredData} />
+  </Fragment>
+
+  <section class="page-head workshop-head">
+    <div class="wrap workshop-head-grid">
+      <div>
+        <p class="eyebrow mono">Lume {t.workshop}</p>
+        <h1>{t.workshopTitle}</h1>
+        <p class="lede">{t.workshopLede}</p>
+        <div class="workshop-facts" aria-label={t.workshopCount(models.length)}>
+          <span>{t.workshopCount(models.length)}</span>
+          <i aria-hidden="true"></i>
+          <span>{t.workshopFriday}</span>
+        </div>
+      </div>
+
+      <svg class="workshop-mark" viewBox="0 0 360 260" aria-hidden="true">
+        <circle class="workshop-mark-ring" cx="182" cy="126" r="82" />
+        <circle class="workshop-mark-ring workshop-mark-ring-small" cx="182" cy="126" r="42" />
+        <g class="workshop-mark-teeth">
+          {Array.from({ length: 12 }, (_, index) => (
+            <rect x="178" y="24" width="8" height="18" rx="2" transform={`rotate(${index * 30} 182 126)`} />
+          ))}
+        </g>
+        <path class="workshop-mark-hand" d="M182 126 236 82" />
+        <circle class="workshop-mark-cap" cx="182" cy="126" r="7" />
+        <path class="workshop-mark-spring" d="M74 185c28-34 54 34 82 0s54 34 82 0 54 34 82 0" />
+      </svg>
+    </div>
+  </section>
+
+  <section class="section workshop-section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{t.workshopBench}</h2>
+        {models.length > 0 && <p class="mono">{t.newestFirst}</p>}
+      </div>
+
+      {
+        models.length > 0 ? (
+          <div class="workshop-list">
+            {models.map((post, index) => (
+              <WorkshopModel post={post} index={index} featured={index === 0} />
+            ))}
+          </div>
+        ) : (
+          <p class="empty-note">{t.workshopNoModels}</p>
+        )
+      }
+    </div>
+  </section>
+</Base>

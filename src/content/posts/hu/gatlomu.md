@@ -8,6 +8,11 @@ column: 'movement'
 lang: 'hu'
 translationKey: 'gatlomu'
 minutes: 9
+model:
+  src: '/widgets/gatlomu.html'
+  title: 'A gátlómű működés közben'
+  description: 'Lassítsd le a járást, és nézd meg lépésről lépésre, hogyan fogja meg, majd engedi tovább a horgony a gátlókereket.'
+  level: 'foundation'
 cover:
   src: '../_images/gatlomu-hero-hu.png'
   alt: 'Egy mechanikus óra billegője, horgonya és gátlókereke sötét háttéren, magyar címmel'

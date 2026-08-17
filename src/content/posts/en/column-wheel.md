@@ -8,6 +8,11 @@ column: 'movement'
 lang: 'en'
 translationKey: 'oszlopkerek'
 minutes: 8
+model:
+  src: '/widgets/oszlopkerek.html'
+  title: 'The column wheel in motion'
+  description: 'Start the chronograph and watch a single wheel coordinate its levers in one precise sequence.'
+  level: 'intermediate'
 cover:
   src: '../_images/oszlopkerek-nyitokep.jpg'
   alt: 'A stylised drawing of a chronograph movement with brass wheels and faintly glowing green jewels on a dark background'

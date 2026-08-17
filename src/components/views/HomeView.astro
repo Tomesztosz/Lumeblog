@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Dial from '../Dial.astro';
 import PostCard from '../PostCard.astro';
+import WorkshopModel from '../WorkshopModel.astro';
 import {
   COLUMN_KEYS,
   COLUMNS,
@@ -9,9 +10,10 @@ import {
   columnUrl,
   langBase,
   otherLang,
+  workshopUrl,
   type Lang,
 } from '../../i18n/ui';
-import { getPosts } from '../../lib/posts';
+import { getModelPosts, getPosts } from '../../lib/posts';
 
 interface Props {
   lang: Lang;
@@ -20,6 +22,7 @@ const { lang } = Astro.props;
 const t = UI[lang];
 
 const posts = (await getPosts(lang)).slice(0, 3);
+const latestModel = (await getModelPosts(lang))[0];
 ---
 
 <Base lang={lang} altUrl={langBase(otherLang(lang))}>
@@ -65,6 +68,26 @@ const posts = (await getPosts(lang)).slice(0, 3);
       </div>
     </div>
   </section>
+
+  {
+    latestModel && (
+      <section class="section workshop-home" id="workshop">
+        <div class="wrap">
+          <div class="workshop-home-head">
+            <div>
+              <p class="eyebrow mono">{t.homeWorkshopEyebrow}</p>
+              <h2>{t.homeWorkshopTitle}</h2>
+              <p>{t.homeWorkshopText}</p>
+            </div>
+            <a class="workshop-home-link" href={workshopUrl(lang)}>
+              {t.homeWorkshopEnter} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <WorkshopModel post={latestModel} featured variant="spotlight" />
+        </div>
+      </section>
+    )
+  }
 
   <!-- LEGFRISSEBB -->
   <section class="section" id="latest">

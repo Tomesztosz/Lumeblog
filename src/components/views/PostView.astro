@@ -4,7 +4,7 @@ import { getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import PostMedia from '../PostMedia.astro';
 import StructuredData from '../StructuredData.astro';
-import { COLUMNS, UI, columnUrl, formatDate, otherLang } from '../../i18n/ui';
+import { COLUMNS, UI, columnUrl, formatDate, otherLang, workshopUrl } from '../../i18n/ui';
 import { getTranslation, minutesOf, urlOf, type Post } from '../../lib/posts';
 
 interface Props {
@@ -130,6 +130,7 @@ const articleStructuredData = {
 
       <nav class="article-nav">
         <a href={columnUrl(lang, post.data.column)}>← {t.backToColumn}</a>
+        {post.data.model && <a href={`${workshopUrl(lang)}#${post.data.translationKey ?? post.id.split('/').pop()}`}>{t.workshop} →</a>}
       </nav>
     </div>
   </article>

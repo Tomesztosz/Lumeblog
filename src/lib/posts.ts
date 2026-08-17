@@ -2,6 +2,9 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import { type ColumnKey, type Lang, postUrl, readingTime } from '../i18n/ui';
 
 export type Post = CollectionEntry<'posts'>;
+export type ModelPost = Post & {
+  data: Post['data'] & { model: NonNullable<Post['data']['model']> };
+};
 
 /** A fájlnév a `hu/lorier-neptune` id-ből, ha a frontmatter nem ad slugot. */
 export function slugOf(post: Post): string {
@@ -43,6 +46,20 @@ export async function getPosts(lang: Lang, column?: ColumnKey): Promise<Post[]> 
     return true;
   });
   return all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+}
+
+/** A megjelent, interaktív modellel rendelkező Szerkezet-cikkek. */
+export async function getModelPosts(lang: Lang): Promise<ModelPost[]> {
+  const posts = await getPosts(lang, 'movement');
+  return posts.filter((post): post is ModelPost => Boolean(post.data.model));
+}
+
+/** A modellek ugyanazt a HTML-t használják; az angol felület queryből vált. */
+export function modelSrc(post: ModelPost): string {
+  const separator = post.data.model.src.includes('?') ? '&' : '?';
+  return post.data.lang === 'en'
+    ? `${post.data.model.src}${separator}lang=en`
+    : post.data.model.src;
 }
 
 /** Ugyanez a cikk a másik nyelven — translationKey alapján. */

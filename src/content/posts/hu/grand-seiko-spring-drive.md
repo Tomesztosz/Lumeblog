@@ -8,6 +8,11 @@ column: 'movement'
 lang: 'hu'
 translationKey: 'spring-drive'
 minutes: 9
+model:
+  src: '/widgets/spring-drive.html'
+  title: 'A Spring Drive működés közben'
+  description: 'Kövesd az energia útját a rugótól a siklókerékig, majd kapcsold ki a szabályozást, hogy lásd, mit végez a Tri-Synchro Regulator.'
+  level: 'intermediate'
 cover:
   src: '../_images/grand-seiko-spring-drive-nyitokep.png'
   alt: 'Grand Seiko Spring Drive szerkezet Yoshikazu Akahane portréjával, műszaki rajzos háttéren'

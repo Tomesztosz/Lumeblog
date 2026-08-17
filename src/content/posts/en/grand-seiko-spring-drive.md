@@ -8,6 +8,11 @@ column: 'movement'
 lang: 'en'
 translationKey: 'spring-drive'
 minutes: 9
+model:
+  src: '/widgets/spring-drive.html'
+  title: 'Spring Drive in motion'
+  description: 'Follow the energy from the mainspring to the glide wheel, then disable regulation to see what the Tri-Synchro Regulator actually does.'
+  level: 'intermediate'
 cover:
   src: '../_images/grand-seiko-spring-drive-nyitokep.png'
   alt: 'Grand Seiko Spring Drive movement with a portrait of Yoshikazu Akahane on a technical drawing background'

@@ -8,6 +8,11 @@ column: 'movement'
 lang: 'en'
 translationKey: 'gatlomu'
 minutes: 9
+model:
+  src: '/widgets/gatlomu.html'
+  title: 'The escapement in motion'
+  description: 'Slow the movement down and see, step by step, how the pallet fork locks and releases the escape wheel.'
+  level: 'foundation'
 cover:
   src: '../_images/gatlomu-hero-en.png'
   alt: 'A mechanical watch balance, pallet fork and escape wheel against a dark background, with an English title'

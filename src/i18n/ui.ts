@@ -86,6 +86,7 @@ export const COLUMNS: Record<ColumnKey, Record<Lang, ColumnCopy>> = {
 
 /* a „Rólam" oldal szelete nyelvenként */
 export const ABOUT_SLUG: Record<Lang, string> = { hu: 'rolam', en: 'about' };
+export const WORKSHOP_SLUG: Record<Lang, string> = { hu: 'muhely', en: 'workshop' };
 
 /* ---------- felületi szövegek ---------- */
 export const UI = {
@@ -96,8 +97,9 @@ export const UI = {
     tagline: 'Órás napló. Magyarul és angolul.',
 
     /* fejléc */
-    navAriaLabel: 'Rovatok',
+    navAriaLabel: 'Fő navigáció',
     about: 'Rólam',
+    workshop: 'Műhely',
     langSwitchLabel: 'Switch to English',
     langSwitchText: 'EN',
     lightsOff: 'Lámpa le',
@@ -123,6 +125,34 @@ export const UI = {
     latest: 'Legfrissebb',
     newestFirst: 'Legújabb elöl',
     allInColumn: 'Mind a rovatban',
+
+    /* Lume Műhely */
+    workshopEyebrow: 'Interaktív szerkezetek',
+    workshopTitle: 'Az óra belülről.',
+    workshopLede:
+      'Működő modellek a pénteki Szerkezet-cikkekhez. Indítsd el, lassítsd le, kapcsold ki — és nézd meg, mit csinál valójában a számlap alatti gépezet.',
+    workshopSeoTitle: 'Lume Műhely: interaktív óraszerkezetek',
+    workshopSeoDescription:
+      'Interaktív modellek mechanikus és hibrid óraszerkezetekhez: gátlómű, Spring Drive, oszlopkerék és a pénteki Lume-cikkek új modelljei.',
+    workshopFriday: 'Új modell minden pénteken',
+    workshopBench: 'A műhely asztalán',
+    workshopNewest: 'Legújabb modell',
+    workshopCount: (n: number) => `${n} működő modell`,
+    workshopLoad: 'Modell elindítása',
+    workshopClose: 'Modell bezárása',
+    workshopLive: 'Működő modell',
+    workshopRead: 'A teljes cikk',
+    workshopNoModels: 'Az első modell hamarosan elkészül.',
+    workshopLevel: {
+      foundation: 'Alapok',
+      intermediate: 'Középhaladó',
+      advanced: 'Haladó',
+    },
+    homeWorkshopEyebrow: 'Lume Műhely · pénteki modell',
+    homeWorkshopTitle: 'Ne csak olvasd. Indítsd el.',
+    homeWorkshopText:
+      'A pénteki cikkekhez működő modellek készülnek. A teljes gyűjtemény egy helyen, és minden új Szerkezet-cikkel automatikusan bővül.',
+    homeWorkshopEnter: 'Belépek a Műhelybe',
 
     /* ethos */
     ethosEyebrow: 'Amiben hiszünk',
@@ -164,8 +194,9 @@ export const UI = {
       'A bilingual watch journal: microbrands in hand, brand history with the facts behind the legend, and the machinery under the dial. Three pieces a week.',
     tagline: 'A watch journal. In Hungarian and English.',
 
-    navAriaLabel: 'Columns',
+    navAriaLabel: 'Main navigation',
     about: 'About',
+    workshop: 'Workshop',
     langSwitchLabel: 'Váltás magyarra',
     langSwitchText: 'HU',
     lightsOff: 'Lights off',
@@ -188,6 +219,33 @@ export const UI = {
     latest: 'Latest',
     newestFirst: 'Newest first',
     allInColumn: 'All in this column',
+
+    workshopEyebrow: 'Interactive movements',
+    workshopTitle: 'Inside the watch.',
+    workshopLede:
+      'Working models made for the Friday Movement pieces. Start them, slow them down, switch things off — and see what the machinery beneath the dial actually does.',
+    workshopSeoTitle: 'Lume Workshop: Interactive Watch Movements',
+    workshopSeoDescription:
+      'Interactive models of mechanical and hybrid watch movements: the escapement, Spring Drive, column wheel and new models from Lume’s Friday pieces.',
+    workshopFriday: 'A new model every Friday',
+    workshopBench: 'On the workbench',
+    workshopNewest: 'Newest model',
+    workshopCount: (n: number) => `${n} working ${n === 1 ? 'model' : 'models'}`,
+    workshopLoad: 'Start the model',
+    workshopClose: 'Close the model',
+    workshopLive: 'Working model',
+    workshopRead: 'Read the full piece',
+    workshopNoModels: 'The first model is coming soon.',
+    workshopLevel: {
+      foundation: 'Foundations',
+      intermediate: 'Intermediate',
+      advanced: 'Advanced',
+    },
+    homeWorkshopEyebrow: 'Lume Workshop · Friday model',
+    homeWorkshopTitle: 'Do not just read it. Set it in motion.',
+    homeWorkshopText:
+      'The Friday pieces come with working models. The complete collection lives in one place and grows automatically with every new Movement article.',
+    homeWorkshopEnter: 'Enter the Workshop',
 
     ethosEyebrow: 'What this is',
     ethosLineBefore: 'No release-day scramble. No hype. Considered pieces, ',
@@ -240,6 +298,11 @@ export function postUrl(lang: Lang, key: ColumnKey, slug: string): string {
 /** Rólam oldal URL-je. */
 export function aboutUrl(lang: Lang): string {
   return `${langBase(lang)}${ABOUT_SLUG[lang]}/`;
+}
+
+/** Lume Műhely / Lume Workshop URL-je. */
+export function workshopUrl(lang: Lang): string {
+  return `${langBase(lang)}${WORKSHOP_SLUG[lang]}/`;
 }
 
 export function otherLang(lang: Lang): Lang {
