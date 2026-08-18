@@ -15,7 +15,6 @@ model:
   level: 'intermediate'
 cover:
   src: '../_images/oszlopkerek-hero-hu.png'
-  cardSrc: '../_images/oszlopkerek-nyitokep.jpg'
   alt: 'Az oszlopkerék című nyitókép egy bronzszínű oszlopkerékkel és mechanikus kronográfszerkezettel'
   credit: 'Saját ábra'
 sources:

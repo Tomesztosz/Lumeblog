@@ -15,9 +15,9 @@ model:
   level: 'intermediate'
 cover:
   src: '../_images/oszlopkerek-hero-en.png'
-  cardSrc: '../_images/oszlopkerek-nyitokep.jpg'
   alt: 'Column Wheel hero image showing a polished column wheel inside a mechanical chronograph movement'
   credit: 'Own illustration'
+  focus: 'left center'
 sources:
   - label: 'Watchfinder & Co.: Getting Technical, Column Wheel'
   - label: 'Univaque; Rotate Watches; Argos Watch: comparisons of the column wheel and the cam'
