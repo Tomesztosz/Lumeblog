@@ -3,7 +3,7 @@ title: "Nem a legjobb óra, mégis ehhez térek vissza"
 description: "A Frederique Constant Worldtimer nem nyer meg semmilyen adatversenyt. Cserébe egy holland házaspár makacssága áll mögötte, és egyetlen koronával kezeli az egész bolygót."
 seoTitle: "Frederique Constant Worldtimer: egy koronával a világ körül"
 seoDescription: "A Frederique Constant története és a Classic Worldtimer Manufacture: 24 időzóna, FC-718 kaliber és minden beállítás egyetlen koronáról."
-date: 2026-08-18
+date: 2026-08-19
 column: 'origins'
 lang: 'hu'
 translationKey: 'frederique-constant-worldtimer'

@@ -3,7 +3,7 @@ title: "Not the best watch, and yet I keep coming back to it"
 description: "The Frederique Constant Worldtimer wins no spec race. What it carries instead is the stubbornness of a Dutch couple, and it handles the whole planet from a single crown."
 seoTitle: "Frederique Constant Worldtimer: The World on One Crown"
 seoDescription: "The story of Frederique Constant and the Classic Worldtimer Manufacture: 24 time zones, the FC-718 caliber and every setting through one crown."
-date: 2026-08-18
+date: 2026-08-19
 column: 'origins'
 lang: 'en'
 translationKey: 'frederique-constant-worldtimer'
