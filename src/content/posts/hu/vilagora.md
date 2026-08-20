@@ -3,7 +3,7 @@ title: 'A világóra: hogyan fér rá az egész bolygó egy számlapra'
 description: 'Volt idő, amikor minden városnak saját ideje volt. Aztán jöttek a vonatok, és rendet kellett tenni. Egy genfi órásmester pedig kitalálta, hogyan mutassa meg egyetlen számlap mind a huszonnégy zónát.'
 seoTitle: 'Világóra: így mutat 24 időzónát egyetlen számlap'
 seoDescription: 'Hogyan működik a világóra? Louis Cottier 1931-es rendszere, a 24 órás korong, a városgyűrű és egy interaktív modell.'
-date: 2026-08-20
+date: 2026-08-21
 column: 'movement'
 lang: 'hu'
 translationKey: 'vilagora'

@@ -3,7 +3,7 @@ title: 'The world timer: how the whole planet fits on one dial'
 description: 'There was a time when every town kept its own hour. Then the trains arrived and order had to be imposed. And a Geneva watchmaker worked out how a single dial could show all twenty-four zones.'
 seoTitle: 'World Timer Watches: How 24 Time Zones Fit on One Dial'
 seoDescription: "How does a world timer work? Louis Cottier's 1931 system, the 24-hour disc, city ring and an interactive model."
-date: 2026-08-20
+date: 2026-08-21
 column: 'movement'
 lang: 'en'
 translationKey: 'vilagora'
