@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A világóra működés közben</title>
+<style>
+@font-face{ font-family:'Fraunces Variable'; font-style:normal; font-weight:100 900; font-display:swap;
+  src:url(/fonts/fraunces-latin-opsz-normal.woff2) format('woff2-variations'); unicode-range:U+0000-00FF; }
+@font-face{ font-family:'Fraunces Variable'; font-style:normal; font-weight:100 900; font-display:swap;
+  src:url(/fonts/fraunces-latin-ext-opsz-normal.woff2) format('woff2-variations'); unicode-range:U+0100-024F,U+1E00-1EFF; }
+@font-face{ font-family:'Hanken Grotesk Variable'; font-style:normal; font-weight:100 900; font-display:swap;
+  src:url(/fonts/hanken-grotesk-latin-wght-normal.woff2) format('woff2-variations'); unicode-range:U+0000-00FF; }
+@font-face{ font-family:'Hanken Grotesk Variable'; font-style:normal; font-weight:100 900; font-display:swap;
+  src:url(/fonts/hanken-grotesk-latin-ext-wght-normal.woff2) format('woff2-variations'); unicode-range:U+0100-024F,U+1E00-1EFF; }
+@font-face{ font-family:'IBM Plex Mono'; font-style:normal; font-weight:400 600; font-display:swap;
+  src:url(/fonts/ibm-plex-mono-latin-400-normal.woff2) format('woff2'); unicode-range:U+0000-00FF; }
+@font-face{ font-family:'IBM Plex Mono'; font-style:normal; font-weight:400 600; font-display:swap;
+  src:url(/fonts/ibm-plex-mono-latin-ext-400-normal.woff2) format('woff2'); unicode-range:U+0100-024F,U+1E00-1EFF; }
+:root{
+  --paper:#E6DAC1; --paper-2:#EFE6D2; --ink:#2A231D; --ink-soft:#6A5E50;
+  --line:rgba(42,35,29,0.16); --line-soft:rgba(42,35,29,0.10);
+  --brass:#8F6E31; --brass-deep:#6F5424; --lume:#7B885A; --lume-bright:#8FA857;
+  --dial:#F1E9D6; --night:#2F3F55; --day:#F6EFDD; --plate:#EAE0CC;
+  --font-serif:'Fraunces Variable',Georgia,serif;
+  --font-sans:'Hanken Grotesk Variable',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{ box-sizing:border-box; }
+html,body{ overflow:hidden; }
+body{ margin:0; padding:0; background:transparent; color:var(--ink);
+  font-family:var(--font-sans); -webkit-font-smoothing:antialiased; transition:color .5s ease; }
+.card{ max-width:800px; margin:0 auto; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:6px; padding:24px 24px 20px; transition:background-color .5s ease,border-color .5s ease; }
+h1{ font-family:var(--font-serif); font-weight:600; font-size:21px; letter-spacing:-.01em; margin:0 0 4px; }
+.sub{ font-size:14px; color:var(--ink-soft); margin:0 0 14px; max-width:60ch; }
+
+svg.dial{ width:100%; height:auto; display:block; overflow:visible; }
+.case{ fill:none; stroke:url(#brassG); stroke-width:10; }
+.case-in{ fill:none; stroke:var(--brass-deep); stroke-width:1.2; opacity:.6; }
+.face{ fill:var(--dial); }
+.globe{ fill:none; stroke:var(--brass-deep); stroke-width:.8; opacity:.30; }
+.globe-o{ fill:none; stroke:var(--brass); stroke-width:1.2; opacity:.5; }
+
+.ring-day{ fill:var(--day); stroke:var(--brass-deep); stroke-width:.7; }
+.ring-night{ fill:var(--night); stroke:var(--brass-deep); stroke-width:.7; }
+.hr-txt{ font-family:var(--font-mono); font-size:8.5px; fill:var(--ink-soft); }
+.hr-txt.on-night{ fill:#D6DCE6; }
+.hr-tick{ stroke:var(--ink-soft); stroke-width:.7; opacity:.6; }
+
+.city-txt{ font-family:var(--font-mono); font-size:8.6px; fill:var(--ink-soft); cursor:pointer; }
+.city-txt.sel{ fill:var(--brass-deep); font-weight:600; }
+.city-hit{ fill:transparent; cursor:pointer; }
+.city-dot{ fill:var(--brass); opacity:.45; }
+.city-dot.sel{ fill:var(--brass-deep); opacity:1; }
+
+.marker{ fill:var(--brass-deep); }
+.hand-h{ fill:var(--ink); } .hand-m{ fill:var(--ink); }
+.hand-lume{ fill:var(--lume); }
+.hand-s{ stroke:var(--brass); stroke-width:1.4; }
+.cap{ fill:var(--brass); }
+.brandtxt{ font-family:var(--font-serif); font-size:9px; fill:var(--ink-soft); letter-spacing:2px; }
+
+.controls{ display:grid; grid-template-columns:minmax(0,1fr) auto auto auto; align-items:center; gap:12px; margin-top:14px; }
+.readout{ font-family:var(--font-mono); font-size:12px; letter-spacing:.06em;
+  padding:9px 14px; border-radius:999px; border:1px solid var(--brass); color:var(--brass-deep);
+  background:color-mix(in srgb,var(--brass) 10%, var(--paper)); min-width:0; width:100%; text-align:center;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.btn{ font-family:var(--font-sans); font-weight:600; font-size:14px; cursor:pointer; padding:10px 15px;
+  border-radius:3px; line-height:1; border:1px solid var(--line); background:transparent; color:var(--ink);
+  transition:transform .2s,border-color .2s,color .2s; }
+.btn:hover{ border-color:var(--brass); color:var(--brass-deep); transform:translateY(-1px); }
+.btn:focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
+.hintline{ min-height:1.5em; font-size:12.5px; color:var(--ink-soft); margin-top:10px; }
+.legend{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10px; font-size:12px; color:var(--ink-soft); }
+.legend span{ display:inline-flex; align-items:center; gap:7px; }
+.sw{ width:14px; height:10px; border-radius:2px; display:inline-block; border:1px solid var(--line); }
+.sw.d{ background:var(--day); } .sw.n{ background:var(--night); }
+.note{ margin-top:12px; font-size:11.5px; color:var(--ink-soft); border-top:1px solid var(--line-soft); padding-top:11px; }
+
+body.dark{ --paper:#13100B; --paper-2:#1B1610; --ink:#B6AB94; --ink-soft:#7E7461;
+  --line:rgba(198,186,160,0.14); --line-soft:rgba(198,186,160,0.07); --brass:#8A6C34; --brass-deep:#C0A461;
+  --lume:#CDE9A0; --lume-bright:#CDE9A0; --dial:#0E0B07; --day:#221C12; --night:#080A10; --plate:#17130F; }
+body.dark .hand-h, body.dark .hand-m{ fill:#8E836E; }
+body.dark .hand-lume{ fill:var(--lume); filter:drop-shadow(0 0 5px color-mix(in srgb,var(--lume) 70%,transparent)); }
+body.dark .hr-txt{ fill:#8a8069; } body.dark .hr-txt.on-night{ fill:#6f7788; }
+body.dark .btn{ color:var(--ink); }
+.embedded #darkBtn{ display:none; }
+.embedded .controls{ grid-template-columns:minmax(0,1fr) auto auto; }
+@media(max-width:560px){
+  .controls,.embedded .controls{ grid-template-columns:1fr 1fr; }
+  .readout{ grid-column:1/-1; }
+  .btn{ width:100%; }
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1 id="title">A világóra működés közben</h1>
+  <p class="sub" id="sub">Ez Louis Cottier 1931-es elrendezése, valós idővel. Kattints bármelyik városra: az a tizenkettes pozícióba fordul, és onnantól a számlap egyszerre mutatja, hány óra van a bolygó minden zónájában. A világos szakaszon nappal van, a sötétkéken éjszaka.</p>
+
+  <svg class="dial" id="dial" viewBox="0 0 460 460" role="img" aria-label="Interaktív világóra huszonnégy időzónával">
+    <defs>
+      <linearGradient id="brassG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9ba79"/><stop offset="1" stop-color="#5c4720"/></linearGradient>
+    </defs>
+
+    <circle class="case" cx="230" cy="230" r="222"/>
+    <circle class="case-in" cx="230" cy="230" r="212"/>
+    <circle class="face" cx="230" cy="230" r="210"/>
+
+    <!-- city ring (rotates so the chosen city sits at 12) -->
+    <g id="cityRing"></g>
+
+    <!-- 24-hour ring (rotates counterclockwise with time) -->
+    <g id="hourRing"></g>
+
+    <!-- centre: stylised globe -->
+    <g id="globe">
+      <circle class="globe-o" cx="230" cy="230" r="96"/>
+      <circle class="globe" cx="230" cy="230" r="72"/>
+      <circle class="globe" cx="230" cy="230" r="42"/>
+      <line class="globe" x1="134" y1="230" x2="326" y2="230"/>
+      <ellipse class="globe" cx="230" cy="230" rx="34" ry="96"/>
+      <ellipse class="globe" cx="230" cy="230" rx="66" ry="96"/>
+      <line class="globe" x1="230" y1="134" x2="230" y2="326"/>
+    </g>
+    <text class="brandtxt" x="230" y="176" text-anchor="middle">LUME</text>
+
+    <!-- fixed marker at 12 -->
+    <path class="marker" d="M230 108 l -7 -13 l 14 0 z"/>
+
+    <!-- hands: local time of the selected city -->
+    <g id="hourHand"><rect class="hand-h" x="226" y="150" width="8" height="86" rx="4"/><rect class="hand-lume" x="226.5" y="152" width="7" height="30" rx="3.5"/></g>
+    <g id="minHand"><rect class="hand-m" x="227.5" y="118" width="5" height="118" rx="2.5"/><rect class="hand-lume" x="228" y="120" width="4" height="34" rx="2"/></g>
+    <g id="secHand"><line class="hand-s" x1="230" y1="126" x2="230" y2="252"/></g>
+    <circle class="cap" cx="230" cy="230" r="6"/>
+  </svg>
+
+  <div class="controls">
+    <div class="readout" id="readout">Budapest &middot; 00:00</div>
+    <button class="btn" id="prevBtn">Nyugatra</button>
+    <button class="btn" id="nextBtn">Keletre</button>
+    <button class="btn" id="darkBtn">Lámpa le</button>
+  </div>
+  <p class="hintline" id="hint">Válassz egy várost a számlapon.</p>
+
+  <div class="legend">
+    <span><i class="sw d"></i><span id="dayLabel">Nappal</span></span>
+    <span><i class="sw n"></i><span id="nightLabel">Éjszaka</span></span>
+  </div>
+  <p class="note" id="note">Sematikus, működési modell, valós idővel. Nyári időszámítást és félórás eltolású zónákat szándékosan nem kezel, pontosan úgy, ahogy egy klasszikus világóra sem.</p>
+</div>
+
+<script>
+(function(){
+  var LANG=(new URLSearchParams(location.search).get('lang')==='en')?'en':'hu';
+  var UI={
+    hu:{
+      title:'A világóra működés közben',
+      pageTitle:'A világóra működés közben',
+      sub:'Ez Louis Cottier 1931-es elrendezése, valós idővel. Kattints bármelyik városra: az a tizenkettes pozícióba fordul, és onnantól a számlap egyszerre mutatja, hány óra van a bolygó minden zónájában. A világos szakaszon nappal van, a sötétkéken éjszaka.',
+      aria:'Interaktív világóra huszonnégy időzónával',
+      west:'Nyugatra', east:'Keletre', lightsOff:'Lámpa le', lightsOn:'Lámpa fel',
+      choose:'Válassz egy várost a számlapon.', day:'Nappal', night:'Éjszaka',
+      now:function(ny,tokyo){ return 'Épp most: New York '+ny+', Tokió '+tokyo+'. Kattints bármelyik városra a számlapon.'; },
+      note:'Sematikus, működési modell, valós idővel. Nyári időszámítást és félórás eltolású zónákat szándékosan nem kezel, pontosan úgy, ahogy egy klasszikus világóra sem.'
+    },
+    en:{
+      title:'The world timer in motion',
+      pageTitle:'The world timer in motion',
+      sub:'Louis Cottier’s 1931 layout, running on real time. Choose any city: it turns to twelve o’clock and the dial then shows the hour in every zone at once. The light section means day; the dark blue section means night.',
+      aria:'Interactive world timer with twenty-four time zones',
+      west:'Westward', east:'Eastward', lightsOff:'Lights off', lightsOn:'Lights on',
+      choose:'Choose a city on the dial.', day:'Day', night:'Night',
+      now:function(ny,tokyo){ return 'Right now: New York '+ny+', Tokyo '+tokyo+'. Choose any city on the dial.'; },
+      note:'A schematic working model using real time. Daylight saving and half-hour offsets are deliberately omitted, just as they are on a classic world timer.'
+    }
+  };
+  var T=UI[LANG];
+  var NS="http://www.w3.org/2000/svg";
+  var CX=230, CY=230;
+  var R_CITY=192, R_HR_OUT=170, R_HR_IN=142;
+
+  // 24 reference cities, whole-hour UTC offsets
+  var CITIES=[
+    {hu:"MIDWAY",en:"MIDWAY",o:-11},{hu:"HONOLULU",en:"HONOLULU",o:-10},{hu:"ANCHORAGE",en:"ANCHORAGE",o:-9},{hu:"LOS ANGELES",en:"LOS ANGELES",o:-8},
+    {hu:"DENVER",en:"DENVER",o:-7},{hu:"MEXIKÓ",en:"MEXICO CITY",o:-6},{hu:"NEW YORK",en:"NEW YORK",o:-5},{hu:"CARACAS",en:"CARACAS",o:-4},
+    {hu:"RIO",en:"RIO",o:-3},{hu:"D.GEORGIA",en:"S.GEORGIA",o:-2},{hu:"AZORI",en:"AZORES",o:-1},{hu:"LONDON",en:"LONDON",o:0},
+    {hu:"BUDAPEST",en:"BUDAPEST",o:1},{hu:"ATHÉN",en:"ATHENS",o:2},{hu:"MOSZKVA",en:"MOSCOW",o:3},{hu:"DUBAJ",en:"DUBAI",o:4},
+    {hu:"KARACSI",en:"KARACHI",o:5},{hu:"DAKKA",en:"DHAKA",o:6},{hu:"BANGKOK",en:"BANGKOK",o:7},{hu:"HONGKONG",en:"HONG KONG",o:8},
+    {hu:"TOKIÓ",en:"TOKYO",o:9},{hu:"SYDNEY",en:"SYDNEY",o:10},{hu:"NOUMÉA",en:"NOUMEA",o:11},{hu:"AUCKLAND",en:"AUCKLAND",o:12}
+  ];
+  var sel=12; // Budapest
+
+  var cityRing=document.getElementById('cityRing'), hourRing=document.getElementById('hourRing');
+  var readout=document.getElementById('readout'), hintEl=document.getElementById('hint');
+  var hourHand=document.getElementById('hourHand'), minHand=document.getElementById('minHand'), secHand=document.getElementById('secHand');
+  function cityName(city){ return city[LANG]; }
+
+  document.documentElement.lang=LANG;
+  document.title=T.pageTitle;
+  document.getElementById('title').textContent=T.title;
+  document.getElementById('sub').textContent=T.sub;
+  document.getElementById('dial').setAttribute('aria-label',T.aria);
+  document.getElementById('prevBtn').textContent=T.west;
+  document.getElementById('nextBtn').textContent=T.east;
+  document.getElementById('darkBtn').textContent=T.lightsOff;
+  hintEl.textContent=T.choose;
+  document.getElementById('dayLabel').textContent=T.day;
+  document.getElementById('nightLabel').textContent=T.night;
+  document.getElementById('note').textContent=T.note;
+
+  function pol(r,degClockFromTop){ var a=(degClockFromTop-90)*Math.PI/180; return [CX+r*Math.cos(a), CY+r*Math.sin(a)]; }
+  function arcPath(rOut,rIn,a0,a1){
+    var p0=pol(rOut,a0), p1=pol(rOut,a1), p2=pol(rIn,a1), p3=pol(rIn,a0);
+    var large=((a1-a0)%360+360)%360 > 180 ? 1 : 0;
+    return "M "+p0[0].toFixed(2)+" "+p0[1].toFixed(2)+
+           " A "+rOut+" "+rOut+" 0 "+large+" 1 "+p1[0].toFixed(2)+" "+p1[1].toFixed(2)+
+           " L "+p2[0].toFixed(2)+" "+p2[1].toFixed(2)+
+           " A "+rIn+" "+rIn+" 0 "+large+" 0 "+p3[0].toFixed(2)+" "+p3[1].toFixed(2)+" Z";
+  }
+
+  // ---- build 24-hour ring (hours printed clockwise 0..23) ----
+  // day band covers printed hours 6..18, night the rest
+  var dayBand=document.createElementNS(NS,'path');
+  dayBand.setAttribute('class','ring-day'); dayBand.setAttribute('d',arcPath(R_HR_OUT,R_HR_IN,6*15,18*15));
+  hourRing.appendChild(dayBand);
+  var nightBand=document.createElementNS(NS,'path');
+  nightBand.setAttribute('class','ring-night'); nightBand.setAttribute('d',arcPath(R_HR_OUT,R_HR_IN,18*15,6*15+360));
+  hourRing.appendChild(nightBand);
+
+  for(var h=0;h<24;h++){
+    var ang=h*15;
+    var p=pol((R_HR_OUT+R_HR_IN)/2, ang);
+    var t=document.createElementNS(NS,'text');
+    var isNight=(h<6||h>=18);
+    t.setAttribute('class','hr-txt'+(isNight?' on-night':''));
+    t.setAttribute('x',p[0].toFixed(2)); t.setAttribute('y',p[1].toFixed(2));
+    t.setAttribute('text-anchor','middle'); t.setAttribute('dominant-baseline','middle');
+    var flip = (ang>90 && ang<270);
+    t.setAttribute('transform','rotate('+(flip?ang+180:ang)+' '+p[0].toFixed(2)+' '+p[1].toFixed(2)+')');
+    t.textContent = (h<10?'0':'')+h;
+    hourRing.appendChild(t);
+    var tp0=pol(R_HR_OUT,ang+7.5), tp1=pol(R_HR_IN,ang+7.5);
+    var tk=document.createElementNS(NS,'line'); tk.setAttribute('class','hr-tick');
+    tk.setAttribute('x1',tp0[0].toFixed(2)); tk.setAttribute('y1',tp0[1].toFixed(2));
+    tk.setAttribute('x2',tp1[0].toFixed(2)); tk.setAttribute('y2',tp1[1].toFixed(2));
+    hourRing.appendChild(tk);
+  }
+
+  // ---- build city ring ----
+  var cityEls=[];
+  CITIES.forEach(function(c,i){
+    var ang=i*15;
+    var p=pol(R_CITY,ang), pd=pol(R_CITY-15,ang), ph=pol(R_CITY-6,ang);
+    var g=document.createElementNS(NS,'g');
+
+    var dot=document.createElementNS(NS,'circle');
+    dot.setAttribute('class','city-dot'); dot.setAttribute('cx',pd[0].toFixed(2)); dot.setAttribute('cy',pd[1].toFixed(2)); dot.setAttribute('r',1.8);
+    g.appendChild(dot);
+
+    var t=document.createElementNS(NS,'text');
+    t.setAttribute('class','city-txt'); t.setAttribute('x',p[0].toFixed(2)); t.setAttribute('y',p[1].toFixed(2));
+    t.setAttribute('text-anchor','middle'); t.setAttribute('dominant-baseline','middle');
+    var flip=(ang>90 && ang<270);
+    t.setAttribute('transform','rotate('+(flip?ang+180:ang)+' '+p[0].toFixed(2)+' '+p[1].toFixed(2)+')');
+    t.textContent=cityName(c);
+    g.appendChild(t);
+
+    var hit=document.createElementNS(NS,'circle');
+    hit.setAttribute('class','city-hit'); hit.setAttribute('cx',ph[0].toFixed(2)); hit.setAttribute('cy',ph[1].toFixed(2)); hit.setAttribute('r',17);
+    g.appendChild(hit);
+
+    function choose(){ sel=i; render(); }
+    hit.addEventListener('click',choose); t.addEventListener('click',choose);
+
+    cityRing.appendChild(g);
+    cityEls.push({t:t,dot:dot});
+  });
+
+  function two(n){ return (n<10?'0':'')+n; }
+
+  function render(){
+    var now=new Date();
+    var utcMs = now.getTime() + now.getTimezoneOffset()*60000;
+    var off = CITIES[sel].o;
+    var loc = new Date(utcMs + off*3600000);
+    var hh=loc.getHours(), mm=loc.getMinutes(), ss=loc.getSeconds(), ms=loc.getMilliseconds();
+    var decH = hh + mm/60 + ss/3600;
+
+    // city ring: selected city to 12 o'clock
+    cityRing.setAttribute('transform','rotate('+(-sel*15)+' '+CX+' '+CY+')');
+    // 24h ring: rotates counterclockwise with local time of the selected city
+    hourRing.setAttribute('transform','rotate('+(-decH*15).toFixed(3)+' '+CX+' '+CY+')');
+
+    // hands
+    hourHand.setAttribute('transform','rotate('+(((hh%12)+mm/60)*30).toFixed(2)+' '+CX+' '+CY+')');
+    minHand.setAttribute('transform','rotate('+((mm+ss/60)*6).toFixed(2)+' '+CX+' '+CY+')');
+    secHand.setAttribute('transform','rotate('+((ss+ms/1000)*6).toFixed(2)+' '+CX+' '+CY+')');
+
+    cityEls.forEach(function(e,i){
+      e.t.classList.toggle('sel', i===sel);
+      e.dot.classList.toggle('sel', i===sel);
+    });
+
+    readout.textContent = cityName(CITIES[sel])+' \u00b7 '+two(hh)+':'+two(mm);
+    // a couple of other zones, for context
+    function timeIn(idx){ var d=new Date(utcMs + CITIES[idx].o*3600000); return two(d.getHours())+':'+two(d.getMinutes()); }
+    var iNY=CITIES.findIndex(function(c){return c.o===-5;});
+    var iTK=CITIES.findIndex(function(c){return c.o===9;});
+    hintEl.textContent=T.now(timeIn(iNY),timeIn(iTK));
+  }
+
+  document.getElementById('nextBtn').addEventListener('click',function(){ sel=(sel+1)%24; render(); });
+  document.getElementById('prevBtn').addEventListener('click',function(){ sel=(sel+23)%24; render(); });
+  var darkBtn=document.getElementById('darkBtn');
+  function setDark(on){
+    document.body.classList.toggle('dark',on);
+    darkBtn.textContent=on?T.lightsOn:T.lightsOff;
+  }
+  darkBtn.addEventListener('click',function(){ setDark(!document.body.classList.contains('dark')); });
+
+  render();
+  setInterval(render, 200);
+
+  var embedded=window.parent!==window;
+  if(embedded){
+    document.body.classList.add('embedded');
+    window.addEventListener('message',function(e){
+      if(e.source!==window.parent) return;
+      if(!e.data||e.data.type!=='lume:lights') return;
+      setDark(!!e.data.dark);
+    });
+
+    var lastH=0;
+    function reportHeight(){
+      var h=Math.ceil(document.querySelector('.card').getBoundingClientRect().height)+2;
+      if(h!==lastH){ lastH=h; window.parent.postMessage({type:'lume:height',height:h},'*'); }
+    }
+    new ResizeObserver(reportHeight).observe(document.querySelector('.card'));
+    window.addEventListener('load',reportHeight);
+    reportHeight();
+    window.parent.postMessage({type:'lume:ready'},'*');
+  }
+})();
+</script>
+</body>
+</html>
