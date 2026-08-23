@@ -3,7 +3,7 @@ title: "Baltic, and the watches a father left behind"
 description: "Etienne Malec lost his father when he was five. At sixteen he opened a suitcase filled with his watches, then turned that inheritance into one of France's best-known microbrands."
 seoTitle: "Baltic Watches: The Story Behind the French Microbrand"
 seoDescription: "How Etienne Malec turned his father's watch collection into Baltic, from Kickstarter and the Aquascaphe to the micro-rotor MR01."
-date: 2026-08-23
+date: 2026-08-24
 column: 'in-hand'
 lang: 'en'
 translationKey: 'baltic'

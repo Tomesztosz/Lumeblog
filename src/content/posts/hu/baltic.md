@@ -3,7 +3,7 @@ title: "A Baltic, és az órák, amelyeket egy apa hagyott hátra"
 description: "Etienne Malec ötévesen elveszítette az édesapját. Tizenhat évesen kinyitotta az óráival teli bőröndöt, majd az örökségből felépítette az egyik legismertebb francia microbrandet."
 seoTitle: "Baltic órák: egy francia microbrand története"
 seoDescription: "Etienne Malec apai örökségből építette fel a Balticot. A Kickstartertől az Aquascaphe és az MR01 modellekig követjük a márka történetét."
-date: 2026-08-23
+date: 2026-08-24
 column: 'in-hand'
 lang: 'hu'
 translationKey: 'baltic'
