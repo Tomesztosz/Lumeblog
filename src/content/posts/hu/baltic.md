@@ -9,6 +9,11 @@ lang: 'hu'
 translationKey: 'baltic'
 minutes: 12
 draft: false
+cover:
+  src: '../_images/baltic-hero-hu.png'
+  alt: 'Etienne Malec portréja a Baltic márkanévvel és Az órák, amelyeket egy apa hagyott hátra felirattal'
+  focus: 'center center'
+  credit: 'Lume — saját összeállítás; portré: Baltic / The Smalltalk; AI-segítséggel módosítva'
 sources:
   - label: "Baltic: Our history, Etienne Malec édesapjának gyűjteménye, a napló, a név és a márka célja"
     url: "https://baltic-watches.com/en/about-us"

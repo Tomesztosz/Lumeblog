@@ -9,6 +9,11 @@ lang: 'en'
 translationKey: 'baltic'
 minutes: 12
 draft: false
+cover:
+  src: '../_images/baltic-hero-en.png'
+  alt: 'Portrait of Etienne Malec with the Baltic name and The watches a father left behind subtitle'
+  focus: 'center center'
+  credit: 'Lume — original composition; portrait: Baltic / The Smalltalk'
 sources:
   - label: "Baltic: Our history, Etienne Malec's father, the collection, journal, name and company aims"
     url: "https://baltic-watches.com/en/about-us"
