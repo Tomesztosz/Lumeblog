@@ -102,8 +102,8 @@ Ettől még nem lesz francia manufaktúra. Viszont tisztább képet ad arról, m
 
 Az egyik egyetlen példányban készült az Only Watch jótékonysági aukcióra. Egy 36 milliméteres, egygombos pulzusmérő kronográf volt, felújított, 1940-es évekbeli Venus 150 szerkezettel. A 12 000 és 18 000 svájci frank közé becsült órát végül 50 000 frankért ütötték le. A Baltic négy évvel a Kickstarter után ugyanabban az aukciós katalógusban szerepelt, mint a Patek Philippe, az F.P. Journe és az Audemars Piguet.
 
-![A Baltic Only Watch 2021 egygombos kronográfja](../_images/baltic-only-watch-2021.jpg)
-*A Baltic egyetlen példányban készült Only Watch 2021 kronográfja. Fotó: [Baltic](https://baltic-watches.com/en/archives/onlywatch-2021).*
+![A Baltic Only Watch 2021 egygombos kronográfja](../_images/baltic-only-watch-2021-transparent.png)
+*A Baltic egyetlen példányban készült Only Watch 2021 kronográfja. Fotó: [Baltic](https://baltic-watches.com/en/archives/onlywatch-2021), AI-segítséggel módosítva.*
 
 A másik az MR01 volt. Egy 36 milliméteres öltönyóra nagy Breguet-számokkal, levélmutatókkal és hét és nyolc óra közé csúsztatott kis másodperccel. Hátul pedig ott volt az, amit ebben az árban szinte senki nem kínált: egy automata mikrorotoros szerkezet.
 
@@ -112,8 +112,8 @@ A másik az MR01 volt. Egy 36 milliméteres öltönyóra nagy Breguet-számokkal
 
 A mikrorotor nem a szerkezet fölött forog, hanem belesüllyed annak síkjába. Ettől az óra vékonyabb lehet, és a hátlapon szinte az egész fogaskeréksor látható marad. Az MR-ben dolgozó Hangzhou CAL5000A kínai, iparilag díszített kaliber, körülbelül 42 órás járástartalékkal. Nem haute horlogerie, de lehetővé tette, hogy egy addig ötszámjegyű órákhoz társított látvány hatszáz euró körüli szinten megjelenjen.
 
-![A Baltic MR01 mikrorotoros szerkezete](../_images/baltic-mr01-back.jpg)
-*A Hangzhou CAL5000A mikrorotoros szerkezet az MR hátlapja felől. Fotó: [Baltic](https://baltic-watches.com/en/products/mr-classic-salmon).*
+![A Baltic MR01 mikrorotoros szerkezete](../_images/baltic-mr01-back-transparent.png)
+*A Hangzhou CAL5000A mikrorotoros szerkezet az MR hátlapja felől. Fotó: [Baltic](https://baltic-watches.com/en/products/mr-classic-salmon), AI-segítséggel módosítva.*
 
 Az MR nem másol le egyetlen konkrét Calatravát. Az arányok ismerősek, de a túlméretezett számok és a félrehúzott kis másodperc adnak neki saját arcot. Ez az a határ, ahol a Baltic a vintage idézésből valódi formanyelvbe lépett át.
 

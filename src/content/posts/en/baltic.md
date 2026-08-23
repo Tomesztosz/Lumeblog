@@ -102,8 +102,8 @@ In 2021 Baltic unveiled two watches that changed its place among microbrands.
 
 The first was a unique piece for the Only Watch charity auction. It was a 36mm monopusher pulsometer chronograph powered by a restored Venus 150 from the 1940s. Estimated at CHF 12,000 to 18,000, it sold for CHF 50,000. Four years after Kickstarter, Baltic appeared in the same auction catalogue as Patek Philippe, F.P. Journe and Audemars Piguet.
 
-![The Baltic Only Watch 2021 monopusher chronograph](../_images/baltic-only-watch-2021.jpg)
-*Baltic's unique Only Watch 2021 chronograph. Photo: [Baltic](https://baltic-watches.com/en/archives/onlywatch-2021).*
+![The Baltic Only Watch 2021 monopusher chronograph](../_images/baltic-only-watch-2021-transparent.png)
+*Baltic's unique Only Watch 2021 chronograph. Photo: [Baltic](https://baltic-watches.com/en/archives/onlywatch-2021), modified with AI assistance.*
 
 The other was the MR01. A 36mm dress watch with large Breguet numerals, leaf hands and a small seconds display shifted between seven and eight o'clock. On the back was something almost no one offered at this price: an automatic micro-rotor movement.
 
@@ -112,8 +112,8 @@ The other was the MR01. A 36mm dress watch with large Breguet numerals, leaf han
 
 A micro-rotor sits within the plane of a movement rather than above it. That allows a watch to be thinner and leaves almost the entire gear train visible through the back. The Hangzhou CAL5000A inside the MR is a Chinese, industrially decorated calibre with about 42 hours of power reserve. It is not haute horlogerie, but it brought a view previously associated with five-figure watches to a price around €600.
 
-![The micro-rotor movement inside the Baltic MR01](../_images/baltic-mr01-back.jpg)
-*The Hangzhou CAL5000A micro-rotor movement seen through the back of the MR. Photo: [Baltic](https://baltic-watches.com/en/products/mr-classic-salmon).*
+![The micro-rotor movement inside the Baltic MR01](../_images/baltic-mr01-back-transparent.png)
+*The Hangzhou CAL5000A micro-rotor movement seen through the back of the MR. Photo: [Baltic](https://baltic-watches.com/en/products/mr-classic-salmon), modified with AI assistance.*
 
 The MR does not copy one particular Calatrava. Its proportions are familiar, but the oversized numerals and displaced seconds give it an identity of its own. This was the point at which Baltic moved from quoting vintage watches to developing a recognisable language.
 
