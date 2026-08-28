@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hogyan védi meg a G-Shock a benne lévő órát?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E6DAC1;--paper-2:#EFE6D2;--paper-3:#F4ECD9;--ink:#2A231D;--ink-soft:#6A5E50;
+  --line:rgba(42,35,29,.17);--line-soft:rgba(42,35,29,.09);--brass:#8F6E31;
+  --brass-deep:#6F5424;--lume:#8FA857;--danger:#B75448;--case:#3A332C;
+  --case-hi:#5A5045;--module:#D6C7A9;--floor:#9E8D70;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:14px;background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+.card{max-width:800px;margin:0 auto;background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:20px 22px 17px;overflow:hidden}
+h1{font-family:'Fraunces',Georgia,serif;font-size:24px;line-height:1.1;font-weight:600;letter-spacing:-.015em;margin:0 0 5px}
+.sub{font-size:14px;line-height:1.42;color:var(--ink-soft);max-width:72ch;margin:0 0 12px}
+.key{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-bottom:12px;background:color-mix(in srgb,var(--paper-3) 70%,transparent)}
+.key-item{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center;padding:9px 10px;min-width:0}
+.key-item+.key-item{border-left:1px solid var(--line)}
+.key-icon{width:25px;height:25px;display:grid;place-items:center;font:600 11px 'IBM Plex Mono',monospace;border-radius:4px}
+.key-icon.case{border:5px solid var(--case);background:transparent}
+.key-icon.core{border:2px solid var(--brass-deep);background:var(--module)}
+.key-icon.cushion{background:var(--lume);border-radius:8px 2px}
+.key-copy b{display:block;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1px}
+.key-copy span{display:block;font-size:11.5px;line-height:1.25;color:var(--ink-soft)}
+.toolbar{display:flex;gap:10px 18px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin-bottom:8px}
+.control-block{display:grid;gap:5px;min-width:0}
+.group{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft)}
+button{font:600 12.5px 'Hanken Grotesk',sans-serif;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:3px;padding:7px 10px;cursor:pointer;transition:.18s ease}
+button:hover{border-color:var(--brass);color:var(--brass-deep)}
+button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+button.active{background:var(--ink);border-color:var(--ink);color:var(--paper-2)}
+.theme{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase}
+.mode-note{display:flex;align-items:flex-start;gap:8px;min-height:39px;padding:7px 10px;margin-bottom:8px;border-left:3px solid var(--lume);background:var(--line-soft);font-size:12px;line-height:1.35;color:var(--ink-soft)}
+.mode-note.rigid-note{border-left-color:var(--danger)}
+.mode-note b{color:var(--ink);white-space:nowrap}
+.stage{height:300px;border:1px solid var(--line);border-radius:5px;position:relative;overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb,var(--paper-3) 84%,white),var(--paper))}
+.view-tag{position:absolute;right:12px;top:10px;font:9px 'IBM Plex Mono',monospace;letter-spacing:.11em;color:var(--ink-soft);text-transform:uppercase;background:color-mix(in srgb,var(--paper-3) 80%,transparent);padding:4px 6px;border:1px solid var(--line);border-radius:2px;z-index:3}
+.height-scale{position:absolute;inset:18px auto 43px 17px;width:45px;border-left:1px solid var(--line)}
+.tick{position:absolute;left:-1px;width:9px;border-top:1px solid var(--line)}
+.tick span{position:absolute;left:14px;top:-7px;font:9px 'IBM Plex Mono',monospace;color:var(--ink-soft);white-space:nowrap}
+.tick.t10{top:0}.tick.t5{top:45%}.tick.t1{top:78%}
+.drop-line{position:absolute;left:70px;right:14px;border-top:1px dashed var(--line);transition:top .25s}
+.drop-line span{position:absolute;left:5px;top:-16px;font:9px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--ink-soft);text-transform:uppercase}
+.watch{position:absolute;left:55%;top:18px;width:250px;height:176px;transform:translateX(-50%);will-change:transform}
+.shell{position:absolute;left:22px;top:8px;width:206px;height:156px;border:13px solid var(--case);border-radius:28px;box-shadow:inset 0 0 0 3px var(--case-hi),0 8px 13px rgba(42,35,29,.12);background:color-mix(in srgb,var(--paper) 72%,transparent)}
+.bezel{position:absolute;inset:-8px;border:5px solid var(--case-hi);border-radius:29px;pointer-events:none}
+.shell-name{position:absolute;left:50%;top:6px;transform:translateX(-50%);z-index:4;font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.08em;white-space:nowrap;color:var(--paper-2);background:var(--case);padding:3px 5px;border-radius:2px}
+.glass{position:absolute;left:57px;top:31px;width:136px;height:93px;border:1px dashed color-mix(in srgb,var(--brass) 70%,transparent);border-radius:9px;opacity:.7}
+.module{position:absolute;left:64px;top:41px;width:122px;height:76px;border:2px solid var(--brass-deep);border-radius:7px;background:var(--module);box-shadow:0 2px 7px rgba(42,35,29,.18);display:grid;place-items:center;will-change:transform,filter;z-index:2}
+.module-face{width:72px;height:34px;border:1px solid var(--brass);background:repeating-linear-gradient(0deg,transparent 0 8px,color-mix(in srgb,var(--brass) 28%,transparent) 8px 9px);border-radius:3px;position:relative}
+.module-face::before,.module-face::after{content:"";position:absolute;border:1px solid var(--brass);border-radius:50%}
+.module-face::before{width:11px;height:11px;left:7px;top:10px}.module-face::after{width:15px;height:15px;right:7px;top:8px}
+.module span{position:absolute;left:50%;top:5px;transform:translateX(-50%);font:600 7.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--brass-deep);white-space:nowrap}
+.pad{position:absolute;background:var(--lume);border-radius:4px;transition:all .25s;z-index:3;box-shadow:0 0 0 1px color-mix(in srgb,var(--lume) 65%,transparent)}
+.p1{left:54px;top:47px;width:10px;height:22px}.p2{right:54px;top:47px;width:10px;height:22px}.p3{left:101px;top:117px;width:48px;height:8px}
+.rigid .pad{background:var(--danger);border-radius:0;box-shadow:none}.rigid .p1{left:49px;width:15px}.rigid .p2{right:49px;width:15px}.rigid .p3{height:12px;top:117px}
+.strap{position:absolute;left:82px;width:86px;height:29px;background:var(--case);border:3px solid var(--case-hi)}
+.strap.top{top:-16px;border-radius:8px 8px 2px 2px}.strap.bottom{top:160px;border-radius:2px 2px 8px 8px}
+.floor{position:absolute;left:0;right:0;bottom:8px;height:9px;background:var(--floor);box-shadow:0 9px 0 color-mix(in srgb,var(--floor) 45%,transparent)}
+.floor::before{content:"";position:absolute;left:0;right:0;top:-1px;border-top:1px solid color-mix(in srgb,var(--ink) 25%,transparent)}
+.floor span{position:absolute;right:12px;top:-15px;font:9px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--ink-soft);text-transform:uppercase}
+.impact-ring{position:absolute;left:55%;bottom:13px;width:230px;height:24px;border:2px solid var(--danger);border-radius:50%;transform:translateX(-50%) scale(.2);opacity:0}
+.impact-ring.go{animation:ring .5s ease-out forwards}
+@keyframes ring{0%{opacity:.7;transform:translateX(-50%) scale(.15)}100%{opacity:0;transform:translateX(-50%) scale(1.2)}}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px 0 0;padding:0;list-style:none}
+.steps li{min-height:28px;display:flex;align-items:center;justify-content:center;text-align:center;padding:5px 7px;border:1px solid var(--line);border-radius:3px;font:9px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);transition:.2s}
+.steps li.active{border-color:var(--brass);color:var(--ink);background:color-mix(in srgb,var(--brass) 12%,transparent)}
+.steps li.done{border-color:var(--lume);color:var(--ink);background:color-mix(in srgb,var(--lume) 13%,transparent)}
+.readouts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:end;margin-top:10px}
+.meter{min-width:0}
+.meter-head{display:flex;justify-content:space-between;gap:8px;font:9.5px 'IBM Plex Mono',monospace;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:5px;text-transform:uppercase}
+.meter-head b{color:var(--ink)}
+.track{height:9px;background:var(--line-soft);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.fill{height:100%;width:0;border-radius:999px;transition:width .55s ease;background:var(--danger)}
+#moduleFill{background:var(--lume)}
+.drop{height:38px;padding:0 17px;background:var(--ink);color:var(--paper-2);border-color:var(--ink)}
+.drop:hover{background:var(--brass-deep);border-color:var(--brass-deep);color:#fff}
+.result{min-height:55px;margin:9px 0 0;padding:9px 10px 0;border-top:1px solid var(--line-soft);font-size:12px;line-height:1.38;color:var(--ink-soft)}
+.result strong{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
+.result .note{display:block;margin-top:3px;font:9px 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--ink-soft)}
+body.dark{--paper:#13100B;--paper-2:#1B1610;--paper-3:#211B13;--ink:#B6AB94;--ink-soft:#817764;--line:rgba(198,186,160,.16);--line-soft:rgba(198,186,160,.07);--brass:#9A7A3C;--brass-deep:#C0A461;--lume:#B6D77E;--danger:#D86758;--case:#0D0C0A;--case-hi:#453E34;--module:#292217;--floor:#514735}
+body.dark .stage{background:linear-gradient(180deg,#17130e,#0d0b08)}
+@media(max-width:640px){
+  body{padding:7px}.card{padding:15px 12px 13px}h1{font-size:21px}.sub{font-size:12.5px}
+  .key{grid-template-columns:1fr}.key-item{padding:6px 8px;grid-template-columns:28px minmax(0,1fr)}.key-item+.key-item{border-left:0;border-top:1px solid var(--line)}
+  .key-copy span{font-size:10.5px}.toolbar{align-items:flex-start}.toolbar .control-block{width:100%}.mode-note{display:block;font-size:11px}.mode-note b{display:block;margin-bottom:2px;white-space:normal}
+  .stage{height:290px}.watch{left:58%;transform:translateX(-50%) scale(.84);transform-origin:center top}
+  .view-tag{font-size:7.5px}.readouts{grid-template-columns:1fr 1fr}.drop{grid-column:1/-1}.steps li{font-size:7.5px;padding:4px}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<main class="card">
+  <h1 id="title"></h1>
+  <p class="sub" id="subtitle"></p>
+
+  <section class="key" aria-label="A rajz jelmagyarázata">
+    <div class="key-item"><i class="key-icon case" aria-hidden="true"></i><div class="key-copy"><b id="keyCaseTitle"></b><span id="keyCaseText"></span></div></div>
+    <div class="key-item"><i class="key-icon core" aria-hidden="true">IC</i><div class="key-copy"><b id="keyCoreTitle"></b><span id="keyCoreText"></span></div></div>
+    <div class="key-item"><i class="key-icon cushion" aria-hidden="true"></i><div class="key-copy"><b id="keyPadTitle"></b><span id="keyPadText"></span></div></div>
+  </section>
+
+  <div class="toolbar">
+    <div class="control-block">
+      <span class="label" id="heightLabel"></span>
+      <div class="group" aria-label="Drop height">
+        <button class="height active" data-height="1">1 m</button>
+        <button class="height" data-height="5">5 m</button>
+        <button class="height" data-height="10">10 m</button>
+      </div>
+    </div>
+    <div class="control-block">
+      <span class="label" id="modeLabel"></span>
+      <div class="group" aria-label="Internal construction">
+        <button class="mode active" data-mode="floating" id="floatingBtn"></button>
+        <button class="mode" data-mode="rigid" id="rigidBtn"></button>
+        <button class="theme" id="themeBtn"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mode-note" id="modeNote"><b id="modeNoteTitle"></b><span id="modeNoteText"></span></div>
+
+  <section class="stage" id="stage" aria-label="Schematic drop test">
+    <span class="view-tag" id="viewTag"></span>
+    <div class="height-scale" aria-hidden="true">
+      <div class="tick t10"><span>10 m</span></div>
+      <div class="tick t5"><span>5 m</span></div>
+      <div class="tick t1"><span>1 m</span></div>
+    </div>
+    <div class="drop-line" id="dropLine"><span id="startLabel"></span></div>
+    <div class="watch" id="watch">
+      <div class="strap top"></div>
+      <div class="shell"><div class="bezel"></div></div>
+      <span class="shell-name" id="shellName"></span>
+      <div class="glass"></div>
+      <div class="pad p1"></div><div class="pad p2"></div><div class="pad p3"></div>
+      <div class="module" id="module"><span id="moduleLabel"></span><div class="module-face"></div></div>
+      <div class="strap bottom"></div>
+    </div>
+    <div class="impact-ring" id="ring"></div>
+    <div class="floor"><span id="floorLabel"></span></div>
+  </section>
+
+  <ol class="steps" aria-label="Az ejtés három lépése">
+    <li id="stepFall"></li><li id="stepCase"></li><li id="stepProtect"></li>
+  </ol>
+
+  <div class="readouts">
+    <div class="meter">
+      <div class="meter-head"><span id="caseLabel"></span><b id="caseValue">0</b></div>
+      <div class="track"><div class="fill" id="caseFill"></div></div>
+    </div>
+    <div class="meter">
+      <div class="meter-head"><span id="loadLabel"></span><b id="moduleValue">0</b></div>
+      <div class="track"><div class="fill" id="moduleFill"></div></div>
+    </div>
+    <button class="drop" id="dropBtn"></button>
+  </div>
+
+  <div class="result" aria-live="polite">
+    <strong id="resultTitle"></strong>
+    <span id="resultText"></span>
+    <span class="note" id="scaleNote"></span>
+  </div>
+</main>
+
+<script>
+(function(){
+  var params=new URLSearchParams(location.search);
+  var LANG=(params.get('lang')==='en')?'en':'hu';
+  var T={
+    hu:{
+      title:'Hogyan védi meg a G-Shock a benne lévő órát?',
+      subtitle:'A rajz egy karóra belsejét mutatja felülről, a számlap nélkül. Ejtéskor először a külső tok ér földet. A kérdés az, mennyi jut el ebből a belső óraszerkezetig.',
+      keyCaseTitle:'1. Külső védőtok',keyCaseText:'Ez találkozik először a talajjal.',
+      keyCoreTitle:'2. Belső óraszerkezet',keyCoreText:'Ez méri és mutatja az időt. Ezt kell megóvni.',
+      keyPadTitle:'3. Rugalmas támaszok',keyPadText:'Nem engedik, hogy az ütés közvetlenül továbbmenjen.',
+      height:'Milyen magasról essen?',mode:'Milyen legyen belül?',floating:'G-Shock-féle védelem',rigid:'Védelem nélkül',
+      dark:'Lámpa le',light:'Lámpa fel',view:'Az óra belseje, felülnézet',start:'Indulási magasság',
+      shell:'Külső tok',module:'Belső szerkezet',floor:'Talaj',drop:'Ejtés indítása',
+      modeFloatTitle:'Mit látunk?',modeFloatText:'A szerkezet nem ér közvetlenül a tokhoz. A zöld, rugalmas támaszok fogják, ezért egy kicsivel lassabban állhat meg.',
+      modeRigidTitle:'Összehasonlítás:',modeRigidText:'A szerkezetet mereven a tokhoz kötöttük. A piros kapcsolatok szinte közvetlenül továbbadják az ütést.',
+      stepFall:'1. Az óra esik',stepCase:'2. A tok földet ér',stepProtect:'3. A belső rész lassul',
+      outer:'1. A tokot érő ütés',load:'2. Ebből a szerkezetig jut',
+      idleTitle:'Először a külső tok fog földet érni.',idleText:'Nyomd meg az „Ejtés indítása” gombot, majd figyeld meg külön a tokot és a benne lévő szerkezetet.',
+      fallingTitle:'Az óra esik.',fallingText:'A külső tok és a belső szerkezet most még együtt mozog lefelé.',
+      impactTitle:'A külső tok hirtelen megáll.',impactText:'Most dől el, hogy az ütés közvetlenül továbbmegy-e a belső szerkezetre.',
+      floatTitle:'A védelem működik: a szerkezet kisebb ütést kapott.',
+      floatText:'A tok már megállt, de a zöld támaszok engedik, hogy a belső rész valamivel hosszabb idő alatt lassuljon le. Ettől kisebb lesz a terhelés csúcsa.',
+      rigidTitle:'A merev kapcsolat továbbadta az ütés nagy részét.',
+      rigidText:'A belső szerkezet szinte a külső tokkal együtt állt meg. Minél hirtelenebb a megállás, annál nagyobb terhelés éri az alkatrészeket.',
+      unit:' egység',scale:'A számok összehasonlításra szolgáló, szemléltető értékek, nem laboratóriumi g-adatok.'
+    },
+    en:{
+      title:'How does a G-Shock protect the watch inside?',
+      subtitle:'The drawing shows a wristwatch from above with the dial removed. On impact, the outer case reaches the ground first. The question is how much of that impact reaches the timekeeping module inside.',
+      keyCaseTitle:'1. Outer protective case',keyCaseText:'This is the first part to meet the ground.',
+      keyCoreTitle:'2. Timekeeping module',keyCoreText:'This measures and displays the time. It needs protection.',
+      keyPadTitle:'3. Flexible supports',keyPadText:'They stop the impact travelling straight through.',
+      height:'How far should it fall?',mode:'What is inside?',floating:'G-Shock-style protection',rigid:'No protection',
+      dark:'Lights off',light:'Lights on',view:'Inside the watch, top view',start:'Starting height',
+      shell:'Outer case',module:'Timekeeping module',floor:'Ground',drop:'Start the drop',
+      modeFloatTitle:'What are we seeing?',modeFloatText:'The module does not touch the case directly. Green, flexible supports hold it, allowing it to stop slightly more slowly.',
+      modeRigidTitle:'For comparison:',modeRigidText:'The module is fixed rigidly to the case. The red connections pass the impact through almost directly.',
+      stepFall:'1. The watch falls',stepCase:'2. The case hits',stepProtect:'3. The inside slows',
+      outer:'1. Impact on the case',load:'2. Reaching the module',
+      idleTitle:'The outer case will reach the ground first.',idleText:'Press “Start the drop”, then watch the case and the timekeeping module separately.',
+      fallingTitle:'The watch is falling.',fallingText:'The outer case and the module are still travelling down together.',
+      impactTitle:'The outer case stops suddenly.',impactText:'This is where the construction decides whether the impact travels straight into the module.',
+      floatTitle:'The protection worked: the module received a smaller impact.',
+      floatText:'The case has stopped, but the green supports let the module slow down over a slightly longer time. That lowers the peak load.',
+      rigidTitle:'The rigid connection passed on most of the impact.',
+      rigidText:'The module stopped almost together with the outer case. The more sudden the stop, the greater the load on its components.',
+      unit:' units',scale:'The numbers are illustrative comparison values, not laboratory g-force data.'
+    }
+  }[LANG];
+
+  document.documentElement.lang=LANG;
+  var textMap={
+    title:'title',subtitle:'subtitle',keyCaseTitle:'keyCaseTitle',keyCaseText:'keyCaseText',keyCoreTitle:'keyCoreTitle',keyCoreText:'keyCoreText',keyPadTitle:'keyPadTitle',keyPadText:'keyPadText',heightLabel:'height',modeLabel:'mode',floatingBtn:'floating',rigidBtn:'rigid',viewTag:'view',startLabel:'start',shellName:'shell',moduleLabel:'module',floorLabel:'floor',dropBtn:'drop',stepFall:'stepFall',stepCase:'stepCase',stepProtect:'stepProtect',caseLabel:'outer',loadLabel:'load',scaleNote:'scale'
+  };
+  Object.keys(textMap).forEach(function(id){document.getElementById(id).textContent=T[textMap[id]]});
+
+  var watch=document.getElementById('watch'),module=document.getElementById('module'),ring=document.getElementById('ring');
+  var dropLine=document.getElementById('dropLine'),dropBtn=document.getElementById('dropBtn'),themeBtn=document.getElementById('themeBtn');
+  var modeNote=document.getElementById('modeNote'),modeNoteTitle=document.getElementById('modeNoteTitle'),modeNoteText=document.getElementById('modeNoteText');
+  var resultTitle=document.getElementById('resultTitle'),resultText=document.getElementById('resultText');
+  var caseFill=document.getElementById('caseFill'),moduleFill=document.getElementById('moduleFill'),caseValue=document.getElementById('caseValue'),moduleValue=document.getElementById('moduleValue');
+  var steps=[document.getElementById('stepFall'),document.getElementById('stepCase'),document.getElementById('stepProtect')];
+  var requestedHeight=Number(params.get('height'));
+  var height=[1,5,10].indexOf(requestedHeight)>-1?requestedHeight:1;
+  var mode=params.get('mode')==='rigid'?'rigid':'floating',busy=false;
+  var positions={1:{top:63,travel:31,duration:600,impact:34},5:{top:28,travel:66,duration:780,impact:71},10:{top:1,travel:93,duration:960,impact:100}};
+
+  function setThemeLabel(){themeBtn.textContent=document.body.classList.contains('dark')?T.light:T.dark}
+  function setDark(on){document.body.classList.toggle('dark',on);setThemeLabel()}
+  function setSteps(active,doneTo){
+    steps.forEach(function(step,index){step.classList.toggle('active',index===active);step.classList.toggle('done',index<doneTo)});
+  }
+  function setModeNote(){
+    var rigid=mode==='rigid';
+    modeNote.classList.toggle('rigid-note',rigid);
+    modeNoteTitle.textContent=rigid?T.modeRigidTitle:T.modeFloatTitle;
+    modeNoteText.textContent=rigid?T.modeRigidText:T.modeFloatText;
+  }
+  function setResult(title,text){resultTitle.textContent=title;resultText.textContent=text}
+  function prepare(keepResult){
+    var p=positions[height];
+    watch.style.top=p.top+'px';dropLine.style.top=(p.top+8)+'px';watch.classList.toggle('rigid',mode==='rigid');
+    caseFill.style.width='0';moduleFill.style.width='0';caseValue.textContent='0';moduleValue.textContent='0';
+    setSteps(-1,0);setModeNote();
+    if(!keepResult)setResult(T.idleTitle,T.idleText);
+  }
+
+  document.querySelectorAll('.height').forEach(function(btn){btn.addEventListener('click',function(){
+    if(busy)return;height=Number(btn.dataset.height);
+    document.querySelectorAll('.height').forEach(function(b){b.classList.toggle('active',b===btn)});prepare(false);
+  })});
+  document.querySelectorAll('.mode').forEach(function(btn){btn.addEventListener('click',function(){
+    if(busy)return;mode=btn.dataset.mode;
+    document.querySelectorAll('.mode').forEach(function(b){b.classList.toggle('active',b===btn)});prepare(false);
+  })});
+  themeBtn.addEventListener('click',function(){setDark(!document.body.classList.contains('dark'))});
+
+  dropBtn.addEventListener('click',function(){
+    if(busy)return;busy=true;dropBtn.disabled=true;
+    var p=positions[height],impact=p.impact,modLoad=mode==='floating'?Math.round(impact*.34):Math.round(impact*.88);
+    setSteps(0,0);setResult(T.fallingTitle,T.fallingText);
+    var watchAnim=watch.animate([
+      {transform:'translateX(-50%) translateY(0)',offset:0},
+      {transform:'translateX(-50%) translateY('+p.travel+'px)',offset:.72},
+      {transform:'translateX(-50%) translateY('+(p.travel-10)+'px)',offset:.85},
+      {transform:'translateX(-50%) translateY('+p.travel+'px)',offset:1}
+    ],{duration:p.duration,easing:'cubic-bezier(.46,.02,.62,1)',fill:'forwards'});
+
+    window.setTimeout(function(){setSteps(1,1);setResult(T.impactTitle,T.impactText)},Math.round(p.duration*.57));
+    window.setTimeout(function(){
+      ring.classList.remove('go');void ring.offsetWidth;ring.classList.add('go');
+      if(mode==='floating'){
+        module.animate([{transform:'translateY(0)'},{transform:'translateY(14px)',offset:.35},{transform:'translateY(-3px)',offset:.7},{transform:'translateY(0)'}],{duration:500,easing:'ease-out'});
+      }else{
+        module.animate([{transform:'translateX(0)'},{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(-3px)'},{transform:'translateX(0)'}],{duration:250});
+      }
+      caseFill.style.width=impact+'%';moduleFill.style.width=modLoad+'%';caseValue.textContent=impact+T.unit;moduleValue.textContent=modLoad+T.unit;
+      setSteps(2,2);setResult(mode==='floating'?T.floatTitle:T.rigidTitle,mode==='floating'?T.floatText:T.rigidText);
+    },Math.round(p.duration*.71));
+
+    watchAnim.finished.then(function(){
+      setSteps(-1,3);
+      window.setTimeout(function(){
+        watchAnim.cancel();busy=false;dropBtn.disabled=false;prepare(true);
+        caseFill.style.width=impact+'%';moduleFill.style.width=modLoad+'%';caseValue.textContent=impact+T.unit;moduleValue.textContent=modLoad+T.unit;setSteps(-1,3);
+      },850);
+    });
+  });
+
+  document.querySelectorAll('.height').forEach(function(btn){btn.classList.toggle('active',Number(btn.dataset.height)===height)});
+  document.querySelectorAll('.mode').forEach(function(btn){btn.classList.toggle('active',btn.dataset.mode===mode)});
+  if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)setDark(true);
+  setThemeLabel();prepare(false);
+  if(params.get('autoplay')==='1')window.setTimeout(function(){dropBtn.click()},180);
+
+  if(window.parent!==window){
+    window.addEventListener('message',function(event){
+      if(event.source!==window.parent||!event.data||event.data.type!=='lume:lights')return;
+      setDark(!!event.data.dark);
+    });
+    var lastHeight=0;
+    function reportHeight(){
+      var height=Math.ceil(document.querySelector('.card').getBoundingClientRect().height)+30;
+      if(height!==lastHeight){lastHeight=height;window.parent.postMessage({type:'lume:height',height:height},'*')}
+    }
+    new ResizeObserver(reportHeight).observe(document.querySelector('.card'));
+    window.addEventListener('load',reportHeight);
+    reportHeight();
+    window.parent.postMessage({type:'lume:ready'},'*');
+  }
+})();
+</script>
+</body>
+</html>
