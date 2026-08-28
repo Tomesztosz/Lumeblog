@@ -42,8 +42,8 @@ Az óra neve Seiko Quartz Astron 35SQ volt. Nem ez volt az első kvarccal műkö
 
 A különbség egyetlen nappal is történelmet írhat.
 
-![Az eredeti Seiko Quartz Astron 35SQ](/img/eredet/seiko-quartz-astron-35sq.jpg)
-*Az 1969-es Seiko Quartz Astron 35SQ, 18 karátos aranytokban. Fotó: [Seiko](https://www.seikowatches.com/global-en/products/astron/special/story_qa50th_1).*
+![Az eredeti Seiko Quartz Astron 35SQ háttér nélkül](/img/eredet/seiko-quartz-astron-35sq-transparent.png)
+*Az 1969-es Seiko Quartz Astron 35SQ, 18 karátos aranytokban. Fotó: [Seiko](https://www.seikowatches.com/global-en/products/astron/special/story_qa50th_1); háttérleválasztás: Lume.*
 
 ## A pontos óra, amely akkora volt, mint egy szekrény
 
@@ -89,8 +89,8 @@ A verseny tehát szorosabb volt annál, mint amit az „első” szó sejtet.
 
 Technikai forradalom volt, de úgy öltöztették fel, mint egy luxusórát. Másképp aligha lehetett volna elkérni érte egy autó árát.
 
-![Az Astron kézzel kialakított aranytokja oldalról](/img/eredet/seiko-quartz-astron-side.jpg)
-*A kézzel textúrázott, 18 karátos aranytok. Az elektronikus belső ellenére az Astront hagyományos luxusóraként mutatták be. Fotó: [Seiko Watch Design](https://www.seiko-design.com/en/stories-en/astron-en/).*
+![Az Astron kézzel kialakított aranytokja oldalról, háttér nélkül](/img/eredet/seiko-quartz-astron-side-transparent.png)
+*A kézzel textúrázott, 18 karátos aranytok. Az elektronikus belső ellenére az Astront hagyományos luxusóraként mutatták be. Fotó: [Seiko Watch Design](https://www.seiko-design.com/en/stories-en/astron-en/); háttérleválasztás: Lume.*
 
 ## Mit tudott 450 000 jenért
 

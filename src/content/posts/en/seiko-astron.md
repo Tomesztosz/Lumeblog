@@ -42,8 +42,8 @@ The watch was the Seiko Quartz Astron 35SQ. It was not the first quartz timekeep
 
 A lead of one day can be enough to make history.
 
-![The original Seiko Quartz Astron 35SQ](/img/eredet/seiko-quartz-astron-35sq.jpg)
-*The 1969 Seiko Quartz Astron 35SQ in an 18-carat gold case. Photo: [Seiko](https://www.seikowatches.com/global-en/products/astron/special/story_qa50th_1).*
+![The original Seiko Quartz Astron 35SQ with its background removed](/img/eredet/seiko-quartz-astron-35sq-transparent.png)
+*The 1969 Seiko Quartz Astron 35SQ in an 18-carat gold case. Photo: [Seiko](https://www.seikowatches.com/global-en/products/astron/special/story_qa50th_1); background extraction: Lume.*
 
 ## The accurate clock that was the size of a cabinet
 
@@ -89,8 +89,8 @@ Twenty completed watches were ready by December 1969. The name Astron was chosen
 
 It was a technical revolution dressed as a luxury watch. There was hardly any other way to charge the price of a car for it.
 
-![The hand-finished gold case of the Astron](/img/eredet/seiko-quartz-astron-side.jpg)
-*The hand-textured 18-carat gold case. Despite the electronic movement inside, the Astron was presented as a traditional luxury watch. Photo: [Seiko Watch Design](https://www.seiko-design.com/en/stories-en/astron-en/).*
+![The hand-finished gold case of the Astron with its background removed](/img/eredet/seiko-quartz-astron-side-transparent.png)
+*The hand-textured 18-carat gold case. Despite the electronic movement inside, the Astron was presented as a traditional luxury watch. Photo: [Seiko Watch Design](https://www.seiko-design.com/en/stories-en/astron-en/); background extraction: Lume.*
 
 ## What 450,000 yen bought
 
