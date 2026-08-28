@@ -95,6 +95,16 @@ const siteStructuredData = {
   </head>
 
   <body>
+    <script is:inline>
+      /* A mentett fényállapotot még a tartalom kirajzolása előtt állítsuk vissza. */
+      try {
+        if (localStorage.getItem('lume-theme') === 'dark') {
+          document.body.classList.add('dark');
+        }
+      } catch (e) {
+        /* A böngésző letilthatja a helyi tárolást — ilyenkor marad a világos nézet. */
+      }
+    </script>
     <a class="skip-link" href="#top">{t.skipToContent}</a>
     <Header lang={lang} altUrl={altUrl} active={active} />
     <main id="top">
@@ -103,15 +113,16 @@ const siteStructuredData = {
     <Footer lang={lang} />
 
     <script define:vars={{ labels: { on: t.lightsOff, off: t.lightsOn, heroOn: t.heroLightsOff, heroOff: t.heroLightsOn } }}>
-      /* „Lámpa le" — az egyetlen bátor elem. Szándékosan nincs tárolás:
-         minden oldalbetöltés nappali nézetben indul. */
+      /* „Lámpa le" — az egyetlen bátor elem. A választás oldalváltás és
+         újratöltés után is megmarad ebben a böngészőben. */
       (function () {
         var body = document.body;
         var lightsBtn = document.getElementById('lightsBtn');
         var lightsLbl = document.getElementById('lightsLabel');
         var heroBtn = document.getElementById('heroLights');
         var heroLbl = document.getElementById('heroLightsLabel');
-        var lights = 'on';
+        var themeKey = 'lume-theme';
+        var lights = body.classList.contains('dark') ? 'off' : 'on';
         var hinted = false;
 
         if (!lightsBtn) return;
@@ -142,6 +153,11 @@ const siteStructuredData = {
           lights = lights === 'on' ? 'off' : 'on';
           hinted = true;
           body.classList.toggle('dark', lights === 'off');
+          try {
+            localStorage.setItem(themeKey, lights === 'off' ? 'dark' : 'light');
+          } catch (e) {
+            /* A téma ettől még működik az aktuális oldalon. */
+          }
           render();
           tellFrames();
         }
@@ -162,6 +178,15 @@ const siteStructuredData = {
               }
             }
           }
+        });
+
+        /* Ha egy másik böngészőfülben vált témát, ez az oldal is kövesse. */
+        window.addEventListener('storage', function (event) {
+          if (event.key !== themeKey) return;
+          lights = event.newValue === 'dark' ? 'off' : 'on';
+          body.classList.toggle('dark', lights === 'off');
+          render();
+          tellFrames();
         });
 
         render();
