@@ -1,4 +1,5 @@
 import releaseData from '../data/releases.json';
+import brandRadarData from '../data/brand-radar.json';
 import type { Lang } from '../i18n/ui';
 
 export type ReleasePrecision = 'day' | 'month';
@@ -31,9 +32,18 @@ export interface WatchRelease {
   }>;
 }
 
+export interface BrandRadarItem {
+  group: 'major' | 'independent';
+  name: string;
+  key: string;
+  sourceUrl: string;
+}
+
 export const releases = (releaseData as WatchRelease[]).sort(
   (a, b) => Date.parse(a.date) - Date.parse(b.date)
 );
+
+export const brandRadar = brandRadarData as BrandRadarItem[];
 
 export const CALENDAR_UI = {
   hu: {
@@ -78,6 +88,15 @@ export const CALENDAR_UI = {
     homeTitle: 'A következő órák a láthatáron.',
     homeText: 'Nem teljes hírzaj, hanem néhány előre kiválasztott megjelenés, ellenőrzött dátummal.',
     homeOpen: 'Teljes naptár',
+    radarEyebrow: 'Figyelt források',
+    radarTitle: 'Márkaradar',
+    radarText:
+      'Ezeket a gyártókat követjük. A név önmagában még nem jelent naptárbejegyzést: teljes kártyát csak a Lume-válogatásba bekerülő, hivatalos jövőbeli dátummal rendelkező óra kap.',
+    radarMajor: 'Nagy gyártók',
+    radarIndependent: 'Microbrandek és függetlenek',
+    radarActive: 'Van aktív bejegyzés',
+    radarWatched: 'Figyeljük',
+    radarOfficial: 'Hivatalos oldal',
   },
   en: {
     nav: 'Calendar',
@@ -121,6 +140,15 @@ export const CALENDAR_UI = {
     homeTitle: 'The next watches on the horizon.',
     homeText: 'Not the whole news cycle, but a few releases selected in advance and checked against official dates.',
     homeOpen: 'Full calendar',
+    radarEyebrow: 'Monitored sources',
+    radarTitle: 'Brand radar',
+    radarText:
+      'These are the makers we monitor. A name alone does not guarantee a calendar card: a watch must pass the Lume selection and have an official future date.',
+    radarMajor: 'Major makers',
+    radarIndependent: 'Microbrands and independents',
+    radarActive: 'Active entry',
+    radarWatched: 'Watching',
+    radarOfficial: 'Official site',
   },
 } as const;
 

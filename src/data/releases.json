@@ -130,5 +130,106 @@
         "availability": "Through selected Seiko retailers"
       }
     }
+  },
+  {
+    "id": "zenith-chronomaster-original-paris-boutiques",
+    "brand": "Zenith",
+    "brandKey": "zenith",
+    "family": "Chronomaster Original",
+    "model": "Paris Edition",
+    "reference": "03.3207.3600/75.M3230",
+    "date": "2026-09-01",
+    "dateEnd": "2026-09-30",
+    "precision": "month",
+    "confirmed": true,
+    "limitedPieces": 50,
+    "price": "CHF 11,800",
+    "image": "/img/calendar/zenith-chronomaster-paris-2026.webp",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageCredit": "Zenith",
+    "sourceUrl": "https://pressroom.zenith-watches.com/paris-on-the-horizon-zenith-unveils-the-chronomaster-original-paris-edition/?lang=eng",
+    "sourceChecked": "2026-08-28",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. szeptember",
+        "summary": "A 38 milliméteres Chronomaster Original párizsi kiadása zöld patinaszínű számlappal, 5 Hz-es El Primero 3600 szerkezettel és új, finoman állítható ZENCLASP csattal.",
+        "selection": "Nem világpremier, hanem egy pontosan dátumozott párizsi butikérkezés. Ötven darabban mutatja meg, milyen jól áll az A386 arányainak egy szokatlan, városi zöld.",
+        "availability": "A Zenith párizsi butikjaiban; a francia online értékesítés már elindult"
+      },
+      "en": {
+        "dateLabel": "September 2026",
+        "summary": "The 38mm Chronomaster Original Paris Edition pairs a verdigris dial with the 5Hz El Primero 3600 and Zenith's new micro-adjustable ZENCLASP.",
+        "selection": "This is a precisely dated Paris boutique arrival, not a global debut. In just 50 pieces, it shows how naturally an urban green suits the proportions of the A386.",
+        "availability": "At Zenith's Paris boutiques; French online sales have already opened"
+      }
+    }
+  },
+  {
+    "id": "lorier-astra-white-no-date-2026",
+    "brand": "Lorier",
+    "brandKey": "lorier",
+    "family": "Astra",
+    "model": "White No-Date",
+    "reference": "278081",
+    "date": "2026-09-01",
+    "dateEnd": "2026-09-30",
+    "precision": "month",
+    "confirmed": true,
+    "price": "$699",
+    "image": "/img/calendar/lorier-astra-2026.webp",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageCredit": "Lorier",
+    "sourceUrl": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
+    "sourceChecked": "2026-08-28",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. szeptember",
+        "summary": "Fehér számlapos, dátum nélküli Astra 36 milliméteres tokban, Miyota 9039 szerkezettel, domború zafírüveggel és 100 méteres vízállósággal.",
+        "selection": "A ritkább microbrand, amelynél a vintage arány nem kifogás a hétköznapi használhatóság feladására. Kicsi, vékony, mégis rendes vízállóságot és gyorsállítós csatot kapott.",
+        "availability": "Előrendelés; a kiszállítás szeptemberben indul"
+      },
+      "en": {
+        "dateLabel": "September 2026",
+        "summary": "A white, no-date Astra in a 36mm case, powered by the Miyota 9039 and fitted with a domed sapphire crystal and 100 metres of water resistance.",
+        "selection": "A microbrand watch where vintage proportions do not excuse poor everyday utility: compact and slim, yet still properly water resistant with an adjustable clasp.",
+        "availability": "Pre-order; shipping begins in September"
+      }
+    }
+  },
+  {
+    "id": "rath-droma-gmt-founder-series",
+    "brand": "RÁTH",
+    "brandKey": "rath",
+    "family": "Founder Series",
+    "model": "DROMA GMT",
+    "reference": "DROMA GMT",
+    "date": "2026-09-01",
+    "dateEnd": "2026-09-30",
+    "precision": "month",
+    "confirmed": true,
+    "limitedPieces": 50,
+    "price": "£549",
+    "image": "/img/calendar/rath-droma-gmt-2026.webp",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageCredit": "RÁTH Watches",
+    "sourceUrl": "https://rathwatches.com/products/rath-droma-gmt",
+    "sourceChecked": "2026-08-28",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. szeptember vége",
+        "summary": "Írországban tervezett, 39 milliméteres automata GMT 200 méteres vízállósággal; a triquetra alakú óramutatóban Malin Headből származó anyag van.",
+        "selection": "Egy valóban fiatal microbrand első ötven darabja. A származási helyet nem csak történetként használja, hanem fizikailag is beépíti az órába.",
+        "availability": "Előrendelés; kiszállítás szeptember végén"
+      },
+      "en": {
+        "dateLabel": "Late September 2026",
+        "summary": "An Irish-designed 39mm automatic GMT with 200 metres of water resistance and material from Malin Head set into its triquetra-shaped hour hand.",
+        "selection": "The first 50 pieces from a genuinely young microbrand. It does more than tell a provenance story: it physically places the point of origin inside the watch.",
+        "availability": "Pre-order; ships in late September"
+      }
+    }
   }
 ]

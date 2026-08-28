@@ -4,6 +4,7 @@ import StructuredData from '../StructuredData.astro';
 import type { Lang } from '../../i18n/ui';
 import {
   activeReleases,
+  brandRadar,
   CALENDAR_UI,
   calendarUrl,
   releaseDaysAway,
@@ -22,7 +23,17 @@ const t = CALENDAR_UI[lang];
 const current = activeReleases();
 const nextRelease = current[0];
 const brands = [...new Map(releases.map((release) => [release.brandKey, release.brand])).entries()];
-const months = [...new Map(releases.map((release) => [release.date.slice(0, 7), release.copy[lang].dateLabel])).entries()];
+const months = [...new Set(releases.map((release) => release.date.slice(0, 7)))].map((value) => [
+  value,
+  new Intl.DateTimeFormat(lang === 'hu' ? 'hu-HU' : 'en-GB', {
+    year: 'numeric',
+    month: 'long',
+    timeZone: 'UTC',
+  }).format(new Date(`${value}-01T00:00:00Z`)),
+]);
+const activeBrandKeys = new Set(current.map((release) => release.brandKey));
+const majorBrands = brandRadar.filter((brand) => brand.group === 'major');
+const independentBrands = brandRadar.filter((brand) => brand.group === 'independent');
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -222,6 +233,47 @@ const clientCopy = {
         </div>
 
         <p class="calendar-empty" id="calendarEmpty" hidden>{t.noResults}</p>
+      </div>
+    </section>
+
+    <section class="section calendar-radar" aria-labelledby="calendar-radar-title">
+      <div class="wrap">
+        <div class="calendar-radar-head">
+          <p class="eyebrow mono">{t.radarEyebrow}</p>
+          <h2 id="calendar-radar-title">{t.radarTitle}</h2>
+          <p>{t.radarText}</p>
+        </div>
+
+        <div class="calendar-radar-groups">
+          {[
+            { title: t.radarMajor, brands: majorBrands },
+            { title: t.radarIndependent, brands: independentBrands },
+          ].map((group) => (
+            <div class="calendar-radar-group">
+              <h3 class="mono">{group.title}</h3>
+              <div class="calendar-radar-grid">
+                {group.brands.map((brand) => {
+                  const active = activeBrandKeys.has(brand.key);
+                  return (
+                    <a
+                      href={brand.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      class:list={['calendar-radar-brand', { active }]}
+                    >
+                      <span>
+                        <i aria-hidden="true"></i>
+                        <strong>{brand.name}</strong>
+                      </span>
+                      <small class="mono">{active ? t.radarActive : t.radarWatched}</small>
+                      <em class="mono">{t.radarOfficial} ↗</em>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   </div>

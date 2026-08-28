@@ -1,0 +1,146 @@
+[
+  {
+    "group": "major",
+    "name": "Rolex",
+    "key": "rolex",
+    "sourceUrl": "https://www.rolex.com/watches/new-watches"
+  },
+  {
+    "group": "major",
+    "name": "Omega",
+    "key": "omega",
+    "sourceUrl": "https://press.omegawatches.com/"
+  },
+  {
+    "group": "major",
+    "name": "Cartier",
+    "key": "cartier",
+    "sourceUrl": "https://www.cartier.com/en-us/watches/collections/"
+  },
+  {
+    "group": "major",
+    "name": "Tudor",
+    "key": "tudor",
+    "sourceUrl": "https://www.tudorwatch.com/en/new-watches"
+  },
+  {
+    "group": "major",
+    "name": "TAG Heuer",
+    "key": "tag-heuer",
+    "sourceUrl": "https://www.tagheuer.com/us/en/new-watches/"
+  },
+  {
+    "group": "major",
+    "name": "Breitling",
+    "key": "breitling",
+    "sourceUrl": "https://www.breitling.com/us-en/watches/"
+  },
+  {
+    "group": "major",
+    "name": "Longines",
+    "key": "longines",
+    "sourceUrl": "https://www.longines.com/universe/news"
+  },
+  {
+    "group": "major",
+    "name": "IWC",
+    "key": "iwc",
+    "sourceUrl": "https://www.iwc.com/ww-en/watches"
+  },
+  {
+    "group": "major",
+    "name": "Zenith",
+    "key": "zenith",
+    "sourceUrl": "https://pressroom.zenith-watches.com/?lang=eng"
+  },
+  {
+    "group": "major",
+    "name": "Seiko",
+    "key": "seiko",
+    "sourceUrl": "https://www.seikowatches.com/global-en/news"
+  },
+  {
+    "group": "major",
+    "name": "Grand Seiko",
+    "key": "grand-seiko",
+    "sourceUrl": "https://www.grand-seiko.com/global-en/news"
+  },
+  {
+    "group": "major",
+    "name": "Citizen",
+    "key": "citizen",
+    "sourceUrl": "https://www.citizenwatch-global.com/news/index.html"
+  },
+  {
+    "group": "major",
+    "name": "Casio / G-Shock",
+    "key": "g-shock",
+    "sourceUrl": "https://gshock.casio.com/intl/products/"
+  },
+  {
+    "group": "major",
+    "name": "Jaeger-LeCoultre",
+    "key": "jaeger-lecoultre",
+    "sourceUrl": "https://www.jaeger-lecoultre.com/us-en/news/watchmaking"
+  },
+  {
+    "group": "independent",
+    "name": "Baltic",
+    "key": "baltic",
+    "sourceUrl": "https://baltic-watches.com/en/collections"
+  },
+  {
+    "group": "independent",
+    "name": "Christopher Ward",
+    "key": "christopher-ward",
+    "sourceUrl": "https://www.christopherward.com/"
+  },
+  {
+    "group": "independent",
+    "name": "Kurono Tokyo",
+    "key": "kurono-tokyo",
+    "sourceUrl": "https://kuronotokyo.com/"
+  },
+  {
+    "group": "independent",
+    "name": "Furlan Marri",
+    "key": "furlan-marri",
+    "sourceUrl": "https://www.furlanmarri.com/collections/all-watches"
+  },
+  {
+    "group": "independent",
+    "name": "Lorier",
+    "key": "lorier",
+    "sourceUrl": "https://www.lorierwatches.com/collections/watches"
+  },
+  {
+    "group": "independent",
+    "name": "RÁTH",
+    "key": "rath",
+    "sourceUrl": "https://rathwatches.com/"
+  },
+  {
+    "group": "independent",
+    "name": "MING",
+    "key": "ming",
+    "sourceUrl": "https://www.ming.watch/"
+  },
+  {
+    "group": "independent",
+    "name": "Farer",
+    "key": "farer",
+    "sourceUrl": "https://farer.com/collections/all-watches"
+  },
+  {
+    "group": "independent",
+    "name": "Studio Underd0g",
+    "key": "studio-underd0g",
+    "sourceUrl": "https://underd0g.com/"
+  },
+  {
+    "group": "independent",
+    "name": "NOMOS",
+    "key": "nomos",
+    "sourceUrl": "https://nomos-glashuette.com/en/watches/new-releases"
+  }
+]

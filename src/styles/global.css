@@ -624,6 +624,35 @@ body.dark .release-selection{ border-left-color:var(--lume-glow); }
 body.dark .release-card-actions a{ color:var(--lume-glow); }
 .release-precision{ margin:14px 0 0; color:var(--ink-soft); font-size:8px; letter-spacing:.11em; text-transform:uppercase; }
 .calendar-empty{ margin:0; padding:50px 20px; border:1px solid var(--line); color:var(--ink-soft); text-align:center; }
+.calendar-radar{
+  margin-top:18px; padding-top:66px; border-top:1px solid var(--line-soft);
+  background:color-mix(in srgb,var(--paper-2) 34%,transparent);
+}
+.calendar-radar-head{ display:grid; grid-template-columns:minmax(220px,.55fr) minmax(0,1.45fr); gap:8px 54px; align-items:end; margin-bottom:34px; }
+.calendar-radar-head .eyebrow{ grid-column:1/-1; margin:0 0 7px; }
+.calendar-radar-head h2{ margin:0; color:var(--ink); font-family:var(--font-serif); font-size:38px; font-weight:500; }
+.calendar-radar-head > p:last-child{ max-width:67ch; margin:0; color:var(--ink-soft); font-size:14px; line-height:1.65; }
+.calendar-radar-groups{ display:grid; gap:30px; }
+.calendar-radar-group h3{ margin:0 0 12px; color:var(--ink-soft); font-size:9px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; }
+.calendar-radar-grid{
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:1px solid var(--line); border-left:1px solid var(--line);
+}
+.calendar-radar-brand{
+  position:relative; min-width:0; padding:16px 17px 14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); color:var(--ink); background:var(--paper);
+  transition:background .25s ease,color .25s ease;
+}
+.calendar-radar-brand:hover{ background:var(--paper-2); }
+.calendar-radar-brand > span{ display:flex; align-items:center; gap:9px; }
+.calendar-radar-brand i{ flex:0 0 auto; width:5px; height:5px; border-radius:50%; background:var(--ink-soft); opacity:.55; }
+.calendar-radar-brand strong{ overflow:hidden; font-family:var(--font-serif); font-size:16px; font-weight:500; text-overflow:ellipsis; white-space:nowrap; }
+.calendar-radar-brand small{ display:block; margin:7px 0 0 14px; color:var(--ink-soft); font-size:8px; letter-spacing:.11em; text-transform:uppercase; }
+.calendar-radar-brand em{ position:absolute; right:14px; bottom:13px; color:var(--ink-soft); font-size:7px; font-style:normal; letter-spacing:.1em; opacity:0; text-transform:uppercase; transition:opacity .2s ease; }
+.calendar-radar-brand:hover em{ opacity:.8; }
+.calendar-radar-brand.active i{ background:var(--brass); opacity:1; }
+.calendar-radar-brand.active small{ color:var(--brass); }
+body.dark .calendar-radar-brand.active i{ background:var(--lume-glow); box-shadow:0 0 8px var(--lume-glow); }
+body.dark .calendar-radar-brand.active small{ color:var(--lume-glow); }
 
 /* ============================================================ ARTICLE */
 .article{ padding:56px 0 40px; }
@@ -834,6 +863,9 @@ body.dark .foot-brand .mark{ color:var(--lume-glow); text-shadow:0 0 10px color-
   .calendar-hero-grid{ grid-template-columns:1fr; gap:42px; }
   .calendar-instrument{ max-width:430px; width:100%; justify-self:center; }
   .calendar-grid{ grid-template-columns:1fr; }
+  .calendar-radar-head{ grid-template-columns:1fr; gap:13px; }
+  .calendar-radar-head .eyebrow{ grid-column:auto; }
+  .calendar-radar-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   /* A rovat-listaoldalon a kép kisebb, mint a cikk élén: így a sor
      tartalomjegyzék-tételnek látszik, nem egy megkezdett cikknek. */
   .post-row{ grid-template-columns:1fr; gap:14px; }
@@ -868,6 +900,9 @@ body.dark .foot-brand .mark{ color:var(--lume-glow); text-shadow:0 0 10px color-
   .release-card h3{ font-size:25px; }
   .release-summary{ min-height:0; }
   .release-facts{ grid-template-columns:1fr; }
+  .calendar-radar{ padding-top:50px; }
+  .calendar-radar-head h2{ font-size:32px; }
+  .calendar-radar-grid{ grid-template-columns:1fr; }
 }
 
 @media (prefers-reduced-motion: reduce){
