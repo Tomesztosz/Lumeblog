@@ -34,7 +34,7 @@ sources:
     url: 'https://corporate.epson/en/about/history/milestone-products/pdf/05_35sq.pdf'
 ---
 
-1969. december 25-én Tokióban meg lehetett venni egy karórát 450 000 jenért. Ennyibe akkoriban egy népszerű japán autó került. A tokja 18 karátos aranyból készült, a felületét kézzel alakították ki, és az egészből az első hónapokban csak maroknyi darab létezett.
+1969\. december 25-én Tokióban meg lehetett venni egy karórát 450 000 jenért. Ennyibe akkoriban egy népszerű japán autó került. A tokja 18 karátos aranyból készült, a felületét kézzel alakították ki, és az egészből az első hónapokban csak maroknyi darab létezett.
 
 Nem úgy nézett ki, mint egy olcsó elektronikus eszköz. Nem volt műanyag tokja, digitális kijelzője vagy villogó gombja. Három mutató járt egy visszafogott, aranyszínű számlap fölött. A másodpercmutató viszont nem folyamatosan haladt. Minden másodpercben egyet lépett.
 
