@@ -64,7 +64,7 @@ A Casio létrehozta a háromfős Project Team Tough csoportot. Két év alatt t�
 Az első feltételezés az volt, hogy a puha külső majd mindent megold. Nem oldott meg mindent. A gumi csökkentette az ütést, de a tok lassulása továbbra is átjutott a modulra. A kijelző, a forrasztások vagy a kvarckristály ugyanabban a pillanatban kapta meg a terhelést, csak egy kissé vastagabb csomagoláson keresztül.
 
 
-![Kikuo Ibe, a G-Shock megalkotója](../_images/g-shock-kikuo-ibe.jpg)
+![Kikuo Ibe, a G-Shock megalkotója](../_images/g-shock-kikuo-ibe-transparent.png)
 *Kikuo Ibe, a G-Shock megalkotója, csuklóján az eredeti formát követő négyzetes modellel. Fotó: [Casio](https://gshock.casio.com/fr/products/40-years/dream-project-g-d001/).*
 
 ## Nem az esés a veszélyes, hanem a megállás
@@ -118,7 +118,7 @@ Ezért a Casio a teljes modul csillapítása mellett a fontos alkatrészeket kü
 Vagyis a külső tok nem egyszerűen a kijelzőt védi. Egyre kisebb léptékben ismétli ugyanazt az elvet: külső burkolat, belső tér, párnázott modul, külön védett alkatrész.
 
 
-![A kvarcoszcillátor és más fontos alkatrészek külön csillapítása](../_images/g-shock-key-parts.jpg)
+![A kvarcoszcillátor és más fontos alkatrészek külön csillapítása](../_images/g-shock-key-parts-transparent.png)
 *A modul kritikus alkatrészei külön csillapítást kapnak, így egy rövid deformáció kevésbé okozhat érintkezési hibát. Ábra: [Casio](https://gshock.casio.com/za/technology/shock/).*
 
 ## A három tízes, amelyből végül húsz bar lett

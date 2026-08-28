@@ -64,7 +64,7 @@ Casio formed the three-person Project Team Tough. Over two years the group built
 The first assumption was that a soft exterior would solve everything. It did not. Rubber took some of the edge off the collision, but the sudden deceleration of the case still reached the module. The display, solder joints or quartz crystal received the same event through a slightly thicker package.
 
 
-![Kikuo Ibe, creator of G-Shock](../_images/g-shock-kikuo-ibe.jpg)
+![Kikuo Ibe, creator of G-Shock](../_images/g-shock-kikuo-ibe-transparent.png)
 *Kikuo Ibe, creator of G-Shock, wearing a square model that preserves the original form. Photo: [Casio](https://gshock.casio.com/fr/products/40-years/dream-project-g-d001/).*
 
 ## The fall is not the dangerous part, the stop is
@@ -118,7 +118,7 @@ Casio therefore cushions important components individually as well as protecting
 The outer case is doing more than guarding the display. The same principle repeats at ever smaller scales: outer covering, internal space, cushioned module, individually protected component.
 
 
-![Individual cushioning around the quartz oscillator and other key components](../_images/g-shock-key-parts.jpg)
+![Individual cushioning around the quartz oscillator and other key components](../_images/g-shock-key-parts-transparent.png)
 *Critical components inside the module receive their own cushioning, reducing the risk of contact failure during brief deformation. Illustration: [Casio](https://gshock.casio.com/za/technology/shock/).*
 
 ## The three tens that became twenty bar
