@@ -72,9 +72,9 @@ a listákon, az RSS-ben és a sitemapben is — a jövőbeli cikkhez oldal sem g
 meg tudd nézni a saját gépeden, mielőtt élesbe kerülnek.
 
 Mivel az oldal statikus, a dátum önmagában nem elég: kell egy újraépítés is azon a
-napon. Ezt a `.github/workflows/utemezett-megjelenes.yml` intézi — hétfőn, szerdán és
-pénteken 03:00 UTC-kor (nyáron 05:00, télen 04:00 magyar idő) megnézi, van-e aznapra
-datált cikk, és csak akkor kér újraépítést. A GitHub felületén kézzel is indítható
+napon. Ezt a `.github/workflows/utemezett-megjelenes.yml` intézi — naponta 03:00 UTC-kor
+(nyáron 05:00, télen 04:00 magyar idő) megnézi, van-e aznapra datált cikk vagy naptári
+állapotváltás, és csak akkor kér újraépítést. A GitHub felületén kézzel is indítható
 (Actions → Ütemezett megjelenés → Run workflow), ha valamit azonnal ki kell tenni.
 
 **Poszt törlésekor:** az Astro tartalom-gyorsítótára a `node_modules/.astro/data-store.json`-ban
@@ -123,6 +123,13 @@ A képek helyén egyelőre SVG-motívumok állnak (`components/PostMedia.astro`)
 egyetlen hely, ahol a valódi makrófotókra kell majd cserélni.
 
 ## Publikálás
+
+**Minden cikkpublikálás vagy időzítés része a naptárfrissítés.** Hétfői, szerdai és
+pénteki cikkpár feltöltésekor át kell nézni a `src/data/brand-radar.json` hivatalos
+forrásait. Csak hivatalosan dátumozott, jövőbeli és szerkesztőileg kiválasztott óra
+kerülhet a `src/data/releases.json` fájlba. Akkor is frissíteni kell a
+`src/data/calendar-meta.json` `lastReviewed` dátumát, ha nem volt felvehető bejelentés.
+A részletes, kötelező sorrendet az `AGENTS.md` tartalmazza.
 
 Cloudflare Pages, a GitHub-repóhoz kötve: minden `main`-re küldött push automatikusan
 deployol. Build parancs `npm run build`, kimeneti mappa `dist`.

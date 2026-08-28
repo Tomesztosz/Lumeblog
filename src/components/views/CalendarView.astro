@@ -6,6 +6,7 @@ import {
   activeReleases,
   brandRadar,
   CALENDAR_UI,
+  calendarMeta,
   calendarUrl,
   releaseDaysAway,
   releaseIcsUrl,
@@ -34,6 +35,12 @@ const months = [...new Set(releases.map((release) => release.date.slice(0, 7)))]
 const activeBrandKeys = new Set(current.map((release) => release.brandKey));
 const majorBrands = brandRadar.filter((brand) => brand.group === 'major');
 const independentBrands = brandRadar.filter((brand) => brand.group === 'independent');
+const radarReviewDate = new Intl.DateTimeFormat(lang === 'hu' ? 'hu-HU' : 'en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+}).format(new Date(`${calendarMeta.lastReviewed}T00:00:00Z`));
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -241,7 +248,11 @@ const clientCopy = {
         <div class="calendar-radar-head">
           <p class="eyebrow mono">{t.radarEyebrow}</p>
           <h2 id="calendar-radar-title">{t.radarTitle}</h2>
-          <p>{t.radarText}</p>
+          <p class="calendar-radar-text">{t.radarText}</p>
+          <p class="calendar-radar-reviewed mono">
+            <i class="calendar-led" aria-hidden="true"></i>
+            {t.radarLastChecked(radarReviewDate)}
+          </p>
         </div>
 
         <div class="calendar-radar-groups">

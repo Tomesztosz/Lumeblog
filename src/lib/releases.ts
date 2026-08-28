@@ -1,5 +1,6 @@
 import releaseData from '../data/releases.json';
 import brandRadarData from '../data/brand-radar.json';
+import calendarMetaData from '../data/calendar-meta.json';
 import type { Lang } from '../i18n/ui';
 
 export type ReleasePrecision = 'day' | 'month';
@@ -44,6 +45,7 @@ export const releases = (releaseData as WatchRelease[]).sort(
 );
 
 export const brandRadar = brandRadarData as BrandRadarItem[];
+export const calendarMeta = calendarMetaData as { lastReviewed: string };
 
 export const CALENDAR_UI = {
   hu: {
@@ -97,6 +99,7 @@ export const CALENDAR_UI = {
     radarActive: 'Van aktív bejegyzés',
     radarWatched: 'Figyeljük',
     radarOfficial: 'Hivatalos oldal',
+    radarLastChecked: (date: string) => `A teljes radar utolsó ellenőrzése: ${date}`,
   },
   en: {
     nav: 'Calendar',
@@ -149,6 +152,7 @@ export const CALENDAR_UI = {
     radarActive: 'Active entry',
     radarWatched: 'Watching',
     radarOfficial: 'Official site',
+    radarLastChecked: (date: string) => `Full radar last checked: ${date}`,
   },
 } as const;
 
