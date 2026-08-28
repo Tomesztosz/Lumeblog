@@ -1,0 +1,48 @@
+---
+import PostCard from './PostCard.astro';
+import type { Lang } from '../i18n/ui';
+import type { Post } from '../lib/posts';
+
+interface Props {
+  lang: Lang;
+  posts: Post[];
+  title: string;
+  note: string;
+}
+
+const { lang, posts, title, note } = Astro.props;
+---
+
+{
+  posts.length > 0 && (
+    <section class="reader-related" aria-labelledby={`reader-related-${lang}`}>
+      <div class="section-head">
+        <h2 id={`reader-related-${lang}`}>{title}</h2>
+        <p class="mono">{note}</p>
+      </div>
+      <div class="reader-related-grid">
+        {posts.map((post) => <PostCard post={post} />)}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .reader-related {
+    max-width: 1064px;
+    margin: 76px auto 10px;
+    padding-top: 42px;
+    border-top: 1px solid var(--line);
+  }
+
+  .reader-related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 34px;
+  }
+
+  @media (max-width: 860px) {
+    .reader-related { margin-top: 60px; }
+    .reader-related-grid { grid-template-columns: 1fr; gap: 38px; }
+  }
+</style>

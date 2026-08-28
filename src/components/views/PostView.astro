@@ -4,8 +4,13 @@ import { getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import PostMedia from '../PostMedia.astro';
 import StructuredData from '../StructuredData.astro';
+import ReadingProgress from '../ReadingProgress.astro';
+import ArticleToc from '../ArticleToc.astro';
+import CopyArticleLink from '../CopyArticleLink.astro';
+import RelatedPosts from '../RelatedPosts.astro';
 import { COLUMNS, UI, columnUrl, formatDate, otherLang, workshopUrl } from '../../i18n/ui';
-import { getTranslation, minutesOf, urlOf, type Post } from '../../lib/posts';
+import { getRelatedPosts, getTranslation, minutesOf, urlOf, type Post } from '../../lib/posts';
+import { ARTICLE_READING_EXPERIENCE } from '../../site';
 
 interface Props {
   post: Post;
@@ -15,7 +20,13 @@ const lang = post.data.lang;
 const t = UI[lang];
 const c = COLUMNS[post.data.column][lang];
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const readingExperience = ARTICLE_READING_EXPERIENCE;
+const tocHeadings = headings.filter((heading) => heading.depth === 2);
+const showToc = readingExperience.enabled && readingExperience.tableOfContents && tocHeadings.length > 1;
+const relatedPosts = readingExperience.enabled && readingExperience.relatedPosts
+  ? await getRelatedPosts(post)
+  : [];
 
 /* A nyelvváltó a párcikkre visz, ha van; ha nincs, a másik nyelvű rovatra. */
 const twin = await getTranslation(post, otherLang(lang));
@@ -90,7 +101,13 @@ const articleStructuredData = {
   </Fragment>
 
   <article class="article">
-    <div class="wrap wrap-narrow">
+    {
+      readingExperience.enabled && readingExperience.progress && (
+        <ReadingProgress label={t.articleProgress} />
+      )
+    }
+
+    <div class="wrap wrap-narrow article-intro">
       <header class="article-head">
         <div class="post-meta">
           <a class="tag" href={columnUrl(lang, post.data.column)}>{c.name}</a>
@@ -102,42 +119,75 @@ const articleStructuredData = {
       </header>
 
       <PostMedia column={post.data.column} cover={post.data.cover} variant="lead" />
-
-      <div class="article-body">
-        <Content />
-      </div>
-
-      {
-        post.data.sources.length > 0 && (
-          <aside class="sources">
-            <h4>{t.sources}</h4>
-            <ol>
-              {post.data.sources.map((s) => (
-                <li>
-                  {s.url ? (
-                    <a href={s.url} rel="noopener noreferrer" target="_blank">
-                      {s.label}
-                    </a>
-                  ) : (
-                    s.label
-                  )}
-                </li>
-              ))}
-            </ol>
-          </aside>
-        )
-      }
-
-      <nav class="article-nav">
-        <a href={columnUrl(lang, post.data.column)}>← {t.backToColumn}</a>
-        {post.data.model && <a href={`${workshopUrl(lang)}#${post.data.translationKey ?? post.id.split('/').pop()}`}>{t.workshop} →</a>}
-      </nav>
     </div>
+
+    <div class="wrap article-reading-layout">
+      {showToc && <ArticleToc headings={tocHeadings} label={t.articleContents} />}
+
+      <div class="article-reading-main">
+        <div class="article-body">
+          <Content />
+        </div>
+
+        {
+          post.data.sources.length > 0 && (
+            <aside class="sources">
+              <h4>{t.sources}</h4>
+              <ol>
+                {post.data.sources.map((s) => (
+                  <li>
+                    {s.url ? (
+                      <a href={s.url} rel="noopener noreferrer" target="_blank">
+                        {s.label}
+                      </a>
+                    ) : (
+                      s.label
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </aside>
+          )
+        }
+
+        {
+          readingExperience.enabled && readingExperience.copyLink && (
+            <div class="article-copy-link">
+              <CopyArticleLink label={t.copyLink} copied={t.linkCopied} error={t.copyLinkError} />
+            </div>
+          )
+        }
+
+        <nav class="article-nav">
+          <a href={columnUrl(lang, post.data.column)}>← {t.backToColumn}</a>
+          {post.data.model && <a href={`${workshopUrl(lang)}#${post.data.translationKey ?? post.id.split('/').pop()}`}>{t.workshop} →</a>}
+        </nav>
+      </div>
+    </div>
+
+    {
+      readingExperience.enabled && readingExperience.relatedPosts && (
+        <div class="wrap">
+          <RelatedPosts
+            lang={lang}
+            posts={relatedPosts}
+            title={t.continueReading}
+            note={t.continueReadingNote}
+          />
+        </div>
+      )
+    }
   </article>
 </Base>
 
 <style>
   .article-head .tag {
     text-decoration: none;
+  }
+
+  .article-copy-link {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
   }
 </style>

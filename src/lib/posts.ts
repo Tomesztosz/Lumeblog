@@ -54,6 +54,19 @@ export async function getModelPosts(lang: Lang): Promise<ModelPost[]> {
   return posts.filter((post): post is ModelPost => Boolean(post.data.model));
 }
 
+/**
+ * Egy rovaton belüli folytatás és két kitekintés a másik két rovatba.
+ * Nem igényel kézi címkézést: az új cikkek automatikusan bekerülnek a
+ * választható készletbe, a jelenlegi írás pedig sosem ajánlja saját magát.
+ */
+export async function getRelatedPosts(post: Post, limit = 3): Promise<Post[]> {
+  const candidates = (await getPosts(post.data.lang)).filter((candidate) => candidate.id !== post.id);
+  const sameColumn = candidates.filter((candidate) => candidate.data.column === post.data.column);
+  const otherColumns = candidates.filter((candidate) => candidate.data.column !== post.data.column);
+
+  return [...sameColumn.slice(0, 1), ...otherColumns].slice(0, limit);
+}
+
 /** A modellek ugyanazt a HTML-t használják; az angol felület queryből vált. */
 export function modelSrc(post: ModelPost): string {
   const separator = post.data.model.src.includes('?') ? '&' : '?';

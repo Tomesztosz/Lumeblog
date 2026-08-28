@@ -1,0 +1,212 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+  label: string;
+}
+
+const { headings, label } = Astro.props;
+const sections = headings.filter((heading) => heading.depth === 2);
+---
+
+{
+  sections.length > 1 && (
+    <aside class="article-toc" data-reading-toc aria-label={label}>
+      <details open>
+        <summary>
+          <span>{label}</span>
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg>
+        </summary>
+        <nav>
+          <p class="article-toc-label">{label}</p>
+          <ol>
+            {sections.map((heading, index) => (
+              <li>
+                <a href={`#${heading.slug}`} data-toc-link={heading.slug}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </details>
+    </aside>
+  )
+}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-reading-toc]').forEach((toc) => {
+    const links = Array.from(toc.querySelectorAll<HTMLAnchorElement>('[data-toc-link]'));
+    const headings = links
+      .map((link) => document.getElementById(link.dataset.tocLink ?? ''))
+      .filter((heading): heading is HTMLElement => Boolean(heading));
+    const details = toc.querySelector('details');
+    const compactLayout = window.matchMedia('(max-width: 1180px)');
+    let ticking = false;
+
+    const setLayout = (compact: boolean) => {
+      if (compact) details?.removeAttribute('open');
+      else details?.setAttribute('open', '');
+    };
+
+    const update = () => {
+      const header = document.querySelector<HTMLElement>('.site-header');
+      const threshold = (header?.offsetHeight ?? 0) + 72;
+      let current = headings[0];
+
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top <= threshold) current = heading;
+        else break;
+      }
+
+      links.forEach((link) => {
+        const active = link.dataset.tocLink === current?.id;
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    };
+
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (compactLayout.matches) details?.removeAttribute('open');
+      });
+    });
+    compactLayout.addEventListener('change', (event) => setLayout(event.matches));
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+    setLayout(compactLayout.matches);
+    update();
+  });
+</script>
+
+<style>
+  .article-toc {
+    grid-column: 1;
+    align-self: start;
+    position: sticky;
+    top: calc(var(--lume-header-height, 70px) + 30px);
+    min-width: 0;
+    max-height: calc(100vh - var(--lume-header-height, 70px) - 60px);
+    overflow: auto;
+    scrollbar-width: none;
+  }
+
+  .article-toc::-webkit-scrollbar { display: none; }
+  .article-toc summary { display: none; }
+  .article-toc details:not([open]) nav { display: block; }
+  .article-toc-label {
+    margin: 0 0 17px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .article-toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 13px;
+    border-left: 1px solid var(--line);
+  }
+
+  .article-toc li { margin: 0; }
+  .article-toc a {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 7px;
+    padding: 7px 0;
+    color: var(--ink-soft);
+    font-size: 12px;
+    line-height: 1.35;
+    transition: color .2s ease, transform .2s ease;
+  }
+
+  .article-toc a > span {
+    padding-top: 1px;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: .08em;
+    opacity: .65;
+  }
+
+  .article-toc a:hover,
+  .article-toc a[aria-current='location'] {
+    color: var(--brass);
+    transform: translateX(3px);
+  }
+
+  :global(body.dark) .article-toc a:hover,
+  :global(body.dark) .article-toc a[aria-current='location'] {
+    color: var(--lume-glow);
+  }
+
+  @media (max-width: 1180px) {
+    .article-toc {
+      position: static;
+      max-width: var(--measure);
+      max-height: none;
+      margin: 0 auto 34px;
+      overflow: visible;
+    }
+
+    .article-toc details {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .article-toc details:not([open]) nav { display: none; }
+    .article-toc summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      list-style: none;
+    }
+
+    .article-toc summary::-webkit-details-marker { display: none; }
+    .article-toc summary svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.4;
+      transition: transform .2s ease;
+    }
+    .article-toc details[open] summary svg { transform: rotate(180deg); }
+    .article-toc nav { padding: 2px 0 15px; }
+    .article-toc-label { display: none; }
+    .article-toc ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 26px; }
+  }
+
+  @media (max-width: 620px) {
+    .article-toc ol { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .article-toc a,
+    .article-toc summary svg { transition: none; }
+  }
+</style>

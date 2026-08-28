@@ -1,0 +1,97 @@
+---
+interface Props {
+  label: string;
+  copied: string;
+  error: string;
+}
+
+const { label, copied, error } = Astro.props;
+---
+
+<button
+  class="copy-article-link"
+  type="button"
+  data-copy-article-link
+  data-label={label}
+  data-copied={copied}
+  data-error={error}
+>
+  <svg viewBox="0 0 20 20" aria-hidden="true">
+    <path d="M7.5 12.5 12.5 7.5M6.2 14.8l-1 1a3 3 0 0 1-4.2-4.2l3.1-3.1a3 3 0 0 1 4.2 0M13.8 5.2l1-1A3 3 0 0 1 19 8.4l-3.1 3.1a3 3 0 0 1-4.2 0" />
+  </svg>
+  <span>{label}</span>
+</button>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-article-link]').forEach((button) => {
+    const text = button.querySelector('span');
+    let resetTimer: number | undefined;
+
+    const setMessage = (message: string) => {
+      if (text) text.textContent = message;
+      window.clearTimeout(resetTimer);
+      resetTimer = window.setTimeout(() => {
+        if (text) text.textContent = button.dataset.label ?? '';
+      }, 2200);
+    };
+
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        setMessage(button.dataset.copied ?? '');
+      } catch {
+        const input = document.createElement('textarea');
+        input.value = window.location.href;
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.appendChild(input);
+        input.select();
+        const success = document.execCommand('copy');
+        input.remove();
+        setMessage(success ? button.dataset.copied ?? '' : button.dataset.error ?? '');
+      }
+    });
+  });
+</script>
+
+<style>
+  .copy-article-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 8px 13px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color .2s ease, border-color .2s ease, background-color .2s ease;
+  }
+
+  .copy-article-link:hover {
+    color: var(--brass);
+    border-color: var(--brass);
+    background: var(--paper-2);
+  }
+
+  :global(body.dark) .copy-article-link:hover {
+    color: var(--lume-glow);
+    border-color: var(--lume-glow);
+  }
+
+  .copy-article-link svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>

@@ -14,6 +14,19 @@
 export const LAUNCHED = true;
 
 /**
+ * Cikkolvasási segédek. Az egész csomag, illetve minden eleme külön kapcsolható,
+ * így a próba egyetlen fájlból visszavonható anélkül, hogy a cikkekhez vagy a
+ * sablon szerkezetéhez hozzá kellene nyúlni.
+ */
+export const ARTICLE_READING_EXPERIENCE = {
+  enabled: true,
+  progress: true,
+  tableOfContents: true,
+  copyLink: true,
+  relatedPosts: true,
+} as const;
+
+/**
  * A hírlevél EGYELŐRE NINCS KIRAKVA az oldalra — nincs mit kiküldeni, amíg
  * csak pár cikk van. A `Subscribe.astro` komponens készen áll; visszatenni
  * két lépés: importáld a `HomeView.astro`-ba és/vagy az `AboutView.astro`-ba,
