@@ -1,0 +1,134 @@
+[
+  {
+    "id": "seiko-motocompo-hdb010",
+    "brand": "Seiko",
+    "brandKey": "seiko",
+    "family": "5 Sports",
+    "model": "MOTOCOMPO Limited Edition",
+    "reference": "HDB010",
+    "date": "2026-09-01",
+    "dateEnd": "2026-09-30",
+    "precision": "month",
+    "confirmed": true,
+    "limitedPieces": 8000,
+    "image": "/img/calendar/seiko-motocompo-hdb010.webp",
+    "imageWidth": 1400,
+    "imageHeight": 788,
+    "imageCredit": "Seiko Watch Corporation",
+    "sourceUrl": "https://www.seikowatches.com/us-en/products/5sports/hdb010",
+    "sourceChecked": "2026-08-28",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. szeptember",
+        "summary": "A Honda összecsukható MOTOCOMPO motorjának sárga-fekete formavilága egy 36,4 milliméteres automata Field tokban.",
+        "selection": "Nem egyszerű logócsere: a korona, a szíj feliratai és még a csomagolás is az 1981-es motor részleteit idézi.",
+        "availability": "Világszerte, kijelölt kereskedőknél"
+      },
+      "en": {
+        "dateLabel": "September 2026",
+        "summary": "The yellow-and-black language of Honda’s folding MOTOCOMPO motorcycle translated into a 36.4mm automatic Field case.",
+        "selection": "More than a logo swap: the crown, strap markings and even the packaging borrow details from the 1981 motorcycle.",
+        "availability": "Worldwide, through selected retailers"
+      }
+    }
+  },
+  {
+    "id": "seiko-presage-craftsmanship-2026",
+    "brand": "Seiko",
+    "brandKey": "seiko",
+    "family": "Presage Classic Series",
+    "model": "Craftsmanship HCC005 / HCC006",
+    "reference": "HCC005 · HCC006",
+    "date": "2026-09-01",
+    "dateEnd": "2026-09-30",
+    "precision": "month",
+    "confirmed": true,
+    "price": "€1,430 · €1,640",
+    "image": "/img/calendar/seiko-presage-craftsmanship-2026.webp",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageCredit": "Seiko Watch Corporation",
+    "sourceUrl": "https://www.seikowatches.com/sg-en/news/2026/pr/20260813",
+    "sourceChecked": "2026-08-28",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. szeptember",
+        "summary": "Két 39,6 milliméteres Presage: az egyik fehér zománc-, a másik fekete urusi lakkszámlappal, háromnapos 6R5H szerkezettel.",
+        "selection": "Ugyanaz a tok két kézműves számlappal. Ritka alkalom arra, hogy közvetlenül össze lehessen nézni a japán zománcot és lakkot.",
+        "availability": "Világszerte, Seiko Boutique-okban és kijelölt üzletekben"
+      },
+      "en": {
+        "dateLabel": "September 2026",
+        "summary": "Two 39.6mm Presage models: one with white enamel, the other with black urushi lacquer, both powered by the three-day 6R5H.",
+        "selection": "One case, two hand-made dials. A rare chance to compare Japanese enamel and lacquer directly.",
+        "availability": "Worldwide, at Seiko Boutiques and selected retailers"
+      }
+    }
+  },
+  {
+    "id": "grand-seiko-evolution9-ufa-2026",
+    "brand": "Grand Seiko",
+    "brandKey": "grand-seiko",
+    "family": "Evolution 9",
+    "model": "Spring Drive U.F.A. core models",
+    "reference": "SLGB007 · 009 · 011 · 013 · 015",
+    "date": "2026-09-01",
+    "dateEnd": "2026-09-30",
+    "precision": "month",
+    "confirmed": true,
+    "image": "/img/calendar/grand-seiko-evolution9-2026.webp",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageCredit": "Grand Seiko",
+    "sourceUrl": "https://www.grand-seiko.com/au-en/news/2026/pr/20260624",
+    "sourceChecked": "2026-08-28",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. szeptember",
+        "summary": "Öt megújított Evolution 9 referencia az évi ±20 másodperces Spring Drive U.F.A. 9RB2 szerkezettel, köztük egy új 37 milliméteres változat.",
+        "selection": "Az U.F.A. nem limitált technológiai bemutató marad: ezzel válik a Grand Seiko állandó kínálatának egyik alapjává.",
+        "availability": "Világszerte, Grand Seiko Boutique-okban és kijelölt partnereknél"
+      },
+      "en": {
+        "dateLabel": "September 2026",
+        "summary": "Five renewed Evolution 9 references powered by the Spring Drive U.F.A. 9RB2, accurate to ±20 seconds a year, including a new 37mm version.",
+        "selection": "U.F.A. stops being a limited technological showcase and becomes part of Grand Seiko’s permanent core.",
+        "availability": "Worldwide, at Grand Seiko Boutiques and selected partners"
+      }
+    }
+  },
+  {
+    "id": "seiko-prospex-hbc011",
+    "brand": "Seiko",
+    "brandKey": "seiko",
+    "family": "Prospex",
+    "model": "1965 Heritage Diver Fan-selected Limited Edition",
+    "reference": "HBC011",
+    "date": "2026-10-01",
+    "dateEnd": "2026-10-31",
+    "precision": "month",
+    "confirmed": true,
+    "limitedPieces": 4500,
+    "price": "$1,400",
+    "image": "/img/calendar/seiko-prospex-hbc011.webp",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageCredit": "Seiko Watch Corporation",
+    "sourceUrl": "https://www.seikowatches.com/us-en/news/2026/pr/20260826",
+    "sourceChecked": "2026-08-28",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. október",
+        "summary": "A rajongói szavazás nyertes kék számlapja a 62MAS örökségű, 40 milliméteres tokban, 300 méteres vízállósággal és 72 órás járástartalékkal.",
+        "selection": "A közönség itt nem egy meglévő órára szavazott: négy tengeri színterv közül választotta ki azt, amely valóban gyártásba kerül.",
+        "availability": "Kijelölt Seiko kereskedőknél"
+      },
+      "en": {
+        "dateLabel": "October 2026",
+        "summary": "The fan-voted blue dial in a 40mm case descended from the 62MAS, with 300 metres of water resistance and a 72-hour reserve.",
+        "selection": "The public did not vote on an existing watch: it chose which of four seascape colour studies would actually enter production.",
+        "availability": "Through selected Seiko retailers"
+      }
+    }
+  }
+]

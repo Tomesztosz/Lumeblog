@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Dial from '../Dial.astro';
 import PostCard from '../PostCard.astro';
 import WorkshopModel from '../WorkshopModel.astro';
+import ReleaseStrip from '../ReleaseStrip.astro';
 import {
   COLUMN_KEYS,
   COLUMNS,
@@ -68,6 +69,8 @@ const latestModel = (await getModelPosts(lang))[0];
       </div>
     </div>
   </section>
+
+  <ReleaseStrip lang={lang} />
 
   {
     latestModel && (

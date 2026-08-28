@@ -11,13 +11,14 @@ import {
   type ColumnKey,
   type Lang,
 } from '../i18n/ui';
+import { CALENDAR_UI, calendarUrl } from '../lib/releases';
 
 interface Props {
   lang: Lang;
   /** A jelenlegi oldal megfelelője a másik nyelven. */
   altUrl: string;
   /** Melyik menüpont aktív. */
-  active?: ColumnKey | 'about' | 'workshop';
+  active?: ColumnKey | 'about' | 'workshop' | 'calendar';
 }
 
 const { lang, altUrl, active } = Astro.props;
@@ -40,6 +41,7 @@ const t = UI[lang];
         ))
       }
       <a href={workshopUrl(lang)} aria-current={active === 'workshop' ? 'page' : undefined}>{t.workshop}</a>
+      <a href={calendarUrl(lang)} aria-current={active === 'calendar' ? 'page' : undefined}>{CALENDAR_UI[lang].nav}</a>
       <a href={aboutUrl(lang)} aria-current={active === 'about' ? 'page' : undefined}>{t.about}</a>
     </nav>
 

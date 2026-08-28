@@ -12,7 +12,7 @@ interface Props {
   description?: string;
   /** A jelenlegi oldal megfelelője a másik nyelven (nyelvváltó + hreflang). */
   altUrl: string;
-  active?: ColumnKey | 'about' | 'workshop';
+  active?: ColumnKey | 'about' | 'workshop' | 'calendar';
 }
 
 const { lang, title, description, altUrl, active } = Astro.props;

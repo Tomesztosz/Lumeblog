@@ -1,0 +1,288 @@
+---
+import Base from '../../layouts/Base.astro';
+import StructuredData from '../StructuredData.astro';
+import type { Lang } from '../../i18n/ui';
+import {
+  activeReleases,
+  CALENDAR_UI,
+  calendarUrl,
+  releaseDaysAway,
+  releaseIcsUrl,
+  releasePhase,
+  releases,
+} from '../../lib/releases';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const otherLang = lang === 'hu' ? 'en' : 'hu';
+const t = CALENDAR_UI[lang];
+const current = activeReleases();
+const nextRelease = current[0];
+const brands = [...new Map(releases.map((release) => [release.brandKey, release.brand])).entries()];
+const months = [...new Map(releases.map((release) => [release.date.slice(0, 7), release.copy[lang].dateLabel])).entries()];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: t.seoTitle,
+  description: t.seoDescription,
+  url: new URL(calendarUrl(lang), Astro.site).href,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: releases.map((release, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Product',
+        name: `${release.brand} ${release.family} ${release.model}`,
+        description: release.copy[lang].summary,
+        image: new URL(release.image, Astro.site).href,
+        brand: { '@type': 'Brand', name: release.brand },
+        ...(release.precision === 'day' ? { releaseDate: release.date } : {}),
+        url: release.sourceUrl,
+      },
+    })),
+  },
+};
+
+const clientCopy = {
+  statusUpcoming: t.statusUpcoming,
+  statusCurrent: t.statusCurrent,
+  statusArchived: t.statusArchived,
+  daysOne: t.daysOne,
+  daysMany: lang === 'hu' ? '{n} nap múlva' : 'in {n} days',
+  resultsOne: lang === 'hu' ? '1 találat' : '1 result',
+  resultsMany: lang === 'hu' ? '{n} találat' : '{n} results',
+};
+---
+
+<Base
+  lang={lang}
+  altUrl={calendarUrl(otherLang)}
+  active="calendar"
+  title={t.seoTitle}
+  description={t.seoDescription}
+>
+  <StructuredData data={structuredData} />
+
+  <div class="calendar-page">
+    <section class="calendar-hero">
+      <div class="wrap calendar-hero-grid">
+        <div class="calendar-hero-copy">
+          <p class="eyebrow mono">{t.eyebrow}</p>
+          <h1>{t.title}</h1>
+          <p class="lede">{t.lede}</p>
+          <div class="calendar-hero-notes mono">
+            <span><i class="calendar-led" aria-hidden="true"></i>{t.curated}</span>
+            <span>✓ {t.verified}</span>
+          </div>
+        </div>
+
+        <div class="calendar-instrument" aria-hidden="true">
+          <div class="calendar-ring">
+            <span class="calendar-hand"></span>
+            <span class="calendar-pivot"></span>
+            {Array.from({ length: 12 }).map((_, index) => (
+              <i style={`--tick:${index}`}></i>
+            ))}
+          </div>
+          <div class="calendar-instrument-copy">
+            <span class="mono">{t.next}</span>
+            <strong>{nextRelease ? `${nextRelease.brand} ${nextRelease.family}` : 'Lume'}</strong>
+            <small>{nextRelease?.copy[lang].dateLabel}</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section calendar-list" aria-labelledby="calendar-list-title">
+      <div class="wrap">
+        <div class="calendar-list-head">
+          <div>
+            <p class="eyebrow mono">{t.upcomingCount(current.length)}</p>
+            <h2 id="calendar-list-title">{t.nav}</h2>
+          </div>
+          <p class="calendar-result-count mono" id="calendarResultCount">{t.results(releases.length)}</p>
+        </div>
+
+        <div class="calendar-filters" aria-label={t.filters}>
+          <label>
+            <span class="mono">{lang === 'hu' ? 'Állapot' : 'Status'}</span>
+            <select id="releaseStatusFilter">
+              <option value="active">{t.activeStatuses}</option>
+              <option value="all">{t.allStatuses}</option>
+              <option value="archived">{t.archivedStatuses}</option>
+            </select>
+          </label>
+          <label>
+            <span class="mono">{lang === 'hu' ? 'Hónap' : 'Month'}</span>
+            <select id="releaseMonthFilter">
+              <option value="all">{t.allMonths}</option>
+              {months.map(([value, label]) => <option value={value}>{label}</option>)}
+            </select>
+          </label>
+          <label>
+            <span class="mono">{lang === 'hu' ? 'Márka' : 'Brand'}</span>
+            <select id="releaseBrandFilter">
+              <option value="all">{t.allBrands}</option>
+              {brands.map(([value, label]) => <option value={value}>{label}</option>)}
+            </select>
+          </label>
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid">
+          {releases.map((release) => {
+            const phase = releasePhase(release);
+            const days = releaseDaysAway(release);
+            const status = phase === 'current'
+              ? t.statusCurrent
+              : phase === 'archived'
+                ? t.statusArchived
+                : release.precision === 'month'
+                  ? t.statusUpcoming
+                : days === 1
+                  ? t.daysOne
+                  : t.daysMany(days);
+            const edition = release.limitedPieces ? t.limited(release.limitedPieces) : t.continuous;
+            return (
+              <article
+                class="release-card"
+                id={release.id}
+                data-release-card
+                data-start={release.date}
+                data-end={release.dateEnd}
+                data-precision={release.precision}
+                data-month={release.date.slice(0, 7)}
+                data-brand={release.brandKey}
+                data-phase={phase}
+                hidden={phase === 'archived'}
+              >
+                <figure class="release-card-media">
+                  <img
+                    src={release.image}
+                    alt={`${release.brand} ${release.family} ${release.model}`}
+                    width={release.imageWidth}
+                    height={release.imageHeight}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="mono">{t.imageCredit}: {release.imageCredit}</figcaption>
+                </figure>
+
+                <div class="release-card-body">
+                  <div class="release-card-topline mono">
+                    <span class="release-status" data-release-status data-phase={phase}>
+                      <i aria-hidden="true"></i>{status}
+                    </span>
+                    <span>{release.reference}</span>
+                  </div>
+
+                  <p class="release-brand mono">{release.brand} · {release.family}</p>
+                  <h3>{release.model}</h3>
+                  <p class="release-summary">{release.copy[lang].summary}</p>
+
+                  <dl class="release-facts">
+                    <div>
+                      <dt class="mono">{t.releaseDate}</dt>
+                      <dd>{release.copy[lang].dateLabel}</dd>
+                    </div>
+                    <div>
+                      <dt class="mono">{t.edition}</dt>
+                      <dd>{edition}</dd>
+                    </div>
+                    <div>
+                      <dt class="mono">{t.availability}</dt>
+                      <dd>{release.copy[lang].availability}</dd>
+                    </div>
+                    {release.price && (
+                      <div>
+                        <dt class="mono">{t.price}</dt>
+                        <dd>{release.price}</dd>
+                      </div>
+                    )}
+                  </dl>
+
+                  <div class="release-selection">
+                    <span class="mono">{t.selection}</span>
+                    <p>{release.copy[lang].selection}</p>
+                  </div>
+
+                  <div class="release-card-actions">
+                    <a href={release.sourceUrl} target="_blank" rel="noreferrer">{t.officialSource} ↗</a>
+                    <a href={releaseIcsUrl(release, lang)} download>{t.addCalendar} ↓</a>
+                  </div>
+                  <p class="release-precision mono">{t.confirmed} · {t.monthPrecision} · {release.sourceChecked}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <p class="calendar-empty" id="calendarEmpty" hidden>{t.noResults}</p>
+      </div>
+    </section>
+  </div>
+
+<script define:vars={{ clientCopy }}>
+  const day = 86_400_000;
+  const todayDate = new Date();
+  const today = Date.UTC(todayDate.getUTCFullYear(), todayDate.getUTCMonth(), todayDate.getUTCDate());
+  const cards = [...document.querySelectorAll('[data-release-card]')];
+  const statusFilter = document.querySelector('#releaseStatusFilter');
+  const monthFilter = document.querySelector('#releaseMonthFilter');
+  const brandFilter = document.querySelector('#releaseBrandFilter');
+  const resultCount = document.querySelector('#calendarResultCount');
+  const empty = document.querySelector('#calendarEmpty');
+
+  const phaseFor = (card) => {
+    const start = Date.parse(`${card.dataset.start}T00:00:00Z`);
+    const end = Date.parse(`${card.dataset.end}T00:00:00Z`);
+    if (today < start) return 'upcoming';
+    if (today <= end) return 'current';
+    return 'archived';
+  };
+
+  cards.forEach((card) => {
+    const phase = phaseFor(card);
+    card.dataset.phase = phase;
+    const status = card.querySelector('[data-release-status]');
+    if (!status) return;
+    status.dataset.phase = phase;
+    const label = phase === 'current'
+      ? clientCopy.statusCurrent
+      : phase === 'archived'
+        ? clientCopy.statusArchived
+        : card.dataset.precision === 'month'
+          ? clientCopy.statusUpcoming
+        : Math.max(1, Math.ceil((Date.parse(`${card.dataset.start}T00:00:00Z`) - today) / day)) === 1
+          ? clientCopy.daysOne
+          : clientCopy.daysMany.replace('{n}', Math.ceil((Date.parse(`${card.dataset.start}T00:00:00Z`) - today) / day));
+    const dot = status.querySelector('i');
+    status.textContent = '';
+    if (dot) status.append(dot);
+    status.append(label);
+  });
+
+  const update = () => {
+    let visible = 0;
+    cards.forEach((card) => {
+      const statusValue = statusFilter?.value ?? 'active';
+      const statusMatch = statusValue === 'all'
+        || (statusValue === 'active' && card.dataset.phase !== 'archived')
+        || (statusValue === 'archived' && card.dataset.phase === 'archived');
+      const monthMatch = (monthFilter?.value ?? 'all') === 'all' || monthFilter.value === card.dataset.month;
+      const brandMatch = (brandFilter?.value ?? 'all') === 'all' || brandFilter.value === card.dataset.brand;
+      card.hidden = !(statusMatch && monthMatch && brandMatch);
+      if (!card.hidden) visible += 1;
+    });
+    if (resultCount) resultCount.textContent = (visible === 1 ? clientCopy.resultsOne : clientCopy.resultsMany.replace('{n}', visible));
+    if (empty) empty.hidden = visible !== 0;
+  };
+
+  [statusFilter, monthFilter, brandFilter].forEach((filter) => filter?.addEventListener('change', update));
+  update();
+</script>
+</Base>

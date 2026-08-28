@@ -1,0 +1,62 @@
+---
+import type { Lang } from '../i18n/ui';
+import {
+  activeReleases,
+  CALENDAR_UI,
+  calendarUrl,
+  releaseDaysAway,
+  releasePhase,
+} from '../lib/releases';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = CALENDAR_UI[lang];
+const items = activeReleases().slice(0, 3);
+---
+
+{
+  items.length > 0 && (
+    <section class="section release-strip" aria-labelledby="release-strip-title">
+      <div class="wrap">
+        <div class="release-strip-head">
+          <div>
+            <p class="eyebrow mono">{t.homeEyebrow}</p>
+            <h2 id="release-strip-title">{t.homeTitle}</h2>
+            <p>{t.homeText}</p>
+          </div>
+          <a class="release-strip-link" href={calendarUrl(lang)}>
+            {t.homeOpen} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="release-strip-grid">
+          {items.map((release, index) => {
+            const phase = releasePhase(release);
+            const days = releaseDaysAway(release);
+            const status = phase === 'current'
+              ? t.statusCurrent
+              : release.precision === 'month'
+                ? t.statusUpcoming
+              : days === 1
+                ? t.daysOne
+                : t.daysMany(days);
+            return (
+              <a class="release-strip-item" href={`${calendarUrl(lang)}#${release.id}`}>
+                <span class="release-strip-index mono">{String(index + 1).padStart(2, '0')}</span>
+                <span class="release-strip-copy">
+                  <span class="release-strip-meta mono">{release.copy[lang].dateLabel} · {status}</span>
+                  <strong>{release.brand}{' '}{release.family}</strong>
+                  <span>{release.model}</span>
+                </span>
+                <span class="release-strip-arrow" aria-hidden="true">↗</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}

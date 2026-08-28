@@ -4,9 +4,10 @@
 # cikk vasárnap kerül fel, de hétfői dátummal, akkor hétfőn valakinek kérnie
 # kell egy újraépítést — különben a vasárnapi állapot marad kint.
 #
-# Ez a munkafolyamat hétfőn, szerdán és pénteken reggel megnézi, hogy van-e
-# aznapra datált cikk, és csak akkor kér újraépítést. Így nem szemeteljük tele
-# a naplót fölösleges commitokkal.
+# Ez a munkafolyamat minden reggel megnézi, hogy van-e aznapra datált cikk,
+# vagy változik-e a megjelenési naptár valamelyik elemének állapota. Csak
+# ilyen határnapon kér újraépítést, így a naptár magától frissül, de nem
+# szemeteljük tele a naplót fölösleges commitokkal.
 #
 # A push maga indítja a Cloudflare buildjét, mint bármelyik másik push.
 
@@ -16,8 +17,8 @@ on:
   schedule:
     # A GitHub UTC-ben jár, és nem ismeri a téli-nyári átállást.
     # 03:00 UTC = 05:00 Budapest nyáron, 04:00 télen.
-    # Hétfő, szerda, péntek — a napló heti ritmusa.
-    - cron: '0 3 * * 1,3,5'
+    # Naponta fut: a cikkek mellett a naptár hónapváltásait is kezeli.
+    - cron: '0 3 * * *'
   # Kézzel is indítható a GitHub felületén (Actions → Run workflow),
   # ha valamit azonnal ki kell tenni.
   workflow_dispatch:
@@ -30,22 +31,44 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Van-e mai dátumú cikk?
+      - name: Kell-e ma újraépíteni az oldalt?
         id: ellenorzes
         run: |
           MA=$(date -u +%F)
+          TEGNAP=$(date -u -d yesterday +%F)
           echo "Mai dátum (UTC): $MA"
-          if grep -rlx "date: $MA" src/content/posts/ ; then
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Kézi indítás: az oldal újraépül."
             echo "talalat=igen" >> "$GITHUB_OUTPUT"
-          else
-            echo "Ma nincs megjelenő cikk."
-            echo "talalat=nem" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          if grep -rlx "date: $MA" src/content/posts/ >/dev/null; then
+            echo "Ma jelenik meg cikk."
+            echo "talalat=igen" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if grep -Fq "\"date\": \"$MA\"" src/data/releases.json; then
+            echo "Ma kezdődik egy naptárbejegyzés megjelenési időszaka."
+            echo "talalat=igen" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if grep -Fq "\"dateEnd\": \"$TEGNAP\"" src/data/releases.json; then
+            echo "Ma kerül archívumba egy naptárbejegyzés."
+            echo "talalat=igen" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Ma nincs cikk- vagy naptárváltás."
+          echo "talalat=nem" >> "$GITHUB_OUTPUT"
 
       - name: Újraépítés kérése
         if: steps.ellenorzes.outputs.talalat == 'igen'
         run: |
           git config user.name "Lume ütemező"
           git config user.email "actions@users.noreply.github.com"
-          git commit --allow-empty -m "Ütemezett megjelenés: $(date -u +%F)"
+          git commit --allow-empty -m "Ütemezett frissítés: $(date -u +%F)"
           git push

@@ -9,6 +9,7 @@ import {
   workshopUrl,
   type Lang,
 } from '../i18n/ui';
+import { CALENDAR_UI, calendarUrl } from '../lib/releases';
 
 interface Props {
   lang: Lang;
@@ -33,6 +34,7 @@ const t = UI[lang];
         <div>
           <h5>{t.footJournal}</h5>
           <a href={workshopUrl(lang)}>{t.workshop}</a>
+          <a href={calendarUrl(lang)}>{CALENDAR_UI[lang].nav}</a>
           <a href={aboutUrl(lang)}>{t.about}</a>
           <a href={`${langBase(lang)}#latest`}>{t.footArchive}</a>
           <a href={lang === 'hu' ? '/rss.xml' : '/en/rss.xml'}>RSS</a>
