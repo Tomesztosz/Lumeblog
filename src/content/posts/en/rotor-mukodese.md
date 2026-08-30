@@ -9,7 +9,7 @@ lang: 'en'
 slug: 'automatic-watch-rotor'
 translationKey: 'rotor-mukodese'
 minutes: 9
-draft: true
+draft: false
 model:
   src: '/widgets/rotor.html'
   title: "The rotor in motion"
