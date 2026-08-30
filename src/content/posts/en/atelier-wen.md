@@ -3,7 +3,7 @@ title: "Atelier Wen, and the watch that is proudly Chinese"
 description: "Two French founders, a guilloché workshop in Henan and a brand that refuses to hide where its watches are made. Atelier Wen is trying to prove that Made in China is not a verdict on quality."
 seoTitle: "Atelier Wen: Chinese craft without the Swiss disguise"
 seoDescription: "The story of Atelier Wen, from porcelain dials and hand guilloché to Perception and the full-tantalum Inflection."
-date: 2026-08-30
+date: 2026-08-31
 column: 'in-hand'
 lang: 'en'
 translationKey: 'atelier-wen'

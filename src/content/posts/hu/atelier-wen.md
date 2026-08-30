@@ -3,7 +3,7 @@ title: "Az Atelier Wen, és az óra, amely büszkén kínai"
 description: "Két francia alapító, egy henani gilosáló műhely és egy márka, amely nem rejti el, hol készül. Az Atelier Wen azt próbálja megmutatni, hogy a Made in China nem minőségi ítélet."
 seoTitle: "Atelier Wen: kínai kézművesség svájci előítéletek nélkül"
 seoDescription: "Az Atelier Wen története a porcelánszámlaptól a kézi gilosálású Perceptionön át a teljes tantálszíjas Inflectionig."
-date: 2026-08-30
+date: 2026-08-31
 column: 'in-hand'
 lang: 'hu'
 translationKey: 'atelier-wen'
