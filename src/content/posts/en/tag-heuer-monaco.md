@@ -10,10 +10,10 @@ translationKey: 'tag-heuer-monaco'
 minutes: 11
 draft: false
 cover:
-  src: '../_images/tag-heuer-monaco-hero.jpg'
-  alt: "Blue-dial Heuer Monaco 1133B on a steel bracelet"
+  src: '../_images/tag-heuer-monaco-hero-v2.webp'
+  alt: "Blue-dial Heuer Monaco against parchment technical drawings and a racing-circuit line"
   focus: 'center center'
-  credit: "TAG Heuer"
+  credit: "Lume – original composition based on a TAG Heuer image, modified with AI assistance"
   creditUrl: 'https://magazine.tagheuer.com/en/2024/04/10/a-matter-of-time-podcast-season-3-the-grand-story-of-monaco/'
 sources:
   - label: "TAG Heuer: Vintage Heuer Monaco Collection, the Piquerez case, original references, Le Mans and end of production"

@@ -10,10 +10,10 @@ translationKey: 'atelier-wen'
 minutes: 12
 draft: false
 cover:
-  src: '../_images/atelier-wen-hero.webp'
-  alt: "Atelier Wen kék számlapjának részlete kínai motívumokkal"
+  src: '../_images/atelier-wen-hero-v2.webp'
+  alt: "Kék számlapos Atelier Wen Perception pergamenes műszaki rajzok előtt"
   focus: 'center center'
-  credit: "Atelier Wen"
+  credit: "Lume – saját összeállítás, Atelier Wen képe alapján, AI-segítséggel módosítva"
   creditUrl: 'https://sg.atelierwen.com/pages/identity'
 sources:
   - label: "Atelier Wen: Identity, az alapítók, a név, a Porcelain Odyssey és a Perception indulása"
@@ -44,8 +44,8 @@ Ezt két francia férfi találta ki.
 
 Már önmagában ez az ellentmondás elég lenne egy jó történethez. Az Atelier Wen azonban közben eljutott a néhány száz dolláros Kickstarter-órától egy 4850 dolláros modellhez, amelynek már francia szerkezet dolgozik a hátlapja alatt. A kérdés ezért nem az, hogy kínai-e. Inkább az, hogy mit jelent nála a kínai identitás, amikor a legdrágább alkatrész már Európából jön.
 
-![Robin Tallendier és Wilfried Buiron Cheng Yucai műhelyénél](../_images/atelier-wen-cheng-team.jpg)
-*Robin Tallendier és Wilfried Buiron Cheng Yucai műhelyénél. Fotó: [Atelier Wen](https://eu.atelierwen.com/blogs/journal/inside-the-atelier-cheng-yucai).*
+![Kék számlapos Atelier Wen Perception csuklón](../_images/atelier-wen-perception-wrist.webp)
+*A Perception Mù csuklón. A 40 milliméteres tokhoz integrált acélszíj és kézzel gilosált, halpikkelyes számlap tartozik. Fotó: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
 
 ## A név, amelyet nem lehet rendesen lefordítani
 
@@ -75,8 +75,8 @@ E körül vita is kialakult. Kritikusok megkérdőjelezték, mennyit dolgozik eg
 
 Ez nem zár le minden módszertani kérdést. A fontosabb állítás viszont láthatóan teljesül: nem egy ipari mintával díszített számlapot neveznek kézművesnek. Egy kis műhely ténylegesen dolgozik rajta.
 
-![Cheng Yucai gilosáló műhelye Henanban](../_images/atelier-wen-cheng-workshop.jpg)
-*Cheng Yucai műhelye az egyedi építésű rózsa- és egyenesvonalú gépekkel. Fotó: [Atelier Wen](https://eu.atelierwen.com/blogs/journal/inside-the-atelier-cheng-yucai).*
+![Az Atelier Wen Perception kézzel gilosált számlapja közelről](../_images/atelier-wen-perception-dial-close.webp)
+*A Perception halpikkelyes gilosálása közelről. A minta nem nyomott dekoráció: kézzel irányított gépen, Cheng Yucai henani műhelyében készül. Fotó: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
 
 ## A kínai rész nem dekoráció
 
@@ -100,12 +100,15 @@ Az ablakra azért lett szükség, mert mögötte már nem kínai szerkezet láth
 
 A V3 a francia Pequignet EPM03 automata kaliberének erősen átdolgozott változatát használja. A szerkezet 4 hertzen jár, 65 órányi energiát tárol, kétirányú kilincses felhúzást kapott, és napi mínusz 4, plusz 6 másodperces tartományra szabályozzák. A hidak legyezőformájúak, a mélyedéseket kék aventurinlakk tölti ki, a csavarok és felületek kidolgozása pedig messze túlmutat a korábbi Peacock látványán.
 
+![Az Atelier Wen Perception V3 Pequignet szerkezete közelről](../_images/atelier-wen-perception-back.webp)
+*A Perception V3 hátlapja. A legyezőformájú hidak és a kék aventurinlakk már a francia Pequignet-alapú szerkezetet keretezik. Fotó: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
+
 Ekkorra a Perception már nem is a márka végső ambícióját jelentette. 2025 novemberében bemutatták az Inflectiont, egy 40 milliméteres zászlóshajót, amelynek tokja és minden egyes szíjszeme 99,9 százalékos tisztaságú tantálból készül. A kékesszürke, szokatlanul sűrű fém ragad a szerszámhoz, rosszul vezeti el a megmunkáláskor keletkező hőt, és a polírozása is nehéz. Az Atelier Wen tizenegy kínai partnerrel kezdte a kísérleteket, majd három év fejlesztés után jutott el a sorozatgyártható, teljes tantálszíjig.
 
 Az Inflection kínai része nem áll meg a fém megmunkálásánál. A grand feu zománcszámlap Kong Lingjun pekingi műhelyében készül, a mutatók és a számok bambuszlevelekből merítenek, a szerkezet hídjai pedig régi kínai festmények szélmotívumait követik. Belül ugyanakkor egy svájci Girard-Perregaux 03300 automata kaliber dolgozik. Az évi száz darabra tervezett modell tantálszíjon 29 800 dollár, szövet-gumi szíjon 19 800 dollár. Ez már nem elérhető microbrand-óra, hanem nyílt kísérlet arra, hogy egy fiatal kínai független belépjen a magas órásmesterség területére.
 
-![Az Atelier Wen Inflection tantálórája csuklón](../_images/atelier-wen-inflection.jpg)
-*Az Inflection 99,9 százalékos tisztaságú tantáltokkal és -szíjjal. Fotó: [Atelier Wen](https://atelierwen.com/blogs/journal/presenting-inflection-in-tantalum).*
+![Atelier Wen Inflection tantálórák közelről](../_images/atelier-wen-inflection-tantalum.webp)
+*Az Inflection három változata közelről. A tok és a teljes fémszíj 99,9 százalékos tisztaságú tantálból készül. Fotó: [Atelier Wen](https://atelierwen.com/blogs/journal/presenting-inflection-in-tantalum).*
 
 Az ár is továbblépett. A V3 4850 dollár, míg az előző generáció 3320 dollár körül járt. Ez már nem az a microbrand, amely olcsóbban ad érdekes számlapot. Ugyanabban a pénzügyi térben mozog, ahol nagy múltú svájci és japán gyártók kínálnak saját szerkezetes órákat, kereskedőhálózattal és kiszámíthatóbb szervizháttérrel.
 

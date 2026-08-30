@@ -16,10 +16,10 @@ model:
   description: "Mozgasd meg az órát, és kövesd végig az energiát a rotortól az irányváltón és a fogaskerekeken át a főrugóig."
   level: 'foundation'
 cover:
-  src: '../_images/rotor-hero.jpg'
-  alt: "Grand Seiko automata szerkezetének félkör alakú rotora közelről"
+  src: '../_images/rotor-hero-v2.webp'
+  alt: "Automata rotor és szerkezet pergamenes műszaki rajzok előtt"
   focus: 'center center'
-  credit: "Grand Seiko"
+  credit: "Lume – saját összeállítás, Grand Seiko képe alapján, AI-segítséggel módosítva"
   creditUrl: 'https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index'
 sources:
   - label: "Rolex: The Perpetual rotor, a rotor feladata és a csuklómozgás energiájának felhasználása"
@@ -71,7 +71,10 @@ Ha az órát lassan elfordítjuk, a nehéz rész a gravitáció miatt lefelé ak
 
 Nem minden mozdulatból lesz teljes kör. Nem is kell. Egy néhány fokos elfordulás ugyanúgy továbbítható a felhúzórendszerbe. Az automata óra egész nap sok apró, rendezetlen mozgást gyűjt össze, majd ugyanabba az irányba rendezi őket: a főrugó megfeszítése felé.
 
-A rotor tehát nem ingyen energiát készít. A viselő izommunkájának parányi részét veszi át. Emiatt egy íróasztalnál mozdulatlanul ülő ember órája kevesebbet húz fel, mint azé, aki egész nap járkál. A „automata” szó nem azt jelenti, hogy az óra minden körülmények között örökké jár. Azt jelenti, hogy viselés közben képes pótolni az elfogyasztott energia egy részét vagy egészét.
+A rotor tehát nem ingyen energiát készít. A viselő izommunkájának parányi részét veszi át. Emiatt egy íróasztalnál mozdulatlanul ülő ember órája kevesebbet húz fel, mint azé, aki egész nap járkál. Az „automata” szó nem azt jelenti, hogy az óra minden körülmények között örökké jár. Azt jelenti, hogy viselés közben képes pótolni az elfogyasztott energia egy részét vagy egészét.
+
+![Grand Seiko automata szerkezetének félkör alakú rotora](../_images/rotor-hero.jpg)
+*A rotor külső ívén összpontosul a tömeg, ezért a szerkezethez képest már kis tokmozgásra is elfordulhat. Fotó: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index).*
 
 ## A fogaskerék, amelynek el kell döntenie az irányt
 
@@ -122,6 +125,9 @@ A ma leggyakoribb megoldás a központi, teljes rotor. A szerkezet fölött foro
 
 A mikrorotor a szerkezet síkjába süllyed. Kisebb, ezért nagy sűrűségű anyagból, például volfrámból vagy aranyból készülhet. Nem takarja el a teljes hátlapot, és vékonyabb órát tesz lehetővé. Cserébe kevesebb helyen kell elegendő tömeget és áttételt biztosítani, ami bonyolultabb tervezés.
 
+![A Baltic MR01 szerkezetébe süllyesztett mikrorotor](../_images/baltic-mr01-back-transparent.png)
+*A Baltic MR01 aranyszínű mikrorotorja nem a szerkezet fölött, hanem annak síkjában forog, így a hidak nagy része látható marad. Fotó: [Baltic](https://baltic-watches.com/en/products/mr-classic-salmon), AI-segítséggel módosítva.*
+
 A perifériás rotor gyűrűként fut a szerkezet külső peremén. Szinte mindent látni hagy, miközben nagy átmérőn mozgatja a tömeget. Csapágyazása, ütésállósága és gyártása azonban összetett, ezért ritka és drága.
 
 Léteztek úgynevezett kalapácsos vagy bumper automaták is. Ezek súlya nem fordult körbe, hanem egy korlátozott íven mozgott, majd rugós ütközőknek csapódva visszafordult. A viselő gyakran érezte a finom koppanást a csuklóján.
@@ -147,4 +153,3 @@ A rotor összegyűjti a rendezetlen mozgást. Az irányváltó rendet tesz benne
 Egyik rész sem látványos külön-külön. Együtt azonban megoldanak egy meglepően emberi problémát: elfelejtünk felhúzni egy órát.
 
 Az automata szerkezet nem szüntette meg ezt a napi mozdulatot. Egyszerűen elrejtette a járásunkba.
-

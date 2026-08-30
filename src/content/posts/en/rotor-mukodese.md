@@ -16,10 +16,10 @@ model:
   description: "Move the watch and follow the energy from the rotor through the reverser and gear train into the mainspring."
   level: 'foundation'
 cover:
-  src: '../_images/rotor-hero.jpg'
-  alt: "Close view of the semicircular rotor in a Grand Seiko automatic movement"
+  src: '../_images/rotor-hero-v2.webp'
+  alt: "Automatic rotor and movement against parchment technical drawings"
   focus: 'center center'
-  credit: "Grand Seiko"
+  credit: "Lume – original composition based on a Grand Seiko image, modified with AI assistance"
   creditUrl: 'https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index'
 sources:
   - label: "Rolex: The Perpetual rotor, the rotor’s purpose and use of wrist motion"
@@ -73,6 +73,9 @@ Not every movement produces a complete revolution. It does not need to. A turn o
 
 The rotor does not create free energy. It takes a tiny share of the wearer’s muscular work. A person sitting motionless at a desk winds a watch less than somebody walking all day. “Automatic” does not mean that the watch will run forever under all conditions. It means that wear can replace some or all of the energy being consumed.
 
+![The semicircular rotor of a Grand Seiko automatic movement](../_images/rotor-hero.jpg)
+*Mass is concentrated along the rotor's outer arc, allowing it to turn relative to the movement even when the case moves only slightly. Photo: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index).*
+
 ## The gear that has to choose a direction
 
 The rotor can turn both ways. A mainspring can only be wound in one direction. The movement must therefore do three things:
@@ -86,6 +89,9 @@ The simplest systems use only one direction of rotor travel. When it turns the u
 Bidirectional systems use reversing wheels. They switch the route so clockwise and anticlockwise rotor movement both turn the barrel’s winding wheel in the same direction. Rolex’s pair of interconnected reversing wheels, patented in 1952, is a well-known example.
 
 There are other solutions. Seiko’s Magic Lever from 1959 uses two arms. One pulls and the other pushes the winding wheel, then they exchange roles when direction changes. It uses few components and captures small rotor movements, which is why it became fundamental to many Seiko calibres.
+
+![The two arms and winding wheel of Grand Seiko's Magic Lever](../_images/rotor-magic-lever-assembly.jpg)
+*The two Magic Lever arms transmit clockwise and anticlockwise rotor motion in the same useful direction. Photo: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index).*
 
 IWC’s Pellaton system also uses pawls. An eccentric converts rotor rotation into a back-and-forth action, while two pawls alternately pull the winding wheel or slide over it. The objective is the same: whichever way the rotor starts, the mainspring receives winding.
 
@@ -119,6 +125,9 @@ The most common arrangement today is the full central rotor. It turns above the 
 
 A micro-rotor sits within the plane of the movement. Because it is smaller, it is often made from a dense material such as tungsten or gold. It leaves more of the back visible and can produce a thinner watch. The available space, however, must provide sufficient mass and gearing, making design more demanding.
 
+![The micro-rotor recessed into the Baltic MR01 movement](../_images/baltic-mr01-back-transparent.png)
+*The gold-coloured micro-rotor in Baltic MR01 turns within the movement rather than above it, leaving most of the bridges visible. Photo: [Baltic](https://baltic-watches.com/en/products/mr-classic-salmon), modified with AI assistance.*
+
 A peripheral rotor runs as a ring around the outside of the movement. It leaves almost everything visible while moving its mass at a large diameter. Its bearings, shock resistance and manufacture are complex, so it remains uncommon and expensive.
 
 There have also been hammer, or bumper, automatics. Their weight did not complete a circle. It travelled through a limited arc, struck spring-loaded stops and returned. Wearers could often feel a gentle knock at the wrist.
@@ -144,4 +153,3 @@ The rotor collects disordered motion. The reverser organises it. The gear train 
 None of these steps is spectacular alone. Together, they solve a surprisingly human problem: we forget to wind a watch.
 
 The automatic movement did not eliminate that daily action. It hid it inside the way we walk.
-

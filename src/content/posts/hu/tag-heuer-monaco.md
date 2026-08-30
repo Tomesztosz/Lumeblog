@@ -10,10 +10,10 @@ translationKey: 'tag-heuer-monaco'
 minutes: 12
 draft: false
 cover:
-  src: '../_images/tag-heuer-monaco-hero.jpg'
-  alt: "Kék számlapos Heuer Monaco 1133B acélszíjon"
+  src: '../_images/tag-heuer-monaco-hero-v2.webp'
+  alt: "Kék számlapos Heuer Monaco pergamenes műszaki rajzok és versenypálya-vonal előtt"
   focus: 'center center'
-  credit: "TAG Heuer"
+  credit: "Lume – saját összeállítás, TAG Heuer képe alapján, AI-segítséggel módosítva"
   creditUrl: 'https://magazine.tagheuer.com/en/2024/04/10/a-matter-of-time-podcast-season-3-the-grand-story-of-monaco/'
 sources:
   - label: "TAG Heuer: Vintage Heuer Monaco Collection, a Piquerez-tok, az eredeti referenciák, a Le Mans és a gyártás megszűnése"
