@@ -17,6 +17,7 @@ model:
   level: 'foundation'
 cover:
   src: '../_images/rotor-hero-v2.webp'
+  cardSrc: '../_images/rotor-card-v3.webp'
   alt: "Automata rotor és szerkezet pergamenes műszaki rajzok előtt"
   focus: 'center center'
   credit: "Lume – saját összeállítás, Grand Seiko képe alapján, AI-segítséggel módosítva"
@@ -73,8 +74,8 @@ Nem minden mozdulatból lesz teljes kör. Nem is kell. Egy néhány fokos elford
 
 A rotor tehát nem ingyen energiát készít. A viselő izommunkájának parányi részét veszi át. Emiatt egy íróasztalnál mozdulatlanul ülő ember órája kevesebbet húz fel, mint azé, aki egész nap járkál. Az „automata” szó nem azt jelenti, hogy az óra minden körülmények között örökké jár. Azt jelenti, hogy viselés közben képes pótolni az elfogyasztott energia egy részét vagy egészét.
 
-![Grand Seiko automata szerkezetének félkör alakú rotora](../_images/rotor-hero.jpg)
-*A rotor külső ívén összpontosul a tömeg, ezért a szerkezethez képest már kis tokmozgásra is elfordulhat. Fotó: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index).*
+![Grand Seiko automata szerkezetének félkör alakú rotora](../_images/rotor-grand-seiko-transparent-v2.png)
+*A rotor külső ívén összpontosul a tömeg, ezért a szerkezethez képest már kis tokmozgásra is elfordulhat. Fotó: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index), a háttér eltávolítva.*
 
 ## A fogaskerék, amelynek el kell döntenie az irányt
 
@@ -90,8 +91,8 @@ A kétirányú rendszerek irányváltó kerekeket használnak. Ezek úgy kapcsol
 
 Létezik más megoldás is. A Seiko 1959-es Magic Lever rendszere két karral dolgozik: az egyik húzza, a másik tolja a felhúzó kereket, majd irányváltáskor szerepet cserélnek. Kevés alkatrészből áll, már kis rotormozgást is hasznosít, ezért évtizedeken át sok Seiko szerkezet alapja lett.
 
-![A Grand Seiko Magic Lever karja és felhúzókereke](../_images/rotor-magic-lever-assembly.jpg)
-*A Magic Lever két karja ugyanabba az irányba továbbítja a rotor jobbra és balra fordulását. Fotó: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index).*
+![A Grand Seiko Magic Lever karja és felhúzókereke](../_images/rotor-magic-lever-clear-v2.webp)
+*A Magic Lever két karja ugyanabba az irányba továbbítja a rotor jobbra és balra fordulását. Kép: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index), AI-segítséggel világosítva és részletezve.*
 
 Az IWC Pellaton-felhúzása szintén kilincseket használ. Egy excenter a rotor forgását ide-oda mozgássá alakítja, két kilincs pedig felváltva húzza a kereket vagy siklik át fölötte. A cél ugyanaz: bármelyik irányba indul a rotor, a főrugó mindig felhúzást kapjon.
 

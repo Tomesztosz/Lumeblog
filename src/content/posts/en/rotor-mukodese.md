@@ -17,6 +17,7 @@ model:
   level: 'foundation'
 cover:
   src: '../_images/rotor-hero-v2.webp'
+  cardSrc: '../_images/rotor-card-v3.webp'
   alt: "Automatic rotor and movement against parchment technical drawings"
   focus: 'center center'
   credit: "Lume – original composition based on a Grand Seiko image, modified with AI assistance"
@@ -73,8 +74,8 @@ Not every movement produces a complete revolution. It does not need to. A turn o
 
 The rotor does not create free energy. It takes a tiny share of the wearer’s muscular work. A person sitting motionless at a desk winds a watch less than somebody walking all day. “Automatic” does not mean that the watch will run forever under all conditions. It means that wear can replace some or all of the energy being consumed.
 
-![The semicircular rotor of a Grand Seiko automatic movement](../_images/rotor-hero.jpg)
-*Mass is concentrated along the rotor's outer arc, allowing it to turn relative to the movement even when the case moves only slightly. Photo: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index).*
+![The semicircular rotor of a Grand Seiko automatic movement](../_images/rotor-grand-seiko-transparent-v2.png)
+*Mass is concentrated along the rotor's outer arc, allowing it to turn relative to the movement even when the case moves only slightly. Photo: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index), background removed.*
 
 ## The gear that has to choose a direction
 
@@ -90,8 +91,8 @@ Bidirectional systems use reversing wheels. They switch the route so clockwise a
 
 There are other solutions. Seiko’s Magic Lever from 1959 uses two arms. One pulls and the other pushes the winding wheel, then they exchange roles when direction changes. It uses few components and captures small rotor movements, which is why it became fundamental to many Seiko calibres.
 
-![The two arms and winding wheel of Grand Seiko's Magic Lever](../_images/rotor-magic-lever-assembly.jpg)
-*The two Magic Lever arms transmit clockwise and anticlockwise rotor motion in the same useful direction. Photo: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index).*
+![The two arms and winding wheel of Grand Seiko's Magic Lever](../_images/rotor-magic-lever-clear-v2.webp)
+*The two Magic Lever arms transmit clockwise and anticlockwise rotor motion in the same useful direction. Image: [Grand Seiko](https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index), brightened and clarified with AI assistance.*
 
 IWC’s Pellaton system also uses pawls. An eccentric converts rotor rotation into a back-and-forth action, while two pawls alternately pull the winding wheel or slide over it. The objective is the same: whichever way the rotor starts, the mainspring receives winding.
 
