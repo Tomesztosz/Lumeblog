@@ -8,13 +8,14 @@ column: 'in-hand'
 lang: 'en'
 translationKey: 'atelier-wen'
 minutes: 11
-draft: true
+draft: false
 cover:
-  src: '../_images/atelier-wen-hero-v2.webp'
-  alt: "Blue-dial Atelier Wen Perception against parchment technical drawings"
+  src: '../_images/atelier-wen-hero-v3.webp'
+  cardSrc: '../_images/atelier-wen-card-v3.webp'
+  alt: "The blue hand-guilloché dial of Atelier Wen Perception against parchment technical drawings"
   focus: 'center center'
-  credit: "Lume – original composition based on an Atelier Wen image, modified with AI assistance"
-  creditUrl: 'https://sg.atelierwen.com/pages/identity'
+  credit: "Lume – original composition using an official Atelier Wen product photograph"
+  creditUrl: 'https://sg.atelierwen.com/products/perception'
 sources:
   - label: "Atelier Wen: Identity, the founders, name, Porcelain Odyssey and launch of Perception"
     url: "https://sg.atelierwen.com/pages/identity"
@@ -44,8 +45,8 @@ This was conceived by two Frenchmen.
 
 That contradiction would already make a good story. Atelier Wen has since moved from a watch funded on Kickstarter to a $4,850 flagship powered by a French movement. The question is no longer whether the brand is Chinese. It is what Chinese identity means when the most valuable component now comes from Europe.
 
-![Blue-dial Atelier Wen Perception on the wrist](../_images/atelier-wen-perception-wrist.webp)
-*Perception Mù on the wrist. Its 40-millimetre case is paired with an integrated steel bracelet and a hand-guilloché fish-scale dial. Photo: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
+![The complete blue-dial Atelier Wen Perception watch](../_images/atelier-wen-perception-front-transparent-v2.png)
+*The 40-millimetre case, integrated steel bracelet and hand-guilloché fish-scale dial of Perception. Full-resolution manufacturer photograph with its background removed: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
 
 ## A name that resists a neat translation
 
@@ -75,8 +76,8 @@ This became a point of dispute. Critics questioned how much work Cheng personall
 
 That does not settle every methodological argument. It does support the more important claim. This is not an industrial texture marketed as handicraft. A small workshop is genuinely doing the work.
 
-![Close view of the hand-guilloché Atelier Wen Perception dial](../_images/atelier-wen-perception-dial-close.webp)
-*The fish-scale guilloché of Perception at close range. This is not a stamped texture: it is cut on hand-guided engines in Cheng Yucai's Henan workshop. Photo: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
+![Close view of the hand-guilloché Atelier Wen Perception dial](../_images/atelier-wen-perception-dial-transparent-v2.png)
+*The fish-scale guilloché of Perception at close range. This is not a stamped texture: it is cut on hand-guided engines in Cheng Yucai's Henan workshop. Full-resolution manufacturer photograph with its background removed: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
 
 ## Chinese is more than decoration
 
@@ -100,15 +101,18 @@ The window was needed because the movement behind it was no longer Chinese.
 
 V3 uses a highly customised version of the French Pequignet EPM03 automatic calibre. It runs at 4 hertz, stores 65 hours of energy, uses bidirectional pawl winding and is regulated to a range of minus 4 to plus 6 seconds per day. Its bridges are shaped like fans, recesses are filled with blue aventurine lacquer, and the finishing goes far beyond the visual treatment of the old Peacock.
 
-![Close view of the Pequignet movement in Atelier Wen Perception V3](../_images/atelier-wen-perception-back.webp)
-*The caseback of Perception V3. Fan-shaped bridges and blue aventurine lacquer now frame the French Pequignet-based movement. Photo: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
+![Close view of the Pequignet movement in Atelier Wen Perception V3](../_images/atelier-wen-perception-back-wide.jpg)
+*A wide close-up of the Perception V3 caseback. Fan-shaped bridges and blue aventurine lacquer now frame the French Pequignet-based movement. Photo: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
 
 By then, Perception no longer represented the limit of the company’s ambition. In November 2025, Atelier Wen presented Inflection, a 40-millimetre flagship whose case and every bracelet link are made from 99.9 per cent pure tantalum. The unusually dense, blue-grey metal sticks to cutting tools, dissipates machining heat poorly and resists fine polishing. Atelier Wen began trials with eleven Chinese partners and needed three years to reach a full tantalum bracelet it considered ready for serial production.
 
+![The green enamel-dial Atelier Wen Inflection at close range](../_images/atelier-wen-inflection-front-close.png)
+*The green grand feu enamel dial and 99.9 per cent pure tantalum case of Inflection at close range. Cropped but otherwise unaltered manufacturer image: [Atelier Wen](https://atelierwen.com/products/inflection).*
+
 Inflection’s Chinese contribution extends beyond machining the metal. Its grand feu enamel dial comes from Kong Lingjun’s Beijing workshop, the hands and numerals draw on bamboo leaves, and the movement bridges follow wind motifs in historical Chinese painting. Inside, however, is a Swiss Girard-Perregaux 03300 automatic calibre. Planned at only 100 pieces per year, Inflection costs $29,800 on its tantalum bracelet or $19,800 on a sailcloth-rubber strap. This is no longer an accessible microbrand watch. It is an open attempt by a young Chinese independent to enter high watchmaking.
 
-![Three Atelier Wen Inflection tantalum watches at close range](../_images/atelier-wen-inflection-tantalum.webp)
-*Three versions of Inflection at close range. The case and entire bracelet are made from 99.9 per cent pure tantalum. Photo: [Atelier Wen](https://atelierwen.com/blogs/journal/presenting-inflection-in-tantalum).*
+![The Girard-Perregaux movement of Atelier Wen Inflection at close range](../_images/atelier-wen-inflection-movement-original.jpg)
+*The heavily customised Girard-Perregaux 03300 movement inside Inflection. Original full-resolution manufacturer macro: [Atelier Wen](https://atelierwen.com/blogs/journal/presenting-inflection-in-tantalum).*
 
 The price moved too. V3 costs $4,850, against about $3,320 for the previous generation. This is no longer a microbrand offering an interesting dial for less. It now competes in the same financial space as established Swiss and Japanese companies with proprietary calibres, dealer networks and more predictable service support.
 
