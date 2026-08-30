@@ -10,12 +10,12 @@ translationKey: 'atelier-wen'
 minutes: 11
 draft: false
 cover:
-  src: '../_images/atelier-wen-hero-v3.webp'
-  cardSrc: '../_images/atelier-wen-card-v3.webp'
-  alt: "The blue hand-guilloché dial of Atelier Wen Perception against parchment technical drawings"
+  src: '../_images/atelier-wen-hero-founders-v4.webp'
+  cardSrc: '../_images/atelier-wen-card-founders-v4.webp'
+  alt: "Atelier Wen founders Robin Tallendier and Wilfried Buiron"
   focus: 'center center'
-  credit: "Lume – original composition using an official Atelier Wen product photograph"
-  creditUrl: 'https://sg.atelierwen.com/products/perception'
+  credit: "Lume – original composition using official Atelier Wen founder and product photographs"
+  creditUrl: 'https://int.atelierwen.com/pages/identity'
 sources:
   - label: "Atelier Wen: Identity, the founders, name, Porcelain Odyssey and launch of Perception"
     url: "https://sg.atelierwen.com/pages/identity"
@@ -101,8 +101,8 @@ The window was needed because the movement behind it was no longer Chinese.
 
 V3 uses a highly customised version of the French Pequignet EPM03 automatic calibre. It runs at 4 hertz, stores 65 hours of energy, uses bidirectional pawl winding and is regulated to a range of minus 4 to plus 6 seconds per day. Its bridges are shaped like fans, recesses are filled with blue aventurine lacquer, and the finishing goes far beyond the visual treatment of the old Peacock.
 
-![Close view of the Pequignet movement in Atelier Wen Perception V3](../_images/atelier-wen-perception-back-wide.jpg)
-*A wide close-up of the Perception V3 caseback. Fan-shaped bridges and blue aventurine lacquer now frame the French Pequignet-based movement. Photo: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
+![Close view of the Pequignet movement in Atelier Wen Perception V3](../_images/atelier-wen-perception-back-transparent-v3.png)
+*A wide close-up of the Perception V3 caseback. Fan-shaped bridges and blue aventurine lacquer now frame the French Pequignet-based movement. Manufacturer photograph with its background removed: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
 
 By then, Perception no longer represented the limit of the company’s ambition. In November 2025, Atelier Wen presented Inflection, a 40-millimetre flagship whose case and every bracelet link are made from 99.9 per cent pure tantalum. The unusually dense, blue-grey metal sticks to cutting tools, dissipates machining heat poorly and resists fine polishing. Atelier Wen began trials with eleven Chinese partners and needed three years to reach a full tantalum bracelet it considered ready for serial production.
 

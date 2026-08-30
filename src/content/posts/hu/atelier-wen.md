@@ -10,12 +10,12 @@ translationKey: 'atelier-wen'
 minutes: 12
 draft: false
 cover:
-  src: '../_images/atelier-wen-hero-v3.webp'
-  cardSrc: '../_images/atelier-wen-card-v3.webp'
-  alt: "Az Atelier Wen Perception kék, kézzel gilosált számlapja pergamenes műszaki rajzok előtt"
+  src: '../_images/atelier-wen-hero-founders-v4.webp'
+  cardSrc: '../_images/atelier-wen-card-founders-v4.webp'
+  alt: "Robin Tallendier és Wilfried Buiron, az Atelier Wen alapítói"
   focus: 'center center'
-  credit: "Lume – saját összeállítás, az Atelier Wen hivatalos termékfotójából"
-  creditUrl: 'https://sg.atelierwen.com/products/perception'
+  credit: "Lume – saját összeállítás, az Atelier Wen hivatalos alapító- és termékfotójából"
+  creditUrl: 'https://int.atelierwen.com/pages/identity'
 sources:
   - label: "Atelier Wen: Identity, az alapítók, a név, a Porcelain Odyssey és a Perception indulása"
     url: "https://sg.atelierwen.com/pages/identity"
@@ -101,8 +101,8 @@ Az ablakra azért lett szükség, mert mögötte már nem kínai szerkezet láth
 
 A V3 a francia Pequignet EPM03 automata kaliberének erősen átdolgozott változatát használja. A szerkezet 4 hertzen jár, 65 órányi energiát tárol, kétirányú kilincses felhúzást kapott, és napi mínusz 4, plusz 6 másodperces tartományra szabályozzák. A hidak legyezőformájúak, a mélyedéseket kék aventurinlakk tölti ki, a csavarok és felületek kidolgozása pedig messze túlmutat a korábbi Peacock látványán.
 
-![Az Atelier Wen Perception V3 Pequignet szerkezete közelről](../_images/atelier-wen-perception-back-wide.jpg)
-*A Perception V3 hátlapjának széles, közeli részlete. A legyezőformájú hidak és a kék aventurinlakk már a francia Pequignet-alapú szerkezetet keretezik. Fotó: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
+![Az Atelier Wen Perception V3 Pequignet szerkezete közelről](../_images/atelier-wen-perception-back-transparent-v3.png)
+*A Perception V3 hátlapjának széles, közeli részlete. A legyezőformájú hidak és a kék aventurinlakk már a francia Pequignet-alapú szerkezetet keretezik. Gyártói fotó, eltávolított háttérrel: [Atelier Wen](https://sg.atelierwen.com/products/perception).*
 
 Ekkorra a Perception már nem is a márka végső ambícióját jelentette. 2025 novemberében bemutatták az Inflectiont, egy 40 milliméteres zászlóshajót, amelynek tokja és minden egyes szíjszeme 99,9 százalékos tisztaságú tantálból készül. A kékesszürke, szokatlanul sűrű fém ragad a szerszámhoz, rosszul vezeti el a megmunkáláskor keletkező hőt, és a polírozása is nehéz. Az Atelier Wen tizenegy kínai partnerrel kezdte a kísérleteket, majd három év fejlesztés után jutott el a sorozatgyártható, teljes tantálszíjig.
 
