@@ -20,7 +20,9 @@
   --font-mono:  'IBM Plex Mono', ui-monospace, monospace;
 
   /* Heritage / lights-on (warm vellum, not the usual cream) */
-  --paper:      #E6DAC1;
+  --paper-light:#E6DAC1;
+  --paper-dark: #13100B;
+  --paper:      var(--paper-light);
   --paper-2:    #EFE6D2;   /* raised cards */
   --dial-face:  #F1E9D6;
   --ink:        #2A231D;   /* warm espresso near-black */
@@ -39,7 +41,7 @@
 }
 body.dark{
   /* Lume / lights-off (warm candlelit dark, everything quiets down but the lume) */
-  --paper:      #13100B;
+  --paper:      var(--paper-dark);
   --paper-2:    #1B1610;
   --dial-face:  #0E0B07;
   --ink:        #B6AB94;
@@ -55,9 +57,21 @@ body.dark{
 }
 
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{
+  scroll-behavior:smooth;
+  background:var(--paper-light);
+  color-scheme:light;
+  transition:background-color .7s ease;
+}
+html.dark{
+  background:var(--paper-dark);
+  color-scheme:dark;
+}
 body{
   margin:0;
+  padding-right:env(safe-area-inset-right, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+  padding-left:env(safe-area-inset-left, 0px);
   background:var(--paper);
   color:var(--ink);
   font-family:var(--font-sans);
@@ -67,6 +81,7 @@ body{
   transition:background-color .7s ease, color .7s ease;
   overflow-x:hidden;
   min-height:100vh;
+  min-height:100dvh;
   display:flex; flex-direction:column;
 }
 body > main{ flex:1 0 auto; }
@@ -110,6 +125,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 /* ============================================================ HEADER */
 .site-header{
   position:sticky; top:0; z-index:20;
+  padding-top:env(safe-area-inset-top, 0px);
   background:color-mix(in srgb, var(--paper) 88%, transparent);
   backdrop-filter:saturate(1.1) blur(8px);
   border-bottom:1px solid var(--line-soft);

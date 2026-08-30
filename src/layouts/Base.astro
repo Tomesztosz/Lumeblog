@@ -57,7 +57,7 @@ const siteStructuredData = {
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     {/* Amíg nincs domain és első cikk, ne indexelje senki. Kapcsoló: src/site.ts */}
@@ -81,8 +81,31 @@ const siteStructuredData = {
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#E6DAC1" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#13100B" media="(prefers-color-scheme: dark)" />
+    <meta
+      id="themeColor"
+      name="theme-color"
+      content="#E6DAC1"
+      data-light="#E6DAC1"
+      data-dark="#13100B"
+    />
+    <script is:inline>
+      /* A böngésző státuszsávja már az első kirajzoláskor a Lume mentett
+         színmódját kapja, nem a telefon ettől független rendszerbeállítását. */
+      try {
+        var savedDark = localStorage.getItem('lume-theme') === 'dark';
+        var themeColor = document.getElementById('themeColor');
+        document.documentElement.classList.toggle('dark', savedDark);
+        document.documentElement.style.colorScheme = savedDark ? 'dark' : 'light';
+        if (themeColor) {
+          themeColor.setAttribute(
+            'content',
+            savedDark ? themeColor.dataset.dark : themeColor.dataset.light
+          );
+        }
+      } catch (e) {
+        document.documentElement.style.colorScheme = 'light';
+      }
+    </script>
 
     <link
       rel="alternate"
@@ -121,6 +144,7 @@ const siteStructuredData = {
         var lightsLbl = document.getElementById('lightsLabel');
         var heroBtn = document.getElementById('heroLights');
         var heroLbl = document.getElementById('heroLightsLabel');
+        var themeColor = document.getElementById('themeColor');
         var themeKey = 'lume-theme';
         var lights = body.classList.contains('dark') ? 'off' : 'on';
         var hinted = false;
@@ -128,9 +152,18 @@ const siteStructuredData = {
         if (!lightsBtn) return;
 
         function render() {
+          var isDark = lights === 'off';
           if (lightsLbl) lightsLbl.textContent = lights === 'on' ? labels.on : labels.off;
           if (heroLbl) heroLbl.textContent = lights === 'on' ? labels.heroOn : labels.heroOff;
-          lightsBtn.setAttribute('aria-pressed', String(lights === 'off'));
+          lightsBtn.setAttribute('aria-pressed', String(isDark));
+          document.documentElement.classList.toggle('dark', isDark);
+          document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+          if (themeColor) {
+            themeColor.setAttribute(
+              'content',
+              isDark ? themeColor.dataset.dark : themeColor.dataset.light
+            );
+          }
           document.documentElement.style.setProperty('--hint', hinted ? '0' : '1');
         }
 
