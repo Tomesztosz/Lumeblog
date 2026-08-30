@@ -8,7 +8,7 @@ column: 'in-hand'
 lang: 'hu'
 translationKey: 'atelier-wen'
 minutes: 12
-draft: false
+draft: true
 cover:
   src: '../_images/atelier-wen-hero-v2.webp'
   alt: "Kék számlapos Atelier Wen Perception pergamenes műszaki rajzok előtt"

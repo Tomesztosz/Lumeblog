@@ -9,7 +9,7 @@ lang: 'hu'
 slug: 'automata-ora-rotor-mukodese'
 translationKey: 'rotor-mukodese'
 minutes: 10
-draft: false
+draft: true
 model:
   src: '/widgets/rotor.html'
   title: "A rotor működés közben"

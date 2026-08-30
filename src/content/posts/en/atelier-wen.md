@@ -8,7 +8,7 @@ column: 'in-hand'
 lang: 'en'
 translationKey: 'atelier-wen'
 minutes: 11
-draft: false
+draft: true
 cover:
   src: '../_images/atelier-wen-hero-v2.webp'
   alt: "Blue-dial Atelier Wen Perception against parchment technical drawings"

@@ -8,7 +8,7 @@ column: 'origins'
 lang: 'en'
 translationKey: 'tag-heuer-monaco'
 minutes: 11
-draft: false
+draft: true
 cover:
   src: '../_images/tag-heuer-monaco-hero-v2.webp'
   alt: "Blue-dial Heuer Monaco against parchment technical drawings and a racing-circuit line"
