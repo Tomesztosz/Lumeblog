@@ -3,7 +3,7 @@ title: "A szögletes óra, amelyet először senki nem akart"
 description: "A Heuer Monaco 1969-ben vízálló szögletes tokot, automata kronográfot és bal oldalra tett koronát kapott. Megbukott, eltűnt, majd Steve McQueen órájaként tért vissza."
 seoTitle: "TAG Heuer Monaco: a szögletes óra, amely először megbukott"
 seoDescription: "A TAG Heuer Monaco története a Calibre 11 versenyétől Steve McQueenen és a Le Mans filmen át a modern visszatérésig."
-date: 2026-08-30
+date: 2026-09-02
 column: 'origins'
 lang: 'hu'
 translationKey: 'tag-heuer-monaco'
