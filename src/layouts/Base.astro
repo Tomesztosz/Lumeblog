@@ -81,30 +81,42 @@ const siteStructuredData = {
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta
-      id="themeColor"
-      name="theme-color"
-      content="#E6DAC1"
-      data-light="#E6DAC1"
-      data-dark="#13100B"
-    />
     <script is:inline>
       /* A böngésző státuszsávja már az első kirajzoláskor a Lume mentett
          színmódját kapja, nem a telefon ettől független rendszerbeállítását. */
-      try {
-        var savedDark = localStorage.getItem('lume-theme') === 'dark';
-        var themeColor = document.getElementById('themeColor');
-        document.documentElement.classList.toggle('dark', savedDark);
-        document.documentElement.style.colorScheme = savedDark ? 'dark' : 'light';
-        if (themeColor) {
-          themeColor.setAttribute(
-            'content',
-            savedDark ? themeColor.dataset.dark : themeColor.dataset.light
-          );
+      (function () {
+        var root = document.documentElement;
+        var lightColor = '#E6DAC1';
+        var darkColor = '#13100B';
+        var savedDark = false;
+        var appleTouch = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+        try {
+          savedDark = localStorage.getItem('lume-theme') === 'dark';
+        } catch (e) {
+          /* Letiltott helyi tárolásnál a világos mód az alapértelmezett. */
         }
-      } catch (e) {
-        document.documentElement.style.colorScheme = 'light';
-      }
+
+        var initialColor = savedDark ? darkColor : lightColor;
+        root.dataset.themeColorLight = lightColor;
+        root.dataset.themeColorDark = darkColor;
+        root.dataset.appleTouch = appleTouch ? 'true' : 'false';
+        root.classList.toggle('dark', savedDark);
+        root.style.colorScheme = savedDark ? 'dark' : 'light';
+        root.style.backgroundColor = initialColor;
+
+        /* Az iOS 26 Safari a lap hátteréből veszi a státuszsáv színét, és a
+           theme-color dinamikus módosítását nem mindig rajzolja újra. Androidon
+           továbbra is a szabványos metaelem ad megbízható eredményt. */
+        if (!appleTouch) {
+          var themeColor = document.createElement('meta');
+          themeColor.id = 'themeColor';
+          themeColor.name = 'theme-color';
+          themeColor.content = initialColor;
+          document.head.appendChild(themeColor);
+        }
+      })();
     </script>
 
     <link
@@ -127,6 +139,7 @@ const siteStructuredData = {
       } catch (e) {
         /* A böngésző letilthatja a helyi tárolást — ilyenkor marad a világos nézet. */
       }
+      document.body.style.backgroundColor = document.documentElement.style.backgroundColor;
     </script>
     <a class="skip-link" href="#top">{t.skipToContent}</a>
     <Header lang={lang} altUrl={altUrl} active={active} />
@@ -145,6 +158,8 @@ const siteStructuredData = {
         var heroBtn = document.getElementById('heroLights');
         var heroLbl = document.getElementById('heroLightsLabel');
         var themeColor = document.getElementById('themeColor');
+        var root = document.documentElement;
+        var appleTouch = root.dataset.appleTouch === 'true';
         var themeKey = 'lume-theme';
         var lights = body.classList.contains('dark') ? 'off' : 'on';
         var hinted = false;
@@ -153,16 +168,30 @@ const siteStructuredData = {
 
         function render() {
           var isDark = lights === 'off';
+          var chromeColor = isDark ? root.dataset.themeColorDark : root.dataset.themeColorLight;
           if (lightsLbl) lightsLbl.textContent = lights === 'on' ? labels.on : labels.off;
           if (heroLbl) heroLbl.textContent = lights === 'on' ? labels.heroOn : labels.heroOff;
           lightsBtn.setAttribute('aria-pressed', String(isDark));
-          document.documentElement.classList.toggle('dark', isDark);
-          document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
-          if (themeColor) {
-            themeColor.setAttribute(
-              'content',
-              isDark ? themeColor.dataset.dark : themeColor.dataset.light
-            );
+          root.classList.toggle('dark', isDark);
+          root.style.colorScheme = isDark ? 'dark' : 'light';
+          root.style.backgroundColor = chromeColor;
+          body.style.backgroundColor = chromeColor;
+
+          if (appleTouch) {
+            /* WebKit a dokumentum hátterét figyeli; régi, gyorsítótárazott metaelem
+               se maradjon a fában, amely világos színt kényszeríthetne rá. */
+            if (themeColor) themeColor.remove();
+            themeColor = null;
+          } else {
+            /* Androidon egy új metaelem létrehozása a váltást is azonnal jelzi a
+               böngésző felületének, nem csak a DOM-ban írja át a régi értéket. */
+            var nextThemeColor = document.createElement('meta');
+            nextThemeColor.id = 'themeColor';
+            nextThemeColor.name = 'theme-color';
+            nextThemeColor.content = chromeColor;
+            if (themeColor) themeColor.replaceWith(nextThemeColor);
+            else document.head.appendChild(nextThemeColor);
+            themeColor = nextThemeColor;
           }
           document.documentElement.style.setProperty('--hint', hinted ? '0' : '1');
         }
