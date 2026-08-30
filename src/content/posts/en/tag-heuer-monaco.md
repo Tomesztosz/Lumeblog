@@ -11,6 +11,7 @@ minutes: 11
 draft: false
 cover:
   src: '../_images/tag-heuer-monaco-hero-v2.webp'
+  cardSrc: '../_images/tag-heuer-monaco-card-v3.png'
   alt: "Blue-dial Heuer Monaco against parchment technical drawings and a racing-circuit line"
   focus: 'center center'
   credit: "Lume – original composition based on a TAG Heuer image, modified with AI assistance"

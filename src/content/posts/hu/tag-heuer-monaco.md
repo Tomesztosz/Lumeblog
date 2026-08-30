@@ -11,6 +11,7 @@ minutes: 12
 draft: false
 cover:
   src: '../_images/tag-heuer-monaco-hero-v2.webp'
+  cardSrc: '../_images/tag-heuer-monaco-card-v3.png'
   alt: "Kék számlapos Heuer Monaco pergamenes műszaki rajzok és versenypálya-vonal előtt"
   focus: 'center center'
   credit: "Lume – saját összeállítás, TAG Heuer képe alapján, AI-segítséggel módosítva"
