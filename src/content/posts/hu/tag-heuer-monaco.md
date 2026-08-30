@@ -8,7 +8,7 @@ column: 'origins'
 lang: 'hu'
 translationKey: 'tag-heuer-monaco'
 minutes: 12
-draft: true
+draft: false
 cover:
   src: '../_images/tag-heuer-monaco-hero-v2.webp'
   alt: "Kék számlapos Heuer Monaco pergamenes műszaki rajzok és versenypálya-vonal előtt"
