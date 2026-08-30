@@ -3,7 +3,7 @@ title: "The half-circle that winds a watch while you walk"
 description: "An automatic rotor does not generate energy. It collects motion from the wrist. Here is how that motion reaches the mainspring, and what happens when the watch is full."
 seoTitle: "How an automatic watch rotor winds the mainspring"
 seoDescription: "How wrist motion becomes power reserve through a rotor, reverser, Magic Lever, gear train, barrel and slipping bridle."
-date: 2026-08-30
+date: 2026-09-04
 column: 'movement'
 lang: 'en'
 slug: 'automatic-watch-rotor'

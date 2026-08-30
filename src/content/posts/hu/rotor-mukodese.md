@@ -3,7 +3,7 @@ title: "A félkör, amely járás közben felhúzza az órát"
 description: "Az automata óra rotorja nem termel energiát, csak összegyűjti a csukló mozgását. Megnézzük, hogyan jut el ez a mozgás a főrugóig, és mi történik, amikor az óra megtelik."
 seoTitle: "Az automata óra rotorja: így húzza fel a főrugót"
 seoDescription: "Hogyan lesz a csukló mozgásából járástartalék? Rotor, irányváltó, Magic Lever, rugóház és csúszó kantár interaktív modellen."
-date: 2026-08-30
+date: 2026-09-04
 column: 'movement'
 lang: 'hu'
 slug: 'automata-ora-rotor-mukodese'

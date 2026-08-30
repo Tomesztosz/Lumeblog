@@ -231,5 +231,37 @@
         "availability": "Pre-order; ships in late September"
       }
     }
+  },
+  {
+    "id": "studio-underd0g-mantis-2026",
+    "brand": "Studio Underd0g",
+    "brandKey": "studio-underd0g",
+    "family": "02SERIES",
+    "model": "Mantis",
+    "reference": "Mantis",
+    "date": "2026-09-01",
+    "dateEnd": "2026-09-01",
+    "precision": "day",
+    "confirmed": true,
+    "image": "/img/calendar/studio-underd0g-mantis-2026.webp",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageCredit": "Studio Underd0g",
+    "sourceUrl": "https://underd0g.com/pages/mantis",
+    "sourceChecked": "2026-08-30",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. szeptember 1.",
+        "summary": "A második generációs 02SERIES első különkiadása: 37,5 milliméteres, kézi felhúzású mezőóra, hét réteg X1 Super-LumiNova-val és 63 órás járástartalékkal.",
+        "selection": "A Lume nevéhez nehéz ennél jobban illő microbrand-megjelenést találni: nappal feltűnő zöld, sötétben az egész számlap dolgozik.",
+        "availability": "Kilencórás online rendelési ablak szeptember 1-jén, 15:00–24:00 BST között; kis mennyiség a londoni D0ghouse-ban"
+      },
+      "en": {
+        "dateLabel": "1 September 2026",
+        "summary": "The first special edition of the second-generation 02SERIES: a 37.5mm hand-wound field watch with seven layers of X1 Super-LumiNova and a 63-hour reserve.",
+        "selection": "Few microbrand releases could suit the name Lume better: striking green by day, with the entire dial taking over after dark.",
+        "availability": "Nine-hour online ordering window on 1 September, from 3pm to midnight BST; a small allocation at The D0ghouse in London"
+      }
+    }
   }
 ]
