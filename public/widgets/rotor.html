@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Az automata rotor működése</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#E6DAC1;--card:#EFE6D2;--panel:#F4ECD9;--ink:#2A231D;--soft:#746858;--line:rgba(42,35,29,.16);--line2:rgba(42,35,29,.08);--brass:#947333;--gold:#B99A55;--lume:#92A95B;--red:#B6574D;--steel:#9E978A;--shadow:rgba(42,35,29,.12)}
+*{box-sizing:border-box}
+body{margin:0;padding:14px;background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:.25s background,.25s color}
+.card{max-width:820px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px;overflow:hidden}
+h1{font:600 25px/1.08 'Fraunces',Georgia,serif;letter-spacing:-.015em;margin:0 0 5px}.intro{max-width:72ch;margin:0 0 13px;color:var(--soft);font-size:14px;line-height:1.42}
+.route{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-bottom:12px;background:var(--panel)}
+.route div{position:relative;padding:8px 8px 8px 35px;min-height:46px}.route div+div{border-left:1px solid var(--line)}.route b{position:absolute;left:9px;top:10px;width:18px;height:18px;border:1px solid var(--brass);border-radius:50%;display:grid;place-items:center;font:600 9px 'IBM Plex Mono',monospace;color:var(--brass)}.route strong{display:block;font:600 9px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}.route span{display:block;font-size:10.5px;line-height:1.2;color:var(--soft)}
+.stage{height:390px;position:relative;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:radial-gradient(circle at 45% 43%,var(--panel),color-mix(in srgb,var(--card) 82%,var(--paper)));touch-action:none;user-select:none}
+.tag{position:absolute;top:10px;right:11px;padding:4px 6px;border:1px solid var(--line);border-radius:2px;background:color-mix(in srgb,var(--panel) 85%,transparent);font:9px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);z-index:8}
+.watch-wrap{position:absolute;left:7%;top:32px;width:410px;height:325px;display:grid;place-items:center;transform-origin:center;transition:transform .28s ease}
+.movement{position:relative;width:306px;height:306px;border:12px solid color-mix(in srgb,var(--steel) 55%,var(--ink));border-radius:50%;background:radial-gradient(circle,#D8C9AB 0 18%,#C8B892 19% 35%,#DCD0B8 36% 58%,#BBAF99 59%);box-shadow:inset 0 0 0 4px var(--panel),0 9px 18px var(--shadow)}
+.movement:before{content:"";position:absolute;inset:22px;border:1px dashed color-mix(in srgb,var(--ink) 25%,transparent);border-radius:50%}.axis{position:absolute;left:50%;top:50%;width:23px;height:23px;border:5px solid var(--panel);border-radius:50%;background:var(--ink);transform:translate(-50%,-50%);z-index:6;box-shadow:0 0 0 2px var(--brass)}
+.rotor{position:absolute;inset:7px;border-radius:50%;z-index:5;transform:rotate(0deg);transition:transform .42s cubic-bezier(.18,.8,.25,1)}
+.rotor:before{content:"";position:absolute;inset:0;border-radius:50%;clip-path:polygon(0 50%,4% 34%,14% 17%,30% 6%,50% 2%,70% 6%,86% 17%,96% 34%,100% 50%,72% 50%,65% 42%,50% 36%,35% 42%,28% 50%);background:linear-gradient(180deg,#AFA89B,#777269);box-shadow:inset 0 0 0 2px #5E5A53}.rotor:after{content:"ROTOR";position:absolute;left:50%;top:20px;transform:translateX(-50%);font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.18em;color:#38342E}.rotor .arm{position:absolute;left:50%;top:48%;width:12px;height:102px;background:linear-gradient(90deg,#706B63,#B9B2A4,#706B63);transform:translate(-50%,-100%);clip-path:polygon(20% 0,80% 0,65% 100%,35% 100%)}
+.gear{position:absolute;border:5px dashed var(--brass);border-radius:50%;background:color-mix(in srgb,var(--gold) 68%,var(--panel));display:grid;place-items:center;transition:transform .35s ease;z-index:3}.gear:after{content:"";width:28%;height:28%;border-radius:50%;background:var(--ink)}.g1{right:33px;top:103px;width:60px;height:60px}.g2{right:82px;top:153px;width:47px;height:47px;border-width:4px}.g3{right:113px;top:189px;width:36px;height:36px;border-width:3px}
+.barrel{position:absolute;left:54px;bottom:38px;width:84px;height:84px;border:5px solid var(--brass);border-radius:50%;background:var(--panel);z-index:2;display:grid;place-items:center}.spring{width:62px;height:62px;border-radius:50%;background:repeating-radial-gradient(circle at center,transparent 0 5px,var(--brass) 6px 8px,transparent 9px 11px);transition:transform .5s ease}.barrel-label{position:absolute;left:38px;bottom:17px;width:116px;text-align:center;font:8px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.flow{position:absolute;height:2px;background:var(--line);transform-origin:left center;z-index:1}.f1{left:182px;top:143px;width:55px;transform:rotate(2deg)}.f2{left:156px;top:208px;width:59px;transform:rotate(-18deg)}.flow.live{background:var(--lume);box-shadow:0 0 6px color-mix(in srgb,var(--lume) 60%,transparent)}
+.side{position:absolute;right:18px;top:48px;width:225px;bottom:24px;display:flex;flex-direction:column;gap:9px}.explain{border-left:3px solid var(--brass);padding:8px 9px;background:var(--line2);min-height:75px}.explain b{display:block;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}.explain span{font-size:12px;line-height:1.3;color:var(--soft)}
+.power{border:1px solid var(--line);border-radius:4px;padding:10px;background:color-mix(in srgb,var(--panel) 75%,transparent)}.power-head{display:flex;justify-content:space-between;gap:10px;font:10px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);margin-bottom:7px}.power-head b{color:var(--ink)}.track{height:12px;border:1px solid var(--line);border-radius:999px;background:var(--line2);overflow:hidden}.fill{height:100%;width:12%;background:linear-gradient(90deg,var(--brass),var(--lume));transition:width .45s ease;border-radius:999px}.full-note{height:28px;margin-top:6px;font-size:10.5px;line-height:1.25;color:var(--soft)}.full-note.hot{color:var(--red)}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:5px;font-size:10.5px;color:var(--soft)}.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.legend .a{background:var(--steel)}.legend .b{background:var(--brass)}.legend .c{background:var(--lume)}.legend .d{background:var(--red)}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;margin-top:10px}.buttons{display:flex;gap:7px;flex-wrap:wrap}button{font:600 12px 'Hanken Grotesk',sans-serif;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:3px;padding:8px 11px;cursor:pointer}button:hover{border-color:var(--brass);color:var(--brass)}button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}button.primary,button.active{background:var(--ink);border-color:var(--ink);color:var(--card)}button.primary:hover{background:var(--brass);border-color:var(--brass);color:white}.theme{font:9px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em}.hint{font:10px 'IBM Plex Mono',monospace;color:var(--soft)}
+.foot{margin:10px 0 0;padding-top:9px;border-top:1px solid var(--line2);font-size:11.5px;line-height:1.35;color:var(--soft)}
+body.dark{--paper:#13100B;--card:#1B1610;--panel:#221C14;--ink:#B9AE98;--soft:#837967;--line:rgba(199,186,160,.17);--line2:rgba(199,186,160,.07);--brass:#A48648;--gold:#8E743F;--lume:#B7D77D;--red:#D96A5E;--steel:#686157;--shadow:rgba(0,0,0,.3)}
+body.dark .movement{background:radial-gradient(circle,#302719 0 18%,#3B3020 19% 35%,#272118 36% 58%,#1E1A14 59%)}body.dark .rotor:before{background:linear-gradient(180deg,#69645B,#3B3732)}
+@media(max-width:720px){body{padding:7px}.card{padding:15px 12px}h1{font-size:21px}.intro{font-size:12.5px}.route{grid-template-columns:1fr 1fr}.route div:nth-child(3){border-left:0;border-top:1px solid var(--line)}.route div:nth-child(4){border-top:1px solid var(--line)}.stage{height:590px}.watch-wrap{left:50%;top:30px;width:340px;height:300px;transform-origin:top center}.side{left:12px;right:12px;top:330px;width:auto;bottom:auto}.explain{min-height:65px}.controls{align-items:flex-start}.hint{width:100%;order:-1}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<main class="card">
+  <h1 id="title"></h1>
+  <p class="intro" id="intro"></p>
+  <section class="route" aria-label="Energy route">
+    <div><b>1</b><strong id="r1t"></strong><span id="r1s"></span></div>
+    <div><b>2</b><strong id="r2t"></strong><span id="r2s"></span></div>
+    <div><b>3</b><strong id="r3t"></strong><span id="r3s"></span></div>
+    <div><b>4</b><strong id="r4t"></strong><span id="r4s"></span></div>
+  </section>
+  <section class="stage" id="stage">
+    <span class="tag" id="tag"></span>
+    <div class="watch-wrap" id="watch">
+      <div class="movement">
+        <div class="flow f1" id="f1"></div><div class="flow f2" id="f2"></div>
+        <div class="gear g1"></div><div class="gear g2"></div><div class="gear g3"></div>
+        <div class="barrel"><div class="spring" id="spring"></div></div><span class="barrel-label" id="barrelLabel"></span>
+        <div class="rotor" id="rotor"><i class="arm"></i></div><div class="axis"></div>
+      </div>
+    </div>
+    <aside class="side">
+      <div class="explain"><b id="statusTitle"></b><span id="statusText"></span></div>
+      <div class="power"><div class="power-head"><span id="powerLabel"></span><b id="powerValue">12%</b></div><div class="track"><div class="fill" id="fill"></div></div><div class="full-note" id="fullNote"></div></div>
+      <div class="legend"><span><i class="a"></i><b id="l1"></b></span><span><i class="b"></i><b id="l2"></b></span><span><i class="c"></i><b id="l3"></b></span><span><i class="d"></i><b id="l4"></b></span></div>
+    </aside>
+  </section>
+  <div class="controls"><div class="buttons"><button id="leftBtn"></button><button class="primary" id="moveBtn"></button><button id="rightBtn"></button><button id="autoBtn"></button><button id="resetBtn"></button></div><button class="theme" id="themeBtn"></button><span class="hint" id="hint"></span></div>
+  <p class="foot" id="foot"></p>
+</main>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search),lang=q.get('lang')==='en'?'en':'hu';
+  var D={
+    hu:{title:'A rotor útja a főrugóig',intro:'A rajz az óra hátlapja felől mutatja az automata felhúzást. Mozgasd meg a tokot. A nehéz félkör lemarad, a kerekek pedig a főrugóhoz vezetik az energiát.',r1t:'Csukló',r1s:'Megmozdítja a tokot',r2t:'Rotor',r2s:'A nehéz félkör elfordul',r3t:'Áttétel',r3s:'Egy irányba rendezi a mozgást',r4t:'Főrugó',r4s:'Eltárolja az energiát',tag:'Az óra belseje, hátulnézet',barrel:'Rugóház és főrugó',ready:'1. Mozdítsd meg az órát',readyText:'A rotor súlypontja nincs középen. A tok elfordulásakor a nehéz rész lefelé akar maradni.',moving:'2. A rotor lemarad',movingText:'A tok már elmozdult, a rotor tehetetlensége és a gravitáció viszont elfordulást hoz létre a szerkezethez képest.',winding:'3. A kerekek felhúznak',windingText:'Az irányváltó rendszer mindkét rotormozgást ugyanarra használja: szorosabbra tekeri a főrugót.',slip:'4. A csúszó kantár elenged',slipText:'A főrugó tele van. A külső vége most megcsúszik a rugóház falán, ezért nem lehet túlhúzni.',power:'Eltárolt energia',notFull:'A rugó még energiát vesz fel.',full:'Tele: a fölös mozgást a csúszó kantár elengedi.',l1:'Rotor',l2:'Fogaskerekek',l3:'Hasznos energia',l4:'Csúszás',left:'Tok balra',move:'Mozgasd meg',right:'Tok jobbra',auto:'Folyamatos mozgás',stop:'Megállítás',reset:'Újrakezdés',dark:'Lámpa le',light:'Lámpa fel',hint:'A rajzon húzással is mozgathatod a tokot.',foot:'Sematikus működési modell. A méretek és az áttételek nem egy konkrét kalibert másolnak; az energia útját és a csúszó főrugó elvét mutatják.'},
+    en:{title:'The rotor’s route to the mainspring',intro:'The drawing shows automatic winding from the back of a watch. Move the case. The heavy semicircle lags behind, and the wheels carry energy to the mainspring.',r1t:'Wrist',r1s:'Moves the case',r2t:'Rotor',r2s:'The heavy half turns',r3t:'Winding train',r3s:'Organises motion one way',r4t:'Mainspring',r4s:'Stores the energy',tag:'Inside the watch, rear view',barrel:'Barrel and mainspring',ready:'1. Move the watch',readyText:'The rotor’s centre of gravity is off-centre. When the case turns, its heavy side tries to remain down.',moving:'2. The rotor lags behind',movingText:'The case has moved, while gravity and inertia create rotation relative to the movement.',winding:'3. The wheels wind',windingText:'The reversing system uses both rotor directions for the same result: tightening the mainspring.',slip:'4. The slipping bridle releases',slipText:'The mainspring is full. Its outer end now slips against the barrel wall, preventing overwinding.',power:'Stored energy',notFull:'The spring can still receive energy.',full:'Full: the slipping bridle releases excess motion.',l1:'Rotor',l2:'Gears',l3:'Useful energy',l4:'Slipping',left:'Case left',move:'Move it',right:'Case right',auto:'Continuous motion',stop:'Stop',reset:'Reset',dark:'Lights off',light:'Lights on',hint:'You can also drag the watch in the drawing.',foot:'Schematic functional model. Dimensions and ratios do not copy a specific calibre; the model shows the energy route and the principle of the slipping mainspring.'}
+  }[lang];
+  document.documentElement.lang=lang;
+  ['title','intro','tag','barrelLabel','powerLabel','l1','l2','l3','l4','leftBtn','moveBtn','rightBtn','autoBtn','resetBtn','hint','foot'].forEach(function(id){var map={barrelLabel:'barrel',powerLabel:'power',leftBtn:'left',moveBtn:'move',rightBtn:'right',autoBtn:'auto',resetBtn:'reset'};document.getElementById(id).textContent=D[map[id]||id]});
+  for(var i=1;i<=4;i++){document.getElementById('r'+i+'t').textContent=D['r'+i+'t'];document.getElementById('r'+i+'s').textContent=D['r'+i+'s']}
+  var watch=document.getElementById('watch'),rotor=document.getElementById('rotor'),spring=document.getElementById('spring'),fill=document.getElementById('fill'),val=document.getElementById('powerValue'),note=document.getElementById('fullNote'),st=document.getElementById('statusTitle'),sx=document.getElementById('statusText'),autoBtn=document.getElementById('autoBtn'),themeBtn=document.getElementById('themeBtn');
+  var gears=[].slice.call(document.querySelectorAll('.gear')),flows=[document.getElementById('f1'),document.getElementById('f2')],power=12,caseAngle=0,rotorAngle=0,gearAngle=0,timer=null,dir=1,dragging=false,startX=0;
+  function themeLabel(){themeBtn.textContent=document.body.classList.contains('dark')?D.light:D.dark}
+  function setDark(on){document.body.classList.toggle('dark',on);themeLabel()}
+  function status(type){st.textContent=D[type];sx.textContent=D[type+'Text']}
+  function render(){watch.style.transform=(innerWidth<=720?'translateX(-50%) scale(.88) ':'')+'rotate('+caseAngle+'deg)';rotor.style.transform='rotate('+rotorAngle+'deg)';gears.forEach(function(g,n){g.style.transform='rotate('+(gearAngle*(n%2? -1:1)*(1+n*.35))+'deg)'});spring.style.transform='rotate('+power*2.1+'deg) scale('+(1+power/800)+')';fill.style.width=power+'%';val.textContent=Math.round(power)+'%';var full=power>=100;note.textContent=full?D.full:D.notFull;note.classList.toggle('hot',full)}
+  function move(amount){caseAngle=Math.max(-22,Math.min(22,caseAngle+amount));rotorAngle-=amount*2.8;gearAngle+=Math.abs(amount)*2.2;flows.forEach(function(f){f.classList.add('live')});status('moving');setTimeout(function(){status(power>=100?'slip':'winding')},170);power=Math.min(100,power+Math.max(2,Math.abs(amount)*.45));render();setTimeout(function(){flows.forEach(function(f){f.classList.remove('live')})},360)}
+  function pulse(){dir*=-1;move(28*dir)}
+  function stop(){if(timer){clearInterval(timer);timer=null;autoBtn.textContent=D.auto;autoBtn.classList.remove('active')}}
+  document.getElementById('leftBtn').onclick=function(){stop();move(-18)};document.getElementById('rightBtn').onclick=function(){stop();move(18)};document.getElementById('moveBtn').onclick=function(){stop();pulse()};
+  autoBtn.onclick=function(){if(timer){stop();return}autoBtn.textContent=D.stop;autoBtn.classList.add('active');pulse();timer=setInterval(pulse,720)};
+  document.getElementById('resetBtn').onclick=function(){stop();power=12;caseAngle=0;rotorAngle=0;gearAngle=0;status('ready');render()};themeBtn.onclick=function(){setDark(!document.body.classList.contains('dark'))};
+  var stage=document.getElementById('stage');stage.addEventListener('pointerdown',function(e){dragging=true;startX=e.clientX;stage.setPointerCapture(e.pointerId)});stage.addEventListener('pointermove',function(e){if(!dragging)return;var dx=e.clientX-startX;if(Math.abs(dx)>12){move(dx>0?10:-10);startX=e.clientX}});stage.addEventListener('pointerup',function(){dragging=false});stage.addEventListener('pointercancel',function(){dragging=false});
+  addEventListener('resize',render);if(matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)setDark(true);themeLabel();status('ready');render();if(q.get('autoplay')==='1')setTimeout(function(){autoBtn.click()},250);
+  if(window.parent!==window){window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='lume:lights')setDark(!!e.data.dark)});var last=0;function report(){var h=Math.ceil(document.querySelector('.card').getBoundingClientRect().height)+30;if(h!==last){last=h;parent.postMessage({type:'lume:height',height:h},'*')}}new ResizeObserver(report).observe(document.querySelector('.card'));addEventListener('load',report);report();parent.postMessage({type:'lume:ready'},'*')}
+})();
+</script>
+</body>
+</html>
+
+
