@@ -9,7 +9,7 @@ lang: 'hu'
 slug: 'brew-tiz-masodperc'
 translationKey: 'brew'
 minutes: 11
-draft: false
+draft: true
 cover:
   src: '../_images/brew-hero-v1.webp'
   cardSrc: '../_images/brew-card-v1.webp'
