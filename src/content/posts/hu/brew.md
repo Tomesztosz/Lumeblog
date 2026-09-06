@@ -3,7 +3,7 @@ title: "A tíz másodperc, amelyből óracég lett"
 description: "Jonathan Ferrer nem kávéscsészét rajzolt egy számlapra. Kiválasztott tíz másodpercet, majd erre építette fel a Brew felismerhető óráit."
 seoTitle: "Brew Watch Co.: a kávészünetből született New York-i microbrand"
 seoDescription: "A Brew története a Special Blend Kickstartertől a Retrograph eszpresszóskáláján át a Metric sajátos formavilágáig."
-date: 2026-09-05
+date: 2026-09-07
 column: 'in-hand'
 lang: 'hu'
 slug: 'brew-tiz-masodperc'

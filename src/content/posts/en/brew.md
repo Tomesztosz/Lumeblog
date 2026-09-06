@@ -3,7 +3,7 @@ title: "The ten seconds that became a watch company"
 description: "Jonathan Ferrer did not draw a coffee cup on a dial. He chose ten seconds and built Brew's recognisable watches around them."
 seoTitle: "Brew Watch Co.: the New York microbrand born from a coffee break"
 seoDescription: "The story of Brew, from the Special Blend Kickstarter and the Retrograph espresso scale to the distinctive Metric."
-date: 2026-09-05
+date: 2026-09-07
 column: 'in-hand'
 lang: 'en'
 slug: 'brew-ten-seconds'
