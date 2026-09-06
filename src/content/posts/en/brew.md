@@ -9,7 +9,7 @@ lang: 'en'
 slug: 'brew-ten-seconds'
 translationKey: 'brew'
 minutes: 10
-draft: true
+draft: false
 cover:
   src: '../_images/brew-hero-v1.webp'
   cardSrc: '../_images/brew-card-v1.webp'
