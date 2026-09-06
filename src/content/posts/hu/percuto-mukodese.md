@@ -3,7 +3,7 @@ title: "Az óra, amely sötétben is megmondja az időt"
 description: "A percütő két hangból épít fel egy teljes időpontot. Megnézzük, hogyan olvassa le a szerkezet a mutatók állását, és mitől lesz egy karóra apró hangszer."
 seoTitle: "A percütő működése: így üti el az időt egy karóra"
 seoDescription: "Órák, negyedórák és percek két gongon. A percütő karjai, csigái, kalapácsai és hangja interaktív modellen, közérthetően."
-date: 2026-09-06
+date: 2026-09-11
 column: 'movement'
 lang: 'hu'
 slug: 'percuto-mukodese'

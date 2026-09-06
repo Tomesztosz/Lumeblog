@@ -3,7 +3,7 @@ title: "The watch that tells the time in the dark"
 description: "A minute repeater builds a complete time from two notes. We follow how the movement reads the hands and turns a wristwatch into a tiny musical instrument."
 seoTitle: "How a minute repeater strikes the time"
 seoDescription: "Hours, quarters and minutes on two gongs. Racks, snails, hammers and sound explained through an interactive minute repeater model."
-date: 2026-09-06
+date: 2026-09-11
 column: 'movement'
 lang: 'en'
 slug: 'how-minute-repeater-works'
