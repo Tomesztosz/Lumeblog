@@ -135,6 +135,11 @@ kerülhet a `src/data/releases.json` fájlba. Akkor is frissíteni kell a
 `src/data/calendar-meta.json` `lastReviewed` dátumát, ha nem volt felvehető bejelentés.
 A részletes, kötelező sorrendet az `AGENTS.md` tartalmazza.
 
+A felhasználó jóváhagyásával a dátum nélküli, már bemutatott újdonságokat is
+követjük az `announcements.json` fájlban. A napi gépi forrásfigyelés és a
+szerkesztői ellenőrzés két külön lépés, leírásuk: `docs/calendar.md`.
+A gépi futás nem írhatja át a teljes emberi áttekintést jelző `lastReviewed` mezőt.
+
 Cloudflare Pages, a GitHub-repóhoz kötve: minden `main`-re küldött push automatikusan
 deployol. Build parancs `npm run build`, kimeneti mappa `dist`.
 

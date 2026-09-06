@@ -146,7 +146,7 @@
     "price": "CHF 11,800",
     "image": "/img/calendar/zenith-chronomaster-paris-2026.webp",
     "imageWidth": 1200,
-    "imageHeight": 630,
+    "imageHeight": 660,
     "imageCredit": "Zenith",
     "sourceUrl": "https://pressroom.zenith-watches.com/paris-on-the-horizon-zenith-unveils-the-chronomaster-original-paris-edition/?lang=eng",
     "sourceChecked": "2026-08-28",
@@ -261,6 +261,72 @@
         "summary": "The first special edition of the second-generation 02SERIES: a 37.5mm hand-wound field watch with seven layers of X1 Super-LumiNova and a 63-hour reserve.",
         "selection": "Few microbrand releases could suit the name Lume better: striking green by day, with the entire dial taking over after dark.",
         "availability": "Nine-hour online ordering window on 1 September, from 3pm to midnight BST; a small allocation at The D0ghouse in London"
+      }
+    }
+  },
+  {
+    "id": "citizen-skyhawk-eco-drive-50",
+    "brand": "Citizen",
+    "brandKey": "citizen",
+    "family": "Promaster",
+    "model": "SKYHAWK Eco-Drive 50th Anniversary",
+    "reference": "JY8144-50E",
+    "date": "2026-09-01",
+    "dateEnd": "2026-09-30",
+    "precision": "month",
+    "confirmed": true,
+    "limitedPieces": 5200,
+    "image": "/img/calendar/citizen-skyhawk.webp",
+    "imageWidth": 1600,
+    "imageHeight": 2000,
+    "imageCredit": "Citizen Watch",
+    "sourceUrl": "https://www.citizenwatch-global.com/news/2026/20260901/index.html",
+    "sourceChecked": "2026-09-06",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. szeptember",
+        "summary": "Arany-fekete pilótaóra az Eco-Drive ötvenedik évfordulójára, rádióvezérelt U680 szerkezettel és analóg-digitális kijelzéssel.",
+        "selection": "A fényből működő órák története itt egy sokfunkciós műszeren folytatódik.",
+        "availability": "Szeptemberi bevezetés; az elérhetőség piaconként eltérhet."
+      },
+      "en": {
+        "dateLabel": "September 2026",
+        "summary": "A gold-and-black anniversary pilot's watch with radio-controlled U680 movement and analogue-digital display.",
+        "selection": "Fifty years of light-powered timekeeping expressed as a multifunction instrument.",
+        "availability": "September launch; availability may vary by market."
+      }
+    }
+  },
+  {
+    "id": "citizen-tsuno-eco-drive-50",
+    "brand": "Citizen",
+    "brandKey": "citizen",
+    "family": "Promaster",
+    "model": "TSUNO CHRONO Eco-Drive 50th Anniversary",
+    "reference": "AV0104-06W",
+    "date": "2026-09-01",
+    "dateEnd": "2026-09-30",
+    "precision": "month",
+    "confirmed": true,
+    "limitedPieces": 5000,
+    "image": "/img/calendar/citizen-tsuno.webp",
+    "imageWidth": 1600,
+    "imageHeight": 2000,
+    "imageCredit": "Citizen Watch",
+    "sourceUrl": "https://www.citizenwatch-global.com/news/2026/20260901/index.html",
+    "sourceChecked": "2026-09-06",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. szeptember",
+        "summary": "Zöld számlapos, bőrszíjas jubileumi kronográf, felül elhelyezett nyomógombokkal és E210 Eco-Drive szerkezettel.",
+        "selection": "A hetvenes évek formája fényenergiával, ötezer példányban.",
+        "availability": "Szeptemberi bevezetés; az elérhetőség piaconként eltérhet."
+      },
+      "en": {
+        "dateLabel": "September 2026",
+        "summary": "A green-dial anniversary chronograph on leather, with bullhead pushers and an E210 Eco-Drive movement.",
+        "selection": "Seventies-inspired form powered by light, in an edition of 5,000.",
+        "availability": "September launch; availability may vary by market."
       }
     }
   }

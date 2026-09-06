@@ -3,144 +3,198 @@
     "group": "major",
     "name": "Rolex",
     "key": "rolex",
-    "sourceUrl": "https://www.rolex.com/watches/new-watches"
+    "sourceUrl": "https://www.rolex.com/watches/new-watches",
+    "additionalSources": [
+      "https://www.rolex.com/watches/new-watches/oyster-perpetual-41"
+    ]
   },
   {
     "group": "major",
     "name": "Omega",
     "key": "omega",
-    "sourceUrl": "https://press.omegawatches.com/"
+    "sourceUrl": "https://press.omegawatches.com/",
+    "additionalSources": []
   },
   {
     "group": "major",
     "name": "Cartier",
     "key": "cartier",
-    "sourceUrl": "https://www.cartier.com/en-us/watches/collections/"
+    "sourceUrl": "https://www.cartier.com/en-us/watches/collections/",
+    "additionalSources": []
   },
   {
     "group": "major",
     "name": "Tudor",
     "key": "tudor",
-    "sourceUrl": "https://www.tudorwatch.com/en/new-watches"
+    "sourceUrl": "https://www.tudorwatch.com/en/new-watches",
+    "additionalSources": [
+      "https://www.tudorwatch.com/en/watches/tudor-northflag/m9140g1a0u-0001"
+    ]
   },
   {
     "group": "major",
     "name": "TAG Heuer",
     "key": "tag-heuer",
-    "sourceUrl": "https://www.tagheuer.com/us/en/new-watches/"
+    "sourceUrl": "https://www.tagheuer.com/us/en/new-watches/",
+    "additionalSources": []
   },
   {
     "group": "major",
     "name": "Breitling",
     "key": "breitling",
-    "sourceUrl": "https://www.breitling.com/us-en/watches/"
+    "sourceUrl": "https://www.breitling.com/us-en/watches/",
+    "additionalSources": []
   },
   {
     "group": "major",
     "name": "Longines",
     "key": "longines",
-    "sourceUrl": "https://www.longines.com/universe/news"
+    "sourceUrl": "https://www.longines.com/universe/news",
+    "additionalSources": []
   },
   {
     "group": "major",
     "name": "IWC",
     "key": "iwc",
-    "sourceUrl": "https://www.iwc.com/ww-en/watches"
+    "sourceUrl": "https://www.iwc.com/ww-en/watches",
+    "additionalSources": []
   },
   {
     "group": "major",
     "name": "Zenith",
     "key": "zenith",
-    "sourceUrl": "https://pressroom.zenith-watches.com/?lang=eng"
+    "sourceUrl": "https://pressroom.zenith-watches.com/?lang=eng",
+    "additionalSources": [
+      "https://pressroom.zenith-watches.com/paris-on-the-horizon-zenith-unveils-the-chronomaster-original-paris-edition/?lang=eng"
+    ]
   },
   {
     "group": "major",
     "name": "Seiko",
     "key": "seiko",
-    "sourceUrl": "https://www.seikowatches.com/global-en/news"
+    "sourceUrl": "https://www.seikowatches.com/global-en/news",
+    "additionalSources": [
+      "https://www.seikowatches.com/v3/api/news?country=GlobalEn&language=en&sc_site=seiko_common&ttl=3",
+      "https://www.seikowatches.com/us-en/products/5sports/hdb010",
+      "https://www.seikowatches.com/sg-en/news/2026/pr/20260813",
+      "https://www.seikowatches.com/us-en/news/2026/pr/20260826"
+    ]
   },
   {
     "group": "major",
     "name": "Grand Seiko",
     "key": "grand-seiko",
-    "sourceUrl": "https://www.grand-seiko.com/global-en/news"
+    "sourceUrl": "https://www.grand-seiko.com/global-en/news",
+    "additionalSources": [
+      "https://www.grand-seiko.com/v3/api/news?country=GlobalEn&language=en&sc_site=gs_common&ttl=3",
+      "https://www.grand-seiko.com/au-en/news/2026/pr/20260624"
+    ]
   },
   {
     "group": "major",
     "name": "Citizen",
     "key": "citizen",
-    "sourceUrl": "https://www.citizenwatch-global.com/news/index.html"
+    "sourceUrl": "https://www.citizenwatch-global.com/news/index.html",
+    "additionalSources": [
+      "https://www.citizenwatch.com/ca/en/product/AV0104-06W.html",
+      "https://www.citizenwatch.com/ca/en/product/JY8144-50E.html",
+      "https://www.citizenwatch-global.com/news/2026/20260901/index.html"
+    ]
   },
   {
     "group": "major",
     "name": "Casio / G-Shock",
     "key": "g-shock",
-    "sourceUrl": "https://gshock.casio.com/intl/products/"
+    "sourceUrl": "https://gshock.casio.com/intl/products/",
+    "additionalSources": []
   },
   {
     "group": "major",
     "name": "Jaeger-LeCoultre",
     "key": "jaeger-lecoultre",
-    "sourceUrl": "https://www.jaeger-lecoultre.com/us-en/news/watchmaking"
+    "sourceUrl": "https://www.jaeger-lecoultre.com/us-en/news/watchmaking",
+    "additionalSources": []
   },
   {
     "group": "independent",
     "name": "Baltic",
     "key": "baltic",
-    "sourceUrl": "https://baltic-watches.com/en/collections"
+    "sourceUrl": "https://baltic-watches.com/en/collections",
+    "additionalSources": []
   },
   {
     "group": "independent",
     "name": "Christopher Ward",
     "key": "christopher-ward",
-    "sourceUrl": "https://www.christopherward.com/"
+    "sourceUrl": "https://www.christopherward.com/",
+    "additionalSources": [
+      "https://www.christopherward.com/int/dive-watches",
+      "https://www.christopherward.com/int/press-landing.html"
+    ]
   },
   {
     "group": "independent",
     "name": "Kurono Tokyo",
     "key": "kurono-tokyo",
-    "sourceUrl": "https://kuronotokyo.com/"
+    "sourceUrl": "https://kuronotokyo.com/",
+    "additionalSources": []
   },
   {
     "group": "independent",
     "name": "Furlan Marri",
     "key": "furlan-marri",
-    "sourceUrl": "https://www.furlanmarri.com/collections/all-watches"
+    "sourceUrl": "https://www.furlanmarri.com/collections/all-watches",
+    "additionalSources": []
   },
   {
     "group": "independent",
     "name": "Lorier",
     "key": "lorier",
-    "sourceUrl": "https://www.lorierwatches.com/collections/watches"
+    "sourceUrl": "https://www.lorierwatches.com/collections/watches",
+    "additionalSources": [
+      "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081"
+    ]
   },
   {
     "group": "independent",
     "name": "RÁTH",
     "key": "rath",
-    "sourceUrl": "https://rathwatches.com/"
+    "sourceUrl": "https://rathwatches.com/",
+    "additionalSources": [
+      "https://rathwatches.com/products/rath-droma-gmt"
+    ]
   },
   {
     "group": "independent",
     "name": "MING",
     "key": "ming",
-    "sourceUrl": "https://www.ming.watch/"
+    "sourceUrl": "https://www.ming.watch/",
+    "additionalSources": [
+      "https://www.ming.watch/journal",
+      "https://www.ming.watch/featured-product/ming-shapiro-37-06-lightning"
+    ]
   },
   {
     "group": "independent",
     "name": "Farer",
     "key": "farer",
-    "sourceUrl": "https://farer.com/collections/all-watches"
+    "sourceUrl": "https://farer.com/collections/all-watches",
+    "additionalSources": []
   },
   {
     "group": "independent",
     "name": "Studio Underd0g",
     "key": "studio-underd0g",
-    "sourceUrl": "https://underd0g.com/"
+    "sourceUrl": "https://underd0g.com/",
+    "additionalSources": [
+      "https://underd0g.com/pages/mantis"
+    ]
   },
   {
     "group": "independent",
     "name": "NOMOS",
     "key": "nomos",
-    "sourceUrl": "https://nomos-glashuette.com/en/watches/new-releases"
+    "sourceUrl": "https://nomos-glashuette.com/en/watches/new-releases",
+    "additionalSources": []
   }
 ]

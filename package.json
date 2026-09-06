@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && node scripts/secure-build.mjs && npm run check:seo && npm run check:security",
+    "build": "npm run check:calendar && astro build && node scripts/check-calendar-build.mjs && node scripts/secure-build.mjs && npm run check:seo && npm run check:security",
+    "check:calendar": "node --test scripts/calendar.test.mjs && node scripts/check-calendar.mjs",
+    "radar:check": "node --max-http-header-size=65536 scripts/check-radar.mjs",
     "check:seo": "node --test scripts/seo-html.test.mjs && node scripts/check-seo.mjs",
     "check:security": "node --test scripts/security.test.mjs && node scripts/check-security.mjs",
     "preview": "astro preview",

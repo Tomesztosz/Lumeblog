@@ -1,0 +1,92 @@
+[
+  {
+    "id": "christopher-ward-c60-trident-biscay",
+    "brand": "Christopher Ward",
+    "brandKey": "christopher-ward",
+    "family": "C60 Trident Biscay",
+    "model": "Automatic / GMT / Bronze",
+    "reference": "C60 Trident Biscay",
+    "status": "introduced",
+    "firstSeen": "2026-09-06",
+    "sourceChecked": "2026-09-06",
+    "sourceUrl": "https://www.christopherward.com/int/trident-biscay.html",
+    "image": "/img/calendar/christopher-ward-biscay.webp",
+    "imageWidth": 1125,
+    "imageHeight": 1020,
+    "imageCredit": "Christopher Ward",
+    "copy": {
+      "hu": {
+        "dateLabel": "Bemutatva; nincs egységes kiszállítási dátum",
+        "summary": "Három új búváróra a Biscay családban: automata, GMT és bronztokos változat. COSC-minősítés, domború zafírüveg és 200 méteres vízállóság.",
+        "selection": "A teljes új modellcsalád egy helyen, nem minden szíj- és színváltozat külön hírként.",
+        "availability": "A gyártó kínálatában szerepel. A rendelhetőség és a kiszállítás változatonként ellenőrizendő."
+      },
+      "en": {
+        "dateLabel": "Introduced; no single delivery date",
+        "summary": "Three new Biscay divers: Automatic, GMT and Bronze. COSC certification, box-domed sapphire and 200 metres of water resistance.",
+        "selection": "The new family in one place, rather than a separate story for every strap and colour.",
+        "availability": "Listed by the manufacturer. Ordering and delivery depend on the selected variant."
+      }
+    }
+  },
+  {
+    "id": "rolex-oyster-perpetual-41-2026",
+    "brand": "Rolex",
+    "brandKey": "rolex",
+    "family": "Oyster Perpetual",
+    "model": "Oyster Perpetual 41, yellow Rolesor",
+    "reference": "134303",
+    "status": "introduced",
+    "firstSeen": "2026-09-06",
+    "sourceChecked": "2026-09-06",
+    "sourceUrl": "https://www.rolex.com/watches/new-watches/oyster-perpetual-41",
+    "image": "/img/calendar/rolex-op41-product.jpg",
+    "imageWidth": 1920,
+    "imageHeight": 1080,
+    "imageCredit": "Rolex",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026-os újdonság; értékesítési nap nincs megadva",
+        "summary": "Az Oyster századik évfordulójára készült 41 milliméteres változat. Acél tok és csat, sárgaarany lünetta és korona, a számlapon zöld részletek.",
+        "selection": "Hivatalosan bemutatott újdonság akkor is, ha nem rendelhető hozzá hiteles naptári nap.",
+        "availability": "A helyi elérhetőségről a hivatalos kereskedő ad tájékoztatást."
+      },
+      "en": {
+        "dateLabel": "2026 novelty; no on-sale day specified",
+        "summary": "A 41mm anniversary version marking a century of the Oyster. Steel case and bracelet, yellow-gold bezel and crown, and green dial accents.",
+        "selection": "An officially introduced watch still belongs here without a verified calendar day.",
+        "availability": "Check with an official retailer for local availability."
+      }
+    }
+  },
+  {
+    "id": "tudor-northflag-2026",
+    "brand": "Tudor",
+    "brandKey": "tudor",
+    "family": "Northflag",
+    "model": "Northflag GMT",
+    "reference": "M9140G1A0U-0001",
+    "status": "introduced",
+    "firstSeen": "2026-09-06",
+    "sourceChecked": "2026-09-06",
+    "sourceUrl": "https://www.tudorwatch.com/en/watches/tudor-northflag/m9140g1a0u-0001",
+    "image": "/img/calendar/tudor-northflag-product.png",
+    "imageWidth": 900,
+    "imageHeight": 1200,
+    "imageCredit": "Tudor",
+    "copy": {
+      "hu": {
+        "dateLabel": "Bemutatva; értékesítési nap nincs megadva",
+        "summary": "Visszatér a Northflag: 40 milliméteres acéltok, integrált csat, GMT-funkció és METAS Master Chronometer minősítés.",
+        "selection": "Új generáció, nem pusztán új számlapszín. A naptári dátum hiánya többé nem rejti el.",
+        "availability": "Kizárólag Tudor butikokban; a helyi készlet külön ellenőrizendő."
+      },
+      "en": {
+        "dateLabel": "Introduced; no on-sale day specified",
+        "summary": "The Northflag returns with a 40mm steel case, integrated bracelet, GMT function and METAS Master Chronometer certification.",
+        "selection": "A new generation rather than another dial colour. A missing calendar date no longer hides it.",
+        "availability": "Exclusive to Tudor boutiques; check local stock separately."
+      }
+    }
+  }
+]

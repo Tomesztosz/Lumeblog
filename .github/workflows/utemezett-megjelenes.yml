@@ -53,8 +53,8 @@ jobs:
             exit 0
           fi
 
-          if grep -Fq "\"date\": \"$MA\"" src/data/releases.json; then
-            echo "Ma kezdődik egy naptárbejegyzés megjelenési időszaka."
+          if node scripts/calendar-needs-build.mjs; then
+            echo "Ma változik egy naptárbejegyzés állapota vagy 60 napos láthatósága."
             echo "talalat=igen" >> "$GITHUB_OUTPUT"
             exit 0
           fi

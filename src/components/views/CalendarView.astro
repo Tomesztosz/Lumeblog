@@ -2,16 +2,17 @@
 import Base from '../../layouts/Base.astro';
 import StructuredData from '../StructuredData.astro';
 import type { Lang } from '../../i18n/ui';
+import { phaseFor, daysAway, matchesCalendar } from '../../lib/calendar-state.mjs';
 import {
   activeReleases,
   brandRadar,
   CALENDAR_UI,
   calendarMeta,
   calendarUrl,
-  releaseDaysAway,
   releaseIcsUrl,
   releasePhase,
   releases,
+  calendarEntries,
 } from '../../lib/releases';
 
 interface Props {
@@ -22,8 +23,8 @@ const { lang } = Astro.props;
 const otherLang = lang === 'hu' ? 'en' : 'hu';
 const t = CALENDAR_UI[lang];
 const current = activeReleases();
-const nextRelease = current[0];
-const brands = [...new Map(releases.map((release) => [release.brandKey, release.brand])).entries()];
+const nextRelease = current.find(release => releasePhase(release) === 'upcoming') ?? current[0];
+const brands = brandRadar.map(brand => [brand.key, brand.name]).sort((a,b) => a[1].localeCompare(b[1]));
 const months = [...new Set(releases.map((release) => release.date.slice(0, 7)))].map((value) => [
   value,
   new Intl.DateTimeFormat(lang === 'hu' ? 'hu-HU' : 'en-GB', {
@@ -32,7 +33,6 @@ const months = [...new Set(releases.map((release) => release.date.slice(0, 7)))]
     timeZone: 'UTC',
   }).format(new Date(`${value}-01T00:00:00Z`)),
 ]);
-const activeBrandKeys = new Set(current.map((release) => release.brandKey));
 const majorBrands = brandRadar.filter((brand) => brand.group === 'major');
 const independentBrands = brandRadar.filter((brand) => brand.group === 'independent');
 const radarReviewDate = new Intl.DateTimeFormat(lang === 'hu' ? 'hu-HU' : 'en-GB', {
@@ -50,7 +50,7 @@ const structuredData = {
   url: new URL(calendarUrl(lang), Astro.site).href,
   mainEntity: {
     '@type': 'ItemList',
-    itemListElement: releases.map((release, index) => ({
+    itemListElement: calendarEntries.map((release, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       item: {
@@ -70,10 +70,15 @@ const clientCopy = {
   statusUpcoming: t.statusUpcoming,
   statusCurrent: t.statusCurrent,
   statusArchived: t.statusArchived,
+  statusToday: t.statusToday,
+  statusIntroduced: t.statusIntroduced,
+  announced: t.announced,
   daysOne: t.daysOne,
-  daysMany: lang === 'hu' ? '{n} nap múlva' : 'in {n} days',
-  resultsOne: lang === 'hu' ? '1 találat' : '1 result',
-  resultsMany: lang === 'hu' ? '{n} találat' : '{n} results',
+  daysMany: t.clientDaysMany,
+  resultsOne: t.clientResultsOne,
+  resultsMany: t.clientResultsMany,
+  noResults: t.noResults,
+  noBrandResults: t.noBrandResults,
 };
 ---
 
@@ -120,30 +125,40 @@ const clientCopy = {
       <div class="wrap">
         <div class="calendar-list-head">
           <div>
-            <p class="eyebrow mono">{t.upcomingCount(current.length)}</p>
+            <p class="eyebrow mono">{t.upcomingCount(current.filter(entry => releasePhase(entry) === 'upcoming').length)}</p>
             <h2 id="calendar-list-title">{t.nav}</h2>
           </div>
-          <p class="calendar-result-count mono" id="calendarResultCount">{t.results(releases.length)}</p>
+          <p class="calendar-result-count mono" id="calendarResultCount" role="status" aria-live="polite">{t.results(calendarEntries.filter(entry => matchesCalendar(entry)).length)}</p>
         </div>
 
+        <p class="calendar-overview-help">{t.overviewHelp}</p>
+        <div class="calendar-search">
+          <label for="releaseQuery">{t.searchLabel}</label>
+          <input id="releaseQuery" type="search" autocomplete="off" />
+          <button id="releaseReset" type="button">{t.resetFilters}</button>
+        </div>
         <div class="calendar-filters" aria-label={t.filters}>
           <label>
-            <span class="mono">{lang === 'hu' ? 'Állapot' : 'Status'}</span>
+            <span class="mono">{t.statusLabel}</span>
             <select id="releaseStatusFilter">
+              <option value="overview">{t.overview}</option>
               <option value="active">{t.activeStatuses}</option>
+              <option value="introduced">{t.introduced}</option>
+              <option value="announced">{t.announced}</option>
               <option value="all">{t.allStatuses}</option>
               <option value="archived">{t.archivedStatuses}</option>
             </select>
           </label>
           <label>
-            <span class="mono">{lang === 'hu' ? 'Hónap' : 'Month'}</span>
+            <span class="mono">{t.monthLabel}</span>
             <select id="releaseMonthFilter">
               <option value="all">{t.allMonths}</option>
+              <option value="undated">{t.undated}</option>
               {months.map(([value, label]) => <option value={value}>{label}</option>)}
             </select>
           </label>
           <label>
-            <span class="mono">{lang === 'hu' ? 'Márka' : 'Brand'}</span>
+            <span class="mono">{t.brandLabel}</span>
             <select id="releaseBrandFilter">
               <option value="all">{t.allBrands}</option>
               {brands.map(([value, label]) => <option value={value}>{label}</option>)}
@@ -152,11 +167,11 @@ const clientCopy = {
         </div>
 
         <div class="calendar-grid" id="calendarGrid">
-          {releases.map((release) => {
-            const phase = releasePhase(release);
-            const days = releaseDaysAway(release);
-            const status = phase === 'current'
-              ? t.statusCurrent
+          {calendarEntries.map((release) => {
+            const phase = phaseFor(release);
+            const days = daysAway(release);
+            const status = phase === 'introduced' ? t.statusIntroduced : phase === 'announced' ? t.announced : phase === 'current'
+              ? (release.precision === 'day' ? t.statusToday : t.statusCurrent)
               : phase === 'archived'
                 ? t.statusArchived
                 : release.precision === 'month'
@@ -164,7 +179,7 @@ const clientCopy = {
                 : days === 1
                   ? t.daysOne
                   : t.daysMany(days);
-            const edition = release.limitedPieces ? t.limited(release.limitedPieces) : t.continuous;
+            const edition = release.limitedPieces ? t.limited(release.limitedPieces) : t.unknownEdition;
             return (
               <article
                 class="release-card"
@@ -173,10 +188,10 @@ const clientCopy = {
                 data-start={release.date}
                 data-end={release.dateEnd}
                 data-precision={release.precision}
-                data-month={release.date.slice(0, 7)}
+                data-month={release.date?.slice(0, 7) ?? 'undated'}
                 data-brand={release.brandKey}
                 data-phase={phase}
-                hidden={phase === 'archived'}
+                hidden={!matchesCalendar(release)}
               >
                 <figure class="release-card-media">
                   <img
@@ -230,9 +245,9 @@ const clientCopy = {
 
                   <div class="release-card-actions">
                     <a href={release.sourceUrl} target="_blank" rel="noreferrer">{t.officialSource} ↗</a>
-                    <a href={releaseIcsUrl(release, lang)} download>{t.addCalendar} ↓</a>
+                    {release.date && <a href={releaseIcsUrl(release, lang)} download>{t.addCalendar} ↓</a>}
                   </div>
-                  <p class="release-precision mono">{t.confirmed} · {t.monthPrecision} · {release.sourceChecked}</p>
+                  <p class="release-precision mono">{t.verified}: {release.sourceChecked} · {release.date ? (release.precision === 'day' ? t.dayPrecision : t.monthPrecision) : t.undatedNote}</p>
                 </div>
               </article>
             );
@@ -264,7 +279,8 @@ const clientCopy = {
               <h3 class="mono">{group.title}</h3>
               <div class="calendar-radar-grid">
                 {group.brands.map((brand) => {
-                  const active = activeBrandKeys.has(brand.key);
+                  const count = calendarEntries.filter(entry => entry.brandKey === brand.key).length;
+                  const active = count > 0;
                   return (
                     <a
                       href={brand.sourceUrl}
@@ -276,7 +292,8 @@ const clientCopy = {
                         <i aria-hidden="true"></i>
                         <strong>{brand.name}</strong>
                       </span>
-                      <small class="mono">{active ? t.radarActive : t.radarWatched}</small>
+                      <small class="mono">{active ? t.radarCount(count) : t.radarWatched}</small>
+                      <small class="mono">{t.radarSources(1 + (brand.additionalSources?.length ?? 0))}</small>
                       <em class="mono">{t.radarOfficial} ↗</em>
                     </a>
                   );
@@ -289,63 +306,8 @@ const clientCopy = {
     </section>
   </div>
 
-<script define:vars={{ clientCopy }}>
-  const day = 86_400_000;
-  const todayDate = new Date();
-  const today = Date.UTC(todayDate.getUTCFullYear(), todayDate.getUTCMonth(), todayDate.getUTCDate());
-  const cards = [...document.querySelectorAll('[data-release-card]')];
-  const statusFilter = document.querySelector('#releaseStatusFilter');
-  const monthFilter = document.querySelector('#releaseMonthFilter');
-  const brandFilter = document.querySelector('#releaseBrandFilter');
-  const resultCount = document.querySelector('#calendarResultCount');
-  const empty = document.querySelector('#calendarEmpty');
-
-  const phaseFor = (card) => {
-    const start = Date.parse(`${card.dataset.start}T00:00:00Z`);
-    const end = Date.parse(`${card.dataset.end}T00:00:00Z`);
-    if (today < start) return 'upcoming';
-    if (today <= end) return 'current';
-    return 'archived';
-  };
-
-  cards.forEach((card) => {
-    const phase = phaseFor(card);
-    card.dataset.phase = phase;
-    const status = card.querySelector('[data-release-status]');
-    if (!status) return;
-    status.dataset.phase = phase;
-    const label = phase === 'current'
-      ? clientCopy.statusCurrent
-      : phase === 'archived'
-        ? clientCopy.statusArchived
-        : card.dataset.precision === 'month'
-          ? clientCopy.statusUpcoming
-        : Math.max(1, Math.ceil((Date.parse(`${card.dataset.start}T00:00:00Z`) - today) / day)) === 1
-          ? clientCopy.daysOne
-          : clientCopy.daysMany.replace('{n}', Math.ceil((Date.parse(`${card.dataset.start}T00:00:00Z`) - today) / day));
-    const dot = status.querySelector('i');
-    status.textContent = '';
-    if (dot) status.append(dot);
-    status.append(label);
-  });
-
-  const update = () => {
-    let visible = 0;
-    cards.forEach((card) => {
-      const statusValue = statusFilter?.value ?? 'active';
-      const statusMatch = statusValue === 'all'
-        || (statusValue === 'active' && card.dataset.phase !== 'archived')
-        || (statusValue === 'archived' && card.dataset.phase === 'archived');
-      const monthMatch = (monthFilter?.value ?? 'all') === 'all' || monthFilter.value === card.dataset.month;
-      const brandMatch = (brandFilter?.value ?? 'all') === 'all' || brandFilter.value === card.dataset.brand;
-      card.hidden = !(statusMatch && monthMatch && brandMatch);
-      if (!card.hidden) visible += 1;
-    });
-    if (resultCount) resultCount.textContent = (visible === 1 ? clientCopy.resultsOne : clientCopy.resultsMany.replace('{n}', visible));
-    if (empty) empty.hidden = visible !== 0;
-  };
-
-  [statusFilter, monthFilter, brandFilter].forEach((filter) => filter?.addEventListener('change', update));
-  update();
+<div id="calendarData" hidden data-entries={JSON.stringify(calendarEntries)} data-copy={JSON.stringify(clientCopy)}></div>
+<script>
+  import '../../lib/calendar-client';
 </script>
 </Base>

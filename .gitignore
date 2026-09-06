@@ -15,3 +15,4 @@ dist/
 
 # Nyers kéziratok. A kész cikk a src/content/posts/ alatt él.
 articles/
+.calendar-radar/
