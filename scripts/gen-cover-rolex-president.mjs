@@ -68,6 +68,59 @@ async function makeCover(out, width, height, card = false) {
     .toFile(out);
 }
 
+async function cutOutConnectedBlack(input, output) {
+  const crop = await sharp(input)
+    .extract({ left: 0, top: 920, width: 1560, height: 2180 })
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  const { data, info } = crop;
+  const { width, height, channels } = info;
+  const outside = new Uint8Array(width * height);
+  const queue = new Int32Array(width * height);
+  let head = 0;
+  let tail = 0;
+
+  const isBackground = (pixel) => {
+    const offset = pixel * channels;
+    return Math.max(data[offset], data[offset + 1], data[offset + 2]) <= 48;
+  };
+  const add = (pixel) => {
+    if (outside[pixel] || !isBackground(pixel)) return;
+    outside[pixel] = 1;
+    queue[tail++] = pixel;
+  };
+
+  for (let x = 0; x < width; x += 1) {
+    add(x);
+    add((height - 1) * width + x);
+  }
+  for (let y = 1; y < height - 1; y += 1) {
+    add(y * width);
+    add(y * width + width - 1);
+  }
+
+  while (head < tail) {
+    const pixel = queue[head++];
+    const x = pixel % width;
+    const y = Math.floor(pixel / width);
+    if (x > 0) add(pixel - 1);
+    if (x + 1 < width) add(pixel + 1);
+    if (y > 0) add(pixel - width);
+    if (y + 1 < height) add(pixel + width);
+  }
+
+  for (let pixel = 0; pixel < outside.length; pixel += 1) {
+    if (outside[pixel]) data[pixel * channels + 3] = 0;
+  }
+
+  await sharp(data, { raw: info })
+    .trim({ background: { r: 0, g: 0, b: 0, alpha: 0 }, threshold: 1 })
+    .extend({ top: 60, bottom: 60, left: 60, right: 60, background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png({ compressionLevel: 9 })
+    .toFile(output);
+}
+
 await makeCover(DIR + 'rolex-president-hero-v1.webp', 2400, 1080, false);
 await makeCover(DIR + 'rolex-president-card-v1.webp', 1200, 900, true);
 
@@ -77,6 +130,10 @@ await sharp(FIRST)
   .extract({ left: 0, top: 920, width: 1560, height: 2180 })
   .webp({ quality: 92, smartSubsample: true })
   .toFile(DIR + 'rolex-day-date-1956-detail-v1.webp');
+
+// A fekete hĂˇtteret csak a kĂ©p szĂ©lĂ©hez kapcsolĂłdĂł sĂ¶tĂ©t pixelekbĹ‘l vesszĂĽk ki.
+// Ez megĹ‘rzi a szĂˇmlap fekete feliratait Ă©s az Ăłra sajĂˇt sĂ¶tĂ©t rĂ©szleteit.
+await cutOutConnectedBlack(FIRST, DIR + 'rolex-day-date-1956-transparent-v2.png');
 
 // A korabeli reklám teljes szövege és kompozíciója látható marad.
 await sharp(AD)

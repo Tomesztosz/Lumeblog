@@ -42,7 +42,7 @@ Day-Date is the name of the watch. President was originally the name of the meta
 
 That distinction matters because the best-known figure in the story did not wear the watch now linked to him. Dwight D. Eisenhower certainly owned a gold Rolex. It could not have been a Day-Date because the model did not yet exist.
 
-![The first Rolex Day-Date from 1956](../_images/rolex-day-date-1956-detail-v1.webp)
+![The first Rolex Day-Date from 1956](../_images/rolex-day-date-1956-transparent-v2.png)
 *The first Rolex Day-Date from 1956. The fully written Monday was already placed at the top of the dial. Photograph: [Rolex](https://www.rolex.com/en-us/about-rolex/history/1953-1967).*
 
 ## Fitting a whole day onto a dial

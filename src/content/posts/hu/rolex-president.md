@@ -42,7 +42,7 @@ A Day-Date az óra neve. A President eredetileg a hozzá készített fémszíj n
 
 Ez a különbség azért számít, mert a történet legismertebb szereplője nem is azt az órát viselte, amelyet ma hozzá kötnek. Dwight D. Eisenhower csuklóján valóban volt egy arany Rolex. Day-Date azonban nem lehetett, mert az még nem létezett.
 
-![Az első, 1956-os Rolex Day-Date](../_images/rolex-day-date-1956-detail-v1.webp)
+![Az első, 1956-os Rolex Day-Date](../_images/rolex-day-date-1956-transparent-v2.png)
 *Az első, 1956-os Rolex Day-Date. A teljesen kiírt hétfő már a kezdetektől a számlap tetején volt. Fotó: [Rolex](https://www.rolex.com/en-us/about-rolex/history/1953-1967).*
 
 ## Egy nap, amelynek ki kellett férnie a számlapra
