@@ -151,6 +151,7 @@ body.dark .btn{ color:var(--ink); }
   <p class="note" id="note">Sematikus, működési modell, valós idővel. Nyári időszámítást és félórás eltolású zónákat szándékosan nem kezel, pontosan úgy, ahogy egy klasszikus világóra sem.</p>
 </div>
 
+<script src="/widgets/frame-bridge.js"></script>
 <script>
 (function(){
   var LANG=(new URLSearchParams(location.search).get('lang')==='en')?'en':'hu';
@@ -323,25 +324,7 @@ body.dark .btn{ color:var(--ink); }
   render();
   setInterval(render, 200);
 
-  var embedded=window.parent!==window;
-  if(embedded){
-    document.body.classList.add('embedded');
-    window.addEventListener('message',function(e){
-      if(e.source!==window.parent) return;
-      if(!e.data||e.data.type!=='lume:lights') return;
-      setDark(!!e.data.dark);
-    });
-
-    var lastH=0;
-    function reportHeight(){
-      var h=Math.ceil(document.querySelector('.card').getBoundingClientRect().height)+2;
-      if(h!==lastH){ lastH=h; window.parent.postMessage({type:'lume:height',height:h},'*'); }
-    }
-    new ResizeObserver(reportHeight).observe(document.querySelector('.card'));
-    window.addEventListener('load',reportHeight);
-    reportHeight();
-    window.parent.postMessage({type:'lume:ready'},'*');
-  }
+  window.LumeFrames.bindChild(setDark, 2, true);
 })();
 </script>
 </body>

@@ -65,6 +65,7 @@ body.dark .movement{background:radial-gradient(circle,#302719 0 18%,#3B3020 19% 
   <div class="controls"><div class="buttons"><button id="leftBtn"></button><button class="primary" id="moveBtn"></button><button id="rightBtn"></button><button id="autoBtn"></button><button id="resetBtn"></button></div><button class="theme" id="themeBtn"></button><span class="hint" id="hint"></span></div>
   <p class="foot" id="foot"></p>
 </main>
+<script src="/widgets/frame-bridge.js"></script>
 <script>
 (function(){
   var q=new URLSearchParams(location.search),lang=q.get('lang')==='en'?'en':'hu';
@@ -89,7 +90,7 @@ body.dark .movement{background:radial-gradient(circle,#302719 0 18%,#3B3020 19% 
   document.getElementById('resetBtn').onclick=function(){stop();power=12;caseAngle=0;rotorAngle=0;gearAngle=0;status('ready');render()};themeBtn.onclick=function(){setDark(!document.body.classList.contains('dark'))};
   watch.addEventListener('pointerdown',function(e){dragging=true;startX=e.clientX;watch.setPointerCapture(e.pointerId)});watch.addEventListener('pointermove',function(e){if(!dragging)return;var dx=e.clientX-startX;if(Math.abs(dx)>12){move(dx>0?10:-10);startX=e.clientX}});watch.addEventListener('pointerup',function(){dragging=false});watch.addEventListener('pointercancel',function(){dragging=false});
   addEventListener('resize',render);if(matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)setDark(true);themeLabel();status('ready');render();if(q.get('autoplay')==='1')setTimeout(function(){autoBtn.click()},250);
-  if(window.parent!==window){window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='lume:lights')setDark(!!e.data.dark)});var last=0;function report(){var h=Math.ceil(document.querySelector('.card').getBoundingClientRect().height)+30;if(h!==last){last=h;parent.postMessage({type:'lume:height',height:h},'*')}}new ResizeObserver(report).observe(document.querySelector('.card'));addEventListener('load',report);report();parent.postMessage({type:'lume:ready'},'*')}
+  window.LumeFrames.bindChild(setDark, 30, false);
 })();
 </script>
 </body>

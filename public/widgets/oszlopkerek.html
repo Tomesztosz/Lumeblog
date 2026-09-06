@@ -198,6 +198,7 @@ body.dark .btn.ghost{ color:var(--ink); border-color:var(--line); }
   <p class="note" id="note"></p>
 </div>
 
+<script src="/widgets/frame-bridge.js"></script>
 <script>
 (function(){
   var NS="http://www.w3.org/2000/svg";
@@ -357,30 +358,7 @@ body.dark .btn.ghost{ color:var(--ink); border-color:var(--line); }
   updateStatus();
 
   /* ---------- beágyazva: a napló vezérel ---------- */
-  var embedded = window.parent !== window;
-  if(embedded){
-    document.body.classList.add('embedded');
-
-    /* A szülő oldal „lámpa le" kapcsolója ide is átszól. */
-    window.addEventListener('message', function(e){
-      if(e.source !== window.parent) return;
-      if(!e.data || e.data.type !== 'lume:lights') return;
-      setDark(!!e.data.dark);
-    });
-
-    /* Magasság visszajelzése, hogy ne legyen belső görgetősáv. */
-    var lastH = 0;
-    function reportHeight(){
-      var h = Math.ceil(document.querySelector('.card').getBoundingClientRect().height) + 2;
-      if(h !== lastH){ lastH = h; window.parent.postMessage({ type:'lume:height', height:h }, '*'); }
-    }
-    new ResizeObserver(reportHeight).observe(document.querySelector('.card'));
-    window.addEventListener('load', reportHeight);
-    reportHeight();
-
-    /* Szóljunk, hogy készen állunk — a szülő ilyenkor küldi el a fény állapotát. */
-    window.parent.postMessage({ type:'lume:ready' }, '*');
-  }
+  window.LumeFrames.bindChild(setDark, 2, true);
 })();
 </script>
 </body>

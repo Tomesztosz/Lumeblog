@@ -65,6 +65,7 @@ body.dark{--paper:#13100B;--card:#1B1610;--panel:#231D15;--ink:#B9AE98;--soft:#8
   </div>
   <p class="foot" id="foot"></p>
 </main>
+<script src="/widgets/frame-bridge.js"></script>
 <script>
 (function(){
   var q=new URLSearchParams(location.search),lang=q.get('lang')==='en'?'en':'hu';
@@ -91,7 +92,7 @@ body.dark{--paper:#13100B;--card:#1B1610;--panel:#231D15;--ink:#B9AE98;--soft:#8
   document.getElementById('hourMinus').onclick=function(){change(-60)};document.getElementById('hourPlus').onclick=function(){change(60)};document.getElementById('minuteMinus').onclick=function(){change(-1)};document.getElementById('minutePlus').onclick=function(){change(1)};document.getElementById('presetOne').onclick=function(){clear();value=10*60+37;render()};document.getElementById('presetTwo').onclick=function(){clear();value=12*60+59;render()};playBtn.onclick=play;document.getElementById('stopBtn').onclick=function(){clear();setStatus('ready')};document.getElementById('nowBtn').onclick=function(){var d=new Date();clear();value=(d.getHours()%12)*60+d.getMinutes();render()};
   function setDark(on){document.body.classList.toggle('dark',on)}
   if(matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)setDark(true);render();
-  if(window.parent!==window){window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='lume:lights')setDark(!!e.data.dark)});var last=0;function report(){var h=Math.ceil(document.querySelector('.card').getBoundingClientRect().height)+26;if(h!==last){last=h;parent.postMessage({type:'lume:height',height:h},'*')}}new ResizeObserver(report).observe(document.querySelector('.card'));addEventListener('load',report);report();parent.postMessage({type:'lume:ready'},'*')}
+  window.LumeFrames.bindChild(setDark, 26, false);
 })();
 </script>
 </body>

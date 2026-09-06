@@ -7,6 +7,10 @@ A projekt szándéka és design-nyelve: [lume-brief.md](lume-brief.md) — az az
 
 ## Parancsok
 
+A biztonsági buildlépések és karbantartási szabályok: [docs/security.md](docs/security.md).
+Élesítéshez mindig `npm run build` kell, mert az Astro után a CSP és az automatikus
+biztonsági ellenőrzés is ennek része. A Node-verzió a `.node-version` fájlban van.
+
 ```bash
 npm run dev      # fejlesztői szerver: http://localhost:4321
 npm run build    # statikus build a dist/ mappába

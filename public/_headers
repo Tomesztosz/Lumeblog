@@ -1,4 +1,16 @@
-# Cloudflare Pages fejlécek.
+# Cloudflare Workers statikus fájlok: minden válaszra vonatkozó védelem.
+# A teljes, oldalankénti script/style hash-listát a secure-build.mjs állítja elő.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), hid=(), bluetooth=(), display-capture=()
+  Content-Security-Policy: frame-ancestors 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; script-src-attr 'none'
+
+# Csak a saját domainre, aldomain-kényszer és preload vállalás nélkül.
+https://lumejournal.com/*
+  Strict-Transport-Security: max-age=31536000
+
 # Az _astro/ alatti fájlnevek tartalmazzák a tartalom hash-ét, ezért örökre cache-elhetők.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable

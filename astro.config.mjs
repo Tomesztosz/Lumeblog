@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import rehypeArticleImages from './src/lib/rehype-article-images.mjs';
 import { sitemapMetadata } from './scripts/lib/sitemap-metadata.mjs';
 
@@ -9,6 +10,8 @@ const outDir = new URL('./dist/', import.meta.url);
 export default defineConfig({
   site: 'https://lumejournal.com',
   outDir: './dist',
+  // Preserve the existing typography and the article image rehype pipeline.
+  compressHTML: true,
   i18n: {
     locales: ['hu', 'en'],
     defaultLocale: 'hu',
@@ -28,7 +31,7 @@ export default defineConfig({
     responsiveStyles: true,
   },
   markdown: {
-    rehypePlugins: [rehypeArticleImages],
+    processor: unified({ rehypePlugins: [rehypeArticleImages] }),
   },
   build: {
     format: 'directory',

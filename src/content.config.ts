@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 import { COLUMN_KEYS, LANGS } from './i18n/ui';
 
@@ -40,7 +41,7 @@ const posts = defineCollection({
       model: z
         .object({
           /** A `public/widgets/` alatt kiszolgált, önálló HTML-modell útvonala. */
-          src: z.string().startsWith('/widgets/'),
+          src: z.string().regex(/^\/widgets\/[a-z0-9-]+\.html$/),
           /** Rövid cím a Műhely kártyáján. */
           title: z.string(),
           /** Egy mondat arról, mit lehet a modellen megfigyelni. */

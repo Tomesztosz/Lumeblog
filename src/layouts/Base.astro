@@ -172,6 +172,8 @@ const siteStructuredData = {
     </main>
     <Footer lang={lang} />
 
+    <script is:inline src="/widgets/frame-bridge.js"></script>
+
     <script define:vars={{ labels: { on: t.lightsOff, off: t.lightsOn, heroOn: t.heroLightsOff, heroOff: t.heroLightsOn } }}>
       /* „Lámpa le" — az egyetlen bátor elem. A választás oldalváltás és
          újratöltés után is megmarad ebben a böngészőben. */
@@ -189,6 +191,7 @@ const siteStructuredData = {
         var hinted = false;
 
         if (!lightsBtn) return;
+        var modelFrames = window.LumeFrames.bindParent(function () { return lights === 'off'; });
 
         function render() {
           var isDark = lights === 'off';
@@ -222,17 +225,7 @@ const siteStructuredData = {
 
         /* A cikkbe ágyazott modellek (iframe) is kövessék a lámpát. */
         function tellFrames() {
-          var frames = document.querySelectorAll('iframe');
-          for (var i = 0; i < frames.length; i++) {
-            try {
-              frames[i].contentWindow.postMessage(
-                { type: 'lume:lights', dark: lights === 'off' },
-                '*'
-              );
-            } catch (e) {
-              /* más eredetű keret — nem a mienk, hagyjuk */
-            }
-          }
+          modelFrames.broadcast();
         }
 
         function toggleLights() {
@@ -250,21 +243,6 @@ const siteStructuredData = {
 
         lightsBtn.addEventListener('click', toggleLights);
         if (heroBtn) heroBtn.addEventListener('click', toggleLights);
-
-        window.addEventListener('message', function (event) {
-          if (!event.data) return;
-          /* A keret jelzi, hogy betöltött — küldjük neki a jelenlegi állapotot. */
-          if (event.data.type === 'lume:ready') tellFrames();
-          /* A keret megmondja, mekkora — így nincs belső görgetősáv. */
-          if (event.data.type === 'lume:height' && event.data.height > 0) {
-            var frames = document.querySelectorAll('iframe');
-            for (var i = 0; i < frames.length; i++) {
-              if (frames[i].contentWindow === event.source) {
-                frames[i].style.height = event.data.height + 'px';
-              }
-            }
-          }
-        });
 
         /* Ha egy másik böngészőfülben vált témát, ez az oldal is kövesse. */
         window.addEventListener('storage', function (event) {

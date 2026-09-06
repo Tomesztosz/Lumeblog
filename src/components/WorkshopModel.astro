@@ -120,8 +120,10 @@ const number = String(index + 1).padStart(2, '0');
       }
 
       open.addEventListener('click', () => {
+        const source = new URL(demo.dataset.src ?? '', window.location.href);
+        if (source.origin !== window.location.origin || !/^\/widgets\/[a-z0-9-]+\.html$/.test(source.pathname)) return;
         const iframe = document.createElement('iframe');
-        iframe.src = demo.dataset.src ?? '';
+        iframe.src = source.href;
         iframe.title = demo.dataset.title ?? '';
         iframe.loading = 'eager';
         iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');

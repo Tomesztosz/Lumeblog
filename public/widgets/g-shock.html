@@ -171,6 +171,7 @@ body.dark .stage{background:linear-gradient(180deg,#17130e,#0d0b08)}
   </div>
 </main>
 
+<script src="/widgets/frame-bridge.js"></script>
 <script>
 (function(){
   var params=new URLSearchParams(location.search);
@@ -307,21 +308,7 @@ body.dark .stage{background:linear-gradient(180deg,#17130e,#0d0b08)}
   setThemeLabel();prepare(false);
   if(params.get('autoplay')==='1')window.setTimeout(function(){dropBtn.click()},180);
 
-  if(window.parent!==window){
-    window.addEventListener('message',function(event){
-      if(event.source!==window.parent||!event.data||event.data.type!=='lume:lights')return;
-      setDark(!!event.data.dark);
-    });
-    var lastHeight=0;
-    function reportHeight(){
-      var height=Math.ceil(document.querySelector('.card').getBoundingClientRect().height)+30;
-      if(height!==lastHeight){lastHeight=height;window.parent.postMessage({type:'lume:height',height:height},'*')}
-    }
-    new ResizeObserver(reportHeight).observe(document.querySelector('.card'));
-    window.addEventListener('load',reportHeight);
-    reportHeight();
-    window.parent.postMessage({type:'lume:ready'},'*');
-  }
+  window.LumeFrames.bindChild(setDark, 30, false);
 })();
 </script>
 </body>
