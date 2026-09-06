@@ -8,3 +8,21 @@
 
 /og-image.png
   Cache-Control: public, max-age=604800
+
+# Az önálló modellek a hozzájuk tartozó cikken belül értelmezhetők.
+# Nem tiltjuk a feltérképezést, különben a noindex sem olvasható.
+/widgets/*
+  X-Robots-Tag: noindex
+
+/404.html
+  X-Robots-Tag: noindex
+
+# A tesztcímek ne versenyezzenek a saját domainnel.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:worker.:account.workers.dev/*
+  X-Robots-Tag: noindex

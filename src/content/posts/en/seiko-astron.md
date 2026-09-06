@@ -42,7 +42,7 @@ The watch was the Seiko Quartz Astron 35SQ. It was not the first quartz timekeep
 
 A lead of one day can be enough to make history.
 
-![The original Seiko Quartz Astron 35SQ with its background removed](/img/eredet/seiko-quartz-astron-35sq-transparent.png)
+![The original Seiko Quartz Astron 35SQ with its background removed](../_images/seiko-quartz-astron-35sq-transparent.png)
 *The 1969 Seiko Quartz Astron 35SQ in an 18-carat gold case. Photo: [Seiko](https://www.seikowatches.com/global-en/products/astron/special/story_qa50th_1); background extraction: Lume.*
 
 ## The accurate clock that was the size of a cabinet
@@ -59,7 +59,7 @@ In 1959, Suwa Seikosha, the predecessor of today’s Seiko Epson, launched Proje
 
 That did not yet mean it could be manufactured as a product.
 
-![The miniaturisation of Seiko quartz timekeeping](/img/eredet/seiko-quartz-miniaturization.png)
+![The miniaturisation of Seiko quartz timekeeping](../_images/seiko-quartz-miniaturization.png)
 *From a cabinet-sized broadcasting clock to the Calibre 35A wristwatch movement. Seiko says the mechanism was reduced to one three-hundred-thousandth of its original volume. Image: [Seiko](https://www.seikowatches.com/us-en/special/100stories/innovation/).*
 
 ## Ten years spent solving a watch made entirely of problems
@@ -74,7 +74,7 @@ The electronics were not yet a nearly invisible modern integrated circuit. The e
 
 The motor was also too large and too power-hungry. The final stepper motor used a coil of 20-micrometre copper wire wound twenty thousand times. It turned sixty degrees for every electrical pulse, while the entire movement consumed only 18 microamps.
 
-![Both sides of the Seiko Calibre 35A](/img/eredet/seiko-caliber-35a.png)
+![Both sides of the Seiko Calibre 35A](../_images/seiko-caliber-35a.png)
 *The Calibre 35A quartz movement. Its crystal oscillator, electronics and stepper motor fitted inside a unit 30 millimetres wide and 5.3 millimetres thick. Image: [Seiko](https://www.seikowatches.com/us-en/special/100stories/innovation/).*
 
 ## The one-year deadline
@@ -89,7 +89,7 @@ Twenty completed watches were ready by December 1969. The name Astron was chosen
 
 It was a technical revolution dressed as a luxury watch. There was hardly any other way to charge the price of a car for it.
 
-![The hand-finished gold case of the Astron with its background removed](/img/eredet/seiko-quartz-astron-side-transparent.png)
+![The hand-finished gold case of the Astron with its background removed](../_images/seiko-quartz-astron-side-transparent.png)
 *The hand-textured 18-carat gold case. Despite the electronic movement inside, the Astron was presented as a traditional luxury watch. Photo: [Seiko Watch Design](https://www.seiko-design.com/en/stories-en/astron-en/); background extraction: Lume.*
 
 ## What 450,000 yen bought
@@ -104,7 +104,7 @@ There is no dispute that this was not an instant watch for everyone. It was too 
 
 On January 5, 1970, The New York Times reported on it. The new Japanese watch was news not because it was an attractive gold object, but because it offered a level of accuracy that had never belonged to an ordinary wristwatch.
 
-![The Seiko Astron in The New York Times](/img/eredet/seiko-astron-new-york-times.png)
+![The Seiko Astron in The New York Times](../_images/seiko-astron-new-york-times.png)
 *The January 5, 1970 issue of The New York Times reporting on the new Japanese quartz watch. Image: [Seiko archive](https://www.seikowatches.com/us-en/special/100stories/innovation/).*
 
 ## The patents were not simply “given away”

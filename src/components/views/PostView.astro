@@ -8,7 +8,7 @@ import ReadingProgress from '../ReadingProgress.astro';
 import ArticleToc from '../ArticleToc.astro';
 import CopyArticleLink from '../CopyArticleLink.astro';
 import RelatedPosts from '../RelatedPosts.astro';
-import { COLUMNS, UI, columnUrl, formatDate, otherLang, workshopUrl } from '../../i18n/ui';
+import { COLUMNS, UI, aboutUrl, archiveUrl, columnUrl, formatDate, langBase, otherLang, workshopUrl } from '../../i18n/ui';
 import { getRelatedPosts, getTranslation, minutesOf, urlOf, type Post } from '../../lib/posts';
 import { ARTICLE_READING_EXPERIENCE } from '../../site';
 
@@ -43,6 +43,16 @@ const coverImage = post.data.cover
       format: 'webp',
     })
   : undefined;
+const socialImage = coverImage && post.data.cover ? {
+  src: coverImage.src,
+  width: Number(coverImage.attributes.width),
+  height: Number(coverImage.attributes.height),
+  alt: post.data.cover.alt,
+} : undefined;
+const updated = post.data.updated;
+if (updated && (updated < post.data.date || updated > new Date())) {
+  throw new Error(`Invalid article update date: ${post.id}`);
+}
 
 const articleStructuredData = {
   '@context': 'https://schema.org',
@@ -53,12 +63,21 @@ const articleStructuredData = {
       headline: post.data.title,
       description: post.data.seoDescription ?? post.data.description,
       datePublished: post.data.date.toISOString(),
+      ...(updated ? { dateModified: updated.toISOString() } : {}),
+      author: { '@type': 'Organization', '@id': organizationId, name: 'Lume', url: new URL('/', Astro.site).href },
+      isAccessibleForFree: true,
       inLanguage: lang === 'hu' ? 'hu-HU' : 'en-GB',
       articleSection: c.name,
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
       isPartOf: { '@id': websiteId },
       publisher: { '@id': organizationId },
-      ...(coverImage ? { image: new URL(coverImage.src, Astro.site).href } : {}),
+      ...(socialImage ? { image: {
+        '@type': 'ImageObject',
+        url: new URL(socialImage.src, Astro.site).href,
+        width: socialImage.width,
+        height: socialImage.height,
+        caption: socialImage.alt,
+      } } : {}),
     },
     {
       '@type': 'BreadcrumbList',
@@ -93,10 +112,15 @@ const articleStructuredData = {
   title={post.data.seoTitle ?? post.data.title}
   description={post.data.seoDescription ?? post.data.description}
   altUrl={altUrl}
+  hasTranslation={Boolean(twin)}
   active={post.data.column}
+  ogType="article"
+  socialImage={socialImage}
 >
   <Fragment slot="head">
     <meta property="article:published_time" content={post.data.date.toISOString()} />
+    {updated && <meta property="article:modified_time" content={updated.toISOString()} />}
+    <meta property="article:section" content={c.name} />
     <StructuredData data={articleStructuredData} />
   </Fragment>
 
@@ -109,13 +133,20 @@ const articleStructuredData = {
 
     <div class="wrap wrap-narrow article-intro">
       <header class="article-head">
+        <nav class="article-breadcrumb mono" aria-label={t.breadcrumb}>
+          <a href={langBase(lang)}>Lume</a><span aria-hidden="true">/</span>
+          <a href={columnUrl(lang, post.data.column)}>{c.name}</a>
+        </nav>
         <div class="post-meta">
           <a class="tag" href={columnUrl(lang, post.data.column)}>{c.name}</a>
-          <span class="dotsep mono">{formatDate(post.data.date, lang)}</span>
+          <time class="dotsep mono" datetime={post.data.date.toISOString()}>{formatDate(post.data.date, lang)}</time>
           <span class="dotsep mono">{t.minutes(minutesOf(post))}</span>
         </div>
         <h1>{post.data.title}</h1>
         <p class="standfirst">{post.data.description}</p>
+        <p class="article-byline mono">{t.writtenBy} <a rel="author" href={aboutUrl(lang)}>Lume</a>
+          {updated && <> · {t.updatedOn} <time datetime={updated.toISOString()}>{formatDate(updated, lang)}</time></>}
+        </p>
       </header>
 
       <PostMedia column={post.data.column} cover={post.data.cover} variant="lead" />
@@ -132,7 +163,7 @@ const articleStructuredData = {
         {
           post.data.sources.length > 0 && (
             <aside class="sources">
-              <h4>{t.sources}</h4>
+              <h2>{t.sources}</h2>
               <ol>
                 {post.data.sources.map((s) => (
                   <li>
@@ -160,6 +191,7 @@ const articleStructuredData = {
 
         <nav class="article-nav">
           <a href={columnUrl(lang, post.data.column)}>← {t.backToColumn}</a>
+          <a href={archiveUrl(lang)}>{t.archive}</a>
           {post.data.model && <a href={`${workshopUrl(lang)}#${post.data.translationKey ?? post.id.split('/').pop()}`}>{t.workshop} →</a>}
         </nav>
       </div>
@@ -181,6 +213,9 @@ const articleStructuredData = {
 </Base>
 
 <style>
+  .article-breadcrumb { display: flex; gap: 10px; margin-bottom: 26px; font-size: 11px; color: var(--ink-soft); }
+  .article-breadcrumb a, .article-byline a { text-underline-offset: 4px; }
+  .article-byline { font-size: 11px; color: var(--ink-soft); margin: 20px 0 0; }
   .article-head .tag {
     text-decoration: none;
   }

@@ -2,9 +2,13 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import rehypeArticleImages from './src/lib/rehype-article-images.mjs';
+import { sitemapMetadata } from './scripts/lib/sitemap-metadata.mjs';
+
+const outDir = new URL('./dist/', import.meta.url);
 
 export default defineConfig({
   site: 'https://lumejournal.com',
+  outDir: './dist',
   i18n: {
     locales: ['hu', 'en'],
     defaultLocale: 'hu',
@@ -14,10 +18,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      i18n: {
-        defaultLocale: 'hu',
-        locales: { hu: 'hu-HU', en: 'en-GB' },
-      },
+      serialize: (item) => sitemapMetadata(item, outDir),
     }),
   ],
   image: {
@@ -31,5 +32,6 @@ export default defineConfig({
   },
   build: {
     format: 'directory',
+    inlineStylesheets: 'always',
   },
 });

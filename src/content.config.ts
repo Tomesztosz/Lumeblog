@@ -17,6 +17,8 @@ const posts = defineCollection({
       seoDescription: z.string().optional(),
       /** Megjelenés dátuma (ISO: 2026-08-03). */
       date: z.coerce.date(),
+      /** Csak érdemi tartalmi frissítéskor, nem minden új build dátuma. */
+      updated: z.coerce.date().optional(),
       /** Rovat: 'in-hand' | 'origins' | 'movement' — nyelvfüggetlen kulcs. */
       column: z.enum(COLUMN_KEYS),
       /** A poszt nyelve. */

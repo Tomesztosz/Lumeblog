@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+import StructuredData from '../StructuredData.astro';
+import { COLUMN_KEYS, COLUMNS, UI, archiveUrl, columnUrl, formatDate, otherLang, type Lang } from '../../i18n/ui';
+import { getPosts, urlOf } from '../../lib/posts';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = UI[lang];
+const posts = await getPosts(lang);
+const canonical = new URL(archiveUrl(lang), Astro.site).href;
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': canonical,
+  name: t.archiveSeoTitle,
+  description: t.archiveDescription,
+  inLanguage: lang,
+  url: canonical,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: COLUMN_KEYS.flatMap((column) => posts.filter((post) => post.data.column === column))
+      .map((post, index) => ({
+        '@type': 'ListItem', position: index + 1,
+        name: post.data.seoTitle ?? post.data.title,
+        url: new URL(urlOf(post), Astro.site).href,
+      })),
+  },
+};
+---
+
+<Base lang={lang} title={t.archiveSeoTitle} description={t.archiveDescription} altUrl={archiveUrl(otherLang(lang))}>
+  <StructuredData data={data} />
+  <section class="page-head">
+    <div class="wrap wrap-narrow">
+      <p class="eyebrow mono">{t.archive}</p>
+      <h1>{t.archiveTitle}</h1>
+      <p class="lede">{t.archiveDescription}</p>
+    </div>
+  </section>
+  <section class="section archive">
+    <div class="wrap wrap-narrow">
+      <div class="archive-search" hidden>
+        <label for="archive-query" class="mono">{t.archiveSearch}</label>
+        <input id="archive-query" type="search" placeholder={t.archiveSearchHint} autocomplete="off" />
+      </div>
+      <nav class="archive-sections mono" aria-label={t.footColumns}>
+        {COLUMN_KEYS.map((key) => <a href={`#${key}`}>{COLUMNS[key][lang].name}</a>)}
+      </nav>
+      <p class="archive-count mono" role="status" aria-live="polite" data-one={t.archiveResults(1)} data-many={t.archiveResults(0)}>{t.archiveResults(posts.length)}</p>
+      <p class="archive-empty" hidden>{t.archiveNoResults}</p>
+      {COLUMN_KEYS.map((key) => (
+        <section class="archive-group" id={key}>
+          <h2><a href={columnUrl(lang, key)}>{COLUMNS[key][lang].name}</a></h2>
+          <ul>
+            {posts.filter((post) => post.data.column === key).map((post) => (
+              <li data-archive-entry data-search={`${post.data.title} ${post.data.seoTitle ?? ''} ${post.data.description} ${post.data.seoDescription ?? ''}`}>
+                <h3><a href={urlOf(post)}>{post.data.seoTitle ?? post.data.title}</a></h3>
+                <p>{post.data.description}</p>
+                <time class="mono" datetime={post.data.date.toISOString()}>{formatDate(post.data.date, lang)}</time>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Minden cikk és hivatkozás eleve a HTML-ben van. A szűrés csak kényelmi réteg.
+  const input = document.querySelector<HTMLInputElement>('#archive-query');
+  const controls = document.querySelector<HTMLElement>('.archive-search');
+  const status = document.querySelector<HTMLElement>('.archive-count');
+  const empty = document.querySelector<HTMLElement>('.archive-empty');
+  const groups = document.querySelectorAll<HTMLElement>('.archive-group');
+  const entries = [...document.querySelectorAll<HTMLElement>('[data-archive-entry]')];
+  const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const searchIndex = entries.map((entry) => ({ entry, text: normalize(entry.dataset.search ?? '') }));
+  if (input && controls && status && empty) {
+    controls.hidden = false;
+    input.addEventListener('input', () => {
+      const terms = normalize(input.value).split(/\s+/).filter(Boolean);
+      let count = 0;
+      for (const { entry, text } of searchIndex) {
+        entry.hidden = !terms.every((term) => text.includes(term));
+        if (!entry.hidden) count++;
+      }
+      for (const group of groups) group.hidden = !group.querySelector('[data-archive-entry]:not([hidden])');
+      status.textContent = count === 1 ? status.dataset.one! : status.dataset.many!.replace('0', String(count));
+      empty.hidden = count !== 0;
+    });
+  }
+</script>
+
+<style>
+  .archive { padding-top: 32px; }
+  .archive-search label { display: block; font-size: 11px; margin-bottom: 12px; }
+  .archive-search input { width: 100%; min-height: 48px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 4px; background: var(--field); color: var(--ink); font: inherit; }
+  .archive-search input::placeholder { color: var(--ink-soft); }
+  .archive-search input:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+  .archive-sections { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 28px 0; font-size: 12px; }
+  .archive-count { color: var(--ink-soft); font-size: 11px; }
+  .archive-group { margin-top: 48px; scroll-margin-top: 160px; }
+  .archive-group h2 { font-size: clamp(26px, 5vw, 34px); }
+  .archive-group h2, .archive-group h3 { font-family: var(--font-serif); font-weight: 500; }
+  .archive-group ul { list-style: none; padding: 0; }
+  .archive-group li { border-top: 1px solid var(--line); padding: 26px 0; }
+  .archive-group h3 { font-size: clamp(22px, 4vw, 28px); margin: 0 0 12px; line-height: 1.3; }
+  .archive-group a { text-decoration: none; }
+  .archive-group a:hover, .archive-group a:focus-visible { text-decoration: underline; text-underline-offset: 5px; }
+  .archive-group p { color: var(--ink-soft); line-height: 1.65; margin: 0 0 14px; }
+  .archive-group time { font-size: 11px; color: var(--ink-soft); }
+  [hidden] { display: none !important; }
+</style>

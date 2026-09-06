@@ -45,7 +45,7 @@ body.dark{
   --paper-2:    #1B1610;
   --dial-face:  #0E0B07;
   --ink:        #B6AB94;
-  --ink-soft:   #7E7461;
+  --ink-soft:   #958975;
   --line:       rgba(198,186,160,0.14);
   --line-soft:  rgba(198,186,160,0.07);
   --brass:      #8A6C34;
@@ -310,7 +310,7 @@ body.dark .col:hover h3{ color:var(--lume-glow); }
   margin-top:8px;
   font-family:var(--font-mono);
   font-size:10.5px; letter-spacing:.12em; text-transform:none;
-  color:var(--ink-soft); opacity:.78;
+  color:var(--ink-soft);
 }
 .media-credit a{ text-decoration:underline; text-underline-offset:2px; }
 .media-credit a:hover{ color:var(--brass); }
@@ -319,7 +319,7 @@ body.dark .post-media .glow-ring{ filter:drop-shadow(0 0 5px var(--lume-glow)); 
 .post-meta{ display:flex; gap:14px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
 .tag{
   font-family:var(--font-mono); font-size:10.5px; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--brass); font-weight:500;
+  text-transform:uppercase; color:var(--brass-deep); font-weight:500;
   transition:color .7s ease;
 }
 body.dark .tag{ color:var(--lume-glow); }
@@ -339,7 +339,7 @@ body.dark .post:hover h3{ color:var(--lume-glow); }
 .post-more a{
   font-family:var(--font-mono);
   font-size:11px; letter-spacing:.16em; text-transform:uppercase;
-  color:var(--brass); display:inline-flex; align-items:center; gap:8px;
+  color:var(--brass-deep); display:inline-flex; align-items:center; gap:8px;
   padding:6px 0; transition:gap .25s, color .25s;
 }
 body.dark .post-more a{ color:var(--lume-glow); }
@@ -470,7 +470,7 @@ body.dark .workshop-launch{
 body.dark .workshop-launch-icon{ color:var(--lume-glow); }
 .workshop-image-credit{
   margin:7px 2px 0; font-family:var(--font-mono); font-size:9.5px;
-  line-height:1.45; letter-spacing:.1em; color:var(--ink-soft); opacity:.72;
+  line-height:1.45; letter-spacing:.1em; color:var(--ink-soft);
 }
 .workshop-image-credit a{ text-decoration:underline; text-underline-offset:2px; }
 .workshop-placeholder{ height:100%; display:flex; align-items:center; justify-content:center; gap:8px; }
@@ -711,7 +711,7 @@ body.dark .calendar-radar-brand.active small{ color:var(--lume-glow); }
   margin:36px 0 12px; color:var(--ink);
 }
 .article-body a{
-  color:var(--brass); text-decoration:underline;
+  color:var(--brass-deep); text-decoration:underline;
   text-underline-offset:3px; text-decoration-thickness:1px;
 }
 body.dark .article-body a{ color:var(--lume-glow); }
@@ -769,7 +769,7 @@ body.dark .article-body blockquote{ border-left-color:var(--lume-glow); }
   display:block; margin-top:8px;
   font-family:var(--font-mono); font-style:normal;
   font-size:10.5px; letter-spacing:.12em; line-height:1.5;
-  color:var(--ink-soft); opacity:.78;
+  color:var(--ink-soft);
 }
 /* ha külön bekezdésbe került, ne kapjon még egy adag margót */
 .article-body p:has(> img) + p:has(> em:only-child){ margin:-28px 0 36px; }
@@ -781,7 +781,7 @@ body.dark .article-body blockquote{ border-left-color:var(--lume-glow); }
   margin-top:52px; padding-top:26px; border-top:1px solid var(--line);
   max-width:var(--measure);
 }
-.sources h4{
+.sources h2{
   font-family:var(--font-mono); font-size:11px; letter-spacing:.18em;
   text-transform:uppercase; color:var(--ink-soft); margin:0 0 14px; font-weight:500;
 }
@@ -855,7 +855,7 @@ footer{ border-top:1px solid var(--line-soft); padding:52px 0 46px; margin-top:2
 body.dark .foot-brand .mark{ color:var(--lume-glow); text-shadow:0 0 10px color-mix(in srgb,var(--lume-glow) 45%,transparent); }
 .foot-brand p{ margin:10px 0 0; font-size:13.5px; color:var(--ink-soft); max-width:30ch; }
 .foot-cols{ display:flex; gap:56px; }
-.foot-cols h5{ font-family:var(--font-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 14px; font-weight:500; }
+.foot-cols h2{ font-family:var(--font-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 14px; font-weight:500; }
 .foot-cols a{ display:block; font-size:14px; color:var(--ink); margin-bottom:9px; opacity:.85; transition:opacity .2s,color .2s; }
 .foot-cols a:hover{ opacity:1; color:var(--brass); }
 .foot-base{

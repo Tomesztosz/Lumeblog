@@ -91,7 +91,7 @@ export const WORKSHOP_SLUG: Record<Lang, string> = { hu: 'muhely', en: 'workshop
 /* ---------- felületi szövegek ---------- */
 export const UI = {
   hu: {
-    siteTitle: 'Lume — Órás napló',
+    siteTitle: 'Lume | Karórák, óratörténetek és óraszerkezetek',
     siteDescription:
       'Kétnyelvű órás napló: microbrandek kézben, márkatörténelem a legenda mögötti tényekkel, és a számlap alatti mechanika. Heti három írás.',
     tagline: 'Órás napló. Magyarul és angolul.',
@@ -193,10 +193,21 @@ export const UI = {
     noPostsYet: 'Ebben a rovatban még nincs írás. Hamarosan.',
     noPostsYetHome: 'Az első írás hamarosan.',
     readOn: 'Tovább',
+    breadcrumb: 'Útvonal',
+    writtenBy: 'Szerző:',
+    updatedOn: 'Frissítve:',
+    archive: 'Minden cikk',
+    archiveTitle: 'Karórák, történetek, szerkezetek.',
+    archiveSeoTitle: 'Órás cikkek: márkák, modellek és szerkezetek',
+    archiveDescription: 'A Lume összes írása egy helyen. Független óramárkák, ikonikus karórák története és az óraszerkezetek működése, ellenőrizhető forrásokkal.',
+    archiveSearch: 'Keress márkára, modellre vagy szerkezetre',
+    archiveSearchHint: 'Például: Seiko, Monaco, rotor',
+    archiveNoResults: 'Erre most nincs találat. Próbálj másik márkát vagy rövidebb kifejezést.',
+    archiveResults: (n: number) => `${n} cikk`,
   },
 
   en: {
-    siteTitle: 'Lume — A watch journal',
+    siteTitle: 'Lume | Watches, Watch History and Movements',
     siteDescription:
       'A bilingual watch journal: microbrands in hand, brand history with the facts behind the legend, and the machinery under the dial. Three pieces a week.',
     tagline: 'A watch journal. In Hungarian and English.',
@@ -287,6 +298,17 @@ export const UI = {
     noPostsYet: 'No pieces in this column yet. Soon.',
     noPostsYetHome: 'The first piece is coming soon.',
     readOn: 'Read on',
+    breadcrumb: 'Breadcrumb',
+    writtenBy: 'Written by',
+    updatedOn: 'Updated:',
+    archive: 'All articles',
+    archiveTitle: 'Watches, stories, movements.',
+    archiveSeoTitle: 'Watch Articles: Brands, Models and Movements',
+    archiveDescription: 'Every Lume article in one place. Independent watch brands, the history of iconic watches and how watch movements work, with verifiable sources.',
+    archiveSearch: 'Search for a brand, model or movement',
+    archiveSearchHint: 'For example: Seiko, Monaco, rotor',
+    archiveNoResults: 'No matching articles yet. Try another brand or a shorter search.',
+    archiveResults: (n: number) => `${n} ${n === 1 ? 'article' : 'articles'}`,
   },
 } as const;
 
@@ -317,6 +339,10 @@ export function aboutUrl(lang: Lang): string {
 /** Lume Műhely / Lume Workshop URL-je. */
 export function workshopUrl(lang: Lang): string {
   return `${langBase(lang)}${WORKSHOP_SLUG[lang]}/`;
+}
+
+export function archiveUrl(lang: Lang): string {
+  return lang === 'hu' ? '/cikkek/' : '/en/articles/';
 }
 
 export function otherLang(lang: Lang): Lang {

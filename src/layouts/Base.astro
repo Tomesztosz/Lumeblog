@@ -5,6 +5,10 @@ import StructuredData from '../components/StructuredData.astro';
 import { UI, otherLang, type ColumnKey, type Lang } from '../i18n/ui';
 import { LAUNCHED } from '../site';
 import '../styles/global.css';
+import serifLatin from '@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url';
+import serifExtended from '@fontsource-variable/fraunces/files/fraunces-latin-ext-opsz-normal.woff2?url';
+import sansLatin from '@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url';
+import sansExtended from '@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-ext-wght-normal.woff2?url';
 
 interface Props {
   lang: Lang;
@@ -13,16 +17,23 @@ interface Props {
   /** A jelenlegi oldal megfelelője a másik nyelven (nyelvváltó + hreflang). */
   altUrl: string;
   active?: ColumnKey | 'about' | 'workshop' | 'calendar';
+  /** A nyelvváltó fallbackje nem feltétlenül az oldal fordítása. */
+  hasTranslation?: boolean;
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+  socialImage?: { src: string; width: number; height: number; alt: string };
 }
 
-const { lang, title, description, altUrl, active } = Astro.props;
+const { lang, title, description, altUrl, active, hasTranslation = true,
+  noindex = false, ogType = 'website', socialImage } = Astro.props;
 const t = UI[lang];
 
-const pageTitle = title ? `${title} — Lume` : t.siteTitle;
+const pageTitle = title ? `${title} | Lume` : t.siteTitle;
 const pageDescription = description ?? t.siteDescription;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const alternate = new URL(altUrl, Astro.site);
-const ogImage = new URL('/og-image.png', Astro.site);
+const ogImage = new URL(socialImage?.src ?? '/og-image.png', Astro.site);
+const indexable = LAUNCHED && !noindex;
 const organizationId = new URL('/#organization', Astro.site).href;
 const websiteId = new URL('/#website', Astro.site).href;
 const siteStructuredData = {
@@ -33,6 +44,7 @@ const siteStructuredData = {
       '@id': organizationId,
       name: 'Lume',
       url: new URL('/', Astro.site).href,
+      description: t.siteDescription,
       logo: {
         '@type': 'ImageObject',
         url: new URL('/apple-touch-icon.png', Astro.site).href,
@@ -58,24 +70,36 @@ const siteStructuredData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    {[serifLatin, sansLatin, ...(lang === 'hu' ? [serifExtended, sansExtended] : [])].map((font) => (
+      <link rel="preload" href={font} as="font" type="font/woff2" crossorigin />
+    ))}
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     {/* Amíg nincs domain és első cikk, ne indexelje senki. Kapcsoló: src/site.ts */}
-    {!LAUNCHED && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang={lang} href={canonical} />
-    <link rel="alternate" hreflang={otherLang(lang)} href={alternate} />
+    <meta name="robots" content={indexable ? 'index, follow, max-image-preview:large' : 'noindex, follow'} />
+    {indexable && <link rel="canonical" href={canonical} />}
+    {indexable && hasTranslation && <>
+      <link rel="alternate" hreflang={lang} href={canonical} />
+      <link rel="alternate" hreflang={otherLang(lang)} href={alternate} />
+      <link rel="alternate" hreflang="x-default" href={lang === 'hu' ? canonical : alternate} />
+    </>}
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Lume" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={lang === 'hu' ? 'hu_HU' : 'en_GB'} />
+    {hasTranslation && <meta property="og:locale:alternate" content={lang === 'hu' ? 'en_GB' : 'hu_HU'} />}
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content={socialImage?.width ?? 1200} />
+    <meta property="og:image:height" content={socialImage?.height ?? 630} />
+    <meta property="og:image:alt" content={socialImage?.alt ?? t.tagline} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={socialImage?.alt ?? t.tagline} />
 
     <StructuredData data={siteStructuredData} />
 

@@ -4,8 +4,8 @@ import {
   COLUMNS,
   UI,
   aboutUrl,
+  archiveUrl,
   columnUrl,
-  langBase,
   workshopUrl,
   type Lang,
 } from '../i18n/ui';
@@ -28,15 +28,15 @@ const t = UI[lang];
       </div>
       <div class="foot-cols">
         <div>
-          <h5>{t.footColumns}</h5>
+          <h2>{t.footColumns}</h2>
           {COLUMN_KEYS.map((key) => <a href={columnUrl(lang, key)}>{COLUMNS[key][lang].name}</a>)}
         </div>
         <div>
-          <h5>{t.footJournal}</h5>
+          <h2>{t.footJournal}</h2>
           <a href={workshopUrl(lang)}>{t.workshop}</a>
           <a href={calendarUrl(lang)}>{CALENDAR_UI[lang].nav}</a>
           <a href={aboutUrl(lang)}>{t.about}</a>
-          <a href={`${langBase(lang)}#latest`}>{t.footArchive}</a>
+          <a href={archiveUrl(lang)}>{t.archive}</a>
           <a href={lang === 'hu' ? '/rss.xml' : '/en/rss.xml'}>RSS</a>
         </div>
       </div>

@@ -42,7 +42,7 @@ Az óra neve Seiko Quartz Astron 35SQ volt. Nem ez volt az első kvarccal műkö
 
 A különbség egyetlen nappal is történelmet írhat.
 
-![Az eredeti Seiko Quartz Astron 35SQ háttér nélkül](/img/eredet/seiko-quartz-astron-35sq-transparent.png)
+![Az eredeti Seiko Quartz Astron 35SQ háttér nélkül](../_images/seiko-quartz-astron-35sq-transparent.png)
 *Az 1969-es Seiko Quartz Astron 35SQ, 18 karátos aranytokban. Fotó: [Seiko](https://www.seikowatches.com/global-en/products/astron/special/story_qa50th_1); háttérleválasztás: Lume.*
 
 ## A pontos óra, amely akkora volt, mint egy szekrény
@@ -59,7 +59,7 @@ Ebből kellett karórát csinálni.
 
 Ez azonban még nem jelentette azt, hogy sorozatban is gyártható volt.
 
-![A kvarcóra méretének csökkentése](/img/eredet/seiko-quartz-miniaturization.png)
+![A kvarcóra méretének csökkentése](../_images/seiko-quartz-miniaturization.png)
 *A műsorszóró állomások szekrényméretű kvarcórájától a 35A karóraszerkezetig. A Seiko számítása szerint a szerkezet térfogatát az eredeti háromszázezred részére kellett csökkenteni. Kép: [Seiko](https://www.seikowatches.com/us-en/special/100stories/innovation/).*
 
 ## Tíz év egy olyan óráért, amelynek minden alkatrésze problémás volt
@@ -74,7 +74,7 @@ Az elektronika még nem egy mai, szinte láthatatlan integrált áramkör volt. 
 
 A motor szintén túl nagy és túl éhes volt. A végső léptetőmotor tekercsét húsz mikrométeres rézhuzalból, húszezer menettel készítették. Minden elektromos impulzusra hatvan fokot fordult, az egész szerkezet áramfelvétele pedig mindössze 18 mikroamper lett.
 
-![A Seiko 35A kvarcszerkezet két oldala](/img/eredet/seiko-caliber-35a.png)
+![A Seiko 35A kvarcszerkezet két oldala](../_images/seiko-caliber-35a.png)
 *A 35A kvarcszerkezet. A kvarcrezgő, az elektronika és a léptetőmotor egy 30 milliméter átmérőjű, 5,3 milliméter vastag egységbe került. Kép: [Seiko](https://www.seikowatches.com/us-en/special/100stories/innovation/).*
 
 ## Az egyéves határidő
@@ -89,7 +89,7 @@ A verseny tehát szorosabb volt annál, mint amit az „első” szó sejtet.
 
 Technikai forradalom volt, de úgy öltöztették fel, mint egy luxusórát. Másképp aligha lehetett volna elkérni érte egy autó árát.
 
-![Az Astron kézzel kialakított aranytokja oldalról, háttér nélkül](/img/eredet/seiko-quartz-astron-side-transparent.png)
+![Az Astron kézzel kialakított aranytokja oldalról, háttér nélkül](../_images/seiko-quartz-astron-side-transparent.png)
 *A kézzel textúrázott, 18 karátos aranytok. Az elektronikus belső ellenére az Astront hagyományos luxusóraként mutatták be. Fotó: [Seiko Watch Design](https://www.seiko-design.com/en/stories-en/astron-en/); háttérleválasztás: Lume.*
 
 ## Mit tudott 450 000 jenért
@@ -104,7 +104,7 @@ Abban nincs vita, hogy nem lett belőle azonnal népóra. Túl drága és túl n
 
 1970. január 5-én a The New York Times is írt róla. Az új japán óra nem azért került be a lapba, mert szép aranytárgy volt, hanem mert olyan pontosságot ígért, amely addig nem tartozott a hétköznapi karórák világához.
 
-![A Seiko Astron a The New York Timesban](/img/eredet/seiko-astron-new-york-times.png)
+![A Seiko Astron a The New York Timesban](../_images/seiko-astron-new-york-times.png)
 *A The New York Times 1970. január 5-i cikke az új japán kvarcóráról. Kép: [Seiko archívum](https://www.seikowatches.com/us-en/special/100stories/innovation/).*
 
 ## A szabadalom, amelyet nem ilyen egyszerűen „adtak oda”
