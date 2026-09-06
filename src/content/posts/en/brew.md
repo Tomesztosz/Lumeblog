@@ -62,8 +62,8 @@ The first collection, the Special Blend, reached Kickstarter on March 10, 2015. 
 
 It was a success, but not the kind of explosion that creates a finished company overnight. Ferrer handled orders from his New York apartment, with his mother helping to pack the watches. The first production run meant learning every part of the business at close range, from manufacturing to customer service.
 
-![Two early Brew Special Blend watches](../_images/brew-special-blend-2015.webp)
-*Two early versions of the 44mm Special Blend. Photo: [Worn & Wound](https://wornandwound.com/introducing-brew-watch-co/).*
+![A close view of the Brew Special Blend dial](../_images/brew-special-blend-detail-v2.webp)
+*A close view of the original 44mm Special Blend dial. Photo: [Worn & Wound](https://wornandwound.com/introducing-brew-watch-co/).*
 
 The Special Blend used a heavily rounded, square case measuring 44mm across. Its hidden lugs made it wear smaller than the number suggested, though it remains a large object by current standards. Grooves along the crown and case sides echoed the vents on commercial espresso machines. Cream, black, brushed steel and copper-like tones came from the warm interior of a cafe.
 
@@ -79,7 +79,7 @@ The Retrograph arrived in 2018. Ferrer kept the rounded square but made it small
 
 The important detail was not the case. Between twenty-five and thirty-five seconds, a contrasting section appeared on the outer timing scale.
 
-![The Brew Retrograph Espresso with its background removed](../_images/brew-retrograph-espresso-cutout.webp)
+![The Brew Retrograph Espresso with its background removed](../_images/brew-retrograph-espresso-cutout-v2.webp)
 *The Retrograph Espresso. The interval from 25 to 35 seconds is marked around the edge of the dial. Original manufacturer photograph with the background removed: [Brew Watch Co.](https://www.brew-watches.com/products/retrograph-brew-rosegold-espresso-chocolate).*
 
 Time is only one of many variables in an espresso. Grind, dose, tamping, water and machine all matter. The coloured section therefore cannot promise a perfect cup. It can show, at a glance, when the extraction is inside a commonly used window.
@@ -128,7 +128,7 @@ The solution can be more accurate and thinner than a fully mechanical chronograp
 
 For Brew, that is an honest exchange. The brand's main achievement is not an in-house calibre. It is the case and dial. A thicker watch costing several times as much would lose exactly what makes the Metric appealing. The current $475 price is no longer pocket change, but it remains far below the territory of mechanical chronographs.
 
-![The 36mm Brew Metric on the wrist](../_images/brew-metric-wrist.webp)
+![The 36mm Brew Metric on the wrist](../_images/brew-metric-wrist-detail-v2.webp)
 *The 36mm Metric on the wrist. Photo: [Brew Watch Co.](https://www.brew-watches.com/watches/brew-metric-retro-black).*
 
 ## Where the story ends and the watch remains

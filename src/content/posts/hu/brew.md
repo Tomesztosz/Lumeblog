@@ -62,8 +62,8 @@ Az első kollekció, a Special Blend 2015. március 10-én került fel a Kicksta
 
 Ez siker volt, de nem az a fajta robbanás, amely egyetlen nap alatt kész márkát csinál. Ferrer New York-i lakásából intézte a rendeléseket, a csomagolásban pedig az édesanyja segített. Az első sorozatnál még mindent közelről kellett megtanulni, a gyártástól az ügyfélszolgálatig.
 
-![A Brew Special Blend 2015-ös változatai](../_images/brew-special-blend-2015.webp)
-*A 44 milliméteres Special Blend két korai változata. Fotó: [Worn & Wound](https://wornandwound.com/introducing-brew-watch-co/).*
+![A Brew Special Blend számlapja közelről](../_images/brew-special-blend-detail-v2.webp)
+*Az első, 44 milliméteres Special Blend számlapja közelről. Fotó: [Worn & Wound](https://wornandwound.com/introducing-brew-watch-co/).*
 
 A Special Blend 44 milliméter széles, erősen lekerekített, négyzetes tokot kapott. A tokfülek eltűntek a forma alól, ezért az óra kisebbnek hatott a számnál, de mai szemmel így is nagy tárgy. A koronán és a tok oldalán futó rovátkák az ipari eszpresszógépek szellőzőit idézték. A krémszín, a fekete, a csiszolt acél és a rézhez közeli árnyalat a kávézók meleg belső teréből érkezett.
 
@@ -79,7 +79,7 @@ Ez a különbség később döntő lett.
 
 Az igazán fontos rész mégsem a tok volt. A számlap külső skáláján huszonöt és harmincöt másodperc között eltérő színű jelölések jelentek meg.
 
-![A Brew Retrograph Espresso háttér nélkül](../_images/brew-retrograph-espresso-cutout.webp)
+![A Brew Retrograph Espresso háttér nélkül](../_images/brew-retrograph-espresso-cutout-v2.webp)
 *A Retrograph Espresso. A 25 és 35 másodperc közötti szakaszt a számlap peremén jelölték ki. Eredeti gyártói fotó, eltávolított háttérrel: [Brew Watch Co.](https://www.brew-watches.com/products/retrograph-brew-rosegold-espresso-chocolate).*
 
 Egy eszpresszó elkészítésénél az idő csak egy változó a sok közül. Számít az őrlés, az adag, a tömörítés, a víz és a gép is. A színezett tartomány ezért nem ígér tökéletes kávét. Arra viszont jó, hogy egyetlen pillantással lásd, mikor jár a folyamat az általánosan használt tartományban.
@@ -128,7 +128,7 @@ A megoldás pontosabb és vékonyabb lehet egy teljesen mechanikus kronográfná
 
 A Brew esetében ez őszinte csere. A márka fő teljesítménye nem egy saját kaliber, hanem a tok és a számlap. Ha egy automata kronográf miatt az óra vastagabb és többször drágább lenne, éppen azt veszítené el, amitől szerethető. A jelenlegi Metric Retro 475 dolláros ára már nem aprópénz, de még mindig messze van a mechanikus kronográfok világától.
 
-![A Metric mérete a csuklón](../_images/brew-metric-wrist.webp)
+![A Metric mérete a csuklón](../_images/brew-metric-wrist-detail-v2.webp)
 *A Metric 36 milliméteres tokja csuklón. Fotó: [Brew Watch Co.](https://www.brew-watches.com/watches/brew-metric-retro-black).*
 
 ## Ahol elfogy a történet és marad az óra
