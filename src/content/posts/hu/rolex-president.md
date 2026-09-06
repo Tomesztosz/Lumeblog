@@ -3,7 +3,7 @@ title: "Az elnök órája, amelyet nem az elnöknek terveztek"
 description: "Eisenhower arany Rolexet viselt, de nem Day-Date-et. Lyndon B. Johnson, egy különleges fémszíj és egy pontosan felépített reklám tette a modellt Presidentté."
 seoTitle: "Rolex Day-Date: hogyan lett belőle az elnökök órája"
 seoDescription: "A Rolex President valódi története Eisenhower Datejustjától Lyndon B. Johnson Day-Date-jén és az 1967-es reklámon át a mai modellig."
-date: 2026-09-06
+date: 2026-09-09
 column: 'origins'
 lang: 'hu'
 slug: 'rolex-president-tortenete'

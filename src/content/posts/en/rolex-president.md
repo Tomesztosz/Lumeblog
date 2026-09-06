@@ -3,7 +3,7 @@ title: "The president's watch that was not designed for a president"
 description: "Eisenhower wore a gold Rolex, but it was not a Day-Date. Lyndon B. Johnson, a distinctive bracelet and carefully framed advertising turned the model into the President."
 seoTitle: "Rolex Day-Date: how it became the presidents' watch"
 seoDescription: "The real history of the Rolex President, from Eisenhower's Datejust through Lyndon B. Johnson and the 1967 advertisement to the modern Day-Date."
-date: 2026-09-06
+date: 2026-09-09
 column: 'origins'
 lang: 'en'
 slug: 'rolex-president-history'
