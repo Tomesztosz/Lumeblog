@@ -3,7 +3,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { inspectHtml, attribute } from './lib/seo-html.mjs';
-import { assertSafeMarkup, policyFor } from './lib/security-policy.mjs';
+import { assertSafeMarkup, policyFor, globalHeaderRule } from './lib/security-policy.mjs';
 
 const root = new URL('../', import.meta.url);
 const out = new URL('dist/', root);
@@ -34,7 +34,7 @@ for (const file of files) {
 }
 
 const headers = await readFile(new URL('_headers', out), 'utf8');
-const globalRule = headers.split('\n/*\n')[1]?.split(/\n\n/)[0] ?? '';
+const globalRule = globalHeaderRule(headers);
 for (const expected of [
   'X-Content-Type-Options: nosniff', 'X-Frame-Options: SAMEORIGIN',
   'Referrer-Policy: strict-origin-when-cross-origin', "frame-ancestors 'self'", "object-src 'none'",

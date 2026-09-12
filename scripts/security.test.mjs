@@ -3,9 +3,21 @@ import { test } from 'node:test';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { inspectHtml, attribute } from './lib/seo-html.mjs';
-import { hash, secureHtml } from './lib/security-policy.mjs';
+import { hash, secureHtml, globalHeaderRule } from './lib/security-policy.mjs';
 
 const page = (body) => `<!doctype html><html><head><meta charset="utf-8"><title>Test</title></head><body>${body}</body></html>`;
+test('Global headers accept LF and CRLF without borrowing route-specific protection', () => {
+  for (const eol of ['\n', '\r\n']) {
+    for (const prefix of ['', '# Headers' + eol]) {
+      const headers = prefix + ['/*', '  X-Content-Type-Options: nosniff', '',
+        '/widgets/*', '  X-Robots-Tag: noindex'].join(eol);
+      assert.equal(globalHeaderRule(headers), '  X-Content-Type-Options: nosniff');
+    }
+    assert.equal(globalHeaderRule(['/widgets/*', '  X-Content-Type-Options: nosniff'].join(eol)), '');
+    assert.equal(globalHeaderRule(['/*', '  X-Frame-Options: SAMEORIGIN', '',
+      '/widgets/*', '  X-Content-Type-Options: nosniff'].join(eol)).includes('nosniff'), false);
+  }
+});
 test('CSP precedes resources, hashes exact parsed script/style text and preserves markup', () => {
   const source = page('<style>p{color:red}</style><script>\r\nwindow.test = 1;\r\n</script>');
   const secured = secureHtml(source);

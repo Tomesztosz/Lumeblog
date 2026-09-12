@@ -4,6 +4,13 @@ import { attribute, elementsOf, textOf } from './seo-html.mjs';
 
 export const hash = (text) => `'sha256-${createHash('sha256').update(text).digest('base64')}'`;
 
+// Git may check out the same Cloudflare configuration with LF or CRLF.
+// Only the global block counts; route-specific headers must not satisfy it.
+export function globalHeaderRule(headers) {
+  return headers.replaceAll('\r\n', '\n')
+    .match(/(?:^|\n)\/\*\n([\s\S]*?)(?:\n\s*\n|$)/)?.[1] ?? '';
+}
+
 // Only trusted build output is hashed, never request data or user submissions.
 // Attribute styles remain necessary for responsive images and the animated models.
 export function policyFor(elements) {
