@@ -27,9 +27,9 @@ export function minutesOf(post: Post): number {
  * Fejlesztés közben (`npm run dev`) viszont MINDEN látszik, hogy a készülő
  * írásokat meg tudd nézni a saját gépeden, mielőtt élesbe kerülnek.
  *
- * A dátum a frontmatterben nap pontosságú, tehát UTC szerint éjfélkor válik
- * megjelentté. Magától viszont semmi nem történik: az oldal statikus, tehát
- * kell egy újraépítés is azon a napon — ezt a .github/workflows/ alatti
+ * A nap pontosságú dátum UTC-éjfélt jelent. Pontos időzítéshez teljes ISO
+ * időbélyeg és időzóna kell, például 2026-09-14T05:00:00+02:00.
+ * Az oldal statikus, ezért újraépítés is szükséges; ezt a .github/workflows/ alatti
  * ütemezett munkafolyamat intézi.
  */
 function megjelent(date: Date, most: Date): boolean {

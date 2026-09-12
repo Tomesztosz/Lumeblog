@@ -1,5 +1,37 @@
 [
   {
+    "id": "citizen-attesa-eco-drive-50-2026",
+    "brand": "Citizen",
+    "brandKey": "citizen",
+    "family": "ATTESA",
+    "model": "Green Flash / Purple Aurora, Eco-Drive 50th Anniversary",
+    "reference": "CC4084-83Z · CC4085-81Z",
+    "date": "2026-10-01",
+    "dateEnd": "2026-10-31",
+    "precision": "month",
+    "confirmed": true,
+    "image": "/img/calendar/citizen-attesa-eco-drive-50-2026.jpg",
+    "imageWidth": 700,
+    "imageHeight": 495,
+    "imageCredit": "Citizen Watch Co., Ltd.",
+    "sourceUrl": "https://www.citizenwatch-global.com/news/2026/20260909/index.html",
+    "sourceChecked": "2026-09-12",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. október, tervezett bevezetés",
+        "summary": "Két titántokos ATTESA az Eco-Drive ötvenedik évfordulójára, F950 GPS-szerkezettel. A zöld és lila fényhatást strukturális színfilm és gőzfázisú bevonatok hozzák létre.",
+        "selection": "A számlap anyaga és a fény kapcsolata miatt érdekes, nem pusztán két új szín. Változatonként 1500 példány készül.",
+        "availability": "A gyártó októberre tervezi a bevezetést; a helyi elérhetőség piacfüggő."
+      },
+      "en": {
+        "dateLabel": "October 2026, planned launch",
+        "summary": "Two titanium ATTESA watches marking fifty years of Eco-Drive, powered by the F950 GPS movement. Structural colour film and vapour-deposited coatings create green and purple light effects.",
+        "selection": "Selected for the interplay of dial materials and light, beyond a simple colour change. Each version is limited to 1,500 pieces.",
+        "availability": "The manufacturer schedules an October launch; local availability varies by market."
+      }
+    }
+  },
+  {
     "id": "seiko-motocompo-hdb010",
     "brand": "Seiko",
     "brandKey": "seiko",

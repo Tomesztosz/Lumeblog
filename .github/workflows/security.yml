@@ -24,4 +24,5 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm audit --audit-level=low
+      - run: node --test scripts/post-needs-build.test.mjs
       - run: npm run build
