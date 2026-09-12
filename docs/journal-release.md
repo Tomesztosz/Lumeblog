@@ -1,6 +1,6 @@
 # Az új Lume kiadási naplója
 
-Állapot: 2026. szeptember 12., élesítés előkészítve. Az elfogadott megjelenés
+Élesítés előtti jegyzőkönyv, 2026. szeptember 12. Az elfogadott megjelenés
 bekötve a normál útvonalakra. A tulajdonos a célzott függőségjavítást,
 az újraellenőrzést és az azt követő élesítést jóváhagyta: „rendben csináld meg”.
 Cikk, dátum és naptáradat nem módosult. A push utáni tényleges kiszolgálást
@@ -119,11 +119,20 @@ hogy a JavaScript, az érintés vagy a képernyőolvasó működése is le lett 
   Az SVGO 4.0.2 helyett 4.1.0; a friss audit nulla ismert sérülékenység.
   A javítás külön commit, nem része a felületet átállító commitnak.
 - A régi és az új felület külön, csak verziókövetett fájlokat tartalmazó
-  munkapéldányban kap `npm ci`, audit és teljes build ellenőrzést a push előtt.
+  munkapéldányban sikeres `npm ci`, audit és teljes build ellenőrzést kapott.
+  A tiszta Windows-checkout feltárt egy korábbi CRLF-kezelési hibát a
+  biztonságifejléc-ellenőrzőben. Javítva, LF/CRLF regressziós teszttel;
+  az éles fejlécszabályok és a CSP működése nem változott (`dc84b8a`).
+  A tiszta régi/új build összevetése: 59 oldal metaadata, 90 útvonal,
+  26 védett fájl változatlan; a korábbi helyi alapellenőrzés szintén sikeres.
+- A felületet bevezető commit: `a5ce21b`. A `git revert a5ce21b` ténylegesen
+  lefutott a külön helyi munkapéldányban; az így kapott `b4bf2a6` teljes
+  buildje sikeres. A visszaállítási próba nem került a main ágra vagy élesbe.
+  A visszaállított fa az SVGO-frissítés melletti régi felület, a sortörésjavítással.
 - A meglévő GitHub main → Cloudflare automatikus élesítési útvonal marad.
   A helyi Wrangler nincs hitelesítve; szolgáltatói verzióazonosítót vagy
   kipróbált Cloudflare-rollbacket ezért nem állítunk.
-- Forrásalapú visszaállítás: tiszta main munkapéldányban `git revert <felület-commit>`,
+- Forrásalapú visszaállítás: tiszta main munkapéldányban `git revert a5ce21b`,
   majd `npm ci`, `npm audit --audit-level=low`, `npm run build` és `git push origin main`.
   Nincs force push vagy előzménytörlés; az SVGO javítása megmarad.
   Ez újraépítéses visszaállítás, nem azonnali szolgáltatói verzióváltás.
