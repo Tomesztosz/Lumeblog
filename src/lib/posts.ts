@@ -21,7 +21,7 @@ export function minutesOf(post: Post): number {
 }
 
 /**
- * Megjelent-e már? A jövőre datált cikk éles buildben nem kerül ki — így lehet
+ * Megjelent-e már? A jövőre datált cikk éles buildben nem kerül ki. Így lehet
  * hétvégén feltölteni azt, ami hétfőn jelenik meg.
  *
  * Fejlesztés közben (`npm run dev`) viszont MINDEN látszik, hogy a készülő
@@ -77,7 +77,7 @@ export function modelSrc(post: ModelPost): string {
     : post.data.model.src;
 }
 
-/** Ugyanez a cikk a másik nyelven — translationKey alapján. */
+/** Ugyanez a cikk a másik nyelven, translationKey alapján. */
 export async function getTranslation(post: Post, target: Lang): Promise<Post | undefined> {
   const key = post.data.translationKey;
   if (!key) return undefined;
