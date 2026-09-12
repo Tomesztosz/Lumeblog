@@ -1,5 +1,6 @@
 ---
 import StructuredData from "./StructuredData.astro";
+import SiteIcons from "./SiteIcons.astro";
 import { UI, otherLang, type ColumnKey, type Lang } from "../i18n/ui";
 import { LAUNCHED } from "../site";
 import serifLatin from "@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url";
@@ -129,8 +130,7 @@ const siteStructuredData = {
 
 <StructuredData data={siteStructuredData} />
 
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<SiteIcons />
 
 <link
   rel="alternate"

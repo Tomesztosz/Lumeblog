@@ -157,8 +157,11 @@ a sitemap címét.
   kitöltöd a `MAILERLITE_FORM_ACTION`-t a `src/site.ts`-ben.
 - `public/` — ami változtatás nélkül kerül a gyökérbe: `favicon.svg`, `apple-touch-icon.png`,
   `og-image.png`, `robots.txt`, `_headers` (Cloudflare cache-szabályok).
-- Az ikonokat és az OG-képet a `node scripts/gen-icons.mjs` generálja a `favicon.svg`-ből.
-  Csak akkor kell újrafuttatni, ha a márkajel változik.
+- Az L-monogramot a `node scripts/gen-icons.mjs --icons-only` generálja SVG,
+  32 px-es PNG és 180 px-es Apple-ikon formában, a `src/styles/lume-palette.css`
+  színeivel. A kapcsoló nélkül a korábbi OG-kép is újragenerálódik; puszta
+  ikonfrissítéshez ne módosítsd az OG-képet. Márkajelváltáskor a közös
+  `src/components/SiteIcons.astro` verziójelét is frissítsd a böngészőcache miatt.
 - `sitemap-index.xml` és `sitemap-0.xml` automatikus (`@astrojs/sitemap`), hreflang-párokkal.
 - RSS: `/rss.xml` (HU) és `/en/rss.xml` (EN), a `src/pages/*/rss.xml.ts` fájlokból.
 

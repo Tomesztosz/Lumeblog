@@ -34,6 +34,19 @@ async function get(path, status = 200) {
 for (const [file, p] of Object.entries(contract.pages)) {
   const html = await readFile(join(directory, file), "utf8");
   const info = inspectHtml(html);
+  for (const [rel, path, sizes] of [
+    ["icon", "/favicon.svg", "any"],
+    ["icon", "/favicon-32.png", "32x32"],
+    ["apple-touch-icon", "/apple-touch-icon.png", "180x180"],
+  ]) {
+    const icons = info.head.filter((n) => n.tagName === "link" &&
+      attribute(n, "rel") === rel && attribute(n, "sizes") === sizes);
+    assert.equal(icons.length, 1, `${file}: missing/duplicate ${path}`);
+    const url = new URL(attribute(icons[0], "href"), "https://lumejournal.com");
+    assert.equal(url.origin, "https://lumejournal.com");
+    assert.equal(url.pathname, path);
+    assert.equal(url.searchParams.get("v"), "journal-monogram-1", `${file}: stale icon`);
+  }
   assert.equal(
     attribute(
       info.elements.find((n) => n.tagName === "html"),
@@ -178,6 +191,13 @@ assets.add("/widgets/fonts.css");
 assets.add("/widgets/frame-bridge.js");
 for (const path of assets) await readFile(join(directory, path.slice(1)));
 const css = await readFile(join(directory, "widgets/journal.css"), "utf8");
+for (const icon of ["favicon.svg", "favicon-32.png", "apple-touch-icon.png"]) {
+  assert.deepEqual(
+    await readFile(join(directory, icon)),
+    await readFile(join("public", icon)),
+    `${icon}: stale icon in build`,
+  );
+}
 assert(
   !css.includes("@import"),
   "Model CSS must have its local palette bundled",

@@ -1,5 +1,6 @@
 ---
 import MastheadClock from "./MastheadClock.astro";
+import SiteIcons from "../SiteIcons.astro";
 import { DESIGN_STUDY, COLUMNS, COLUMN_KEYS, type Lang } from "../../i18n/ui";
 import { getPosts } from "../../lib/posts";
 import JournalHead from "../JournalHead.astro";
@@ -63,7 +64,7 @@ const read = home + "read/";
         />
         <meta name="robots" content="noindex,nofollow" />
         <title>{`${title} · Lume`}</title>
-        <link rel="icon" href="/favicon.svg" />
+        <SiteIcons />
       </>
     )}
     <script is:inline>

@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import StructuredData from '../components/StructuredData.astro';
+import SiteIcons from '../components/SiteIcons.astro';
 import { UI, otherLang, type ColumnKey, type Lang } from '../i18n/ui';
 import { LAUNCHED } from '../site';
 import '../styles/global.css';
@@ -103,8 +104,7 @@ const siteStructuredData = {
 
     <StructuredData data={siteStructuredData} />
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <SiteIcons />
     <script is:inline>
       /* A böngésző státuszsávja már az első kirajzoláskor a Lume mentett
          színmódját kapja, nem a telefon ettől független rendszerbeállítását. */
