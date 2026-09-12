@@ -1,0 +1,7 @@
+---
+import type { ComponentProps } from "astro/types";
+import LumeNext from "../design/LumeNext.astro";
+type Props = ComponentProps<typeof LumeNext>;
+---
+
+<LumeNext {...Astro.props} preview={false} />

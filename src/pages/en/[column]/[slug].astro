@@ -1,5 +1,5 @@
 ---
-import PostView from '../../../components/views/PostView.astro';
+import PostView from '../../../components/journal/JournalPage.astro';
 import { COLUMNS } from '../../../i18n/ui';
 import { getPosts, slugOf } from '../../../lib/posts';
 
@@ -17,4 +17,4 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 ---
 
-<PostView post={post} />
+<PostView view="article" post={post} />

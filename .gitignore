@@ -16,3 +16,7 @@ dist/
 # Nyers kéziratok. A kész cikk a src/content/posts/ alatt él.
 articles/
 .calendar-radar/
+
+# Helyi tesztfájlok és ideiglenes böngészőprofilok.
+/tmp/
+/.codex-work/

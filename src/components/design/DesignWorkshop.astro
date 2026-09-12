@@ -1,0 +1,33 @@
+---
+import { UI, DESIGN_STUDY, type Lang } from "../../i18n/ui";
+import type { ModelPost, Post } from "../../lib/posts";
+import DesignModel from "./DesignModel.astro";
+interface Props {
+  lang: Lang;
+  posts: Post[];
+}
+const { lang, posts } = Astro.props;
+const t = UI[lang];
+const models = posts.filter((p): p is ModelPost => Boolean(p.data.model));
+---
+
+<section class="journal-workshop">
+  <header class="journal-page-head">
+    <p class="eyebrow">{t.workshopEyebrow}</p>
+    <h1>{t.workshopTitle}</h1>
+    <p>{t.workshopLede}</p>
+    <div class="workshop-facts">
+      <span>{t.workshopCount(models.length)}</span>
+      <span>{DESIGN_STUDY[lang].modelHint}</span>
+    </div>
+  </header>
+  <div class="workshop-list">
+    {models.length ? (
+      models.map((post, index) => (
+        <DesignModel post={post} index={index} featured={index === 0} />
+      ))
+    ) : (
+      <p class="journal-empty">{t.workshopNoModels}</p>
+    )}
+  </div>
+</section>

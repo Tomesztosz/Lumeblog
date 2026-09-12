@@ -1,0 +1,46 @@
+---
+import { DESIGN_STUDY, COLUMNS, COLUMN_KEYS, type Lang } from "../../i18n/ui";
+import { journalLinks } from "../../lib/design";
+const { designHome, designColumn } = journalLinks(
+  Astro.locals.lumePreview === true,
+);
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = DESIGN_STUDY[lang];
+---
+
+<section class="journal-404">
+  <div class="error-folio" aria-hidden="true">
+    4<span>0</span>4
+  </div>
+  <div>
+    <p class="eyebrow">404 / LUME</p>
+    <h1>{t.notFoundTitle}</h1>
+    <p>{t.notFoundText}</p>
+    {!Astro.locals.lumePreview && (
+      <p lang="en">{DESIGN_STUDY.en.notFoundText}</p>
+    )}
+    <button class="read-link" data-open-search>
+      {t.search}
+      <span aria-hidden="true">↗</span>
+    </button>
+    <a class="error-home" href={designHome(lang)}>
+      ← {t.notFoundLink}
+    </a>
+    {!Astro.locals.lumePreview && (
+      <a class="error-home" href="/en/" lang="en">
+        {DESIGN_STUDY.en.notFoundLink} →
+      </a>
+    )}
+  </div>
+</section>
+<nav class="error-directions" aria-label={t.notFoundNav}>
+  {COLUMN_KEYS.map((c) => (
+    <a href={designColumn(lang, c)}>
+      {COLUMNS[c][lang].name}
+      <span aria-hidden="true">↗</span>
+    </a>
+  ))}
+</nav>

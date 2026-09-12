@@ -1,0 +1,196 @@
+---
+import { render } from "astro:content";
+import { COLUMNS, DESIGN_STUDY, formatDate } from "../../i18n/ui";
+import {
+  minutesOf,
+  getRelatedPosts,
+  getPosts,
+  urlOf,
+  type Post,
+  type ModelPost,
+} from "../../lib/posts";
+import { journalLinks } from "../../lib/design";
+const {
+  designHome,
+  designColumn,
+  designArchive,
+  designAbout,
+  designWorkshop,
+  designPost,
+} = journalLinks(Astro.locals.lumePreview === true);
+import DesignMedia from "./DesignMedia.astro";
+import DesignCard from "./DesignCard.astro";
+import DesignModel from "./DesignModel.astro";
+import DesignArticleBody from "./DesignArticleBody.astro";
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const lang = post.data.lang;
+const t = DESIGN_STUDY[lang];
+const { Content, headings } = await render(post);
+const toc = headings.filter((h) => h.depth === 2);
+const related = (await getRelatedPosts(post)).filter(
+  (p) => p.data.date <= new Date(),
+);
+const linkPosts = Astro.locals.lumePreview
+  ? (await Promise.all([getPosts("hu"), getPosts("en")])).flat()
+  : [];
+const articleLinks = Object.fromEntries(
+  linkPosts
+    .filter((p) => p.data.date <= new Date())
+    .map((p) => [urlOf(p), designPost(p)]),
+);
+---
+
+<article class="next-article">
+  <header class="reader-header">
+    <nav class="article-breadcrumb" aria-label={t.nav}>
+      <a href={designHome(lang)}>Lume</a>
+      <span aria-hidden="true">/</span>
+      <a href={designColumn(lang, post.data.column)}>
+        {COLUMNS[post.data.column][lang].name}
+      </a>
+    </nav>
+    <div class="reader-heading">
+      <div>
+        <p class="eyebrow">
+          {COLUMNS[post.data.column][lang].name} · {minutesOf(post)} {t.minutes}
+        </p>
+        <h1>{post.data.title}</h1>
+      </div>
+      <div class="reader-deck">
+        <p>{post.data.description}</p>
+        <div class="eyebrow">
+          <a rel="author" href={designAbout(lang)}>
+            {t.written}
+          </a>{" "}
+          /{" "}
+          <time datetime={post.data.date.toISOString()}>
+            {formatDate(post.data.date, lang)}
+          </time>
+          {post.data.updated && (
+            <span>
+              {" "}
+              · {t.updated} {formatDate(post.data.updated, lang)}
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="article-lead-media">
+    <DesignMedia post={post} lead />
+  </div>
+  <div class="reader-layout">
+    <aside class="reader-sidebar">
+      {toc.length > 0 && (
+        <details class="reader-outline" open>
+          <summary>{t.contents}</summary>
+          <nav aria-label={t.contents}>
+            <ol>
+              {toc.map((heading, i) => (
+                <li>
+                  <a href={`#${heading.slug}`}>
+                    <span>{String(i + 1).padStart(2, "0")}</span>
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </details>
+      )}
+      <fieldset>
+        <legend>{t.font}</legend>
+        <button data-text-size="standard" aria-pressed="true">
+          {t.standard}
+        </button>
+        <button data-text-size="large" aria-pressed="false">
+          {t.larger}
+        </button>
+      </fieldset>
+      <a class="sidebar-top" href="#content">
+        ↑ {t.backTop}
+      </a>
+    </aside>
+    <div class="reading-column">
+      <div class="article-body">
+        <DesignArticleBody
+          modelPath={post.data.model?.src}
+          articleLinks={articleLinks}
+        >
+          <Content />
+          {post.data.model && (
+            <DesignModel
+              slot="model"
+              post={post as ModelPost}
+              variant="inline"
+            />
+          )}
+        </DesignArticleBody>
+      </div>
+      {post.data.sources.length > 0 && (
+        <details class="reader-sources">
+          <summary>
+            <h2>{t.sources}</h2>
+            <span>{post.data.sources.length}</span>
+          </summary>
+          <ol>
+            {post.data.sources.map((s) => (
+              <li>
+                {s.url ? (
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">
+                    {s.label}
+                  </a>
+                ) : (
+                  s.label
+                )}
+              </li>
+            ))}
+          </ol>
+        </details>
+      )}
+      <div class="article-end-actions">
+        <button data-copy-link data-copied={t.copied} data-error={t.copyFailed}>
+          {t.copy}
+        </button>
+        <p data-copy-status role="status"></p>
+      </div>
+      <nav class="article-end-nav" aria-label={t.nav}>
+        <a href={designColumn(lang, post.data.column)}>
+          ← {COLUMNS[post.data.column][lang].name}
+        </a>
+        <a href={designArchive(lang)}>{t.archive} ↗</a>
+        {post.data.model && (
+          <a href={designWorkshop(lang) + "#" + post.data.translationKey}>
+            {t.workshopNav} ↗
+          </a>
+        )}
+      </nav>
+    </div>
+  </div>
+</article>
+{related.length > 0 && (
+  <section class="journal-related">
+    <div class="section-title">
+      <h2>{t.nextStories}</h2>
+      <p>{t.relatedNote}</p>
+    </div>
+    <div class="journal-grid">
+      {related.map((p) => (
+        <DesignCard post={p} />
+      ))}
+    </div>
+  </section>
+)}
+<div
+  class="reading-progress"
+  role="progressbar"
+  aria-label={t.progress}
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="0"
+>
+  <span></span>
+</div>

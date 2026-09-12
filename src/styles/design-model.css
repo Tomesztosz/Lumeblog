@@ -1,0 +1,153 @@
+@import "./lume-palette.css";
+
+/* Shared public and preview styling. Never alter a mechanism's geometry, motion,
+   ruby/steel semantics, SVG paths or the original model's control handlers. */
+:root {
+  --font-serif: "Fraunces Variable", "Fraunces", Georgia, serif;
+  --font-sans:
+    "Hanken Grotesk Variable", "Hanken Grotesk", system-ui, sans-serif;
+}
+/* The world timer's night sector is a semantic diagram colour, not the
+   journal's similarly named dark feature background. Keep its original hue. */
+:root:has(body[data-design-model="vilagora"]) {
+  --night: #2f3f55;
+}
+html body,
+html body.dark {
+  --paper: inherit;
+  --ink: inherit;
+  --line: inherit;
+  --brass: inherit;
+  --card: var(--surface);
+  --panel: var(--surface);
+  --paper-2: var(--surface);
+  --paper-3: var(--surface);
+  --soft: var(--muted);
+  --ink-soft: var(--muted);
+  --brass-deep: var(--brass);
+  --line2: color-mix(in srgb, var(--ink) 6%, transparent);
+  --line-soft: var(--line2);
+  --plate: var(--surface);
+  --dial: var(--dial-face);
+  --lume: color-mix(in srgb, var(--accent-ink) 45%, var(--accent));
+  /* Vertical spacing belongs to .card, which the existing height bridge measures. */
+  padding: 0 16px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+html body.dark {
+  --lume: var(--lume-glow);
+}
+body .card {
+  max-width: 960px;
+  background: var(--paper);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 18px 8px;
+}
+body h1 {
+  font: 450 clamp(26px, 4vw, 38px)/1.14 var(--font-serif);
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  margin-bottom: 14px;
+}
+body :is(.sub, .intro) {
+  font: 15px/1.7 var(--font-sans);
+  max-width: 72ch;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+body :is(.stage, .machine),
+body.dark .stage {
+  background: var(--surface);
+  border-color: var(--line);
+  border-radius: 0;
+  box-shadow: none;
+}
+body :is(.route, .time-box, .code-row, .power),
+body[data-design-model="g-shock"] .key {
+  border-radius: 0;
+}
+body :is(.controls, .toolbar) {
+  gap: 12px;
+  margin-top: 22px;
+}
+body[data-design-model] button,
+body.dark button.btn {
+  min-height: 44px;
+  border-radius: 0;
+  font: 500 13px/1.3 var(--font-sans);
+  padding: 10px 14px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+body button:is(.primary, .active, .drop),
+body button.btn:not(.ghost),
+body.dark button.btn:not(.ghost) {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+body button:enabled:hover {
+  transform: none;
+  border-color: var(--brass);
+}
+body button:is(.primary, .active, .drop):enabled:hover,
+body button.btn:not(.ghost):enabled:hover {
+  background: var(--brass);
+  color: var(--paper);
+}
+body button:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+body button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+body .status,
+body:not([data-design-model="minute-repeater"]) .readout,
+body .hintline {
+  border-radius: 0;
+  white-space: normal;
+  text-overflow: clip;
+  line-height: 1.6;
+}
+body .card > :is(.foot, .note) {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font: 12px/1.75 var(--font-sans);
+  color: var(--muted);
+}
+body .legend {
+  line-height: 1.6;
+}
+@media (max-width: 560px) {
+  html body {
+    padding: 0 8px;
+  }
+  body .card {
+    padding: 16px 4px;
+  }
+  body[data-design-model] button,
+  body.dark button.btn {
+    padding-inline: 10px;
+  }
+  body :is(.sub, .intro) {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body,
+  body button {
+    transition: none;
+  }
+}

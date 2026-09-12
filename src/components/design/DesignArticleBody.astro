@@ -1,0 +1,86 @@
+---
+import { parseFragment, serialize, type DefaultTreeAdapterTypes } from "parse5";
+import { previewArticleHref } from "../../lib/design-links.mjs";
+
+// Render trusted local Markdown once. Replace only its approved model iframe,
+// server-side, so the original iframe cannot load before the reader starts it.
+interface Props {
+  modelPath?: string;
+  articleLinks: Record<string, string>;
+}
+const { modelPath, articleLinks } = Astro.props;
+const tree = parseFragment(await Astro.slots.render("default"));
+const replacement = Astro.slots.has("model")
+  ? await Astro.slots.render("model")
+  : "";
+function walk(parent: DefaultTreeAdapterTypes.ParentNode) {
+  let afterModel = false;
+  parent.childNodes = parent.childNodes.flatMap((node) => {
+    if ("tagName" in node && node.tagName === "a") {
+      const href = node.attrs.find((a) => a.name === "href");
+      if (href)
+        href.value = previewArticleHref(
+          href.value,
+          articleLinks,
+          Astro.url.href,
+          Astro.site?.origin,
+        );
+    }
+    if (afterModel) {
+      if ("value" in node && node.nodeName === "#text") {
+        const value = node.value.trim();
+        if (value) {
+          afterModel = false;
+          // Markdown directly after a raw multiline iframe can remain a text
+          // node. Keep the original note, but render its emphasis semantically.
+          if (value.startsWith("*") && value.endsWith("*")) {
+            const note = parseFragment(
+              '<p class="workshop-caption"><em></em></p>',
+            ).childNodes[0] as DefaultTreeAdapterTypes.Element;
+            const emphasis = note
+              .childNodes[0] as DefaultTreeAdapterTypes.Element;
+            emphasis.childNodes.push({
+              nodeName: "#text",
+              value: value.slice(1, -1),
+              parentNode: emphasis,
+            });
+            note.parentNode = parent;
+            return [note];
+          }
+        }
+      } else if ("tagName" in node) {
+        if (
+          node.tagName === "p" &&
+          node.childNodes.some(
+            (child) => "tagName" in child && child.tagName === "em",
+          )
+        ) {
+          node.attrs.push({ name: "class", value: "workshop-caption" });
+        }
+        afterModel = false;
+      }
+    }
+    const src =
+      "attrs" in node
+        ? node.attrs.find((a) => a.name === "src")?.value
+        : undefined;
+    if (
+      replacement &&
+      "tagName" in node &&
+      node.tagName === "iframe" &&
+      src?.split("?")[0] === modelPath &&
+      /^\/widgets\/[a-z0-9-]+\.html$/.test(modelPath ?? "")
+    ) {
+      const nodes = parseFragment(replacement).childNodes;
+      nodes.forEach((child) => (child.parentNode = parent));
+      afterModel = true;
+      return nodes;
+    }
+    if ("childNodes" in node) walk(node);
+    return [node];
+  });
+}
+walk(tree);
+---
+
+<Fragment set:html={serialize(tree)} />

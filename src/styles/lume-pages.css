@@ -1,0 +1,1222 @@
+/* The complete preview shares these rules. No production page imports them. */
+.navigation a[aria-current] {
+  color: var(--brass);
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  margin-top: 24px;
+  font: 11px/1.6 var(--font-mono);
+}
+.next-footer .footer-links a {
+  margin: 0;
+}
+.journal-page-head {
+  padding: 60px 0 48px;
+  border-bottom: 1px solid var(--line);
+}
+.journal-page-head h1 {
+  font: 450 clamp(42px, 5.4vw, 82px)/1.08 var(--font-serif);
+  letter-spacing: -0.045em;
+  max-width: 18ch;
+  margin: 24px 0;
+  text-wrap: balance;
+}
+.journal-page-head > p:last-child {
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.6;
+}
+.journal-library,
+.journal-workshop,
+.journal-about,
+.calendar-page {
+  padding: 0 var(--gutter) 80px;
+}
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 56px 32px;
+}
+.journal-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.journal-card h2 {
+  font: 450 clamp(26px, 2.6vw, 38px)/1.13 var(--font-serif);
+  letter-spacing: -0.035em;
+  margin: 16px 0;
+  overflow-wrap: break-word;
+}
+.journal-card h2 a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+.journal-card > p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.journal-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 12px;
+  font: 9px/1.5 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-top: 22px;
+}
+.journal-card-meta > span:first-child {
+  color: var(--brass);
+}
+.journal-card-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  margin-top: auto;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+.journal-card-link > span:last-child {
+  font-size: 23px;
+}
+.design-media {
+  min-width: 0;
+  --media-max-height: 460px;
+}
+.design-media-image {
+  display: block;
+  width: min(
+    100%,
+    var(--media-source-width),
+    calc(var(--media-max-height) * var(--media-ratio))
+  );
+  margin-inline: auto;
+  padding: 0;
+  position: relative;
+  background: none;
+}
+.design-media-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+.design-media-cutout .design-media-image {
+  background: none;
+}
+.design-media-cutout img {
+  padding: 0;
+}
+/* Only this reviewed wrist photograph is cropped, never banners or diagrams. */
+.design-media-photo .design-media-image {
+  width: min(100%, var(--media-source-width));
+}
+.design-media-photo img {
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+.design-media figcaption {
+  color: var(--muted);
+  font: 9px/1.6 var(--font-mono);
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+}
+.design-media figcaption a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.design-media-lead {
+  --media-max-height: 680px;
+}
+.design-media-lead.design-media-photo .design-media-image {
+  max-width: 820px;
+}
+.design-media-lead.design-media-photo img {
+  aspect-ratio: 4/3;
+}
+.design-media-lead .design-media-image {
+  background: none;
+}
+.media-expand {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 23px;
+}
+.media-placeholder {
+  aspect-ratio: 4/3;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  font: italic 32px var(--font-serif);
+  color: var(--muted);
+}
+.image-failure {
+  min-height: 150px;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  padding: 20px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+.image-failure button {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.library-controls {
+  padding: 30px 0;
+  margin-bottom: 15px;
+}
+.library-search label {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 10px;
+}
+.library-search input,
+.calendar-search input {
+  width: 100%;
+  padding: 15px 0;
+  font-size: 22px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink);
+  border-radius: 0;
+}
+.library-search input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+.library-controls-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+.section-switch {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.section-switch button {
+  padding: 10px 15px;
+  font-size: 13px;
+  border: 1px solid var(--line);
+}
+.section-switch button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.library-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+select {
+  max-width: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  font: 14px var(--font-sans);
+  padding: 10px;
+}
+select:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 4px;
+}
+.library-results {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  color: var(--muted);
+  font: 10px/1.6 var(--font-mono);
+}
+.library-results button {
+  padding: 0;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.journal-empty {
+  padding: 65px 20px;
+  border-block: 1px solid var(--line);
+  text-align: center;
+}
+.journal-empty h2 {
+  font: 450 36px var(--font-serif);
+  margin-bottom: 16px;
+}
+.journal-empty p {
+  color: var(--muted);
+}
+.journal-empty button {
+  margin-top: 24px;
+  text-decoration: underline;
+}
+.journal-column .journal-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.journal-column .journal-card:first-child {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  column-gap: 5vw;
+  align-content: center;
+}
+.journal-column .journal-card:first-child .design-media {
+  grid-column: 1;
+  grid-row: 1/5;
+}
+.journal-column .journal-card:first-child > :not(.design-media) {
+  grid-column: 2;
+}
+.journal-column .journal-card:first-child .journal-card-meta {
+  margin-top: 0;
+}
+.journal-column .journal-card:first-child h2 {
+  font-size: clamp(30px, 3.5vw, 48px);
+}
+.column-next {
+  border-top: 1px solid var(--ink);
+  margin-top: 65px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  padding-top: 30px;
+}
+.column-next a span {
+  font: 10px var(--font-mono);
+  color: var(--brass);
+  text-transform: uppercase;
+}
+.column-next strong {
+  font: 450 27px/1.25 var(--font-serif);
+  display: block;
+  margin-top: 14px;
+  max-width: 28ch;
+}
+.article-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+  font: 10px var(--font-mono);
+}
+.article-lead-media {
+  max-width: 1100px;
+  margin: 0 auto 60px;
+  padding: 0 var(--gutter);
+}
+.article-lead-media:has(.media-placeholder) {
+  display: none;
+}
+.article-body iframe {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0;
+}
+.reader-heading h1 {
+  text-wrap: balance;
+}
+.reader-deck > p {
+  text-wrap: pretty;
+}
+.article-body {
+  overflow-wrap: break-word;
+}
+.article-body > p:first-child {
+  font-size: 1.13em;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.reader-sources summary {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  cursor: pointer;
+  padding: 12px 0;
+  min-height: 44px;
+}
+.reader-sources summary h2 {
+  margin: 0;
+}
+.reader-sources summary > span {
+  font: 11px var(--font-mono);
+  color: var(--muted);
+}
+.reader-sources summary::after {
+  content: "+";
+  margin-left: auto;
+  font: 24px var(--font-mono);
+}
+.reader-sources[open] summary::after {
+  content: "−";
+}
+.workshop-load-note {
+  color: var(--muted);
+  font: 12px/1.6 var(--font-sans);
+  margin: 16px 0;
+}
+.workshop-fallback {
+  padding: 14px 18px;
+  font: 12px/1.6 var(--font-sans);
+  border-top: 1px solid var(--line);
+}
+.article-body .workshop-model-inline {
+  display: block;
+  border-block: 1px solid var(--brass);
+  padding: 28px 0;
+  margin: 40px 0;
+}
+.workshop-model-inline .workshop-model-copy h2 {
+  font: 450 clamp(26px, 3vw, 36px)/1.2 var(--font-serif);
+  margin: 14px 0;
+  text-wrap: balance;
+}
+.workshop-model-inline .workshop-model-copy > p {
+  font: 17px/1.65 var(--font-sans);
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+.workshop-model-inline .workshop-demo {
+  min-width: 0;
+}
+.workshop-model-inline .workshop-launch {
+  border: 1px solid var(--ink);
+}
+.workshop-model-inline .workshop-live {
+  margin-top: 20px;
+}
+.workshop-model-inline .workshop-live-bar {
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.workshop-model-inline .workshop-live iframe {
+  display: block;
+  border: 0;
+}
+.article-body .workshop-caption {
+  color: var(--muted);
+  font: 12px/1.75 var(--font-sans);
+  margin: -20px 0 36px;
+}
+.article-body .workshop-caption em {
+  font-style: normal;
+}
+@media (max-width: 760px) {
+  .reader-outline summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .reader-outline summary::after {
+    content: "+";
+    margin-left: auto;
+    font-size: 22px;
+  }
+  .reader-outline[open] summary::after {
+    content: "−";
+  }
+  .reader-sidebar .reader-outline nav {
+    padding-bottom: 18px;
+  }
+  .reader-sidebar .reader-outline ol {
+    columns: 1;
+  }
+  .reader-sidebar .reader-outline a {
+    font-size: 14px;
+    padding-block: 9px;
+  }
+}
+.article-body table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.article-body th,
+.article-body td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.article-body pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.article-body [data-photo-inline] {
+  cursor: zoom-in;
+}
+.article-body [data-photo-inline]:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 5px;
+}
+.article-end-actions {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 18px;
+  font-size: 13px;
+}
+.article-end-actions button {
+  padding: 8px 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.article-end-actions p {
+  color: var(--muted);
+}
+.article-end-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 30px;
+  font-size: 13px;
+}
+.journal-related {
+  padding: 0 var(--gutter) 80px;
+}
+.journal-related .section-title {
+  gap: 35px;
+}
+.journal-related .section-title h2 {
+  max-width: 19ch;
+}
+.sidebar-top {
+  border-top: 1px solid var(--line);
+  margin-top: 25px;
+}
+.photo-dialog [data-viewer-image] {
+  max-height: 75dvh;
+  object-fit: contain;
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+  background: none;
+}
+.photo-dialog [data-viewer-credit] {
+  font: 11px/1.6 var(--font-mono);
+  padding-top: 16px;
+}
+.photo-dialog [data-viewer-credit] a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 680px);
+  gap: 9vw;
+  margin: 55px 0 0;
+}
+.about-schedule {
+  align-self: start;
+}
+.about-schedule a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border-top: 1px solid var(--line);
+  padding: 22px 0;
+}
+.about-schedule span {
+  color: var(--muted);
+  font: 10px var(--font-mono);
+}
+.about-schedule strong {
+  grid-column: 1;
+  font: 450 30px var(--font-serif);
+  margin-top: 10px;
+}
+.about-schedule span:last-child {
+  grid-row: 1/3;
+  grid-column: 2;
+  align-self: center;
+  color: var(--brass);
+  font-size: 22px;
+}
+.rss-panel {
+  margin-top: 45px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.rss-panel h2 {
+  margin-top: 15px;
+}
+.rss-panel p {
+  margin: 15px 0;
+}
+.journal-404 {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 8vw;
+  padding: 70px var(--gutter);
+}
+.error-folio {
+  font: 450 clamp(120px, 22vw, 320px)/1 var(--font-serif);
+  letter-spacing: -0.09em;
+  white-space: nowrap;
+}
+.error-folio span {
+  color: var(--brass);
+}
+[data-theme="dark"] .error-folio span {
+  color: var(--lume-glow);
+  text-shadow: 0 0 26px var(--lume-halo);
+}
+.journal-404 h1 {
+  font: 450 clamp(35px, 3.8vw, 58px)/1.1 var(--font-serif);
+  margin: 20px 0;
+  text-wrap: balance;
+}
+.journal-404 p:not(.eyebrow) {
+  color: var(--muted);
+  max-width: 42ch;
+}
+.journal-404 .read-link {
+  margin-top: 24px;
+}
+.error-home {
+  font-size: 13px;
+  display: block;
+  margin-top: 24px;
+}
+.error-directions {
+  margin: 0 var(--gutter) 70px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+}
+.error-directions a {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 20px 25px 0;
+  font: 450 26px var(--font-serif);
+}
+/* Calendar data and filtering use the existing, tested calendar engine. */
+.calendar-hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 7vw;
+  align-items: end;
+}
+.calendar-hero-copy .lede {
+  color: var(--muted);
+  max-width: 55ch;
+  font-size: 20px;
+}
+.calendar-hero-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font: 10px/1.8 var(--font-mono);
+  margin-top: 25px;
+}
+.calendar-instrument {
+  border-left: 1px solid var(--line);
+  padding: 25px 35px;
+}
+.calendar-instrument-copy {
+  display: grid;
+  gap: 12px;
+}
+.calendar-instrument-copy span {
+  font: 10px var(--font-mono);
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.calendar-instrument-copy strong {
+  font: 450 32px/1.15 var(--font-serif);
+}
+.calendar-instrument-copy small {
+  color: var(--muted);
+  font-size: 14px;
+}
+.calendar-list {
+  padding-top: 40px;
+}
+.calendar-list-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+.calendar-list-head h2 {
+  font: 450 35px var(--font-serif);
+  margin: 10px 0;
+}
+.calendar-list-head .mono,
+.calendar-result-count {
+  font: 10px/1.6 var(--font-mono);
+  color: var(--muted);
+}
+.calendar-overview-help {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 85ch;
+  margin: 14px 0 25px;
+}
+.calendar-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 25px;
+}
+.calendar-search label {
+  grid-column: 1/-1;
+  font-size: 13px;
+}
+.calendar-search button {
+  align-self: end;
+  padding: 15px 0;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.calendar-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin: 26px 0 38px;
+}
+.calendar-filters label {
+  display: grid;
+  gap: 8px;
+}
+.calendar-filters label > span {
+  color: var(--muted);
+  font: 10px var(--font-mono);
+  text-transform: uppercase;
+}
+.calendar-filters select {
+  width: 100%;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 50px 40px;
+}
+.release-card {
+  border-top: 1px solid var(--ink);
+  scroll-margin-top: 25px;
+}
+.release-card-media {
+  margin-top: 20px;
+}
+.release-card-media img {
+  width: min(100%, calc(460px * var(--media-ratio)));
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+  background: none;
+}
+.release-card-media figcaption {
+  font: 9px/1.6 var(--font-mono);
+  color: var(--muted);
+  margin-top: 9px;
+}
+.release-card-body {
+  padding: 23px 0 0;
+}
+.release-card-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font: 9px/1.7 var(--font-mono);
+  color: var(--muted);
+}
+.release-status {
+  color: var(--brass);
+}
+.release-status i {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: currentColor;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+.release-brand {
+  font: 10px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 25px;
+}
+.release-card h3 {
+  font: 450 38px/1.1 var(--font-serif);
+  margin: 14px 0;
+}
+.release-summary {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.release-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  margin: 25px 0;
+}
+.release-facts dt {
+  font: 9px var(--font-mono);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.release-facts dd {
+  margin: 7px 0 0;
+  font-size: 14px;
+}
+.release-selection {
+  padding: 18px 20px;
+  background: var(--surface);
+}
+.release-selection > span {
+  font: 9px var(--font-mono);
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.release-selection p {
+  font-size: 14px;
+  margin-top: 8px;
+}
+.release-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  font-size: 12px;
+  margin: 22px 0 15px;
+}
+.release-card-actions a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.release-precision {
+  font: 9px/1.7 var(--font-mono);
+  color: var(--muted);
+}
+.calendar-empty {
+  padding: 40px 0;
+  font-size: 20px;
+  border-block: 1px solid var(--line);
+}
+.calendar-radar {
+  margin-top: 70px;
+  border-top: 1px solid var(--ink);
+  padding-top: 35px;
+}
+.calendar-radar-head h2 {
+  font: 450 42px var(--font-serif);
+  margin: 18px 0;
+}
+.calendar-radar-text {
+  max-width: 75ch;
+  color: var(--muted);
+  font-size: 16px;
+}
+.calendar-radar-reviewed {
+  font: 10px var(--font-mono);
+  margin: 20px 0 35px;
+  color: var(--brass);
+}
+.calendar-radar-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.calendar-radar-group h3 {
+  font: 11px var(--font-mono);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.calendar-radar-brand {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px 15px;
+  border-top: 1px solid var(--line);
+  padding: 16px 0;
+}
+.calendar-radar-brand strong {
+  font-weight: 500;
+}
+.calendar-radar-brand small,
+.calendar-radar-brand em {
+  font: 9px var(--font-mono);
+  color: var(--muted);
+}
+.calendar-radar-brand.active > span {
+  color: var(--brass);
+}
+.calendar-radar-brand:hover strong {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+/* Models remain the original, first-party interactive teaching materials. */
+.workshop-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 30px;
+  color: var(--muted);
+  font: 10px/1.8 var(--font-mono);
+  margin-top: 25px;
+}
+.workshop-model {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 5vw;
+  padding: 50px 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 20px;
+}
+.workshop-model-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font: 10px var(--font-mono);
+  color: var(--muted);
+}
+.workshop-model-meta .tag {
+  color: var(--brass);
+}
+.workshop-model h2 {
+  font: 450 clamp(29px, 3vw, 45px)/1.1 var(--font-serif);
+  margin: 22px 0;
+}
+.workshop-model-copy p {
+  color: var(--muted);
+  font-size: 17px;
+}
+.workshop-read {
+  display: inline-block;
+  margin-top: 25px;
+  border-bottom: 1px solid var(--ink);
+  padding: 10px 0;
+  font-size: 13px;
+}
+.workshop-poster {
+  position: relative;
+  background: none;
+}
+.workshop-poster img {
+  width: min(100%, calc(560px * var(--media-ratio)));
+  height: auto;
+  margin-inline: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+.workshop-launch {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 20px;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: left;
+  font-size: 14px;
+}
+.workshop-launch-icon {
+  color: var(--paper);
+  font-size: 11px;
+}
+.workshop-image-credit {
+  font: 9px/1.6 var(--font-mono);
+  color: var(--muted);
+  margin-top: 10px;
+}
+.workshop-image-credit a {
+  text-decoration: underline;
+}
+.workshop-live {
+  border: 1px solid var(--line);
+}
+.workshop-live-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px;
+  background: var(--surface);
+  font: 10px var(--font-mono);
+  align-items: center;
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 2;
+}
+.workshop-live-bar button {
+  min-height: 44px;
+  padding: 8px 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.workshop-live iframe {
+  border: 0;
+  display: block;
+  width: 100%;
+}
+.workshop-placeholder {
+  aspect-ratio: 4/3;
+}
+.workshop-noscript {
+  font-size: 13px;
+  margin-top: 12px;
+}
+html:not([data-js]) .workshop-launch,
+html:not([data-js]) .workshop-load-note {
+  display: none;
+}
+@media (max-width: 1050px) {
+  .journal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 25px;
+  }
+  .journal-related .journal-grid > :last-child {
+    grid-column: 1/-1;
+    max-width: 65%;
+  }
+  .calendar-instrument {
+    padding: 15px 20px;
+  }
+  .calendar-instrument-copy strong {
+    font-size: 26px;
+  }
+  .about-layout {
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 40px;
+  }
+}
+@media (max-width: 760px) {
+  .journal-library,
+  .journal-workshop,
+  .journal-about,
+  .calendar-page {
+    padding-bottom: 48px;
+  }
+  .journal-page-head {
+    padding: 35px 0 30px;
+  }
+  .journal-page-head h1 {
+    font-size: clamp(38px, 8vw, 58px);
+    margin: 18px 0;
+  }
+  .journal-page-head > p:last-child,
+  .calendar-hero-copy .lede {
+    font-size: 18px;
+  }
+  .journal-grid,
+  .journal-column .journal-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .journal-card h2 {
+    font-size: 32px;
+  }
+  .journal-card-meta {
+    margin-top: 16px;
+  }
+  .journal-column .journal-card:first-child {
+    display: flex;
+  }
+  .journal-column .journal-card:first-child .journal-card-meta {
+    margin-top: 16px;
+  }
+  .journal-column .journal-card:first-child h2 {
+    font-size: 34px;
+  }
+  .library-search input {
+    font-size: 18px;
+  }
+  .library-controls-row {
+    gap: 18px;
+  }
+  .section-switch {
+    gap: 5px;
+  }
+  .section-switch button {
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+  .column-next {
+    grid-template-columns: 1fr;
+  }
+  .column-next strong {
+    font-size: 25px;
+  }
+  .article-lead-media {
+    margin-bottom: 35px;
+  }
+  .design-media-lead {
+    --media-max-height: 550px;
+  }
+  .journal-related {
+    padding-bottom: 45px;
+  }
+  .journal-related .journal-grid > :last-child {
+    max-width: none;
+  }
+  .journal-related .section-title {
+    display: block;
+  }
+  .journal-related .section-title p {
+    margin-top: 16px;
+  }
+  .about-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .about-schedule {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+  }
+  .about-schedule a {
+    display: block;
+  }
+  .about-schedule strong {
+    font-size: 22px;
+  }
+  .about-schedule span:last-child {
+    display: none;
+  }
+  .journal-404 {
+    grid-template-columns: 1fr;
+    padding-top: 35px;
+    gap: 28px;
+    padding-bottom: 40px;
+  }
+  .error-folio {
+    font-size: clamp(130px, 36vw, 240px);
+  }
+  .journal-404 h1 {
+    font-size: 39px;
+  }
+  .error-directions a {
+    font-size: 20px;
+  }
+  .error-directions {
+    grid-template-columns: 1fr;
+    margin-bottom: 40px;
+  }
+  .error-directions a {
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+  }
+  .calendar-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .calendar-instrument {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 22px 0 0;
+  }
+  .calendar-instrument-copy {
+    gap: 7px;
+  }
+  .calendar-instrument-copy strong {
+    font-size: 26px;
+  }
+  .calendar-list-head {
+    display: block;
+  }
+  .calendar-list-head h2 {
+    font-size: 29px;
+  }
+  .calendar-search {
+    grid-template-columns: 1fr;
+  }
+  .calendar-search input {
+    font-size: 18px;
+  }
+  .calendar-search button {
+    justify-self: start;
+    padding: 8px 0;
+  }
+  .calendar-filters {
+    gap: 17px;
+    grid-template-columns: 1fr;
+  }
+  .calendar-grid {
+    grid-template-columns: 1fr;
+  }
+  .release-card-media img {
+    height: auto;
+  }
+  .release-card h3 {
+    font-size: 34px;
+  }
+  .calendar-radar-groups {
+    grid-template-columns: 1fr;
+  }
+  .calendar-radar-head h2 {
+    font-size: 34px;
+  }
+  .workshop-model {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 32px 0;
+  }
+  .workshop-model h2 {
+    font-size: 34px;
+    margin: 18px 0;
+  }
+  .workshop-model-copy p {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .journal-card-link > span:last-child {
+    transition: transform 0.2s ease;
+  }
+  .journal-card-link:hover > span:last-child {
+    transform: translate(2px, -2px);
+  }
+}
+@media print {
+  .journal-related,
+  .article-end-actions,
+  .article-end-nav,
+  .sidebar-top,
+  .media-expand {
+    display: none;
+  }
+  .article-lead-media {
+    max-width: 100%;
+    padding: 0;
+  }
+  .design-media-lead img {
+    max-height: 240px;
+  }
+}

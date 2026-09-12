@@ -1,0 +1,39 @@
+---
+import { DESIGN_STUDY, COLUMNS, COLUMN_KEYS, type Lang } from "../../i18n/ui";
+import { journalLinks } from "../../lib/design";
+const { designColumn } = journalLinks(Astro.locals.lumePreview === true);
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = DESIGN_STUDY[lang];
+---
+
+<section class="journal-about">
+  <header class="journal-page-head">
+    <p class="eyebrow">{t.about}</p>
+    <h1>{t.aboutTitle}</h1>
+    <p>{t.aboutLead}</p>
+  </header>
+  <div class="about-layout">
+    <aside class="about-schedule">
+      {COLUMN_KEYS.map((c, i) => (
+        <a href={designColumn(lang, c)}>
+          <span>{t.weekDays[i]}</span>
+          <strong>{COLUMNS[c][lang].name}</strong>
+          <span aria-hidden="true">0{i + 1}</span>
+        </a>
+      ))}
+    </aside>
+    <div class="article-body">
+      {t.aboutBody.map((p) => (
+        <p>{p}</p>
+      ))}
+      <div class="rss-panel">
+        <h2>{t.follow}</h2>
+        <p>{t.rssNote}</p>
+        <a href={lang === "hu" ? "/rss.xml" : "/en/rss.xml"}>RSS ↗</a>
+      </div>
+    </div>
+  </div>
+</section>

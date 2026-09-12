@@ -1,0 +1,94 @@
+---
+import {
+  COLUMNS,
+  COLUMN_KEYS,
+  DESIGN_STUDY,
+  UI,
+  type Lang,
+  type ColumnKey,
+} from "../../i18n/ui";
+import type { Post } from "../../lib/posts";
+import { journalLinks } from "../../lib/design";
+const { designColumn } = journalLinks(Astro.locals.lumePreview === true);
+import DesignCard from "./DesignCard.astro";
+interface Props {
+  lang: Lang;
+  posts: Post[];
+  column?: ColumnKey;
+}
+const { lang, posts, column } = Astro.props;
+const t = DESIGN_STUDY[lang];
+const selected = posts.filter((p) => !column || p.data.column === column);
+---
+
+<section class:list={["journal-library", { "journal-column": column }]}>
+  <header class="journal-page-head">
+    <p class="eyebrow">
+      {column
+        ? `0${COLUMN_KEYS.indexOf(column) + 1} / ${COLUMNS[column][lang].name}`
+        : t.archive}
+    </p>
+    <h1>{column ? t.columnLeads[column] : UI[lang].archiveTitle}</h1>
+    <p>{column ? COLUMNS[column][lang].blurb : t.archiveLead}</p>
+  </header>
+  <div class="library-controls" data-library data-results={t.results}>
+    <div class="library-search">
+      <label for="library-query">{UI[lang].archiveSearch}</label>
+      <input
+        id="library-query"
+        type="search"
+        placeholder={UI[lang].archiveSearchHint}
+        autocomplete="off"
+      />
+    </div>
+    <div class="library-controls-row">
+      {!column && (
+        <fieldset class="section-switch">
+          <legend class="sr-only">{t.nav}</legend>
+          <button data-filter-column="all" aria-pressed="true">
+            {t.all}
+          </button>
+          {COLUMN_KEYS.map((c) => (
+            <button data-filter-column={c} aria-pressed="false">
+              {COLUMNS[c][lang].name}
+            </button>
+          ))}
+        </fieldset>
+      )}
+      <label class="library-sort">
+        <span>{t.sort}</span>
+        <select id="library-sort">
+          <option value="newest">{t.newest}</option>
+          <option value="oldest">{t.oldest}</option>
+          <option value="shortest">{t.shortest}</option>
+        </select>
+      </label>
+    </div>
+    <div class="library-results">
+      <span data-library-count role="status">
+        {t.results.replace("{n}", String(selected.length))}
+      </span>
+      <button data-library-reset>{t.reset}</button>
+    </div>
+  </div>
+  <div class="journal-grid" data-library-grid>
+    {selected.map((post, i) => (
+      <DesignCard post={post} index={i} />
+    ))}
+  </div>
+  <div class="journal-empty" data-library-empty hidden>
+    <h2>{t.empty}</h2>
+    <p>{t.emptyHint}</p>
+    <button data-library-reset>{t.reset} ↗</button>
+  </div>
+  {column && (
+    <nav class="column-next" aria-label={t.browse}>
+      {COLUMN_KEYS.filter((c) => c !== column).map((c) => (
+        <a href={designColumn(lang, c)}>
+          <span>{COLUMNS[c][lang].name}</span>
+          <strong>{t.columnLeads[c]} ↗</strong>
+        </a>
+      ))}
+    </nav>
+  )}
+</section>

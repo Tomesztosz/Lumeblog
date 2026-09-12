@@ -1,0 +1,361 @@
+---
+import type { Lang } from "../../i18n/ui";
+import {
+  phaseFor,
+  daysAway,
+  matchesCalendar,
+} from "../../lib/calendar-state.mjs";
+import {
+  activeReleases,
+  brandRadar,
+  CALENDAR_UI,
+  calendarMeta,
+  releaseIcsUrl,
+  releasePhase,
+  releases,
+  calendarEntries,
+} from "../../lib/releases";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = CALENDAR_UI[lang];
+const current = activeReleases();
+const nextRelease =
+  current.find((release) => releasePhase(release) === "upcoming") ?? current[0];
+const brands = brandRadar
+  .map((brand) => [brand.key, brand.name])
+  .sort((a, b) => a[1].localeCompare(b[1]));
+const months = [
+  ...new Set(releases.map((release) => release.date.slice(0, 7))),
+].map((value) => [
+  value,
+  new Intl.DateTimeFormat(lang === "hu" ? "hu-HU" : "en-GB", {
+    year: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(new Date(`${value}-01T00:00:00Z`)),
+]);
+const majorBrands = brandRadar.filter((brand) => brand.group === "major");
+const independentBrands = brandRadar.filter(
+  (brand) => brand.group === "independent",
+);
+const radarReviewDate = new Intl.DateTimeFormat(
+  lang === "hu" ? "hu-HU" : "en-GB",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  },
+).format(new Date(`${calendarMeta.lastReviewed}T00:00:00Z`));
+
+const clientCopy = {
+  statusUpcoming: t.statusUpcoming,
+  statusCurrent: t.statusCurrent,
+  statusArchived: t.statusArchived,
+  statusToday: t.statusToday,
+  statusIntroduced: t.statusIntroduced,
+  announced: t.announced,
+  daysOne: t.daysOne,
+  daysMany: t.clientDaysMany,
+  resultsOne: t.clientResultsOne,
+  resultsMany: t.clientResultsMany,
+  noResults: t.noResults,
+  noBrandResults: t.noBrandResults,
+};
+---
+
+<div class="calendar-page">
+  <section class="calendar-hero journal-page-head">
+    <div class="wrap calendar-hero-grid">
+      <div class="calendar-hero-copy">
+        <p class="eyebrow mono">{t.eyebrow}</p>
+        <h1>{t.title}</h1>
+        <p class="lede">{t.lede}</p>
+        <div class="calendar-hero-notes mono">
+          <span>
+            <i class="calendar-led" aria-hidden="true"></i>
+            {t.curated}
+          </span>
+          <span>✓ {t.verified}</span>
+        </div>
+      </div>
+
+      <div class="calendar-instrument">
+        <div class="calendar-instrument-copy">
+          <span class="mono">{t.next}</span>
+          <strong>
+            {nextRelease
+              ? `${nextRelease.brand} ${nextRelease.family}`
+              : "Lume"}
+          </strong>
+          <small>{nextRelease?.copy[lang].dateLabel}</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section calendar-list" aria-labelledby="calendar-list-title">
+    <div class="wrap">
+      <div class="calendar-list-head">
+        <div>
+          <p class="eyebrow mono">
+            {t.upcomingCount(
+              current.filter((entry) => releasePhase(entry) === "upcoming")
+                .length,
+            )}
+          </p>
+          <h2 id="calendar-list-title">{t.nav}</h2>
+        </div>
+        <p
+          class="calendar-result-count mono"
+          id="calendarResultCount"
+          role="status"
+          aria-live="polite"
+        >
+          {t.results(
+            calendarEntries.filter((entry) => matchesCalendar(entry)).length,
+          )}
+        </p>
+      </div>
+
+      <p class="calendar-overview-help">{t.overviewHelp}</p>
+      <div class="calendar-search">
+        <label for="releaseQuery">{t.searchLabel}</label>
+        <input id="releaseQuery" type="search" autocomplete="off" />
+        <button id="releaseReset" type="button">
+          {t.resetFilters}
+        </button>
+      </div>
+      <div class="calendar-filters" aria-label={t.filters}>
+        <label>
+          <span class="mono">{t.statusLabel}</span>
+          <select id="releaseStatusFilter">
+            <option value="overview">{t.overview}</option>
+            <option value="active">{t.activeStatuses}</option>
+            <option value="introduced">{t.introduced}</option>
+            <option value="announced">{t.announced}</option>
+            <option value="all">{t.allStatuses}</option>
+            <option value="archived">{t.archivedStatuses}</option>
+          </select>
+        </label>
+        <label>
+          <span class="mono">{t.monthLabel}</span>
+          <select id="releaseMonthFilter">
+            <option value="all">{t.allMonths}</option>
+            <option value="undated">{t.undated}</option>
+            {months.map(([value, label]) => (
+              <option value={value}>{label}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span class="mono">{t.brandLabel}</span>
+          <select id="releaseBrandFilter">
+            <option value="all">{t.allBrands}</option>
+            {brands.map(([value, label]) => (
+              <option value={value}>{label}</option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <div class="calendar-grid" id="calendarGrid">
+        {calendarEntries.map((release) => {
+          const phase = phaseFor(release);
+          const days = daysAway(release);
+          const status =
+            phase === "introduced"
+              ? t.statusIntroduced
+              : phase === "announced"
+                ? t.announced
+                : phase === "current"
+                  ? release.precision === "day"
+                    ? t.statusToday
+                    : t.statusCurrent
+                  : phase === "archived"
+                    ? t.statusArchived
+                    : release.precision === "month"
+                      ? t.statusUpcoming
+                      : days === 1
+                        ? t.daysOne
+                        : t.daysMany(days);
+          const edition = release.limitedPieces
+            ? t.limited(release.limitedPieces)
+            : t.unknownEdition;
+          return (
+            <article
+              class="release-card"
+              id={release.id}
+              data-release-card
+              data-start={release.date}
+              data-end={release.dateEnd}
+              data-precision={release.precision}
+              data-month={release.date?.slice(0, 7) ?? "undated"}
+              data-brand={release.brandKey}
+              data-phase={phase}
+              hidden={!matchesCalendar(release)}
+            >
+              <figure
+                class="release-card-media"
+                style={`--media-ratio: ${release.imageWidth / release.imageHeight}`}
+              >
+                <img
+                  src={release.image}
+                  alt={`${release.brand} ${release.family} ${release.model}`}
+                  width={release.imageWidth}
+                  height={release.imageHeight}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="mono">
+                  {t.imageCredit}: {release.imageCredit}
+                </figcaption>
+              </figure>
+
+              <div class="release-card-body">
+                <div class="release-card-topline mono">
+                  <span
+                    class="release-status"
+                    data-release-status
+                    data-phase={phase}
+                  >
+                    <i aria-hidden="true"></i>
+                    {status}
+                  </span>
+                  <span>{release.reference}</span>
+                </div>
+
+                <p class="release-brand mono">
+                  {release.brand} · {release.family}
+                </p>
+                <h3>{release.model}</h3>
+                <p class="release-summary">{release.copy[lang].summary}</p>
+
+                <dl class="release-facts">
+                  <div>
+                    <dt class="mono">{t.releaseDate}</dt>
+                    <dd>{release.copy[lang].dateLabel}</dd>
+                  </div>
+                  <div>
+                    <dt class="mono">{t.edition}</dt>
+                    <dd>{edition}</dd>
+                  </div>
+                  <div>
+                    <dt class="mono">{t.availability}</dt>
+                    <dd>{release.copy[lang].availability}</dd>
+                  </div>
+                  {release.price && (
+                    <div>
+                      <dt class="mono">{t.price}</dt>
+                      <dd>{release.price}</dd>
+                    </div>
+                  )}
+                </dl>
+
+                <div class="release-selection">
+                  <span class="mono">{t.selection}</span>
+                  <p>{release.copy[lang].selection}</p>
+                </div>
+
+                <div class="release-card-actions">
+                  <a href={release.sourceUrl} target="_blank" rel="noreferrer">
+                    {t.officialSource} ↗
+                  </a>
+                  {release.date && (
+                    <a href={releaseIcsUrl(release, lang)} download>
+                      {t.addCalendar} ↓
+                    </a>
+                  )}
+                </div>
+                <p class="release-precision mono">
+                  {t.verified}: {release.sourceChecked} ·{" "}
+                  {release.date
+                    ? release.precision === "day"
+                      ? t.dayPrecision
+                      : t.monthPrecision
+                    : t.undatedNote}
+                </p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <p class="calendar-empty" id="calendarEmpty" hidden>
+        {t.noResults}
+      </p>
+    </div>
+  </section>
+
+  <section
+    class="section calendar-radar"
+    aria-labelledby="calendar-radar-title"
+  >
+    <div class="wrap">
+      <div class="calendar-radar-head">
+        <p class="eyebrow mono">{t.radarEyebrow}</p>
+        <h2 id="calendar-radar-title">{t.radarTitle}</h2>
+        <p class="calendar-radar-text">{t.radarText}</p>
+        <p class="calendar-radar-reviewed mono">
+          <i class="calendar-led" aria-hidden="true"></i>
+          {t.radarLastChecked(radarReviewDate)}
+        </p>
+      </div>
+
+      <div class="calendar-radar-groups">
+        {[
+          { title: t.radarMajor, brands: majorBrands },
+          { title: t.radarIndependent, brands: independentBrands },
+        ].map((group) => (
+          <div class="calendar-radar-group">
+            <h3 class="mono">{group.title}</h3>
+            <div class="calendar-radar-grid">
+              {group.brands.map((brand) => {
+                const count = calendarEntries.filter(
+                  (entry) => entry.brandKey === brand.key,
+                ).length;
+                const active = count > 0;
+                return (
+                  <a
+                    href={brand.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    class:list={["calendar-radar-brand", { active }]}
+                  >
+                    <span>
+                      <i aria-hidden="true"></i>
+                      <strong>{brand.name}</strong>
+                    </span>
+                    <small class="mono">
+                      {active ? t.radarCount(count) : t.radarWatched}
+                    </small>
+                    <small class="mono">
+                      {t.radarSources(
+                        1 + (brand.additionalSources?.length ?? 0),
+                      )}
+                    </small>
+                    <em class="mono">{t.radarOfficial} ↗</em>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</div>
+
+<div
+  id="calendarData"
+  hidden
+  data-entries={JSON.stringify(calendarEntries)}
+  data-copy={JSON.stringify(clientCopy)}
+></div>
+<script>
+  import "../../lib/calendar-client";
+</script>

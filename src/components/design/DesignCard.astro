@@ -1,0 +1,41 @@
+---
+import DesignMedia from "./DesignMedia.astro";
+import { COLUMNS, DESIGN_STUDY, formatDate } from "../../i18n/ui";
+import { minutesOf, type Post } from "../../lib/posts";
+import { journalLinks } from "../../lib/design";
+const { designPost } = journalLinks(Astro.locals.lumePreview === true);
+interface Props {
+  post: Post;
+  index?: number;
+}
+const { post, index = 0 } = Astro.props;
+const lang = post.data.lang;
+---
+
+<article
+  class="journal-card"
+  data-journal-card
+  data-column={post.data.column}
+  data-search={`${post.data.title} ${post.data.description} ${post.data.seoTitle ?? ""}`}
+  data-date={post.data.date.toISOString()}
+  data-minutes={minutesOf(post)}
+>
+  <DesignMedia post={post} href={designPost(post)} />
+  <div class="journal-card-meta">
+    <span>{COLUMNS[post.data.column][lang].name}</span>
+    <time datetime={post.data.date.toISOString()}>
+      {formatDate(post.data.date, lang)}
+    </time>
+    <span>
+      {minutesOf(post)} {DESIGN_STUDY[lang].minutes}
+    </span>
+  </div>
+  <h2>
+    <a href={designPost(post)}>{post.data.title}</a>
+  </h2>
+  <p>{post.data.description}</p>
+  <a class="journal-card-link" href={designPost(post)}>
+    <span>{DESIGN_STUDY[lang].read}</span>
+    <span aria-hidden="true">↗</span>
+  </a>
+</article>

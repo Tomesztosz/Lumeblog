@@ -1,0 +1,40 @@
+/* Approved journal palette, shared by the site and the interactive models. */
+:root {
+  --paper: #f2f0e8;
+  --surface: #e8e7df;
+  --dial-face: #eae7db;
+  --ink: #242722;
+  --muted: #61655b;
+  --line: #c7c9bc;
+  --brass: #75613b;
+  --accent: #d7eb96;
+  --lume-glow: #d7eb96;
+  --lume-halo: #cde9a052;
+  --lume-aura: #cde9a01c;
+  --accent-ink: #22281a;
+  --night: #232921;
+  --night-ink: #f0f0e3;
+  --night-muted: #c4caba;
+  --overlay: #121711bf;
+  --print-paper: #fff;
+  --print-ink: #000;
+  --font-serif: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Hanken Grotesk Variable", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --gutter: clamp(22px, 4.4vw, 76px);
+  background: var(--paper);
+  color-scheme: light;
+}
+:root[data-theme="dark"],
+:root:has(body.dark) {
+  --paper: #171d18;
+  --surface: #252d25;
+  --dial-face: #101710;
+  --ink: #eceee1;
+  --muted: #b4beaa;
+  --line: #465142;
+  --brass: #c1ba8e;
+  --accent: #d7eb96;
+  --night: #101610;
+  color-scheme: dark;
+}

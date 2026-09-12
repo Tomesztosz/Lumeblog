@@ -1,0 +1,119 @@
+---
+import DesignShell from "./DesignShell.astro";
+import DesignHome from "./DesignHome.astro";
+import DesignArticle from "./DesignArticle.astro";
+import DesignLibrary from "./DesignLibrary.astro";
+import DesignCalendar from "./DesignCalendar.astro";
+import DesignWorkshop from "./DesignWorkshop.astro";
+import DesignAbout from "./DesignAbout.astro";
+import DesignNotFound from "./DesignNotFound.astro";
+import { getPosts, getTranslation, type Post } from "../../lib/posts";
+import { journalMetadata } from "../../lib/journal-metadata";
+import {
+  DESIGN_STUDY,
+  COLUMNS,
+  type Lang,
+  type ColumnKey,
+} from "../../i18n/ui";
+import { journalLinks, type DesignView } from "../../lib/design";
+interface Props {
+  lang?: Lang;
+  view?: DesignView;
+  column?: ColumnKey;
+  postId?: string;
+  post?: Post;
+  preview?: boolean;
+}
+const {
+  lang = Astro.props.post?.data.lang ?? "hu",
+  view = "home",
+  column,
+  postId,
+  preview = false,
+} = Astro.props;
+Astro.locals.lumePreview = preview;
+const {
+  designHome,
+  designPost,
+  designColumn,
+  designArchive,
+  designCalendar,
+  designWorkshop,
+  designAbout,
+} = journalLinks(preview);
+const posts = (await getPosts(lang)).filter(
+  (p) => !preview || p.data.date <= new Date(),
+);
+const post =
+  view === "article"
+    ? (Astro.props.post ??
+      posts.find((p) =>
+        postId ? p.id === postId : p.data.translationKey === "brew",
+      ))
+    : undefined;
+if (view === "article" && !post) throw new Error("Missing journal article");
+const other = lang === "hu" ? "en" : "hu";
+const twin = post ? await getTranslation(post, other) : undefined;
+const t = DESIGN_STUDY[lang];
+const alternate =
+  view === "article"
+    ? twin && (!preview || twin.data.date <= new Date())
+      ? designPost(twin)
+      : designColumn(other, post!.data.column)
+    : view === "column"
+      ? designColumn(other, column!)
+      : view === "archive"
+        ? designArchive(other)
+        : view === "calendar"
+          ? designCalendar(other)
+          : view === "workshop"
+            ? designWorkshop(other)
+            : view === "about"
+              ? designAbout(other)
+              : designHome(other) + (preview && view === "404" ? "404/" : "");
+const title =
+  post?.data.title ??
+  (column
+    ? COLUMNS[column][lang].name
+    : view === "archive"
+      ? t.archive
+      : view === "calendar"
+        ? t.calendar
+        : view === "workshop"
+          ? t.workshopNav
+          : view === "about"
+            ? t.about
+            : view === "404"
+              ? t.notFoundTitle
+              : t.motto);
+const metadata = preview
+  ? undefined
+  : await journalMetadata({
+      lang,
+      view,
+      column,
+      post,
+      posts,
+      twin,
+      site: Astro.site!,
+    });
+---
+
+<DesignShell
+  lang={lang}
+  view={view}
+  title={title}
+  alternate={alternate}
+  active={column ?? post?.data.column ?? view}
+  metadata={metadata}
+>
+  {view === "home" && <DesignHome lang={lang} />}
+  {view === "article" && post && <DesignArticle post={post} />}
+  {(view === "column" || view === "archive") && (
+    <DesignLibrary lang={lang} posts={posts} column={column} />
+  )}
+  {view === "calendar" && <DesignCalendar lang={lang} />}
+  {view === "workshop" && <DesignWorkshop lang={lang} posts={posts} />}
+  {view === "about" && <DesignAbout lang={lang} />}
+  {view === "404" && <DesignNotFound lang={lang} />}
+</DesignShell>

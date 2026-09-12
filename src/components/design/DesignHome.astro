@@ -1,0 +1,202 @@
+---
+import { Image } from "astro:assets";
+
+import {
+  DESIGN_STUDY,
+  COLUMNS,
+  type Lang,
+  type ColumnKey,
+} from "../../i18n/ui";
+import { getPosts, minutesOf } from "../../lib/posts";
+import brewImage from "../../content/posts/_images/brew-metric-wrist-detail-v2.webp";
+import atelierImage from "../../content/posts/_images/atelier-wen-perception-dial-transparent-v2.png";
+import rolexImage from "../../content/posts/_images/rolex-day-date-current-transparent-v1.png";
+import rotorImage from "../../content/posts/_images/rotor-grand-seiko-transparent-v2.png";
+import { journalLinks } from "../../lib/design";
+const { designHome, designPost, designColumn, designArchive } = journalLinks(
+  Astro.locals.lumePreview === true,
+);
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = DESIGN_STUDY[lang];
+// Use existing, published copy. The experiment has no duplicate article records.
+const posts = (await getPosts(lang)).filter((p) => p.data.date <= new Date());
+const brew = posts.find((p) => p.data.translationKey === "brew")!;
+const atelier = posts.find((p) => p.data.translationKey === "atelier-wen")!;
+const rolex = posts.find((p) => p.data.translationKey === "rolex-president")!;
+const rotor =
+  posts.find((p) => p.data.translationKey === "rotor-mukodese") ??
+  posts.find((p) => p.id.includes("rotor"))!;
+
+const home = designHome(lang);
+const read = Astro.locals.lumePreview ? `${home}read/` : designPost(brew);
+const stories = [
+  {
+    post: atelier,
+    image: atelierImage,
+    alt: t.atelierAlt,
+    source: "https://sg.atelierwen.com/products/perception",
+    credit: "Atelier Wen",
+  },
+  {
+    post: rolex,
+    image: rolexImage,
+    alt: t.rolexAlt,
+    source: "https://www.rolex.com/watches/day-date/m228238-0061",
+    credit: "Rolex",
+  },
+];
+const brewSource =
+  "https://www.brew-watches.com/watches/brew-metric-retro-black";
+---
+
+<section class="cover-story">
+  <div class="cover-copy">
+    <p class="eyebrow">
+      <span class="index-dot"></span>
+      {t.feature}
+    </p>
+    <div>
+      <p class="brand-name">BREW WATCH CO.</p>
+      <h1>
+        {t.featureTop}
+        <br />
+        <em>{t.featureBottom}</em>
+      </h1>
+    </div>
+    <p class="cover-summary">{t.featureText}</p>
+    <a class="read-link" href={read}>
+      {t.read}
+      <span aria-hidden="true">↗</span>
+    </a>
+    <div class="cover-bottom">
+      <span>01 / {COLUMNS["in-hand"][lang].name}</span>
+      <span>
+        {minutesOf(brew)} {t.minutes}
+      </span>
+    </div>
+  </div>
+  <figure class="cover-photo">
+    <button class="photo-button" data-photo-open aria-label={t.closeLook}>
+      <Image
+        src={brewImage}
+        alt={t.brewAlt}
+        widths={[560, 840, 1120]}
+        sizes="(max-width: 760px) 100vw, 55vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <span class="photo-open-label">
+        {t.closeLook}
+        <b aria-hidden="true">＋</b>
+      </span>
+    </button>
+    <figcaption>
+      <span>METRIC / BREW</span>
+      <a href={brewSource} target="_blank" rel="noopener noreferrer">
+        {t.photo}: Brew Watch Co. ↗
+      </a>
+    </figcaption>
+  </figure>
+</section>
+<section class="selection" aria-labelledby="selection-title">
+  <div class="section-title">
+    <div>
+      <p class="eyebrow">LUME / JOURNAL</p>
+      <h2 id="selection-title">{t.selection}</h2>
+    </div>
+    <p>{t.selectionText}</p>
+    <a href={designArchive(lang)}>{t.archive} ↗</a>
+  </div>
+  <div class="story-grid">
+    {stories.map((story, index) => (
+      <article class:list={["story", `story-${index + 1}`]}>
+        <figure>
+          <a class="story-photo" href={designPost(story.post)}>
+            <Image
+              src={story.image}
+              alt={story.alt}
+              widths={[400, 700, 1000]}
+              sizes="(max-width: 760px) 100vw, 45vw"
+            />
+          </a>
+          <figcaption>
+            <span>
+              0{index + 2} / {COLUMNS[story.post.data.column][lang].name}
+            </span>
+            <a href={story.source} target="_blank" rel="noopener noreferrer">
+              {t.photo}: {story.credit} ↗
+            </a>
+          </figcaption>
+        </figure>
+        <h3>
+          <a href={designPost(story.post)}>
+            {story.post.data.title}
+            <span aria-hidden="true">↗</span>
+          </a>
+        </h3>
+        <p>{story.post.data.description}</p>
+      </article>
+    ))}
+  </div>
+</section>
+<section class="movement-feature">
+  <div class="movement-copy">
+    <p class="eyebrow">
+      <span class="index-dot"></span>
+      {t.workshop}
+    </p>
+    <h2>{t.workshopTitle}</h2>
+    <p>{t.workshopText}</p>
+    <a class="read-link" href={designPost(rotor)}>
+      {t.workshopLink}
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+  <figure>
+    <a href={designPost(rotor)}>
+      <Image
+        src={rotorImage}
+        alt={t.rotorAlt}
+        widths={[560, 840, 1200]}
+        sizes="(max-width: 760px) 100vw, 55vw"
+      />
+    </a>
+    <figcaption>
+      <a
+        href="https://www.grand-seiko.com/ca-fr/worldofgrandseiko/manufacture/9r20th/chapter7/index"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t.photo}: Grand Seiko ↗
+      </a>
+    </figcaption>
+  </figure>
+  <span class="movement-number" aria-hidden="true">
+    03
+  </span>
+</section>
+<section class="directions">
+  <div>
+    <p class="eyebrow">INDEX / LUME</p>
+    <h2>{t.browse}</h2>
+    <p>{t.browseText}</p>
+  </div>
+  <ol>
+    {t.routes.map((route, index) => (
+      <li>
+        <a href={designColumn(lang, route.column as ColumnKey)}>
+          <span class="route-number">0{index + 1}</span>
+          <div>
+            <h3>{route.label}</h3>
+            <p>{route.note}</p>
+          </div>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</section>

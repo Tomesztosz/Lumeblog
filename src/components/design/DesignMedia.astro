@@ -1,0 +1,112 @@
+---
+import { Image } from "astro:assets";
+import { COLUMNS, DESIGN_STUDY } from "../../i18n/ui";
+import type { Post } from "../../lib/posts";
+import { designCover } from "../../lib/design-media";
+interface Props {
+  post: Post;
+  lead?: boolean;
+  href?: string;
+}
+const { post, lead = false, href } = Astro.props;
+const t = DESIGN_STUDY[post.data.lang];
+const cover = designCover(post);
+const source = cover?.src;
+const cutout = /transparent|cutout/.test(source?.src ?? "");
+const photograph = post.data.translationKey === "brew";
+const ratio = source ? source.width / source.height : 1;
+// No upscaling: include the source width when it falls between our size steps.
+const widths = source
+  ? [
+      ...new Set(
+        [320, 560, 840, 1120, 1600, 2200, source.width].filter(
+          (w) => w <= source.width,
+        ),
+      ),
+    ].sort((a, b) => a - b)
+  : [];
+const Tag = href ? "a" : "button";
+---
+
+<figure
+  class:list={[
+    "design-media",
+    {
+      "design-media-lead": lead,
+      "design-media-cutout": cutout,
+      "design-media-photo": photograph,
+    },
+  ]}
+  style={`--media-ratio: ${ratio}; --media-source-width: ${source?.width ?? 1100}px`}
+>
+  {cover && source ? (
+    <>
+      <Tag
+        class="design-media-image"
+        href={href}
+        type={href ? undefined : "button"}
+        data-photo-open={href ? undefined : ""}
+        data-photo-src={source.src}
+        aria-label={href ? post.data.title : t.enlarge}
+      >
+        <Image
+          src={source}
+          alt={cover.alt}
+          widths={widths}
+          sizes={
+            lead
+              ? "(max-width: 760px) calc(100vw - 40px), 1000px"
+              : "(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) 45vw, 560px"
+          }
+          loading={lead ? "eager" : "lazy"}
+          fetchpriority={lead ? "high" : "auto"}
+        />
+        {!href && (
+          <span class="media-expand" aria-hidden="true">
+            ＋
+          </span>
+        )}
+      </Tag>
+      <figcaption>
+        {cover.caption ? (
+          cover.caption.map((part) =>
+            part.href ? (
+              <a href={part.href} target="_blank" rel="noopener noreferrer">
+                {part.text}
+              </a>
+            ) : (
+              part.text
+            ),
+          )
+        ) : cover.creditUrl ? (
+          <a href={cover.creditUrl} rel="noopener noreferrer" target="_blank">
+            {cover.credit} ↗
+          </a>
+        ) : (
+          cover.credit
+        )}
+        {!cover.replaced && post.data.cover?.license && (
+          <span>
+            {" "}
+            ·{" "}
+            {post.data.cover.licenseUrl ? (
+              <a
+                href={post.data.cover.licenseUrl}
+                rel="license noopener noreferrer"
+                target="_blank"
+              >
+                {post.data.cover.license}
+              </a>
+            ) : (
+              post.data.cover.license
+            )}
+          </span>
+        )}
+      </figcaption>
+    </>
+  ) : (
+    <div class="media-placeholder" aria-hidden="true">
+      <span>{COLUMNS[post.data.column][post.data.lang].name}</span>
+    </div>
+  )}
+</figure>

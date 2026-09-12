@@ -8,6 +8,71 @@ export const LANGS = ['hu', 'en'] as const;
 export type Lang = (typeof LANGS)[number];
 export const DEFAULT_LANG: Lang = 'hu';
 
+/* Isolated, development-only design study. No live layout uses this copy. */
+export const JOURNAL_META = {
+  hu: {
+    aboutTitle: 'A Lume órás naplóról',
+    aboutDescription: 'A Lume kétnyelvű órás napló microbrandekről, óratörténetről és szerkezetekről, heti három forrásokra épülő történettel.',
+    notFoundDescription: 'Ez az oldal nincs meg.',
+  },
+  en: {
+    aboutTitle: 'About Lume Watch Journal',
+    aboutDescription: 'Lume is a bilingual watch journal about microbrands, watch history and movements, publishing three carefully sourced stories every week.',
+    notFoundDescription: "This page doesn't exist.",
+  },
+} as const;
+
+export const DESIGN_STUDY = {
+  hu: {
+    localTime: 'Helyi idő', clockBrand: 'LUME', clockSignature: 'EST. MMXXVI',
+    previewNote: 'Új Lume · előnézet', about: 'A naplóról', all: 'Minden rovat', newest: 'Legújabb elöl', oldest: 'Legrégebbi elöl', shortest: 'Rövidebb írások elöl', sort: 'Sorrend', reset: 'Szűrés törlése', results: '{n} írás', empty: 'Itt most nincs ilyen írás.', emptyHint: 'Próbálj másik kifejezést, vagy nézd meg az összes rovatot.',
+    imageMissing: 'A kép most nem tölthető be.', imageRetry: 'Újrapróbálom', enlarge: 'Kép megnyitása nagy nézetben', nextStories: 'Innen érdemes továbbindulni.', relatedNote: 'Kapcsolódó történetek a naplóból.', copy: 'Hivatkozás másolása', copied: 'Hivatkozás másolva', copyFailed: 'Nem sikerült másolni. A címsorból kimásolhatod a hivatkozást.', updated: 'Frissítve', backTop: 'A lap tetejére',
+    archiveLead: 'Egyre több történet. Mindegyikhez vezet egy út.', columnLeads: { 'in-hand': 'Kis műhelyek, nagy figyelem a részletekre.', origins: 'Az órák mögött mindig ott van valaki.', movement: 'Amit a számlap eltakar, itt láthatóvá válik.' },
+    aboutTitle: 'Órákra fordított idő.', aboutLead: 'A Lume egy tanulásból születő napló. Arról, amit egy órán elsőre nem veszünk észre.', aboutBody: ['Nem újságíróként írom, hanem tanulóként. A cél a saját tudásom bővítése: mit csinál egy kis független műhely, honnan jött valójában egy régi ház, és hogyan működik a mechanika a számlap alatt. Ami közben összeáll, azt itt leírom, hogy másnak is olvasható legyen.', 'Hetente három írás jelenik meg: hétfőn Kézben, szerdán Eredet, pénteken Szerkezet. A tárgy érdekel, nem a hírciklus. A megjelenési naptár külön segít követni a hivatalosan bejelentett újdonságokat.', 'Ha egy állítás mögött nem áll ellenőrizhető forrás, akkor vagy odaírom, hogy bizonytalan, vagy nem kerül bele. A cikkek végén ott vannak a felhasznált források. A képek mellett pedig az, hogy kitől származnak.', 'A napló magyarul és angolul olvasható. Ugyanazok a történetek, ugyanazzal a kíváncsisággal.'], follow: 'Új írások, a saját olvasódban.', rssNote: 'Az RSS-sel regisztráció nélkül követheted a naplót.',
+    notFoundTitle: 'Ezt az oldalt nem találtuk.', notFoundText: 'Lehet, hogy megváltozott a címe, vagy hiba csúszott a hivatkozásba. A történethez más út is vezethet.', notFoundLink: 'Vissza a nyitóoldalra', notFoundNav: 'Keress, vagy válassz egy rovatot.', notFoundPreview: '404 oldal előnézete',
+    modelHint: 'A modell csak az elindítás után töltődik be.', modelStandalone: 'Megnyitás külön oldalon', sourceNotes: 'Források és ellenőrzés', calendarLead: 'Mi érkezik. Mi mutatkozott be. Mire várunk még.', weekDays: ['Hétfő', 'Szerda', 'Péntek'],
+    title: 'Lume · Új nézőpont', label: 'Designpróba 01', home: 'Nyitóoldal', reader: 'Olvasófelület', current: 'Jelenlegi oldal',
+    magazine: 'Független órás folyóirat', motto: 'Órák. Közelről.', nav: 'Tájékozódás', skip: 'Ugrás a tartalomhoz',
+    search: 'Keresés a cikkekben', searchHint: 'Márka, modell vagy történet', searchEmpty: 'Erre most nincs találat.', close: 'Bezárás',
+    off: 'Lámpa le', on: 'Lámpa fel', feature: 'A szerkesztő asztalán', featureTop: 'Tíz másodperc.', featureBottom: 'Egy saját világ.',
+    featureText: 'Egy New York-i kávézó, egy tervező és az a rövid szünet, amiből megszületett a Brew.',
+    read: 'Elolvasom a történetet', closeLook: 'Nézd meg közelről', photo: 'Fotó', brewAlt: 'A Brew Metric acéltokja és színes számlapja csuklón, közelről',
+    selection: 'Három nézőpont', selectionText: 'A tárgy. Az ember. Ami belül történik.', archive: 'Minden írás',
+    atelierAlt: 'Az Atelier Wen Perception számlapjának részlete', rolexAlt: 'Az arany Rolex Day-Date zöld számlappal', rotorAlt: 'A Grand Seiko szerkezete és rotorja közelről',
+    workshop: 'A számlap mögött', workshopTitle: 'A mozdulatból\nenergia lesz.', workshopText: 'Mit csinál az a félkör az óra hátlapja mögött? Kövesd végig a rotor útját a csuklótól a főrugóig.', workshopLink: 'Megértem a rotort',
+    browse: 'Merre indulnál?', browseText: 'Nem kell tudnod a referenciaszámot.',
+    routes: [{label: 'Egy jó órát keresek',note: 'Kis műhelyek, saját elképzelések.',column:'in-hand'}, {label: 'A történet érdekel',note: 'Emberek és tárgyak a nevek mögött.',column:'origins'}, {label: 'Érteni szeretném',note: 'A szerkezet, részenként.',column:'movement'}],
+    footer: 'Az órákra időt kell hagyni.', footerText: 'Történetek, tárgyak és az öröm, amikor végre megérted, hogyan működik.',
+    contents: 'Ebben az írásban', font: 'Betűméret', standard: 'Normál', larger: 'Nagyobb', back: 'Vissza a válogatáshoz', original: 'A cikk a jelenlegi oldalon', sources: 'Források', written: 'Szöveg: Lume',
+    imageViewer: 'Kép nagy nézetben', imageHelp: 'Részletek, közelről.', minutes: 'perc', appearance: 'Megjelenés',
+    progress: 'Olvasási haladás', noResults: 'Nincs találat', calendar: 'Megjelenési naptár', workshopNav: 'Műhely',
+  },
+  en: {
+    localTime: 'Local time', clockBrand: 'LUME', clockSignature: 'EST. MMXXVI',
+    previewNote: 'New Lume · preview', about: 'About the journal', all: 'All sections', newest: 'Newest first', oldest: 'Oldest first', shortest: 'Shorter reads first', sort: 'Sort by', reset: 'Clear filters', results: '{n} stories', empty: 'No stories match just yet.', emptyHint: 'Try another phrase, or explore every section.',
+    imageMissing: 'This image could not be loaded.', imageRetry: 'Try again', enlarge: 'Open the photograph in a larger view', nextStories: 'A little further down the path.', relatedNote: 'Related stories from the journal.', copy: 'Copy link', copied: 'Link copied', copyFailed: 'Could not copy. You can copy the link from the address bar.', updated: 'Updated', backTop: 'Back to top',
+    archiveLead: 'A growing collection of stories. A way into every one.', columnLeads: { 'in-hand': 'Small makers. An eye for the details.', origins: 'There is always someone behind the watch.', movement: 'A closer look at what the dial keeps hidden.' },
+    aboutTitle: 'Time spent with watches.', aboutLead: 'Lume is a journal born out of learning. About what we miss when we first look at a watch.', aboutBody: ['I write as a student, not as a journalist. The point is to widen my own knowledge: what a small independent maker does, where an old house came from, and how the mechanics under the dial work. Whatever comes together gets written down here, so it becomes legible to someone else too.', 'Three pieces a week: In Hand on Monday, Origins on Wednesday, Movement on Friday. The object is the subject, not the news cycle. The release calendar separately follows officially announced watches.', 'If a claim has no verifiable source, I either mark it as uncertain or leave it out. Sources are listed at the end of every piece. Photographs carry their own credits.', 'The journal is available in Hungarian and English. The same stories, and the same curiosity.'], follow: 'New stories, in your own reader.', rssNote: 'Follow the journal through RSS, without an account.',
+    notFoundTitle: 'We could not find this page.', notFoundText: 'Its address may have changed, or the link may contain a typo. There might be another way to the story.', notFoundLink: 'Back to the front page', notFoundNav: 'Search, or choose a section.', notFoundPreview: '404 page preview',
+    modelHint: 'The model loads only when you start it.', modelStandalone: 'Open on a separate page', sourceNotes: 'Sources and checks', calendarLead: 'What is coming. What is new. What we are waiting for.', weekDays: ['Monday', 'Wednesday', 'Friday'],
+    title: 'Lume · A closer look', label: 'Design study 01', home: 'Front page', reader: 'Reading view', current: 'Current site',
+    magazine: 'An independent watch journal', motto: 'Watches. Up close.', nav: 'Explore', skip: 'Skip to content',
+    search: 'Search the journal', searchHint: 'A brand, a watch, a story', searchEmpty: 'No matching stories yet.', close: 'Close',
+    off: 'Lights off', on: 'Lights on', feature: 'On the editor’s desk', featureTop: 'Ten seconds.', featureBottom: 'A world of its own.',
+    featureText: 'A New York café, a designer, and the small pause that became Brew.',
+    read: 'Read the story', closeLook: 'Take a closer look', photo: 'Photo', brewAlt: 'A close view of the Brew Metric steel case and colourful dial on the wrist',
+    selection: 'Three perspectives', selectionText: 'The object. The person. What happens inside.', archive: 'All stories',
+    atelierAlt: 'A close view of the Atelier Wen Perception dial', rolexAlt: 'The gold Rolex Day-Date with a green dial', rotorAlt: 'A close view of the Grand Seiko movement and rotor',
+    workshop: 'Behind the dial', workshopTitle: 'Movement becomes\nenergy.', workshopText: 'What does that semicircle behind the caseback do? Follow the rotor’s path from your wrist to the mainspring.', workshopLink: 'Understand the rotor',
+    browse: 'Where shall we start?', browseText: 'You don’t need a reference number.',
+    routes: [{label:'Find a watch',note:'Small makers with their own ideas.',column:'in-hand'}, {label:'Discover a story',note:'People and objects behind the names.',column:'origins'}, {label:'Understand the mechanics',note:'A movement, piece by piece.',column:'movement'}],
+    footer: 'Give watches a little time.', footerText: 'Stories, objects, and the pleasure of finally understanding how something works.',
+    contents: 'In this story', font: 'Text size', standard: 'Standard', larger: 'Larger', back: 'Back to the selection', original: 'Read on the current site', sources: 'Sources', written: 'Words: Lume',
+    imageViewer: 'Full-size image', imageHelp: 'Take a closer look.', minutes: 'min', appearance: 'Appearance',
+    progress: 'Reading progress', noResults: 'No results', calendar: 'Release calendar', workshopNav: 'Workshop',
+  },
+} as const;
+
 /* ---------- rovatok ---------- */
 export const COLUMN_KEYS = ['in-hand', 'origins', 'movement'] as const;
 export type ColumnKey = (typeof COLUMN_KEYS)[number];

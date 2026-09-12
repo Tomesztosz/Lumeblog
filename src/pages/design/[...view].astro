@@ -1,0 +1,54 @@
+---
+import { getPosts } from "../../lib/posts";
+import { LANGS, COLUMN_KEYS } from "../../i18n/ui";
+import {
+  designHome,
+  designPost,
+  designColumn,
+  designArchive,
+  designCalendar,
+  designWorkshop,
+  designAbout,
+} from "../../lib/design";
+export async function getStaticPaths() {
+  // This experiment must never publish with the normal site build.
+  if (!import.meta.env.DEV) return [];
+  const result = [];
+  for (const lang of LANGS) {
+    const entry = (path: string, props: Record<string, unknown>) => ({
+      params: { view: path.replace(/^\/design\//, "").replace(/\/$/, "") },
+      props: { lang, ...props },
+    });
+    result.push(
+      entry(designHome(lang), { view: "home" }),
+      entry(designHome(lang) + "read/", { view: "article" }),
+      entry(designHome(lang) + "404/", { view: "404" }),
+    );
+    for (const column of COLUMN_KEYS)
+      result.push(
+        entry(designColumn(lang, column), { view: "column", column }),
+      );
+    for (const [view, url] of [
+      ["archive", designArchive(lang)],
+      ["calendar", designCalendar(lang)],
+      ["workshop", designWorkshop(lang)],
+      ["about", designAbout(lang)],
+    ])
+      result.push(entry(url, { view }));
+    for (const post of (await getPosts(lang)).filter(
+      (p) => p.data.date <= new Date(),
+    ))
+      result.push(
+        entry(designPost(post), { view: "article", postId: post.id }),
+      );
+  }
+  return result;
+}
+if (Astro.props.view === "404") Astro.response.status = 404;
+// Keep the preview component graph out of production, not only its routes.
+const LumeNext = import.meta.env.DEV
+  ? (await import('../../components/design/LumeNext.astro')).default
+  : undefined;
+---
+
+{LumeNext && <LumeNext {...Astro.props} preview />}

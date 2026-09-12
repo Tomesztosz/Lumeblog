@@ -1,0 +1,48 @@
+---
+import { DESIGN_STUDY, type Lang } from "../../i18n/ui";
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = DESIGN_STUDY[lang];
+---
+
+<div class="masthead-clock" data-live-clock data-clock-label={t.localTime}>
+  <svg viewBox="0 0 120 120" role="img" aria-label={t.localTime}>
+    <circle class="clock-bezel" cx="60" cy="60" r="57" />
+    <circle class="clock-bezel-inner" cx="60" cy="60" r="54.5" />
+    <circle class="clock-track" cx="60" cy="60" r="50" />
+    <g class="clock-minutes">
+      {Array.from(
+        { length: 60 },
+        (_, i) =>
+          i % 5 !== 0 && (
+            <path d="M60 11 V12.8" transform={`rotate(${i * 6} 60 60)`} />
+          ),
+      )}
+    </g>
+    <text class="clock-signature" x="60" y="83" text-anchor="middle">
+      {t.clockSignature}
+    </text>
+    <g class="clock-luminous">
+      <text class="clock-brand" x="60" y="43" text-anchor="middle">
+        {t.clockBrand}
+      </text>
+      {Array.from({ length: 12 }, (_, i) => (
+        <rect
+          x={i % 3 === 0 ? 58.3 : 59}
+          y="13"
+          width={i % 3 === 0 ? 3.4 : 2}
+          height={i % 3 === 0 ? 9 : 5}
+          rx="1"
+          transform={`rotate(${i * 30} 60 60)`}
+        />
+      ))}
+      <path data-clock-hour d="M60 64 V34" />
+      <path data-clock-minute d="M60 65 V23" />
+    </g>
+    <path class="clock-second" data-clock-second d="M60 70 V17" />
+    <circle class="clock-pin" cx="60" cy="60" r="2.8" />
+  </svg>
+  <span class="clock-caption">{t.localTime}</span>
+</div>
