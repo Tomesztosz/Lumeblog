@@ -4,6 +4,18 @@ Ellenőrzés: 2026. szeptember 6. A Lume statikus Astro-oldal, amelyet a Cloudfl
 
 ## Javítások
 
+### Célzott függőségjavítás – 2026. szeptember 12.
+
+Az élesítés előtti npm audit az SVGO 4.0.2 csomagnál két ismert figyelmeztetést
+jelzett (GHSA-w27v-7q3p-w38r, GHSA-4vpr-x523-8j87). Az Astro meglévő
+verziótartományán belül az SVGO 4.1.0-ra frissült, a szükséges css-select és
+css-what függőségekkel együtt. Nem került be új közvetlen függőség vagy override.
+A frissítés utáni `npm audit` eredménye: nulla ismert sérülékenység.
+Ez célzott függőségellenőrzés, nem új teljes körű biztonsági audit.
+A javítás külön commitban marad, hogy a felület visszaállítása ne vonja vissza.
+
+### Korábbi javítások – szeptember 6.
+
 - Astro 5.18.2 helyett 7.3.1, frissített képkezelő és kapcsolódó függőségek. Az npm audit a javítás előtt öt érintett csomagot jelzett, utána nullát. Ez ismert csomagsérülékenységek ellenőrzése, nem öt bizonyítottan kihasználható hiba az éles oldalon. Több Astro-figyelmeztetés kizárólag szerveroldali funkciót érintett, amelyet itt nem használunk.
 - A Markdown-feldolgozó és a szóközkezelés kifejezetten a korábbi működést őrzi. A képek, cikkdátumok és fordítások változatlanok.
 - A `public/widgets/frame-bridge.js` közösen kezeli a modellek üzeneteit. Mindkét irányban ellenőrzi az eredetet és a tényleges küldőablakot. Csak saját `/widgets/*.html` modell kommunikálhat a szülővel. Nincs `*` célcím, a fényállapot csak logikai érték, a magasság véges szám lehet 1 és 6000 között.
