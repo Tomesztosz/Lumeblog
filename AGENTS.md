@@ -3,6 +3,30 @@
 A projekt részletes technikai és szerkesztői szabályai a `CLAUDE.md` és a
 `lume-brief.md` fájlban vannak. Ezeket minden érdemi módosítás előtt olvasd el.
 
+## Írásmód
+
+A tulajdonos kérése: ne használj U+2014 karaktert (hosszú gondolatjelet)
+a válaszokban és az új vagy szerkesztett Lume-szövegekben. Helyette a mondatnak
+megfelelő vesszőt, kettőspontot, zárójelet vagy külön mondatot használj.
+Ne helyettesítsd pusztán egy másik hosszú vonallal.
+
+## Kötelező képhasználat minden cikkben
+
+A tulajdonos állandó kérése, 2026. szeptember 12-től:
+
+- Az önálló óra- és termékképeken az órát vagy órákat körbe kell vágni,
+  valóban átlátszó háttérrel. Fehér, bézs vagy festett sakktáblás háttér nem kivágás.
+- A hero/nyitókép külön, történetmesélő szerkesztői kompozíció legyen, amely
+  egyetlen képben összefoglalja a cikket. A témához illő óra, korabeli jármű,
+  helyszín, hiteles alapítói portré vagy szerkezeti motívum szerepelhet rajta.
+  Ne egy üres háttér előtt álló termékfotó legyen az alapértelmezett hero.
+- A hero nem követi az önálló óraképek átlátszósági szabályát. A cikk törzsében
+  szereplő Legacy órakép viszont igen; a modell neve nem kivétel.
+- Minden új és átdolgozott magyar és angol cikknél alkalmazd. A történeti,
+  technikai és képeredeti pontosságot a látvány kedvéért sem szabad feladni.
+
+Képi munka előtt olvasd el a részletes [cikk-képhasználati szabályt](docs/cikk-kephasznalat.md).
+
 ## Cikk publikálása vagy időzítése
 
 Amikor magyar–angol cikkpár kerül élesre vagy időzítésre, a cikkes feladattal együtt

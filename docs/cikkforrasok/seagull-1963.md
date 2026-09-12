@@ -1,6 +1,6 @@
 # Sea-Gull 1963: szerkesztői ellenőrzés
 
-Ellenőrzés dátuma: 2026. szeptember 12. Kézirat: `hu/seagull-1963.md` és `en/seagull-1963.md`. Állapot: a tulajdonos jóváhagyta a hétfői időzítést, és külön kérte az új Legacy-kép elkészítését. Mindkét kézirat `draft: false`, dátumuk `2026-09-14T05:00:00+02:00`. A nyilvános oldalon a megjelenési idő előtti build nem tartalmazza a cikket. Az időzítés sikeres feltöltéssel válik aktívvá; a GitHub-futás és a build késhet.
+Ellenőrzés dátuma: 2026. szeptember 12. Kézirat: `hu/seagull-1963.md` és `en/seagull-1963.md`. Állapot: a hétfői időzítés már aktív, a tulajdonos az új repülőgépes hero és a kivágott Legacy-kép feltöltését is jóváhagyta. Mindkét kézirat `draft: false`, dátumuk `2026-09-14T05:00:00+02:00`. A nyilvános oldalon a megjelenési idő előtti build nem tartalmazza a cikket. A GitHub-futás és a build késhet.
 
 ## Állítások és döntések
 
@@ -29,7 +29,8 @@ A negyedik felhasználói referencián szereplő Legacy kereskedői fotóját a 
 | [seagull-1963-closeup-cutout-v2.webp](../../src/content/posts/_images/seagull-1963-closeup-cutout-v2.webp) | Daniel Zimmermann, [Closeup, 2016](https://commons.wikimedia.org/wiki/File:中国制造_-_Seagull_1963_Closeup_%2825871232304%29.jpg) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
 | `seagull-1963-dial-v1.webp` | Daniel Zimmermann, [Dial, 2016](https://commons.wikimedia.org/wiki/File:中国制造_-_Seagull_1963_Dial_%2826391398891%29.jpg) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
 | [seagull-st1901-movement-cutout-v2.webp](../../src/content/posts/_images/seagull-st1901-movement-cutout-v2.webp) | Czarcaustic, [ST1901, 2021](https://commons.wikimedia.org/wiki/File:Seagull_ST1901.jpg) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
-| [seagull-legacy-burgundy-ai-illustration-v1.webp](../../src/content/posts/_images/seagull-legacy-burgundy-ai-illustration-v1.webp) | Lume, beépített képgenerálással készült új kompozíció | AI-illusztráció; nem állítunk gyártói engedélyt, jóváhagyást vagy kizárólagos jogot |
+| [seagull-legacy-burgundy-ai-cutout-v2.webp](../../src/content/posts/_images/seagull-legacy-burgundy-ai-cutout-v2.webp) | Lume, a korábbi saját AI-illusztráció háttér nélküli változata | AI-illusztráció; nem állítunk gyártói engedélyt, jóváhagyást vagy kizárólagos jogot |
+| [seagull-1963-hero-aviation-v3.webp](../../src/content/posts/_images/seagull-1963-hero-aviation-v3.webp) | Lume, AI-montázs. Órareferencia: Daniel Zimmermann fenti Overview képe; korábbi Lume-hero kompozíciós referenciával | A fotóreferencia CC BY 2.0; az AI-átalakítás és a koridéző jelleg külön jelölve |
 
 Mindkét nyelvű cikkben a szerző, a forrásoldal, a licenc és az átalakítás jelölése szerepel. Az ST1901-kép WebP-változata is CC BY-SA 4.0 licencű. A szerkezetfotó külön példány, nem a nyitókép órájának dokumentált szétszerelése. A Commons feltöltői leírását nem tekintjük a lefotózott óra teljes eredetiségvizsgálatának.
 
@@ -41,10 +42,47 @@ A körbevágás teljes promptkészlete, módja és fájlnevei: [cutout-prompts-v
 
 A [Legacy Burgundy adatlapja](https://seagull1963.com/products/limited-edition-1963-legacy-burgundy-edition-seagull-movement-moonphase) alapján készült a külön fejezet. A főoldali általános ST1901-felirat helyett a konkrét termék ST1908 adatát használjuk. A forgalmazó függetlenségét is jelezzük. A hangulati összehasonlítás szerkesztői képértelmezés, nem viselési teszt.
 
+## Képi pontosítás: kivágott Legacy és történetmesélő hero
+
+A tulajdonos állandó kérését a [cikk-képhasználati útmutató](../cikk-kephasznalat.md),
+az AGENTS.md és a márkakézikönyv őrzi: önálló óraképek átlátszó háttérrel,
+nyitókép a cikket összefoglaló kompozícióval.
+
+A Legacy első közvetlen kivágási próbája festett sakktáblás hátteret adott,
+alfa csatorna nélkül, és az órarészleteken is változtatott. Nem használtuk fel.
+A második körben a beépített képgeneráló csak kivágómaszkot készített;
+a színes képpontok az eredeti Lume-illusztrációból származnak. A veszteségmentes
+WebP valódi alfa csatornás, 1448 × 1086 px, 569 104 bájt. Az átlátszatlan
+területeken az RGB-összehasonlítás nulla eltérést talált. Világos és sötét
+háttéren külön képi ellenőrzés készült, az eredeti hátteres fájl megmaradt.
+
+Az új hero 1672 × 941 px, 394 390 bájt: piros csillagos kronográf, korabeli
+vadászgép, finom szerkezeti motívumok és a nyelvfüggetlen „SEA-GULL / 1963 /
+TIANJIN” felirat. A repülőgép a MiG-17 / J-5 családot idézi. A korszakhoz
+illeszkedés forrása a [National Museum of the United States Air Force
+ismertetője](https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/196057/mikoyan-gurevich-mig-17f/).
+Ez nem egy adott gépen viselt konkrét óra dokumentációja, nem archív felvétel
+és nem pontos szerkezeti rajz. A hero kreditje mindkét nyelven jelzi ezt.
+
+A korábbi nyitófotó körbevágott változata a bevezetés után maradt a cikkben.
+A számlapot teljes egészében kitöltő makró változatlan: nincs rajta eltávolítandó
+környezeti háttér. Így mindkét nyelven hat kép szerepel: egy hero, négy valódi
+kivágás és egy számlapmakró.
+
+Recept és eredmény: [teljes promptnapló](../../output/article-review/seagull-1963/editorial-image-prompts-v3.json),
+[méret-, alfa- és RGB-ellenőrzés](../../output/article-review/seagull-1963/editorial-image-checks-v3.json).
+Előkészítés: `node scripts/prepare-seagull-editorial-images.mjs`, a kimeneteket
+nem írja felül. Beépített generálás történt, CLI/API fallback nélkül.
+
+A tulajdonos a képi pontosítást és az időzített változat feltöltését jóváhagyta.
+Az új képek mindkét nyelvi kézirat és a feltöltési csomag részei; a hétfő 05:00-s
+időzítés változatlan. A 44 forrásos ismételt naptárellenőrzés eredménye a külön
+audit kiegészítésében szerepel, a fennmaradó hozzáférési korlátokkal együtt.
+
 ## Publikálási kapu
 
 A kötelező naptáráttekintés eredménye a [külön auditban](../calendar-review-2026-09-12.md) szerepel. A regisztrált források teljes listáján történt ellenőrzési kísérlet, de több index korlátozottan hozzáférhető maradt. Egy új, októberre bejelentett Citizen ATTESA kártyát felvettünk. Nem állítunk teljes radarlefedettséget, a `lastReviewed` mező változatlan. A kézirat, az új illusztráció és az időzítés helyi buildellenőrzése sikeres.
 
-A korábbi kereskedői fotó már nem szerepel a kéziratokban. A generált változat új fájlnéven került be, világos háttérrel, 1448 × 1086 képponttal, 184 828 bájtos WebP-ként. Az eredeti generált PNG-t is megőriztük. A [promptnapló](../../output/article-review/seagull-1963/legacy-ai-prompt-v1.json) tartalmazza a teljes promptot, a referenciafájlokat és URL-jeiket, a beépített generálási módot és a korlátokat. CLI/API fallback nem futott. A vizuális ellenőrzés a kompozícióra és a jellegzetes elemekre terjedt ki, a finom skálák és felületek nem pontos termékdokumentációk.
+A korábbi kereskedői fotó már nem szerepel a kéziratokban. Az első generált változat világos háttérrel, 1448 × 1086 képponttal, 184 828 bájtos WebP-ként készült; ezt váltja fel a fent dokumentált, jóváhagyott kivágás. Az eredeti generált PNG-t is megőriztük. A [promptnapló](../../output/article-review/seagull-1963/legacy-ai-prompt-v1.json) tartalmazza a teljes promptot, a referenciafájlokat és URL-jeiket, a beépített generálási módot és a korlátokat. CLI/API fallback nem futott. A vizuális ellenőrzés a kompozícióra és a jellegzetes elemekre terjedt ki, a finom skálák és felületek nem pontos termékdokumentációk.
 
 A korábbi Legacy-fotó és a generálás termékfotó-referenciái az `output/` alatt maradnak, a kézirat nem hivatkozik rájuk. A puszta mappaelkülönítés nem elég: az Astro a piszkozatok Markdown-képeit is kibocsáthatja. A helyi előnézet-ellenőrző a `dist/` összes fájlnevét átnézi, és hibát jelez, ha az eredeti kereskedői kép bekerülne. Az új, egyértelműen jelölt AI-illusztráció normál képhivatkozást kapott. A feltöltési csomagba csak a cikkben használt képek kerülnek, a helyi referenciák és előnézeti csomag nem.

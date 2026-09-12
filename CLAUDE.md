@@ -88,6 +88,10 @@ tehát ott ez nem fordulhat elő.
 
 ## Képek és forrásmegjelölés
 
+Állandó tulajdonosi képszabály: az önálló óraképek valóban átlátszó hátterű
+kivágások, a hero pedig a cikk történetét összefoglaló kompozíció legyen.
+Minden képi munkánál kötelező a [részletes útmutató](docs/cikk-kephasznalat.md).
+
 A nyitóképek a `src/content/posts/_images/` alatt élnek, a frontmatterből
 `cover.src: '../_images/fajlnev.jpg'` alakban hivatkozva. Innen az Astro maga csinál
 WebP-változatokat több méretben, és a `srcset`-et is kitölti — nem kell kézzel méretezni.

@@ -50,6 +50,38 @@ Képeredet: [a gyártói közlemény eredeti JPEG-je](https://www.citizenwatch-g
 - [King Seiko VANAC HKF005](https://www.seikowatches.com/global-en/products/kingseiko/special/vanac/): a friss modellhez a látott szakaszban nincs dátum. A régebbi SLA083/085/087 2025. júliusi dátumát tilos rá átmásolni.
 - A Breitling NFL- és a TAG Carrera Sport-jelöltek részletes feldolgozása még nem teljes. Nem minősítettük őket alaptalanul duplikációnak vagy elutasítottnak.
 
-## Lefedettségi döntés
+## Ismételt ellenőrzés a jóváhagyott képcserénél
+
+A végleges Sea-Gull képi változat feltöltése előtt, 2026-09-12T18:21:31Z-kor
+új gépi ellenőrzés indult mind a 44 regisztrált URL-re. Eredmény: 32 olvasható,
+5 részleges és 7 sikertelen forrás; 929 függő jelölt. A GitHub #10 ellenőrzőlistát
+ismét elolvastuk, annak utolsó módosítása továbbra is 05:55:09Z. A jelöltek nem
+lettek tömegesen lezárva. Ez a korábbi aznapi szerkesztői áttekintés folytatása,
+nem új teljes katalógusaudit.
+
+A hibás és részleges URL-ekre webes ellenőrzési kísérlet is történt. A Rolex és
+Tudor oldalai olvashatók; a TAG, IWC és JLC regisztrált indexe továbbra sem volt
+teljesen elérhető. Az IWC hivatalos sajtóarchívuma és a JLC PressLounge szolgált
+kiegészítő forrásként. A JLC három szeptember 9-i órabejelentése továbbra is a
+fenti feldolgozási sorban marad; a sanghaji Valley of Inventions esemény híre
+önmagában nem új, jövőre dátumozott óramodell. A Longines, Seiko és Grand Seiko
+dinamikus indexének korlátai fennmaradtak; a két japán márka regisztrált saját
+JSON-feedjének gépi tartalma az aznapi korábbi ellenőrzéshez képest változatlan.
+A Christopher Ward sajtóoldala webesen megnyitható, de külső médiatárra mutat.
+
+A két módosult hash mögötti olvasható tartalmat külön összevetettük: az
+[Omega indexe](https://press.omegawatches.com/) továbbra is a már vizsgált
+Speedmaster 38 közleményt emeli ki; a [Zenith Paris Edition
+adatlap](https://pressroom.zenith-watches.com/paris-on-the-horizon-zenith-unveils-the-chronomaster-original-paris-edition/?lang=eng)
+változatlanul szeptemberi párizsi butikérkezést ír. A frissen regisztrált
+[Citizen ATTESA forrás](https://www.citizenwatch-global.com/news/2026/20260909/index.html)
+mindkét referenciához továbbra is 2026. októberi tervezett bevezetést ad.
+Újabb kártyát ebben a képcsere-körben nem vettünk fel. Ez nem állítás arról,
+hogy minden márka teljes kínálatában ne lenne további újdonság.
+
+A build mindkét nyelvi naptárat és mind a 22 ICS-t hibamentesen ellenőrizte.
+A Citizen-kártyát nem duplikáltuk, időablaka és két nyelvi ICS-e változatlan.
+
+## Végleges lefedettségi döntés
 
 A `lastReviewed` **változatlanul 2026-09-06**: a részleges és elérhetetlen indexek miatt nem állítunk lezárt teljes radaráttekintést. A cikk időzítési összefoglalójában ezt külön közölni kell az AGENTS.md hiányos forráslefedettségre vonatkozó szabálya szerint. A gépi futás és a részleges emberi ellenőrzés nem válhat hamis „nincs új hír” állítássá.

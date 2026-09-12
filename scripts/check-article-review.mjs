@@ -30,6 +30,7 @@ for (const [lang, name, twin] of [['hu','megnezes.html','english.html'],['en','e
   assert.equal(all('h2').length, (content.match(/^## /gm) ?? []).length + 1);
   assert.equal(attr(all('meta').find(n => attr(n, 'name') === 'robots'), 'content'), 'noindex,nofollow');
   assert(!all('link').some(n => attr(n, 'rel') === 'canonical'));
+  assert(!all('a').some(n => attr(n, 'href') === 'undefined'), 'Optional credits must not become broken links');
   assert(!all('script').some(n => attr(n, 'src') || attr(n, 'type') === 'application/ld+json'));
   assert(all('a').some(n => attr(n, 'href') === twin));
   assert(nodes.some(n => attr(n, 'class') === 'editorial-review'));
@@ -53,12 +54,27 @@ for (const [lang, name, twin] of [['hu','megnezes.html','english.html'],['en','e
         assert.equal(stats.channels.at(-1).min, 0, 'Background must be transparent');
         assert.equal(stats.channels.at(-1).max, 255, 'Watch must be opaque');
       }
+      if (/legacy-burgundy-ai-cutout-v2/.test(value)) {
+        const source = join(root, 'src/content/posts/_images/seagull-legacy-burgundy-ai-illustration-v1.webp');
+        const reference = await sharp(source).removeAlpha().raw().toBuffer();
+        const actual = await sharp(path).ensureAlpha().raw().toBuffer();
+        assert.equal(reference.length / 3, actual.length / 4, 'Do not resize the Legacy during extraction');
+        let changes = 0;
+        for (let p = 0; p < actual.length / 4; p++) if (actual[p * 4 + 3] === 255) {
+          for (let c = 0; c < 3; c++) changes += actual[p * 4 + c] !== reference[p * 3 + c];
+        }
+        assert.equal(changes, 0, 'Legacy dial and texture pixels must remain unchanged');
+      }
     }
   }
   assert.equal(all('img').length, (content.match(/!\[/g) ?? []).length + (content.match(/<!-- lume-review-image /g) ?? []).length + 1);
   if (key === 'seagull-1963') {
-    assert.equal(all('img').filter(n => /cutout-v2/.test(attr(n,'src'))).length, 3);
-    assert(all('img').some(n => /legacy-burgundy/.test(attr(n,'src'))));
+    assert.equal(all('img').filter(n => /cutout-v2/.test(attr(n,'src'))).length, 4);
+    assert(all('img').some(n => /legacy-burgundy-ai-cutout-v2/.test(attr(n,'src'))));
+    assert(f.cover.src.endsWith('seagull-1963-hero-aviation-v3.webp'), 'Use the approved story-led hero, not a standalone product image');
+    assert(f.cover.credit.includes(lang === 'hu' ? 'AI-illusztráció' : 'AI illustration'), 'Disclose the illustrative hero');
+    assert(f.cover.alt.includes(lang === 'hu' ? 'vadászgép' : 'fighter'), 'Describe the historical motif');
+    assert(!all('img').some(n => /legacy-burgundy-ai-illustration-v1/.test(attr(n,'src'))), 'Legacy studio background must not remain');
     assert(!all('img').some(n => /(?:overview|closeup|movement)-v1/.test(attr(n,'src'))), 'Old backgrounds must not remain in preview');
     assert(content.includes('ST1908'), 'Legacy must use its own specification');
     assert(content.includes(lang === 'hu' ? 'AI-illusztráció: Lume' : 'AI illustration: Lume'), 'Disclose the generated illustration');

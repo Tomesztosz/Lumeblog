@@ -9,12 +9,12 @@ lang: hu
 translationKey: seagull-1963
 draft: false
 cover:
-  src: ../_images/seagull-1963-overview-cutout-v2.webp
-  alt: "Egy piros csillagos 1963-újrakiadás krémszínű számlappal, kék mutatókkal és barna bőrszíjjal"
+  src: ../_images/seagull-1963-hero-aviation-v3.webp
+  alt: "AI-illusztráció: piros csillagos 1963-as kronográf, korabeli vadászgép és finom szerkezeti motívumok a Sea-Gull történetét összefoglaló kompozícióban"
   focus: center center
-  credit: "Daniel Zimmermann, Wikimedia Commons. Polgári újrakiadás, 2016-os fotó; Lume: háttér eltávolítása AI-segített maszkkal, átméretezés és WebP-konverzió."
+  credit: "Lume, AI-illusztráció; nem archív felvétel. Órareferencia: Daniel Zimmermann. A repülőgép koridéző motívum, nem dokumentált óra-gép párosítás."
   creditUrl: "https://commons.wikimedia.org/wiki/File:中国制造_-_Seagull_1963_Overview_(25901074974).jpg"
-  license: CC BY 2.0
+  license: "Órareferencia: CC BY 2.0"
   licenseUrl: https://creativecommons.org/licenses/by/2.0/
 sources:
   - label: "Sea-Gull: a 304-es feladat 1961-es indulása, az 1963-as minták és az 1966-os, 1400 darabos szállítás"
@@ -44,6 +44,9 @@ Inkább olyannak, amit valaki gondosan megőrzött egy fiókban.
 A Seagull 1963-ról rendszerint az árával kezdődik a beszélgetés. Mechanikus kronográf, oszlopkerék, látványos szerkezet, mindez jóval a nagy svájci nevek alatt. Csakhogy így az óra mindig valami más olcsóbb változata marad. Pedig a legérdekesebb része nem az, hogy mit helyettesít, hanem az, hogy honnan érkezett.
 
 Ehhez először az évszámot kell helyretenni. És azt is, hogy mit nevezünk ma 1963-nak.
+
+![Egy piros csillagos 1963-újrakiadás, körbevágva: krémszínű számlap, kék mutatók és barna bőrszíj](../_images/seagull-1963-overview-cutout-v2.webp)
+*Polgári újrakiadás, 2016-os fotó. Nem eredeti katonai példány. Fotó: [Daniel Zimmermann](https://commons.wikimedia.org/wiki/File:中国制造_-_Seagull_1963_Overview_%2825901074974%29.jpg), [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). Háttér eltávolítása AI-segített maszkkal, átméretezés és WebP-konverzió: Lume. Az óra képrészletei az eredeti fotóból származnak.*
 
 ## Egy megbízás, amelyet még 304-nek hívtak
 
@@ -89,7 +92,7 @@ A felsővel indítunk és állítunk meg, az alsóval nullázunk. A gyártói ke
 Egy ilyen óra nem kéri, hogy folyamatosan foglalkozzunk vele, de időnként visszakéri a kezünket. Felhúzni. Elindítani. Leolvasni. Megállítani. Ezek külön mozdulatok, és a tárgy formája mindegyiknek külön helyet ad.
 
 ![Sea-Gull ST1901 kézi felhúzású kronográfszerkezet közelről](../_images/seagull-st1901-movement-cutout-v2.webp)
-*Az ST1901 egy külön fényképezett példánya, nem a nyitóképen látható óra szétszerelése. Fotó: [Czarcaustic, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Seagull_ST1901.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Háttér eltávolítása AI-segített maszkkal, átméretezés és WebP-konverzió: Lume. A szerkezet képrészletei az eredeti fotóból származnak; az átdolgozás ugyanilyen licenc alatt használható.*
+*Az ST1901 egy külön fényképezett példánya, nem a cikk órájának dokumentált szétszerelése. Fotó: [Czarcaustic, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Seagull_ST1901.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Háttér eltávolítása AI-segített maszkkal, átméretezés és WebP-konverzió: Lume. A szerkezet képrészletei az eredeti fotóból származnak; az átdolgozás ugyanilyen licenc alatt használható.*
 
 Az oszlopkerék nem a pontos időt állítja elő. A kronográf kapcsolását vezérli. A járó óra és a külön indítható mérés között kell rendet tartania, miközben a számlapon ebből csak egy elinduló vagy megálló mutatót látunk. A működést külön is végigvettük [az oszlopkerékről szóló cikkben](/szerkezet/oszlopkerek/).
 
@@ -128,8 +131,8 @@ A Legacy Burgundy Edition más hangulatba helyezi az ismerős formát. A bordó 
 
 A [forgalmazó adatlapja](https://seagull1963.com/products/limited-edition-1963-legacy-burgundy-edition-seagull-movement-moonphase) 40 mm-es tokot, kézi felhúzású ST1908 szerkezetet és holdfáziskijelzést ad meg. Ez nem az előbb bemutatott ST1901-es kivitel. A Seagull1963.com külön jelzi, hogy független forgalmazó, nem a Tianjin Sea-Gull hivatalos partnere; a Legacyt ezért sem kezeljük gyári történelmi újrakiadásként.
 
-![AI-illusztráció a Legacy Burgundy Edition óráról: bordó számlap, két segédszámlap és kék holdfázisablak, világos háttér előtt](../_images/seagull-legacy-burgundy-ai-illustration-v1.webp)
-*Legacy Burgundy Edition. AI-illusztráció: Lume. Nem valódi termékfotó; a részletek eltérhetnek a tényleges órától.*
+![Körbevágott AI-illusztráció a Legacy Burgundy Edition óráról: bordó számlap, két segédszámlap és kék holdfázisablak, átlátszó háttérrel](../_images/seagull-legacy-burgundy-ai-cutout-v2.webp)
+*Legacy Burgundy Edition. AI-illusztráció: Lume, háttér nélküli kivágás. Nem valódi termékfotó; a részletek eltérhetnek a tényleges órától.*
 
 Ettől még érdekes folytatás. Nem kell ugyanazt a tárgyat látnunk benne ahhoz, hogy felismerjük a közös vonásokat. Éppen azt mutatja meg, mennyire el tud távolodni egy számlap a katonai eredetétől úgy, hogy a két kis kör és a csillag továbbra is összetartja a kompozíciót.
 

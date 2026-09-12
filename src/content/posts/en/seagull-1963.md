@@ -9,12 +9,12 @@ lang: en
 translationKey: seagull-1963
 draft: false
 cover:
-  src: ../_images/seagull-1963-overview-cutout-v2.webp
-  alt: "A red-star 1963 reissue with a cream dial, blue hands and brown leather strap"
+  src: ../_images/seagull-1963-hero-aviation-v3.webp
+  alt: "AI illustration combining a red-star 1963 chronograph, a period fighter aircraft and subtle movement motifs to evoke the Sea-Gull story"
   focus: center center
-  credit: "Daniel Zimmermann, Wikimedia Commons. Civilian reissue photographed in 2016; background removed with an AI-assisted mask, resized and converted to WebP by Lume."
+  credit: "Lume, AI illustration, not an archival photograph. Watch reference: Daniel Zimmermann. The aircraft evokes the period, not a documented watch-aircraft pairing."
   creditUrl: "https://commons.wikimedia.org/wiki/File:中国制造_-_Seagull_1963_Overview_(25901074974).jpg"
-  license: CC BY 2.0
+  license: "Watch reference: CC BY 2.0"
   licenseUrl: https://creativecommons.org/licenses/by/2.0/
 sources:
   - label: "Sea-Gull: the 1961 Project 304 commission, the 1963 samples and the 1966 delivery of 1,400 watches"
@@ -44,6 +44,9 @@ More like something carefully kept in a drawer.
 Conversations about the Seagull 1963 tend to begin with its price. A mechanical chronograph, a column wheel, a movement worth looking at, all for less than the familiar Swiss names. Framed that way, though, the watch remains a cheaper version of something else. Its more interesting quality is not what it replaces, but where it comes from.
 
 To understand that, we first need to put the year in its place. And establish what we mean by a 1963 today.
+
+![A cutout of a red-star 1963 reissue with a cream dial, blue hands and brown leather strap](../_images/seagull-1963-overview-cutout-v2.webp)
+*A civilian reissue photographed in 2016, not an original military example. Photograph: [Daniel Zimmermann](https://commons.wikimedia.org/wiki/File:中国制造_-_Seagull_1963_Overview_%2825901074974%29.jpg), [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). Background removed with an AI-assisted mask, resized and converted to WebP by Lume. Watch details come from the original photograph.*
 
 ## A commission still called 304
 
@@ -89,7 +92,7 @@ The upper pusher starts and stops it, and the lower one resets it. The manufactu
 A watch like this does not demand constant attention, but it occasionally asks for your hand again. Wind. Start. Read. Stop. These are separate gestures, and the object gives each of them a place.
 
 ![A close view of a Sea-Gull ST1901 manually wound chronograph movement](../_images/seagull-st1901-movement-cutout-v2.webp)
-*A separately photographed ST1901, not a dismantling of the watch in the opening photograph. Photograph: [Czarcaustic, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Seagull_ST1901.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Background removed with an AI-assisted mask, resized and converted to WebP by Lume. Movement details come from the original photograph; the adaptation is available under the same licence.*
+*A separately photographed ST1901, not a documented dismantling of the watch shown in this article. Photograph: [Czarcaustic, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Seagull_ST1901.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Background removed with an AI-assisted mask, resized and converted to WebP by Lume. Movement details come from the original photograph; the adaptation is available under the same licence.*
 
 The column wheel does not generate accurate time. It controls the switching of the chronograph, coordinating the running watch and its separately operated timer. On the dial, all we see is a hand starting or stopping. We explored the process in more detail in [our article on the column wheel](/en/movement/column-wheel/).
 
@@ -128,8 +131,8 @@ The Legacy Burgundy Edition gives the familiar design a different mood. Against 
 
 The [retailer's specification page](https://seagull1963.com/products/limited-edition-1963-legacy-burgundy-edition-seagull-movement-moonphase) lists a 40 mm case, a manually wound ST1908 and a moonphase display. This is not the ST1901 version discussed earlier. Seagull1963.com identifies itself as an independent retailer, not an official Tianjin Sea-Gull partner, so we do not present the Legacy as a factory historical reissue.
 
-![AI illustration of the Legacy Burgundy Edition with a burgundy dial, two registers and a blue moonphase aperture against a pale background](../_images/seagull-legacy-burgundy-ai-illustration-v1.webp)
-*Legacy Burgundy Edition. AI illustration: Lume. Not an actual product photograph; details may differ from the real watch.*
+![Cutout AI illustration of the Legacy Burgundy Edition with a burgundy dial, two registers and a blue moonphase aperture on a transparent background](../_images/seagull-legacy-burgundy-ai-cutout-v2.webp)
+*Legacy Burgundy Edition. AI illustration: Lume, with the background removed. Not an actual product photograph; details may differ from the real watch.*
 
 It is still an interesting continuation. We do not have to call it the same object to recognise what the designs share. It shows how far a dial can travel from its military origins while two small circles and a star continue to hold the composition together.
 

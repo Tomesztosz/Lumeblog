@@ -50,6 +50,7 @@ Vízszintes vonal a szakaszhatárra, ha kell.
 
 ## Publikálás előtti SEO-ellenőrzés
 
+- Kövesd a [cikk-képhasználati szabályt](cikk-kephasznalat.md): történetmesélő hero, valóban átlátszó hátterű önálló óraképek, mindkét nyelven pontos kredit és szükséges AI-jelölés.
 - A `seoTitle` nevezze meg a tényleges márkát, modellt vagy műszaki témát. Ne sorolj fel nem tárgyalt órákat keresőszavak kedvéért.
 - A fordításpár ugyanazt a `translationKey` értéket kapja. Az URL a publikálás után lehetőleg ne változzon.
 - A nyitókép lehetőleg legalább 1200 pixel széles eredeti legyen. A rendszer ebből készíti a megosztási képet, felméretezés nélkül.
