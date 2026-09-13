@@ -67,6 +67,32 @@ for (const [file, p] of Object.entries(contract.pages)) {
     !info.elements.some((n) => n.tagName === "iframe"),
     `${file}: model loaded before interaction`,
   );
+  const instagramLinks = info.elements.filter(
+    (n) => n.tagName === "a" && hasClass(n, "footer-instagram"),
+  );
+  assert.equal(instagramLinks.length, 1, `${file}: missing/duplicate Instagram link`);
+  const instagram = instagramLinks[0];
+  assert.equal(
+    attribute(instagram, "href"),
+    "https://www.instagram.com/lume_journal/",
+    `${file}: wrong Instagram profile`,
+  );
+  assert.equal(attribute(instagram, "rel"), "me");
+  assert.equal(
+    attribute(instagram, "aria-label"),
+    p.lang === "en" ? "Lume on Instagram" : "Lume az Instagramon",
+    `${file}: wrong Instagram label language`,
+  );
+  assert(hasClass(instagram.parentNode, "footer-links"), `${file}: Instagram outside footer navigation`);
+  assert(
+    hasClass(instagram.parentNode.parentNode.parentNode, "next-footer"),
+    `${file}: Instagram outside journal footer`,
+  );
+  assert(
+    instagram.childNodes.some((n) => n.tagName === "svg" &&
+      attribute(n, "aria-hidden") === "true" && attribute(n, "focusable") === "false"),
+    `${file}: missing/decorative Instagram icon not hidden from assistive technology`,
+  );
   assert.equal(
     info.elements.filter((n) => n.tagName === "h1").length,
     1,

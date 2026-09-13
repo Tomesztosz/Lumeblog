@@ -7,6 +7,7 @@ import JournalHead from "../JournalHead.astro";
 import StructuredData from "../StructuredData.astro";
 import type { JournalMetadata } from "../../lib/journal-metadata";
 import { journalLinks, type DesignView } from "../../lib/design";
+import { INSTAGRAM_URL } from "../../site";
 const {
   designHome,
   designPost,
@@ -188,6 +189,28 @@ const read = home + "read/";
             <a href={designHome(lang) + "404/"}>{t.notFoundPreview}</a>
           )}
           <a href={lang === "hu" ? "/rss.xml" : "/en/rss.xml"}>RSS ↗</a>
+          <a
+            class="footer-instagram"
+            href={INSTAGRAM_URL}
+            rel="me"
+            aria-label={t.instagramLabel}
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+            <span>{t.instagram}</span>
+          </a>
         </nav>
       </div>
     </footer>

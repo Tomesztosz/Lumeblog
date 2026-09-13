@@ -7,12 +7,27 @@
 .footer-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px 25px;
   margin-top: 24px;
   font: 11px/1.6 var(--font-mono);
 }
 .next-footer .footer-links a {
   margin: 0;
+}
+.next-footer .footer-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  color: var(--muted);
+}
+.footer-instagram svg {
+  flex: none;
+}
+.next-footer .footer-instagram:hover,
+.next-footer .footer-instagram:focus-visible {
+  color: var(--ink);
 }
 .journal-page-head {
   padding: 60px 0 48px;
