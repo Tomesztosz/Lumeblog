@@ -22,6 +22,7 @@ import DesignMedia from "./DesignMedia.astro";
 import DesignCard from "./DesignCard.astro";
 import DesignModel from "./DesignModel.astro";
 import DesignArticleBody from "./DesignArticleBody.astro";
+import JumpingSecondsModel from "../JumpingSecondsModel.astro";
 interface Props {
   post: Post;
 }
@@ -121,6 +122,9 @@ const articleLinks = Object.fromEntries(
           articleLinks={articleLinks}
         >
           <Content />
+          {post.data.translationKey === 'ugro-masodperc' && (
+            <JumpingSecondsModel slot="inlineModel" lang={lang} />
+          )}
           {post.data.model && (
             <DesignModel
               slot="model"

@@ -13,9 +13,17 @@ const tree = parseFragment(await Astro.slots.render("default"));
 const replacement = Astro.slots.has("model")
   ? await Astro.slots.render("model")
   : "";
+const inlineModel = Astro.slots.has("inlineModel")
+  ? await Astro.slots.render("inlineModel")
+  : "";
 function walk(parent: DefaultTreeAdapterTypes.ParentNode) {
   let afterModel = false;
   parent.childNodes = parent.childNodes.flatMap((node) => {
+    if (inlineModel && node.nodeName === "#comment" && "data" in node && node.data.trim() === "lume-model ugro-masodperc") {
+      const nodes = parseFragment(inlineModel).childNodes;
+      nodes.forEach((child) => (child.parentNode = parent));
+      return nodes;
+    }
     if ("tagName" in node && node.tagName === "a") {
       const href = node.attrs.find((a) => a.name === "href");
       if (href)

@@ -8,6 +8,34 @@ export const LANGS = ['hu', 'en'] as const;
 export type Lang = (typeof LANGS)[number];
 export const DEFAULT_LANG: Lang = 'hu';
 
+// Shared bilingual copy for the approved inline model and offline article review.
+export const JUMPING_SECONDS_MODEL = {
+  hu: {
+    title4: 'Belül nyolc lépés. Kívül egy.',
+    title: 'Belül hat lépés. Kívül egy.', intro: 'Indítsd el, lassítsd le, vagy haladj egyetlen féllengésenként. A két mutató ugyanazt az időt mutatja, más ritmusban.',
+    rhythm: 'A két ritmus', mechanism: 'Csillag és kar', balance: 'Billegő', ordinary: 'Hagyományos mutató', jumping: 'Ugró mutató',
+    star: 'Ötágú csillag', flirt: 'Oldódó kar (flirt)', output: 'Másodpercmutató',
+    balanceNote: 'A belső időalap tovább dolgozik.', ordinaryNote: 'Minden féllengésnél egy kis lépés.', jumpingNote: 'Egész másodpercenként egy osztás.',
+    starNote: 'Egy fordulat öt másodperc alatt.', flirtNote: 'Oldásonként egy teljes fordulat.', outputNote: 'Az áttétel egy fordulatból egy osztást készít.',
+    play: 'Indítás', pause: 'Szünet', step: 'Egy féllengés', reset: 'Elölről', speed: 'Lejátszás', slow: 'Négyszeres lassítás', real: 'Valós idő', frequency: 'Billegőfrekvencia',
+    time: 'Modellidő', beats: 'Féllengés', jumps: 'Ugrás', scrub: 'Vizsgált időpont, 0 és 5 másodperc között',
+    disclaimer: 'Saját működési szemléltetés, nem egy kaliber méretarányos rekonstrukciója. A csillag és a kar külön nézete a Lange leírását követi; az oldás mozdulatát a láthatóságért elnyújtottuk. A remontoirt, a teljes áttételt és az alkatrészek térbeli kapcsolódását ez a modell nem ábrázolja.',
+    stopped: 'A modell megállt.', running: 'A modell elindult.', end: 'Az öt másodperces részlet véget ért.',
+  },
+  en: {
+    title4: 'Eight steps inside. One outside.',
+    title: 'Six steps inside. One outside.', intro: 'Play, slow down, or advance one half-oscillation at a time. Both hands display the same time with different rhythms.',
+    rhythm: 'Two rhythms', mechanism: 'Star and flirt', balance: 'Balance', ordinary: 'Conventional hand', jumping: 'Jumping hand',
+    star: 'Five-pointed star', flirt: 'Released lever (flirt)', output: 'Seconds hand',
+    balanceNote: 'The internal timebase keeps working.', ordinaryNote: 'One small step per half-oscillation.', jumpingNote: 'One marker per whole second.',
+    starNote: 'One revolution in five seconds.', flirtNote: 'One full turn per release.', outputNote: 'Gearing converts one revolution into one marker.',
+    play: 'Play', pause: 'Pause', step: 'One half-oscillation', reset: 'Reset', speed: 'Playback', slow: 'Quarter speed', real: 'Real time', frequency: 'Balance frequency',
+    time: 'Model time', beats: 'Half-oscillations', jumps: 'Jumps', scrub: 'Inspection time, between 0 and 5 seconds',
+    disclaimer: 'An original functional illustration, not a scale reconstruction of a calibre. The separate star-and-flirt view follows Lange’s description; the release motion is extended for visibility. The remontoir, complete gearing and physical arrangement of components are not represented.',
+    stopped: 'Model paused.', running: 'Model playing.', end: 'The five-second sequence has ended.',
+  },
+} as const;
+
 /* Isolated, development-only design study. No live layout uses this copy. */
 export const JOURNAL_META = {
   hu: {

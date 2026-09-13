@@ -18,6 +18,11 @@ let images = 0, resources = 0;
 for (const [lang, name, twin] of [['hu','megnezes.html','english.html'],['en','english.html','megnezes.html']]) {
   const raw = await readFile(join(root, 'src/content/posts', lang, key + '.md'), 'utf8');
   const { frontmatter: f, content } = parseFrontmatter(raw);
+  if (f.reviewCover) {
+    assert.equal(f.draft, true, 'Private cover cannot be published implicitly');
+    assert(!f.cover, 'Do not mix a private and public cover');
+    f.cover = f.reviewCover;
+  }
   assert(f.draft === true || (f.draft === false && new Date(f.date) > new Date()), 'Review must be an unpublished article');
   assert.equal(f.lang, lang);
   assert.equal(f.translationKey, key);
@@ -48,7 +53,7 @@ for (const [lang, name, twin] of [['hu','megnezes.html','english.html'],['en','e
       assert.equal(Number(attr(node,'width')), meta.width);
       assert.equal(Number(attr(node,'height')), meta.height);
       assert(attr(node, 'alt')?.length > 15); images++;
-      if (/cutout-v2/.test(value)) {
+      if (/cutout-v\d+/.test(value)) {
         assert(meta.hasAlpha, `Cutout must have real transparency: ${value}`);
         const stats = await sharp(path).stats();
         assert.equal(stats.channels.at(-1).min, 0, 'Background must be transparent');
@@ -81,8 +86,84 @@ for (const [lang, name, twin] of [['hu','megnezes.html','english.html'],['en','e
     assert(content.includes(lang === 'hu' ? 'Nem valódi termékfotó' : 'Not an actual product photograph'), 'Do not imply documentary photography');
     assert(!content.includes('legacy-burgundy-wrist-preview'), 'Remove the uncleared retailer photograph');
   }
+  if (key === 'todd-beamer-rolex') {
+    assert.equal(f.draft, true, 'Reworked Beamer visuals remain a draft until review and scheduling activation');
+    assert(f.reviewCover, 'Private review images must stay out of production imports');
+    assert(f.cover.src.endsWith('todd-beamer-hero-v2.webp'));
+    assert(f.cover.credit.includes('AI'), 'Disclose the illustrative background');
+    assert(f.cover.alt.includes(lang === 'hu' ? 'Nem Beamer saját órája' : "Not Beamer's own watch"), 'Do not misidentify the comparison watch');
+    assert.equal(f.cover.license, 'CC BY-SA 4.0');
+    assert.equal(all('img').length, 3, 'Hero, documentary memorial photo and isolated comparison watch');
+    assert(all('img').some(n => /beamer-comparison-turnograph-cutout-v2/.test(attr(n,'src'))));
+    assert(all('img').some(n => /beamer-memorial-soergel-v2/.test(attr(n,'src'))));
+    for (const forbidden of ['beamer-watch-cutout-v1', 'beamer-portrait-nps', 'todd-beamer-hero-v1']) {
+      assert(!html.includes(forbidden) && !raw.includes(forbidden), 'Removed photo still referenced');
+      assert(!(await readdir(join(out, 'assets'))).some(n => n.includes(forbidden)), 'Removed photo still in active preview assets');
+    }
+    assert(content.includes(lang === 'hu' ? 'nyolcas dátum' : 'eight in the date window'), 'Explain the original comparison date without rewriting it');
+    assert(content.includes('Norbert Pietsch') && content.includes('Brian Soergel'), 'Attribute both new photographers');
+    const check = JSON.parse(await readFile(join(out, 'image-checks-v2.json'), 'utf8'));
+    const original = await sharp(join(out, 'sources', check.watch.source)).removeAlpha().raw().toBuffer();
+    const cutout = await sharp(join(out, 'sources', check.watch.output)).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    const { crop, padding, sourceWidth } = check.watch;
+    assert.equal(cutout.info.width, crop.width + 2 * padding);
+    assert.equal(cutout.info.height, crop.height + 2 * padding);
+    let changes = 0, opaqueChecked = 0;
+    for (let y = 0; y < cutout.info.height; y++) for (let x = 0; x < cutout.info.width; x++) {
+      const p = (y * cutout.info.width + x) * 4;
+      if (x < padding || y < padding || x >= cutout.info.width - padding || y >= cutout.info.height - padding) {
+        assert.equal(cutout.data[p + 3], 0, 'Cutout outer border must be transparent');
+      }
+      if (cutout.data[p + 3] !== 255) continue;
+      const q = ((y - padding + crop.top) * sourceWidth + x - padding + crop.left) * 3;
+      for (let c = 0; c < 3; c++) changes += cutout.data[p + c] !== original[q + c];
+      opaqueChecked++;
+    }
+    assert(opaqueChecked > 1000000);
+    assert.equal(changes, 0, 'Do not redraw the comparison dial or change its date to eleven');
+    const card = await sharp(resolve(root, 'src/content/posts', lang, f.cover.cardSrc)).metadata();
+    assert.equal(card.width, 1200); assert.equal(card.height, 900);
+  }
+  if (key === 'ugro-masodperc') {
+    assert.equal(f.draft, false, 'Friday was approved for scheduling');
+    assert(!f.reviewCover && Object.hasOwn(parseFrontmatter(raw).frontmatter, 'cover'));
+    assert.equal(new Date(f.date).toISOString(), '2026-09-18T03:00:00.000Z');
+    assert(!content.includes('lume-review-'), 'Private markers must be promoted explicitly');
+    assert.equal(f.column, 'movement');
+    assert.equal(f.sources.length, 11);
+    assert(f.cover.credit.includes(lang === 'hu' ? 'AI-illusztráció' : 'AI illustration'));
+    assert(f.cover.src.endsWith('seconde-morte-hero-v1.webp'));
+    const articleBody = nodes.find(n => attr(n, 'class') === 'article-body');
+    assert(articleBody);
+    const bodyNodes = flatten(articleBody);
+    assert.equal(bodyNodes.filter(n => n.tagName === 'a').length, 0, 'Owner requested no hyperlinks in the article body or captions');
+    assert.equal(bodyNodes.filter(n => n.tagName === 'iframe').length, 0, 'No remote embeds in the reading copy');
+    assert(!/https?:\/\//.test(text(articleBody)), 'No bare source URLs in prose');
+    const diagram = bodyNodes.find(n => attr(n, 'data-jumping-seconds-diagram') === 'rhythm');
+    assert(diagram, 'Include the original readable timing illustration');
+    const pulses = flatten(diagram).filter(n => attr(n, 'data-pulses'));
+    assert.deepEqual(pulses.map(n => Number(attr(n, 'data-pulses'))), [6, 1]);
+    assert.deepEqual(pulses.map(n => (attr(n, 'd').match(/V12/g) ?? []).length), [6, 1], 'Six ordinary hand steps versus one jumping step');
+    assert.equal(all('img').length, 4, 'Conceptual hero plus three original manufacturer movement macros');
+    assert.equal(bodyNodes.filter(n => attr(n, 'data-jumping-model') !== undefined).length, 1);
+    for (const id of ['b09', 'b11']) assert(all('img').some(n => attr(n,'src')?.endsWith(`lange-jumping-${id}-photo-v1.webp`)));
+    assert(all('img').some(n => attr(n,'src')?.endsWith('lange-jumping-b10-cutout-v2.png')));
+    assert(!all('img').some(n => attr(n,'src')?.includes('b10-photo-v1')));
+    const source = await sharp(join(out, 'sources/lange-jumping-b10-photo-v1.webp')).removeAlpha().raw().toBuffer();
+    const cutout = await sharp(join(out, 'assets/lange-jumping-b10-cutout-v2.png')).ensureAlpha().raw().toBuffer();
+    assert.equal(source.length / 3, cutout.length / 4);
+    for (let p = 0; p < source.length / 3; p++) for (let c = 0; c < 3; c++) assert.equal(cutout[p * 4 + c], source[p * 3 + c]);
+    assert.equal((content.match(/Fotó: Lange Uhren GmbH|Photograph: Lange Uhren GmbH/g) ?? []).length, 3);
+    const card = await sharp(resolve(root, 'src/content/posts', lang, f.cover.cardSrc)).metadata();
+    assert.equal(card.width, 1200); assert.equal(card.height, 900);
+  }
   for (const s of f.sources) assert(all('a').some(n => attr(n,'href') === s.url), `Missing source: ${s.url}`);
-  for (const license of ['https://creativecommons.org/licenses/by/2.0/', 'https://creativecommons.org/licenses/by-sa/4.0/']) {
+  const requiredLicenses = key === 'seagull-1963'
+    ? ['https://creativecommons.org/licenses/by/2.0/', 'https://creativecommons.org/licenses/by-sa/4.0/']
+    : key === 'todd-beamer-rolex'
+      ? ['https://creativecommons.org/licenses/by-sa/3.0/', 'https://creativecommons.org/licenses/by-sa/4.0/']
+      : [f.cover.licenseUrl].filter(Boolean);
+  for (const license of requiredLicenses) {
     assert(all('a').some(n => attr(n,'href') === license), 'Missing image licence');
   }
   copies.push(f);
@@ -100,6 +181,8 @@ let publicFiles = 0;
 async function checkBuild(dir) {
   for (const e of await readdir(dir, { withFileTypes:true })) {
     const path = join(dir,e.name);
+    if (key === 'todd-beamer-rolex') assert(!/beamer/i.test(e.name), `Private draft asset leaked into build: ${path}`);
+    if (key === 'ugro-masodperc') assert(!/b10-photo-v1|imagegen-mask|lange-jumping-.*original/i.test(e.name), `Private source image leaked into build: ${path}`);
     assert(!/legacy-burgundy-(?:wrist-preview|banner|product|wrist[.])/i.test(e.name), `Uncleared reference image leaked into build: ${path}`);
     if (e.isDirectory()) await checkBuild(path);
     else if (/\.(html|xml)$/.test(e.name)) {

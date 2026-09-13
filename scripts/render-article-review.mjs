@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { createMarkdownProcessor, parseFrontmatter } from '@astrojs/markdown-remark';
 import { parseFragment, serialize } from 'parse5';
 import sharp from 'sharp';
+import { renderJumpingSecondsModel, jumpingSecondsModelCSS, jumpingSecondsModelScript } from './lib/jumping-seconds-review-model.mjs';
 
 // Offline editorial export. Reads trusted local drafts only; no server,
 // credentials, network access, publication or change to the production build.
@@ -41,13 +42,19 @@ const extra = `
 .reader-sidebar .review-size{display:block;margin-top:20px;text-decoration:underline;font-size:12px}
 @media(max-width:760px){.review-actions{gap:14px}.editorial-review{font-size:12px}}
 `;
-await writeFile(join(out, 'journal.css'), fonts + palette + journal + pages + extra);
+await writeFile(join(out, 'journal.css'), fonts + palette + journal + pages + extra + (key === 'ugro-masodperc' ? jumpingSecondsModelCSS : ''));
 const report = [];
 for (const lang of ['hu', 'en']) {
   const hu = lang === 'hu';
   const input = join(root, 'src/content/posts', lang, `${key}.md`);
   const raw = await readFile(input, 'utf8');
   const { frontmatter: f, content } = parseFrontmatter(raw);
+  // A private cover must not use Astro's image() field: even a filtered draft
+  // can otherwise emit the original cover file into the public asset bundle.
+  if (f.reviewCover) {
+    if (f.draft !== true || f.cover) throw new Error('A review-only cover requires an unscheduled draft without a public cover');
+    f.cover = f.reviewCover;
+  }
   const scheduled = f.draft === false && new Date(f.date) > new Date();
   if ((!f.draft && !scheduled) || f.lang !== lang || f.translationKey !== key) throw new Error(`Not the requested unpublished article: ${input}`);
   if (raw.includes(String.fromCharCode(0x2014))) throw new Error(`Forbidden punctuation: ${input}`);
@@ -61,7 +68,10 @@ for (const lang of ['hu', 'en']) {
     const alt = image.alt.replace(/[\\\[\]]/g, '\\$&').replace(/\r?\n/g, ' ');
     return `![${alt}](${src})`;
   });
-  const { code, metadata } = await processor.render(reviewContent);
+  const modelMarker = content.includes('<!-- lume-model ugro-masodperc -->') ? '<!-- lume-model ugro-masodperc -->' : '<!-- lume-review-model ugro-masodperc -->';
+  const hasModel = content.includes(modelMarker);
+  if (hasModel && key !== 'ugro-masodperc') throw new Error('Model must match its approved article');
+  const { code, metadata } = await processor.render(hasModel ? reviewContent.replace(modelMarker, renderJumpingSecondsModel(lang)) : reviewContent);
   const tree = parseFragment(code);
   const imgRoot = join(root, 'src/content/posts/_images');
   async function imageData(src) {
@@ -106,7 +116,7 @@ for (const lang of ['hu', 'en']) {
 <div class="reader-layout"><aside class="reader-sidebar"><details open><summary>${hu ? 'A cikk fejezetei' : 'In this article'}</summary><nav><ol>${headings.map((h,i)=>`<li><a href="#${esc(h.slug)}"><span>${String(i+1).padStart(2,'0')}</span>${esc(h.text)}</a></li>`).join('')}</ol></nav></details><button type="button" class="review-size" data-review-size aria-pressed="false">${hu ? 'Nagyobb betűméret' : 'Larger text'}</button></aside>
 <div class="reading-column"><div class="article-body">${serialize(tree)}</div><details class="reader-sources" open><summary><h2>${hu ? 'Források' : 'Sources'}</h2></summary><ol>${f.sources.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a></li>`).join('')}</ol></details></div></div></article></main>
 <footer class="review-end">${hu ? 'Helyi szöveg- és képelőnézet, a Lume jelenlegi tipográfiájával. A visszajelzésed után javítjuk vagy időzítjük.' : 'Local text and image preview using the current Lume typography. Revisions or scheduling follow your feedback.'}</footer>
-<script>document.querySelector('[data-review-theme]').addEventListener('click',function(){const on=this.getAttribute('aria-pressed')!=='true';this.setAttribute('aria-pressed',String(on));document.documentElement.dataset.theme=on?'dark':'light'});document.querySelector('[data-review-size]').addEventListener('click',function(){const on=this.getAttribute('aria-pressed')!=='true';this.setAttribute('aria-pressed',String(on));document.documentElement.dataset.textSize=on?'large':'standard'});</script></body></html>`;
+<script>document.querySelector('[data-review-theme]').addEventListener('click',function(){const on=this.getAttribute('aria-pressed')!=='true';this.setAttribute('aria-pressed',String(on));document.documentElement.dataset.theme=on?'dark':'light'});document.querySelector('[data-review-size]').addEventListener('click',function(){const on=this.getAttribute('aria-pressed')!=='true';this.setAttribute('aria-pressed',String(on));document.documentElement.dataset.textSize=on?'large':'standard'});${hasModel ? jumpingSecondsModelScript(lang) : ''}</script></body></html>`;
   await writeFile(join(out, filename), body);
   report.push({ lang, path:join(out, filename), draft:f.draft, scheduled, words:content.trim().split(/\s+/).length, sections:headings.length, sources:f.sources.length });
 }

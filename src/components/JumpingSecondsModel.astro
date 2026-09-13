@@ -1,0 +1,9 @@
+---
+import { renderJumpingSecondsModel, jumpingSecondsModelCSS, jumpingSecondsModelScript } from '../lib/jumping-seconds-view.mjs';
+import type { Lang } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<style is:inline set:html={jumpingSecondsModelCSS} />
+<Fragment set:html={renderJumpingSecondsModel(lang)} />
+<script is:inline set:html={jumpingSecondsModelScript(lang)} />
