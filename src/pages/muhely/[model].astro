@@ -1,0 +1,7 @@
+---
+import JournalPage from '../../components/journal/JournalPage.astro';
+import { sharedModelPaths } from '../../lib/shared-models';
+export async function getStaticPaths() { return sharedModelPaths('hu'); }
+const { post } = Astro.props;
+---
+<JournalPage view="model" post={post} />

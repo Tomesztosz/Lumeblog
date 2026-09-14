@@ -5,6 +5,8 @@ import DesignArticle from "./DesignArticle.astro";
 import DesignLibrary from "./DesignLibrary.astro";
 import DesignCalendar from "./DesignCalendar.astro";
 import DesignWorkshop from "./DesignWorkshop.astro";
+import DesignModelPage from './DesignModelPage.astro';
+import { sharedModel } from '../../lib/shared-models';
 import DesignAbout from "./DesignAbout.astro";
 import DesignNotFound from "./DesignNotFound.astro";
 import { getPosts, getTranslation, type Post } from "../../lib/posts";
@@ -45,18 +47,20 @@ const posts = (await getPosts(lang)).filter(
   (p) => !preview || p.data.date <= new Date(),
 );
 const post =
-  view === "article"
+  (view === "article" || view === "model")
     ? (Astro.props.post ??
       posts.find((p) =>
         postId ? p.id === postId : p.data.translationKey === "brew",
       ))
     : undefined;
-if (view === "article" && !post) throw new Error("Missing journal article");
+if ((view === "article" || view === "model") && !post) throw new Error("Missing journal article");
 const other = lang === "hu" ? "en" : "hu";
 const twin = post ? await getTranslation(post, other) : undefined;
 const t = DESIGN_STUDY[lang];
 const alternate =
-  view === "article"
+  view === 'model'
+    ? (twin && sharedModel(twin)?.url) || designWorkshop(other)
+    : view === "article"
     ? twin && (!preview || twin.data.date <= new Date())
       ? designPost(twin)
       : designColumn(other, post!.data.column)
@@ -72,7 +76,7 @@ const alternate =
               ? designAbout(other)
               : designHome(other) + (preview && view === "404" ? "404/" : "");
 const title =
-  post?.data.title ??
+  (view === 'model' && post ? sharedModel(post)?.title : post?.data.title) ??
   (column
     ? COLUMNS[column][lang].name
     : view === "archive"
@@ -104,7 +108,7 @@ const metadata = preview
   view={view}
   title={title}
   alternate={alternate}
-  active={column ?? post?.data.column ?? view}
+  active={view === 'model' ? 'workshop' : column ?? post?.data.column ?? view}
   metadata={metadata}
 >
   {view === "home" && <DesignHome lang={lang} />}
@@ -114,6 +118,7 @@ const metadata = preview
   )}
   {view === "calendar" && <DesignCalendar lang={lang} />}
   {view === "workshop" && <DesignWorkshop lang={lang} posts={posts} />}
+  {view === 'model' && post && <DesignModelPage post={post} />}
   {view === "about" && <DesignAbout lang={lang} />}
   {view === "404" && <DesignNotFound lang={lang} />}
 </DesignShell>

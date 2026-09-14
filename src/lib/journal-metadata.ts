@@ -15,6 +15,7 @@ import {
 import { urlOf, type Post } from "./posts";
 import type { DesignView } from "./design";
 import { CALENDAR_UI, calendarEntries, calendarUrl } from "./releases";
+import { sharedModel, publicModelPosts } from './shared-models';
 
 // The existing public metadata, independent of the approved visual components.
 // Compare the built output with the pre-migration baseline after every change.
@@ -38,6 +39,20 @@ export async function journalMetadata({
   const t = UI[lang],
     other = otherLang(lang);
   const absolute = (path: string) => new URL(path, site).href;
+  if (view === 'model' && post) {
+    const model = sharedModel(post)!;
+    const cover = post.data.cover;
+    const image = cover ? await getImage({ src: cover.src, width: Math.min(1200, cover.src.width), format: 'png' }) : undefined;
+    return {
+      title: model.title,
+      description: model.description,
+      altUrl: twin ? sharedModel(twin)?.url ?? workshopUrl(other) : workshopUrl(other),
+      hasTranslation: Boolean(twin && sharedModel(twin)),
+      ogType: 'website' as const,
+      socialImage: image && cover ? { src: image.src, width: Number(image.attributes.width), height: Number(image.attributes.height), alt: cover.alt } : undefined,
+      structuredData: { '@context': 'https://schema.org', '@type': 'WebPage', '@id': absolute(model.url), url: absolute(model.url), name: model.title, description: model.description, inLanguage: lang, isAccessibleForFree: true, isPartOf: { '@id': absolute('/#website') }, relatedLink: absolute(urlOf(post)) },
+    };
+  }
   if (view === "article" && post) {
     const c = COLUMNS[post.data.column][lang];
     const canonical = absolute(urlOf(post));
@@ -184,9 +199,7 @@ export async function journalMetadata({
     };
   }
   if (view === "workshop") {
-    const models = posts.filter(
-      (p) => p.data.column === "movement" && p.data.model,
-    );
+    const models = publicModelPosts(posts);
     const canonical = absolute(workshopUrl(lang));
     return {
       title: t.workshopSeoTitle,
@@ -206,8 +219,8 @@ export async function journalMetadata({
           itemListElement: models.map((p, index) => ({
             "@type": "ListItem",
             position: index + 1,
-            name: p.data.model!.title,
-            url: absolute(urlOf(p)),
+            name: sharedModel(p)!.title,
+            url: absolute(sharedModel(p)!.url),
           })),
         },
       },

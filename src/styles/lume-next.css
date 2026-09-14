@@ -362,6 +362,30 @@ svg {
   margin: 26px 0 28px;
   color: var(--muted);
 }
+.cover-story-current .cover-copy h1 { font-family: var(--font-serif); font-size: clamp(38px, 4.5vw, 72px); letter-spacing: -.04em; line-height: 1.08; text-wrap: balance; overflow-wrap: anywhere; }
+.cover-story-current > .design-media { align-self: center; margin: 0; min-width: 0; }
+.cover-story-current .design-media-image img { object-fit: contain; }
+.cover-story-current .design-media figcaption { display: block; }
+.cover-story-current .brand-name { margin-top: 32px; line-height: 1.7; }
+.story > .design-media { margin: 0; }
+.home-workshop { margin: 70px var(--gutter); }
+.home-workshop > .workshop-model { margin-top: 28px; }
+.shared-model-page { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter) 70px; }
+.shared-model-page .journal-page-head { padding-inline: 0; }
+.shared-model-stage { min-width: 0; }
+.shared-model-stage .workshop-model-standalone { display: block; border: 0; padding: 0; margin: 0; }
+.shared-model-page .workshop-poster { min-height: 200px; }
+.shared-model-note, .shared-model-credit { color: var(--muted); font: 12px/1.7 var(--font-sans); margin-top: 20px; }
+.shared-model-reading { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 28px; }
+.shared-model-reading h2 { font: 440 clamp(26px, 3vw, 40px)/1.2 var(--font-serif); margin: 14px 0; }
+.shared-model-reading p { max-width: 65ch; color: var(--muted); margin-bottom: 20px; }
+.shared-model-reading > a, .shared-model-credit a { text-decoration: underline; text-underline-offset: 4px; }
+.model-share { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; margin: 20px 0; font: 13px/1.5 var(--font-sans); }
+.model-share > a, .model-share > button { padding: 10px 0; text-decoration: underline; text-underline-offset: 5px; }
+.model-share-status { flex-basis: 100%; font-size: 12px; color: var(--muted); }
+.model-share-status:empty { display: none; }
+.model-share-fallback { width: 100%; }
+.model-share-fallback input { display: block; width: 100%; margin-top: 8px; padding: 12px; color: var(--ink); background: var(--paper); border: 1px solid var(--line); font: 12px var(--font-mono); }
 .read-link {
   display: flex;
   align-items: center;

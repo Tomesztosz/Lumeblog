@@ -25,4 +25,5 @@ jobs:
       - run: npm ci
       - run: npm audit --audit-level=low
       - run: node --test scripts/post-needs-build.test.mjs
+      - run: node --test scripts/published-feed.test.mjs
       - run: npm run build

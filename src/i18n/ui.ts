@@ -8,6 +8,35 @@ export const LANGS = ['hu', 'en'] as const;
 export type Lang = (typeof LANGS)[number];
 export const DEFAULT_LANG: Lang = 'hu';
 
+export function modelPageUrl(lang: Lang, key: string) {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(key)) throw new Error('Invalid model key');
+  return `${lang === 'hu' ? '/muhely/' : '/en/workshop/'}${key}/`;
+}
+export const SHARED_MODEL_UI = {
+  hu: {
+    eyebrow: 'Lume Műhely / Interaktív modell', pageLink: 'A modell saját oldala',
+    share: 'Megosztás', copy: 'Link másolása', copied: 'A linket a vágólapra másoltuk.',
+    failed: 'Használd a kézzel másolható linket: jelöld ki és másold ki az alábbi címet.',
+    cancelled: 'A megosztást megszakítottad.', shared: 'A megosztófelület megnyílt.',
+    linkLabel: 'A modell megosztható címe', fullStory: 'Értsd meg a működését',
+    fullStoryNote: 'A részletes magyarázatot, a műszaki hátteret és a forrásokat a kapcsolódó cikkben találod.',
+    allModels: 'További modellek a Műhelyben', note: 'Saját oktatási szemléltetés, nem egy konkrét kaliber teljes szimulációja.',
+    jumpingTitle: 'Ugró másodperc', jumpingDescription: 'Hasonlítsd össze a folyamatos belső ritmust a másodpercenként lépő mutatóval. Lassíts, léptess, és figyeld meg a csillag és a kar kapcsolatát.',
+    imageCredit: 'A megosztási előnézet képe',
+  },
+  en: {
+    eyebrow: 'Lume Workshop / Interactive model', pageLink: 'Open the model page',
+    share: 'Share', copy: 'Copy link', copied: 'Link copied to the clipboard.',
+    failed: 'Use the manual alternative: select and copy the link below.',
+    cancelled: 'Sharing cancelled.', shared: 'The sharing interface opened.',
+    linkLabel: 'Shareable model address', fullStory: 'Understand how it works',
+    fullStoryNote: 'Find the detailed explanation, technical background and sources in the accompanying article.',
+    allModels: 'More models in the Workshop', note: 'An original educational illustration, not a complete simulation of a particular calibre.',
+    jumpingTitle: 'Jumping seconds', jumpingDescription: 'Compare the continuous internal rhythm with a hand that advances once per second. Slow down, step through and explore the relationship between the star and flirt.',
+    imageCredit: 'Share preview image',
+  },
+} as const;
+
 // Shared bilingual copy for the approved inline model and offline article review.
 export const JUMPING_SECONDS_MODEL = {
   hu: {

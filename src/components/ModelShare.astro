@@ -1,0 +1,20 @@
+---
+import { SHARED_MODEL_UI, type Lang } from '../i18n/ui';
+interface Props { lang: Lang; url: string; title: string; showPageLink?: boolean }
+const { lang, url, title, showPageLink = false } = Astro.props;
+const t = SHARED_MODEL_UI[lang];
+const absolute = new URL(url, Astro.site).href;
+---
+<div class="model-share" data-model-share data-model-url={absolute} data-share-title={`${title} | Lume`} data-copied={t.copied} data-failed={t.failed} data-cancelled={t.cancelled} data-shared={t.shared}>
+  {showPageLink && <a href={url}>{t.pageLink} ↗</a>}
+  <button type="button" data-model-native-share hidden>{t.share} ↗</button>
+  <button type="button" data-model-copy hidden>{t.copy}</button>
+  <p class="model-share-status" data-model-share-status role="status" aria-live="polite"></p>
+  <label class="model-share-fallback" data-model-share-fallback hidden>{t.linkLabel}<input type="text" value={absolute} readonly /></label>
+  <noscript><a href={absolute}>{absolute}</a></noscript>
+</div>
+<script>
+  import { bindModelSharing } from '../lib/model-sharing';
+  bindModelSharing();
+  document.addEventListener('astro:page-load', bindModelSharing);
+</script>

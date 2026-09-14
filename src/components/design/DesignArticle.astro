@@ -23,6 +23,8 @@ import DesignCard from "./DesignCard.astro";
 import DesignModel from "./DesignModel.astro";
 import DesignArticleBody from "./DesignArticleBody.astro";
 import JumpingSecondsModel from "../JumpingSecondsModel.astro";
+import ModelShare from '../ModelShare.astro';
+import { sharedModel } from '../../lib/shared-models';
 interface Props {
   post: Post;
 }
@@ -155,6 +157,7 @@ const articleLinks = Object.fromEntries(
           </ol>
         </details>
       )}
+      {sharedModel(post)?.kind === 'inline' && <ModelShare lang={lang} title={sharedModel(post)!.title} url={sharedModel(post)!.url} showPageLink />}
       <div class="article-end-actions">
         <button data-copy-link data-copied={t.copied} data-error={t.copyFailed}>
           {t.copy}

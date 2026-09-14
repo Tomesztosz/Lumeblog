@@ -7,10 +7,13 @@ interface Props {
   post: Post;
   lead?: boolean;
   href?: string;
+  articleCover?: boolean;
 }
-const { post, lead = false, href } = Astro.props;
+const { post, lead = false, href, articleCover = false } = Astro.props;
 const t = DESIGN_STUDY[post.data.lang];
-const cover = designCover(post);
+const cover = articleCover
+  ? post.data.cover && { ...post.data.cover, caption: undefined, replaced: false }
+  : designCover(post);
 const source = cover?.src;
 const cutout = /transparent|cutout/.test(source?.src ?? "");
 const photograph = post.data.translationKey === "brew";

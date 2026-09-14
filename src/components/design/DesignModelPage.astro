@@ -1,0 +1,30 @@
+---
+import { SHARED_MODEL_UI, workshopUrl } from '../../i18n/ui';
+import { urlOf, type Post, type ModelPost } from '../../lib/posts';
+import { sharedModel } from '../../lib/shared-models';
+import DesignModel from './DesignModel.astro';
+import JumpingSecondsModel from '../JumpingSecondsModel.astro';
+import ModelShare from '../ModelShare.astro';
+interface Props { post: Post }
+const { post } = Astro.props;
+const lang = post.data.lang, t = SHARED_MODEL_UI[lang], model = sharedModel(post)!;
+---
+<article class="shared-model-page" data-shared-model-page={model.key}>
+  <header class="journal-page-head">
+    <p class="eyebrow">{t.eyebrow}</p>
+    <h1>{model.title}</h1>
+    <p>{model.description}</p>
+    <ModelShare lang={lang} url={model.url} title={model.title} />
+  </header>
+  <div class="shared-model-stage">
+    {model.kind === 'frame' ? <DesignModel post={post as ModelPost} variant="standalone" /> : <JumpingSecondsModel lang={lang} />}
+  </div>
+  <p class="shared-model-note">{t.note}</p>
+  <section class="shared-model-reading">
+    <p class="eyebrow">{t.fullStory}</p>
+    <h2><a href={urlOf(post)}>{post.data.title} ↗</a></h2>
+    <p>{t.fullStoryNote}</p>
+    <a href={workshopUrl(lang)}>{t.allModels} ↗</a>
+  </section>
+  {post.data.cover && <p class="shared-model-credit">{t.imageCredit}: {post.data.cover.creditUrl ? <a href={post.data.cover.creditUrl} target="_blank" rel="noopener noreferrer">{post.data.cover.credit}</a> : post.data.cover.credit}{post.data.cover.license && <> · {post.data.cover.licenseUrl ? <a href={post.data.cover.licenseUrl} rel="license noopener noreferrer" target="_blank">{post.data.cover.license}</a> : post.data.cover.license}</>}</p>}
+</article>

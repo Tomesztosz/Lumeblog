@@ -2,13 +2,17 @@
 import { UI, DESIGN_STUDY, type Lang } from "../../i18n/ui";
 import type { ModelPost, Post } from "../../lib/posts";
 import DesignModel from "./DesignModel.astro";
+import { publicModelPosts, sharedModel } from '../../lib/shared-models';
+import { urlOf } from '../../lib/posts';
+import ModelShare from '../ModelShare.astro';
+import JumpingSecondsModel from '../JumpingSecondsModel.astro';
 interface Props {
   lang: Lang;
   posts: Post[];
 }
 const { lang, posts } = Astro.props;
 const t = UI[lang];
-const models = posts.filter((p): p is ModelPost => Boolean(p.data.model));
+const models = publicModelPosts(posts);
 ---
 
 <section class="journal-workshop">
@@ -23,8 +27,13 @@ const models = posts.filter((p): p is ModelPost => Boolean(p.data.model));
   </header>
   <div class="workshop-list">
     {models.length ? (
-      models.map((post, index) => (
-        <DesignModel post={post} index={index} featured={index === 0} />
+      models.map((post, index) => post.data.model ? (
+        <DesignModel post={post as ModelPost} index={index} featured={index === 0} />
+      ) : (
+        <article class="workshop-model" id={post.data.translationKey}>
+          <div class="workshop-model-copy"><h2>{sharedModel(post)!.title}</h2><p>{sharedModel(post)!.description}</p><a class="workshop-read" href={urlOf(post)}>{t.workshopRead} →</a><ModelShare lang={lang} url={sharedModel(post)!.url} title={sharedModel(post)!.title} showPageLink /></div>
+          <JumpingSecondsModel lang={lang} />
+        </article>
       ))
     ) : (
       <p class="journal-empty">{t.workshopNoModels}</p>

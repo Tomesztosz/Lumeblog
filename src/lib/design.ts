@@ -48,5 +48,6 @@ export type DesignView =
   | "archive"
   | "calendar"
   | "workshop"
+  | "model"
   | "about"
   | "404";

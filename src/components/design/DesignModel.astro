@@ -4,6 +4,8 @@ import { UI, DESIGN_STUDY, formatDate, type Lang } from "../../i18n/ui";
 import { designCover } from "../../lib/design-media";
 import { designModelSource } from "../../lib/design-models.mjs";
 import { modelSrc, type ModelPost } from "../../lib/posts";
+import { modelPageUrl } from '../../i18n/ui';
+import ModelShare from '../ModelShare.astro';
 
 import { journalLinks } from "../../lib/design";
 const { designPost: urlOf } = journalLinks(Astro.locals.lumePreview === true);
@@ -12,7 +14,7 @@ interface Props {
   post: ModelPost;
   index?: number;
   featured?: boolean;
-  variant?: "entry" | "spotlight" | "inline";
+  variant?: "entry" | "spotlight" | "inline" | "standalone";
 }
 
 const { post, index = 0, featured = false, variant = "entry" } = Astro.props;
@@ -20,6 +22,7 @@ const lang: Lang = post.data.lang;
 const t = UI[lang];
 const d = DESIGN_STUDY[lang];
 const model = post.data.model;
+const pageUrl = modelPageUrl(lang, model.src.split('/').pop()!.replace('.html', ''));
 const cover = designCover(post);
 // A full hero keeps its composition and type legible without a second card crop.
 const imageSource = cover?.src;
@@ -40,7 +43,7 @@ const Heading = "h2";
   ]}
   id={anchor}
 >
-  <div class="workshop-model-copy">
+  {variant !== 'standalone' && <div class="workshop-model-copy">
     <div class="workshop-model-meta">
       <span class="tag">
         {variant === "inline"
@@ -61,7 +64,8 @@ const Heading = "h2";
         {t.workshopRead} <span aria-hidden="true">→</span>
       </a>
     )}
-  </div>
+    <ModelShare lang={lang} url={pageUrl} title={model.title} showPageLink />
+  </div>}
 
   <div
     class="workshop-demo"
@@ -74,7 +78,7 @@ const Heading = "h2";
       data-workshop-poster
       style={`--media-ratio: ${imageSource ? imageSource.width / imageSource.height : 1}`}
     >
-      {imageSource && variant !== "inline" ? (
+      {imageSource && variant !== "inline" && variant !== 'standalone' ? (
         <Image
           src={imageSource}
           alt={cover!.alt}
@@ -86,7 +90,7 @@ const Heading = "h2";
           }
           loading="lazy"
         />
-      ) : variant !== "inline" ? (
+      ) : variant !== "inline" && variant !== 'standalone' ? (
         <div class="workshop-placeholder" aria-hidden="true">
           <span></span>
           <span></span>
@@ -109,7 +113,7 @@ const Heading = "h2";
       </button>
     </div>
 
-    {cover && variant !== "inline" && (
+    {cover && variant !== "inline" && variant !== 'standalone' && (
       <p class="workshop-image-credit" data-workshop-credit>
         {cover.caption ? (
           cover.caption.map((part) =>

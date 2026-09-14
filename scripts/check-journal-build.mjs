@@ -8,6 +8,7 @@ import { MODEL_NAMES, isJournalModelPath } from "../src/lib/design-models.mjs";
 
 // Integration checks on the real build. Optional HTTP verification never
 // executes browser code or follows a redirect off the local server.
+await import('./check-shared-models.mjs');
 const directory = resolve("dist");
 const base = process.argv[2] ? new URL(process.argv[2]) : undefined;
 if (base)
