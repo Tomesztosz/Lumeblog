@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "url": "https://www.seikowatches.com/us-en/products/5sports/hdb005",
+    "decision": "excluded",
+    "reviewedAt": "2026-09-14",
+    "reason": "A gyártó 2026. októberi megjelenést ad meg. A 4R36-os, 42,5 mm-es Seiko 5 Sports SKX változatot ebben a szerkesztői válogatásban nem emeljük ki külön; ez nem a dátum hiánya miatti kizárás és nem állítás arról, hogy nincs új termék."
+  },
+  {
+    "url": "https://www.seikowatches.com/global-en/products/kingseiko/special/vanac",
+    "decision": "excluded",
+    "reviewedAt": "2026-09-14",
+    "reason": "A szeptember 9-i hír a VANAC különoldal bővülése. Az új HKF005 számlapváltozatát most nem vesszük fel külön a szerkesztői válogatásba. A korábbi SLA-modellek 2025. júliusi és 2026. januári dátumai nem alkalmazhatók rá."
+  },
+  {
+    "url": "https://www.breitling.com/us-en/watches/nfl-collection/",
+    "decision": "excluded",
+    "reviewedAt": "2026-09-14",
+    "reason": "Ellenőrzött NFL csapatkiadás-katalógus, több Chronomat és Endurance Pro változattal. A sportszponzorációs csapatszín-választékot most nem emeljük ki külön naptárkártyaként. A még külön sorban lévő termékoldalak nem tekinthetők ettől automatikusan feldolgozottnak."
+  }
+]

@@ -87,16 +87,25 @@ for (const [lang, name, twin] of [['hu','megnezes.html','english.html'],['en','e
     assert(!content.includes('legacy-burgundy-wrist-preview'), 'Remove the uncleared retailer photograph');
   }
   if (key === 'todd-beamer-rolex') {
-    assert.equal(f.draft, true, 'Reworked Beamer visuals remain a draft until review and scheduling activation');
-    assert(f.reviewCover, 'Private review images must stay out of production imports');
-    assert(f.cover.src.endsWith('todd-beamer-hero-v2.webp'));
+    assert.equal(f.draft, false, 'Owner explicitly approved Wednesday scheduling on 2026-09-14');
+    assert(!f.reviewCover && Object.hasOwn(parseFrontmatter(raw).frontmatter, 'cover'));
+    assert.equal(new Date(f.date).toISOString(), '2026-09-16T03:00:00.000Z');
+    assert(!content.includes('lume-review-'), 'Promote approved body images explicitly');
+    assert(f.cover.src.endsWith('todd-beamer-hero-v1.webp'), 'Use the selected actual-watch montage');
     assert(f.cover.credit.includes('AI'), 'Disclose the illustrative background');
-    assert(f.cover.alt.includes(lang === 'hu' ? 'Nem Beamer saját órája' : "Not Beamer's own watch"), 'Do not misidentify the comparison watch');
-    assert.equal(f.cover.license, 'CC BY-SA 4.0');
+    assert(f.cover.alt.includes(lang === 'hu' ? 'saját, sérült' : 'own damaged'), 'Identify the real watch in the hero');
+    const pendingNotice = lang === 'hu' ? 'Az engedélykérés folyamatban van, válasz még nem érkezett.' : 'Permission has been requested; no response has been received yet.';
+    assert(f.cover.credit.includes(pendingNotice));
+    assert(all('figcaption').some(n => text(n).includes(pendingNotice)), 'Pending notice must be visible under the hero');
+    assert.equal(f.cover.creditUrl, 'https://www.hodinkee.com/articles/remembering-911-through-the-rolex-that-is-frozen-in-time');
+    assert(!f.cover.license && !f.cover.licenseUrl, 'Do not transfer the comparison photo CC licence to the actual-watch photograph');
+    for (const name of ['todd-beamer-hero-v1.webp', 'todd-beamer-card-v1.webp', 'beamer-memorial-soergel-v2.webp', 'beamer-comparison-turnograph-cutout-v2.webp']) {
+      assert.deepEqual(await readFile(join(root, 'src/content/posts/_images', name)), await readFile(join(out, 'sources', name)), 'Existing selected images must not be redrawn or silently replaced');
+    }
     assert.equal(all('img').length, 3, 'Hero, documentary memorial photo and isolated comparison watch');
     assert(all('img').some(n => /beamer-comparison-turnograph-cutout-v2/.test(attr(n,'src'))));
     assert(all('img').some(n => /beamer-memorial-soergel-v2/.test(attr(n,'src'))));
-    for (const forbidden of ['beamer-watch-cutout-v1', 'beamer-portrait-nps', 'todd-beamer-hero-v1']) {
+    for (const forbidden of ['beamer-watch-cutout-v1', 'beamer-portrait-nps']) {
       assert(!html.includes(forbidden) && !raw.includes(forbidden), 'Removed photo still referenced');
       assert(!(await readdir(join(out, 'assets'))).some(n => n.includes(forbidden)), 'Removed photo still in active preview assets');
     }
@@ -181,7 +190,7 @@ let publicFiles = 0;
 async function checkBuild(dir) {
   for (const e of await readdir(dir, { withFileTypes:true })) {
     const path = join(dir,e.name);
-    if (key === 'todd-beamer-rolex') assert(!/beamer/i.test(e.name), `Private draft asset leaked into build: ${path}`);
+    if (key === 'todd-beamer-rolex') assert(!/beamer-.*(?:original|mask|portrait)|beamer-watch-cutout-v1|todd-beamer-(?:hero|card)-v2/i.test(e.name), `Unselected source asset leaked into build: ${path}`);
     if (key === 'ugro-masodperc') assert(!/b10-photo-v1|imagegen-mask|lange-jumping-.*original/i.test(e.name), `Private source image leaked into build: ${path}`);
     assert(!/legacy-burgundy-(?:wrist-preview|banner|product|wrist[.])/i.test(e.name), `Uncleared reference image leaked into build: ${path}`);
     if (e.isDirectory()) await checkBuild(path);
