@@ -75,10 +75,13 @@ a listákon, az RSS-ben és a sitemapben is — a jövőbeli cikkhez oldal sem g
 **Fejlesztés közben (`npm run dev`) viszont minden látszik**, hogy a készülő írásokat
 meg tudd nézni a saját gépeden, mielőtt élesbe kerülnek.
 
-Mivel az oldal statikus, a dátum önmagában nem elég: kell egy újraépítés is azon a
-napon. Ezt a `.github/workflows/utemezett-megjelenes.yml` intézi — naponta 03:00 UTC-kor
-(nyáron 05:00, télen 04:00 magyar idő) megnézi, van-e aznapra datált cikk vagy naptári
-állapotváltás, és csak akkor kér újraépítést. A GitHub felületén kézzel is indítható
+Mivel az oldal statikus, a dátum önmagában nem elég: kell egy újraépítés is.
+Ezt a `.github/workflows/utemezett-megjelenes.yml` intézi naponta 23:00, 00:00 és
+03:00 UTC-kor. Az első két ellenőrzés a budapesti 01:00-s megjelenést kezeli nyári
+és téli időszámításban, a reggeli ellenőrzés tartalék. A cikkfigyelő a budapesti
+naptári napot és a pontos publikációs idő elérését is vizsgálja. Csak esedékes cikk
+vagy naptári állapotváltás indít újraépítést. A GitHub és a Cloudflare build késhet,
+ez nem percre pontos garancia. A GitHub felületén kézzel is indítható
 (Actions → Ütemezett megjelenés → Run workflow), ha valamit azonnal ki kell tenni.
 
 **Poszt törlésekor:** az Astro tartalom-gyorsítótára a `node_modules/.astro/data-store.json`-ban

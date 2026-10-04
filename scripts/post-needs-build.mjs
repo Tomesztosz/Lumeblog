@@ -17,9 +17,11 @@ export function publicationDate(raw) {
   return date;
 }
 
+const publicationDay = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Budapest', year: 'numeric', month: '2-digit', day: '2-digit' });
+
 export function dueToday(raw, now = new Date()) {
   const date = publicationDate(raw);
-  return date !== null && date <= now && date.toISOString().slice(0, 10) === now.toISOString().slice(0, 10);
+  return date !== null && date <= now && publicationDay.format(date) === publicationDay.format(now);
 }
 
 async function main() {

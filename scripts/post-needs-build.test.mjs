@@ -32,6 +32,24 @@ test('Piszkozat, body-only dates and malformed times cannot trigger publication'
   assert.throws(() => publicationDate(post('2026-09-14T05:00:00')));
   assert.throws(() => publicationDate(post('tomorrow')));
 });
-test('Compare the UTC day, even with an offset crossing midnight', () => {
+test('Compare the Budapest day, even with an offset crossing midnight', () => {
   assert.equal(dueToday(post('2026-09-15T00:30:00+02:00'), new Date('2026-09-14T23:00:00Z')), true);
+});
+
+test('Bravur Monday 01:00 is due Sunday 23:00 UTC and survives a delayed run across UTC midnight', async () => {
+  for (const lang of ['hu', 'en']) {
+    const raw = await readFile(new URL(`../src/content/posts/${lang}/bravur.md`, import.meta.url), 'utf8');
+    assert.equal(publicationDate(raw).toISOString(), '2026-10-04T23:00:00.000Z');
+    assert.equal(dueToday(raw, new Date('2026-10-04T22:59:59Z')), false);
+    for (const now of ['2026-10-04T23:00:00Z', '2026-10-05T00:20:00Z', '2026-10-05T03:00:00Z']) {
+      assert.equal(dueToday(raw, new Date(now)), true);
+    }
+    assert.equal(dueToday(raw, new Date('2026-10-05T22:00:00Z')), false);
+  }
+});
+
+test('Winter 01:00 uses the explicit CET offset, never the summer UTC hour', () => {
+  const raw = post('2026-11-02T01:00:00+01:00');
+  assert.equal(dueToday(raw, new Date('2026-11-01T23:00:00Z')), false);
+  assert.equal(dueToday(raw, new Date('2026-11-02T00:00:00Z')), true);
 });

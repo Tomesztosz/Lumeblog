@@ -476,16 +476,15 @@ export function otherLang(lang: Lang): Lang {
 /** Dátum a napló formátumában: HU 2026.07.24 · EN 24 Jul 2026 */
 export function formatDate(date: Date, lang: Lang): string {
   if (lang === 'hu') {
-    const y = date.getUTCFullYear();
-    const m = String(date.getUTCMonth() + 1).padStart(2, '0');
-    const d = String(date.getUTCDate()).padStart(2, '0');
-    return `${y}.${m}.${d}`;
+    return new Intl.DateTimeFormat('en-CA', {
+      year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Europe/Budapest',
+    }).format(date).replaceAll('-', '.');
   }
   return new Intl.DateTimeFormat('en-GB', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
-    timeZone: 'UTC',
+    timeZone: 'Europe/Budapest',
   }).format(date);
 }
 

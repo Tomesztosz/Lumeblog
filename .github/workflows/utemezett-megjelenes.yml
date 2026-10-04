@@ -15,9 +15,11 @@ name: Ütemezett megjelenés
 
 on:
   schedule:
-    # Jelenleg UTC-alapú cron van beállítva, téli-nyári korrekció nélkül.
-    # 03:00 UTC = 05:00 Budapest nyáron, 04:00 télen.
-    # Naponta fut: a cikkek mellett a naptár hónapváltásait is kezeli.
+    # Budapest 01:00: nyáron előző nap 23:00 UTC, télen 00:00 UTC.
+    # Mindkét UTC-időpontban ellenőrzünk; a cikk a dátuma előtt nem kerül ki.
+    # A 03:00 UTC-s reggeli ellenőrzés tartalék és a régi cikkidőpontokat is kezeli.
+    # A GitHub futás és a Cloudflare build késhet; ez nem percre pontos garancia.
+    - cron: '0 0,23 * * *'
     - cron: '0 3 * * *'
   # Kézzel is indítható a GitHub felületén (Actions → Run workflow),
   # ha valamit azonnal ki kell tenni.
@@ -37,9 +39,9 @@ jobs:
       - name: Kell-e ma újraépíteni az oldalt?
         id: ellenorzes
         run: |
-          MA=$(date -u +%F)
-          TEGNAP=$(date -u -d yesterday +%F)
-          echo "Mai dátum (UTC): $MA"
+          MA=$(TZ=Europe/Budapest date +%F)
+          TEGNAP=$(TZ=Europe/Budapest date -d yesterday +%F)
+          echo "Mai dátum (Budapest): $MA"
 
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "Kézi indítás: az oldal újraépül."

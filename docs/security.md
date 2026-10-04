@@ -4,6 +4,16 @@ Ellenőrzés: 2026. szeptember 6. A Lume statikus Astro-oldal, amelyet a Cloudfl
 
 ## Javítások
 
+### Célzott függőségjavítás, 2026. október 4.
+
+A Bravur kiadása előtti npm audit két magas besorolású figyelmeztetést jelzett.
+A meglévő verziótartományokon belül a devalue 5.8.2-ről 5.9.4-re, a
+http-cache-semantics 4.2.0-ról 4.3.0-ra frissült. Közvetlen függőség és
+override nem változott. Az új npm audit nulla ismert sérülékenységet jelez.
+Ez célzott csomagellenőrzés, nem új teljes körű biztonsági audit.
+Forrás: [devalue közlemény](https://github.com/advisories/GHSA-j22f-vq7h-c4qm),
+[http-cache-semantics közlemény](https://github.com/advisories/GHSA-ch52-4w7c-c8xp).
+
 ### Célzott függőségjavítás – 2026. szeptember 12.
 
 Az élesítés előtti npm audit az SVGO 4.0.2 csomagnál két ismert figyelmeztetést
