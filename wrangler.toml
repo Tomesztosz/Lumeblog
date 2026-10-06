@@ -6,7 +6,7 @@
 #
 # A klasszikus Pages-folyamat ettől függetlenül működik, ott ez a fájl nem zavar.
 
-name = "lumejournal"
+name = "lumeblog"
 compatibility_date = "2026-07-28"
 
 [assets]
