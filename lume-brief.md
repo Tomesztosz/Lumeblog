@@ -13,6 +13,13 @@
 ## Szerkesztői elv / hangnem
 Nincs megjelenésnapi hajsza, nincs hype. Mélység, mesterség, „a tárgy > a hírek". Researchben pontosság kötelező — kitalált forrás vagy tény tilos.
 
+A magyar cikkek természetes, gördülékeny magyar prózában készüljenek, ne
+angol mondatszerkezeteket vagy reklámszlogeneket kövessenek. Kerüljük az
+erőltetett metaforákat, a hatás kedvéért széttördelt mondatokat és a minden
+bekezdés végére odatett csattanót. A személyes hang maradhat, de konkrét
+megfigyelésekből induljon ki. A kétnyelvűség tartalmi egyezést jelent,
+nem kötelezően azonos mondatszerkezetet. Tulajdonosi pontosítás: 2026-10-07.
+
 ## Design-nyelv
 - **Hangulat:** vintage, meleg örökség. Alapból „nappali", világos nézet.
 - **Aláírás-elem:** „Lámpa le" kapcsoló → az egész oldal meleg gyertyafény-sötétbe vált, és a számlap-indexek, a mutatók, a LUME felirat és a rovatcímkék öreg Super-LumiNova zölddel derengeni kezdenek. Ez az egyetlen „bátor" elem; körülötte minden csendes.

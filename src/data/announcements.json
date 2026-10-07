@@ -1,5 +1,35 @@
 [
   {
+    "id": "omega-james-bond-spectre-2026",
+    "brand": "Omega",
+    "brandKey": "omega",
+    "family": "Seamaster Diver 300M",
+    "model": "James Bond / Spectre",
+    "reference": "210.30.42.20.03.004 / 210.30.42.20.01.023",
+    "status": "introduced",
+    "firstSeen": "2026-10-07",
+    "sourceChecked": "2026-10-07",
+    "sourceUrl": "https://press.omegawatches.com/omega-introduces-the-seamaster-diver-300m-james-bond-and-spectre-collection/",
+    "image": "/img/calendar/omega-bond-spectre-2026.webp",
+    "imageWidth": 1440,
+    "imageHeight": 780,
+    "imageCredit": "OMEGA; elrendezés / layout: Lume",
+    "copy": {
+      "hu": {
+        "dateLabel": "Bemutatva: 2026. október 5.",
+        "summary": "Hat 42 milliméteres Seamaster, 8806-os kaliberrel. Két önálló acélmodell és két, egyenként 77 párra limitált szett.",
+        "selection": "A Bond-különkiadások történetéhez kapcsolódó új kollekció, a kék Bond és a fekete Spectre változattal.",
+        "availability": "A közlemény október 5-i elérhetőséget jelez. A helyi készlet külön ellenőrizendő; ez nem jövőbeli megjelenés."
+      },
+      "en": {
+        "dateLabel": "Introduced: 5 October 2026",
+        "summary": "Six 42mm Seamasters with calibre 8806. Two individual steel models and two sets, each limited to 77 pairs.",
+        "selection": "A new chapter in the Bond editions, with blue Bond and black Spectre versions.",
+        "availability": "The release states availability from 5 October. Check local stock separately; this is not a future launch."
+      }
+    }
+  },
+  {
     "id": "christopher-ward-c60-trident-biscay",
     "brand": "Christopher Ward",
     "brandKey": "christopher-ward",
@@ -8,7 +38,7 @@
     "reference": "C60 Trident Biscay",
     "status": "introduced",
     "firstSeen": "2026-09-06",
-    "sourceChecked": "2026-09-06",
+    "sourceChecked": "2026-10-07",
     "sourceUrl": "https://www.christopherward.com/int/trident-biscay.html",
     "image": "/img/calendar/christopher-ward-biscay.webp",
     "imageWidth": 1125,
@@ -38,7 +68,7 @@
     "reference": "134303",
     "status": "introduced",
     "firstSeen": "2026-09-06",
-    "sourceChecked": "2026-09-13",
+    "sourceChecked": "2026-10-07",
     "sourceUrl": "https://www.rolex.com/watches/new-watches/oyster-perpetual-41",
     "image": "/img/calendar/rolex-op41-product.jpg",
     "imageWidth": 1920,
@@ -68,7 +98,7 @@
     "reference": "M9140G1A0U-0001",
     "status": "introduced",
     "firstSeen": "2026-09-06",
-    "sourceChecked": "2026-09-13",
+    "sourceChecked": "2026-10-07",
     "sourceUrl": "https://www.tudorwatch.com/en/watches/tudor-northflag/m9140g1a0u-0001",
     "image": "/img/calendar/tudor-northflag-product.png",
     "imageWidth": 900,
