@@ -1235,3 +1235,6 @@ html:not([data-js]) .workshop-load-note {
     max-height: 240px;
   }
 }
+
+.reader-heading > * { min-width: 0; }
+.reader-heading h1 { overflow-wrap: anywhere; hyphens: auto; }

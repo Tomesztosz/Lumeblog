@@ -4,6 +4,7 @@ import { urlOf, type Post, type ModelPost } from '../../lib/posts';
 import { sharedModel } from '../../lib/shared-models';
 import DesignModel from './DesignModel.astro';
 import JumpingSecondsModel from '../JumpingSecondsModel.astro';
+import RattrapanteModel from '../RattrapanteModel.astro';
 import ModelShare from '../ModelShare.astro';
 interface Props { post: Post }
 const { post } = Astro.props;
@@ -17,7 +18,7 @@ const lang = post.data.lang, t = SHARED_MODEL_UI[lang], model = sharedModel(post
     <ModelShare lang={lang} url={model.url} title={model.title} />
   </header>
   <div class="shared-model-stage">
-    {model.kind === 'frame' ? <DesignModel post={post as ModelPost} variant="standalone" /> : <JumpingSecondsModel lang={lang} />}
+    {model.kind === 'frame' ? <DesignModel post={post as ModelPost} variant="standalone" /> : model.key === 'rattrapante' ? <RattrapanteModel lang={lang} /> : <JumpingSecondsModel lang={lang} />}
   </div>
   <p class="shared-model-note">{t.note}</p>
   <section class="shared-model-reading">

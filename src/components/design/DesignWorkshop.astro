@@ -6,6 +6,7 @@ import { publicModelPosts, sharedModel } from '../../lib/shared-models';
 import { urlOf } from '../../lib/posts';
 import ModelShare from '../ModelShare.astro';
 import JumpingSecondsModel from '../JumpingSecondsModel.astro';
+import RattrapanteModel from '../RattrapanteModel.astro';
 interface Props {
   lang: Lang;
   posts: Post[];
@@ -32,7 +33,7 @@ const models = publicModelPosts(posts);
       ) : (
         <article class="workshop-model" id={post.data.translationKey}>
           <div class="workshop-model-copy"><h2>{sharedModel(post)!.title}</h2><p>{sharedModel(post)!.description}</p><a class="workshop-read" href={urlOf(post)}>{t.workshopRead} →</a><ModelShare lang={lang} url={sharedModel(post)!.url} title={sharedModel(post)!.title} showPageLink /></div>
-          <JumpingSecondsModel lang={lang} />
+          {sharedModel(post)!.key === 'rattrapante' ? <RattrapanteModel lang={lang} /> : <JumpingSecondsModel lang={lang} />}
         </article>
       ))
     ) : (

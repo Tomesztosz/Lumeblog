@@ -24,9 +24,10 @@ for (const lang of ['hu', 'en']) {
   assert.equal(textOf(home.elements.find(n => n.tagName === 'h1')), featured.data.title);
   const publicIds = new Set(orderedPublishedPosts(posts, now).map(p => p.id));
   for (const post of posts) {
-    const key = post.data.model?.src?.match(/^\/widgets\/([a-z0-9-]+)\.html$/)?.[1] ?? (post.data.translationKey === 'ugro-masodperc' && post.body.includes('<!-- lume-model ugro-masodperc -->') ? 'ugro-masodperc' : undefined);
+    const inlineKey = ['ugro-masodperc', 'rattrapante'].find(key => post.data.translationKey === key && post.body.includes(`<!-- lume-model ${key} -->`));
+    const key = post.data.model?.src?.match(/^\/widgets\/([a-z0-9-]+)\.html$/)?.[1] ?? inlineKey;
     if (!key || post.data.column !== 'movement') continue;
-    assert(key === 'ugro-masodperc' || MODEL_NAMES.includes(key));
+    assert(['ugro-masodperc', 'rattrapante'].includes(key) || MODEL_NAMES.includes(key));
     const path = lang === 'hu' ? `/muhely/${key}/` : `/en/workshop/${key}/`;
     if (!publicIds.has(post.id)) {
       assert.equal(await exists(`dist${path}index.html`), false, `Private model exposed: ${path}`);

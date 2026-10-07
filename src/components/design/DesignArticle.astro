@@ -23,6 +23,7 @@ import DesignCard from "./DesignCard.astro";
 import DesignModel from "./DesignModel.astro";
 import DesignArticleBody from "./DesignArticleBody.astro";
 import JumpingSecondsModel from "../JumpingSecondsModel.astro";
+import RattrapanteModel from "../RattrapanteModel.astro";
 import ModelShare from '../ModelShare.astro';
 import { sharedModel } from '../../lib/shared-models';
 interface Props {
@@ -121,11 +122,15 @@ const articleLinks = Object.fromEntries(
       <div class="article-body">
         <DesignArticleBody
           modelPath={post.data.model?.src}
+          inlineModelKey={post.data.translationKey}
           articleLinks={articleLinks}
         >
           <Content />
           {post.data.translationKey === 'ugro-masodperc' && (
             <JumpingSecondsModel slot="inlineModel" lang={lang} />
+          )}
+          {post.data.translationKey === 'rattrapante' && (
+            <RattrapanteModel slot="inlineModel" lang={lang} />
           )}
           {post.data.model && (
             <DesignModel

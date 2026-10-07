@@ -1,10 +1,14 @@
 import { MODEL_NAMES } from './design-models.mjs';
-import { SHARED_MODEL_UI, modelPageUrl } from '../i18n/ui';
+import { SHARED_MODEL_UI, RATTRAPANTE_MODEL, modelPageUrl } from '../i18n/ui';
 import { orderedPublishedPosts } from './published-feed.mjs';
 import { getPosts, type Post } from './posts';
 
 export function sharedModel(post: Post) {
   if (post.data.column !== 'movement') return undefined;
+  if (post.data.translationKey === 'rattrapante' && post.body?.includes('<!-- lume-model rattrapante -->')) {
+    const t = RATTRAPANTE_MODEL[post.data.lang];
+    return { key: 'rattrapante', kind: 'inline' as const, title: t.title, description: t.intro, level: 'advanced' as const, url: modelPageUrl(post.data.lang, 'rattrapante') };
+  }
   if (post.data.model) {
     const key = MODEL_NAMES.find((name) => post.data.model!.src === `/widgets/${name}.html`);
     if (!key) throw new Error(`Unapproved model path: ${post.id}`);

@@ -1,0 +1,45 @@
+{
+  "article": "rattrapante",
+  "credit": "Lange Uhren GmbH",
+  "sources": [
+    {
+      "name": "double-split-macro-hd.jpg",
+      "url": "https://img.alange-soehne.com/cinemascope-lg-1/o-dpr-2/6667a281ecae1a4e6dea8cb1784df4adc4d6b1ff.jpg",
+      "sha256": "5db698eb7013821926a73f3bc3a8994c84ebf79aef1b9a90ee3a51ebdde81198",
+      "width": 2558,
+      "height": 1200,
+      "alpha": false,
+      "credit": "Lange Uhren GmbH"
+    },
+    {
+      "name": "double-split-front-original.jpg",
+      "url": "https://img.alange-soehne.com/product-slideshow-product-2/6c14b5d411492017350f443aaa2247e56ee5f9a4.jpg",
+      "sha256": "d98a3e23c00737d0778d70528d3b09db5444e83988cab7db9bd925624a4fec61",
+      "width": 1024,
+      "height": 1024,
+      "alpha": false,
+      "credit": "Lange Uhren GmbH"
+    }
+  ],
+  "terms": "https://press.alange-soehne.com/media-library/",
+  "termsReviewedOn": "2026-10-07",
+  "publicationCopyRequired": true,
+  "publicationCopyOwner": "Site owner, previously accepted; not sent by agent.",
+  "frontCutout": {
+    "file": "double-split-front-cutout-v1.webp",
+    "transparentPixels": 651071,
+    "opaquePixels": 390679,
+    "opaqueRGBDifferences": 0,
+    "processing": "AI-assisted alpha mask only; original photograph RGB preserved."
+  },
+  "hero": {
+    "file": "rattrapante-hero-v1.webp",
+    "processing": "Editorial composition of original front photograph and movement macro, not a generated product photograph."
+  },
+  "publishedFiles": [
+    "rattrapante-hero-v1.webp",
+    "rattrapante-card-v1.webp",
+    "double-split-macro-v1.webp",
+    "double-split-front-cutout-v1.webp"
+  ]
+}

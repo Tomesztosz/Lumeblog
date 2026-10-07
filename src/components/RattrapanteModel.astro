@@ -1,0 +1,9 @@
+---
+import { renderRattrapanteModel, rattrapanteModelCSS, rattrapanteModelScript } from '../lib/rattrapante-view.mjs';
+import type { Lang } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<style is:inline set:html={rattrapanteModelCSS} />
+<Fragment set:html={renderRattrapanteModel(lang)} />
+<script is:inline set:html={rattrapanteModelScript(lang)} />
