@@ -1,0 +1,46 @@
+{
+  "article": "otsuka-lotec",
+  "reviewed": "2026-10-11",
+  "status": "Approved for scheduled publication",
+  "proposedEdition": "2026-10-12",
+  "handsOn": false,
+  "editorialMethod": "Hungarian original and English companion, primary manufacturer and supplier documentation, first-person founder interview, GPHG prize list; independent visual commentary clearly distinguished from handling experience.",
+  "sources": "Both article frontmatters contain the 15 supporting sources. Official-page snapshots and image origin URLs are stored privately under output/article-review/otsuka-lotec/sources.",
+  "visuals": {
+    "bodyImages": 11,
+    "hero": "Original founder-at-work photograph plus original upright No.6 photograph, composed in a native SVG editorial layout",
+    "generativeAI": false,
+    "standaloneProducts": "Five transparent plates retain the original manufacturer alpha channels. No synthetic watch details, no painted backgrounds, no generative reconstruction.",
+    "credit": "ŌTSUKA LŌTEC; hero composition by Lume",
+    "rightsStatus": "Permission confirmed by owner on 2026-10-11",
+    "terms": "https://otsukalotec.base.shop/about",
+    "permissionEvidence": "Owner stated in this conversation that permission was received and approved scheduling the existing article and images. Email itself not inspected or stored."
+  },
+  "factChecks": [
+    "Founder is Jiro Katayama, not Hajime Asaoka. Avoid describing the current organisation as a one-person production operation.",
+    "Current range has five models. No.8 was announced after No.9; model numbers are not a chronological release order.",
+    "Model-page prices take precedence over earlier MinebeaMitsumi launch releases. Current Japanese tax-inclusive prices are date-labelled, without currency conversion or a suggestion of immediate availability.",
+    "No.7.5 basic case thickness and maximum height are distinguished.",
+    "No.8 seconds disc is a 90-second revolution, not a conventional 60-second indication.",
+    "No.9 is hour-striking, not a minute repeater. The in-house development uses some Cal.6498 components; do not claim every part is manufactured in-house.",
+    "MinebeaMitsumi's No.9 release incorrectly equates 18000 vph with 3Hz. The manufacturer specifies 2.5Hz. The article does not reproduce the erroneous frequency.",
+    "No.5 launch press release and current manufacturer page differ in case-back description. The article does not use the obsolete display-back claim.",
+    "GPHG No.6 submission and current manufacturer page differ in water-resistance data. Current model-page 3 ATM rating is used.",
+    "The brand's 2026-09-01 news item 822 names the GPHG year as 2025 despite the No.8's 2026 introduction. Do not repeat this inconsistent nomination claim.",
+    "The instrument photograph is labelled as general brand inspiration, not falsely identified as the actual electricity meter that inspired No.9.",
+    "Japanese delivery address and Japan-issued payment card are explicit official-shop eligibility conditions, not inferred from limited availability."
+  ],
+  "calendarHandoff": {
+    "fullRadarReviewPerformed": false,
+    "reviewRecord": "docs/calendar-review-otsuka-2026-10-11.json",
+    "reason": "Scheduling review attempted all configured sources and checked official details. Incomplete browser access and pending media keep lastReviewed unchanged; limitations are recorded explicitly."
+  },
+  "scheduledFor": "2026-10-12T01:00:00+02:00",
+  "releaseValidation": {
+    "currentBuild": "passed",
+    "simulatedPublicationBuild": "passed at 2026-10-12T01:00:01+02:00",
+    "browserChecks": "12 pre-publication and 18 post-publication checks passed; HU/EN articles, homepages and calendars at 1440, 390 and 320 pixels",
+    "dateGate": "No article route, homepage card, RSS or sitemap entry before publication time; visible after the date gate",
+    "deployment": "Scheduled source ready for main; no early publication"
+  }
+}

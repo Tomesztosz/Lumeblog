@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://www.seikowatches.com/us-en/products/5sports/hdb010",
+    "hash": "90a8316b3b34d8db22a552fdcdcd89c888f041d7d57a5559ff8055673ef2590f",
+    "reviewedAt": "2026-10-11",
+    "reason": "Product details still match HDB010; changed related-product link is not a new launch date. Historical September event retained."
+  },
+  {
+    "url": "https://pressroom.zenith-watches.com/paris-on-the-horizon-zenith-unveils-the-chronomaster-original-paris-edition/?lang=eng",
+    "hash": "d7088d0cb0f2cab71e68218e9f4b2b6b6ddf51879c39485f387c67f198e9db53",
+    "reviewedAt": "2026-10-11",
+    "reason": "June 29 online opening and September Paris boutique arrival still stated; no new future date."
+  },
+  {
+    "url": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
+    "hash": "0d7b21edfc1b03267ef85adcb5a9270fca6ebb358488f05ba7c1a266049b47ab",
+    "reviewedAt": "2026-10-11",
+    "reason": "Detailed Astra page still states late December 2026 shipping and Out of Stock; do not infer fresh ordering availability from the collection listing."
+  },
+  {
+    "url": "https://rathwatches.com/products/rath-droma-gmt",
+    "hash": "639fc9d0544ba58d4ac6d0b4467572d527259eb214001becf1fef19580c48bac",
+    "reviewedAt": "2026-10-11",
+    "reason": "Headline says October 2026, description still says late September. Historical September record and its explicit September/October conflict warning retained."
+  },
+  {
+    "url": "https://press.omegawatches.com/omega-introduces-the-seamaster-diver-300m-james-bond-and-spectre-collection/",
+    "hash": "e2f723be3af76095b535ed81a3d4b1186b951902afb8deff91ca5510351c0eb4",
+    "reviewedAt": "2026-10-11",
+    "reason": "October 5 availability is explicit and already represented in the introduced card. No duplicate or future date."
+  }
+]
