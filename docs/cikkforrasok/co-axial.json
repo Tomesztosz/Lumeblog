@@ -1,0 +1,163 @@
+{
+  "article": "co-axial",
+  "reviewed": "2026-10-13",
+  "state": "approved-for-scheduled-publication",
+  "proposedDate": "2026-10-16",
+  "calendarReview": "See docs/calendar-review-co-axial-2026-10-13.json. Partial source coverage; global lastReviewed remains unchanged.",
+  "facts": [
+    {
+      "claim": "250 years is a historical comparison, not 250 years of unchanged modern Swiss-lever dominance",
+      "source": "https://www.webofstories.com/play/george.daniels/46",
+      "treatment": "Corrected user premise; no absolute innovation-first claim."
+    },
+    {
+      "claim": "Two fixed coaxial levels, lever with two locking pallets plus an impulse jewel, separate roller impulse jewel and roller pin",
+      "source": "https://data.epo.org/publication-server/rest/v1.0/publication-dates/19801112/patents/EP0018796NWA2/document.pdf",
+      "treatment": "Original Figures 1-5 and description inspected. Patent pages 17-18 locally rendered and first drawing visually inspected. Later Omega patent cross-check in article sources."
+    },
+    {
+      "claim": "Patek Nautilus conversion 1981, returned early 1982; ten years of wear according to museum",
+      "source": "https://collection.sciencemuseumgroup.org.uk/objects/co8558750/prototype-wristwatch-with-a-co-axial-escapement-by-patek-philippe-and-george-daniels",
+      "treatment": "Museum attribution; not a promise of service interval."
+    },
+    {
+      "claim": "Patek test dispute",
+      "source": "https://www.webofstories.com/play/george.daniels/50",
+      "treatment": "Explicitly Daniels' recollection, not established deliberate sabotage or Patek's own explanation."
+    },
+    {
+      "claim": "Rolex Datejust 16220, calibre 3135 modified by Daniels, 1984 meeting",
+      "source": "https://www.sothebys.com/en/auctions/ecatalogue/2012/george-daniels-so-l12313/lot.21.html",
+      "treatment": "No invented internal decision rationale; waiting-room anecdote not treated as causal proof."
+    },
+    {
+      "claim": "Nicolas G. Hayek support in the early 1990s",
+      "source": "https://www.watchprosite.com/editors-picks/tribute-to-master-watchmaker-dr-george-daniels-1926--2011-by-omega/677.747703.4940443/",
+      "treatment": "Explicit attribution to reproduced 2011 Omega statement. No disputed exact contract year."
+    },
+    {
+      "claim": "1999 calibre 2500 launch and 2007 calibre 8500 designed around Co-Axial",
+      "source": "https://www.swatchgroup.com/en/services/archive/2010/omegas-co-axial-story",
+      "treatment": "No claim that all current Omega watches use it; no obsolete 2010 future predictions copied."
+    },
+    {
+      "claim": "Reduced lubrication is not a maintenance-free watch; Master Chronometer is separate",
+      "source": "https://media.omegawatches.com/documents/manuals/21592462101001_User_Manual_EN.pdf",
+      "treatment": "Manufacturer's own qualified terminology; certification source separately listed."
+    },
+    {
+      "claim": "Roger Smith single-wheel evolution",
+      "source": "https://rwsmithwatches.com/evolution",
+      "treatment": "No claim that Smith and Omega use identical architecture."
+    }
+  ],
+  "images": [
+    {
+      "file": "co-axial-hero.webp",
+      "role": "editorial-composition",
+      "sources": [
+        "https://www.danielslondon.com/wp-content/uploads/2013/08/george-daniels-1.jpg",
+        "https://www.swatchgroup.com/sites/default/files/media-files/2010_08_22_omega_co_axial_en.pdf",
+        "https://data.epo.org/publication-server/rest/v1.0/publication-dates/19801112/patents/EP0018796NWA2/document.pdf"
+      ],
+      "method": "AI layout study, rebuilt deterministically with original photo pixels and original patent drawing. Final hero is not a generated portrait or generated mechanism. Editable SVG retained.",
+      "rights": "Daniels London credits Sotheby's. Omega manufacturer's imagery is not assumed freely licensed. Publication clearance still required."
+    },
+    {
+      "file": "daniels-workbench.webp",
+      "role": "documentary",
+      "source": "https://www.danielslondon.com/dr-george-daniels-cbe/",
+      "rights": "Daniels London / Sotheby's, permission not granted in this task."
+    },
+    {
+      "file": "co-axial-detail.webp",
+      "role": "manufacturer-exploded-illustration",
+      "source": "https://www.swatchgroup.com/sites/default/files/media-files/2010_08_22_omega_co_axial_en.pdf",
+      "page": 3,
+      "rights": "Omega; local review only until cleared."
+    },
+    {
+      "file": "omega-2500-macro.webp",
+      "role": "frame-filling-movement-macro",
+      "source": "https://www.swatchgroup.com/sites/default/files/media-files/2010_08_22_omega_co_axial_en.pdf",
+      "page": 4,
+      "rights": "Omega; cropped original, no AI detail generation."
+    },
+    {
+      "file": "daniels-nautilus-cutout.webp",
+      "role": "transparent-product",
+      "source": "https://coimages.sciencemuseumgroup.org.uk/696/585/medium_l2015_4220__0002_.jpg",
+      "credit": "Science Museum Group / The Clockmakers' Museum. © The Board of Trustees of the Science Museum.",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "change": "Original RGB retained under alpha mask; background removed.",
+      "publication": "Confirm noncommercial eligibility and share-alike attribution, or seek separate permission; not assumed cleared."
+    },
+    {
+      "file": "omega-deville-cutout.webp",
+      "role": "transparent-product",
+      "source": "https://coimages.sciencemuseumgroup.org.uk/713/945/medium_l2016_2312__0001_.jpg",
+      "credit": "Science Museum Group / The Clockmakers' Museum. © The Board of Trustees of the Science Museum.",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "change": "AI cutout trial rejected for changed details; final original RGB retained under verified mask.",
+      "publication": "Same NC/SA clearance requirement as Nautilus."
+    }
+  ],
+  "model": {
+    "files": [
+      "src/lib/coaxial-model.mjs",
+      "src/lib/coaxial-view.mjs",
+      "src/components/CoaxialModel.astro"
+    ],
+    "scope": "Detailed functional teaching schematic, not a CAD reproduction or physical contact simulation.",
+    "features": [
+      "eight selectable phases",
+      "two separate impulse paths",
+      "locked-wheel dwell",
+      "shared wheel-axis motion",
+      "component inspector",
+      "manual step/play/pause/reset",
+      "three educational playback speeds",
+      "HU/EN",
+      "keyboard controls",
+      "no autoplay",
+      "pause offscreen or hidden",
+      "reduced-motion change pauses",
+      "no audio, tracking, storage or external requests"
+    ],
+    "omissions": [
+      "exact tooth/contact geometry",
+      "real amplitude and timing",
+      "banking and safety-roller detail",
+      "friction or accuracy prediction"
+    ],
+    "publication": "Article, workshop listing and shared model pages become available together at the article publication instant."
+  },
+  "verification": {
+    "unitTests": "node --test scripts/coaxial-model.test.mjs",
+    "browserTests": "node scripts/check-coaxial-review.mjs",
+    "assetTests": "node scripts/check-coaxial-assets.mjs",
+    "build": "npm run build",
+    "reports": [
+      "browser-checks.json",
+      "asset-checks.json"
+    ]
+  },
+  "imagegen": {
+    "mode": "built-in image_gen, no API fallback",
+    "cutoutStudy": "sources/cutout-ai-study.png",
+    "heroStudy": "sources/hero-ai-study.png",
+    "cutoutPrompt": "Use case: background-extraction. Edit target: the supplied museum photograph of the 1999 gold Omega De Ville watch. Remove ONLY the plain white background, including the white holes between watch lugs and strap. Output a genuine transparent-background cutout. Preserve exact original watch position, orientation, proportions, dial text, markers, hands, date, case, crown and brown strap. Do not stylize, beautify or reconstruct anything; no additional shadow. Keep the same full 799 by 576 canvas framing, watch centered as in original. All original watch pixels should remain unchanged.",
+    "heroPrompt": "Use case: compositing. Create a restrained editorial hero photo montage for a serious independent watch magazine about George Daniels and the Co-Axial escapement. Landscape 3:2. The three provided images are original content to arrange, NOT inspiration to invent new people or parts: image 1 is the actual George Daniels at his workbench, image 2 is Omega's actual exploded escapement illustration, image 3 is his original patent drawing. Preserve their actual photographic content and identity. Left: framed documentary image 1 at sensible small scale, do not synthesize missing face detail. Right: large overlapping image 2 as dominant technical motif, all wheel teeth and mechanical parts unchanged. Patent drawing as quiet smaller lower left inset, retain original strokes. Dark forest green #232921 background, off-white #f2f0e8 hairline rules, very restrained accent #d7eb96. Clean editorial spacing, original images overlap with elegant soft transitions, no busy scrapbook. Typography top left: 'GEORGE DANIELS' and smaller 'CO-AXIAL'. Only those two labels. No imaginary watch, no decorative extra gears, no new face, no gold haze, no new schematic. This must look like an editorial layout made from original documentary material, not an AI illustration.",
+    "finalDecision": "Generated fine details were not used. Owner's original-pixel rule applied through deterministic masks and native SVG composition. Final assets live in sources and assets within this local review directory."
+  },
+  "publication": "2026-10-16T01:00:00+02:00",
+  "timezone": "Europe/Budapest",
+  "ownerApproval": {
+    "date": "2026-10-13",
+    "message": "Rendben mehet péntek 1:00-ra minden kép rendben",
+    "scope": "HU/EN article, current images and detailed interactive model",
+    "rightsNote": "Owner authorized publication of the existing images. This records owner approval, not an independently verified grant from every rights holder. Original credits and museum CC BY-NC-SA 4.0 attribution are retained. Earlier rights notes below describe the draft-stage review."
+  }
+}

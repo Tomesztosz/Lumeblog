@@ -1,3 +1,70 @@
+export const COAXIAL_MODEL = {
+  hu: {
+    title: 'Két út a billegőhöz', intro: 'Kövesd végig a Co-Axial egy teljes lengését. A nagy kerék, a kisebb impulzuskerék és a horgony külön is megvizsgálható.',
+    workshop: 'Műhely / Co-Axial', schematic: 'Működési vázlat, nem méretarányos', play: 'Lejátszás', pause: 'Szünet', reset: 'Elölről', step: 'Következő fázis', speed: 'Lassítás',
+    phaseLabel: 'A lengés fázisai', partsLabel: 'Alkatrészek', pathLabel: 'Az energia útja', wheelLabel: 'Gátkerék', balanceLabel: 'Billegő', locked: 'Zárva', released: 'Felszabadítva',
+    states: ['Zárás a kilépőkövön', 'Oldás a villán keresztül', 'Közvetett impulzus', 'Zárás és szabad lengés', 'Visszaút', 'A belépőkő oldása', 'Közvetlen impulzus', 'Ismét zárva'],
+    descriptions: [
+      'A hajtórugó terheli a kerékrendszert, de a kilépőkő megállítja a gátkereket. A billegő közelít a kapcsolódási tartományhoz.',
+      'A billegő vezetőköve beleér a villába, és elmozdítja a horgonyt. A zárókő kilép a kerék fogának útjából. Az oldást a billegő végzi.',
+      'A kisebb kerék foga a horgony külön impulzuskövét tolja. A horgony a villán és a vezetőkövön át ad energiát a billegőnek.',
+      'A következő fogot a belépőkő megfogja. Az impulzus véget ér; a billegő elválik a villától, tovább leng, majd a hajszálrugó visszafordítja.',
+      'A billegő az ellenkező irányból tér vissza. A gátkerék közben nem haladt tovább: a hajtórugó erejét továbbra is a zárás tartja vissza.',
+      'A vezetőkő a villa másik oldalát mozdítja meg. A horgony ismét oldja a zárást; most a közvetlen impulzus útja nyílik meg.',
+      'A nagyobb kerék foga közvetlenül a billegő tárcsáján lévő impulzuskövet tolja. Az energia ezúttal nem a horgonyon át jut a billegőhöz.',
+      'A kilépőkő ismét megfog egy fogat. A billegő befejezi szabad ívét és visszafordul. A két kerékszint együtt, azonos szöggel lépett tovább.'
+    ],
+    parts: ['Teljes szerkezet', 'Közös tengelyű kerekek', 'Horgony és három köve', 'Billegő és tárcsája'],
+    partNotes: [
+      'A számok a rajz alkatrészeit azonosítják. A két kerékszint egyetlen merev egységként forog; a billegőnek külön tengelye van.',
+      '1: nagyobb kerék, a zárás és a közvetlen impulzus számára. 2: kisebb kerék, a horgony impulzusához. Egy tengely, két feladatkör.',
+      '3: horgony. A és B: zárókövek. C: külön impulzuskő. A villa oldáskor a billegőtől kap mozgást, közvetett impulzuskor energiát ad vissza neki.',
+      '4: billegő és hajszálrugó. D: közvetlen impulzuskő a tárcsán. E: vezetőkő a villához. A kettő nem ugyanaz az alkatrész.'
+    ],
+    paths: {
+      indirect: 'Hajtórugó → kerékrendszer → kisebb kerék → C → horgony → villa / E → billegő',
+      direct: 'Hajtórugó → kerékrendszer → nagyobb kerék → D → billegő',
+      none: 'Nincs fenntartó impulzus. A zárás visszatartja a kerékrendszert; a billegő és a hajszálrugó egymás között cserél energiát. Oldáskor ebből jut a horgony mozgatására is.'
+    },
+    compareTitle: 'Mi változik a svájci horgonyhoz képest?',
+    compare: 'A svájci horgony-gátlómű mindkét irányban a horgonyon át ad impulzust, a fog végigcsúszik az impulzusfelületen. A Co-Axial különválasztja a zárást és az impulzust, és az egyik irányban közvetlen kapcsolatot használ. A rövid érintkezés nem jelent nulla súrlódást.',
+    limits: 'Oktatómodell Daniels EP0018796 szabadalmának elve alapján. A fogalakok, érintkezési hézagok, mozgásszögek és fázisidők szemléltetők; nem gyártási geometria vagy ütközésszimuláció. A hajszálrugó jelképes. A színezett vonal energiautat jelöl, nem alkatrészt. A valós biztonsági tárcsa és határoló elemek nincsenek részletezve. 1× itt 12 másodperces oktatási ciklus, nem az óra valós sebessége.',
+    noScript: 'Az animációhoz JavaScript szükséges. A kiinduló ábra és a cikk működésleírása enélkül is olvasható.',
+  },
+  en: {
+    title: 'Two paths to the balance', intro: 'Follow one complete Co-Axial oscillation. Inspect the large wheel, the smaller impulse wheel and the lever separately.',
+    workshop: 'Workshop / Co-Axial', schematic: 'Functional schematic, not to scale', play: 'Play', pause: 'Pause', reset: 'Reset', step: 'Next phase', speed: 'Playback',
+    phaseLabel: 'Oscillation phases', partsLabel: 'Components', pathLabel: 'Energy path', wheelLabel: 'Escape wheel', balanceLabel: 'Balance', locked: 'Locked', released: 'Released',
+    states: ['Exit-pallet lock', 'Unlocking through the fork', 'Indirect impulse', 'Locking and free arc', 'Return arc', 'Entry-pallet unlock', 'Direct impulse', 'Locked again'],
+    descriptions: [
+      'The mainspring loads the train, but the exit pallet arrests the escape wheel. The balance approaches the engagement region.',
+      'The roller pin enters the fork and moves the lever. The locking pallet withdraws from the tooth. The balance supplies the unlocking motion.',
+      'The small wheel pushes the separate impulse jewel on the lever. The lever delivers energy to the balance through its fork and the roller pin.',
+      'The entry pallet catches the next tooth. Impulse ends; the balance leaves the fork, continues its free arc and is turned back by the hairspring.',
+      'The balance returns from the opposite direction. Meanwhile, the escape wheel has remained stationary, held against the mainspring by the lock.',
+      'The roller pin moves the other side of the fork. The lever unlocks again, this time preparing the direct impulse path.',
+      'A tooth on the large wheel pushes the impulse jewel on the balance roller directly. Energy reaches the balance without passing through the lever.',
+      'The exit pallet catches a tooth again. The balance completes its free arc and reverses. Both wheel levels have advanced together by the same angle.'
+    ],
+    parts: ['Complete assembly', 'Coaxial wheels', 'Lever and its three jewels', 'Balance and roller'],
+    partNotes: [
+      'Numbers identify the components. Both wheel levels rotate as one rigid assembly; the balance has its own, separate axis.',
+      '1: large wheel, for locking and direct impulse. 2: small wheel, for impulse to the lever. One axis, two sets of functions.',
+      '3: lever. A and B: locking pallets. C: separate impulse jewel. At unlocking the fork takes motion from the balance; during indirect impulse it returns energy.',
+      '4: balance and hairspring. D: direct impulse jewel on the roller. E: roller pin engaging the fork. These are separate components.'
+    ],
+    paths: {
+      indirect: 'Mainspring → train → small wheel → C → lever → fork / E → balance',
+      direct: 'Mainspring → train → large wheel → D → balance',
+      none: 'No maintaining impulse. Locking restrains the train while the balance and hairspring exchange energy. Unlocking also draws energy from the oscillator to move the lever.'
+    },
+    compareTitle: 'What changes from the Swiss lever?',
+    compare: 'A Swiss lever delivers both impulses through the lever as a tooth slides along an impulse face. The Co-Axial separates locking from impulse and uses direct transmission in one direction. Short contact does not mean zero friction.',
+    limits: 'Teaching model based on the principle of Daniels patent EP0018796. Tooth profiles, clearances, angles and phase durations are illustrative, not manufacturing geometry or a contact simulation. The hairspring is symbolic. Coloured lines indicate energy paths, not components. Safety roller and banking details are omitted. Here 1× means a 12-second teaching cycle, not the real running speed of a watch.',
+    noScript: 'Animation requires JavaScript. The initial drawing and the article explanation remain available without it.',
+  },
+} as const;
+
 export const RATTRAPANTE_MODEL = {
   hu: {
     title: 'Két befutó, egy stopper', workshop: 'Műhely',

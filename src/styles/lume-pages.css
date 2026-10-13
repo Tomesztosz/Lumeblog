@@ -1238,3 +1238,9 @@ html:not([data-js]) .workshop-load-note {
 
 .reader-heading > * { min-width: 0; }
 .reader-heading h1 { overflow-wrap: anywhere; hyphens: auto; }
+.article-body .article-caption {
+  font: 12px/1.65 var(--font-sans);
+  color: var(--muted);
+  text-indent: 0;
+  margin-top: 12px;
+}

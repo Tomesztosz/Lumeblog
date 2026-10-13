@@ -24,6 +24,7 @@ import DesignModel from "./DesignModel.astro";
 import DesignArticleBody from "./DesignArticleBody.astro";
 import JumpingSecondsModel from "../JumpingSecondsModel.astro";
 import RattrapanteModel from "../RattrapanteModel.astro";
+import CoaxialModel from "../CoaxialModel.astro";
 import ModelShare from '../ModelShare.astro';
 import { sharedModel } from '../../lib/shared-models';
 interface Props {
@@ -132,6 +133,9 @@ const articleLinks = Object.fromEntries(
           {post.data.translationKey === 'rattrapante' && (
             <RattrapanteModel slot="inlineModel" lang={lang} />
           )}
+            {post.data.translationKey === 'co-axial' && (
+              <CoaxialModel slot="inlineModel" lang={lang} />
+            )}
           {post.data.model && (
             <DesignModel
               slot="model"

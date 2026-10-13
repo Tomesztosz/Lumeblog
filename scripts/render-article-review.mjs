@@ -6,7 +6,9 @@ import { parseFragment, serialize } from 'parse5';
 import sharp from 'sharp';
 import { renderJumpingSecondsModel, jumpingSecondsModelCSS, jumpingSecondsModelScript } from './lib/jumping-seconds-review-model.mjs';
 import { renderRattrapanteModel, rattrapanteModelCSS, rattrapanteModelScript } from '../src/lib/rattrapante-view.mjs';
+import { renderCoaxialModel, coaxialModelCSS, coaxialModelScript } from '../src/lib/coaxial-view.mjs';
 const reviewModels = {
+  'co-axial': { render: renderCoaxialModel, css: coaxialModelCSS, script: coaxialModelScript },
   'ugro-masodperc': { render: renderJumpingSecondsModel, css: jumpingSecondsModelCSS, script: jumpingSecondsModelScript },
   rattrapante: { render: renderRattrapanteModel, css: rattrapanteModelCSS, script: rattrapanteModelScript },
 };

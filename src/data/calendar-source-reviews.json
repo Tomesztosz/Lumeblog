@@ -28,5 +28,29 @@
     "hash": "e2f723be3af76095b535ed81a3d4b1186b951902afb8deff91ca5510351c0eb4",
     "reviewedAt": "2026-10-11",
     "reason": "October 5 availability is explicit and already represented in the introduced card. No duplicate or future date."
+  },
+  {
+    "hash": "ed30c9081f3ffb6cdddbb62fe2abb150cf6489b7fe21211d57b1a07712628d6a",
+    "url": "https://rathwatches.com/products/rath-droma-gmt",
+    "reviewedAt": "2026-10-13",
+    "reason": "Browser detail still conflicts: headline October 2026, description late September 2026. Existing conflict warning retained; no inferred completion."
+  },
+  {
+    "hash": "006858bc25ed43e271050b37fce871f017de7a763a68b9dc9f6f524a32df9660",
+    "url": "https://www.seikowatches.com/us-en/products/5sports/hdb010",
+    "reviewedAt": "2026-10-13",
+    "reason": "Browser detail still identifies MOTOCOMPO HDB010, 8000 pieces. No newly verified release or stock date; existing event retained."
+  },
+  {
+    "hash": "ab9ccb7c3879972535fa7aabcf50c8c0dc5cb2cac535271d8d3dfb64b4fca27b",
+    "url": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
+    "reviewedAt": "2026-10-13",
+    "reason": "Browser detail retains late December 2026 shipping and Out of Stock. Do not infer a reopening from generic collection copy."
+  },
+  {
+    "hash": "b545115ba467f7e8f173edeecf35a72238f7afa4fc8c6aaaed57b2031389ef29",
+    "url": "https://press.omegawatches.com/omega-introduces-the-seamaster-diver-300m-james-bond-and-spectre-collection/",
+    "reviewedAt": "2026-10-13",
+    "reason": "Browser manufacturer detail retains October 5 availability and six-watch Bond/Spectre collection. Existing introduced card unchanged."
   }
 ]
