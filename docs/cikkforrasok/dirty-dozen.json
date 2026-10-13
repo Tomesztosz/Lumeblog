@@ -1,0 +1,121 @@
+{
+  "article": "dirty-dozen",
+  "reviewed": "2026-10-13",
+  "status": "Publisher approved both language versions and all images on 2026-10-13. Scheduled for 2026-10-14 at 01:00 Europe/Budapest.",
+  "publication": "2026-10-14T01:00:00+02:00",
+  "timezone": "Europe/Budapest",
+  "validation": "Current-clock and simulated-publication builds passed. Both routes, home features, article indexes, RSS and sitemap obey the date gate. Browser checks passed at 1440, 390 and 320 px, including the corrected 1944 paragraph and bilingual calendars. Four product images have real alpha; nine approved assets migrated. No unrelated worktree edits included.",
+  "publisherApproval": {
+    "date": "2026-10-13",
+    "statement": "Na ez már rendben van. Mehet szerda hajnal 1:00-ra, minden kép rendben van",
+    "basis": "Publisher confirmation after explicit prior notice that S.Song photo permission remained outstanding. No independent permission correspondence has been inspected by the agent. Credits and existing open licences are retained."
+  },
+  "proposedDate": "2026-10-14",
+  "languagePair": ["src/content/posts/hu/dirty-dozen.md", "src/content/posts/en/dirty-dozen.md"],
+  "editorialDecisions": [
+    "Do not claim the world's first military specification: British equipment records and the American A-11 predate the W.W.W.",
+    "All twelve names included. Shared requirements did not mean identical cases, movements, interchangeable components or twelve Swiss-owned factories.",
+    "Vertex had a British business background and Swiss manufacturing connections. Vertex and Timor have contemporary products and are not described as extinct.",
+    "Only IWC's own documented May-June 1945 delivery window and one Longines archive invoice of 17 July 1945 are stated; do not infer every watch's individual issue date.",
+    "The 1944 Harwell photograph illustrates the need for coordinated time. It does not identify any W.W.W. on a soldier's wrist. Hero explicitly separates 1944 and 1945.",
+    "Mark X treated as collectors' terminology, not a universal official designation. W.W.W. general-service watches distinguished from RAF Mark 11 navigation watches.",
+    "Technical requirements distinguished from delivered compliance; no blanket claim that all twelve had shock protection, all-steel cases, hacking or modern chronometer certification.",
+    "Natural Hungarian prose, equivalent English, no inline body hyperlinks and no U+2014. Sources remain in frontmatter.",
+    "Scheduling calendar review is recorded separately in docs/calendar-review-dirty-dozen-2026-10-13.json. Inaccessible sources are disclosed; no false full-radar sign-off."
+  ],
+  "evidence": [
+    {
+      "url": "https://bhi.co.uk/wp-content/uploads/2022/07/01-HJJan22-AOTM.pdf",
+      "source": "David Read, Horological Journal, January 2022, pp.16-17",
+      "supports": "R.S./Prov/4373A identifier, expanded designation, general-service role, distinction between specification and shock/corrosion performance, Malaya corrosion investigation.",
+      "publicDomainPrimaryExcerpt": "The article reproduces the 1945 British government specification: minimum 15 jewels, non-magnetic lever type, overcoil, approved shock protection and testing at 32 C in four positions. These original government technical requirements are distinguished from Read's modern narrative.",
+      "caution": "Do not convert the positional-rate-difference criterion to an absolute daily-accuracy guarantee. No such numerical accuracy claim included."
+    },
+    {
+      "url": "https://www.royalsignals.org.uk/photos/watch.htm",
+      "source": "A. Taylerson, Horological Journal, September/October 1995",
+      "supports": "Earlier British military timekeeping records, government markings and twelve W.W.W. suppliers.",
+      "caution": "Equipment-list dates are not necessarily initial delivery dates, as the author explicitly notes."
+    },
+    {
+      "url": "https://press.iwc.com/iwc-sihh2019-historicalreferences-en/",
+      "supports": "IWC calibre H/83, about 6000 watches, deliveries May-June 1945, distinction from the later RAF Mark 11."
+    },
+    {
+      "url": "https://www.nationalww2museum.org/war/articles/war-time-how-americas-wristwatch-industry-became-war-casualty",
+      "supports": "The A-11 and a documented 1944 Bulova provide a counterexample to a global W.W.W. first-specification claim."
+    },
+    {
+      "url": "https://images1.bonhams.com/original?src=Images%2Flive%2F2021-05%2F07%2FS-26683-0-1.pdf",
+      "supports": "All twelve makers and later film-derived collectors' nickname.",
+      "caution": "Do not repeat the catalogue's apparent Omega calibre transcription error or turn approximate overall production numbers into exact counts."
+    },
+    {
+      "url": "https://images1.bonhams.com/original?src=Images%2Flive%2F2024-11%2F21%2FS-29155-0-1.pdf",
+      "supports": "Lot 36 Grana, KF320 movement, estimated lowest production; no exact production count asserted."
+    },
+    {
+      "url": "https://catalog.antiquorum.swiss/en/lots/longines-ref-5707-made-for-the-british-army-broad-arrow-w-w-w-no-f-4132-lot-351-322",
+      "supports": "Longines ref.5707, calibre12.68Z, screw-down back and archive extract recording invoice to Baume & Co. on 17 July 1945."
+    },
+    {
+      "url": "https://www.ssongwatches.com/products/iwc-dirty-dozen-w-w-w-1",
+      "supports": "Illustrated IWC, 35mm, snapback, calibre83, fixed bars, grey replacement NATO strap; later Mark X misnomer.",
+      "caution": "Page retrieved through web tool. Direct hostname DNS failed locally; original image retrieved from its Shopify CDN. Generic sales copy is not used as proof of all-steel cases or combat service."
+    },
+    {
+      "url": "https://vertex-watches.com/pages/heritage",
+      "supports": "Claude Lyons, British company background, Revue Thommen relationship, Henry Lazarus and present-day revival.",
+      "conflict": "Brand timeline's D-Day and navigation statements conflict with archival research and documented 1945 deliveries. Those claims are not repeated as fact."
+    },
+    {
+      "url": "https://timorwatch.com/pages/history",
+      "supports": "A.T.P. civilian-adapted context and present-day Heritage Field.",
+      "caution": "Marketing claim of the first battlefield-capable watch is not used."
+    }
+  ],
+  "images": [
+    {
+      "files": ["dirty-dozen-longines-cutout.webp", "dirty-dozen-grana-cutout.webp", "dirty-dozen-cyma-cutout.webp"],
+      "credit": "S.Song Watches",
+      "sources": [
+        "https://www.ssongwatches.com/products/longines-dirty-dozen-w-w-w",
+        "https://www.ssongwatches.com/products/grana-dirty-dozen-w-w-w",
+        "https://www.ssongwatches.com/products/cyma-dirty-dozen-w-w-w"
+      ],
+      "rights": "Use confirmed by publisher on 2026-10-13; see publisherApproval. Previously private pending permission. No permission correspondence independently inspected.",
+      "processing": "Original photos inspected before masking. Original RGB preserved in full-resolution PNG masters, true alpha, no generated dial or reconstructed parts. Source URLs and processing report in the private sources folder.",
+      "context": "Different surviving examples illustrate the brands. The Longines photographed by S.Song is explicitly NOT identified with Antiquorum lot 322 or its archive invoice. Straps not presented as wartime accessories; no dealer dating or originality claim adopted."
+    },
+    {
+      "files": ["dirty-dozen-hero.webp", "dirty-dozen-card.webp", "dirty-dozen-iwc-cutout.webp", "dirty-dozen-iwc-dial.webp"],
+      "watchCredit": "S.Song Watches",
+      "source": "https://www.ssongwatches.com/products/iwc-dirty-dozen-w-w-w-1",
+      "original": "https://cdn.shopify.com/s/files/1/1872/9369/products/IWC-W.W.W.-Nato-Dial_0001_Layer-55.png?v=1585912145",
+      "rights": "Use confirmed by publisher on 2026-10-13; see publisherApproval. Previously private pending permission. No permission correspondence independently inspected.",
+      "processing": "Background-connected mask changes alpha only. Full-resolution master retains original RGB values for every retained pixel. Hero is native SVG layout, no generated product pixels. Strap ends were already cropped in source."
+    },
+    {
+      "files": ["dirty-dozen-harwell.webp", "dirty-dozen-hero.webp", "dirty-dozen-card.webp"],
+      "credit": "Capt E. G. Malindine / War Office, IWM H39070",
+      "source": "https://commons.wikimedia.org/wiki/File:Four_'stick'_commanders_of_22nd_Independent_Parachute_Company,_6th_Airborne_Division,_synchronising_their_watches_in_front_of_an_Armstrong_Whitworth_Albemarle_at_about_11_pm_on_5_June_1944,_just_prior_to_take_o_H39070.jpg",
+      "rights": "Commons PD-UKGov / PD-scan, expired Crown copyright. Preserve attribution and provenance. This does not clear the separately copyrighted IWC photograph in the composite.",
+      "context": "22nd Independent Parachute Company, 6th Airborne Division, RAF Harwell, 5 June 1944, Albemarle. Exact watches not identified."
+    },
+    {
+      "files": ["dirty-dozen-eterna-macro.webp"],
+      "credit": "Stephenjh / Wikimedia Commons",
+      "source": "https://commons.wikimedia.org/wiki/File:Eterna_(2)_edited.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "processing": "Dial-only crop and proportional resize. This derivative is CC BY-SA 4.0. Caption states modification and credit; original and licence links retained in sources.",
+      "context": "Close-up filling the frame with dial details, not a standalone uncut product photograph. No authentication of untouched original lume, hands or dial claimed."
+    }
+  ],
+  "handoff": [
+    "Publisher approval recorded for the HU/EN article and all images.",
+    "Nine approved derivatives moved into production; original source files and private processing records remain local.",
+    "Production cover and seven inline images replace private preview markers. Publication gate set to 2026-10-14T01:00:00+02:00.",
+    "Validate real-clock and simulated-publication builds, bilingual article/calendar output and ICS; deploy only the scoped release worktree."
+  ]
+}
