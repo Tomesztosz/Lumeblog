@@ -3,7 +3,7 @@ import StructuredData from "./StructuredData.astro";
 import SiteIcons from "./SiteIcons.astro";
 import { UI } from "../i18n/ui";
 import { LAUNCHED, INSTAGRAM_URL } from "../site";
-import { resolveSeo, websiteSchema, type SeoHeadProps } from '../lib/seo';
+import { canonicalUrl, resolveSeo, websiteSchema, type SeoHeadProps } from '../lib/seo';
 import serifLatin from "@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url";
 import serifExtended from "@fontsource-variable/fraunces/files/fraunces-latin-ext-opsz-normal.woff2?url";
 import sansLatin from "@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url";
@@ -44,6 +44,7 @@ const siteStructuredData = websiteSchema(Astro.site!, t.siteDescription, [INSTAG
   content={seo.robots}
 />
 {indexable && <link rel="canonical" href={canonical} />}
+{indexable && <link rel="describedby" type="text/plain" href={canonicalUrl('/llms.txt',Astro.site!)} />}
 {seo.alternates.map(({lang:language,url}) => <link rel="alternate" hreflang={language} href={url} />)}
 
 <meta property="og:type" content={ogType} />

@@ -36,5 +36,7 @@ jobs:
             output/seo-p0-p1/validation.json
             output/seo-p2-p3/content-inventory.json
             output/seo-p2-p3/build-validation.json
+            output/llms/manifest.json
+            output/llms/validation.json
           if-no-files-found: ignore
           retention-days: 30

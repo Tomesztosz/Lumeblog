@@ -21,6 +21,15 @@ https://lumejournal.com/*
 /og-image.png
   Cache-Control: public, max-age=604800
 
+# Generated directories revalidate after publication; no runtime Worker is needed.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+
 # Calendar documents revalidate; their embedded data is classified at each load.
 /naptar/*
   Cache-Control: public, max-age=0, must-revalidate

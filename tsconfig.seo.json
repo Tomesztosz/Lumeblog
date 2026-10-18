@@ -16,6 +16,10 @@
     ".astro/types.d.ts",
     "src/lib/seo.ts",
     "src/lib/calendar-seo.ts",
-    "src/lib/journal-metadata.ts"
+    "src/lib/journal-metadata.ts",
+    "src/lib/llms.ts",
+    "src/lib/llms-description.ts",
+    "src/lib/llms-catalogue.ts",
+    "src/pages/[directory].txt.ts"
   ]
 }

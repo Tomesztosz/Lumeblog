@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "maxMainBytes": 65536,
+  "categories": [
+    {"id":"movement","kind":"article","column":"movement"},
+    {"id":"independents","kind":"article","column":"in-hand","requiredEntity":"topic:independents"},
+    {"id":"hands-on","kind":"article","column":"in-hand"},
+    {"id":"heritage","kind":"article","column":"origins"},
+    {"id":"workshop","kind":"model"},
+    {"id":"releases","kind":"calendar"},
+    {"id":"optional","kind":"navigation"}
+  ]
+}

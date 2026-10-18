@@ -18,6 +18,8 @@ const posts = defineCollection({
       seoTitle: z.string().optional(),
       /** Keresőtalálati leírás. A cikk látható felvezetőjét nem változtatja meg. */
       seoDescription: z.string().optional(),
+      /** Opcionális, jóváhagyott, az adott nyelvű gépi tartalomjegyzékhez írt leírás. */
+      llmsSummary: z.string().trim().min(1).optional(),
       /** Megjelenés dátuma (ISO: 2026-08-03). */
       date: z.coerce.date(),
       /** Csak érdemi tartalmi frissítéskor, nem minden új build dátuma. */

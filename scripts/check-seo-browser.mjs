@@ -17,6 +17,9 @@ try{
   const actual=await browser.evaluate(`({title:document.title,lang:document.documentElement.lang,canonical:Array.from(document.head.querySelectorAll('link[rel=canonical]')).map(n=>n.href),alternates:Array.from(document.head.querySelectorAll('link[hreflang]')).map(n=>({lang:n.hreflang,url:n.href})),meta:Array.from(document.head.querySelectorAll('meta')).filter(n=>/^(robots|description|og:|twitter:|article:)/.test(n.name||n.getAttribute('property')||'')).map(n=>[n.name||n.getAttribute('property'),n.content]),schema:Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(n=>JSON.parse(n.textContent)),h1:document.querySelector('h1')?.textContent.replace(/\\s+/g,' ').trim()})`);
   assert.equal(actual.title,initial.titles[0],path+': title changed after JavaScript');assert.equal(actual.lang,initial.lang);
   assert.deepEqual(actual.canonical,initial.canonical);assert.deepEqual(actual.alternates,initial.alternates);
+  const discovery=await browser.evaluate(`Array.from(document.head.querySelectorAll('link[rel="describedby"]')).map(n=>({href:n.href,type:n.type}))`);
+  assert.deepEqual(discovery,[{href:'https://lumejournal.com/llms.txt',type:'text/plain'}],path+': directory discovery missing or mutated');
+  assert.equal(initial.head.filter(n=>n.tagName==='link'&&attribute(n,'rel')==='describedby').length,1);
   for(const [name,value]of actual.meta)assert.equal(value,initial.meta(name)[0],path+': mutated '+name);
   assert.equal(actual.h1,textOf(initial.elements.find(n=>n.tagName==='h1')).replace(/\s+/g,' ').trim());
   const flatten=data=>Array.isArray(data)?data.flatMap(flatten):data['@graph']?flatten(data['@graph']):[data];

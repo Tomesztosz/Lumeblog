@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "npm run check:calendar && astro build && node scripts/check-calendar-build.mjs && node scripts/secure-build.mjs && npm run check:seo && npm run check:security && npm run check:journal",
+    "build": "npm run check:calendar && astro build && node scripts/check-calendar-build.mjs && node scripts/secure-build.mjs && npm run check:seo && npm run check:llms && npm run check:security && npm run check:journal",
+    "check:llms": "node --experimental-strip-types --test scripts/llms.test.mjs && node --experimental-strip-types scripts/check-llms.mjs",
+    "check:llms:http": "node --experimental-strip-types scripts/check-llms.mjs --production",
+    "llms:find": "node scripts/find-llms.mjs",
     "check:calendar": "node --test scripts/calendar.test.mjs scripts/calendar-events.test.mjs && node scripts/check-calendar.mjs",
     "calendar:refresh": "node --max-http-header-size=65536 scripts/refresh-calendar-events.mjs",
     "calendar:migrate": "node scripts/migrate-calendar-events.mjs",

@@ -1,3 +1,14 @@
+export const LLMS_COPY = {
+  name:'Lume Journal',
+  hu:{summary:'Kétnyelvű, független órás folyóirat: óratörténetek, formatervezés és a szerkezetek működésének magyarázata.',
+    detail:'A cikkek magyarul és angolul olvashatók, forrásjegyzékkel. Az interaktív Műhely saját működési szemléltetéseket kínál, a megjelenési naptár hivatalos forrásokra épül. Az alábbi linkek a nyilvános HTML-oldalakra vezetnek, nem külön Markdown-változatokra.',
+    complete:'Teljes kétnyelvű tartalomjegyzék',completeNote:'Az összes alkalmas cikk, modell és áttekintő oldal. A rövidített jegyzék válogatása nem keresési népszerűséget fejez ki.'},
+  en:{summary:'An independent bilingual watch journal covering watch history, design and how watch mechanisms work.',
+    detail:'Articles are available in Hungarian and English with source lists. The interactive Workshop offers original functional illustrations; the release calendar relies on official sources. Links below lead to public HTML pages, not separate Markdown versions.',
+    complete:'Complete bilingual directory',completeNote:'Every eligible article, model and overview page. Selection in the compact directory does not imply search popularity.'},
+  categories:{movement:{hu:'Óraszerkezetek',en:'Movement Mechanics'},independents:{hu:'Független óragyártók és mikromárkák',en:'Independent Makers & Microbrands'},'hands-on':{hu:'Órák és gyártók',en:'Watches & Makers'},heritage:{hu:'Óratörténet',en:'Heritage & Iconic Models'},workshop:{hu:'Interaktív Műhely',en:'Interactive Workshop'},releases:{hu:'Megjelenési naptár',en:'Watch Releases'},optional:{hu:'További tájékozódás',en:'Optional'}},
+} as const;
+
 export const CONTENT_LINKS = {
   hu: {title:'Értsd meg működés közben', models:'Kapcsolódó modellek', articles:'Olvass tovább', calendar:'A naptárban', family:'A modellcsalád története', exact:'Az óráról részletesen', editorial:'Szerkesztői válogatás.', observe:'Ezt figyeld meg', limitation:'A modell határai', preview:'Szerkesztői előnézet, még nem nyilvános gyűjtőoldal'},
   en: {title:'See how it works', models:'Related models', articles:'Further reading', calendar:'In the calendar', family:'The model family story', exact:'Read about this watch', editorial:'An editorial connection.', observe:'What to observe', limitation:'Model limitations', preview:'Editorial preview, not a published collection'},

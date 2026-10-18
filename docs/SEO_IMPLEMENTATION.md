@@ -247,6 +247,9 @@ jó tartalom; a forgalmi hatás csak későbbi adatokkal vizsgálható hipotézi
 - [IndexNow: protokoll, kulcsfájl és válaszkódok](https://www.indexnow.org/documentation)
 - [Cloudflare: statikus HTML-útvonalak kezelése](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/)
 
-Nem készült llms.txt, rejtett AI-szöveg, általános FAQ-séma, kitalált
-értékelés vagy mesterségesen feldarabolt tartalom. Nincs első helyre,
-Discover- vagy AI-válaszba kerülésre tett ígéret.
+A korábbi SEO-körben nem készült llms.txt. A tulajdonos későbbi, külön
+kérésére létrehozott statikus agent-tartalomjegyzéket a
+[LLMS_IMPLEMENTATION.md](../LLMS_IMPLEMENTATION.md) dokumentálja;
+ez nem Google-rangsorolási optimalizálás. Nem készült rejtett AI-szöveg,
+általános FAQ-séma, kitalált értékelés vagy mesterségesen feldarabolt tartalom.
+Nincs első helyre, Discover- vagy AI-válaszba kerülésre tett ígéret.
