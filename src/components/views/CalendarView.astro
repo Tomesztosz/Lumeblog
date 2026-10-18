@@ -47,29 +47,9 @@ const targetedReviewDate = calendarMeta.lastTargetedReview
     }).format(new Date(`${calendarMeta.lastTargetedReview}T00:00:00Z`))
   : null;
 
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: t.seoTitle,
-  description: t.seoDescription,
-  url: new URL(calendarUrl(lang), Astro.site).href,
-  mainEntity: {
-    '@type': 'ItemList',
-    itemListElement: calendarEntries.map((release, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'Product',
-        name: `${release.brand} ${release.family} ${release.model}`,
-        description: release.copy[lang].summary,
-        image: new URL(release.image, Astro.site).href,
-        brand: { '@type': 'Brand', name: release.brand },
-        ...(release.precision === 'day' ? { releaseDate: release.date } : {}),
-        url: release.sourceUrl,
-      },
-    })),
-  },
-};
+import { calendarSchema } from '../../lib/calendar-seo';
+const structuredData = calendarSchema({ site:Astro.site!, lang, path:calendarUrl(lang),
+  title:t.seoTitle, description:t.seoDescription, entries:calendarEntries });
 
 const clientCopy = {
   statusUpcoming: t.statusUpcoming,

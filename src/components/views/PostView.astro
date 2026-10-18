@@ -60,7 +60,7 @@ const articleStructuredData = {
     {
       '@type': 'BlogPosting',
       '@id': `${canonical}#article`,
-      headline: post.data.title,
+      headline: post.data.heading ?? post.data.title,
       description: post.data.seoDescription ?? post.data.description,
       datePublished: post.data.date.toISOString(),
       ...(updated ? { dateModified: updated.toISOString() } : {}),
@@ -142,7 +142,7 @@ const articleStructuredData = {
           <time class="dotsep mono" datetime={post.data.date.toISOString()}>{formatDate(post.data.date, lang)}</time>
           <span class="dotsep mono">{t.minutes(minutesOf(post))}</span>
         </div>
-        <h1>{post.data.title}</h1>
+        <h1>{post.data.heading ?? post.data.title}</h1>
         <p class="standfirst">{post.data.description}</p>
         <p class="article-byline mono">{t.writtenBy} <a rel="author" href={aboutUrl(lang)}>Lume</a>
           {updated && <> · {t.updatedOn} <time datetime={updated.toISOString()}>{formatDate(updated, lang)}</time></>}

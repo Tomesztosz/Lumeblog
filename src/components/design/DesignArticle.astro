@@ -62,7 +62,7 @@ const articleLinks = Object.fromEntries(
         <p class="eyebrow">
           {COLUMNS[post.data.column][lang].name} · {minutesOf(post)} {t.minutes}
         </p>
-        <h1>{post.data.title}</h1>
+        <h1>{post.data.heading ?? post.data.title}</h1>
       </div>
       <div class="reader-deck">
         <p>{post.data.description}</p>
@@ -77,7 +77,7 @@ const articleLinks = Object.fromEntries(
           {post.data.updated && (
             <span>
               {" "}
-              · {t.updated} {formatDate(post.data.updated, lang)}
+              · {t.updated} <time datetime={post.data.updated.toISOString()}>{formatDate(post.data.updated, lang)}</time>
             </span>
           )}
         </div>

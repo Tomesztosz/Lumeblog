@@ -20,10 +20,12 @@ export function inspectHtml(html) {
   const alternates = headLinks.filter((node) => attribute(node, 'hreflang')).map((node) => ({
     lang: attribute(node, 'hreflang'), url: attribute(node, 'href'),
   }));
-  const schemas = elements.filter((node) => node.tagName === 'script' && attribute(node, 'type') === 'application/ld+json')
-    .flatMap((node) => { const data = JSON.parse(textOf(node)); return data['@graph'] ?? [data]; });
+  const flatten = data => Array.isArray(data) ? data.flatMap(flatten) : data?.['@graph'] ? flatten(data['@graph']) : [data];
+  const schemaDocuments = elements.filter((node) => node.tagName === 'script' && attribute(node, 'type') === 'application/ld+json')
+    .map((node) => JSON.parse(textOf(node)));
+  const schemas = schemaDocuments.flatMap(flatten);
   return {
-    elements, head, meta, canonical, alternates, schemas,
+    elements, head, meta, canonical, alternates, schemas, schemaDocuments,
     titles: head.filter((node) => node.tagName === 'title').map(textOf),
     lang: attribute(elements.find((node) => node.tagName === 'html'), 'lang'),
     noindex: meta('robots').some((value) => /\bnoindex\b/i.test(value)),

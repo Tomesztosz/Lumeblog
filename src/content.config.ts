@@ -10,8 +10,10 @@ const posts = defineCollection({
     z.object({
       /** Cikk címe. */
       title: z.string(),
+      /** Opcionális H1; alapból a szerkesztői cím. Nem keresőcím. */
+      heading: z.string().trim().min(1).optional(),
       /** Látható felvezető — listákban és a cikk elején; SEO-leírás híján meta fallback. */
-      description: z.string(),
+      description: z.string().default(''),
       /** Keresőtalálati cím. A látható szerkesztői címet nem változtatja meg. */
       seoTitle: z.string().optional(),
       /** Keresőtalálati leírás. A cikk látható felvezetőjét nem változtatja meg. */

@@ -86,5 +86,7 @@ export async function getTranslation(post: Post, target: Lang): Promise<Post | u
     'posts',
     ({ data }) => !data.draft && data.lang === target && megjelent(data.date, most)
   );
-  return all.find((p) => p.data.translationKey === key);
+  const matches = all.filter((p) => p.data.translationKey === key);
+  if (matches.length > 1) throw new Error(`Ambiguous translationKey (${target}): ${key}`);
+  return matches[0];
 }

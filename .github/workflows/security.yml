@@ -27,3 +27,11 @@ jobs:
       - run: node --test scripts/post-needs-build.test.mjs
       - run: node --test scripts/published-feed.test.mjs
       - run: npm run build
+      - name: SEO validation report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: seo-validation
+          path: output/seo-p0-p1/validation.json
+          if-no-files-found: ignore
+          retention-days: 30

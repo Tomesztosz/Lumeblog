@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
-import { readFile, readdir } from 'node:fs/promises';
+import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
 import { attribute, inspectHtml, textOf } from './lib/seo-html.mjs';
+import { validateStructuredPage } from './lib/seo-validation.mjs';
 
 const root = new URL('../', import.meta.url);
 const out = new URL('dist/', root);
@@ -58,6 +59,8 @@ for (const [url, page] of pages) {
   check(!page.noindex, `${url}: unexpectedly noindex`);
   check(page.titles.length === 1 && Boolean(page.titles[0]?.trim()), `${url}: missing/duplicate title`);
   const title = page.titles[0];
+  check(!/\|\s*Lume\s*\|\s*Lume/i.test(title ?? ''), `${url}: duplicated Lume suffix`);
+  check((title?.match(/\bLume\b/gi) ?? []).length <= 1, `${url}: repeated site branding`);
   check(!uniqueTitles.has(title), `${url}: title duplicated with ${uniqueTitles.get(title)}`);
   uniqueTitles.set(title, url);
   const descriptions = page.meta('description');
@@ -72,6 +75,15 @@ for (const [url, page] of pages) {
     check(page.meta(name).length === 1 && Boolean(page.meta(name)[0]), `${url}: missing/duplicate ${name}`);
   }
   check(page.meta('og:url')[0] === url, `${url}: Open Graph canonical mismatch`);
+  check(page.meta('og:title')[0] === title && page.meta('twitter:title')[0] === title, `${url}: inconsistent social titles`);
+  check(page.meta('og:description')[0] === descriptions[0] && page.meta('twitter:description')[0] === descriptions[0], `${url}: inconsistent social descriptions`);
+  const alternateLanguages = page.alternates.map(alt=>alt.lang);
+  check(alternateLanguages.length === new Set(alternateLanguages).size, `${url}: duplicate hreflang language`);
+  if (page.alternates.length) {
+    check(page.alternates.some(alt=>alt.lang===page.lang&&alt.url===url), `${url}: missing self hreflang`);
+    check(page.alternates.some(alt=>alt.lang!=='x-default'&&alt.lang!==page.lang), `${url}: missing translated hreflang`);
+  }
+  errors.push(...validateStructuredPage(page,url));
   for (const alternate of page.alternates) {
     const target = pages.get(alternate.url);
     check(Boolean(target) && !target.noindex, `${url}: missing/index-excluded hreflang ${alternate.url}`);
@@ -160,6 +172,8 @@ for (const [url, page] of indexable) {
   const xml = sitemapEntries.get(url);
   check(Boolean(xml), `${url}: absent from sitemap`);
   for (const alt of page.alternates) check(xml?.includes(`hreflang="${alt.lang}" href="${alt.url}"`), `${url}: sitemap hreflang mismatch`);
+  const lastmod = xml?.match(/<lastmod>(.*?)<\/lastmod>/)?.[1];
+  check((lastmod || undefined) === page.meta('article:modified_time')[0], `${url}: sitemap lastmod differs from editorial update`);
 }
 for (const url of sitemapEntries.keys()) check(pages.has(url) && !pages.get(url).noindex, `Nonindexable URL in sitemap ${url}`);
 const robots = await readFile(new URL('robots.txt', out), 'utf8');
@@ -169,12 +183,18 @@ check(!/^Disallow:\s*\/\s*$/m.test(robots), 'robots.txt blocks the whole site');
 // Külön ellenőrzés a forrásokra: a még időzített cikk URL-je, RSS-e és ajánlása se szivárogjon ki.
 const columnSlugs = { hu: { 'in-hand': 'kezben', origins: 'eredet', movement: 'szerkezet' }, en: { 'in-hand': 'in-hand', origins: 'origins', movement: 'movement' } };
 let hiddenCount = 0;
+const translationKeys = new Set();
 for (const lang of ['hu', 'en']) {
   const rss = await readFile(new URL(lang === 'hu' ? 'rss.xml' : 'en/rss.xml', out), 'utf8');
   for (const file of await walk(new URL(`src/content/posts/${lang}/`, root))) {
     if (!file.pathname.endsWith('.md')) continue;
     const source = await readFile(file, 'utf8');
     const data = parseYaml(source.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '');
+    if (data.translationKey) {
+      const key = `${lang}:${data.translationKey}`;
+      check(!translationKeys.has(key), `${file.pathname}: ambiguous translationKey`);
+      translationKeys.add(key);
+    }
     const slug = data.slug ?? decodeURIComponent(file.pathname.split('/').at(-1)).replace(/\.md$/, '');
     const url = `${site}/${lang === 'en' ? 'en/' : ''}${columnSlugs[lang][data.column]}/${slug}/`;
     const hidden = data.draft || new Date(data.date) > new Date();
@@ -203,5 +223,11 @@ for (const file of files.filter((url) => url.pathname.endsWith('.ics'))) {
 }
 for (const warning of warnings) console.warn(`WARN: ${warning}`);
 for (const error of errors) console.error(`FAIL: ${error}`);
-console.log(JSON.stringify({ pages: indexable.length, articles: articleCount, checkedLinks, checkedImages, scheduledOrDraft: hiddenCount, sitemapUrls: sitemapEntries.size, maxClickDepth: Math.max(...distances.values()), errors: errors.length }, null, 2));
+const report = { checkedAt:new Date().toISOString(), pages: indexable.length, articles: articleCount, checkedLinks, checkedImages,
+  scheduledOrDraft: hiddenCount, sitemapUrls: sitemapEntries.size, maxClickDepth: Math.max(...distances.values()),
+  errors:errors.length, failures:errors, warnings:[...warnings],
+  manualChecks:['Search Console and Bing ownership/index coverage','Google structured-data eligibility','Production HTTP and post-JavaScript DOM checks'] };
+await mkdir(new URL('output/seo-p0-p1/',root),{recursive:true});
+await writeFile(new URL('output/seo-p0-p1/validation.json',root),JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify(report, null, 2));
 assert.equal(errors.length, 0, 'SEO regression check failed');

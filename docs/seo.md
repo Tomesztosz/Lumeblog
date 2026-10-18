@@ -1,5 +1,10 @@
 # Lume: keresőoptimalizálás és ellenőrzés
 
+Az aktuális, 2026. október 18-i P0/P1 kör: [audit](SEO_AUDIT.md),
+[megvalósítás](SEO_IMPLEMENTATION.md), [következő lépések](SEO_GROWTH_PLAN.md).
+Az alábbi szeptemberi állapotfelmérés történeti leírás, nem az aktuális
+oldalszám vagy eszközverzió.
+
 ## A 2026. szeptember 6-i fejlesztés
 
 A meglévő szerkesztői címek, cikkek és URL-ek megmaradtak. Nem kerültek be mesterséges kulcsszólisták, vásárlói értékelések, kitalált szerzők, termékajánlatok vagy tömegesen generált márkaoldalak.

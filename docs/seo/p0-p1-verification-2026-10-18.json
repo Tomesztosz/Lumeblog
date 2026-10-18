@@ -1,0 +1,166 @@
+{
+  "scope": "Pre-deployment P0/P1 verification",
+  "checkedAt": "2026-10-18T09:40:53.628Z",
+  "baseCommit": "cffbe2d3613c0e3bd044faf0cadda388ead945c6",
+  "validation": {
+    "checkedAt": "2026-10-18T09:40:12.205Z",
+    "pages": 96,
+    "articles": 60,
+    "checkedLinks": 5984,
+    "checkedImages": 704,
+    "scheduledOrDraft": 0,
+    "sitemapUrls": 96,
+    "maxClickDepth": 3,
+    "errors": 0,
+    "failures": [],
+    "warnings": [],
+    "manualChecks": [
+      "Search Console and Bing ownership/index coverage",
+      "Google structured-data eligibility",
+      "Production HTTP and post-JavaScript DOM checks"
+    ]
+  },
+  "comparison": {
+    "sameRoutes": true,
+    "modifiedSources": [],
+    "protectedChanges": [],
+    "metadataChanges": 97,
+    "titleChanges": [
+      {
+        "path": "en/about/index.html",
+        "before": [
+          "About Lume Watch Journal | Lume"
+        ],
+        "after": [
+          "About Lume Watch Journal"
+        ]
+      },
+      {
+        "path": "en/calendar/index.html",
+        "before": [
+          "Watch Release Calendar: The Lume Selection | Lume"
+        ],
+        "after": [
+          "Watch Release Calendar: The Lume Selection"
+        ]
+      },
+      {
+        "path": "en/movement/co-axial/index.html",
+        "before": [
+          "Co-Axial: George Daniels, Omega and the escapement | Lume | Lume"
+        ],
+        "after": [
+          "Co-Axial: George Daniels, Omega and the escapement | Lume"
+        ]
+      },
+      {
+        "path": "en/movement/rattrapante/index.html",
+        "before": [
+          "Rattrapante: how a split-seconds chronograph works | Lume | Lume"
+        ],
+        "after": [
+          "Rattrapante: how a split-seconds chronograph works | Lume"
+        ]
+      },
+      {
+        "path": "en/origins/todd-beamer-rolex/index.html",
+        "before": [
+          "Todd Beamer's Rolex and the story of Flight 93 | Lume | Lume"
+        ],
+        "after": [
+          "Todd Beamer's Rolex and the story of Flight 93 | Lume"
+        ]
+      },
+      {
+        "path": "en/workshop/index.html",
+        "before": [
+          "Lume Workshop: Interactive Watch Movements | Lume"
+        ],
+        "after": [
+          "Lume Workshop: Interactive Watch Movements"
+        ]
+      },
+      {
+        "path": "eredet/todd-beamer-rolex/index.html",
+        "before": [
+          "Todd Beamer Rolexe és a 93-as járat története | Lume | Lume"
+        ],
+        "after": [
+          "Todd Beamer Rolexe és a 93-as járat története | Lume"
+        ]
+      },
+      {
+        "path": "muhely/index.html",
+        "before": [
+          "Lume Műhely: interaktív óraszerkezetek | Lume"
+        ],
+        "after": [
+          "Lume Műhely: interaktív óraszerkezetek"
+        ]
+      },
+      {
+        "path": "naptar/index.html",
+        "before": [
+          "Óramegjelenési naptár: a Lume válogatása | Lume"
+        ],
+        "after": [
+          "Óramegjelenési naptár: a Lume válogatása"
+        ]
+      },
+      {
+        "path": "rolam/index.html",
+        "before": [
+          "A Lume órás naplóról | Lume"
+        ],
+        "after": [
+          "A Lume órás naplóról"
+        ]
+      },
+      {
+        "path": "szerkezet/co-axial/index.html",
+        "before": [
+          "Co-Axial: George Daniels gátlóműve és az Omega | Lume | Lume"
+        ],
+        "after": [
+          "Co-Axial: George Daniels gátlóműve és az Omega | Lume"
+        ]
+      },
+      {
+        "path": "szerkezet/rattrapante/index.html",
+        "before": [
+          "Rattrapante: az utolérő kronográf működése | Lume | Lume"
+        ],
+        "after": [
+          "Rattrapante: az utolérő kronográf működése | Lume"
+        ]
+      }
+    ]
+  },
+  "visibleContent": {
+    "checked": 96,
+    "differences": []
+  },
+  "tests": {
+    "seoUnitTests": 15,
+    "seoTypecheck": "passed",
+    "seoBrowserChecks": 27,
+    "calendarBrowserChecks": 18,
+    "mechanicalModelTests": 14,
+    "fullBuild": "passed",
+    "npmAuditVulnerabilities": 0
+  },
+  "limitations": {
+    "searchConsoleAccess": false,
+    "bingWebmasterAccess": false,
+    "indexNowActive": false,
+    "fieldPerformanceMeasured": false
+  },
+  "evidencePaths": [
+    "output/seo-p0-p1/build-baseline.json",
+    "output/seo-p0-p1/source-baseline.json",
+    "output/seo-p0-p1/visible-content-comparison.json",
+    "output/seo-p0-p1/http-baseline.json",
+    "output/seo-p0-p1/browser/report.json",
+    "output/calendar-automation/qa/report.json"
+  ]
+}
