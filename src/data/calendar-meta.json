@@ -1,3 +1,12 @@
 {
-  "lastReviewed": "2026-09-06"
+  "lastReviewed": "2026-09-06",
+  "lastTargetedReview": "2026-10-18",
+  "targetThrough": "2026-12-31",
+  "targetedReviewStatus": "partial",
+  "unverifiedBrandKeys": [
+    "tag-heuer",
+    "cartier",
+    "longines"
+  ],
+  "reviewRecord": "docs/calendar-review-2026-10-18.json"
 }

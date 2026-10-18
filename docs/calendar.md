@@ -1,5 +1,34 @@
 # Megjelenési naptár és újdonságfigyelő
 
+## Célzott év végi frissítés: 2026. október 18.
+
+A 24 figyelt márka nyilvános forrásainak célzott átnézése 2026. december 31-ig:
+nyolc új, hónapra igazolt esemény és három dátumra váró bejegyzés került be.
+Október: Citizen Series 8 és The CITIZEN kiadások, Grand Seiko Hi-Beat,
+Seiko Edo-lila jubileumi család, Kurono Calendrier SBR kiszállítás.
+November: Citizen ATTESA EVER SINCE és a Seiko két pandás kronográfja.
+December közepe: C1 Loco Classic, kizárólag az ellenőrzött aranyszínű
+számlapos, barna bőrszíjas referencia várható teljesítése.
+
+A Baltic The Rift évszám nélküli októberi szállítása, a Farer Stratton
+hónapra nem pontosított 2026 végi visszatérése és az MR-G MRG-D5000
+értékesítése dátumra vár. Ezekből nem készül ICS. A már elfogyott Kurono
+rendelési ablaka nem zárja le a későbbi kiszállítást. A négy korábbi,
+migrációkor felülvizsgálandó bemutató a részletes hivatalos oldalak újabb
+ellenőrzése után kapott eseményszintű bemutatási bizonyítékot. Előző
+ellenőrzési állapotuk megmaradt az előzményekben.
+
+A forráslefedettség részleges. A TAG Heuer termékoldal botvédett, a Cartier
+katalógusának lapozott része és a Longines dinamikus híroldala nem teljesen
+ellenőrizhető; hivatalos alternatív sajtóforrásokat is átnéztünk. Az IWC,
+JLC, Longines és TAG Heuer hivatalos sajtó-/magazinoldala, valamint a Casio
+híroldala bekerült a napi radarba. A teljes történeti feldolgozási sor nem
+ürült ki. A `lastReviewed` változatlan maradt, a külön `lastTargetedReview`
+jelzi ezt a részleges, konkrét tartalmi frissítést a felületen is.
+
+Tételes források, idézetek, képeredet, márkánkénti megjegyzések és nyitott
+kérdések: [ellenőrzési napló](calendar-review-2026-10-18.json).
+
 ## Aktuális működés: 2026. október 18.
 
 Ez a szakasz felülírja az alább megőrzött szeptemberi működésleírást.

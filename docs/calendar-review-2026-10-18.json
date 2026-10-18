@@ -1,0 +1,751 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-18T08:51:08.228Z",
+  "horizon": {
+    "from": "2026-10-18",
+    "through": "2026-12-31"
+  },
+  "status": "partial",
+  "scope": "Official configured sources and latest visible linked announcements; not a complete future product roadmap or exhaustive processing of the historical candidate backlog.",
+  "discovery": {
+    "checkedAt": "2026-10-18T08:33:57.760Z",
+    "sources": [
+      {
+        "brand": "rolex",
+        "url": "https://www.rolex.com/watches/new-watches",
+        "status": "failed",
+        "error": "HTTP 403"
+      },
+      {
+        "brand": "rolex",
+        "url": "https://www.rolex.com/watches/new-watches/oyster-perpetual-41",
+        "status": "failed",
+        "error": "HTTP 403"
+      },
+      {
+        "brand": "omega",
+        "url": "https://press.omegawatches.com/",
+        "status": "readable"
+      },
+      {
+        "brand": "omega",
+        "url": "https://press.omegawatches.com/omega-introduces-the-seamaster-diver-300m-james-bond-and-spectre-collection/",
+        "status": "readable"
+      },
+      {
+        "brand": "cartier",
+        "url": "https://www.cartier.com/en-us/watches/collections/",
+        "status": "readable"
+      },
+      {
+        "brand": "tudor",
+        "url": "https://www.tudorwatch.com/en/new-watches",
+        "status": "failed",
+        "error": "HTTP 403"
+      },
+      {
+        "brand": "tudor",
+        "url": "https://www.tudorwatch.com/en/watches/tudor-northflag/m9140g1a0u-0001",
+        "status": "failed",
+        "error": "HTTP 403"
+      },
+      {
+        "brand": "tag-heuer",
+        "url": "https://www.tagheuer.com/us/en/new-watches/",
+        "status": "failed",
+        "error": "HTTP 403"
+      },
+      {
+        "brand": "breitling",
+        "url": "https://www.breitling.com/us-en/watches/",
+        "status": "readable"
+      },
+      {
+        "brand": "longines",
+        "url": "https://www.longines.com/universe/news",
+        "status": "partial"
+      },
+      {
+        "brand": "iwc",
+        "url": "https://www.iwc.com/ww-en/watches",
+        "status": "failed",
+        "error": "HTTP 403"
+      },
+      {
+        "brand": "zenith",
+        "url": "https://pressroom.zenith-watches.com/?lang=eng",
+        "status": "readable"
+      },
+      {
+        "brand": "zenith",
+        "url": "https://pressroom.zenith-watches.com/paris-on-the-horizon-zenith-unveils-the-chronomaster-original-paris-edition/?lang=eng",
+        "status": "readable"
+      },
+      {
+        "brand": "seiko",
+        "url": "https://www.seikowatches.com/global-en/news",
+        "status": "partial"
+      },
+      {
+        "brand": "seiko",
+        "url": "https://www.seikowatches.com/v3/api/news?country=GlobalEn&language=en&sc_site=seiko_common&ttl=3",
+        "status": "readable"
+      },
+      {
+        "brand": "seiko",
+        "url": "https://www.seikowatches.com/us-en/products/5sports/hdb010",
+        "status": "readable"
+      },
+      {
+        "brand": "seiko",
+        "url": "https://www.seikowatches.com/sg-en/news/2026/pr/20260813",
+        "status": "readable"
+      },
+      {
+        "brand": "seiko",
+        "url": "https://www.seikowatches.com/us-en/news/2026/pr/20260826",
+        "status": "readable"
+      },
+      {
+        "brand": "grand-seiko",
+        "url": "https://www.grand-seiko.com/global-en/news",
+        "status": "partial"
+      },
+      {
+        "brand": "grand-seiko",
+        "url": "https://www.grand-seiko.com/v3/api/news?country=GlobalEn&language=en&sc_site=gs_common&ttl=3",
+        "status": "readable"
+      },
+      {
+        "brand": "grand-seiko",
+        "url": "https://www.grand-seiko.com/au-en/news/2026/pr/20260624",
+        "status": "readable"
+      },
+      {
+        "brand": "citizen",
+        "url": "https://www.citizenwatch-global.com/news/index.html",
+        "status": "readable"
+      },
+      {
+        "brand": "citizen",
+        "url": "https://www.citizenwatch.com/ca/en/product/AV0104-06W.html",
+        "status": "readable"
+      },
+      {
+        "brand": "citizen",
+        "url": "https://www.citizenwatch.com/ca/en/product/JY8144-50E.html",
+        "status": "readable"
+      },
+      {
+        "brand": "citizen",
+        "url": "https://www.citizenwatch-global.com/news/2026/20260901/index.html",
+        "status": "readable"
+      },
+      {
+        "brand": "citizen",
+        "url": "https://www.citizenwatch-global.com/news/2026/20260909/index.html",
+        "status": "readable"
+      },
+      {
+        "brand": "g-shock",
+        "url": "https://gshock.casio.com/intl/products/",
+        "status": "readable"
+      },
+      {
+        "brand": "jaeger-lecoultre",
+        "url": "https://www.jaeger-lecoultre.com/us-en/news/watchmaking",
+        "status": "failed",
+        "error": "HTTP 403"
+      },
+      {
+        "brand": "baltic",
+        "url": "https://baltic-watches.com/en/collections",
+        "status": "readable"
+      },
+      {
+        "brand": "christopher-ward",
+        "url": "https://www.christopherward.com/",
+        "status": "readable"
+      },
+      {
+        "brand": "christopher-ward",
+        "url": "https://www.christopherward.com/int/dive-watches",
+        "status": "partial"
+      },
+      {
+        "brand": "christopher-ward",
+        "url": "https://www.christopherward.com/int/press-landing.html",
+        "status": "partial"
+      },
+      {
+        "brand": "christopher-ward",
+        "url": "https://www.christopherward.com/int/trident-biscay.html",
+        "status": "readable"
+      },
+      {
+        "brand": "kurono-tokyo",
+        "url": "https://kuronotokyo.com/",
+        "status": "readable"
+      },
+      {
+        "brand": "furlan-marri",
+        "url": "https://www.furlanmarri.com/collections/all-watches",
+        "status": "readable"
+      },
+      {
+        "brand": "lorier",
+        "url": "https://www.lorierwatches.com/collections/watches",
+        "status": "readable"
+      },
+      {
+        "brand": "lorier",
+        "url": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
+        "status": "readable"
+      },
+      {
+        "brand": "rath",
+        "url": "https://rathwatches.com/",
+        "status": "readable"
+      },
+      {
+        "brand": "rath",
+        "url": "https://rathwatches.com/products/rath-droma-gmt",
+        "status": "readable"
+      },
+      {
+        "brand": "ming",
+        "url": "https://www.ming.watch/",
+        "status": "readable"
+      },
+      {
+        "brand": "ming",
+        "url": "https://www.ming.watch/journal",
+        "status": "readable"
+      },
+      {
+        "brand": "ming",
+        "url": "https://www.ming.watch/featured-product/ming-shapiro-37-06-lightning",
+        "status": "readable"
+      },
+      {
+        "brand": "farer",
+        "url": "https://farer.com/collections/all-watches",
+        "status": "readable"
+      },
+      {
+        "brand": "studio-underd0g",
+        "url": "https://underd0g.com/",
+        "status": "readable"
+      },
+      {
+        "brand": "studio-underd0g",
+        "url": "https://underd0g.com/pages/mantis",
+        "status": "readable"
+      },
+      {
+        "brand": "nomos",
+        "url": "https://nomos-glashuette.com/en/watches/new-releases",
+        "status": "readable"
+      }
+    ],
+    "issue": "https://github.com/Tomesztosz/Lumeblog/issues/10",
+    "issueReviewedAt": "2026-10-18T06:00:29Z",
+    "pendingAtIssueSnapshot": 1004,
+    "fullyProcessedHistoricalQueue": false
+  },
+  "brands": [
+    {
+      "key": "rolex",
+      "name": "Rolex",
+      "configuredUrls": [
+        "https://www.rolex.com/watches/new-watches",
+        "https://www.rolex.com/watches/new-watches/oyster-perpetual-41"
+      ],
+      "review": "2026 novelty index and OP41 detail read in browser. Perpetual Padellone has no official future on-sale month; no November date inferred from secondary reporting. Existing OP41 presentation verified.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "omega",
+      "name": "Omega",
+      "configuredUrls": [
+        "https://press.omegawatches.com/"
+      ],
+      "review": "Press index and detailed Bond/Spectre release read. Existing introduction verified; October 5 availability is not a future event.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "cartier",
+      "name": "Cartier",
+      "configuredUrls": [
+        "https://www.cartier.com/en-us/watches/collections/"
+      ],
+      "review": "Fetched and read first 24 of 231 collection results. Load-more catalogue and browser extraction prevent full catalogue coverage. No negative claim about Q4 launches.",
+      "coverage": "incomplete"
+    },
+    {
+      "key": "tudor",
+      "name": "Tudor",
+      "configuredUrls": [
+        "https://www.tudorwatch.com/en/new-watches",
+        "https://www.tudorwatch.com/en/watches/tudor-northflag/m9140g1a0u-0001"
+      ],
+      "review": "New watches index and Northflag detail read. Existing Northflag introduction verified; no on-sale day invented.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "tag-heuer",
+      "name": "TAG Heuer",
+      "configuredUrls": [
+        "https://www.tagheuer.com/us/en/new-watches/",
+        "https://magazine.tagheuer.com/en/"
+      ],
+      "review": "Configured new-watches page returns 403/internal error; official magazine checked as an alternative but does not establish full current product coverage.",
+      "coverage": "incomplete"
+    },
+    {
+      "key": "breitling",
+      "name": "Breitling",
+      "configuredUrls": [
+        "https://www.breitling.com/us-en/watches/"
+      ],
+      "review": "Watch catalogue and novelties view checked. No additional explicit future Q4 launch window verified in the inspected pages; not a statement that no other releases exist.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "longines",
+      "name": "Longines",
+      "configuredUrls": [
+        "https://www.longines.com/universe/news",
+        "https://mediacenter.longines.com/"
+      ],
+      "review": "Configured news page yields a shell. Official Media Center checked as an alternative; dynamic news coverage remains incomplete.",
+      "coverage": "incomplete"
+    },
+    {
+      "key": "iwc",
+      "name": "IWC",
+      "configuredUrls": [
+        "https://www.iwc.com/ww-en/watches",
+        "https://press.iwc.com/"
+      ],
+      "review": "Watch view checked in browser despite HTTP 403 in automated fetch. Official pressroom and October 15 Year of the Goat detail read. Lunar New Year in February 2027 is not the watch launch date.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "zenith",
+      "name": "Zenith",
+      "configuredUrls": [
+        "https://pressroom.zenith-watches.com/?lang=eng",
+        "https://pressroom.zenith-watches.com/paris-on-the-horizon-zenith-unveils-the-chronomaster-original-paris-edition/?lang=eng"
+      ],
+      "review": "Press index and Paris Edition detail read. Existing Paris card retained; June publication date is not new future availability.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "seiko",
+      "name": "Seiko",
+      "configuredUrls": [
+        "https://www.seikowatches.com/global-en/news",
+        "https://www.seikowatches.com/v3/api/news?country=GlobalEn&language=en&sc_site=seiko_common&ttl=3",
+        "https://www.seikowatches.com/us-en/products/5sports/hdb010",
+        "https://www.seikowatches.com/sg-en/news/2026/pr/20260813",
+        "https://www.seikowatches.com/us-en/news/2026/pr/20260826"
+      ],
+      "review": "Configured news/feed and all configured product/press details inspected. Added November Panda family and October Edo-purple six-model family, both with explicit primary-source year and month.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "grand-seiko",
+      "name": "Grand Seiko",
+      "configuredUrls": [
+        "https://www.grand-seiko.com/global-en/news",
+        "https://www.grand-seiko.com/v3/api/news?country=GlobalEn&language=en&sc_site=gs_common&ttl=3",
+        "https://www.grand-seiko.com/au-en/news/2026/pr/20260624"
+      ],
+      "review": "Configured news/feed and June 24 full detail inspected. Added October mechanical 9SA5 family, distinct from existing September Spring Drive entry.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "citizen",
+      "name": "Citizen",
+      "configuredUrls": [
+        "https://www.citizenwatch-global.com/news/index.html",
+        "https://www.citizenwatch.com/ca/en/product/AV0104-06W.html",
+        "https://www.citizenwatch.com/ca/en/product/JY8144-50E.html",
+        "https://www.citizenwatch-global.com/news/2026/20260901/index.html",
+        "https://www.citizenwatch-global.com/news/2026/20260909/index.html"
+      ],
+      "review": "News index, configured earlier details and September 17/24 and October 13 release specifications inspected. Added three families with explicit October or November launch plans.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "g-shock",
+      "name": "Casio / G-Shock",
+      "configuredUrls": [
+        "https://gshock.casio.com/intl/products/",
+        "https://www.casio.com/intl/news/"
+      ],
+      "review": "International products checked; official Casio 2026 releases provide better detail. Added MRG-D5000 without a calendar date; October 1 is publication, not an on-sale date.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "jaeger-lecoultre",
+      "name": "Jaeger-LeCoultre",
+      "configuredUrls": [
+        "https://www.jaeger-lecoultre.com/us-en/news/watchmaking",
+        "https://press.jaeger-lecoultre.com/"
+      ],
+      "review": "Watchmaking view and official PressLounge checked. October 13 Calibre 101 Chain and Collectibles VII detailed announcements inspected; publication/exhibition dates not misused as future model release dates.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "baltic",
+      "name": "Baltic",
+      "configuredUrls": [
+        "https://baltic-watches.com/en/collections"
+      ],
+      "review": "Collection and The Rift detail read. End-of-October delivery omits year, so added awaiting-date shipping entry without ICS.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "christopher-ward",
+      "name": "Christopher Ward",
+      "configuredUrls": [
+        "https://www.christopherward.com/",
+        "https://www.christopherward.com/int/dive-watches",
+        "https://www.christopherward.com/int/press-landing.html"
+      ],
+      "review": "Homepage, dive view, press landing, Biscay and C1 Loco Classic gold detail checked. Added only selected gold/leather reference with mid-December 2026 pre-order fulfilment estimate. Biscay presentation verified.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "kurono-tokyo",
+      "name": "Kurono Tokyo",
+      "configuredUrls": [
+        "https://kuronotokyo.com/"
+      ],
+      "review": "Homepage and Calendrier SBR detailed order/delivery page read. Added late-October 2026 fulfilment, keeping sold-out ordering separate.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "furlan-marri",
+      "name": "Furlan Marri",
+      "configuredUrls": [
+        "https://www.furlanmarri.com/collections/all-watches"
+      ],
+      "review": "Collection and production-updates view read. Meteorite batches mention July/August/September without year; no future 2026 date inferred.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "lorier",
+      "name": "Lorier",
+      "configuredUrls": [
+        "https://www.lorierwatches.com/collections/watches",
+        "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081"
+      ],
+      "review": "Configured collection and Astra detail checked. Previously accepted late-December 2026 shipping estimate retained, independent of out-of-stock status.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "rath",
+      "name": "RÁTH",
+      "configuredUrls": [
+        "https://rathwatches.com/",
+        "https://rathwatches.com/products/rath-droma-gmt"
+      ],
+      "review": "Homepage and DROMA GMT Founder Series detail checked. Same-day accepted correction to late-October 2026 retained; previous September conflict remains in history.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "ming",
+      "name": "MING",
+      "configuredUrls": [
+        "https://www.ming.watch/",
+        "https://www.ming.watch/journal",
+        "https://www.ming.watch/featured-product/ming-shapiro-37-06-lightning"
+      ],
+      "review": "Homepage, journal and configured Lightning detail checked, plus current Comet/Odyssey/Secret Honey details. Lightning archive completion wording conflicts with specific ongoing-order disclosure; no new 2026 shipping event inferred.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "farer",
+      "name": "Farer",
+      "configuredUrls": [
+        "https://farer.com/collections/all-watches"
+      ],
+      "review": "Collection and Stratton, Endeavour, Thorne Gold and Lander details read. Added Stratton late-2026 restock without a month. Endeavour IV November has no year; Thorne Gold has autumn/December tension; Lander points to 2027.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "studio-underd0g",
+      "name": "Studio Underd0g",
+      "configuredUrls": [
+        "https://underd0g.com/",
+        "https://underd0g.com/pages/mantis"
+      ],
+      "review": "Homepage, Mantis and production updates checked. Mantis shipping cohorts list October/December/January without an explicit year in that section; no invented 2026 batch dates.",
+      "coverage": "targeted-review-not-exhaustive"
+    },
+    {
+      "key": "nomos",
+      "name": "NOMOS",
+      "configuredUrls": [
+        "https://nomos-glashuette.com/en/watches/new-releases"
+      ],
+      "review": "New releases index and Metro ice blue/Club Sport worldtimer details read. No additional explicit future Q4 release month verified in inspected material.",
+      "coverage": "targeted-review-not-exhaustive"
+    }
+  ],
+  "additions": [
+    {
+      "id": "citizen-attesa-ever-since-2026",
+      "eventType": "sales",
+      "date": "2026-11",
+      "qualifier": null,
+      "sourceUrl": "https://www.citizenwatch-global.com/news/2026/20261013/index.html",
+      "quote": "Launch November 2026 ( Scheduled )",
+      "disposition": "dated",
+      "image": {
+        "file": "citizen-attesa-ever-since-2026.jpg",
+        "url": "https://www.citizenwatch-global.com/cms/global/news/2026/20261013/images/261013_01.jpg",
+        "width": 700,
+        "height": 467,
+        "format": "jpeg",
+        "alpha": false,
+        "bytes": 234563,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "citizen-series8-damascus-2026",
+      "eventType": "sales",
+      "date": "2026-10",
+      "qualifier": null,
+      "sourceUrl": "https://www.citizenwatch-global.com/news/2026/20260924/index.html",
+      "quote": "Launch October 2026 (Scheduled)",
+      "disposition": "dated",
+      "image": {
+        "file": "citizen-series8-damascus-2026.jpg",
+        "url": "https://www.citizenwatch-global.com/cms/global/news/2026/20260924/images/260924_01.jpg",
+        "width": 700,
+        "height": 487,
+        "format": "jpeg",
+        "alpha": false,
+        "bytes": 145372,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "citizen-washi-limited-2026",
+      "eventType": "sales",
+      "date": "2026-10",
+      "qualifier": null,
+      "sourceUrl": "https://www.citizenwatch-global.com/news/2026/20260917/index.html",
+      "quote": "Launch October 2026 (Scheduled)",
+      "disposition": "dated",
+      "image": {
+        "file": "citizen-washi-limited-2026.jpg",
+        "url": "https://www.citizenwatch-global.com/cms/global/news/2026/20260917/images/260917_01.jpg",
+        "width": 700,
+        "height": 500,
+        "format": "jpeg",
+        "alpha": false,
+        "bytes": 254097,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "grand-seiko-hi-beat-2026",
+      "eventType": "sales",
+      "date": "2026-10",
+      "qualifier": null,
+      "sourceUrl": "https://www.grand-seiko.com/au-en/news/2026/pr/20260624",
+      "quote": "The new mechanical creations will be available at the Grand Seiko Boutiques and select retail partners worldwide beginning in October 2026.",
+      "disposition": "dated",
+      "image": {
+        "file": "grand-seiko-hi-beat-2026.jpg",
+        "url": "https://www.grand-seiko.com/au-en/-/media/Images/GlobalEn/GrandSeiko/Home/news/2026/pr/20260624/SLGH031_KV.jpg?mh=900&mw=1600&hash=F1B2076C272DCCCDB2C908EBF82C9230",
+        "width": 1200,
+        "height": 675,
+        "format": "jpeg",
+        "alpha": false,
+        "bytes": 87022,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "cw-c1-loco-classic-gold-2026",
+      "eventType": "shipping",
+      "date": "2026-12",
+      "qualifier": "mid",
+      "sourceUrl": "https://www.christopherward.com/int/atelier-watches/C1-Loco-Classic/C01-41H6D1-S00A0-VT.html",
+      "quote": "Pre-order for Mid December 2026",
+      "disposition": "dated",
+      "image": {
+        "file": "cw-c1-loco-classic-gold-2026.jpg",
+        "url": "https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dwe817fbfb/images/WATCHES/C01-41H6D1-S00A0-VT/C01-41H6D1-S00A0-VT_Picture_2.jpg?sw=900&sh=900",
+        "width": 900,
+        "height": 900,
+        "format": "jpeg",
+        "alpha": false,
+        "bytes": 242938,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "kurono-calendrier-sbr-delivery-2026",
+      "eventType": "shipping",
+      "date": "2026-10",
+      "qualifier": "late",
+      "sourceUrl": "https://kuronotokyo.com/pages/calendrier-sbr",
+      "quote": "Expected deliveries from end-Oct 2026 onwards.",
+      "disposition": "dated",
+      "image": {
+        "file": "kurono-calendrier-sbr-2026.jpg",
+        "url": "https://kuronotokyo.com/cdn/shop/files/KT_CalendrierSBR_2.1.jpg?v=1788938729&width=1400",
+        "width": 1400,
+        "height": 980,
+        "format": "jpeg",
+        "alpha": false,
+        "bytes": 220145,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "seiko-panda-collection2-2026",
+      "eventType": "sales",
+      "date": "2026-11",
+      "qualifier": null,
+      "sourceUrl": "https://www.seikowatches.com/global-en/news/2026/pr/20261006",
+      "quote": "The two limited-edition creations will be available from November 2026 at the Seiko Boutiques and select retailers worldwide.",
+      "disposition": "dated",
+      "image": {
+        "file": "seiko-panda-collection2-2026.png",
+        "url": "https://www.seikowatches.com/global-en/-/media/Images/Product--Image/All/Seiko/2026/09/01/21/08/HHK001P1/HHK001P1.png?mh=900&mw=900",
+        "width": 900,
+        "height": 900,
+        "format": "png",
+        "alpha": true,
+        "bytes": 771751,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "seiko-edo-purple-2026",
+      "eventType": "sales",
+      "date": "2026-10",
+      "qualifier": null,
+      "sourceUrl": "https://www.seikowatches.com/global-en/news/2026/pr/20260806",
+      "quote": "The watches will be available beginning in October 2026 at the Seiko Boutiques and select retail stores worldwide.",
+      "disposition": "dated",
+      "image": {
+        "file": "seiko-edo-purple-2026.jpg",
+        "url": "https://www.seikowatches.com/global-en/-/media/Images/GlobalEn/Seiko/Home/news/2026/pr/20260806/Main_visual.jpg?mh=900&mw=1600",
+        "width": 1600,
+        "height": 873,
+        "format": "jpeg",
+        "alpha": false,
+        "bytes": 392217,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "baltic-hermetique-rift-delivery",
+      "eventType": "shipping",
+      "date": null,
+      "qualifier": null,
+      "sourceUrl": "https://baltic-watches.com/en/products/hermetique-the-rift",
+      "quote": "Delivery end of October",
+      "disposition": "awaiting-date",
+      "image": {
+        "file": "baltic-hermetique-rift.png",
+        "url": "https://cdn.shopify.com/s/files/1/0012/9299/2583/files/Baltic_Hermetique_The_Rfit_37_Face.png?v=1790590013&width=900",
+        "width": 900,
+        "height": 1330,
+        "format": "png",
+        "alpha": true,
+        "bytes": 1162255,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "farer-stratton-restock-late-2026",
+      "eventType": "restock",
+      "date": null,
+      "qualifier": null,
+      "sourceUrl": "https://farer.com/products/stratton",
+      "quote": "RETURNS LATE 2026",
+      "disposition": "awaiting-date",
+      "image": {
+        "file": "farer-stratton.png",
+        "url": "https://farer.com/cdn/shop/files/STRATTON-suede-tan.png?v=1761665801&width=900",
+        "width": 900,
+        "height": 900,
+        "format": "png",
+        "alpha": true,
+        "bytes": 208729,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    },
+    {
+      "id": "casio-mrg-d5000-sapphire-2026",
+      "eventType": "sales",
+      "date": null,
+      "qualifier": null,
+      "sourceUrl": "https://www.casio.com/intl/news/2026/1001-mrg-d5000/",
+      "quote": "The watch will be available in a limited edition of only 20 pieces worldwide.",
+      "disposition": "awaiting-date",
+      "image": {
+        "file": "casio-mrg-d5000-sapphire-2026.jpg",
+        "url": "https://www.casio.com/content/casio/locales/intl/en/products/news/2026/1001-mrg-d5000/_jcr_content/root/responsivegrid/container_2122173774/container/container_copy_15101/container_594435126__1829980917/container_copy_22553_205005613/container/image.casiocoreimg.jpeg/1790813408329/img-02.jpeg",
+        "width": 1031,
+        "height": 1440,
+        "format": "jpeg",
+        "alpha": false,
+        "bytes": 101773,
+        "processing": "Original manufacturer asset; no retouching, generative editing or re-encoding."
+      }
+    }
+  ],
+  "resolvedPresentationChecks": [
+    "omega-james-bond-spectre-2026",
+    "christopher-ward-c60-trident-biscay",
+    "rolex-oyster-perpetual-41-2026",
+    "tudor-northflag-2026"
+  ],
+  "remaining": [
+    {
+      "brand": "farer",
+      "url": "https://farer.com/products/endeavour-titanium-series-iii",
+      "reason": "Version IV launches November without an explicit year. Existing Series III photograph/specifications not presented as verified Version IV."
+    },
+    {
+      "brand": "farer",
+      "url": "https://farer.com/products/thorne-gold",
+      "reason": "BACK AUTUMN 2026 and LATE DECEMBER appear on the same product view. Needs an unambiguous new delivery claim."
+    },
+    {
+      "brand": "studio-underd0g",
+      "url": "https://underd0g.com/pages/production-updates",
+      "reason": "Mantis cohort shipping months omit the year. A separate subsequent 2026 Orders heading must not be silently attached to Mantis."
+    },
+    {
+      "brand": "ming",
+      "url": "https://www.ming.watch/featured-product/ming-shapiro-37-06-lightning",
+      "reason": "Generic archive completion statement and detailed June 2026 through late 2027 delivery programme require event-specific clarification."
+    },
+    {
+      "brand": "rolex",
+      "url": "https://www.rolex.com/watches/new-watches/perpetual-padellone",
+      "reason": "Official introduction verified, but no future on-sale month provided. No date taken from unofficial reports."
+    }
+  ],
+  "integrity": {
+    "lastFullReviewUnchanged": true,
+    "noFabricatedDays": true,
+    "noUnknownYearInIcs": true,
+    "originalManufacturerImages": true,
+    "imageCreditsDoNotImplyBlanketLicence": true,
+    "noStockBasedCompletion": true
+  }
+}

@@ -8,7 +8,7 @@
     "reference": "210.30.42.20.03.004 / 210.30.42.20.01.023",
     "status": "introduced",
     "firstSeen": "2026-10-07",
-    "sourceChecked": "2026-10-13",
+    "sourceChecked": "2026-10-18",
     "sourceUrl": "https://press.omegawatches.com/omega-introduces-the-seamaster-diver-300m-james-bond-and-spectre-collection/",
     "image": "/img/calendar/omega-bond-spectre-2026.webp",
     "imageWidth": 1440,
@@ -38,7 +38,7 @@
     "reference": "C60 Trident Biscay",
     "status": "introduced",
     "firstSeen": "2026-09-06",
-    "sourceChecked": "2026-10-13",
+    "sourceChecked": "2026-10-18",
     "sourceUrl": "https://www.christopherward.com/int/trident-biscay.html",
     "image": "/img/calendar/christopher-ward-biscay.webp",
     "imageWidth": 1125,
@@ -68,7 +68,7 @@
     "reference": "134303",
     "status": "introduced",
     "firstSeen": "2026-09-06",
-    "sourceChecked": "2026-10-13",
+    "sourceChecked": "2026-10-18",
     "sourceUrl": "https://www.rolex.com/watches/new-watches/oyster-perpetual-41",
     "image": "/img/calendar/rolex-op41-product.jpg",
     "imageWidth": 1920,
@@ -98,7 +98,7 @@
     "reference": "M9140G1A0U-0001",
     "status": "introduced",
     "firstSeen": "2026-09-06",
-    "sourceChecked": "2026-10-13",
+    "sourceChecked": "2026-10-18",
     "sourceUrl": "https://www.tudorwatch.com/en/watches/tudor-northflag/m9140g1a0u-0001",
     "image": "/img/calendar/tudor-northflag-product.png",
     "imageWidth": 900,
@@ -118,5 +118,96 @@
         "availability": "Exclusive to Tudor boutiques; check local stock separately."
       }
     }
+  },
+  {
+    "id": "baltic-hermetique-rift-delivery",
+    "brand": "Baltic",
+    "brandKey": "baltic",
+    "family": "Hermétique",
+    "model": "The Rift, delivery awaiting year confirmation",
+    "reference": "Hermétique The Rift 34 mm · 37 mm",
+    "imageCredit": "Baltic Watches",
+    "copy": {
+      "hu": {
+        "dateLabel": "Október végi kiszállítás szerepel, évszám nélkül",
+        "summary": "Az izlandi The Rift kerékpárversenyhez készült Hermétique, 34 és 37 milliméteres tokban. Teljesen világító számlap, kovácsolt karbon részletek és világoskék gumiszíj kíséri a 150 méteres vízállóságot.",
+        "selection": "A két méretből egyenként 200 darab készül. A képen a 37 milliméteres változat szerepel, nem egy általános Hermétique.",
+        "availability": "A termékoldal október végi kiszállítást ígér, de nem ír hozzá évszámot. Ezért még nem kezeljük igazolt 2026-os dátumként, és nincs hozzá naptárletöltés."
+      },
+      "en": {
+        "dateLabel": "Late-October delivery stated without a year",
+        "summary": "A Hermétique made for Iceland's The Rift cycling race, in 34mm and 37mm cases. A fully luminous dial, forged-carbon details and a pale-blue rubber strap accompany 150-metre water resistance.",
+        "selection": "Each size is limited to 200 pieces. The image shows the 37mm version, rather than a generic Hermétique.",
+        "availability": "The product page promises delivery at the end of October but omits the year. It is not yet treated as a verified 2026 date and has no calendar download."
+      }
+    },
+    "sourceUrl": "https://baltic-watches.com/en/products/hermetique-the-rift",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/baltic-hermetique-rift.png",
+    "imageWidth": 900,
+    "imageHeight": 1330,
+    "status": "announced",
+    "firstSeen": "2026-10-18"
+  },
+  {
+    "id": "farer-stratton-restock-late-2026",
+    "brand": "Farer",
+    "brandKey": "farer",
+    "family": "Moonphase",
+    "model": "Stratton, restock",
+    "reference": "Stratton",
+    "imageCredit": "Farer",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026 vége, pontosabb időpont nélkül",
+        "summary": "Kézi felhúzású holdfázisos óra Eisenkiesel kőszámlappal és sötétben világító Holddal. A 38,5 milliméteres acéltokban Sellita SW288-1 dolgozik.",
+        "selection": "Nem új modell bemutatója, hanem egy karakteres kőszámlapos Farer visszatérése a kínálatba.",
+        "availability": "A gyártó 2026 végére jelzi az újrarendelhetőséget, de hónapot vagy napot nem nevez meg. A pontosításig nem készül hozzá ICS."
+      },
+      "en": {
+        "dateLabel": "Late 2026, no more precise date",
+        "summary": "A hand-wound moonphase with an Eisenkiesel stone dial and a luminous moon. A Sellita SW288-1 powers the 38.5mm steel watch.",
+        "selection": "A distinctive stone-dial Farer returning to the range, rather than a new-model unveiling.",
+        "availability": "The manufacturer states a late-2026 return without a month or day. No ICS is issued until the timing is clarified."
+      }
+    },
+    "sourceUrl": "https://farer.com/products/stratton",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/farer-stratton.png",
+    "imageWidth": 900,
+    "imageHeight": 900,
+    "status": "announced",
+    "firstSeen": "2026-10-18"
+  },
+  {
+    "id": "casio-mrg-d5000-sapphire-2026",
+    "brand": "Casio / G-Shock",
+    "brandKey": "g-shock",
+    "family": "MR-G",
+    "model": "MRG-D5000, blue sapphire crystal",
+    "reference": "MRG-D5000",
+    "imageCredit": "CASIO COMPUTER CO., LTD.",
+    "limitedPieces": 20,
+    "copy": {
+      "hu": {
+        "dateLabel": "Bejelentve, értékesítési dátum nélkül",
+        "summary": "Kék zafírkristály tokalkatrészek az MR-G harmincadik évfordulójára. A Casio a legelső G-Shock szögletes formáját viszi át egy húsz darabos kísérleti csúcsmodellre.",
+        "selection": "Az anyagválasztás és a látható csavarokat elhagyó ütésvédelmi szerkezet miatt került be a válogatásba.",
+        "availability": "Az október 1-jei közlemény a bejelentés dátuma, nem igazolt jövőbeli megjelenési nap. A gyártó nem ad meg külön értékesítési időpontot, ezért nincs ICS."
+      },
+      "en": {
+        "dateLabel": "Announced, no on-sale date",
+        "summary": "Blue sapphire-crystal case components mark thirty years of MR-G. Casio translates the first G-Shock's square form into an experimental edition of twenty watches.",
+        "selection": "Selected for its unusual material and shock-resistant construction without exposed screws.",
+        "availability": "October 1 is the announcement date, not a verified future release day. The manufacturer supplies no separate on-sale schedule, so no ICS is available."
+      }
+    },
+    "sourceUrl": "https://www.casio.com/intl/news/2026/1001-mrg-d5000/",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/casio-mrg-d5000-sapphire-2026.jpg",
+    "imageWidth": 1031,
+    "imageHeight": 1440,
+    "status": "announced",
+    "firstSeen": "2026-10-18"
   }
 ]

@@ -432,5 +432,271 @@
       }
     },
     "eventType": "delivery"
+  },
+  {
+    "id": "citizen-attesa-ever-since-2026",
+    "brand": "Citizen",
+    "brandKey": "citizen",
+    "family": "ATTESA",
+    "model": "EVER SINCE Limited Edition",
+    "reference": "BY1000-69L",
+    "imageCredit": "Citizen Watch Co., Ltd.",
+    "limitedPieces": 2400,
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. november, tervezett bevezetés",
+        "summary": "Téli erdőt idéző, kék számlapos ATTESA, könnyű Super Titanium tokkal. A fényenergiával működő H874 automatikusan állítja a holdfázist a dátum és a választott félteke alapján.",
+        "selection": "A rádióvezérelt pontosság mellett a Luna Program teszi érdekessé: a holdfázis nem pusztán dísz a számlapon. Világszerte 2400 darab készül.",
+        "availability": "A Citizen novemberre tervezi a bevezetést, pontos napot nem közölt. A magyarországi forgalmazás külön ellenőrizendő."
+      },
+      "en": {
+        "dateLabel": "November 2026, planned launch",
+        "summary": "A blue ATTESA inspired by a winter forest, with a light Super Titanium case. Its light-powered H874 sets the moon phase automatically using the date and the selected hemisphere.",
+        "selection": "Beyond radio-controlled timekeeping, the Luna Program makes the moon display more than dial decoration. Production is limited to 2,400 pieces worldwide.",
+        "availability": "Citizen schedules the launch for November without a specific day. Local distribution requires a separate check."
+      }
+    },
+    "sourceUrl": "https://www.citizenwatch-global.com/news/2026/20261013/index.html",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/citizen-attesa-ever-since-2026.jpg",
+    "imageWidth": 700,
+    "imageHeight": 467,
+    "date": "2026-11-01",
+    "dateEnd": "2026-11-30",
+    "precision": "month",
+    "confirmed": true,
+    "eventType": "launch"
+  },
+  {
+    "id": "citizen-series8-damascus-2026",
+    "brand": "Citizen",
+    "brandKey": "citizen",
+    "family": "Series 8",
+    "model": "5th Anniversary Limited Edition",
+    "reference": "NB6092-01E",
+    "imageCredit": "Citizen Watch Co., Ltd.",
+    "limitedPieces": 1300,
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. október, tervezett bevezetés",
+        "summary": "Damaszkuszi acélrészletek, aranyszínű tok és kovácsolt karbon számlap a Series 8 ötödik évfordulójára. A 9054-es automata GMT-ben a helyi óramutató önállóan állítható.",
+        "selection": "A mintázatot nem nyomtatás adja: a rétegelt acél és a karbon anyagszerkezete találkozik egy 41 milliméteres órán. Összesen 1300 darab készül.",
+        "availability": "Hivatalosan októberre tervezett bevezetés, napra pontos dátum nélkül. A bolti készlet nem következik a bejelentésből."
+      },
+      "en": {
+        "dateLabel": "October 2026, planned launch",
+        "summary": "Damascus-steel details, a gold-coloured case and a forged-carbon dial mark five years of Series 8. The automatic calibre 9054 GMT has an independently adjustable local hour hand.",
+        "selection": "The patterns come from layered steel and carbon rather than printing, brought together in a 41mm watch. Limited to 1,300 pieces.",
+        "availability": "Officially scheduled for October, with no precise launch day. The announcement does not establish current retailer stock."
+      }
+    },
+    "sourceUrl": "https://www.citizenwatch-global.com/news/2026/20260924/index.html",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/citizen-series8-damascus-2026.jpg",
+    "imageWidth": 700,
+    "imageHeight": 487,
+    "date": "2026-10-01",
+    "dateEnd": "2026-10-31",
+    "precision": "month",
+    "confirmed": true,
+    "eventType": "launch"
+  },
+  {
+    "id": "citizen-washi-limited-2026",
+    "brand": "Citizen",
+    "brandKey": "citizen",
+    "family": "The CITIZEN",
+    "model": "Limited-edition washi dials",
+    "reference": "AQ4100-65X · AQ4106-00B",
+    "imageCredit": "Citizen Watch Co., Ltd.",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. október, tervezett bevezetés",
+        "summary": "Két kézműves papírszámlap: vörös Tosa Tengujoshi és aranyszálakkal díszített Unryushi. Mögöttük az A060 fényenergiás szerkezet dolgozik, évi ±5 másodperces pontossággal.",
+        "selection": "A washi átengedi a fényt a napelemhez, miközben megőrzi a papír rostos felületét. A vörös változatból 300, az aranyszálasból 350 darab készül.",
+        "availability": "A két referencia tervezett bevezetése október. A képen az AQ4106-00B látható; a helyi elérhetőség piacfüggő."
+      },
+      "en": {
+        "dateLabel": "October 2026, planned launch",
+        "summary": "Two hand-crafted paper dials: red Tosa Tengujoshi and gold-flecked Unryushi. Both house the light-powered A060, rated to ±5 seconds per year.",
+        "selection": "Washi admits light to the solar cell while retaining its fibrous surface. The red version is limited to 300 pieces, the gold-flecked version to 350.",
+        "availability": "Both references are scheduled for October. The photograph shows AQ4106-00B; local availability varies by market."
+      }
+    },
+    "sourceUrl": "https://www.citizenwatch-global.com/news/2026/20260917/index.html",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/citizen-washi-limited-2026.jpg",
+    "imageWidth": 700,
+    "imageHeight": 500,
+    "date": "2026-10-01",
+    "dateEnd": "2026-10-31",
+    "precision": "month",
+    "confirmed": true,
+    "eventType": "launch"
+  },
+  {
+    "id": "grand-seiko-hi-beat-2026",
+    "brand": "Grand Seiko",
+    "brandKey": "grand-seiko",
+    "family": "Evolution 9",
+    "model": "Hi-Beat 36000, updated core collection",
+    "reference": "SLGH029 · SLGH031 · SLGH033 · SLGH035",
+    "imageCredit": "Grand Seiko",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. októbertől",
+        "summary": "Négy megújult Evolution 9 a 9SA5 magas lengésszámú automata szerkezettel. A 40 milliméteres tok mellé finomállítható csat, 5 Hz-es járás és 80 órás járástartalék tartozik.",
+        "selection": "A nyírfás és Genbi-völgyi számlapok mögött a kettős impulzusú gátszerkezet az igazi közös nevező. Ez nem a szeptemberi Spring Drive család, hanem négy külön mechanikus referencia.",
+        "availability": "A gyártó októbertől jelzi a nemzetközi bevezetést butikjaiban és kijelölt partnereinél. A képen az SLGH031 szerepel."
+      },
+      "en": {
+        "dateLabel": "From October 2026",
+        "summary": "Four updated Evolution 9 watches powered by the high-beat automatic 9SA5. A 40mm case and a micro-adjustable clasp accompany its 5Hz frequency and 80-hour reserve.",
+        "selection": "Birch and Genbi Valley dials share the Dual Impulse Escapement underneath. These are four mechanical references, distinct from the September Spring Drive family.",
+        "availability": "The manufacturer states worldwide availability from October at boutiques and selected partners. The photograph shows SLGH031."
+      }
+    },
+    "sourceUrl": "https://www.grand-seiko.com/au-en/news/2026/pr/20260624",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/grand-seiko-hi-beat-2026.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "date": "2026-10-01",
+    "dateEnd": "2026-10-31",
+    "precision": "month",
+    "confirmed": true,
+    "eventType": "launch"
+  },
+  {
+    "id": "cw-c1-loco-classic-gold-2026",
+    "brand": "Christopher Ward",
+    "brandKey": "christopher-ward",
+    "family": "C1 Loco Classic",
+    "model": "Gold dial, brown Vesuvio leather",
+    "reference": "C01-41H6D1-S00A0-VT",
+    "imageCredit": "Christopher Ward",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. december közepe, várható kiszállítás",
+        "summary": "Aranyszínű alapra emelt, fehér kerámia időskála és szabadon látható billegő. A 41 milliméteres C1 Loco Classic kézi felhúzású CW-003 szerkezete hatnapos járástartalékot ad.",
+        "selection": "A Loco jellegzetes szerkezeti látványa itt lágyabb, klasszikusabb formát kap. A decemberi ígéret ehhez az aranyszínű számlapos, barna bőrszíjas referenciához tartozik.",
+        "availability": "Előrendelhető, a termékoldal december közepét jelöli várható teljesítésként. Más szín vagy szíj eltérő határidőt kaphat; ez nem új rendelési ablak nyitása."
+      },
+      "en": {
+        "dateLabel": "Mid-December 2026, estimated delivery",
+        "summary": "A raised white ceramic time display and an exposed balance above a gold-coloured base dial. The 41mm C1 Loco Classic uses the hand-wound CW-003 with six days of power reserve.",
+        "selection": "Loco's visible mechanics take on softer, more classical forms. The December estimate applies to this gold-dial reference on brown leather.",
+        "availability": "Available to pre-order for estimated mid-December fulfilment. Other dial or strap choices may have different schedules; this is not a new order-window opening."
+      }
+    },
+    "sourceUrl": "https://www.christopherward.com/int/atelier-watches/C1-Loco-Classic/C01-41H6D1-S00A0-VT.html",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/cw-c1-loco-classic-gold-2026.jpg",
+    "imageWidth": 900,
+    "imageHeight": 900,
+    "date": "2026-12-01",
+    "dateEnd": "2026-12-31",
+    "precision": "month",
+    "confirmed": true,
+    "eventType": "delivery"
+  },
+  {
+    "id": "kurono-calendrier-sbr-delivery-2026",
+    "brand": "Kurono Tokyo",
+    "brandKey": "kurono-tokyo",
+    "family": "Calendrier",
+    "model": "Small Batch Release, delivery",
+    "reference": "Calendrier SBR 2026",
+    "imageCredit": "Kurono Tokyo",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. október végétől, várható kiszállítás",
+        "summary": "Hajime Asaoka kis szériás Calendrier-je szászkék számlappal és galvanoplasztikával készített, rátett arab számokkal. A fényesebb lakkozás a krómozott indexekkel együtt adja a számlap karakterét.",
+        "selection": "Egy személyes színötletből született, meg nem ismételt kiadás. A naptár most a kiszállítás kezdetét mutatja, nem a már lezárult szeptemberi rendelést.",
+        "availability": "A rendelési ablak lezárult, az óra elfogyott. A korábbi megrendelések teljesítését október végétől várja a gyártó; új rendelést ez nem jelent."
+      },
+      "en": {
+        "dateLabel": "From late October 2026, estimated delivery",
+        "summary": "Hajime Asaoka's small-batch Calendrier combines a saxe-blue dial with electroformed applied Arabic numerals. A glossier lacquer plays against the bright metallic indices.",
+        "selection": "A personal colour idea became a limited production run that will not be repeated. This entry tracks deliveries, not the September ordering window that has already closed.",
+        "availability": "Ordering is closed and the watch is sold out. Fulfilment of existing orders is expected to begin in late October; no new ordering opportunity is implied."
+      }
+    },
+    "sourceUrl": "https://kuronotokyo.com/pages/calendrier-sbr",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/kurono-calendrier-sbr-2026.jpg",
+    "imageWidth": 1400,
+    "imageHeight": 980,
+    "date": "2026-10-01",
+    "dateEnd": "2026-10-31",
+    "precision": "month",
+    "confirmed": true,
+    "eventType": "delivery"
+  },
+  {
+    "id": "seiko-panda-collection2-2026",
+    "brand": "Seiko",
+    "brandKey": "seiko",
+    "family": "power design project",
+    "model": "collection 2: Panda / Baby Panda",
+    "reference": "HHK001 · HHK002",
+    "imageCredit": "Seiko Watch Corporation",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. novembertől",
+        "summary": "Itt a panda számlap szó szerint értendő: a segédszámlapok szemekké, a nyomógombok fülekké válnak. A fekete-fehér HHK001 mellé rózsaszín, újszülött pandát idéző HHK002 készül, 8T61 kvarc kronográffal.",
+        "selection": "Kiyotaka Sakai kiállítási ötletéből valódi sorozat lett. A HHK001-ből 3000, a HHK002-ből 2000 darab készül; a képen a fekete-fehér változat látható.",
+        "availability": "A két modell novembertől érkezik a Seiko butikokhoz és kijelölt nemzetközi kereskedőkhöz. Napra pontos bevezetést nem adtak meg."
+      },
+      "en": {
+        "dateLabel": "From November 2026",
+        "summary": "A panda dial in the literal sense: sub-dials become eyes and chronograph pushers become ears. The black-and-white HHK001 is joined by the pink baby-panda HHK002, both with the 8T61 quartz chronograph.",
+        "selection": "Kiyotaka Sakai's exhibition concept reaches production: 3,000 black-and-white watches and 2,000 pink ones. The image shows HHK001.",
+        "availability": "Both models arrive from November at Seiko boutiques and selected retailers worldwide. No exact release day is specified."
+      }
+    },
+    "sourceUrl": "https://www.seikowatches.com/global-en/news/2026/pr/20261006",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/seiko-panda-collection2-2026.png",
+    "imageWidth": 900,
+    "imageHeight": 900,
+    "date": "2026-11-01",
+    "dateEnd": "2026-11-30",
+    "precision": "month",
+    "confirmed": true,
+    "eventType": "launch"
+  },
+  {
+    "id": "seiko-edo-purple-2026",
+    "brand": "Seiko",
+    "brandKey": "seiko",
+    "family": "145th Anniversary",
+    "model": "Edo purple limited-edition collection",
+    "reference": "HBC006 · HBJ005 · HAB011 · HCB006 · HDB003 · HFL001",
+    "imageCredit": "Seiko Watch Corporation",
+    "copy": {
+      "hu": {
+        "dateLabel": "2026. októbertől",
+        "summary": "Hat jubileumi óra a hagyományos Edo-lila és aranyszínű részletek köré építve. Alpinist, Speedtimer, Astron, Cocktail Time GMT, Seiko 5 Sports és a forgatható kapcsolós digitális Rotocall is szerepel a sorban.",
+        "selection": "Jól látszik rajtuk, mennyiféle órát jelent ma a Seiko: automata, napelemes kronográf, GPS-es Astron és digitális modell is kapott saját kiadást. A hat referenciát egy családkártya fogja össze.",
+        "availability": "A közlemény októbertől jelzi a nemzetközi bevezetést. A darabszám és az ár modellenként eltér, a helyi készlet külön ellenőrizendő."
+      },
+      "en": {
+        "dateLabel": "From October 2026",
+        "summary": "Six anniversary watches combine traditional Edo purple with gold-coloured details. The family spans Alpinist, Speedtimer, Astron, Cocktail Time GMT, Seiko 5 Sports and the rotary-switch digital Rotocall.",
+        "selection": "A cross-section of Seiko today: automatics, a solar chronograph, GPS Astron and a digital watch each receive their own edition. One family card covers all six references.",
+        "availability": "The announcement states international availability from October. Production limits and prices differ by model; local stock requires a separate check."
+      }
+    },
+    "sourceUrl": "https://www.seikowatches.com/global-en/news/2026/pr/20260806",
+    "sourceChecked": "2026-10-18",
+    "image": "/img/calendar/seiko-edo-purple-2026.jpg",
+    "imageWidth": 1600,
+    "imageHeight": 873,
+    "date": "2026-10-01",
+    "dateEnd": "2026-10-31",
+    "precision": "month",
+    "confirmed": true,
+    "eventType": "launch"
   }
 ]

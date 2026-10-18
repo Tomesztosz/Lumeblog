@@ -52,5 +52,71 @@
     "url": "https://press.omegawatches.com/omega-introduces-the-seamaster-diver-300m-james-bond-and-spectre-collection/",
     "reviewedAt": "2026-10-13",
     "reason": "Browser manufacturer detail retains October 5 availability and six-watch Bond/Spectre collection. Existing introduced card unchanged."
+  },
+  {
+    "url": "https://www.citizenwatch-global.com/news/2026/20261013/index.html",
+    "hash": "64502bdc016278ff4c8ca21dd1e9081bed66482540f5c177fbbae03f4736a518",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for citizen-attesa-ever-since-2026. Verified explicit 2026-11 event window; publication date not used as launch date."
+  },
+  {
+    "url": "https://www.citizenwatch-global.com/news/2026/20260924/index.html",
+    "hash": "26ba2fed7debd213815d2292b4aac61f8085e55e63250a880ab386aefbeb8b20",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for citizen-series8-damascus-2026. Verified explicit 2026-10 event window; publication date not used as launch date."
+  },
+  {
+    "url": "https://www.citizenwatch-global.com/news/2026/20260917/index.html",
+    "hash": "affc20f3814d47e75e9d67c7ed09be1dba993e93c2850a1a12b90c562c350bcd",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for citizen-washi-limited-2026. Verified explicit 2026-10 event window; publication date not used as launch date."
+  },
+  {
+    "url": "https://www.grand-seiko.com/au-en/news/2026/pr/20260624",
+    "hash": "a0eccaa5444d454a0c6e00b50caee11d9c7938bec53a9f3ee9671e90d4c5c198",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for grand-seiko-hi-beat-2026. Verified explicit 2026-10 event window; publication date not used as launch date."
+  },
+  {
+    "url": "https://www.christopherward.com/int/atelier-watches/C1-Loco-Classic/C01-41H6D1-S00A0-VT.html",
+    "hash": "d4c01ca51e9e044141a5cf755dd4cbfbd61927d8dfc1baa7a3a21f91921b1bc1",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for cw-c1-loco-classic-gold-2026. Verified explicit 2026-12 event window; publication date not used as launch date."
+  },
+  {
+    "url": "https://kuronotokyo.com/pages/calendrier-sbr",
+    "hash": "bd97672d25d52e915a211132b0409c74c0aa4b4a85cdf1af5c9cf1ce084d3ea1",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for kurono-calendrier-sbr-delivery-2026. Verified explicit 2026-10 event window; publication date not used as launch date."
+  },
+  {
+    "url": "https://www.seikowatches.com/global-en/news/2026/pr/20261006",
+    "hash": "03225165d03d4b6cd0d12b4e2dfaa0593045afd97a05396b31fd292af3343c4a",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for seiko-panda-collection2-2026. Verified explicit 2026-11 event window; publication date not used as launch date."
+  },
+  {
+    "url": "https://www.seikowatches.com/global-en/news/2026/pr/20260806",
+    "hash": "9e5688755e8c1753ca6a3ef73faa497611071c7572394884407dbda4ce570372",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for seiko-edo-purple-2026. Verified explicit 2026-10 event window; publication date not used as launch date."
+  },
+  {
+    "url": "https://baltic-watches.com/en/products/hermetique-the-rift",
+    "hash": "04c79da695f7b77916d7677477c60ffaf7fecaa6953878bcf17e2b553ff9699c",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for baltic-hermetique-rift-delivery. No verified year/month launch or delivery window: retained awaiting date, without ICS."
+  },
+  {
+    "url": "https://farer.com/products/stratton",
+    "hash": "87551082089b0fa57698beff395e82eda6d6af9cf10c590043a5de8119da75d1",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for farer-stratton-restock-late-2026. No verified year/month launch or delivery window: retained awaiting date, without ICS."
+  },
+  {
+    "url": "https://www.casio.com/intl/news/2026/1001-mrg-d5000/",
+    "hash": "e53c19b258803bac01f7bb0bdbfd84d60010b469069bdc3719c0791a7642ba6b",
+    "reviewedAt": "2026-10-18",
+    "reason": "Read detailed manufacturer source for casio-mrg-d5000-sapphire-2026. No verified year/month launch or delivery window: retained awaiting date, without ICS."
   }
 ]

@@ -696,6 +696,7 @@ export const CALENDAR_UI = {
     radarWatched: 'Nincs aktuális naptári esemény',
     radarOfficial: 'Hivatalos oldal',
     radarLastChecked: (date: string) => `Utolsó rögzített radaráttekintés: ${date}`,
+    radarTargetedChecked: (date: string) => `Célzott frissítés: ${date}. A forráslefedettség részleges; a nem bejelentett terveket nem találgatjuk.`,
   },
   en: {
     nav: 'Calendar',
@@ -784,5 +785,6 @@ export const CALENDAR_UI = {
     radarWatched: 'No current calendar event',
     radarOfficial: 'Official site',
     radarLastChecked: (date: string) => `Last recorded radar review: ${date}`,
+    radarTargetedChecked: (date: string) => `Targeted update: ${date}. Source coverage is partial; unannounced plans are not inferred.`,
   },
 } as const;

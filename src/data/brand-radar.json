@@ -36,7 +36,9 @@
     "name": "TAG Heuer",
     "key": "tag-heuer",
     "sourceUrl": "https://www.tagheuer.com/us/en/new-watches/",
-    "additionalSources": []
+    "additionalSources": [
+      "https://magazine.tagheuer.com/en/"
+    ]
   },
   {
     "group": "major",
@@ -50,14 +52,18 @@
     "name": "Longines",
     "key": "longines",
     "sourceUrl": "https://www.longines.com/universe/news",
-    "additionalSources": []
+    "additionalSources": [
+      "https://mediacenter.longines.com/"
+    ]
   },
   {
     "group": "major",
     "name": "IWC",
     "key": "iwc",
     "sourceUrl": "https://www.iwc.com/ww-en/watches",
-    "additionalSources": []
+    "additionalSources": [
+      "https://press.iwc.com/"
+    ]
   },
   {
     "group": "major",
@@ -107,14 +113,18 @@
     "name": "Casio / G-Shock",
     "key": "g-shock",
     "sourceUrl": "https://gshock.casio.com/intl/products/",
-    "additionalSources": []
+    "additionalSources": [
+      "https://www.casio.com/intl/news/"
+    ]
   },
   {
     "group": "major",
     "name": "Jaeger-LeCoultre",
     "key": "jaeger-lecoultre",
     "sourceUrl": "https://www.jaeger-lecoultre.com/us-en/news/watchmaking",
-    "additionalSources": []
+    "additionalSources": [
+      "https://press.jaeger-lecoultre.com/"
+    ]
   },
   {
     "group": "independent",

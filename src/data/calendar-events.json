@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": 1,
+  "version": 2,
   "events": {
     "citizen-attesa-eco-drive-50-2026": {
       "editorial": "approved",
@@ -474,19 +474,45 @@
         "market": "unspecified",
         "round": "legacy:omega-james-bond-spectre-2026"
       },
-      "identityVerified": false,
-      "sourceStatus": "planned",
+      "identityVerified": true,
+      "sourceStatus": "occurred",
       "schedule": {
         "precision": "unknown"
       },
-      "verification": {
-        "issue": "legacy-completion-unverified",
-        "reason": "The original record has no event-specific completion evidence."
-      },
-      "evidence": [],
-      "history": [],
-      "revision": 0,
-      "editorialReviewedAt": "2026-10-13"
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "omega-james-bond-spectre-2026",
+          "eventType": "presentation",
+          "claim": "occurred",
+          "quote": "The collection is available from October 5th at OMEGA boutiques and online.",
+          "url": "https://press.omegawatches.com/omega-introduces-the-seamaster-diver-300m-james-bond-and-spectre-collection/",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [
+        {
+          "revision": 0,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "unknown"
+          },
+          "evidence": [],
+          "verification": {
+            "issue": "legacy-completion-unverified",
+            "reason": "The original record has no event-specific completion evidence."
+          },
+          "changedAt": "2026-10-18T08:51:06.990Z",
+          "reason": "editorial-primary-source-confirmed-presentation"
+        }
+      ],
+      "revision": 1,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "allowedSources": [
+        "https://press.omegawatches.com/omega-introduces-the-seamaster-diver-300m-james-bond-and-spectre-collection/"
+      ],
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
     },
     "christopher-ward-c60-trident-biscay": {
       "editorial": "approved",
@@ -500,19 +526,45 @@
         "market": "unspecified",
         "round": "legacy:christopher-ward-c60-trident-biscay"
       },
-      "identityVerified": false,
-      "sourceStatus": "planned",
+      "identityVerified": true,
+      "sourceStatus": "occurred",
       "schedule": {
         "precision": "unknown"
       },
-      "verification": {
-        "issue": "legacy-completion-unverified",
-        "reason": "The original record has no event-specific completion evidence."
-      },
-      "evidence": [],
-      "history": [],
-      "revision": 0,
-      "editorialReviewedAt": "2026-10-13"
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "christopher-ward-c60-trident-biscay",
+          "eventType": "presentation",
+          "claim": "occurred",
+          "quote": "Three new skin-divers featuring re-designed, slimline Light-catcher™ cases waterproof to 200m, Chronometer accuracy and a sleek mid-century dial design you can’t ignore.",
+          "url": "https://www.christopherward.com/int/trident-biscay.html",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [
+        {
+          "revision": 0,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "unknown"
+          },
+          "evidence": [],
+          "verification": {
+            "issue": "legacy-completion-unverified",
+            "reason": "The original record has no event-specific completion evidence."
+          },
+          "changedAt": "2026-10-18T08:51:06.990Z",
+          "reason": "editorial-primary-source-confirmed-presentation"
+        }
+      ],
+      "revision": 1,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "allowedSources": [
+        "https://www.christopherward.com/int/trident-biscay.html"
+      ],
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
     },
     "rolex-oyster-perpetual-41-2026": {
       "editorial": "approved",
@@ -526,19 +578,45 @@
         "market": "unspecified",
         "round": "legacy:rolex-oyster-perpetual-41-2026"
       },
-      "identityVerified": false,
-      "sourceStatus": "planned",
+      "identityVerified": true,
+      "sourceStatus": "occurred",
       "schedule": {
         "precision": "unknown"
       },
-      "verification": {
-        "issue": "legacy-completion-unverified",
-        "reason": "The original record has no event-specific completion evidence."
-      },
-      "evidence": [],
-      "history": [],
-      "revision": 0,
-      "editorialReviewedAt": "2026-10-13"
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "rolex-oyster-perpetual-41-2026",
+          "eventType": "presentation",
+          "claim": "occurred",
+          "quote": "This Oyster Perpetual 41 is offered in a yellow Rolesor version, a combination of alloys expressed here through a bezel and winding crown crafted from yellow gold, paired with a case and bracelet in Oystersteel.",
+          "url": "https://www.rolex.com/watches/new-watches/oyster-perpetual-41",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [
+        {
+          "revision": 0,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "unknown"
+          },
+          "evidence": [],
+          "verification": {
+            "issue": "legacy-completion-unverified",
+            "reason": "The original record has no event-specific completion evidence."
+          },
+          "changedAt": "2026-10-18T08:51:06.990Z",
+          "reason": "editorial-primary-source-confirmed-presentation"
+        }
+      ],
+      "revision": 1,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "allowedSources": [
+        "https://www.rolex.com/watches/new-watches/oyster-perpetual-41"
+      ],
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
     },
     "tudor-northflag-2026": {
       "editorial": "approved",
@@ -552,19 +630,524 @@
         "market": "unspecified",
         "round": "legacy:tudor-northflag-2026"
       },
-      "identityVerified": false,
-      "sourceStatus": "planned",
+      "identityVerified": true,
+      "sourceStatus": "occurred",
       "schedule": {
         "precision": "unknown"
       },
-      "verification": {
-        "issue": "legacy-completion-unverified",
-        "reason": "The original record has no event-specific completion evidence."
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "tudor-northflag-2026",
+          "eventType": "presentation",
+          "claim": "occurred",
+          "quote": "The TUDOR Northflag makes its comeback",
+          "url": "https://www.tudorwatch.com/en/watches/tudor-northflag/m9140g1a0u-0001",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [
+        {
+          "revision": 0,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "unknown"
+          },
+          "evidence": [],
+          "verification": {
+            "issue": "legacy-completion-unverified",
+            "reason": "The original record has no event-specific completion evidence."
+          },
+          "changedAt": "2026-10-18T08:51:06.990Z",
+          "reason": "editorial-primary-source-confirmed-presentation"
+        }
+      ],
+      "revision": 1,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "allowedSources": [
+        "https://www.tudorwatch.com/en/watches/tudor-northflag/m9140g1a0u-0001"
+      ],
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "citizen-attesa-ever-since-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "citizen",
+        "model": "ATTESA",
+        "references": [
+          "BY1000-69L"
+        ],
+        "type": "sales",
+        "market": "worldwide",
+        "round": "citizen-attesa-ever-since-2026"
       },
-      "evidence": [],
+      "identityVerified": true,
+      "allowedSources": [
+        "https://www.citizenwatch-global.com/news/2026/20261013/index.html"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-11",
+        "certainty": "estimated",
+        "originalText": "Launch November 2026 ( Scheduled )",
+        "legacyLabels": {
+          "hu": "2026. november, tervezett bevezetés",
+          "en": "November 2026, planned launch"
+        }
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "citizen-attesa-ever-since-2026",
+          "eventType": "sales",
+          "claim": "planned",
+          "quote": "Launch November 2026 ( Scheduled )",
+          "url": "https://www.citizenwatch-global.com/news/2026/20261013/index.html",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
       "history": [],
       "revision": 0,
-      "editorialReviewedAt": "2026-10-13"
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "citizen-series8-damascus-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "citizen",
+        "model": "Series 8",
+        "references": [
+          "NB6092-01E"
+        ],
+        "type": "sales",
+        "market": "worldwide",
+        "round": "citizen-series8-damascus-2026"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://www.citizenwatch-global.com/news/2026/20260924/index.html"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-10",
+        "certainty": "estimated",
+        "originalText": "Launch October 2026 (Scheduled)",
+        "legacyLabels": {
+          "hu": "2026. október, tervezett bevezetés",
+          "en": "October 2026, planned launch"
+        }
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "citizen-series8-damascus-2026",
+          "eventType": "sales",
+          "claim": "planned",
+          "quote": "Launch October 2026 (Scheduled)",
+          "url": "https://www.citizenwatch-global.com/news/2026/20260924/index.html",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "citizen-washi-limited-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "citizen",
+        "model": "The CITIZEN",
+        "references": [
+          "AQ4100-65X",
+          "AQ4106-00B"
+        ],
+        "type": "sales",
+        "market": "worldwide",
+        "round": "citizen-washi-limited-2026"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://www.citizenwatch-global.com/news/2026/20260917/index.html"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-10",
+        "certainty": "estimated",
+        "originalText": "Launch October 2026 (Scheduled)",
+        "legacyLabels": {
+          "hu": "2026. október, tervezett bevezetés",
+          "en": "October 2026, planned launch"
+        }
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "citizen-washi-limited-2026",
+          "eventType": "sales",
+          "claim": "planned",
+          "quote": "Launch October 2026 (Scheduled)",
+          "url": "https://www.citizenwatch-global.com/news/2026/20260917/index.html",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "grand-seiko-hi-beat-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "grand-seiko",
+        "model": "Evolution 9",
+        "references": [
+          "SLGH029",
+          "SLGH031",
+          "SLGH033",
+          "SLGH035"
+        ],
+        "type": "sales",
+        "market": "worldwide",
+        "round": "grand-seiko-hi-beat-2026"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://www.grand-seiko.com/au-en/news/2026/pr/20260624"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-10",
+        "certainty": "confirmed",
+        "originalText": "The new mechanical creations will be available at the Grand Seiko Boutiques and select retail partners worldwide beginning in October 2026.",
+        "legacyLabels": {
+          "hu": "2026. októbertől",
+          "en": "From October 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "grand-seiko-hi-beat-2026",
+          "eventType": "sales",
+          "claim": "planned",
+          "quote": "The new mechanical creations will be available at the Grand Seiko Boutiques and select retail partners worldwide beginning in October 2026.",
+          "url": "https://www.grand-seiko.com/au-en/news/2026/pr/20260624",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "cw-c1-loco-classic-gold-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "christopher-ward",
+        "model": "C1 Loco Classic",
+        "references": [
+          "C01-41H6D1-S00A0-VT"
+        ],
+        "type": "shipping",
+        "market": "worldwide",
+        "round": "cw-c1-loco-classic-gold-2026"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://www.christopherward.com/int/atelier-watches/C1-Loco-Classic/C01-41H6D1-S00A0-VT.html"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-12",
+        "certainty": "estimated",
+        "originalText": "Pre-order for Mid December 2026",
+        "qualifier": "mid",
+        "legacyLabels": {
+          "hu": "2026. december közepe, várható kiszállítás",
+          "en": "Mid-December 2026, estimated delivery"
+        }
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "cw-c1-loco-classic-gold-2026",
+          "eventType": "shipping",
+          "claim": "planned",
+          "quote": "Pre-order for Mid December 2026",
+          "url": "https://www.christopherward.com/int/atelier-watches/C1-Loco-Classic/C01-41H6D1-S00A0-VT.html",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "kurono-calendrier-sbr-delivery-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "kurono-tokyo",
+        "model": "Calendrier",
+        "references": [
+          "Calendrier SBR 2026"
+        ],
+        "type": "shipping",
+        "market": "worldwide",
+        "round": "kurono-calendrier-sbr-delivery-2026"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://kuronotokyo.com/pages/calendrier-sbr"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-10",
+        "certainty": "estimated",
+        "originalText": "Expected deliveries from end-Oct 2026 onwards.",
+        "qualifier": "late",
+        "legacyLabels": {
+          "hu": "2026. október végétől, várható kiszállítás",
+          "en": "From late October 2026, estimated delivery"
+        }
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "kurono-calendrier-sbr-delivery-2026",
+          "eventType": "shipping",
+          "claim": "planned",
+          "quote": "Expected deliveries from end-Oct 2026 onwards.",
+          "url": "https://kuronotokyo.com/pages/calendrier-sbr",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "seiko-panda-collection2-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "seiko",
+        "model": "power design project",
+        "references": [
+          "HHK001",
+          "HHK002"
+        ],
+        "type": "sales",
+        "market": "worldwide",
+        "round": "seiko-panda-collection2-2026"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://www.seikowatches.com/global-en/news/2026/pr/20261006"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-11",
+        "certainty": "confirmed",
+        "originalText": "The two limited-edition creations will be available from November 2026 at the Seiko Boutiques and select retailers worldwide.",
+        "legacyLabels": {
+          "hu": "2026. novembertől",
+          "en": "From November 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "seiko-panda-collection2-2026",
+          "eventType": "sales",
+          "claim": "planned",
+          "quote": "The two limited-edition creations will be available from November 2026 at the Seiko Boutiques and select retailers worldwide.",
+          "url": "https://www.seikowatches.com/global-en/news/2026/pr/20261006",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "seiko-edo-purple-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "seiko",
+        "model": "145th Anniversary",
+        "references": [
+          "HBC006",
+          "HBJ005",
+          "HAB011",
+          "HCB006",
+          "HDB003",
+          "HFL001"
+        ],
+        "type": "sales",
+        "market": "worldwide",
+        "round": "seiko-edo-purple-2026"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://www.seikowatches.com/global-en/news/2026/pr/20260806"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-10",
+        "certainty": "confirmed",
+        "originalText": "The watches will be available beginning in October 2026 at the Seiko Boutiques and select retail stores worldwide.",
+        "legacyLabels": {
+          "hu": "2026. októbertől",
+          "en": "From October 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "seiko-edo-purple-2026",
+          "eventType": "sales",
+          "claim": "planned",
+          "quote": "The watches will be available beginning in October 2026 at the Seiko Boutiques and select retail stores worldwide.",
+          "url": "https://www.seikowatches.com/global-en/news/2026/pr/20260806",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "baltic-hermetique-rift-delivery": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "baltic",
+        "model": "Hermétique",
+        "references": [
+          "Hermétique The Rift 34 mm",
+          "37 mm"
+        ],
+        "type": "shipping",
+        "market": "worldwide",
+        "round": "baltic-hermetique-rift-delivery"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://baltic-watches.com/en/products/hermetique-the-rift"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "unknown",
+        "originalText": "Delivery end of October"
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "baltic-hermetique-rift-delivery",
+          "eventType": "shipping",
+          "claim": "planned",
+          "quote": "Delivery end of October",
+          "url": "https://baltic-watches.com/en/products/hermetique-the-rift",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "farer-stratton-restock-late-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "farer",
+        "model": "Moonphase",
+        "references": [
+          "Stratton"
+        ],
+        "type": "restock",
+        "market": "worldwide",
+        "round": "farer-stratton-restock-late-2026"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://farer.com/products/stratton"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "unknown",
+        "originalText": "RETURNS LATE 2026"
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "farer-stratton-restock-late-2026",
+          "eventType": "restock",
+          "claim": "planned",
+          "quote": "RETURNS LATE 2026",
+          "url": "https://farer.com/products/stratton",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "casio-mrg-d5000-sapphire-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "g-shock",
+        "model": "MR-G",
+        "references": [
+          "MRG-D5000"
+        ],
+        "type": "sales",
+        "market": "worldwide",
+        "round": "casio-mrg-d5000-sapphire-2026"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://www.casio.com/intl/news/2026/1001-mrg-d5000/"
+      ],
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "unknown",
+        "originalText": "The watch will be available in a limited edition of only 20 pieces worldwide."
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "casio-mrg-d5000-sapphire-2026",
+          "eventType": "sales",
+          "claim": "planned",
+          "quote": "The watch will be available in a limited edition of only 20 pieces worldwide.",
+          "url": "https://www.casio.com/intl/news/2026/1001-mrg-d5000/",
+          "checkedAt": "2026-10-18T08:51:06.990Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
     }
   }
 }

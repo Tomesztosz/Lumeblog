@@ -67,7 +67,12 @@ export const releases = (hydrateEvents(releaseData, eventStore) as WatchRelease[
 );
 
 export const brandRadar = brandRadarData as BrandRadarItem[];
-export const calendarMeta = calendarMetaData as { lastReviewed: string };
+export const calendarMeta = calendarMetaData as {
+  lastReviewed: string;
+  lastTargetedReview?: string;
+  targetThrough?: string;
+  targetedReviewStatus?: 'partial' | 'complete';
+};
 export const calendarEntries: CalendarEntry[] = [...announcements, ...releases];
 export const exportableReleases = calendarEntries.filter(exportableEvent);
 export const calendarRevision = createHash('sha256').update(JSON.stringify(calendarEntries)).digest('hex');
