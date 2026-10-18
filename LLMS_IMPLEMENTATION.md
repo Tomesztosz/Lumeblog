@@ -213,9 +213,24 @@ A kétszeri tényleges build összehasonlítása külön `determinism.json` jele
 A helyi teszt nem éles bizonyíték: a publikált státuszt csak sikeres,
 az aktuális kimenettel egyező `production-validation.json` igazolja.
 
-Megvalósított, de az első telepítés előtt élesben még nem ellenőrzött:
-a Cloudflare-fájl tényleges tartalma és HTTP-fejlécei. Ennek eredményét a kiadás
-utáni jelentés és az átadási összefoglaló külön rögzíti.
+Megvalósított és éles környezetben is ellenőrzött, 2026. október 18.:
+`/llms.txt` HTTP 200, `text/plain; charset=utf-8`,
+`public, max-age=0, must-revalidate`, a helyi builddel egyező 24 432 byte.
+Mind a 96 cél közvetlenül HTTP 200, megfelelő canonical és felfedezési link mellett.
+A szükségtelen `/llms-full.txt` HTTP 404. Nulla hiba.
+A külön éles SEO-próba 96 oldalt és 50 képet, összesen 158 ellenőrzést végzett,
+nulla hibával. A valódi domainen a 27 böngészős SEO-/Műhely-próba is sikeres.
+Ebben a kiadásban nincs élesben ellenőrizetlen kötelező funkció.
+Külső AI-szolgáltatók felhasználását továbbra sem állítjuk igazoltnak.
+
+Valódi részlet a generált kimenetből, nem külön karbantartandó példaállomány:
+
+```markdown
+## Movement Mechanics / Óraszerkezetek
+
+- [HU: George Daniels és a gátlómű, amelyre sokáig senki sem várt](https://lumejournal.com/szerkezet/co-axial/): Hogyan működik a Co-Axial? George Daniels, a Patek és Rolex prototípusai, az Omega 2500 és a két impulzusút részletes interaktív modellen\.
+- [EN: George Daniels and the escapement the industry was slow to want](https://lumejournal.com/en/movement/co-axial/): How the Co-Axial works, with an interactive model: Daniels' Patek and Rolex prototypes, Omega calibre 2500, and direct versus indirect impulse\.
+```
 
 ## Korlátok, mérés és későbbi lehetőségek
 

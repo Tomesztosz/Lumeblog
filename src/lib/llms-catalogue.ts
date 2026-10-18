@@ -44,7 +44,7 @@ export async function collectDirectory(site:URL,now=new Date()):Promise<Director
   }
   const result=await buildDirectory({candidates,config,copy:LLMS_COPY,site,now,launched:LAUNCHED});
   await mkdir('output/llms',{recursive:true});
-  await writeFile('output/llms/manifest.json',JSON.stringify({version:1,site:canonicalUrl('/',site),maxMainBytes:config.maxMainBytes,mainBytes:result.mainBytes,
+  await writeFile('output/llms/manifest.json',JSON.stringify({version:1,launched:LAUNCHED,site:canonicalUrl('/',site),maxMainBytes:config.maxMainBytes,mainBytes:result.mainBytes,
     hasFull:Boolean(result.full),warnings:result.warnings,entries:result.entries.map(e=>({id:e.id,contentId:e.contentId,lang:e.lang,kind:e.kind,category:e.category,url:e.url,title:e.label,summary:e.summary})),mainUrls:result.mainEntries.map(e=>e.url)},null,2));
   return result;
 }

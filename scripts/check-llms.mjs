@@ -42,17 +42,21 @@ if(!full) {
 }
 const posts=await readPosts(),published=orderedPublishedPosts(posts,new Date());
 const articleEntries=manifest.entries.filter(e=>e.kind==='article');
-assert.equal(articleEntries.length,published.length,'Every published article variant must appear once');
+let eligibleArticles=0;
 for(const post of posts) {
   // Astro can replace a file ID with frontmatter.slug. Compare independent
   // source URLs instead of assuming its internal IDs equal file paths.
   const expectedUrl=new URL(sourceUrlOf(post),site).href;
   const entry=articleEntries.find(e=>e.url===expectedUrl);
-  if(!published.some(p=>p.id===post.id)){assert(!entry,`Unpublished article exposed: ${post.id}`);continue;}
+  if(!published.some(p=>p.id===post.id)||!manifest.launched){assert(!entry,`Unpublished article exposed: ${post.id}`);continue;}
+  const sourcePage=inspectHtml(await readFile(`dist${new URL(expectedUrl).pathname}index.html`,'utf8'));
+  if(sourcePage.noindex){assert(!entry,`Noindex article exposed: ${post.id}`);continue;}
+  eligibleArticles++;
   assert(entry,`Missing article: ${post.id}`);assert.equal(entry.lang,post.data.lang);
   if(post.data.translationKey)assert.equal(entry.contentId,post.data.translationKey);
   assert.deepEqual(entry.summary,await directorySummary({...post.data,body:post.body}),`${post.id}: summary provenance changed`);
 }
+assert.equal(articleEntries.length,eligibleArticles,'Every published, indexable article variant must appear once');
 const targetPages=new Map();
 for(const item of parsed.entries) {
   const record=manifest.entries.find(e=>e.url===item.url);assert(record);
