@@ -16,5 +16,17 @@
     "decision": "excluded",
     "reviewedAt": "2026-09-14",
     "reason": "Ellenőrzött NFL csapatkiadás-katalógus, több Chronomat és Endurance Pro változattal. A sportszponzorációs csapatszín-választékot most nem emeljük ki külön naptárkártyaként. A még külön sorban lévő termékoldalak nem tekinthetők ettől automatikusan feldolgozottnak."
+  },
+  {
+    "url": "https://www.seikowatches.com/global-en/products/seiko-power-design-project/collection-2",
+    "decision": "duplicate",
+    "reason": "Az HHK001 és HHK002 család már seiko-panda-collection2-2026 néven szerepel. A részletes közlemény november 2026-ot ír; az általános hírlista is now available megfogalmazása nem új értékesítési dátum.",
+    "reviewedAt": "2026-10-18"
+  },
+  {
+    "url": "https://www.seikowatches.com/global-en/news/2026/importantnotice/20260925",
+    "decision": "excluded",
+    "reason": "Hivatalos kereskedőkről és garanciáról szóló tájékoztató, nem új óra vagy megjelenési esemény.",
+    "reviewedAt": "2026-10-18"
   }
 ]

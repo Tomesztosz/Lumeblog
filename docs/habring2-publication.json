@@ -1,0 +1,42 @@
+{
+  "translationKey": "habring2",
+  "publication": {
+    "date": "2026-10-19T01:00:00+02:00",
+    "timeZone": "Europe/Budapest",
+    "utc": "2026-10-18T23:00:00Z",
+    "languages": [
+      "hu",
+      "en"
+    ],
+    "draft": false,
+    "trigger": ".github/workflows/utemezett-megjelenes.yml",
+    "timingLimitation": "A GitHub Actions futás és a Cloudflare build késhet; nem percre pontos garancia."
+  },
+  "images": {
+    "approval": {
+      "confirmedOn": "2026-10-18",
+      "evidence": "owner-confirmation-in-conversation",
+      "ownerWords": "Igen rendben vannak a képek",
+      "scope": "A jóváhagyott Habring² cikkfotók és szerkesztői montázs használata, gyártói kredittel.",
+      "documentLimitation": "A tulajdonos megerősítése. Külön gyártói levelet vagy dokumentumot az asszisztens nem kapott, nem küldött."
+    },
+    "cover": "habring-hero-v1.webp",
+    "card": "habring-card-v1.webp",
+    "documentary": "habring-founders-original.jpg",
+    "productImages": 9,
+    "imagesPerLanguage": 11,
+    "actualAlpha": true,
+    "originalRGBChangedPixels": 0,
+    "noRegenerationOnScheduling": true,
+    "credit": "Habring² / Habring Uhrentechnik OG; szerkesztői kompozíció: Lume."
+  },
+  "calendarReview": "docs/calendar-review-habring2-2026-10-18.json",
+  "checks": {
+    "publicationBoundaryTests": 11,
+    "previewViewports": 6,
+    "astroPreviewViewports": 6,
+    "calendarBrowserChecks": 18,
+    "fullBuild": "passed",
+    "notPublishedBeforeDue": true
+  }
+}
