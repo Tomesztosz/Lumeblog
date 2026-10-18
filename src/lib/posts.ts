@@ -1,6 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { type ColumnKey, type Lang, postUrl, readingTime } from '../i18n/ui';
-import articleRelations from '../data/article-relations.json';
+import { rankRelated } from './content-graph.mjs';
 
 export type Post = CollectionEntry<'posts'>;
 export type ModelPost = Post & {
@@ -56,17 +56,15 @@ export async function getModelPosts(lang: Lang): Promise<ModelPost[]> {
 }
 
 /**
- * Először a szerkesztőileg összekapcsolt témák, aztán a rovat és a frissesség.
+ * Ellenőrzött entitások és szerkesztői kapcsolatok, irreleváns kitöltés nélkül.
  * Mindkét nyelv ugyanazt a translationKey-alapú kapcsolatrendszert használja.
  * Az új cikk kapcsolatok nélkül is bekerülhet, de csak megjelenés után.
  */
 export async function getRelatedPosts(post: Post, limit = 3): Promise<Post[]> {
-  const candidates = (await getPosts(post.data.lang)).filter((candidate) => candidate.id !== post.id);
-  const groups = articleRelations.filter((group) => group.includes(post.data.translationKey ?? ''));
-  const score = (candidate: Post) =>
-    groups.filter((group) => group.includes(candidate.data.translationKey ?? '')).length * 10 +
-    (candidate.data.column === post.data.column ? 1 : 0);
-  return candidates.sort((a, b) => score(b) - score(a) || b.data.date.valueOf() - a.data.date.valueOf()).slice(0, limit);
+  return (await getRelatedRecommendations(post, limit)).map(result => result.post);
+}
+export async function getRelatedRecommendations(post: Post, limit = 3) {
+  return rankRelated(post, await getPosts(post.data.lang), {limit});
 }
 
 /** A modellek ugyanazt a HTML-t használják; az angol felület queryből vált. */

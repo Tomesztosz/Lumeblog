@@ -1,0 +1,32 @@
+---
+import { CONTENT_LINKS } from '../../i18n/ui';
+import { getRelatedRecommendations, urlOf, type Post } from '../../lib/posts';
+import { publicModelPosts, sharedModel } from '../../lib/shared-models';
+import { graph } from '../../lib/content-graph.mjs';
+import { calendarEntries, calendarUrl } from '../../lib/releases';
+import { classifyCalendarEvent } from '../../lib/calendar-state.mjs';
+interface Props { post: Post; modelPage?: boolean }
+const {post, modelPage=false}=Astro.props, lang=post.data.lang, t=CONTENT_LINKS[lang], now=new Date();
+const related=await getRelatedRecommendations(post);
+const candidates=[...(modelPage?[]:[post]),...related.map(r=>r.post)];
+const publicIds=new Set(publicModelPosts(candidates,now).map(p=>p.id));
+const models=candidates.filter(p=>publicIds.has(p.id)).map(p=>sharedModel(p)!).filter(m=>!modelPage||m.key!==sharedModel(post)?.key).slice(0,3);
+const events=graph.calendar.filter(link=>link.article===post.data.translationKey).map(link=>{
+  const entry=calendarEntries.find(e=>e.id===link.event);
+  if(!entry)return undefined;
+  const state=classifyCalendarEvent(entry,now);
+  if(!state.public||(!state.active&&state.state!=='awaiting'))return undefined;
+  return {entry,href:`${calendarUrl(lang)}${state.state==='awaiting'?'?status=announced':''}#${entry.id}`};
+}).filter(Boolean);
+---
+{(models.length>0||events.length>0||(modelPage&&related.length>0)) && <aside class="content-connections" data-content-connections aria-label={t.title}>
+  <h2>{t.title}</h2>
+  {models.length>0 && <><h3>{t.models}</h3><ul>{models.map(m=><li><a href={m.url}>{m.title} ↗</a></li>)}</ul></>}
+  {events.length>0 && <><h3>{t.calendar}</h3><ul>{events.map(item=><li><a href={item!.href}>{item!.entry.brand} {item!.entry.family}: {item!.entry.model} ↗</a></li>)}</ul></>}
+  {modelPage && related.length>0 && <><h3>{t.articles}</h3><ul>{related.map(r=><li><a href={urlOf(r.post)}>{r.post.data.title} ↗</a></li>)}</ul></>}
+</aside>}
+<style>
+  .content-connections { margin-block:2.5rem; padding-block:1.5rem; border-block:1px solid var(--line); }
+  h2 { font-family:var(--font-serif); font-size:1.4rem; } h3 { font-family:var(--font-sans); font-size:1rem; margin-top:1.25rem; }
+  ul { padding-inline-start:1.25rem; } li { margin-block:.6rem; } a { text-underline-offset:.2em; }
+</style>

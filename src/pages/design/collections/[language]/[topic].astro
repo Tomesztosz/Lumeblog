@@ -1,0 +1,16 @@
+---
+import { graph } from '../../../../lib/content-graph.mjs';
+import { getPosts } from '../../../../lib/posts';
+import type { Lang } from '../../../../i18n/ui';
+import DesignShell from '../../../../components/design/DesignShell.astro';
+import DesignCollection from '../../../../components/design/DesignCollection.astro';
+export function getStaticPaths() {
+  // Preview only. No draft collection is built, linked or placed in the sitemap.
+  return import.meta.env.DEV ? graph.collections.flatMap(collection=>['hu','en'].map(lang=>({params:{language:lang==='hu'?'magyar':'english',topic:collection.id},props:{collection,lang}}))) : [];
+}
+const {collection,lang}=Astro.props as {collection:(typeof graph.collections)[number];lang:Lang};
+const alternate=`/design/collections/${lang==='hu'?'english':'magyar'}/${collection.id}/`;
+---
+<DesignShell lang={lang} title={collection[lang].title} alternate={alternate} view="archive">
+  <DesignCollection lang={lang} collection={collection} posts={await getPosts(lang)} />
+</DesignShell>

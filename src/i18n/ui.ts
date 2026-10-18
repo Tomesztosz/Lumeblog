@@ -1,3 +1,51 @@
+export const CONTENT_LINKS = {
+  hu: {title:'Értsd meg működés közben', models:'Kapcsolódó modellek', articles:'Olvass tovább', calendar:'A naptárban', family:'A modellcsalád története', exact:'Az óráról részletesen', editorial:'Szerkesztői válogatás.', observe:'Ezt figyeld meg', limitation:'A modell határai', preview:'Szerkesztői előnézet, még nem nyilvános gyűjtőoldal'},
+  en: {title:'See how it works', models:'Related models', articles:'Further reading', calendar:'In the calendar', family:'The model family story', exact:'Read about this watch', editorial:'An editorial connection.', observe:'What to observe', limitation:'Model limitations', preview:'Editorial preview, not a published collection'},
+} as const;
+
+export const MODEL_READING_GUIDES = {
+  'gatlomu': {
+    hu:{question:'Miért áll meg a gátkerék, miközben a billegő tovább leng?',observe:'Lassítás közben kövesd a horgony két kövét: felváltva zárják a kereket, majd az oldás után impulzust közvetítenek.',limitation:'A rajz a mozgássorrendet szemlélteti, nem gyártási méreteket vagy kenési előírást.'},
+    en:{question:'Why does the escape wheel stop while the balance keeps swinging?',observe:'Slow the model and follow the two pallet stones: they alternately lock the wheel and transmit an impulse after release.',limitation:'The diagram explains the sequence, not manufacturing dimensions or lubrication requirements.'},
+  },
+  'co-axial': {
+    hu:{question:'Mikor jut közvetlenül a billegőhöz az impulzus?',observe:'Hasonlítsd össze a közvetett és a közvetlen impulzus fázisát. Az egyik út a horgonyon át vezet, a másik megkerüli azt.',limitation:'A modell Daniels klasszikus elvét mutatja, nem minden Omega-kaliber pontos geometriáját.'},
+    en:{question:'When does the balance receive a direct impulse?',observe:'Compare the indirect and direct impulse phases. One path goes through the lever; the other bypasses it.',limitation:'The model shows Daniels’ classic principle, not the exact geometry of every Omega calibre.'},
+  },
+  'rattrapante': {
+    hu:{question:'Hogyan állhat meg a részidőmutató a stopper megállítása nélkül?',observe:'Indítsd el a stoppert, rögzíts részidőt, majd engedd el a mutatót. Az egyik mutató végig fut, a másik visszazárkózik hozzá.',limitation:'A sematikus mechanizmus nem egy konkrét gyártói kaliber alkatrészrajza.'},
+    en:{question:'How can a split hand stop without stopping the chronograph?',observe:'Start the chronograph, take a split, then release the hand. One hand keeps running while the other catches up.',limitation:'This schematic is not a parts drawing of a particular manufacturer’s calibre.'},
+  },
+  'ugro-masodperc': {
+    hu:{question:'Mitől vár egy másodpercig a mechanikus mutató?',observe:'Kövesd a csillag és a kioldókar kapcsolatát. A mutató szakaszos mozgása külön feladat a járat szabályozásától.',limitation:'Az ugró másodperc elvét szemlélteti, nem helyettesíti az egyes kaliberek műszaki dokumentációját.'},
+    en:{question:'Why does a mechanical seconds hand wait for a full second?',observe:'Follow the star and release lever. Intermittent hand motion is a separate task from regulating the movement.',limitation:'This explains jumping seconds; it does not replace technical documentation for individual calibres.'},
+  },
+  'rotor': {
+    hu:{question:'Hogyan lesz a csukló mozgásából a hajtórugóban tárolt energia?',observe:'Kövesd a rotor és a felhúzó kerékrendszer mozgását. A lengő tömeg nem közvetlenül a mutatókat hajtja.',limitation:'A rajz egy működési elvet emel ki; az automata felhúzásnak többféle gyári megoldása létezik.'},
+    en:{question:'How does wrist motion store energy in the mainspring?',observe:'Follow the rotor and winding train. The oscillating weight does not drive the hands directly.',limitation:'The diagram isolates a principle; manufacturers use several different automatic-winding systems.'},
+  },
+  'spring-drive': {
+    hu:{question:'Mi fékezi a siklókereket hagyományos gátlómű nélkül?',observe:'Kövesd az energiát a rugótól a siklókerékig, és figyeld meg a szabályozás kikapcsolásának hatását.',limitation:'A szabályozás vázlata nem a Tri-Synchro Regulator teljes elektromos kapcsolási rajza.'},
+    en:{question:'What brakes the glide wheel without a conventional escapement?',observe:'Follow the energy from the mainspring to the glide wheel and observe what happens when regulation is disabled.',limitation:'This is a regulation schematic, not a complete electrical circuit diagram of the Tri-Synchro Regulator.'},
+  },
+  'g-shock': {
+    hu:{question:'Miért nem csak a tok vastagsága számít egy esésnél?',observe:'Hasonlítsd össze a merev és a párnázott rögzítést. A modul lassulása fontosabb, mint az esés önmagában.',limitation:'Az összehasonlítás szemléltetés, nem hitelesített ütésállósági mérés vagy termékteszt.'},
+    en:{question:'Why is case thickness not the only factor in a fall?',observe:'Compare rigid and cushioned mounting. The module’s deceleration matters more than the fall alone.',limitation:'This is an illustration, not a certified shock-resistance measurement or product test.'},
+  },
+  'oszlopkerek': {
+    hu:{question:'Hogyan vezényel több kart egyetlen gombnyomás?',observe:'Indíts és állíts meg egy ciklust. Figyeld, mikor támaszkodik a kar pillérre, és mikor esik a pillérek közötti résbe.',limitation:'A kapcsolás módja nem határozza meg önmagában a kronográf pontosságát vagy tengelykapcsolójának típusát.'},
+    en:{question:'How does a single push coordinate several levers?',observe:'Start and stop a cycle. Watch when a lever rests on a column and when it drops into the gap between columns.',limitation:'The control mechanism alone determines neither timekeeping accuracy nor the type of chronograph clutch.'},
+  },
+  'vilagora': {
+    hu:{question:'Hogyan olvasható le egyszerre több város ideje?',observe:'Válassz várost, majd kövesd a városgyűrű és a huszonnégy órás korong kapcsolatát.',limitation:'Az alapelv nem oldja meg automatikusan az eltérő nyári időszámítást és a törtórás időzónákat.'},
+    en:{question:'How can one dial show the time in several cities?',observe:'Select a city and follow the relationship between the city ring and the 24-hour disc.',limitation:'The basic principle does not automatically account for differing daylight-saving rules or fractional time zones.'},
+  },
+  'minute-repeater': {
+    hu:{question:'Miért három csoportban üti el az időt a percütő?',observe:'Állíts be például 10:37-et: tíz óraütés, két negyedórás hangpár és hét percütés követi egymást.',limitation:'A hang és a rajz saját szemléltetés, nem egy gyári óra hangfelvétele vagy alkatrészrajza.'},
+    en:{question:'Why does a minute repeater strike in three groups?',observe:'Set 10:37: ten hour strikes, two quarter-hour pairs and seven minute strikes follow in sequence.',limitation:'The sound and diagram are original illustrations, not a recording or parts drawing of a production watch.'},
+  },
+} as const;
+
 export const COAXIAL_MODEL = {
   hu: {
     title: 'Két út a billegőhöz', intro: 'Kövesd végig a Co-Axial egy teljes lengését. A nagy kerék, a kisebb impulzuskerék és a horgony külön is megvizsgálható.',

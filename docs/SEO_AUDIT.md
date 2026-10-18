@@ -1,8 +1,41 @@
-# Lume SEO audit: P0 és P1
+# Lume SEO audit: P0, P1, P2 és P3
 
 Ellenőrzés: 2026. október 18. Alapállapot: `cffbe2d`. Hatókör: technikai
-SEO és közös infrastruktúra. A P2 témakapcsolatok és P3 mérési fejlesztések
-nem kerültek automatikusan megvalósításra.
+SEO és közös infrastruktúra. A P0/P1 eredményeit az alábbi audit őrzi.
+A külön jóváhagyott P2/P3 megvalósítás alapja `0dd3575`; annak eredménye
+a következő szakaszban, a részletes leírás az implementációs dokumentumban van.
+
+## P2/P3 kiegészítés
+
+- A korábbi kapcsolódócikk-ajánló témacsoportok után rovattal és frissességgel
+  akkor is feltöltötte a helyeket, ha nem volt érdemi kapcsolat. Az új rendszer
+  73 stabil entitást és 30 nyelvfüggetlen cikkhozzárendelést kezel, indokolt
+  publikus egyezésekkel és külön helyi szerkesztői javaslatlistával.
+- Három ellenőrzött cikk/naptár-kapcsolat készült: két Astra-esemény családszinten,
+  Bond/Spectre pontos referenciaszinten. A naptár állapotkezelése nem módosult.
+- A tíz modell húsz nyelvi oldala egyedi, HTML-ben olvasható kérdést,
+  megfigyelési szempontot és korlátot kapott. A modellek vezérlése megmaradt.
+- Három tematikus gyűjtő adatmodellje, komponense és helyi előnézete elkészült.
+  Egyik sem generál nyilvános indexelhető oldalt a szerkesztői döntés előtt.
+- Elkészült az ellenőrzött, privát CSV-import és időablakos mérés. Valós
+  Search Console/Bing adatot továbbra sem olvastunk; forgalmi eredményt nem állítunk.
+- A forrásleltár, a mérési terv és az opcionális lehetőségpontszám elkülönül
+  a kéziratoktól. Nincs automatikus cikkátírás, kulcsszósűrűség vagy követőkód.
+- A baseline-összevetés a 60 cikk törzsszövegét, címeit, dátumait,
+  nyelvi párjait, RSS-eit, sitemapjeit és ICS-eit változatlannak találta.
+
+Kapcsolódó dokumentumok: [tartalmi értékelés](SEO_CONTENT_REVIEW.md),
+[mérési kézikönyv](SEO_MEASUREMENT.md). A korábbi, külső fiókot vagy DNS-kezelést
+igénylő korlátok ettől nem tekinthetők megoldottnak.
+
+A P2/P3 teljes buildje és 119 egység-/integrációs tesztje sikeres.
+A helyi böngészős ellenőrzések: 27 SEO-, 18 naptár-, 9 új tartalmi próba;
+a hat gyűjtőelőnézet HTTP 200 és noindex. A kontrollált teljesítménylabor
+40 előtte/utána megfigyelése öt oldaltípust és két nézetméretet fed le.
+A kezdeti betöltésnél a korábbi buildben is látható, változó elrendezésmozgás
+miatt ebből nem állítunk terepi CLS-megfelelést vagy teljesítményjavulást.
+Az INP és a valódi mobil/desktop p75 továbbra is külső mérési feladat.
+Verziózott összefoglaló: [P2/P3 ellenőrzési adatok](seo/p2-p3-verification-2026-10-18.json).
 
 ## Vizsgált rendszer
 

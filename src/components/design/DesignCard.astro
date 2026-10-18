@@ -7,8 +7,9 @@ const { designPost } = journalLinks(Astro.locals.lumePreview === true);
 interface Props {
   post: Post;
   index?: number;
+  reason?: string;
 }
-const { post, index = 0 } = Astro.props;
+const { post, index = 0, reason } = Astro.props;
 const lang = post.data.lang;
 ---
 
@@ -34,6 +35,7 @@ const lang = post.data.lang;
     <a href={designPost(post)}>{post.data.title}</a>
   </h2>
   <p>{post.data.description}</p>
+  {reason && <p class="eyebrow" data-related-reason>{reason}</p>}
   <a class="journal-card-link" href={designPost(post)}>
     <span>{DESIGN_STUDY[lang].read}</span>
     <span aria-hidden="true">↗</span>

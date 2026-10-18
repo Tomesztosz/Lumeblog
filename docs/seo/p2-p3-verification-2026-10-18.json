@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-18",
+  "baselineCommit": "0dd3575a749bc0907720a8750811469172d3dbab",
+  "scope": "Local P2/P3 release candidate verification; live HTTP/browser receipts are separate runtime artifacts.",
+  "content": {
+    "entities": 73,
+    "articlePairs": 30,
+    "publishedArticleVariants": 60,
+    "modelPagesWithIndividualReadingGuide": 20,
+    "calendarBindings": 3,
+    "bilingualCalendarStoryLinks": 6,
+    "draftCollections": 3,
+    "publishedCollectionPagesAdded": 0
+  },
+  "checks": {
+    "fullBuild": "passed",
+    "seoAndContentAndMeasurementTests": 34,
+    "calendarTests": 29,
+    "securityTests": 5,
+    "journalTests": 27,
+    "coaxialAndRattrapanteTests": 14,
+    "publicationAndHomeFeedTests": 10,
+    "localSeoBrowserChecks": 27,
+    "localCalendarBrowserChecks": 18,
+    "localContentBrowserChecks": 9,
+    "localCollectionPreviewChecks": 6,
+    "indexablePages": 96,
+    "sitemapUrls": 96,
+    "errors": 0,
+    "npmAuditKnownVulnerabilities": 0
+  },
+  "baselineComparison": {
+    "articleBodiesUnchanged": 60,
+    "titlesAndPublicationDatesUnchanged": true,
+    "canonicalAndLanguagePairsUnchanged": true,
+    "rssAndSitemapAndIcsUnchanged": true,
+    "articleSourceFilesChanged": 0,
+    "calendarDataAndAlgorithmsChanged": 0,
+    "modelMechanismSourcesChanged": 0
+  },
+  "measurement": {
+    "actualSearchConsoleOrBingDataRead": false,
+    "syntheticRowsAreTestsOnly": true,
+    "newTrackingInstalled": false,
+    "newExternalAccountWrites": false,
+    "privateExportAndReportDirectory": ".seo-private/",
+    "fieldCwvOrInpVerified": false,
+    "trafficGrowthClaimed": false
+  },
+  "performance": {
+    "kind": "controlled local lab, not field p75",
+    "observations": 40,
+    "pageTypes": ["home","article","archive","model","calendar"],
+    "viewportWidths": [390,1440],
+    "samplesPerRouteAndViewportAndVersion": 2,
+    "cpuSlowdown": 4,
+    "networkLatencyMs": 40,
+    "downloadBitsPerSecond": 1600000,
+    "cache": "disabled",
+    "limitations": [
+      "Viewport sizes are not physical mobile and desktop devices.",
+      "Initial layout-shift sums are not full-session field CLS.",
+      "No INP, CrUX p75 or SEO causal effect is inferred."
+    ]
+  },
+  "evidence": [
+    "output/seo-p2-p3/content-inventory.json",
+    "output/seo-p2-p3/build-validation.json",
+    "output/seo-p2-p3/browser/report.json",
+    "output/seo-p2-p3/performance/lab.json",
+    "output/seo-p2-p3/full-build.log"
+  ]
+}

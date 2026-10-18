@@ -32,6 +32,9 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: seo-validation
-          path: output/seo-p0-p1/validation.json
+          path: |
+            output/seo-p0-p1/validation.json
+            output/seo-p2-p3/content-inventory.json
+            output/seo-p2-p3/build-validation.json
           if-no-files-found: ignore
           retention-days: 30

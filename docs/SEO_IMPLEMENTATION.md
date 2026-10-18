@@ -1,7 +1,100 @@
-# SEO-megvalósítás: P0 és P1
+# SEO-megvalósítás: P0, P1, P2 és P3
 
-2026. október 18. A hatókör nem tartalmazza a P2 entitás- és ajánlórendszer,
-a P3 forgalomelemzés vagy tömeges szerkesztői átírás megvalósítását.
+2026. október 18. A P0/P1 technikai kiadást külön jóváhagyott P2/P3 fejlesztés
+követte. Tömeges szerkesztői átírás és élő fiókhozzáférés nélküli forgalomelemzés
+egyik körben sem történt.
+
+## P2: tartalmi gráf és kapcsolatok
+
+`src/data/content-graph.json`: nyelvfüggetlen azonosítók, HU/EN címkék,
+ellenőrzött aliasok és opcionális szülőkapcsolat. Típusok: márka, család,
+modell, referencia, szerkezet, komplikáció, elv, korszak, személy, téma,
+rovat, Műhely-modell és naptáresemény. Egy család nem öröklődik automatikusan
+konkrét referenciává. A két fordítás egy `translationKey` hozzárendelését használja.
+Az új cikknek nem kötelező az entitásmező, és nem került új kötelező frontmatter
+a kéziratokba. A helyi leltár jelzi a hiányzó szerkesztői hozzárendelést.
+
+`src/lib/content-graph.mjs`: pontos, típus szerint keresett aliasfeloldás;
+nem pásztáz prózát kulcsszófelismeréssel. Az ajánló csak publikált, nem
+piszkozat, azonos nyelvű oldalt ad vissza, saját magát és ismétlődő
+`translationKey`-t kizárva. A sorrend determinisztikus, a bemenetet nem módosítja.
+
+Először a meglévő kézi `article-relations.json` kapcsolatok, majd a külön
+szerkesztett összehasonlítási útvonalak érvényesülnek. Ezután a pontos
+entitásjel erőssége rangsorol. A referencia 24, modell 20, család 16,
+szerkezet 14, elv 10, komplikáció 8, személy 7, korszak 4, téma/márka 1
+belső pont. A rovat önmagában 0. Ezek olvasói relevanciaparaméterek,
+nem Google-rangsorolási súlyok. Márka/téma/személy egyezése önmagában nem
+nyit automatikus publikus linket; ahhoz kézi kapcsolat vagy pontos
+referencia/modell/család/szerkezet/elv/komplikáció egyezése kell.
+Maximum három cikk jelenik meg. Nincs frissességalapú irreleváns kitöltés.
+
+A publikus ajánló indoka a kártyán olvasható. A gyengébb találatok csak az
+`output/seo-p2-p3/content-inventory.json` szerkesztői sorában szerepelnek.
+Az entitásgráf nem hoz létre publikus címkeoldalakat vagy új Product/Event sémát.
+
+`ContentConnections.astro` normál HTML-linkekkel vezeti az olvasót a cikkből
+a saját és kapcsolódó modellhez, illetve az igazolt naptárkártyához.
+A Műhely-oldalról kapcsolódó írás és másik modell is elérhető. A naptár
+három kézi kötése külön jelöli a család- és referencia-pontosságot.
+A cikk felől a lejárt/ellenőrzésre váró naptárkapcsolat nem aktív ajánlat;
+dátumra váró kártyához a megfelelő `status=announced` nézetbe vezet a link.
+A naptár algoritmusát, forrásait, dátumait, állapotait és ICS-szemantikáját
+ez a réteg nem módosítja.
+
+## P3: szerkesztői előkészítés és mérési eszközök
+
+`MODEL_READING_GUIDES` a közös HU/EN felületi szótárban: modellenként eltérő
+kérdés, megfigyelési feladat és korlát. A tíz modell mindkét nyelvén a kezdeti
+HTML része. A rajzok és scriptek változatlanok; nem kaptak közös sablonprózát.
+
+`DesignCollection.astro` és a gráf három gyűjtőterve szerkesztett bevezetőt,
+valós cikkeket és létező Műhely-linkeket használ. Fejlesztői előnézet:
+`/design/collections/magyar/regulation/` és megfelelő angol/téma útvonalak.
+Éles buildben a route nulla oldalt generál, az előnézet noindex. Nincs
+mesterséges cikkszámküszöb vagy automatikus tömeges gyűjtőpublikáció.
+
+A [tartalmi értékelés](SEO_CONTENT_REVIEW.md) elválasztja a meglévő lefedettséget,
+az átfedéseket és a még kutatandó kérdéseket. Nem bizonyít keresési igényt
+és nem írja vissza a javaslatot a cikkbe.
+
+`scripts/seo-measure.mjs` és `scripts/lib/seo-measurement.mjs` helyi,
+manifesttel leírt CSV-exportot importál. Pontos szemcsézettséget, időszakot,
+dimenziókat, időzónát, forrást és szűrőket vár; elutasítja a duplikált vagy
+érvénytelen sorokat. Az exportált URL-eket a valós buildhez köti, nyelvet és
+oldaltípust rendel hozzájuk. Külön kezeli a lekérdezéseket, ismeretlen URL-eket,
+új publikációkat, kis mintát és hiányzó adatot. A CTR-t újraszámolja, a pozíciót
+megjelenéssel súlyozza. Web/Discover/image/multimodal/Google AI/Bing AI nem adódik
+össze. AI-idézésből nem készül kattintás vagy helyezés.
+
+A mérés 28 napos és 3/6 naptári hónapos ablakot, összehasonlítható baseline-t,
+valamint opcionális, átlátható szerkesztői prioritást támogat. A nyers adat és
+a jelentés `.seo-private/` alatt marad, Gitből kizárva; nincs külső adatküldés.
+Éles fiókot nem kötöttünk be. A [mérési kézikönyv](SEO_MEASUREMENT.md) tartalmazza
+a mintát, a döntéstámogató mutatókat és a tulajdonosi feladatokat.
+
+## P2/P3 ellenőrzési kapuk
+
+Az `npm run build` része az entitás-, alias-, fordítás-, forráshorgony-,
+modell- és naptárkapcsolat-validátor, az ajánló és import egységtesztjei,
+a valódi CLI szintetikus tesztje, valamint a generált HTML ellenőrzése.
+A szintetikus tesztsorok nem Lume-látogatottsági adatok.
+
+```powershell
+npm run seo:editorial
+npm run check:content:browser
+node scripts/check-content-build.mjs --baseline E:/Lume/output/release-seo-20261018/dist
+node scripts/check-content-performance.mjs --baseline E:/Lume/output/release-seo-20261018/dist
+```
+
+Az utolsó kettőhöz egy tényleges korábbi build helyi könyvtára kell; a példa
+ennek a kiadásnak az alapállapota. A böngészős eszköz a meglévő windowsos
+Chrome-segédeszközt használja, Linux CI-ben nem fut automatikusan.
+Az előtte/utána labor azonos nézetméretet, CPU-/hálózatlassítást és kikapcsolt
+cache-t használ. Nem CrUX, nem terepi p75 és nem INP-mérés.
+A nyilvános linkek ellenőrzése és a forrásleltár CI-artifactként is megmarad.
+
+## Megőrzött P0/P1 infrastruktúra
 
 ## Közös metaadatok
 

@@ -20,3 +20,6 @@ articles/
 # Helyi tesztfájlok és ideiglenes böngészőprofilok.
 /tmp/
 /.codex-work/
+
+# Search Console / Bing exports and query-level local reports are never public.
+/.seo-private/

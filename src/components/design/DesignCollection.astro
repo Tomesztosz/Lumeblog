@@ -1,0 +1,16 @@
+---
+import type { Lang } from '../../i18n/ui';
+import { CONTENT_LINKS } from '../../i18n/ui';
+import { graph, collectionContent } from '../../lib/content-graph.mjs';
+import { publicModelPosts, sharedModel } from '../../lib/shared-models';
+import type { Post } from '../../lib/posts';
+import DesignCard from './DesignCard.astro';
+interface Props { lang: Lang; collection: (typeof graph.collections)[number]; posts: Post[] }
+const {lang,collection,posts}=Astro.props, copy=collection[lang], t=CONTENT_LINKS[lang];
+const selected=collectionContent(collection,posts,lang), models=publicModelPosts(selected);
+---
+<section class="journal-library">
+  <header class="journal-page-head"><p class="eyebrow">{t.preview}</p><h1>{copy.title}</h1><p>{copy.intro}</p></header>
+  {models.length>0 && <nav class="shared-model-reading" aria-label={t.models}><h2>{t.models}</h2><ul>{models.map(post=><li><a href={sharedModel(post)!.url}>{sharedModel(post)!.title} ↗</a></li>)}</ul></nav>}
+  <div class="journal-grid">{selected.map(post=><DesignCard post={post} />)}</div>
+</section>

@@ -1,5 +1,5 @@
 ---
-import { SHARED_MODEL_UI, workshopUrl } from '../../i18n/ui';
+import { SHARED_MODEL_UI, CONTENT_LINKS, MODEL_READING_GUIDES, workshopUrl } from '../../i18n/ui';
 import { urlOf, type Post, type ModelPost } from '../../lib/posts';
 import { sharedModel } from '../../lib/shared-models';
 import DesignModel from './DesignModel.astro';
@@ -7,9 +7,11 @@ import JumpingSecondsModel from '../JumpingSecondsModel.astro';
 import RattrapanteModel from '../RattrapanteModel.astro';
 import CoaxialModel from '../CoaxialModel.astro';
 import ModelShare from '../ModelShare.astro';
+import ContentConnections from './ContentConnections.astro';
 interface Props { post: Post }
 const { post } = Astro.props;
 const lang = post.data.lang, t = SHARED_MODEL_UI[lang], model = sharedModel(post)!;
+const guide = MODEL_READING_GUIDES[model.key as keyof typeof MODEL_READING_GUIDES]?.[lang], links=CONTENT_LINKS[lang];
 ---
 <article class="shared-model-page" data-shared-model-page={model.key}>
   <header class="journal-page-head">
@@ -22,6 +24,12 @@ const lang = post.data.lang, t = SHARED_MODEL_UI[lang], model = sharedModel(post
     {model.kind === 'frame' ? <DesignModel post={post as ModelPost} variant="standalone" /> : model.key === 'co-axial' ? <CoaxialModel lang={lang} /> : model.key === 'rattrapante' ? <RattrapanteModel lang={lang} /> : <JumpingSecondsModel lang={lang} />}
   </div>
   <p class="shared-model-note">{t.note}</p>
+  {guide && <section class="shared-model-reading" data-model-reading-guide>
+    <h2>{guide.question}</h2>
+    <h3>{links.observe}</h3><p>{guide.observe}</p>
+    <h3>{links.limitation}</h3><p>{guide.limitation}</p>
+  </section>}
+  <ContentConnections post={post} modelPage />
   <section class="shared-model-reading">
     <p class="eyebrow">{t.fullStory}</p>
     <h2><a href={urlOf(post)}>{post.data.title} ↗</a></h2>

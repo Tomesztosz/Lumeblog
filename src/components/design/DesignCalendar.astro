@@ -1,5 +1,8 @@
 ---
 import type { Lang } from "../../i18n/ui";
+import { CONTENT_LINKS } from '../../i18n/ui';
+import { getPosts, urlOf } from '../../lib/posts';
+import { calendarArticles, graph } from '../../lib/content-graph.mjs';
 import noScriptStyles from '../../styles/calendar-noscript.css?url';
 import {
   phaseFor,
@@ -30,6 +33,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = CALENDAR_UI[lang];
 const now = new Date();
+const stories = await getPosts(lang);
 const entries = sortCalendar(calendarEntries.filter(e => classifyCalendarEvent(e, now).public), now);
 const counts = calendarCounts(entries, now);
 const highlighted = focusGroup(entries, now);
@@ -272,6 +276,7 @@ const clientCopy = {
                       {t.addCalendar} ↓
                     </a>
                   )}
+                  {calendarArticles(release.id, stories, lang, now).map(post => <a data-calendar-story href={urlOf(post)}>{graph.calendar.find(link=>link.event===release.id)?.level==='family'?CONTENT_LINKS[lang].family:CONTENT_LINKS[lang].exact} ↗</a>)}
                 </div>
                 <p class="release-precision mono">
                   {t.verified}: {release.lifecycle.semanticVerifiedAt ?? release.sourceChecked}

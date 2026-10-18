@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "defaults": {"minimumImpressions":100,"declineWeight":1,"fit":1,"effort":1},
+  "pages": {},
+  "meaning": "Internal editorial triage, not Google ranking factors, statistical significance, search volume or a traffic forecast. Default effort and fit are neutral placeholders, not measured research. Override per canonical path after editorial review."
+}

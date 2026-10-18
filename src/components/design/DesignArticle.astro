@@ -1,9 +1,9 @@
 ---
 import { render } from "astro:content";
-import { COLUMNS, DESIGN_STUDY, formatDate } from "../../i18n/ui";
+import { COLUMNS, DESIGN_STUDY, CONTENT_LINKS, formatDate } from "../../i18n/ui";
 import {
   minutesOf,
-  getRelatedPosts,
+  getRelatedRecommendations,
   getPosts,
   urlOf,
   type Post,
@@ -27,6 +27,8 @@ import RattrapanteModel from "../RattrapanteModel.astro";
 import CoaxialModel from "../CoaxialModel.astro";
 import ModelShare from '../ModelShare.astro';
 import { sharedModel } from '../../lib/shared-models';
+import { relatedReason } from '../../lib/content-graph.mjs';
+import ContentConnections from './ContentConnections.astro';
 interface Props {
   post: Post;
 }
@@ -35,9 +37,7 @@ const lang = post.data.lang;
 const t = DESIGN_STUDY[lang];
 const { Content, headings } = await render(post);
 const toc = headings.filter((h) => h.depth === 2);
-const related = (await getRelatedPosts(post)).filter(
-  (p) => p.data.date <= new Date(),
-);
+const related = await getRelatedRecommendations(post);
 const linkPosts = Astro.locals.lumePreview
   ? (await Promise.all([getPosts("hu"), getPosts("en")])).flat()
   : [];
@@ -167,6 +167,7 @@ const articleLinks = Object.fromEntries(
         </details>
       )}
       {sharedModel(post)?.kind === 'inline' && <ModelShare lang={lang} title={sharedModel(post)!.title} url={sharedModel(post)!.url} showPageLink />}
+      <ContentConnections post={post} />
       <div class="article-end-actions">
         <button data-copy-link data-copied={t.copied} data-error={t.copyFailed}>
           {t.copy}
@@ -194,8 +195,8 @@ const articleLinks = Object.fromEntries(
       <p>{t.relatedNote}</p>
     </div>
     <div class="journal-grid">
-      {related.map((p) => (
-        <DesignCard post={p} />
+      {related.map((result) => (
+        <DesignCard post={result.post} reason={relatedReason(result, lang, CONTENT_LINKS[lang].editorial)} />
       ))}
     </div>
   </section>

@@ -1,7 +1,40 @@
-# Következő SEO-lépések: P2 és P3 előkészítése
+# SEO-fejlesztések: P2/P3 állapot és következő lépések
 
-2026. október 18. Ez terv, nem ebben a P0/P1 körben megvalósított rendszer.
-Nem tartalmaz kitalált keresési volument, látogatottságot vagy ígért helyezést.
+2026. október 18. A P2/P3 technikai megvalósítás elkészült a külön jóváhagyott
+körben. Nincs kitalált keresési volumen, látogatottság vagy ígért helyezés.
+
+## Jelenlegi állapot
+
+Kész a stabil entitásrendszer, az indokolt kapcsolódócikk-ajánló, a cikk/modell/
+naptár átjárás, a tíz modell két nyelvű olvasási útmutatója, a három gyűjtő
+privát előnézete, a tartalmi leltár és az ellenőrzött helyi mérési import.
+Részletek: [megvalósítás](SEO_IMPLEMENTATION.md), [tartalmi értékelés](SEO_CONTENT_REVIEW.md),
+[mérési kézikönyv](SEO_MEASUREMENT.md).
+
+## Amihez még döntés vagy adat kell
+
+1. A gyűjtőoldalak szerkesztői felülvizsgálata és külön jóváhagyott publikálása.
+   Addig nincs új indexelhető márka-/témaoldal.
+2. Valós Search Console/Bing-export egy lezárt 28 napos alapállapothoz.
+   A fióktulajdon, indexelési állapot, AI-részvétel és a sitemap-beküldés
+   ellenőrzése a tulajdonosi felületen történik. Új követőkód nem szükséges
+   az exportos induláshoz.
+3. Első felülvizsgálat: 2026. november 15.; majd 2027. január 18. és április 18.
+   Ezek nem automatikusan létrehozott ütemezések. Az időszakokat a valós
+   export lefedettségéhez kell igazítani.
+4. Saját modellből készült, szerkesztett állóképek vagy videók egyenkénti
+   vizsgálata; a QA-képernyőkép nem válik automatikusan közösségi borítóvá.
+5. A tartalmi értékelésben szereplő kutatási kérdések mérlegelése, valós
+   keresési adat esetén annak bevonásával. Nincs automatikus átírás vagy
+   azonos szándékra gyártott URL-sorozat.
+
+Az IndexNow továbbra is opcionális, nem aktív. A sitemap/RSS működik;
+külső indexelési jelzések és fiókműveletek nem készültek észrevétlenül.
+
+## Korábbi terv, megőrzött kiindulópont
+
+Az alábbi rész a P0/P1 kiadáskor készült terv. Az aktuális megvalósított
+állapotot a fenti összefoglaló és a linkelt dokumentumok rögzítik.
 
 ## P2: ellenőrzött tartalmi kapcsolatok
 

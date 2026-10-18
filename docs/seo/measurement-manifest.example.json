@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "source": "google-search-console",
+  "property": "https://lumejournal.com/",
+  "surface": "web",
+  "start": "REPLACE_WITH_FIRST_DAY_YYYY-MM-DD",
+  "end": "REPLACE_WITH_LAST_DAY_YYYY-MM-DD",
+  "exportedAt": "REPLACE_WITH_REAL_EXPORT_ISO_TIMESTAMP",
+  "timezone": "America/Los_Angeles",
+  "coverage": "reported-rows",
+  "filters": {"country":"all","device":"all","searchAppearance":"all"},
+  "grain": ["url"],
+  "metrics": ["clicks","impressions","position"],
+  "delimiter": ",",
+  "columns": {"url":"Top pages","clicks":"Clicks","impressions":"Impressions","position":"Position"},
+  "file": "Pages.csv"
+}
