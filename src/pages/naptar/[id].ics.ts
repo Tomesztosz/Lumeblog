@@ -1,11 +1,11 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
-import { buildReleaseIcs, releases } from '../../lib/releases';
+import { buildReleaseIcs, exportableReleases } from '../../lib/releases';
 
 export const getStaticPaths: GetStaticPaths = () =>
-  releases.map((release) => ({ params: { id: release.id }, props: { release } }));
+  exportableReleases.map((release) => ({ params: { id: release.id }, props: { release } }));
 
 export const GET: APIRoute = ({ props }) => {
-  const release = props.release as (typeof releases)[number];
+  const release = props.release as (typeof exportableReleases)[number];
   return new Response(buildReleaseIcs(release, 'hu'), {
     headers: {
       'Content-Type': 'text/calendar; charset=utf-8',

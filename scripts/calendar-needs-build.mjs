@@ -1,8 +1,10 @@
 import { readFile } from 'node:fs/promises';
-import { phaseFor, matchesCalendar } from '../src/lib/calendar-state.mjs';
-const entries = [...JSON.parse(await readFile('src/data/releases.json','utf8')), ...JSON.parse(await readFile('src/data/announcements.json','utf8'))];
-const now = new Date(), yesterday = new Date(now.valueOf()-86400000);
-const changed = entries.some(entry => phaseFor(entry,now) !== phaseFor(entry,yesterday)
-  || matchesCalendar(entry,{},now) !== matchesCalendar(entry,{},yesterday));
+import { calendarBoundaryChanged } from '../src/lib/calendar-state.mjs';
+import { hydrateEvents } from '../src/lib/calendar-events.mjs';
+const store=JSON.parse(await readFile('src/data/calendar-events.json','utf8'));
+const entries = hydrateEvents([...JSON.parse(await readFile('src/data/releases.json','utf8')), ...JSON.parse(await readFile('src/data/announcements.json','utf8'))],store);
+const now = new Date(), yesterday = process.env.CALENDAR_PREVIOUS_TIME ? new Date(process.env.CALENDAR_PREVIOUS_TIME) : new Date(now.valueOf()-86400000);
+if(!Number.isFinite(+yesterday))throw Error('Invalid previous build time');
+const changed = calendarBoundaryChanged(entries, now, yesterday);
 console.log(changed ? 'Calendar visibility or phase changed.' : 'No calendar boundary today.');
 process.exit(changed ? 0 : 1);

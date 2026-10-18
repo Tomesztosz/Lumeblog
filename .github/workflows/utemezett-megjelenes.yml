@@ -27,6 +27,9 @@ on:
 
 permissions:
   contents: read
+concurrency:
+  group: lume-publication
+  cancel-in-progress: false
 
 jobs:
   megjelenes:
@@ -62,15 +65,15 @@ jobs:
           fi
 
           if node scripts/calendar-needs-build.mjs; then
-            echo "Ma változik egy naptárbejegyzés állapota vagy 60 napos láthatósága."
+            echo "Ma változik egy naptárbejegyzés nézete, állapota vagy ellenőrzési jelzése."
             echo "talalat=igen" >> "$GITHUB_OUTPUT"
             exit 0
-          fi
-
-          if grep -Fq "\"dateEnd\": \"$TEGNAP\"" src/data/releases.json; then
-            echo "Ma kerül archívumba egy naptárbejegyzés."
-            echo "talalat=igen" >> "$GITHUB_OUTPUT"
-            exit 0
+          else
+            STATUS=$?
+            if [ "$STATUS" -ne 1 ]; then
+              echo "Hibás naptárellenőrzés; a futás nem folytatható."
+              exit "$STATUS"
+            fi
           fi
 
           echo "Ma nincs cikk- vagy naptárváltás."

@@ -1,0 +1,7 @@
+/* Loaded only inside noscript, as a local asset allowed by the site's CSP. */
+.calendar-page .release-card[hidden] { display: block !important; }
+.calendar-page .calendar-interactive,
+.calendar-page .calendar-search,
+.calendar-page .calendar-filters,
+.calendar-page #calendarResultCount,
+.calendar-page #calendarEmpty { display: none !important; }

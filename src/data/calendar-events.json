@@ -1,0 +1,570 @@
+{
+  "schemaVersion": 1,
+  "version": 1,
+  "events": {
+    "citizen-attesa-eco-drive-50-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "citizen",
+        "model": "ATTESA",
+        "references": [
+          "CC4084-83Z · CC4085-81Z"
+        ],
+        "type": "sales",
+        "market": "unspecified",
+        "round": "legacy:citizen-attesa-eco-drive-50-2026"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-10",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. október, tervezett bevezetés",
+          "en": "October 2026, planned launch"
+        }
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "seiko-motocompo-hdb010": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "seiko",
+        "model": "5 Sports",
+        "references": [
+          "HDB010"
+        ],
+        "type": "sales",
+        "market": "unspecified",
+        "round": "legacy:seiko-motocompo-hdb010"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-09",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. szeptember",
+          "en": "September 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "seiko-presage-craftsmanship-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "seiko",
+        "model": "Presage Classic Series",
+        "references": [
+          "HCC005 · HCC006"
+        ],
+        "type": "sales",
+        "market": "unspecified",
+        "round": "legacy:seiko-presage-craftsmanship-2026"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-09",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. szeptember",
+          "en": "September 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "grand-seiko-evolution9-ufa-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "grand-seiko",
+        "model": "Evolution 9",
+        "references": [
+          "SLGB007 · 009 · 011 · 013 · 015"
+        ],
+        "type": "sales",
+        "market": "unspecified",
+        "round": "legacy:grand-seiko-evolution9-ufa-2026"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-09",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. szeptember",
+          "en": "September 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "seiko-prospex-hbc011": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "seiko",
+        "model": "Prospex",
+        "references": [
+          "HBC011"
+        ],
+        "type": "sales",
+        "market": "unspecified",
+        "round": "legacy:seiko-prospex-hbc011"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-10",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. október",
+          "en": "October 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "zenith-chronomaster-original-paris-boutiques": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "zenith",
+        "model": "Chronomaster Original",
+        "references": [
+          "03.3207.3600/75.M3230"
+        ],
+        "type": "sales",
+        "market": "Paris boutiques",
+        "round": "legacy:zenith-chronomaster-original-paris-boutiques"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-09",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. szeptember",
+          "en": "September 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "lorier-astra-white-no-date-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "lorier",
+        "model": "Astra",
+        "references": [
+          "278081"
+        ],
+        "type": "shipping",
+        "market": "unspecified",
+        "round": "legacy:lorier-astra-white-no-date-2026"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-09",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. szeptember",
+          "en": "September 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "rath-droma-gmt-founder-series": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "rath",
+        "model": "Founder Series",
+        "references": [
+          "DROMA GMT"
+        ],
+        "type": "shipping",
+        "market": "unspecified",
+        "round": "Founder Series, 50 pieces"
+      },
+      "identityVerified": true,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-10",
+        "certainty": "estimated",
+        "qualifier": "late",
+        "originalText": "Ships late October 2026"
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "rath-droma-gmt-founder-series",
+          "eventType": "shipping",
+          "claim": "planned",
+          "quote": "Ships late October 2026",
+          "url": "https://rathwatches.com/products/rath-droma-gmt",
+          "checkedAt": "2026-10-18T07:57:28Z",
+          "accepted": true
+        }
+      ],
+      "history": [
+        {
+          "revision": 0,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "month",
+            "value": "2026-09",
+            "certainty": "confirmed",
+            "originalText": null,
+            "legacyLabels": {
+              "hu": "2026. szeptember vége",
+              "en": "Late September 2026"
+            }
+          },
+          "evidence": [],
+          "verification": {
+            "issue": "date-conflict",
+            "reason": "Existing reviewed copy records October in the summary and late September in the description.",
+            "recordedAt": "2026-10-13",
+            "sourceUrl": "https://rathwatches.com/products/rath-droma-gmt"
+          },
+          "changedAt": "2026-10-18T07:57:28Z",
+          "reason": "editorial-source-review"
+        }
+      ],
+      "revision": 1,
+      "editorialReviewedAt": "2026-10-18T07:57:28Z",
+      "allowedSources": [
+        "https://rathwatches.com/products/rath-droma-gmt"
+      ],
+      "semanticVerifiedAt": "2026-10-18T07:57:28Z"
+    },
+    "studio-underd0g-mantis-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "studio-underd0g",
+        "model": "02SERIES",
+        "references": [
+          "Mantis"
+        ],
+        "type": "order-window",
+        "market": "unspecified",
+        "round": "legacy:studio-underd0g-mantis-2026"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "duration",
+        "value": "2026-09-01T15:00:00+01:00",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. szeptember 1.",
+          "en": "1 September 2026"
+        },
+        "end": "2026-09-02T00:00:00+01:00",
+        "timeZone": "Europe/London",
+        "kind": "duration"
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "citizen-skyhawk-eco-drive-50": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "citizen",
+        "model": "Promaster",
+        "references": [
+          "JY8144-50E"
+        ],
+        "type": "sales",
+        "market": "unspecified",
+        "round": "legacy:citizen-skyhawk-eco-drive-50"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-09",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. szeptember",
+          "en": "September 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "citizen-tsuno-eco-drive-50": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "citizen",
+        "model": "Promaster",
+        "references": [
+          "AV0104-06W"
+        ],
+        "type": "sales",
+        "market": "unspecified",
+        "round": "legacy:citizen-tsuno-eco-drive-50"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-09",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. szeptember",
+          "en": "September 2026"
+        }
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "lorier-astra-october-preorder-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "lorier",
+        "model": "Astra",
+        "references": [
+          "278081"
+        ],
+        "type": "preorder-open",
+        "market": "unspecified",
+        "round": "legacy:lorier-astra-october-preorder-2026"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "instant",
+        "value": "2026-10-05T13:00:00-04:00",
+        "certainty": "confirmed",
+        "originalText": null,
+        "legacyLabels": {
+          "hu": "2026. október 5., 19:00 (Budapest)",
+          "en": "5 October 2026, 1pm ET"
+        },
+        "timeZone": "America/New_York"
+      },
+      "verification": null,
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "lorier-astra-december-delivery-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "lorier",
+        "model": "Astra",
+        "references": [
+          "278081"
+        ],
+        "type": "shipping",
+        "market": "unspecified",
+        "round": "October 2026 preorder"
+      },
+      "identityVerified": true,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "month",
+        "value": "2026-12",
+        "certainty": "estimated",
+        "qualifier": "late",
+        "originalText": "Ships late December 2026"
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "lorier-astra-december-delivery-2026",
+          "eventType": "shipping",
+          "claim": "planned",
+          "quote": "Ships late December 2026",
+          "url": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
+          "checkedAt": "2026-10-18T07:57:28Z",
+          "accepted": true
+        }
+      ],
+      "history": [
+        {
+          "revision": 0,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "month",
+            "value": "2026-12",
+            "certainty": "estimated",
+            "originalText": null,
+            "legacyLabels": {
+              "hu": "2026. december vége (becslés)",
+              "en": "Late December 2026 (estimated)"
+            },
+            "qualifier": "late"
+          },
+          "evidence": [],
+          "verification": null,
+          "changedAt": "2026-10-18T07:57:28Z",
+          "reason": "editorial-source-review"
+        }
+      ],
+      "revision": 1,
+      "editorialReviewedAt": "2026-10-18T07:57:28Z",
+      "allowedSources": [
+        "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081"
+      ],
+      "semanticVerifiedAt": "2026-10-18T07:57:28Z"
+    },
+    "omega-james-bond-spectre-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "omega",
+        "model": "Seamaster Diver 300M",
+        "references": [
+          "210.30.42.20.03.004 / 210.30.42.20.01.023"
+        ],
+        "type": "presentation",
+        "market": "unspecified",
+        "round": "legacy:omega-james-bond-spectre-2026"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "unknown"
+      },
+      "verification": {
+        "issue": "legacy-completion-unverified",
+        "reason": "The original record has no event-specific completion evidence."
+      },
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "christopher-ward-c60-trident-biscay": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "christopher-ward",
+        "model": "C60 Trident Biscay",
+        "references": [
+          "C60 Trident Biscay"
+        ],
+        "type": "presentation",
+        "market": "unspecified",
+        "round": "legacy:christopher-ward-c60-trident-biscay"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "unknown"
+      },
+      "verification": {
+        "issue": "legacy-completion-unverified",
+        "reason": "The original record has no event-specific completion evidence."
+      },
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "rolex-oyster-perpetual-41-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "rolex",
+        "model": "Oyster Perpetual",
+        "references": [
+          "134303"
+        ],
+        "type": "presentation",
+        "market": "unspecified",
+        "round": "legacy:rolex-oyster-perpetual-41-2026"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "unknown"
+      },
+      "verification": {
+        "issue": "legacy-completion-unverified",
+        "reason": "The original record has no event-specific completion evidence."
+      },
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    },
+    "tudor-northflag-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "tudor",
+        "model": "Northflag",
+        "references": [
+          "M9140G1A0U-0001"
+        ],
+        "type": "presentation",
+        "market": "unspecified",
+        "round": "legacy:tudor-northflag-2026"
+      },
+      "identityVerified": false,
+      "sourceStatus": "planned",
+      "schedule": {
+        "precision": "unknown"
+      },
+      "verification": {
+        "issue": "legacy-completion-unverified",
+        "reason": "The original record has no event-specific completion evidence."
+      },
+      "evidence": [],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-13"
+    }
+  }
+}

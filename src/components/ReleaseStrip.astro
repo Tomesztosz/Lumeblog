@@ -4,9 +4,8 @@ import {
   activeReleases,
   CALENDAR_UI,
   calendarUrl,
-  releaseDaysAway,
-  releasePhase,
 } from '../lib/releases';
+import { statusLabel, eventDateLabel } from '../lib/calendar-state.mjs';
 
 interface Props {
   lang: Lang;
@@ -14,7 +13,8 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = CALENDAR_UI[lang];
-const items = activeReleases().slice(0, 3);
+const now = new Date();
+const items = activeReleases(now).slice(0, 3);
 ---
 
 {
@@ -34,20 +34,12 @@ const items = activeReleases().slice(0, 3);
 
         <div class="release-strip-grid">
           {items.map((release, index) => {
-            const phase = releasePhase(release);
-            const days = releaseDaysAway(release);
-            const status = phase === 'current'
-              ? t.statusCurrent
-              : release.precision === 'month'
-                ? t.statusUpcoming
-              : days === 1
-                ? t.daysOne
-                : t.daysMany(days);
+            const status = statusLabel(release, t, now);
             return (
               <a class="release-strip-item" href={`${calendarUrl(lang)}#${release.id}`}>
                 <span class="release-strip-index mono">{String(index + 1).padStart(2, '0')}</span>
                 <span class="release-strip-copy">
-                  <span class="release-strip-meta mono">{release.copy[lang].dateLabel} · {status}</span>
+                  <span class="release-strip-meta mono">{eventDateLabel(release, lang, t)} · {status}</span>
                   <strong>{release.brand}{' '}{release.family}</strong>
                   <span>{release.model}</span>
                 </span>

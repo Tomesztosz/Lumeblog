@@ -1,0 +1,58 @@
+name: Naptári események ellenőrzése
+on:
+  schedule:
+    - cron: '37 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: lume-publication
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: .calendar-radar/event-state.json
+          key: calendar-events-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: calendar-events-v1-
+      - run: npm run calendar:refresh
+      - name: Adatváltozás vagy időhatár
+        id: changes
+        shell: bash
+        run: |
+          CHANGED=false
+          if ! git diff --quiet -- src/data/calendar-events.json; then CHANGED=true; fi
+          export CALENDAR_PREVIOUS_TIME="$(git log -1 --format=%cI)"
+          if node scripts/calendar-needs-build.mjs; then CHANGED=true; else
+            CODE=$?
+            if [ "$CODE" -ne 1 ]; then exit "$CODE"; fi
+          fi
+          echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
+      - if: steps.changes.outputs.changed == 'true'
+        run: npm run build
+      - name: Ellenőrzött frissítés közzététele
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "Lume naptár"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/data/calendar-events.json
+          git commit --allow-empty -m "Naptár: ellenőrzött eseményadat vagy időhatár"
+          git push
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: calendar-event-report
+          path: .calendar-radar/event-*.json
+          include-hidden-files: true
+          retention-days: 90

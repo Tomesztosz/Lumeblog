@@ -1,0 +1,7 @@
+{
+  "note": "Synthetic offline parser fixtures, not manufacturer quotes.",
+  "valid": "WATCH First round Ships October 2026. Ships late October 2026. Out of Stock.",
+  "missingYear": "WATCH First round Ships October. News published October 2026.",
+  "conflict": "WATCH First round Ships October 2026. Ships late November 2026.",
+  "wrongRound": "WATCH Second round Ships October 2026."
+}

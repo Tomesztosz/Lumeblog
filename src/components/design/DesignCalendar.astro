@@ -1,17 +1,24 @@
 ---
 import type { Lang } from "../../i18n/ui";
+import noScriptStyles from '../../styles/calendar-noscript.css?url';
 import {
   phaseFor,
-  daysAway,
   matchesCalendar,
+  sortCalendar,
+  calendarCounts,
+  focusGroup,
+  eventDateLabel,
+  classifyCalendarEvent,
+  statusLabel,
+  needsSourceReview,
 } from "../../lib/calendar-state.mjs";
+import { downloadableEvent, exportableEvent } from '../../lib/calendar-ics.mjs';
 import {
-  activeReleases,
   brandRadar,
   CALENDAR_UI,
   calendarMeta,
+  calendarRevision,
   releaseIcsUrl,
-  releasePhase,
   releases,
   calendarEntries,
 } from "../../lib/releases";
@@ -22,14 +29,22 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = CALENDAR_UI[lang];
-const current = activeReleases();
-const nextRelease =
-  current.find((release) => releasePhase(release) === "upcoming") ?? current[0];
+const now = new Date();
+const entries = sortCalendar(calendarEntries.filter(e => classifyCalendarEvent(e, now).public), now);
+const counts = calendarCounts(entries, now);
+const highlighted = focusGroup(entries, now);
+const nextRelease = highlighted[0];
+const views = [
+  { key: 'active', label: t.viewActive },
+  { key: 'announced', label: t.viewAnnounced },
+  { key: 'archived', label: t.viewArchive },
+  { key: 'review', label: t.viewReview },
+];
 const brands = brandRadar
   .map((brand) => [brand.key, brand.name])
   .sort((a, b) => a[1].localeCompare(b[1]));
 const months = [
-  ...new Set(releases.map((release) => release.date.slice(0, 7))),
+  ...new Set(entries.map((entry) => entry.lifecycle.schedule?.value?.slice(0, 7)).filter(value => /^\d{4}-\d{2}$/.test(value))),
 ].map((value) => [
   value,
   new Intl.DateTimeFormat(lang === "hu" ? "hu-HU" : "en-GB", {
@@ -53,6 +68,7 @@ const radarReviewDate = new Intl.DateTimeFormat(
 ).format(new Date(`${calendarMeta.lastReviewed}T00:00:00Z`));
 
 const clientCopy = {
+  ...Object.fromEntries(Object.entries(t).filter(([, value]) => typeof value === 'string')),
   statusUpcoming: t.statusUpcoming,
   statusCurrent: t.statusCurrent,
   statusArchived: t.statusArchived,
@@ -87,12 +103,14 @@ const clientCopy = {
       <div class="calendar-instrument">
         <div class="calendar-instrument-copy">
           <span class="mono">{t.next}</span>
-          <strong>
-            {nextRelease
+          <strong data-calendar-focus-title>
+            {highlighted.length > 1 ? t.focusGroup.replace('{n}', String(highlighted.length)) : nextRelease
               ? `${nextRelease.brand} ${nextRelease.family}`
-              : "Lume"}
+              : t.focusEmpty}
           </strong>
-          <small>{nextRelease?.copy[lang].dateLabel}</small>
+          <small data-calendar-focus-date>{highlighted.length > 1 ? t.focusGroupDates : nextRelease ? eventDateLabel(nextRelease, lang, t) : ''}</small>
+          <a data-calendar-focus-link href={nextRelease ? `#${nextRelease.id}` : '#calendar-list-title'} hidden={!nextRelease}>{t.focusOpen} ↗</a>
+          <ul data-calendar-focus-group>{highlighted.length > 1 && highlighted.map(e => <li><a href={`#${e.id}`}>{e.brand} {e.family}</a></li>)}</ul>
         </div>
       </div>
     </div>
@@ -102,12 +120,7 @@ const clientCopy = {
     <div class="wrap">
       <div class="calendar-list-head">
         <div>
-          <p class="eyebrow mono">
-            {t.upcomingCount(
-              current.filter((entry) => releasePhase(entry) === "upcoming")
-                .length,
-            )}
-          </p>
+          <p class="eyebrow mono">{t.eyebrow}</p>
           <h2 id="calendar-list-title">{t.nav}</h2>
         </div>
         <p
@@ -116,13 +129,17 @@ const clientCopy = {
           role="status"
           aria-live="polite"
         >
-          {t.results(
-            calendarEntries.filter((entry) => matchesCalendar(entry)).length,
-          )}
+          {t.results(counts.active)}
         </p>
       </div>
 
       <p class="calendar-overview-help">{t.overviewHelp}</p>
+      <div class="calendar-views calendar-interactive" aria-label={t.statusLabel}>
+        {views.map(view => <button type="button" data-calendar-view={view.key} aria-pressed={view.key === 'active'}>
+          <span>{view.label}</span><strong data-calendar-count={view.key}>{counts[view.key]}</strong>
+        </button>)}
+      </div>
+      <p class="calendar-archive-help" data-calendar-archive-help hidden>{t.archiveHelp}</p>
       <div class="calendar-search">
         <label for="releaseQuery">{t.searchLabel}</label>
         <input id="releaseQuery" type="search" autocomplete="off" />
@@ -134,12 +151,11 @@ const clientCopy = {
         <label>
           <span class="mono">{t.statusLabel}</span>
           <select id="releaseStatusFilter">
-            <option value="overview">{t.overview}</option>
             <option value="active">{t.activeStatuses}</option>
-            <option value="introduced">{t.introduced}</option>
             <option value="announced">{t.announced}</option>
             <option value="all">{t.allStatuses}</option>
             <option value="archived">{t.archivedStatuses}</option>
+            <option value="review">{t.viewReview}</option>
           </select>
         </label>
         <label>
@@ -164,25 +180,9 @@ const clientCopy = {
       </div>
 
       <div class="calendar-grid" id="calendarGrid">
-        {calendarEntries.map((release) => {
-          const phase = phaseFor(release);
-          const days = daysAway(release);
-          const status =
-            phase === "introduced"
-              ? t.statusIntroduced
-              : phase === "announced"
-                ? t.announced
-                : phase === "current"
-                  ? release.precision === "day"
-                    ? t.statusToday
-                    : t.statusCurrent
-                  : phase === "archived"
-                    ? t.statusArchived
-                    : release.precision === "month"
-                      ? t.statusUpcoming
-                      : days === 1
-                        ? t.daysOne
-                        : t.daysMany(days);
+        {entries.map((release) => {
+          const phase = phaseFor(release, now);
+          const status = statusLabel(release, t, now);
           const edition = release.limitedPieces
             ? t.limited(release.limitedPieces)
             : t.unknownEdition;
@@ -191,13 +191,10 @@ const clientCopy = {
               class="release-card"
               id={release.id}
               data-release-card
-              data-start={release.date}
-              data-end={release.dateEnd}
-              data-precision={release.precision}
-              data-month={release.date?.slice(0, 7) ?? "undated"}
+              data-precision={release.lifecycle.schedule.precision}
               data-brand={release.brandKey}
               data-phase={phase}
-              hidden={!matchesCalendar(release)}
+              hidden={!matchesCalendar(release, {}, now)}
             >
               <figure
                 class="release-card-media"
@@ -237,8 +234,8 @@ const clientCopy = {
 
                 <dl class="release-facts">
                   <div>
-                    <dt class="mono">{t.releaseDate}</dt>
-                    <dd>{release.copy[lang].dateLabel}</dd>
+                    <dt class="mono">{t[`event_${release.lifecycle.identity.type}`]}</dt>
+                    <dd>{eventDateLabel(release, lang, t)}</dd>
                   </div>
                   <div>
                     <dt class="mono">{t.edition}</dt>
@@ -246,7 +243,7 @@ const clientCopy = {
                   </div>
                   <div>
                     <dt class="mono">{t.availability}</dt>
-                    <dd>{release.copy[lang].availability}</dd>
+                    <dd>{release.lifecycle.revision ? release.lifecycle.evidence.at(-1)?.quote : release.copy[lang].availability}</dd>
                   </div>
                   {release.price && (
                     <div>
@@ -265,29 +262,29 @@ const clientCopy = {
                   <a href={release.sourceUrl} target="_blank" rel="noreferrer">
                     {t.officialSource} ↗
                   </a>
-                  {release.date && (
-                    <a href={releaseIcsUrl(release, lang)} download>
+                  {exportableEvent(release) && (
+                    <a href={releaseIcsUrl(release, lang)} download data-calendar-download hidden={!downloadableEvent(release, now)}>
                       {t.addCalendar} ↓
                     </a>
                   )}
                 </div>
                 <p class="release-precision mono">
-                  {t.verified}: {release.sourceChecked} ·{" "}
-                  {release.date
-                    ? release.precision === "day"
-                      ? t.dayPrecision
-                      : t.monthPrecision
-                    : t.undatedNote}
+                  {t.verified}: {release.lifecycle.semanticVerifiedAt ?? release.sourceChecked}
                 </p>
+                {!release.date && <p class="release-precision mono">{t.firstSeenLabel}: {release.firstSeen}</p>}
+                <p class="release-source-aging" data-source-aging hidden={!needsSourceReview(release, now)}>{t.sourceAging}</p>
+                {release.lifecycle.evidence.length > 0 && <p class="release-precision">{t.sourceClaim}: {release.lifecycle.evidence.at(-1).quote}</p>}
+                {release.lifecycle.history.length > 0 && <details><summary>{t.historyTitle}</summary><ul>{release.lifecycle.history.map(h => <li>{h.changedAt}: {t.originalPlan}, {eventDateLabel({...release,lifecycle:{...release.lifecycle,sourceStatus:h.sourceStatus,schedule:h.schedule}},lang,t)}</li>)}</ul></details>}
               </div>
             </article>
           );
         })}
       </div>
 
-      <p class="calendar-empty" id="calendarEmpty" hidden>
+      <p class="calendar-empty" id="calendarEmpty" hidden={counts.active > 0}>
         {t.noResults}
       </p>
+      <p data-calendar-empty-help hidden={counts.active > 0}>{t.emptyHelp} <a href="?status=announced">{t.viewAnnounced}</a> · <a href="?status=archived">{t.viewArchive}</a></p>
     </div>
   </section>
 
@@ -316,7 +313,7 @@ const clientCopy = {
             <div class="calendar-radar-grid">
               {group.brands.map((brand) => {
                 const count = calendarEntries.filter(
-                  (entry) => entry.brandKey === brand.key,
+                  (entry) => entry.brandKey === brand.key && matchesCalendar(entry, {}, now),
                 ).length;
                 const active = count > 0;
                 return (
@@ -325,12 +322,13 @@ const clientCopy = {
                     target="_blank"
                     rel="noreferrer"
                     class:list={["calendar-radar-brand", { active }]}
+                    data-radar-brand={brand.key}
                   >
                     <span>
                       <i aria-hidden="true"></i>
                       <strong>{brand.name}</strong>
                     </span>
-                    <small class="mono">
+                    <small class="mono" data-radar-count>
                       {active ? t.radarCount(count) : t.radarWatched}
                     </small>
                     <small class="mono">
@@ -353,9 +351,15 @@ const clientCopy = {
 <div
   id="calendarData"
   hidden
-  data-entries={JSON.stringify(calendarEntries)}
+  data-entries={JSON.stringify(entries)}
   data-copy={JSON.stringify(clientCopy)}
+  data-lang={lang}
+  data-revision={calendarRevision}
 ></div>
+<noscript>
+  <p class="wrap calendar-overview-help">{t.noScript}</p>
+  <link rel="stylesheet" href={noScriptStyles} />
+</noscript>
 <script>
   import "../../lib/calendar-client";
 </script>

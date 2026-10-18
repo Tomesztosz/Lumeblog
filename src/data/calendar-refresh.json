@@ -1,0 +1,24 @@
+{
+  "dailyHours": 24,
+  "nearHours": 6,
+  "urgentHours": 1,
+  "unresolvedDays": 7,
+  "maxBackoffHours": 168,
+  "minHostDelayMs": 1500,
+  "bindings": [
+    {
+      "eventId": "rath-droma-gmt-founder-series",
+      "url": "https://rathwatches.com/products/rath-droma-gmt",
+      "requiredText": ["DROMA GMT", "Founder Series", "50 pieces"],
+      "pattern": "Ships (?:(?<qualifier>late) )?(?<month>January|February|March|April|May|June|July|August|September|October|November|December) (?<year>20[0-9]{2})",
+      "certainty": "estimated"
+    },
+    {
+      "eventId": "lorier-astra-december-delivery-2026",
+      "url": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
+      "requiredText": ["ASTRA", "Pre-order", "Ships late December 2026"],
+      "pattern": "Ships (?:(?<qualifier>late) )?(?<month>January|February|March|April|May|June|July|August|September|October|November|December) (?<year>20[0-9]{2})",
+      "certainty": "estimated"
+    }
+  ]
+}

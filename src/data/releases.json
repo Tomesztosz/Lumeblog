@@ -199,6 +199,7 @@
   },
   {
     "id": "lorier-astra-white-no-date-2026",
+    "eventType": "delivery",
     "brand": "Lorier",
     "brandKey": "lorier",
     "family": "Astra",
@@ -232,6 +233,7 @@
   },
   {
     "id": "rath-droma-gmt-founder-series",
+    "eventType": "delivery",
     "brand": "RÁTH",
     "brandKey": "rath",
     "family": "Founder Series",
@@ -266,6 +268,7 @@
   },
   {
     "id": "studio-underd0g-mantis-2026",
+    "eventType": "preorder",
     "brand": "Studio Underd0g",
     "brandKey": "studio-underd0g",
     "family": "02SERIES",

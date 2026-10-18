@@ -26,6 +26,8 @@ export function validateCalendar(dated, announcements, brands) {
     assert(validDate(entry.date) && validDate(entry.dateEnd) && entry.date <= entry.dateEnd, `${entry.id}: invalid release window`);
     assert(['day', 'month'].includes(entry.precision) && entry.confirmed === true, 'Dated release must be confirmed');
     assert(!('status' in entry), 'Announcement status cannot masquerade as dated release');
+    assert(entry.eventType === undefined || ['launch', 'preorder', 'delivery'].includes(entry.eventType), 'Invalid event type');
+    assert(entry.completedOn === undefined || (validDate(entry.completedOn) && entry.completedOn <= entry.sourceChecked && entry.completedOn >= entry.date), 'Completion needs a checked date inside or after the window');
     if (entry.precision === 'month') {
       assert(entry.date.endsWith('-01') && entry.date.slice(0,7) === entry.dateEnd.slice(0,7), 'Month precision must cover one complete month');
       const next = new Date(entry.dateEnd); next.setUTCDate(next.getUTCDate()+1);
@@ -35,6 +37,6 @@ export function validateCalendar(dated, announcements, brands) {
   for (const entry of announcements) {
     assert(['introduced','announced'].includes(entry.status), 'Invalid announcement state');
     assert(validDate(entry.firstSeen) && entry.firstSeen <= entry.sourceChecked, 'Invalid discovery date');
-    for (const field of ['date', 'dateEnd', 'precision', 'confirmed']) assert(!(field in entry), 'Undated announcement cannot have a calendar date');
+    for (const field of ['date', 'dateEnd', 'precision', 'confirmed', 'eventType', 'completedOn']) assert(!(field in entry), 'Undated announcement cannot have a calendar date');
   }
 }
