@@ -140,6 +140,10 @@ felülírhatók szerkesztői mérlegeléssel. Új cikk nem kap összehasonlítha
 korábbi kitettségre épülő pontot. A lista nem keresési volumen, nem becsült
 növekedés, és nem indít automatikus cikkírást vagy átírást.
 
+Az új publikációt a jelentés saját időzónájában vizsgáljuk. A baseline
+közben megjelent cikk is részleges korábbi kitettségnek számít, nem csak
+az, amely az alapidőszak utolsó napja után született.
+
 Eltérő hosszú hónapos ablaknál a pontszám visszaesési tényezője azonos
 napszámra vetített korábbi kattintást használ; a nyers időszakos mutatók
 és a napra vetített ráták ettől elkülönítve maradnak.

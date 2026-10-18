@@ -128,6 +128,11 @@ export function opportunity(current,previous,{known=false,effort=1,fit=1,minimum
   return {score:Math.log1p(current.impressions)*(1-current.ctr)*(1+declineWeight*decline)*fit/effort,
     reason:'Editorial triage only; impressions are observed visibility, not total demand or forecast growth.'};
 }
+export function hasPartialBaselineExposure(published, periodStart, timezone) {
+  if(!published||!Number.isFinite(Date.parse(published)))return false;
+  const day=new Intl.DateTimeFormat('en-CA',{timeZone:timezone,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(published));
+  return day>=isoDay(periodStart);
+}
 export function publisherBrand(query) {
   if(query==null||query==='')return 'unavailable';
   if(/(?:^|\s)lume\s+journal(?:\s|$)|lumejournal\.com/i.test(query))return 'publisher-branded';

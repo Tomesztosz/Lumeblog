@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {csvRows,importMeasurement,measurementWindow,summarise,compatibleComparison,metricChanges,opportunity,publisherBrand} from './lib/seo-measurement.mjs';
+import {csvRows,importMeasurement,measurementWindow,summarise,compatibleComparison,metricChanges,opportunity,publisherBrand,hasPartialBaselineExposure} from './lib/seo-measurement.mjs';
 // Synthetic values are unit-test fixtures, never Lume traffic or demand estimates.
 const now=new Date('2026-10-18T10:00:00Z');
 const manifest=(extra={})=>({version:1,source:'google-search-console',property:'https://lumejournal.com/',surface:'web',start:'2026-09-01',end:'2026-09-28',exportedAt:'2026-10-01T12:00:00Z',timezone:'America/Los_Angeles',coverage:'reported-rows',filters:{country:'all',device:'all'},grain:['url'],metrics:['clicks','impressions','position'],columns:{url:'Page',clicks:'Clicks',impressions:'Impressions',position:'Position'},...extra});
@@ -65,4 +65,7 @@ test('opportunity scores require real sufficient known data, neutral defaults ex
   assert.throws(()=>opportunity({impressions:1000,ctr:.1},null,{known:true,effort:0}));
   assert.equal(publisherBrand('Omega chronograph'),'not-publisher-branded');assert.equal(publisherBrand(null),'unavailable');assert.equal(publisherBrand('Lume Journal watches'),'publisher-branded');
   assert.equal(publisherBrand('watch lume paint'),'ambiguous-lume');
+  assert.equal(hasPartialBaselineExposure('2026-09-01T01:00:00Z','2026-09-01','America/Los_Angeles'),false);
+  assert.equal(hasPartialBaselineExposure('2026-09-01T01:00:00Z','2026-09-01','Europe/Budapest'),true);
+  assert.equal(hasPartialBaselineExposure('2026-09-15T12:00:00Z','2026-09-01','America/Los_Angeles'),true);
 });

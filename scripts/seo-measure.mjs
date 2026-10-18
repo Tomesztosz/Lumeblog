@@ -1,6 +1,6 @@
 import {readFile,readdir,mkdir,writeFile} from 'node:fs/promises';
 import {resolve,dirname,relative,isAbsolute} from 'node:path';
-import {importMeasurement,measurementWindow,summarise,compatibleComparison,metricChanges,opportunity,publisherBrand,MEASUREMENT_POLICY} from './lib/seo-measurement.mjs';
+import {importMeasurement,measurementWindow,summarise,compatibleComparison,metricChanges,opportunity,publisherBrand,hasPartialBaselineExposure} from './lib/seo-measurement.mjs';
 import {inspectHtml} from './lib/seo-html.mjs';
 const args=process.argv.slice(2),option=name=>args[args.indexOf(name)+1];
 if(!args.includes('--manifest')) {console.log('Usage: npm run seo:measure -- --manifest <private manifest.json> [--baseline <private manifest.json>] [--window 28|3m|6m|90|180]\nNo account is connected and no measurement is fabricated. See docs/SEO_MEASUREMENT.md.');process.exit(0);}
@@ -30,10 +30,10 @@ const currentPages=byPage(current),previousPages=baseline?byPage(baseline):new M
 const policy=JSON.parse(await readFile('docs/seo/measurement-policy.json','utf8'));
 const pages=[...currentPages].map(([url,metrics])=>{
   const content=inventory.get(url),previous=previousPages.get(url)??null,editorial=policy.pages?.[new URL(url).pathname]??{};
-  const newPublication=Boolean(content?.published&&baseline&&content.published.slice(0,10)>baseline.period.end);
+  const newPublication=Boolean(baseline&&hasPartialBaselineExposure(content?.published,baseline.period.start,baseline.manifest.timezone));
   const scoringPrevious=previous&&baseline?{...previous,clicks:previous.clicks===null?null:previous.clicks/baseline.period.days*current.period.days}:null;
   return {url,content:content??null,metrics,previous,changes:previous?metricChanges(metrics,previous):null,newPublication,
-    opportunity:newPublication?{score:null,reason:'New publication; no like-for-like previous exposure.'}:opportunity(metrics,scoringPrevious,{...policy.defaults,...editorial,known:Boolean(content)})};
+    opportunity:newPublication?{score:null,reason:'New or partially exposed publication; no like-for-like previous exposure.'}:opportunity(metrics,scoringPrevious,{...policy.defaults,...editorial,known:Boolean(content)})};
 }).sort((a,b)=>(b.opportunity.score??-1)-(a.opportunity.score??-1)||a.url.localeCompare(b.url));
 const segmentGroups=new Map();for(const r of current.records){const content=inventory.get(r.url),key=JSON.stringify({language:content?.language??'unknown',type:content?.type??'unknown',publisherQuery:publisherBrand(r.query)});const list=segmentGroups.get(key)??[];list.push(r);segmentGroups.set(key,list);}
 const segments=[...segmentGroups].map(([key,rows])=>({...JSON.parse(key),...summarise(rows,current.manifest.metrics)}));
