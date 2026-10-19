@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": 2,
+  "version": 4,
   "events": {
     "citizen-attesa-eco-drive-50-2026": {
       "editorial": "approved",
@@ -239,9 +239,9 @@
           "eventId": "rath-droma-gmt-founder-series",
           "eventType": "shipping",
           "claim": "planned",
-          "quote": "Ships late October 2026",
           "url": "https://rathwatches.com/products/rath-droma-gmt",
-          "checkedAt": "2026-10-18T07:57:28Z",
+          "quote": "Ships late October 2026",
+          "checkedAt": "2026-10-19T11:14:24.664Z",
           "accepted": true
         }
       ],
@@ -275,7 +275,8 @@
       "allowedSources": [
         "https://rathwatches.com/products/rath-droma-gmt"
       ],
-      "semanticVerifiedAt": "2026-10-18T07:57:28Z"
+      "semanticVerifiedAt": "2026-10-19T11:14:24.664Z",
+      "acceptedRequestAt": "2026-10-19T11:14:24.034Z"
     },
     "studio-underd0g-mantis-2026": {
       "editorial": "approved",
@@ -428,9 +429,9 @@
           "eventId": "lorier-astra-december-delivery-2026",
           "eventType": "shipping",
           "claim": "planned",
-          "quote": "Ships late December 2026",
           "url": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
-          "checkedAt": "2026-10-18T07:57:28Z",
+          "quote": "Ships late December 2026",
+          "checkedAt": "2026-10-19T11:14:23.952Z",
           "accepted": true
         }
       ],
@@ -460,7 +461,8 @@
       "allowedSources": [
         "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081"
       ],
-      "semanticVerifiedAt": "2026-10-18T07:57:28Z"
+      "semanticVerifiedAt": "2026-10-19T11:14:23.952Z",
+      "acceptedRequestAt": "2026-10-19T11:14:22.471Z"
     },
     "omega-james-bond-spectre-2026": {
       "editorial": "approved",
