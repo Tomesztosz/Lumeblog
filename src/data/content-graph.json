@@ -81,6 +81,7 @@
     "event:lorier-astra-december-delivery-2026": {"hu":"Astra kiszállítás","en":"Astra delivery","aliases":[]}
   },
   "articles": {
+    "cartier-crash": {"entities":["brand:cartier","topic:design"],"intent":"history","evidence":"Jean-Jacques Cartier és Rupert Emmerson"},
     "atelier-wen": {"entities":["brand:atelier-wen","topic:independents","topic:design"],"intent":"brand-story","evidence":"A kínai rész nem dekoráció"},
     "baltic": {"entities":["brand:baltic","movement:st19","movement:miyota-9039","principle:automatic-winding","complication:chronograph","topic:independents"],"intent":"brand-story","evidence":"A kis rotor, amely felrakta őket a nagyok közé"},
     "bravur": {"entities":["brand:bravur","complication:chronograph","topic:independents","topic:design"],"intent":"brand-story","evidence":"Mit mér a három kis kör?"},

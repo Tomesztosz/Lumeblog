@@ -1,0 +1,123 @@
+{
+  "translationKey": "cartier-crash",
+  "reviewed": "2026-10-21",
+  "status": "approved-for-immediate-publication",
+  "publicationApproved": true,
+  "approval": {
+    "confirmedOn": "2026-10-21",
+    "ownerWords": "Rendben mehet azonnal fel, rendben vannak a képek",
+    "scope": "The approved HU/EN article, narrative hero and remaining five body photographs. The rejected skeleton detail macro remains excluded.",
+    "limitation": "Owner confirmation in conversation. No independent licensor correspondence was received or sent by the assistant. Do not describe this as a separately verified manufacturer or auction-house licence."
+  },
+  "scheduled": false,
+  "articlePair": [
+    "src/content/posts/hu/cartier-crash.md",
+    "src/content/posts/en/cartier-crash.md"
+  ],
+  "factualBoundaries": [
+    "1967 London origin and deliberate collaboration by Jean-Jacques Cartier and Rupert Emmerson. Accident narrative identified as legend, not documented recovered object or a proven fatality.",
+    "Francesca Cartier Brickell's family recollections are attributed as such, not presented as a newly discovered contemporaneous workshop record.",
+    "Dalí's 1931 painting provides an interpretive comparison, not established direct inspiration.",
+    "Hero juxtaposes an archival 1968 street photograph and a 1970 watch. Neither is mislabeled as an image of the 1967 launch.",
+    "Calibre 160 pertains to the specific Paris 1991 auction example, not every Crash. WHCH0006 and 9618 MC distinguish the previous Skeleton from WHCH0012 and 1967 MC in 2026.",
+    "No present price, purchase recommendation, availability claim, fixed early production count or invented current auction record."
+  ],
+  "media": [
+    {
+      "file": "cartier-crash-hero.webp",
+      "role": "editorial-hero",
+      "method": "Native SVG layout and proportional compositing of real photographs. No generated scene, person, watch, crash or painting.",
+      "rights": "Mixed underlying rights. Private preview only."
+    },
+    {
+      "file": "cartier-crash-carnaby-1968.webp",
+      "role": "documentary",
+      "creator": "H. Grobe",
+      "year": 1968,
+      "source": "https://commons.wikimedia.org/wiki/File:Carnaby_Street,_London_in_1968.jpg",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "changes": "Proportional resize; crop and dark overlay only in hero.",
+      "publicationCleared": true
+    },
+    {
+      "file": "cartier-crash-london-cutout.png",
+      "role": "transparent-product",
+      "subject": "Cartier London Crash, made in 1970",
+      "credit": "Sotheby's",
+      "source": "https://www.sothebys.com/en/buy/auction/2021/important-watches-6/crash-an-exceptionally-rare-18k-yellow-gold-manual",
+      "license": "Publication permission not established",
+      "publicationCleared": false,
+      "changes": "Alpha-only extraction, reflection omitted. Exact original RGB retained."
+    },
+    {
+      "file": "cartier-crash-london-dial.webp",
+      "role": "dial-macro",
+      "credit": "Sotheby's",
+      "source": "https://www.sothebys.com/en/buy/auction/2021/important-watches-6/crash-an-exceptionally-rare-18k-yellow-gold-manual",
+      "license": "Publication permission not established",
+      "publicationCleared": false,
+      "changes": "Crop from original photo, proportional resize."
+    },
+    {
+      "file": "cartier-crash-paris-dial.webp",
+      "role": "dial-macro",
+      "subject": "Cartier Paris Crash, circa 1991, lot 56",
+      "credit": "Sotheby's",
+      "source": "https://www.sothebys.com/en/buy/auction/2022/important-watches-3/crash-a-limited-edition-yellow-gold-asymmetrical",
+      "license": "Publication permission not established",
+      "publicationCleared": false,
+      "changes": "Crop from original photo, proportional resize."
+    },
+    {
+      "file": "cartier-crash-skeleton-cutout.png",
+      "role": "transparent-product",
+      "subject": "WHCH0012, 2026, 1967 MC",
+      "credit": "Cartier",
+      "source": "https://www.cartier.com.br/whch0012-relogio-esqueleto-crash/p",
+      "license": "Manufacturer attribution does not by itself establish permission",
+      "publicationCleared": false,
+      "changes": "Original RGB retained; alpha mask removes background including actual skeleton openings, not metal bridges."
+    },
+    {
+      "file": "cartier-crash-skeleton-detail.webp",
+      "included": false,
+      "excludedReason": "Owner rejected the enlarged low-resolution macro. Removed with its caption from both language editions; retained only as a private processing record.",
+      "role": "movement-macro",
+      "credit": "Cartier",
+      "source": "https://www.cartier.com.br/whch0012-relogio-esqueleto-crash/p",
+      "license": "Publication permission not established",
+      "publicationCleared": false,
+      "changes": "Crop from original photo, proportional resize."
+    }
+  ],
+  "imagegen": {
+    "mode": "built-in",
+    "purpose": "Alpha-mask guidance only; generated colour pixels are not used in final photographs.",
+    "prompts": [
+      "Use case: background-extraction. Edit target: the supplied square Sotheby's photograph of a 1970 Cartier London Crash watch. Remove ONLY the white background and reflected watch shadow below the lower strap. Preserve the photograph's exact original square 2000x2000 framing, object scale, position, silhouette and all pixels of the watch, dial numerals, Cartier London lettering, hands, sapphire crown and black strap. Do not recenter, rotate, enlarge, redraw or reconstruct anything. Keep the entire visible real black strap, but remove its reflection below the clear horizontal strap edge. Output the same photograph with a genuinely transparent alpha background, no fake checkerboard, no shadows, no new text. Used only as an alpha-mask source to restore original photographic RGB.",
+      "Use case: background-extraction. Edit target: the supplied Cartier 2026 Crash Skeleton WHCH0012 product photograph. Preserve exact square framing, watch position, scale, entire platinum case, ruby crown, burgundy strap, blue hands, numerals and mechanical details. Remove ONLY the white photographic background, including the real open spaces THROUGH the skeleton movement and between the Roman numeral bridges. Do NOT erase pale metal bridges, white highlights, jewels, wheels or real mechanism parts. Genuinely transparent alpha background, no checkerboard or shadows. No repositioning or new pixels. This output is ONLY an alpha-mask guide for restoring all original photographic RGB pixels."
+    ],
+    "localMasks": [
+      "output/article-review/cartier-crash/sources/london-imagegen-mask-v1.png",
+      "output/article-review/cartier-crash/sources/skeleton-imagegen-mask-v1.png"
+    ],
+    "pipeline": "scripts/design-cartier-crash-review.mjs",
+    "checks": "output/article-review/cartier-crash/cutout-checks.json"
+  },
+  "review": {
+    "hu": "output/article-review/cartier-crash/megnezes.html",
+    "en": "output/article-review/cartier-crash/english.html",
+    "imageCountPerLanguage": 6,
+    "bodyLinks": false,
+    "imagesExcludedFromProduction": false,
+    "calendarReview": "docs/calendar-review-cartier-crash-2026-10-21.json",
+    "validation": {
+      "fullBuild": "npm run build: passed",
+      "browser": "HU and EN at 1440, 390 and 320px; light/dark, larger text, all images decoded; zero errors or overflow",
+      "cutouts": "Two real alpha cutouts; zero changed original RGB samples; skeleton openings also transparent",
+      "publicDraftLeakCheck": "113 text documents and 1330 public image files inspected; no draft content, named draft assets or matching source-image hashes found",
+      "browserReport": "output/article-review/cartier-crash/browser-checks.json"
+    }
+  }
+}

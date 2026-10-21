@@ -1,0 +1,51 @@
+{
+  "translationKey": "cartier-crash",
+  "publication": {
+    "date": "2026-10-21T20:09:00+02:00",
+    "timeZone": "Europe/Budapest",
+    "utc": "2026-10-21T18:09:00Z",
+    "languages": [
+      "hu",
+      "en"
+    ],
+    "draft": false,
+    "mode": "immediate",
+    "deployment": "main push through existing Cloudflare Pages Git integration"
+  },
+  "approval": {
+    "confirmedOn": "2026-10-21",
+    "ownerWords": "Rendben mehet azonnal fel, rendben vannak a képek",
+    "evidence": "owner-confirmation-in-conversation",
+    "limitation": "No separate licensor correspondence received or sent by the assistant."
+  },
+  "images": {
+    "imagesPerLanguage": 6,
+    "bodyImages": 5,
+    "cover": "cartier-crash-hero.webp",
+    "card": "cartier-crash-card.webp",
+    "actualAlpha": true,
+    "originalRGBChangedPixels": 0,
+    "approvedImageFilesCopiedByteForByte": true,
+    "rejectedImageExcluded": "cartier-crash-skeleton-detail.webp"
+  },
+  "calendarReview": "docs/calendar-review-cartier-crash-2026-10-21.json",
+  "calendarOutcome": {
+    "brandsAttempted": 24,
+    "urlsAttempted": 61,
+    "newDatedReleases": 0,
+    "newICS": 0,
+    "coverage": "partial",
+    "lastFullReviewUnchanged": true
+  },
+  "checks": {
+    "fullBuild": "passed",
+    "articleBrowserCases": 12,
+    "calendarBrowserChecks": 18,
+    "homepageFeatures": 2,
+    "feeds": 2,
+    "seoLlmsSecurityJournal": "passed",
+    "releaseQA": "output/article-review/cartier-crash/release-qa/result.json"
+  },
+  "releaseBase": "96f1727cab0281e58b5df9162c07df9d9cc9ad03",
+  "localIsolation": "Separate release worktree; unrelated local developments were not staged or deployed."
+}

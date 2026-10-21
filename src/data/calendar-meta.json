@@ -1,13 +1,15 @@
 {
   "lastReviewed": "2026-09-06",
-  "lastTargetedReview": "2026-10-18",
+  "lastTargetedReview": "2026-10-21",
   "targetThrough": "2026-12-31",
   "targetedReviewStatus": "partial",
   "unverifiedBrandKeys": [
     "tag-heuer",
     "cartier",
     "longines",
-    "zenith"
+    "zenith",
+    "iwc",
+    "jaeger-lecoultre"
   ],
-  "reviewRecord": "docs/calendar-review-habring2-2026-10-18.json"
+  "reviewRecord": "docs/calendar-review-cartier-crash-2026-10-21.json"
 }
