@@ -44,7 +44,7 @@ for(const file of files.filter(f=>f.endsWith('.html'))) {
   }
   calendarLinks+=page.elements.filter(n=>attribute(n,'data-calendar-story')!==undefined).length;
 }
-const expectedModels=published.filter(p=>p.data.column==='movement'&&(p.data.model||['co-axial','rattrapante','ugro-masodperc'].some(key=>p.data.translationKey===key&&p.body.includes(`<!-- lume-model ${key} -->`)))).length;
+const expectedModels=published.filter(p=>p.data.column==='movement'&&(p.data.model||['co-axial','rattrapante','ugro-masodperc','tourbillon'].some(key=>p.data.translationKey===key&&p.body.includes(`<!-- lume-model ${key} -->`)))).length;
 const rawEvents=[...JSON.parse(await readFile('src/data/releases.json','utf8')),...JSON.parse(await readFile('src/data/announcements.json','utf8'))];
 const currentEvents=hydrateEvents(rawEvents,JSON.parse(await readFile('src/data/calendar-events.json','utf8')));
 const expectedCalendarLinks=graph.calendar.reduce((count,link)=>count+(currentEvents.some(e=>e.id===link.event&&classifyCalendarEvent(e,now).public)?published.filter(p=>p.data.translationKey===link.article).length:0),0);

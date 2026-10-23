@@ -18,7 +18,7 @@ for(const [id,entity] of Object.entries(graph.entities)) {
   }
 }
 const keys=new Set(posts.map(p=>p.data.translationKey).filter(Boolean));
-const models=[...MODEL_NAMES,'co-axial','rattrapante','ugro-masodperc'];
+const models=[...MODEL_NAMES,'co-axial','rattrapante','ugro-masodperc','tourbillon'];
 for(const model of models)assert(MODEL_READING_GUIDES[model]?.hu&&MODEL_READING_GUIDES[model]?.en,`Missing model guide: ${model}`);
 for(const [key,assignment] of Object.entries(graph.articles)) {
   assert(keys.has(key),`Missing article: ${key}`);

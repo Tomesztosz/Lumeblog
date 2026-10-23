@@ -1,0 +1,87 @@
+{
+  "translationKey": "tourbillon",
+  "reviewed": "2026-10-23",
+  "status": "approved-for-immediate-publication",
+  "publicationApproved": true,
+  "scheduled": false,
+  "proposedPublication": "2026-10-23T01:00:00+02:00",
+  "articlePair": [
+    "src/content/posts/hu/tourbillon.md",
+    "src/content/posts/en/tourbillon.md"
+  ],
+  "preview": "output/article-review/tourbillon/megnezes.html",
+  "mediaManifest": "output/article-review/tourbillon/sources/download-manifest.json",
+  "mediaReport": "output/article-review/tourbillon/sources/media-report.json",
+  "factualBoundaries": [
+    "The 26 June 1801 patent is not equated with immediate commercial production.",
+    "A tourbillon averages particular positional rate variations; it does not remove gravity, guarantee zero mean error or correct all horizontal/vertical differences.",
+    "The classic single-axis limitation is separated from inclined, nested and vertical-carriage constructions.",
+    "Wrist movement is neither treated as continuous uniform sampling nor presented as proof that a tourbillon can never help.",
+    "Greubel Forsey's 2011 competition result is attributed to a complete watch. No contested numerical score or universal wrist-accuracy advantage is asserted.",
+    "The Audemars Piguet 1986 first is specifically selfwinding, not the first tourbillon wristwatch of any type.",
+    "77 components and less than 0.5 g refer to the specific Jaeger-LeCoultre calibre 978 tourbillon in Q13224E2. 334 components refer to the complete Breguet calibre 581, not its cage.",
+    "Breguet's own historical account acknowledges that enhanced precision is no longer necessarily the wristwatch tourbillon's chief attraction.",
+    "There are no fabricated hands-on experiences, prices, shopping recommendations or performance measurements."
+  ],
+  "media": {
+    "hero": "tourbillon-hero.webp",
+    "heroSources": [
+      "Breguet No. 2567 historical movement photograph",
+      "1801 patent drawing reproduced by Breguet",
+      "Classique 5367BR/29/9WU factory product photograph"
+    ],
+    "method": "Native SVG editorial composition of real photographs, proportional resizing and cropping. No AI-generated imagery, redrawn watch, invented portrait or synthetic archival setting.",
+    "productCutout": "tourbillon-classique-cutout.webp",
+    "alpha": "Manufacturer-supplied transparent PNG, retained through proportional resizing and WebP export. Actual transparent pixels verified on light and dark backgrounds.",
+    "otherImages": "Documentary workshop photographs, archival object photographs in context, patent drawing and tight watch macro. No detachable product backdrop is retained as a standalone product image.",
+    "rights": "Image use confirmed by the site owner on 23 October 2026. Original Breguet and Greubel Forsey credits retained. This records owner confirmation, not an independently inspected manufacturer licence.",
+    "privacyBoundary": "Approved nine images promoted to src/content/posts/_images. Private review markers replaced by public image and model references; unrelated local drafts remain private."
+  },
+  "model": {
+    "revision": 2,
+    "revisionReason": "Owner requested a substantially clearer and more detailed beginner-friendly Workshop rather than an unexplained rate comparison.",
+    "core": "src/lib/tourbillon-model.mjs",
+    "view": "src/lib/tourbillon-view.mjs",
+    "interfaceCopy": "src/i18n/ui.ts: TOURBILLON_LESSON",
+    "scope": "Public article embeds plus bilingual standalone shareable Workshop routes and listing integration.",
+    "largeViews": [
+      "output/article-review/tourbillon/muhely.html",
+      "output/article-review/tourbillon/workshop.html"
+    ],
+    "learningSequence": [
+      "Balance and hairspring",
+      "Carriage and two timescales",
+      "Energy path and fixed wheel",
+      "Positional averaging",
+      "Spatial orientation and wrist example"
+    ],
+    "interaction": "Five directly selectable guided chapters, six numbered component explanations, pause-on-selection, tracked close-up views, manual half-beat and quarter-turn stepping, slow/fast modes, editable time and rate parameters, per-chapter observation tasks, explanatory answers to three quiz questions.",
+    "kinematics": "4 Hz teaching oscillator: 8 half-oscillations/s, 240 oscillations and 480 half-oscillations per 60-second carriage turn. Slow view uses 0.125x model time, fast view uses 8x. In fast view internal rapid movements are intentionally not drawn to avoid aliasing and flicker. The hairspring inner end follows the balance while its outer end stays fixed to the carriage. The drawn spiral is not an elastic solver.",
+    "spatialView": "Oblique projection of a watch face with visible case thickness, separate carriage marker and fixed-world gravity arrow. Axis/vertical angle is explicitly displayed; this is not a multi-axis regulator simulation.",
+    "assumptions": "r = bias + 3*cos(tilt)^2 + amplitude*sin(tilt)^2*cos(azimuth + phase); phase = 2*pi*t/60 for rotating carriage and zero for fixed regulator. Defaults are bias=2, amplitude=8, rates expressed in illustrative seconds/day.",
+    "integration": "Midpoint quadrature with steps no longer than 0.1 seconds, including the final partial interval. Average is computed over elapsed model time, not the entire future plot.",
+    "limitations": "Invented rate data; no measured calibre claims. No friction, gear-contact, energy, multi-axis mechanism or physical oscillator solver. Wrist motion is a deterministic demonstration, not recorded wearer data.",
+    "safety": "Paused on load. Explicit user play; pauses offscreen, on page hiding and reduced-motion preference changes. No network calls, autoplay sound, external APIs or publication.",
+    "routes": [
+      "/muhely/tourbillon/",
+      "/en/workshop/tourbillon/"
+    ]
+  },
+  "checks": {
+    "releaseBrowser": "node scripts/check-tourbillon-release.mjs: 12 combinations, HU/EN article and Workshop at 1440/390/320 px, 60 chapter checks, working controls under production CSP, decoded images, sharing routes, average rates, dark theme, reduced motion, zero runtime exceptions or horizontal overflow.",
+    "releaseAudit": "npm audit reports two existing vulnerable dependency entries (one high, one moderate), including Vite development-server advisories. No dependency change or audit bypass in this article release. Full npm run build passes; audit-only CI may remain red.",
+    "unitAndRegression": "node --test scripts/tourbillon-model.test.mjs scripts/coaxial-model.test.mjs scripts/rattrapante-model.test.mjs",
+    "offlineExport": "node scripts/render-article-review.mjs tourbillon",
+    "browser": "node scripts/check-tourbillon-review.mjs",
+    "browserCoverage": "10 language/viewport/page combinations, 50 chapter checks. Large HU/EN view at 1440, 390 and 320 px; embedded article at 1440 and 390 px. Native keyboard activation, zoom, rates, presets, parts, energy stations, quiz feedback, light/dark themes, large article text, no-script fallback, local file URLs, no horizontal overflow and no runtime errors.",
+    "browserReport": "output/article-review/tourbillon/browser-checks-v2.json",
+    "build": "npm run build",
+    "publicationGate": "Owner publication and image approval received; mandatory partial calendar review recorded with source-access limitations, no invented dates.",
+    "calendarReview": "docs/calendar-review-tourbillon-2026-10-23.json"
+  },
+  "ownerApproval": {
+    "date": "2026-10-23",
+    "quote": "Rendben mehet feltöltésre. Minden rendben van, a képek is",
+    "scope": "Both articles, approved images and revision 2 Workshop. Owner confirmation recorded; no manufacturer correspondence independently inspected."
+  }
+}

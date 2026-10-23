@@ -6,6 +6,7 @@ import DesignModel from './DesignModel.astro';
 import JumpingSecondsModel from '../JumpingSecondsModel.astro';
 import RattrapanteModel from '../RattrapanteModel.astro';
 import CoaxialModel from '../CoaxialModel.astro';
+import TourbillonModel from '../TourbillonModel.astro';
 import ModelShare from '../ModelShare.astro';
 import ContentConnections from './ContentConnections.astro';
 interface Props { post: Post }
@@ -21,7 +22,7 @@ const guide = MODEL_READING_GUIDES[model.key as keyof typeof MODEL_READING_GUIDE
     <ModelShare lang={lang} url={model.url} title={model.title} />
   </header>
   <div class="shared-model-stage">
-    {model.kind === 'frame' ? <DesignModel post={post as ModelPost} variant="standalone" /> : model.key === 'co-axial' ? <CoaxialModel lang={lang} /> : model.key === 'rattrapante' ? <RattrapanteModel lang={lang} /> : <JumpingSecondsModel lang={lang} />}
+    {model.kind === 'frame' ? <DesignModel post={post as ModelPost} variant="standalone" /> : model.key === 'tourbillon' ? <TourbillonModel lang={lang} standalone /> : model.key === 'co-axial' ? <CoaxialModel lang={lang} /> : model.key === 'rattrapante' ? <RattrapanteModel lang={lang} /> : <JumpingSecondsModel lang={lang} />}
   </div>
   <p class="shared-model-note">{t.note}</p>
   {guide && <section class="shared-model-reading" data-model-reading-guide>

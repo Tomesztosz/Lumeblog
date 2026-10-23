@@ -1,3 +1,125 @@
+export const TOURBILLON_LESSON = {
+  hu: {
+    eyebrow:'LUME / MŰHELY', theme:'Lámpa le', zoom:'Rajzi nézet', zoomOptions:['Teljes szerkezet','Billegő és hajszálrugó közelről','Horgony és gátkerék közelről'],
+    title:'Értsd meg a tourbillont',
+    intro:'Először nézzük meg, mitől ketyeg egy óra. Utána körbeforgatjuk a szabályozót, végigkövetjük az energia útját, és kipróbáljuk, min változtat a forgás.',
+    open:'Megnyitom nagy Műhely-nézetben', backArticle:'Vissza a cikkhez', private:'Helyi Műhely-előnézet. Még nem nyilvános.',
+    guide:'Öt lépés, az alapoktól', previous:'Előző lépés', next:'Következő lépés', finish:'Vissza az elejére',
+    observe:'Ezt figyeld', remember:'Ezt vidd magaddal', deeper:'Részletesebben',
+    chapters:[
+      {tab:'Mi ketyeg?',title:'A billegő leng, a rugó visszatéríti',
+       lead:'A nagy kerék nem körbejár, hanem oda-vissza fordul. A vékony spirál a hajszálrugó. Együtt adják az óra ismétlődő ritmusát.',
+       task:'Indítsd el a lassított mozgást, majd válaszd ki a billegőt és a hajszálrugót. Figyeld meg, hogy a rugó külső vége a vázhoz rögzítve marad.',
+       takeaway:'A hajszálrugó nem a felhúzáskor megfeszített hajtórugó. Az előbbi visszatéríti a billegőt; az utóbbi tárolja az óra működéséhez szükséges energiát.',
+       detail:'A választott példa 4 Hz-es: egy másodperc alatt négy teljes oda-vissza lengés, vagyis nyolc féllengés történik. A nagyítás és a lassítás segít követni ezt a mozgást. Az amplitúdó és a rugó alakja szemléltető, nem egy konkrét kaliber mérése.'},
+      {tab:'Mi forog?',title:'Ugyanez az egység egy forgó vázban',
+       lead:'A tourbillon ketrece együtt viszi körbe a billegőt, a hajszálrugót, a horgonyt és a gátkereket. Közben a billegő a ketrecen belül tovább leng.',
+       task:'Válts a „Ketrec: gyorsítva” nézetre. A sötét jel körbejár a rögzített percosztáson. Utána válts vissza a lassításra: a belső lengés jóval gyorsabb.',
+       takeaway:'A lengés és a körbefordulás nem ugyanaz. Ebben a példában egy ketrecfordulat ideje alatt 240 teljes billegőlengés, azaz 480 féllengés történik.',
+       detail:'A ketrec itt egy perc alatt fordul körbe. Ez gyakori megoldás, nem a tourbillon kötelező fordulatszáma. A számlaphoz rögzített percosztás nem mozog; a ketrecen lévő jelhez képest ezért könnyen követhető a forgás.'},
+      {tab:'Mi hajtja?',title:'Az energiát a hajtórugó adja',
+       lead:'A ketrecnek nincs saját motorja. A felhúzott hajtórugótól érkező energia a kerékrendszeren keresztül jut el hozzá. A gátlómű kis adagokban engedi tovább a mozgást.',
+       task:'Lépj végig az energiaút öt állomásán. Nézd meg a külön jelölt álló kereket is: ez nem energiaforrás, hanem a körbejáró fogaskerék rögzített kapcsolódási pontja.',
+       takeaway:'A hajtórugó táplálja a működést, a billegő ritmusa pedig a gátlóművön keresztül szabja meg a haladást. Az energia útja és a szabályozás iránya nem ugyanaz.',
+       detail:'Klasszikus, központosan hajtott elrendezést magyarázunk: a hajtás a ketrecet mozgatja, a gátkerék tengelyén lévő kis fogaskerék egy álló kerékhez kapcsolódik. A kapcsolati ábra különböző magasságban lévő részeket terít egy síkba. A fogszám, a geometria és az érintkezések nincsenek méretezve.'},
+      {tab:'Mit javít?',title:'Különböző helyzetekből átlagot készít',
+       lead:'Tegyük fel, hogy ugyanaz az óra az egyik függőleges helyzetben siet, a másikban késik. Ha a szabályozó körbefordul, ezekből a helyzetekből egymás után mintát vesz.',
+       task:'Nézd meg a négy negyedfordulatot, majd lépj a teljes perc végére. A pillanatnyi járás változik, az eltelt idő átlaga viszont megmutatja, mi gyűlt össze eddig.',
+       takeaway:'Az átlagolás nem nullázás. A példában a helyzeti eltérés kiegyenlítődhet, de a minden állásban meglévő +2 mp/nap alapeltérés megmarad.',
+       detail:'A számok tanítási célra választott adatok, nem gyártói mérési eredmények. Az átlag idővel súlyozott: a hosszabban felvett helyzet többet számít. Az első pillanatban még nincs eltelt idő, ezért addig nem írunk ki átlagot.'},
+      {tab:'És a csuklón?',title:'Nem mindegy, milyen tengely körül forog',
+       lead:'A tokon kívülről nézzük az órát. A lefelé mutató nyíl a gravitáció. A szaggatott vonal a ketrec tengelye; az órával együtt fordul el.',
+       task:'Válts a függőleges óra és a számlappal felfelé letett óra között. Utóbbinál a ketrec a gravitációval párhuzamos tengely körül jár: nem dönti át a billegőt új függőleges helyzetekbe.',
+       takeaway:'A csukló mozgása sem egyenletes mintavétel. Egy adott órán segíthet a tourbillon, de a látványos forgás önmagában nem bizonyít jobb napi pontosságot.',
+       detail:'A csuklómozgás itt egy megismételhető példa, nem egy viselő mérése. A térbeli rajz az óra síkját, a tengelyt és a gravitáció irányát mutatja, nem egy többtengelyű tourbillont. A ferde és többtengelyű szerkezetek eltérő helyzeteket járhatnak be.'}
+    ],
+    parts:[
+      {name:'Billegő',action:'Oda-vissza leng',text:'A nagy kerék tehetetlensége és a hajszálrugó visszatérítő hatása együtt hozza létre a ritmust. Nem a ketrec körbefordulását látod rajta.',watch:'Lassításban a kerék küllői felváltva fordulnak két irányba.'},
+      {name:'Hajszálrugó',action:'Rugalmasan visszatérít',text:'A belső vége a billegő tengelyével mozog, a külső vége a tartóhoz rögzül. A rajzon ezért nem forog el a teljes spirál merev tárcsaként.',watch:'A külső vég a ketrechez képest helyben marad.'},
+      {name:'Horgony',action:'Váltva zár és továbbít',text:'A bemutatott horgony-gátlóműben felváltva visszatartja a gátkereket, majd impulzust továbbít a billegőnek. Nem minden tourbillon ugyanezt a gátlóművet használja.',watch:'A rövid kar két szélső állás között vált. Az érintkezés részleteit ez a rajz nem modellezi.'},
+      {name:'Gátkerék',action:'Szakaszosan halad',text:'A kerékrendszer hajtaná tovább, de a horgony csak kis lépésekben engedi. Így kapcsolódik össze az energia utánpótlása és a billegő ritmusa.',watch:'Lassításban a csillagszerű kerék kis lépésekben fordul.'},
+      {name:'Ketrec',action:'Körbeviszi az egységet',text:'A forgó váz együtt tartja a szabályozót és a gátlóművet. A belső alkatrészek saját mozgása a ketrec lassú körbefordulására rakódik rá.',watch:'A külső jel egy perc modellidő alatt tesz meg egy teljes kört.'},
+      {name:'Álló kerék',action:'A tokhoz képest áll',text:'A klasszikus felépítésben a ketreccel körbejáró gátkerék kis fogaskereke ehhez kapcsolódik. Az álló kerék nem forog együtt a ketreccel.',watch:'Az energiaábrán szaggatott, a tokhoz rögzített kapcsolat jelöli.'}
+    ],
+    partPicker:'Fedezd fel az alkatrészeket', partHint:'Az 1–5. gomb kiemeli az alkatrészt és megállítja a mozgást. A 6. gomb az álló kerék külön magyarázatához visz.', allParts:'Mindent mutat',
+    diagram:'A szabályozó nagyított, sematikus felülnézete. A számok az alkatrészgombokhoz tartoznak.',
+    plan:'Nagyított felülnézet', fixedScale:'Álló percosztás', case:'A tokhoz rögzített alap',
+    display:'Melyik mozgást nézzük?', slow:'Billegő: 8× lassítva', fast:'Ketrec: 8× gyorsítva',
+    slowNote:'Nyolcszoros lassítás: a billegő lengése követhető, a ketrec alig fordul el.',
+    fastNote:'Nyolcszoros gyorsítás: egy ketrecfordulat 7,5 másodperc. A gyors belső lengést ilyenkor nem rajzoljuk ki, hogy ne villogjon és ne tűnjön visszafelé forgónak.',
+    play:'Elindítom', pause:'Szünet', beat:'Egy féllengés', quarter:'Negyedfordulat', reset:'Idő nullázása', time:'Modellidő', angle:'Ketrec elfordulása', beats:'Féllengések',
+    rhythm:'1 perc alatt: 1 ketrecfordulat · 240 teljes lengés · 480 féllengés',
+    spring:'Hajtórugó', train:'Kerékrendszer', cage:'Ketrec', escapement:'Gátlómű', balance:'Billegő', fixedWheel:'Álló kerék', energy:'Energia útja', regulation:'A billegő ritmusa szabályozza a haladást',
+    energySteps:[
+      'A felhúzás energiája a hajtórugóban tárolódik. Ez a rugó nem azonos a billegő hajszálrugójával.',
+      'A fogaskerekek továbbítják az energiát, és az áttételekkel meghatározzák az egyes részek mozgását.',
+      'A klasszikus hajtás a ketrecet forgatja. Az álló kerék és a vele kapcsolódó kis fogaskerék a mechanikai kapcsolat része.',
+      'A horgony és a gátkerék nem enged szabad lefutást. Az oldások és impulzusok kapcsolják össze a hajtást a szabályozóval.',
+      'A billegő kis impulzusokat kap a veszteségei pótlására. A lengés ritmusa visszahat arra, mikor léphet tovább a kerékrendszer.'
+    ],
+    energyNext:'Következő állomás', energyView:'Kapcsolati ábra. A nyilak funkciót jelölnek, nem fogaskerék-érintkezést.',
+    position:'Az óra helyzete', scenarios:['Függőlegesen a zsebben','Számlappal felfelé az asztalon','Példa mozgó csuklóra'],
+    geometry:'Külső nézet: merre áll a tengely?', axis:'Tengely és gravitáció szöge', gravity:'Gravitáció', upright:'Függőleges számlap', flat:'Vízszintes számlap', wrist:'Változó helyzet', geometryNote:'A nagy kör a számlap síkja. A benne lévő jel a ketrec fordulását mutatja. A teljes óra helyzetét a kiválasztott eset határozza meg.',
+    fixed:'Ketrecforgatás nélkül', rotating:'Forgó ketreccel', instant:'Járás ebben a pillanatban', mean:'Átlag az eltelt időben', unit:'mp/nap', awaiting:'Még nincs eltelt idő',
+    rateMeaning:'A +10 mp/nap azt jelenti: ha ez a járás egész nap változatlan lenne, tíz másodperc sietés gyűlne össze. Nem azt, hogy ebben a percben tíz másodpercet sietett az óra.',
+    sampleTitle:'Négy helyzet, azonos ideig', sampleIntro:'A táblázat a függőleges óra járását mutatja a negyedfordulatoknál. Nem négy mérésből számolunk: az átlaghoz a teljes görbe alatti időt vesszük figyelembe.',
+    sampleCols:['Modellidő','Ketrec állása','Pillanatnyi járás'], sampleEnd:'Egy teljes perc átlaga: {rate} mp/nap. A helyzeti eltérés átlagolása önmagában nem javítja az alapeltérést.',
+    chart:'Feltételezett pillanatnyi járás 0 és 180 másodperc között. A forgó ketrec vonala folytonos, a rögzítetté szaggatott.', chartKey:'Folytonos: forgó ketrec · Szaggatott: forgatás nélkül',
+    advanced:'Saját kísérlet és járásgörbe', bias:'Alapeltérés minden helyzetben', amplitude:'Függőleges helyzeti eltérés', advancedNote:'A csúszkák csak a kitalált járáspéldát változtatják. A billegő frekvenciáját és a ketrec fordulatszámát nem.',
+    modelLimits:'Mit egyszerűsítettünk?', limits:'Ez saját oktatási rajz, nem egy konkrét óra szétszerelhető digitális másolata. Az alkatrészek, fogak és rétegek nem méretarányosak. A rugó alakváltozása, a horgony váltása és a gátkerék lépése jelképes; nincs dinamikai, súrlódási vagy fogkapcsolati számítás. A járásadatok feltételezések, nem mérések.',
+    formula:'A járáspélda képlete', formulaNote:'Az α a ketrec tengelye és a gravitáció közti szög, a β a tok elfordulása, a φ a ketrec fordulatszöge. A külön vízszintes tagot a forgás nem nullázza. A görbéket az eltelt időre átlagoljuk.',
+    check:'Próbáld ki, érted-e', questions:[
+      {question:'Mi adja az órában az energiát?',answers:['A forgó ketrec','A felhúzott hajtórugó','A gravitáció'],correct:1,explanation:'A ketrec energiát fogyaszt. A hajtórugó tárolja a felhúzáskor bevitt energiát.'},
+      {question:'Egy teljes fordulat után biztosan pontos az óra?',answers:['Igen, mert minden hiba eltűnik','Nem, a közös alapeltérés megmaradhat'],correct:1,explanation:'Csak bizonyos helyzeti eltérések átlagolhatók. A példában az átlag a kör végén is +2 mp/nap.'},
+      {question:'Melyik mozgás a tourbillon ismertetőjele?',answers:['Látható billegő a számlapban','A teljes szabályozóegység körbefordulása'],correct:1,explanation:'A nyitott számlap önmagában nem tourbillon. A ketrec a billegővel és a gátlóművel együtt fordul körbe.'}
+    ], correct:'Így van.', retry:'Nézzük meg újra.', quizHint:'Válassz egy választ; rögtön megmutatjuk az indoklást.',
+    paused:'A mozgás megállt.', running:'A mozgás elindult.', end:'A háromperces példa végére értünk.',
+    noscript:'JavaScript nélkül az öt magyarázó fejezet, az alkatrészleírások és az energiaút elolvasható. A mozgatáshoz és a kísérletekhez engedélyezd a JavaScriptet.'
+  },
+  en: {
+    eyebrow:'LUME / WORKSHOP', theme:'Lights out', zoom:'Drawing view', zoomOptions:['Complete assembly','Balance and hairspring close-up','Lever and escape wheel close-up'],
+    title:'Understand the tourbillon',
+    intro:'Start with what makes a watch tick. Then rotate its regulator, follow the energy supply and explore what rotation can actually change.',
+    open:'Open the large Workshop view', backArticle:'Back to the article', private:'Local Workshop preview. Not public yet.',
+    guide:'Five steps, starting with the basics', previous:'Previous step', next:'Next step', finish:'Back to the beginning',
+    observe:'What to watch', remember:'The takeaway', deeper:'A closer look',
+    chapters:[
+      {tab:'What ticks?',title:'The balance swings; the spring returns it',lead:'The large wheel turns back and forth rather than continuously around. The fine spiral is the hairspring. Together they establish the watch’s repeating rhythm.',task:'Start the slowed motion, then select the balance and hairspring. Watch the spring’s outer end stay attached to the frame.',takeaway:'The hairspring is not the mainspring you wind. The former returns the balance; the latter stores the energy that powers the watch.',detail:'This example uses 4 Hz: four complete back-and-forth oscillations, or eight half-oscillations, per second. Magnification and slow motion make them visible. Amplitude and spring shape are illustrative, not measurements of a particular calibre.'},
+      {tab:'What rotates?',title:'The same assembly, carried around in a frame',lead:'The tourbillon carriage carries the balance, hairspring, lever and escape wheel around together. The balance continues oscillating inside it.',task:'Select “Carriage: accelerated”. The dark marker travels around the stationary minute scale. Then switch to slow motion: the internal oscillation is much faster.',takeaway:'Oscillation and revolution are different movements. In this example, one carriage revolution contains 240 complete balance oscillations, or 480 half-oscillations.',detail:'The carriage here takes one minute to turn. That is common, not mandatory. The minute scale stays fixed to the watch, making the marker’s rotation easy to follow.'},
+      {tab:'What drives it?',title:'The mainspring supplies the energy',lead:'The carriage has no separate motor. Energy reaches it from the wound mainspring through the gear train. The escapement releases the movement in small increments.',task:'Step through the five stations in the energy path. Notice the fixed wheel: it is not an energy source, but a stationary engagement for the travelling pinion.',takeaway:'The mainspring powers the mechanism; the balance rhythm controls its progress through the escapement. Energy supply and regulation are different relationships.',detail:'We illustrate a conventional centrally driven arrangement. The train drives the carriage, and the escape-wheel pinion engages a fixed wheel. The diagram spreads components from different heights onto one plane. Tooth counts, dimensions and contacts are not engineered.'},
+      {tab:'What improves?',title:'Different positions contribute to an average',lead:'Suppose the same watch gains in one upright orientation and loses in another. Rotating its regulator lets it sample those orientations in succession.',task:'Explore the four quarter-turn positions, then advance to the end of a full minute. Instantaneous rate changes; the elapsed average shows what has accumulated so far.',takeaway:'Averaging is not zeroing. The positional variation can cancel in this example, but the shared +2 s/day baseline error remains.',detail:'The numbers were chosen for teaching, not measured by a manufacturer. The average is time-weighted: positions held longer contribute more. At the initial instant there is no elapsed interval, so we do not display an average yet.'},
+      {tab:'On the wrist?',title:'The axis of rotation matters',lead:'Now view the watch from outside. The downward arrow is gravity. The dashed line is the carriage axis, which tilts along with the watch.',task:'Switch between upright and dial-up. In the latter position the carriage rotates around an axis parallel to gravity; it does not tip the balance through new upright orientations.',takeaway:'Wrist movement is not uniform sampling either. A tourbillon may help in a particular watch, but visible rotation alone does not establish better daily accuracy.',detail:'The wrist movement is a repeatable example, not a wearer recording. The spatial drawing shows the watch plane, axis and gravity, not a multi-axis tourbillon. Inclined and multi-axis constructions can sample different orientations.'}
+    ],
+    parts:[
+      {name:'Balance',action:'Oscillates back and forth',text:'Its inertia and the hairspring’s restoring action establish the rhythm together. This is not the carriage’s continuous rotation.',watch:'In slow motion, the spokes reverse direction repeatedly.'},
+      {name:'Hairspring',action:'Provides a restoring torque',text:'The inner end follows the balance staff; the outer end stays attached to its support. The entire spring should not rotate as a rigid disc.',watch:'The outer end stays fixed relative to the carriage.'},
+      {name:'Lever',action:'Locks and transmits impulse',text:'In the lever escapement shown here, it alternately restrains the escape wheel and passes impulse to the balance. Not every tourbillon uses this escapement.',watch:'The short lever changes between two positions. Contacts are not simulated.'},
+      {name:'Escape wheel',action:'Advances intermittently',text:'The train tries to drive it onward, while the lever releases it in small increments. This links the power supply to the balance rhythm.',watch:'In slow motion, the star-shaped wheel advances in steps.'},
+      {name:'Carriage',action:'Carries the assembly around',text:'The rotating frame holds the regulator and escapement together. Their own movements are superimposed on its slow revolution.',watch:'The outer marker completes one revolution per model minute.'},
+      {name:'Fixed wheel',action:'Stays fixed to the watch',text:'In the conventional construction, the escape-wheel pinion travels with the carriage while engaging this stationary wheel.',watch:'The energy diagram marks its fixed connection to the case with a dashed line.'}
+    ],
+    partPicker:'Explore the components',partHint:'Buttons 1–5 highlight a component and pause motion. Button 6 opens the separate explanation of the fixed wheel.',allParts:'Show everything',
+    diagram:'Enlarged schematic plan view of the regulator. Numbers correspond to the component buttons.',plan:'Enlarged plan view',fixedScale:'Stationary minute scale',case:'Base fixed to the watch',
+    display:'Which movement are we watching?',slow:'Balance: 8× slower',fast:'Carriage: 8× faster',slowNote:'Eight-times slow motion makes the balance visible; the carriage barely moves.',fastNote:'Eight-times accelerated: one carriage turn takes 7.5 seconds. Fast internal oscillation is not drawn in this view, avoiding flicker and apparent backward motion.',
+    play:'Play',pause:'Pause',beat:'One half-oscillation',quarter:'Quarter turn',reset:'Reset time',time:'Model time',angle:'Carriage angle',beats:'Half-oscillations',rhythm:'In 1 minute: 1 carriage turn · 240 oscillations · 480 half-oscillations',
+    spring:'Mainspring',train:'Gear train',cage:'Carriage',escapement:'Escapement',balance:'Balance',fixedWheel:'Fixed wheel',energy:'Energy path',regulation:'The balance rhythm governs progress',
+    energySteps:['Winding stores energy in the mainspring, not in the balance’s hairspring.','The gears transmit energy; their ratios determine how the different components move.','In the conventional layout, the train drives the carriage. The fixed wheel and travelling pinion are part of the mechanical relationship.','The lever and escape wheel prevent free unwinding. Releases and impulses link the train to the regulator.','Small impulses replace the balance’s losses. Its rhythm in turn determines when the train can advance.'],
+    energyNext:'Next station',energyView:'Functional diagram. Arrows show relationships, not gear-tooth contacts.',
+    position:'Watch position',scenarios:['Upright in a pocket','Dial up on a desk','An example of wrist movement'],geometry:'Outside view: where is the axis?',axis:'Angle between axis and gravity',gravity:'Gravity',upright:'Vertical dial',flat:'Horizontal dial',wrist:'Changing orientation',geometryNote:'The large ring is the dial plane; its marker follows carriage rotation. The selected scenario determines the orientation of the complete watch.',
+    fixed:'Without carriage rotation',rotating:'With a rotating carriage',instant:'Rate at this instant',mean:'Average over elapsed time',unit:'s/day',awaiting:'No elapsed interval yet',
+    rateMeaning:'A +10 s/day rate means the watch would gain ten seconds if that rate remained unchanged for a full day. It does not mean ten seconds were gained during this minute.',
+    sampleTitle:'Four positions, equal time',sampleIntro:'The table shows the upright example at quarter turns. The average is not calculated from four samples: it integrates the full rate curve over time.',sampleCols:['Model time','Carriage angle','Instantaneous rate'],sampleEnd:'Average over a full minute: {rate} s/day. Averaging positional variation does not itself correct the baseline error.',
+    chart:'Assumed instantaneous rate from 0 to 180 seconds. Solid line: rotating carriage. Dashed: fixed regulator.',chartKey:'Solid: rotating carriage · Dashed: without rotation',
+    advanced:'Your own experiment and rate plot',bias:'Shared baseline error',amplitude:'Vertical positional variation',advancedNote:'These sliders change the invented rate example only, not the balance frequency or carriage period.',
+    modelLimits:'What did we simplify?',limits:'An original teaching diagram, not a dismantlable digital replica of a specific watch. Components, teeth and layers are not to scale. Spring deformation, lever action and escape-wheel steps are indicative, not a dynamics, friction or contact simulation. Rate data are assumed, not measured.',formula:'Rate-example formula',formulaNote:'α is the angle between the carriage axis and gravity; β is case azimuth; φ is carriage angle. Rotation does not remove the separate horizontal term. Curves are averaged over elapsed time.',
+    check:'Check your understanding',questions:[
+      {question:'Where does the watch’s energy come from?',answers:['The rotating carriage','The wound mainspring','Gravity'],correct:1,explanation:'The carriage consumes energy. Winding stores that energy in the mainspring.'},
+      {question:'Is a watch necessarily accurate after a complete turn?',answers:['Yes: every error disappears','No: a shared baseline error can remain'],correct:1,explanation:'Only particular positional variations can be averaged. Our example still averages +2 s/day after the turn.'},
+      {question:'Which movement identifies a tourbillon?',answers:['A visible balance in the dial','Revolution of the complete regulator assembly'],correct:1,explanation:'An open dial is not sufficient. The carriage carries the balance and escapement around together.'}
+    ],correct:'That’s right.',retry:'Let’s look again.',quizHint:'Choose an answer to reveal the explanation.',paused:'Motion paused.',running:'Motion started.',end:'The three-minute example has ended.',noscript:'Without JavaScript you can read the five chapters, component descriptions and energy path. Enable JavaScript for motion and experiments.'
+  }
+} as const;
+
 export const LLMS_COPY = {
   name:'Lume Journal',
   hu:{summary:'Kétnyelvű, független órás folyóirat: óratörténetek, formatervezés és a szerkezetek működésének magyarázata.',
@@ -15,6 +137,10 @@ export const CONTENT_LINKS = {
 } as const;
 
 export const MODEL_READING_GUIDES = {
+  'tourbillon': {
+    hu:{question:'Mit forgat a tourbillon, és melyik hibát nem javítja ki?',observe:'Kövesd az öt lépést a billegőtől a térbeli nézetig. Hasonlítsd össze a gyors lengést a ketrec lassú fordulatával, majd a függőleges és vízszintes helyzet átlagát.',limitation:'Saját oktatóábra és kitalált járásadatok. A modell nem egy gyári kaliber fogkapcsolati, energia- vagy pontosságszimulációja.'},
+    en:{question:'What does a tourbillon rotate, and which error does it leave unchanged?',observe:'Follow five steps from the balance to the spatial view. Compare rapid oscillation with the slow carriage rotation, then compare the average in upright and horizontal positions.',limitation:'An original teaching diagram with invented rate data, not a gear-contact, energy or accuracy simulation of a production calibre.'},
+  },
   'gatlomu': {
     hu:{question:'Miért áll meg a gátkerék, miközben a billegő tovább leng?',observe:'Lassítás közben kövesd a horgony két kövét: felváltva zárják a kereket, majd az oldás után impulzust közvetítenek.',limitation:'A rajz a mozgássorrendet szemlélteti, nem gyártási méreteket vagy kenési előírást.'},
     en:{question:'Why does the escape wheel stop while the balance keeps swinging?',observe:'Slow the model and follow the two pallet stones: they alternately lock the wheel and transmit an impulse after release.',limitation:'The diagram explains the sequence, not manufacturing dimensions or lubrication requirements.'},

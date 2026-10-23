@@ -1,15 +1,19 @@
 {
   "lastReviewed": "2026-09-06",
-  "lastTargetedReview": "2026-10-21",
+  "lastTargetedReview": "2026-10-23",
   "targetThrough": "2026-12-31",
   "targetedReviewStatus": "partial",
   "unverifiedBrandKeys": [
-    "tag-heuer",
+    "omega",
     "cartier",
+    "tag-heuer",
     "longines",
-    "zenith",
     "iwc",
-    "jaeger-lecoultre"
+    "zenith",
+    "grand-seiko",
+    "jaeger-lecoultre",
+    "baltic",
+    "nomos"
   ],
-  "reviewRecord": "docs/calendar-review-cartier-crash-2026-10-21.json"
+  "reviewRecord": "docs/calendar-review-tourbillon-2026-10-23.json"
 }

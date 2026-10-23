@@ -2,6 +2,8 @@
   "version": 1,
   "reviewedAt": "2026-10-18",
   "entities": {
+    "principle:tourbillon": {"hu":"Tourbillon","en":"Tourbillon","aliases":["forgó ketrec","rotating carriage"]},
+    "workshop:tourbillon": {"hu":"A tourbillon modellje","en":"Tourbillon model","aliases":[]},
     "brand:omega": {"hu":"Omega","en":"Omega","aliases":["OMEGA"]},
     "brand:rolex": {"hu":"Rolex","en":"Rolex","aliases":[]},
     "brand:seiko": {"hu":"Seiko","en":"Seiko","aliases":[]},
@@ -81,6 +83,7 @@
     "event:lorier-astra-december-delivery-2026": {"hu":"Astra kiszállítás","en":"Astra delivery","aliases":[]}
   },
   "articles": {
+    "tourbillon": {"entities":["principle:tourbillon","principle:lever","topic:regulation","workshop:tourbillon"],"intent":"mechanism","evidence":"Nem a gravitációt kell kikapcsolni"},
     "cartier-crash": {"entities":["brand:cartier","topic:design"],"intent":"history","evidence":"Jean-Jacques Cartier és Rupert Emmerson"},
     "atelier-wen": {"entities":["brand:atelier-wen","topic:independents","topic:design"],"intent":"brand-story","evidence":"A kínai rész nem dekoráció"},
     "baltic": {"entities":["brand:baltic","movement:st19","movement:miyota-9039","principle:automatic-winding","complication:chronograph","topic:independents"],"intent":"brand-story","evidence":"A kis rotor, amely felrakta őket a nagyok közé"},

@@ -1,0 +1,9 @@
+---
+import { renderTourbillonModel, tourbillonModelCSS, tourbillonModelScript } from '../lib/tourbillon-view.mjs';
+import type { Lang } from '../i18n/ui';
+interface Props { lang: Lang; standalone?: boolean }
+const { lang, standalone = false } = Astro.props;
+---
+<style is:inline set:html={tourbillonModelCSS}/>
+<Fragment set:html={renderTourbillonModel(lang, {standalone})}/>
+<script is:inline set:html={tourbillonModelScript(lang)}/>

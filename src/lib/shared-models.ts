@@ -1,10 +1,14 @@
 import { MODEL_NAMES } from './design-models.mjs';
-import { SHARED_MODEL_UI, RATTRAPANTE_MODEL, COAXIAL_MODEL, modelPageUrl } from '../i18n/ui';
+import { SHARED_MODEL_UI, RATTRAPANTE_MODEL, COAXIAL_MODEL, TOURBILLON_LESSON, modelPageUrl } from '../i18n/ui';
 import { orderedPublishedPosts } from './published-feed.mjs';
 import { getPosts, type Post } from './posts';
 
 export function sharedModel(post: Post) {
   if (post.data.column !== 'movement') return undefined;
+  if (post.data.translationKey === 'tourbillon' && post.body?.includes('<!-- lume-model tourbillon -->')) {
+    const t = TOURBILLON_LESSON[post.data.lang];
+    return { key: 'tourbillon', kind: 'inline' as const, title: t.title, description: t.intro, level: 'intermediate' as const, url: modelPageUrl(post.data.lang, 'tourbillon') };
+  }
   if (post.data.translationKey === 'co-axial' && post.body?.includes('<!-- lume-model co-axial -->')) {
     const t = COAXIAL_MODEL[post.data.lang];
     return { key: 'co-axial', kind: 'inline' as const, title: t.title, description: t.intro, level: 'advanced' as const, url: modelPageUrl(post.data.lang, 'co-axial') };
