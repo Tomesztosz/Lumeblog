@@ -127,7 +127,17 @@ async function subscribe(request, env, url) {
 
   const link = `${site(env, url)}/api/kirakat/confirm?t=${token}`;
   const mail = confirmationMail(lang, link);
-  await provider(env).send([{ to: email, from: env.KIRAKAT_FROM, subject: mail.subject, html: mail.html, text: mail.text }]);
+  try {
+    await provider(env).send([{ to: email, from: env.KIRAKAT_FROM, subject: mail.subject, html: mail.html, text: mail.text }]);
+  } catch (err) {
+    // A levélküldés elbukott (rossz feladó, lejárt kulcs, napi keret). A feliratkozás
+    // nem vész el: sorba áll, és az admin/confirmations később kiküldi a levelet.
+    console.error('kirakat confirm-mail', err && err.message);
+    await env.DB.prepare(
+      `UPDATE subscribers SET confirm_hash = NULL, confirm_expires = NULL, last_mail_at = NULL WHERE email = ?`,
+    ).bind(email).run();
+    return json({ ok: true, queued: true });
+  }
   return json({ ok: true });
 }
 
