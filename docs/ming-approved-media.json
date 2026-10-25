@@ -1,0 +1,51 @@
+{
+  "article": "ming",
+  "date": "2026-10-26T01:00:00+01:00",
+  "method": "Byte-identical copies of approved review images. No image rendering, editing or regeneration.",
+  "records": [
+    {
+      "file": "src/content/posts/_images/ming-hero.webp",
+      "sha256": "9582b918bb0eea72c8e727e592680df93e49e5d9c1caa5fcc0391bcc2b56494d"
+    },
+    {
+      "file": "src/content/posts/_images/ming-card.webp",
+      "sha256": "f6af657bae30d1c3eeb9ac6ae17a0f178b56775246f26370161c17c5f140e010"
+    },
+    {
+      "file": "src/content/posts/_images/ming-founders.webp",
+      "sha256": "e507d70c9f5af55be08713f870e8cc94685d7d0013aa4878924efbee59806fbb"
+    },
+    {
+      "file": "src/content/posts/_images/ming-1901-movement.webp",
+      "sha256": "e841b568f33df3caf249a5b5d0fecb558d70da6c1a5d72b55bdb1fff6e1aa4a7"
+    },
+    {
+      "file": "src/content/posts/_images/ming-minimalist-lume-detail.webp",
+      "sha256": "430d12f05db00038e563af71a2c49ed3d5ed9912b00a1e44eac40fbd8967749c"
+    },
+    {
+      "file": "src/content/posts/_images/ming-1901-cutout-v2.png",
+      "sha256": "7f238411a887328cb0c109a62bbfcd6f543a0e7978d05bbac53cbbdd94a0c0e3"
+    },
+    {
+      "file": "src/content/posts/_images/ming-moonphase-cutout-v2.png",
+      "sha256": "00a0a87fa5bdb912f17727e66bc373d1fa3a75117b3644f0c0aa69101a67c7c9"
+    },
+    {
+      "file": "src/content/posts/_images/ming-minimalist-cutout-v2.png",
+      "sha256": "aa3c692648fda43152e16ab2bb5425b40f47d413ad7e300f825ac7752e98b8d9"
+    },
+    {
+      "file": "src/content/posts/_images/ming-bluefin-cutout-v2.png",
+      "sha256": "0465ee34dd1e5cb644fa7be201b2f95972b3ed15f14b383fb9c28d820dc5a0fa"
+    },
+    {
+      "file": "src/content/posts/_images/ming-series5-cutout-v2.png",
+      "sha256": "0ed5e98cbcdee435fc0c9060669a543afe56d6481fcc81191d5ab8b0e398e394"
+    },
+    {
+      "file": "src/content/posts/_images/ming-comet-cutout-v2.png",
+      "sha256": "087dba97d9e7beaf5c966ec6cff072dfbc3d6b9d7b3631971490deac366e28d0"
+    }
+  ]
+}

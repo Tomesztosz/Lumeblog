@@ -1,6 +1,6 @@
 {
   "lastReviewed": "2026-09-06",
-  "lastTargetedReview": "2026-10-23",
+  "lastTargetedReview": "2026-10-25",
   "targetThrough": "2026-12-31",
   "targetedReviewStatus": "partial",
   "unverifiedBrandKeys": [
@@ -8,12 +8,10 @@
     "cartier",
     "tag-heuer",
     "longines",
-    "iwc",
     "zenith",
-    "grand-seiko",
-    "jaeger-lecoultre",
     "baltic",
+    "christopher-ward",
     "nomos"
   ],
-  "reviewRecord": "docs/calendar-review-tourbillon-2026-10-23.json"
+  "reviewRecord": "docs/calendar-review-ming-2026-10-25.json"
 }

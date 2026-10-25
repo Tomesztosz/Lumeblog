@@ -1,0 +1,90 @@
+{
+  "translationKey": "ming",
+  "reviewed": "2026-10-25",
+  "status": "scheduled",
+  "revision": 3,
+  "revisionReason": "Text-only rewrite requested under lume-szemely.md, lume-hang.md and unchanged hangcheck.py. Földi Tamás persona replaces the earlier generic narrative. Approved images, their order and captions are unchanged. Previous text preserved under output/article-review/ming/revision-v2.",
+  "publicationApproved": true,
+  "scheduled": true,
+  "proposedPublication": "2026-10-26T01:00:00+01:00",
+  "dateNote": "Confirmed Monday 26 October 2026 01:00 Europe/Budapest, CET UTC+01:00 after the DST change. Future non-draft pair, not immediate publication.",
+  "articles": [
+    "src/content/posts/hu/ming.md",
+    "src/content/posts/en/ming.md"
+  ],
+  "previews": [
+    "output/article-review/ming/megnezes.html",
+    "output/article-review/ming/english.html"
+  ],
+  "authorNote": {
+    "received": "2026-10-25",
+    "original": "Nem volt még ming a kezemben. De a különleges kinézetük miatt érdekesnek találtam őket mindig",
+    "use": "Uses supplied interest in MING appearance and no handling experience. Exactly one memory from lume-szemely.md, buying a Seiko SNXS79K1 and liking its grey-to-black dial. No invented MING handling, ownership or meeting. The closing conversation with Thein is explicitly hypothetical.",
+    "derivedOpinions": "Opinions about the human design story, supplier transparency, missing seconds hand, price and case size are inferred from the persona and enumerated with [VÉLEMÉNY?] in both private editorial comments. They remain for owner review, not claimed as supplied quotes."
+  },
+  "factualBoundaries": [
+    "17.01 debut is 8 August 2017, as stated in the original brand announcement. Initial plan was 150 per dial colour.",
+    "The 19.01 has flared lugs, curved quick-release bars and 20mm replaceable straps. The brand is not described as universally lugless or equipped with integrated bracelets.",
+    "The 19.01 separates top crystal, gradient sapphire dial, lower crystal and titanium caseband. MSE100.1 is credited to Schwarz Etienne, not called a MING-made movement.",
+    "HyCeram and Polar White are distinct luminous materials, separate from the sapphire substrate. Not all MING luminous elements are called HyCeram.",
+    "The 37.05 Series 2 Special Edition uses 288.M1, approximately 38h reserve, 38mm diameter and 11.9mm thickness.",
+    "37.02 Minimalist uses SW300.M1 with approximately 45h reserve. Bluefin uses SW300.M1 with approximately 50h and a running seconds hand. These two factory figures are not silently harmonised.",
+    "CHF 3500 for the Minimalist is the maker's announced price effective 1 April 2026, sourced to the December 2025 letter. No live availability or checkout total is promised.",
+    "Bluefin's entire timing dial rotates using its second crown; fixed hour markers remain on the upper crystal. 600m is the manufacturer's stated rating, not the author's dive test.",
+    "The 2024 GPHG Sports Watch Prize is independently checked against the official prize list.",
+    "20.01 Series 5 uses a laser-machined titanium dial, not the sapphire FemtoMosaic process of other series. Its calibre 6361.M1 is credited to Agenhor.",
+    "Comet's fifth-generation case has triple-step lugs. 330.M2, 40mm, 10.33mm and approximately 50h are from the exact strap variant's specification.",
+    "Comet's DST adjustment is a manual two-position mechanism, not an automatic database of different national clock-change dates. The practical limitation is editorial inference from that construction.",
+    "Swiss-facility history in 2024 and current Malaysian/Swiss responsibilities are distinguished. No unsourced legal interpretation of Swiss Made regulations is included."
+  ],
+  "research": {
+    "sourcesPerLanguage": 16,
+    "scope": "Original manufacturer histories, team biography, exact product specifications, dated price letter, press index and official GPHG result. No invented reference, launch, price, author experience or quotation.",
+    "downloads": "output/article-review/ming/sources/*-downloads.json",
+    "sourcePages": "output/article-review/ming/sources/*.json and *.html",
+    "blockedFetch": "Direct Node request to GPHG failed. Official prize list and model information were checked with the browsing tool instead."
+  },
+  "media": {
+    "hero": "src/content/posts/_images/ming-hero.webp",
+    "heroLayout": "output/article-review/ming/sources/ming-hero-layout-v1.svg",
+    "report": "output/article-review/ming/sources/media-report.json",
+    "method": "Code-native SVG editorial montage of an authenticated Ming Thein portrait, original 19.01 macro and original 37.02 lume macro. No generative imagery or recreated dial.",
+    "body": "Six genuine transparent cutouts, a documentary group photograph and two technical macros. All five wrist photographs and the 19.01 side crop replaced. Existing photo-based hero unchanged.",
+    "cutoutMethod": "Built-in imagegen supplied six alpha proposals. The 19.01 alpha is registered on the original canvas. Other contours are refined from the original black-background photographs, including closed buckle apertures, checked against the proposals. Original photographic RGB restored without any changes, verified pixel by pixel. No generated dial or movement RGB used.",
+    "cutoutChecks": "output/article-review/ming/cutout-checks-v2.json",
+    "prompts": "output/article-review/ming/cutout-prompts-v2.json",
+    "visualQA": "output/article-review/ming/qa-cutouts-light-v2.png and qa-cutouts-dark-v2.png; individual cutouts in desktop/mobile light/dark browser screenshots.",
+    "textRevision3": "Owner explicitly approved images and requested no image work. All 311 image files in source/assets directories SHA-256 compared before/after, zero changed or missing. Renderer --text-only verifies existing asset equality and skips image copies. No image-generation or cutout script run. Hero, image order, alt text and captions match revision-v2 exactly.",
+    "rights": "Owner approved the existing manufacturer images for publication on 2026-10-25. Credits retained; no separate written manufacturer licence is stored here and none is claimed. Approved original files copied without alteration. Astro may emit image assets before the future article date, while article routes/feeds remain date-gated.",
+    "approvedManifest": "docs/ming-approved-media.json"
+  },
+  "style": {
+    "guide": "lume-szemely.md followed by lume-hang.md",
+    "checker": "python hangcheck.py src/content/posts/hu/ming.md src/content/posts/en/ming.md",
+    "errors": 0,
+    "manualReview": "Both languages pass without HIBA. HU has one sentence-rhythm warning, coefficient rounded to 0.45, assessed manually against short factual turns and longer explanations rather than forcing sentence lengths to pass a threshold. EN has no warnings. Both have 25 varied paragraphs. One documented personal memory only. First-person critical judgements are hypothetical and listed as inferred opinions. Closing question is not immediately answered and invents no meeting. No body hyperlinks, bold prose or forbidden punctuation. Checker and guides left unchanged.",
+    "rhythmReport": "output/article-review/ming/rhythm-checks-v3.json",
+    "unresolved": "Owner approved the latest text including the persona-derived opinions on 2026-10-25. Private opinion questions were removed from the publication copy; exact approved visible prose is regression-tested."
+  },
+  "verification": {
+    "results": "Full real-clock production build and scheduled exclusion checks. Isolated post-publication clock simulation produces both article routes and homepage MING feature, six desktop/mobile browser cases, unchanged image/text checks and bilingual calendar check. Final build uses the real clock; the future test clock is never committed.",
+    "buildLog": "output/article-review/ming/release-qa/build-scheduled.log",
+    "browserReport": "output/article-review/ming/browser-checks.json",
+    "styleReport": "output/article-review/ming/hangcheck.txt",
+    "preview": "node scripts/render-article-review.mjs ming --text-only",
+    "browser": "node scripts/check-ming-release.mjs; node scripts/check-ming-release.mjs --future on an isolated simulated build",
+    "build": "npm run build",
+    "privacyGate": "Article routes and sitemap/RSS/llms entries excluded before 2026-10-26T00:00:00Z. At the exact boundary the existing dependency-free scheduler selects both languages.",
+    "calendar": "Mandatory review recorded in docs/calendar-review-ming-2026-10-25.json. 61 machine URL checks across 24 brands plus human browser recovery and issue checklist review. Partial, one new undated Casio announcement, no invented dates or new ICS, lastReviewed unchanged."
+  },
+  "publication": {
+    "local": "2026-10-26T01:00:00+01:00",
+    "utc": "2026-10-26T00:00:00Z",
+    "timezone": "Europe/Budapest",
+    "approvedOn": "2026-10-25",
+    "ownerApproval": "Rendben mehet időzítésre hétfő reggel 1:00 ra rendben vannak a képek",
+    "textRevisionApproved": 3,
+    "imagesApproved": true,
+    "transport": "Prepared for main push; scheduler requires the existing GitHub Actions rebuild. Actions/Cloudflare execution may be delayed."
+  }
+}

@@ -474,6 +474,16 @@ select:focus-visible {
     padding-block: 9px;
   }
 }
+.reading-column {
+  min-width: 0;
+}
+.article-body img[src*="ming-"][src*="-cutout-v2"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 620px;
+  object-fit: contain;
+}
 .article-body table {
   display: block;
   overflow-x: auto;

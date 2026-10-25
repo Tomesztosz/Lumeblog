@@ -209,5 +209,35 @@
     "imageHeight": 1440,
     "status": "announced",
     "firstSeen": "2026-10-18"
+  },
+  {
+    "id": "casio-gmc2500-gac2500-2026",
+    "brand": "Casio / G-Shock",
+    "brandKey": "g-shock",
+    "family": "G-SHOCK",
+    "model": "GMC-2500 / GAC-2500",
+    "reference": "GMC-2500 / GAC-2500",
+    "status": "introduced",
+    "firstSeen": "2026-10-22",
+    "sourceChecked": "2026-10-25",
+    "sourceUrl": "https://www.casio.com/intl/news/2026/1022-gac-2500gmc-2500/",
+    "image": "/img/calendar/casio-gmc2500-gac2500-2026.jpg",
+    "imageWidth": 2000,
+    "imageHeight": 1419,
+    "imageCredit": "CASIO COMPUTER CO., LTD.",
+    "copy": {
+      "hu": {
+        "dateLabel": "Bemutatva 2026. október 22-én",
+        "summary": "A DW-5000C formáját analóg kijelzéssel folytató két modellcsalád, többfunkciós, háromcellás dátumablakkal.",
+        "selection": "A dátumablak stopperadatot és beállításokat is mutat. A két család közös bejelentése.",
+        "availability": "A közlemény külön értékesítési időpontot nem ad meg."
+      },
+      "en": {
+        "dateLabel": "Introduced on 22 October 2026",
+        "summary": "Two analogue families reinterpret the DW-5000C with a three-cell multifunction date display.",
+        "selection": "The window also shows stopwatch and setting information. One announcement covers both families.",
+        "availability": "The release gives no separate retail date."
+      }
+    }
   }
 ]

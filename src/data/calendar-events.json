@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": 14,
+  "version": 15,
   "events": {
     "citizen-attesa-eco-drive-50-2026": {
       "editorial": "approved",
@@ -1150,6 +1150,44 @@
       "revision": 0,
       "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
       "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
+    },
+    "casio-gmc2500-gac2500-2026": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "g-shock",
+        "model": "GMC-2500 / GAC-2500",
+        "references": [
+          "GMC-2500",
+          "GAC-2500"
+        ],
+        "type": "presentation",
+        "market": "global-announcement",
+        "round": "official-2026-10-22"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://www.casio.com/intl/news/2026/1022-gac-2500gmc-2500/"
+      ],
+      "sourceStatus": "occurred",
+      "schedule": {
+        "precision": "unknown"
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "casio-gmc2500-gac2500-2026",
+          "eventType": "presentation",
+          "claim": "occurred",
+          "quote": "announced today the release of the latest additions to the family of G-SHOCK shock-resistant watches.",
+          "url": "https://www.casio.com/intl/news/2026/1022-gac-2500gmc-2500/",
+          "checkedAt": "2026-10-25T16:24:05Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-10-25T16:24:05Z",
+      "semanticVerifiedAt": "2026-10-25T16:24:05Z"
     }
   }
 }
