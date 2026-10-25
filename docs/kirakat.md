@@ -76,9 +76,16 @@ KIRAKAT_ADMIN_TOKEN=ugyanaz-mint-az-ADMIN_TOKEN
 
 ### 3. Válaszok fogadása
 
-A levelek a `kirakat@lumejournal.com` címről mennek. A Cloudflare-ben kapcsold be
-az *Email Routing*-ot a lumejournal.com-ra, és irányítsd a `kirakat@` címet a
-saját postafiókodra. Ingyenes.
+A levelek feladója a `kirakat@lumejournal.com`, ennek nem kell valódi postafióknak
+lennie. Hogy az olvasók válaszai (és a törlési kérések) hozzád jussanak, a
+Cloudflare-ben a `lumeblog` Worker *Settings → Variables and Secrets* alatt
+vegyél fel egy `KIRAKAT_REPLY_TO` titkot a saját címeddel. Minden levél ezt a
+címet adja meg válaszcímként. Titokként tárold, ne a `wrangler.toml`-ban, mert
+a repó nyilvános.
+
+Fontos: a Cloudflare-felületen minden ilyen értéket **Secret** típussal vegyél fel.
+A „Variable” típusú értékek olvashatóan látszanak, és a következő GitHub-telepítés
+felül is írja őket.
 
 ### 4. A sorban állók megerősítő levelei
 

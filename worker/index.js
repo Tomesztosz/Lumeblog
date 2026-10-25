@@ -20,6 +20,7 @@
      ADMIN_TOKEN        a küldő parancs ezzel azonosítja magát (enélkül nincs admin)
      KIRAKAT_SECRET     a leiratkozó linkek aláírásához (enélkül generál egyet)
      RESEND_API_KEY     csak ha EMAIL_PROVIDER = "resend"
+     KIRAKAT_REPLY_TO   erre a címre mennek az olvasók válaszai (elhagyható)
    ============================================================ */
 
 import { confirmationMail } from './mail.js';
@@ -300,6 +301,7 @@ function resendMailer(env) {
         headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
         body: JSON.stringify(messages.map((m) => ({
           from: m.from, to: [m.to], subject: m.subject, html: m.html, text: m.text, headers: m.headers,
+          ...(env.KIRAKAT_REPLY_TO ? { reply_to: env.KIRAKAT_REPLY_TO } : {}),
         }))),
       });
       if (!res.ok) throw new Error(`resend ${res.status}`);
@@ -317,6 +319,7 @@ function cloudflareMailer(env) {
       for (const m of messages) {
         const r = await env.EMAIL.send({
           to: m.to, from: m.from, subject: m.subject, html: m.html, text: m.text, headers: m.headers,
+          ...(env.KIRAKAT_REPLY_TO ? { replyTo: env.KIRAKAT_REPLY_TO } : {}),
         });
         ids.push(r && r.messageId);
       }
