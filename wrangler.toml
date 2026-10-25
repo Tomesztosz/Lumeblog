@@ -9,7 +9,8 @@
 # a Worker érintése nélkül, közvetlenül a statikus fájlokból szolgálódik ki.
 # Beállítás lépésről lépésre: docs/kirakat.md
 
-name = "lumejournal"
+# A Cloudflare-felületen a Worker neve „lumeblog”, ennek egyeznie kell.
+name = "lumeblog"
 main = "worker/index.js"
 compatibility_date = "2026-07-28"
 
@@ -29,13 +30,11 @@ EMAIL_PROVIDER = "resend"
 # Egy kiküldés legfeljebb ennyi címzettnek megy. A maradék másnap folytatható.
 KIRAKAT_DAILY_LIMIT = "80"
 
-# A feliratkozók adatbázisa. Létrehozás után vedd ki a megjegyzésből,
-# és írd be a `wrangler d1 create` által kiírt azonosítót (docs/kirakat.md, 2. lépés).
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "lume-kirakat"
-# database_id = "IDE-JÖN-AZ-AZONOSÍTÓ"
-# migrations_dir = "worker/migrations"
+# A feliratkozók adatbázisa. Azonosító nélkül a Wrangler (4.45+) az első
+# telepítéskor magától létrehozza és a Workerhez köti, a táblákat pedig a
+# Worker hozza létre az első kéréskor. Kézi lépés nem kell.
+[[d1_databases]]
+binding = "DB"
 
 # Csak ha EMAIL_PROVIDER = "cloudflare" (docs/kirakat.md, „Átváltás” rész).
 # [[send_email]]

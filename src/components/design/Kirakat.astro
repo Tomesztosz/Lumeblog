@@ -22,6 +22,7 @@ const k = DESIGN_STUDY[lang].kirakat;
   data-lang={lang}
   data-state="idle"
   data-msg-done={k.done}
+  data-msg-queued={k.queued}
   data-msg-confirmed={k.confirmed}
   data-msg-unsubscribed={k.unsubscribed}
   data-msg-expired={k.expired}
@@ -479,7 +480,7 @@ const k = DESIGN_STUDY[lang].kirakat;
           body: JSON.stringify({ email, lang: root.dataset.lang, website: trap?.value || '' }),
         });
         const data = await res.json().catch(() => ({}));
-        if (res.ok && data.ok) flip('done');
+        if (res.ok && data.ok) flip(data.queued ? 'queued' : 'done');
         else if (data.error === 'email') showError(root.dataset.msgBad || '');
         else showError(root.dataset.msgError || '');
       } catch {

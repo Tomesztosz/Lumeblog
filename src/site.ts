@@ -49,5 +49,5 @@ export const MAILERLITE_FORM_ACTION = '';
  * kapcsold be, ha az adatbázis, a titkok és a küldő domain már be van állítva,
  * különben a látogató hibaüzenetet kapna.
  */
-export const KIRAKAT_ENABLED = false;
+export const KIRAKAT_ENABLED = true;
 

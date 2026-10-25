@@ -25,3 +25,9 @@ CREATE TABLE IF NOT EXISTS deliveries (
   provider_id    TEXT,
   PRIMARY KEY (issue, subscriber_id)
 );
+
+-- Belső beállítások (pl. a leiratkozó linkek generált aláíró kulcsa).
+CREATE TABLE IF NOT EXISTS settings (
+  key    TEXT PRIMARY KEY,
+  value  TEXT NOT NULL
+);

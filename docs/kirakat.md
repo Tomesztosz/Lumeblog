@@ -15,47 +15,42 @@ Ami a kódban van:
 | `worker/migrations/0001_kirakat.sql` | Az adatbázis szerkezete |
 | `src/components/design/Kirakat.astro` | A kirakat a főoldalon és a Rólam oldalon |
 | `src/i18n/ui.ts` → `DESIGN_STUDY.*.kirakat` | Minden felületi szöveg, HU és EN |
-| `src/site.ts` → `KIRAKAT_ENABLED` | Ki-be kapcsoló, alapból kikapcsolva |
+| `src/site.ts` → `KIRAKAT_ENABLED` | Ki-be kapcsoló |
 | `scripts/kirakat.mjs` | Előnézet, próbalevél, kiküldés, létszám |
 | `kirakat/hu`, `kirakat/en` | A számok Markdownban, benne egy minta |
 
 A Worker csak az `/api/*` címeket kapja meg. Minden más oldal ugyanúgy a
 statikus `dist/` mappából megy ki, mint eddig, a Worker érintése nélkül.
 
-## Beállítás (egyszer kell)
+## Indulás és beállítás
 
-Mindent a projekt mappájából futtass. A `npx wrangler` első futáskor
-bejelentkezést kér a Cloudflare-fiókodba.
+A Kirakat beállítás nélkül indul. Az első telepítéskor a Wrangler magától
+létrehozza az adatbázist és a Workerhez köti, a táblákat a Worker hozza létre
+az első kéréskor, a leiratkozó linkek aláíró kulcsát pedig maga generálja.
+
+Amíg nincs levélküldő beállítva, a feliratkozások sorba állnak: a cím elmentődik
+„függőben” állapotban, és az olvasó azt látja, hogy a megerősítő levél hamarosan
+jön. Ezek a címek nem évülnek el. Ha beállítod a levélküldőt, egyetlen paranccsal
+kimennek nekik a megerősítő levelek (lásd lent, 4. lépés).
+
+Mindent a projekt mappájából futtass. A `npx wrangler` első futáskor bejelentkezést
+kér a Cloudflare-fiókodba. A Worker neve a Cloudflare-en `lumeblog`, ugyanez áll
+a `wrangler.toml`-ban is.
 
 ### 1. Küldő domain a Resendnél
 
 1. Regisztrálj a [resend.com](https://resend.com) oldalon (ingyenes csomag:
    havi 3000, napi 100 levél).
 2. *Domains → Add domain*, és add meg: `lumejournal.com`.
-3. A Resend kiír néhány DNS-rekordot (SPF, DKIM). Ezeket a Cloudflare-ben
-   a lumejournal.com DNS-beállításainál vedd fel. Ettől nem mennek spambe a
-   levelek. Várd meg, amíg a Resend „Verified”-et mutat.
-4. *API Keys → Create API key*, csak küldési joggal. Másold ki, a 3. lépésben kell.
+3. A Resend kiír néhány DNS-rekordot (SPF, DKIM). Ezeket a Cloudflare-ben a
+   lumejournal.com DNS-beállításainál vedd fel. Várd meg, amíg a Resend
+   „Verified”-et mutat. A domain beállításainál a megnyitás- és kattintáskövetés
+   maradjon kikapcsolva.
+4. *API Keys → Create API key*, csak küldési joggal.
 
-### 2. Az adatbázis
+### 2. Titkok
 
-```bash
-npx wrangler d1 create lume-kirakat --location weur
-```
-
-A parancs kiír egy `database_id` értéket. A `wrangler.toml` alján vedd ki
-a megjegyzésből a `[[d1_databases]]` blokkot, és írd be az azonosítót.
-Utána hozd létre a táblákat:
-
-```bash
-npx wrangler d1 migrations apply lume-kirakat --remote
-```
-
-A `--location weur` miatt az adatbázis Nyugat-Európában lesz.
-
-### 3. Titkok
-
-Kell két hosszú véletlen érték. Ezzel generálhatsz (kétszer futtasd):
+Kell egy hosszú véletlen érték az admin tokenhez:
 
 ```bash
 node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
@@ -64,10 +59,13 @@ node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
 Aztán:
 
 ```bash
-npx wrangler secret put ADMIN_TOKEN       # az egyik véletlen érték
-npx wrangler secret put KIRAKAT_SECRET    # a másik véletlen érték
+npx wrangler secret put ADMIN_TOKEN       # a véletlen érték
 npx wrangler secret put RESEND_API_KEY    # a Resend API-kulcs
 ```
+
+A `KIRAKAT_SECRET` elhagyható: ha nincs, a Worker az első induláskor generál egyet
+és az adatbázisban tárolja. Ha később mégis beállítod, a már kiküldött levelek
+leiratkozó linkjei érvénytelenné válnak, ezért utólag ne add hozzá.
 
 Az `ADMIN_TOKEN`-t a saját gépeden is tárold, a projekt gyökerében egy
 `.env.kirakat` fájlban (a git nem követi):
@@ -76,29 +74,21 @@ Az `ADMIN_TOKEN`-t a saját gépeden is tárold, a projekt gyökerében egy
 KIRAKAT_ADMIN_TOKEN=ugyanaz-mint-az-ADMIN_TOKEN
 ```
 
-A `KIRAKAT_SECRET`-et ne cseréld le később, mert azzal írja alá a rendszer a
-leiratkozó linkeket. Ha lecseréled, a már kiküldött levelek leiratkozó
-linkjei nem fognak működni.
+### 3. Válaszok fogadása
 
-### 4. Válaszok fogadása
+A levelek a `kirakat@lumejournal.com` címről mennek. A Cloudflare-ben kapcsold be
+az *Email Routing*-ot a lumejournal.com-ra, és irányítsd a `kirakat@` címet a
+saját postafiókodra. Ingyenes.
 
-A levelek a `kirakat@lumejournal.com` címről mennek. Hogy a válaszok (és a
-törlési kérések) hozzád jussanak, a Cloudflare-ben kapcsold be az *Email
-Routing*-ot a lumejournal.com-ra, és irányítsd a `kirakat@` címet a saját
-postafiókodra. Ingyenes.
+### 4. A sorban állók megerősítő levelei
 
-### 5. Élesítés
+```bash
+npm run kirakat -- stats           # látszik, hányan várnak, és hogy a küldő be van-e állítva
+npm run kirakat -- confirmations   # kiküldi nekik a megerősítő levelet
+```
 
-1. Push a `main`-re (vagy merge), a Cloudflare a szokásos módon telepít.
-2. Próbáld ki élesben, kapcsoló nélkül:
-   ```bash
-   curl -X POST https://lumejournal.com/api/kirakat/subscribe \
-     -H 'content-type: application/json' \
-     -d '{"email":"a-sajat-cimed@pelda.hu","lang":"hu"}'
-   ```
-   Meg kell jönnie a megerősítő levélnek. Kattints rá, és a nyitóoldalra kell visszavinnie.
-3. Ha működik, `src/site.ts` → `KIRAKAT_ENABLED = true`, push. Ettől jelenik
-   meg a kirakat a főoldalon és a Rólam oldalon.
+Ha többen várnak a napi keretnél, a parancs kiírja, hányan maradtak, és másnap
+ugyanígy folytatható. Ettől kezdve az új feliratkozók azonnal kapják a levelet.
 
 ## Egy szám megírása és kiküldése
 
@@ -143,8 +133,9 @@ levél, utána ezrenként 0,35 dollár), és 2026 őszén még béta.
 ## Adatkezelés
 
 - A feliratkozáshoz megerősítés kell (dupla opt-in). Megerősítés nélkül senki
-  nem kap hírlevelet. A meg nem erősített címeket 7 nap után törli a rendszer
-  (a takarítás a következő feliratkozáskor fut le).
+  nem kap hírlevelet. Akik megkapták a megerősítő levelet, de 7 napon belül nem
+  kattintottak, azokat a rendszer törli (a takarítás a következő feliratkozáskor
+  fut le). A sorban álló, még levelet nem kapott címek addig megmaradnak.
 - Tárolt adatok: e-mail cím, nyelv, a feliratkozás és a megerősítés ideje,
   és egy rövid hozzájárulási bejegyzés. A rendszer IP-címet nem tárol. A Resend
   domainbeállításainál a megnyitás- és kattintáskövetés maradjon kikapcsolva,
@@ -152,8 +143,10 @@ levél, utána ezrenként 0,35 dollár), és 2026 őszén még béta.
 - Minden levélben van leiratkozó link, és a levelezőprogramok egykattintásos
   leiratkozását (List-Unsubscribe) is támogatja.
 - Végleges törlés kérésre:
+  a Cloudflare-felületen a `lumeblog` Worker *Bindings* fülén látod az
+  adatbázis nevét (a Wrangler adta neki), azzal:
   ```bash
-  npx wrangler d1 execute lume-kirakat --remote \
+  npx wrangler d1 execute <adatbázis-neve> --remote \
     --command "DELETE FROM subscribers WHERE email = 'cim@pelda.hu'"
   ```
 - A kirakat alatt rövid tájékoztató van arról, mit tárolsz. Ez nem helyettesít
@@ -177,13 +170,11 @@ levél, utána ezrenként 0,35 dollár), és 2026 őszén még béta.
 
 ```bash
 npm run build
-cp wrangler.toml wrangler.localtest.toml   # és benne: D1 blokk bekapcsolva,
-                                           # EMAIL_PROVIDER = "log",
-                                           # SITE_URL = "http://127.0.0.1:8787"
-printf 'ADMIN_TOKEN=helyi\nKIRAKAT_SECRET=helyi\n' > .dev.vars
-npx wrangler d1 migrations apply lume-kirakat --local -c wrangler.localtest.toml
-npx wrangler dev -c wrangler.localtest.toml
+npx wrangler dev --var EMAIL_PROVIDER:log --var ADMIN_TOKEN:helyi \
+  --var SITE_URL:http://127.0.0.1:8787
 ```
 
-A `log` küldő nem küld levelet, a konzolra írja ki, mit küldene, a
-megerősítő linkkel együtt.
+A helyi adatbázist a Wrangler magától létrehozza. A `log` küldő nem küld levelet,
+a konzolra írja ki, mit küldene, a megerősítő linkkel együtt. A
+`--var EMAIL_PROVIDER:log` nélkül azt látod, ahogy élesben levélküldő nélkül
+működik: a feliratkozások sorba állnak.

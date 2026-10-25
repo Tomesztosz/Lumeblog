@@ -6,6 +6,7 @@
    npm run kirakat -- test    kirakat/hu/001-szam.md te@pelda.hu
    npm run kirakat -- send    kirakat/hu/001-szam.md            (csak kiírja, kinek menne)
    npm run kirakat -- send    kirakat/hu/001-szam.md --yes      (élesben kiküldi)
+   npm run kirakat -- confirmations   (a levélküldő beállítása után, egyszer)
    npm run kirakat -- stats
 
    Beállítás: a projekt gyökerében egy `.env.kirakat` fájl (a git nem követi):
@@ -153,9 +154,16 @@ if (command === 'preview') {
     console.log('  Mindenki megkapta ezt a számot.');
   }
   console.log('');
+} else if (command === 'confirmations') {
+  // A levélküldő beállítása előtt sorba állított feliratkozók megerősítő levelei.
+  const result = await api(env, 'admin/confirmations', { method: 'POST', body: {} });
+  console.log(`\n✓ Megerősítő levél kiküldve: ${result.sent}.`);
+  if (result.remaining > 0) console.log(`  Még ${result.remaining} vár. Holnap futtasd újra.`);
+  console.log('');
 } else if (command === 'stats') {
   const stats = await api(env, 'admin/stats');
-  console.log(`\nKüldő: ${stats.provider} · napi keret: ${stats.dailyLimit}`);
+  console.log(`\nKüldő: ${stats.provider} (${stats.mailReady ? 'beállítva' : 'még nincs beállítva'}) · napi keret: ${stats.dailyLimit}`);
+  if (stats.queued) console.log(`  Sorban álló, még megerősítő levelet nem kapott feliratkozó: ${stats.queued}`);
   for (const lang of ['hu', 'en']) {
     console.log(`  ${lang}: ${countFor(stats, lang, 'confirmed')} megerősített, ${countFor(stats, lang, 'pending')} függőben, ${countFor(stats, lang, 'unsubscribed')} leiratkozott`);
   }
@@ -167,6 +175,7 @@ Kirakat hírlevél
   npm run kirakat -- preview <szám.md>             előnézet a .kirakat-preview/ mappába
   npm run kirakat -- test    <szám.md> <e-mail>    próbalevél egy címre
   npm run kirakat -- send    <szám.md> [--yes]     kiküldés a feliratkozóknak
+  npm run kirakat -- confirmations                 sorban álló megerősítő levelek kiküldése
   npm run kirakat -- stats                         létszám
 `);
 }

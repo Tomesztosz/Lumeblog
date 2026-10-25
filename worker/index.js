@@ -8,12 +8,17 @@
      GET  /api/kirakat/confirm?t=...      megerősítés a levélből
      GET  /api/kirakat/unsubscribe?t=...  leiratkozás a levélből
      POST /api/kirakat/unsubscribe?t=...  egykattintásos leiratkozás (RFC 8058)
-     GET  /api/kirakat/admin/stats        létszám (ADMIN_TOKEN kell)
-     POST /api/kirakat/admin/send         egy szám kiküldése (ADMIN_TOKEN kell)
+     GET  /api/kirakat/admin/stats          létszám (ADMIN_TOKEN kell)
+     POST /api/kirakat/admin/send           egy szám kiküldése (ADMIN_TOKEN kell)
+     POST /api/kirakat/admin/confirmations  sorban álló megerősítő levelek kiküldése
 
-   Titkok (wrangler secret put):
-     ADMIN_TOKEN        a küldő parancs ezzel azonosítja magát
-     KIRAKAT_SECRET     a leiratkozó linkek aláírásához
+   Beállítás nélkül is elindul: a táblákat első kéréskor maga hozza létre,
+   és ha nincs még levélküldő, a feliratkozásokat sorba állítja. A megerősítő
+   leveleket a küldő beállítása után az admin/confirmations végpont küldi ki.
+
+   Titkok (wrangler secret put), mind elhagyható az induláshoz:
+     ADMIN_TOKEN        a küldő parancs ezzel azonosítja magát (enélkül nincs admin)
+     KIRAKAT_SECRET     a leiratkozó linkek aláírásához (enélkül generál egyet)
      RESEND_API_KEY     csak ha EMAIL_PROVIDER = "resend"
    ============================================================ */
 
@@ -41,6 +46,7 @@ export default {
 
     const route = url.pathname.slice('/api/kirakat/'.length).replace(/\/$/, '');
     try {
+      await ensureSchema(env);
       if (route === 'subscribe' && request.method === 'POST') return await subscribe(request, env, url);
       if (route === 'confirm' && request.method === 'GET') return await confirm(env, url);
       if (route === 'unsubscribe' && (request.method === 'GET' || request.method === 'POST')) {
@@ -50,6 +56,7 @@ export default {
         if (!(await isAdmin(request, env))) return json({ ok: false, error: 'unauthorized' }, 401);
         if (route === 'admin/stats' && request.method === 'GET') return await stats(env);
         if (route === 'admin/send' && request.method === 'POST') return await sendIssue(request, env, url);
+        if (route === 'admin/confirmations' && request.method === 'POST') return await sendConfirmations(request, env, url);
       }
       return notFound();
     } catch (err) {
@@ -76,8 +83,9 @@ async function subscribe(request, env, url) {
   if (email.length > 254 || !EMAIL_RE.test(email)) return json({ ok: false, error: 'email' }, 422);
 
   const now = nowSec();
-  await env.DB.prepare(`DELETE FROM subscribers WHERE status = 'pending' AND created_at < ?`)
-    .bind(now - PENDING_TTL).run();
+  await env.DB.prepare(
+    `DELETE FROM subscribers WHERE status = 'pending' AND last_mail_at IS NOT NULL AND last_mail_at < ?`,
+  ).bind(now - PENDING_TTL).run();
 
   const existing = await env.DB.prepare(`SELECT * FROM subscribers WHERE email = ?`).bind(email).first();
 
@@ -86,9 +94,23 @@ async function subscribe(request, env, url) {
   if (existing && existing.status === 'confirmed') return json({ ok: true });
   if (existing && existing.last_mail_at && now - existing.last_mail_at < RESEND_COOLDOWN) return json({ ok: true });
 
+  const consent = `kirakat-v1 ${lang} ${new Date(now * 1000).toISOString()}`;
+
+  // Még nincs levélküldő: elmentjük a címet, a megerősítő levél később megy ki.
+  if (!mailReady(env)) {
+    if (existing) {
+      await env.DB.prepare(`UPDATE subscribers SET lang = ?, status = 'pending', consent = ? WHERE id = ?`)
+        .bind(lang, consent, existing.id).run();
+    } else {
+      await env.DB.prepare(
+        `INSERT INTO subscribers (email, lang, status, consent, created_at) VALUES (?, ?, 'pending', ?, ?)`,
+      ).bind(email, lang, consent, now).run();
+    }
+    return json({ ok: true, queued: true });
+  }
+
   const token = randomToken();
   const hash = await sha256(token);
-  const consent = `kirakat-v1 ${lang} ${new Date(now * 1000).toISOString()}`;
 
   if (existing) {
     await env.DB.prepare(
@@ -142,7 +164,13 @@ async function stats(env) {
   const { results } = await env.DB.prepare(
     `SELECT status, lang, COUNT(*) AS n FROM subscribers GROUP BY status, lang`,
   ).all();
-  return json({ ok: true, provider: providerName(env), dailyLimit: dailyLimit(env), counts: results });
+  const queued = await env.DB.prepare(
+    `SELECT COUNT(*) AS n FROM subscribers WHERE status = 'pending' AND last_mail_at IS NULL`,
+  ).first();
+  return json({
+    ok: true, provider: providerName(env), mailReady: mailReady(env), dailyLimit: dailyLimit(env),
+    queued: queued ? queued.n : 0, counts: results,
+  });
 }
 
 /* A kiküldő parancs (scripts/kirakat.mjs) ide küldi a kész levelet.
@@ -196,6 +224,33 @@ async function sendIssue(request, env, url) {
   return json({ ok: true, sent: results.length, remaining: left ? left.n : 0 });
 }
 
+/* A levélküldő beállítása előtt sorba állított feliratkozóknak most megy ki
+   a megerősítő levél. Egy hívás legfeljebb a napi keretnyi levelet küld. */
+async function sendConfirmations(request, env, url) {
+  if (!mailReady(env)) return json({ ok: false, error: 'mail_not_ready' }, 409);
+  const body = (await readJson(request, 1024)) || {};
+  const limit = Math.max(1, Math.min(Number(body.limit) || dailyLimit(env), 100));
+  const { results } = await env.DB.prepare(
+    `SELECT id, email, lang FROM subscribers WHERE status = 'pending' AND last_mail_at IS NULL ORDER BY id LIMIT ?`,
+  ).bind(limit).all();
+  const now = nowSec();
+  const base = site(env, url);
+  let sent = 0;
+  for (const r of results) {
+    const token = randomToken();
+    await env.DB.prepare(
+      `UPDATE subscribers SET confirm_hash = ?, confirm_expires = ?, last_mail_at = ? WHERE id = ?`,
+    ).bind(await sha256(token), now + CONFIRM_TTL, now, r.id).run();
+    const mail = confirmationMail(r.lang, `${base}/api/kirakat/confirm?t=${token}`);
+    await provider(env).send([{ to: r.email, from: env.KIRAKAT_FROM, subject: mail.subject, html: mail.html, text: mail.text }]);
+    sent++;
+  }
+  const left = await env.DB.prepare(
+    `SELECT COUNT(*) AS n FROM subscribers WHERE status = 'pending' AND last_mail_at IS NULL`,
+  ).first();
+  return json({ ok: true, sent, remaining: left ? left.n : 0 });
+}
+
 function personalize(env, body, to, unsub) {
   const fill = (s) => String(s).split('{{UNSUBSCRIBE}}').join(unsub);
   return {
@@ -212,6 +267,15 @@ function personalize(env, body, to, unsub) {
 }
 
 /* ---------- küldő szolgáltatás: egy változó dönti el ---------- */
+
+/* Van-e már működő levélküldő beállítva. */
+function mailReady(env) {
+  if (!env.KIRAKAT_FROM) return false;
+  const name = providerName(env);
+  if (name === 'resend') return Boolean(env.RESEND_API_KEY);
+  if (name === 'cloudflare') return Boolean(env.EMAIL);
+  return name === 'log';
+}
 
 function providerName(env) {
   return (env.EMAIL_PROVIDER || 'resend').toLowerCase();
@@ -326,10 +390,43 @@ async function sha256(text) {
   return [...new Uint8Array(d)].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
+/* A leiratkozó linkek aláíró kulcsa: a KIRAKAT_SECRET titok, vagy ha az
+   nincs beállítva, egy egyszer generált és az adatbázisban tárolt érték. */
+let cachedSecret = null;
+async function signingSecret(env) {
+  if (env.KIRAKAT_SECRET) return env.KIRAKAT_SECRET;
+  if (cachedSecret) return cachedSecret;
+  await env.DB.prepare(`INSERT OR IGNORE INTO settings (key, value) VALUES ('unsub_secret', ?)`)
+    .bind(randomToken()).run();
+  const row = await env.DB.prepare(`SELECT value FROM settings WHERE key = 'unsub_secret'`).first();
+  cachedSecret = row.value;
+  return cachedSecret;
+}
+
+/* Első kéréskor létrehozza a táblákat (ugyanaz, mint a migrations/0001). */
+let schemaReady = false;
+async function ensureSchema(env) {
+  if (schemaReady) return;
+  await env.DB.batch([
+    env.DB.prepare(`CREATE TABLE IF NOT EXISTS subscribers (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT NOT NULL UNIQUE COLLATE NOCASE,
+      lang TEXT NOT NULL CHECK (lang IN ('hu', 'en')),
+      status TEXT NOT NULL CHECK (status IN ('pending', 'confirmed', 'unsubscribed')),
+      confirm_hash TEXT, confirm_expires INTEGER, last_mail_at INTEGER, consent TEXT,
+      created_at INTEGER NOT NULL, confirmed_at INTEGER, unsubscribed_at INTEGER)`),
+    env.DB.prepare(`CREATE INDEX IF NOT EXISTS subscribers_status_lang ON subscribers (status, lang)`),
+    env.DB.prepare(`CREATE TABLE IF NOT EXISTS deliveries (
+      issue TEXT NOT NULL, subscriber_id INTEGER NOT NULL, sent_at INTEGER NOT NULL, provider_id TEXT,
+      PRIMARY KEY (issue, subscriber_id))`),
+    env.DB.prepare(`CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL)`),
+  ]);
+  schemaReady = true;
+}
+
 async function hmac(env, text) {
-  if (!env.KIRAKAT_SECRET) throw new Error('KIRAKAT_SECRET missing');
   const key = await crypto.subtle.importKey(
-    'raw', new TextEncoder().encode(env.KIRAKAT_SECRET), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'],
+    'raw', new TextEncoder().encode(await signingSecret(env)), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'],
   );
   const sig = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(text));
   return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, '0')).join('');
