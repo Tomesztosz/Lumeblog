@@ -13,19 +13,26 @@ export function globalHeaderRule(headers) {
 
 // Only trusted build output is hashed, never request data or user submissions.
 // Attribute styles remain necessary for responsive images and the animated models.
+// Cloudflare Web Analytics: the edge injects its beacon script, which then reports
+// to its own collector. Only these two exact hosts are allowed, no wildcards.
+export const WEB_ANALYTICS = {
+  script: 'https://static.cloudflareinsights.com',
+  connect: 'https://cloudflareinsights.com',
+};
+
 export function policyFor(elements) {
   const hashesFor = (tag) => [...new Set(elements.filter((node) => node.tagName === tag && !attribute(node, 'src'))
     .map((node) => hash(textOf(node))))];
   return [
     "default-src 'none'",
-    `script-src 'self' ${hashesFor('script').join(' ')}`.trim(),
+    `script-src 'self' ${WEB_ANALYTICS.script} ${hashesFor('script').join(' ')}`.trim(),
     "script-src-attr 'none'",
     `style-src 'self' ${hashesFor('style').join(' ')}`.trim(),
     "style-src-attr 'unsafe-inline'",
     "img-src 'self' data:",
     // Vite may embed small font subsets as data URLs; no third-party fonts.
     "font-src 'self' data:",
-    "connect-src 'self'",
+    `connect-src 'self' ${WEB_ANALYTICS.connect}`,
     "frame-src 'self'",
     "media-src 'self'",
     "manifest-src 'self'",

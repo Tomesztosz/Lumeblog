@@ -44,6 +44,8 @@ Fontos korlát: a build megbízható, verziókövetett kódból dolgozik. A CSP 
 
 Hírlevél, analitika, külső videó vagy új szolgáltatás bekötésekor célzottan kell bővíteni a szabályokat és újratesztelni. Ne oldd fel általánosan `*` vagy JavaScripthez `unsafe-inline` engedéllyel.
 
+2026. október 25.: a Cloudflare Web Analytics működéséhez a CSP két pontos címet enged. A `script-src` a `https://static.cloudflareinsights.com` (a Cloudflare által beillesztett mérőszkript), a `connect-src` a `https://cloudflareinsights.com` (ahová a szkript az adatot küldi). Más külső cím nem került be, és a `check:security` teszt ellenőrzi, hogy helyettesítő karakter sincs a szabályban. A Kirakat hírlevél a saját domainre küld (`/api/kirakat/`), ahhoz nem kellett bővítés.
+
 ## Folyamatos ellenőrzés
 
 ```sh

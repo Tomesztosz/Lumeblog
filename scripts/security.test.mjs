@@ -26,6 +26,10 @@ test('CSP precedes resources, hashes exact parsed script/style text and preserve
   assert(policy.includes(hash('\nwindow.test = 1;\n')));
   assert(policy.includes(hash('p{color:red}')));
   assert(!policy.match(/script-src[^;]*unsafe/));
+  // Web Analytics: exactly the two Cloudflare hosts, never a wildcard.
+  assert.match(policy, /script-src 'self' https:\/\/static\.cloudflareinsights\.com /);
+  assert.match(policy, /connect-src 'self' https:\/\/cloudflareinsights\.com(;|$)/);
+  assert(!policy.includes('*'));
   assert(secured.indexOf('Content-Security-Policy') < secured.indexOf('<style>'));
   assert(secured.endsWith(source.slice(source.indexOf('<title>'))));
   assert.throws(() => secureHtml(secured), /already present/);
