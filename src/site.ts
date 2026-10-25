@@ -42,3 +42,12 @@ export const ARTICLE_READING_EXPERIENCE = {
  *   https://assets.mailerlite.com/jsonp/123456/forms/789012345/subscribe
  */
 export const MAILERLITE_FORM_ACTION = '';
+
+/**
+ * KIRAKAT · a saját hírlevél (Cloudflare Worker + D1, lásd docs/kirakat.md).
+ * Amíg `false`, a feliratkozó kirakat nem jelenik meg az oldalon. Csak akkor
+ * kapcsold be, ha az adatbázis, a titkok és a küldő domain már be van állítva,
+ * különben a látogató hibaüzenetet kapna.
+ */
+export const KIRAKAT_ENABLED = false;
+

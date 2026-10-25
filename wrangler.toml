@@ -1,16 +1,42 @@
 # Cloudflare-beállítás a statikus oldalhoz.
 #
 # A Cloudflare újabb felülete a Workers-folyamatba vezet, ami `npx wrangler deploy`-jal
-# telepít, és ehhez kell ez a fájl. Nincs benne futtatható szkript: a Worker csak a
-# `dist/` tartalmát szolgálja ki (Workers Static Assets).
+# telepít, és ehhez kell ez a fájl. Az oldal továbbra is a `dist/` statikus fájljaiból
+# megy ki (Workers Static Assets).
 #
-# A klasszikus Pages-folyamat ettől függetlenül működik, ott ez a fájl nem zavar.
+# Egyetlen kivétel a Kirakat hírlevél: az `/api/*` kéréseket a `worker/index.js`
+# kapja meg (feliratkozás, megerősítés, leiratkozás, kiküldés). Minden más kérés
+# a Worker érintése nélkül, közvetlenül a statikus fájlokból szolgálódik ki.
+# Beállítás lépésről lépésre: docs/kirakat.md
 
 name = "lumejournal"
+main = "worker/index.js"
 compatibility_date = "2026-07-28"
 
 [assets]
 directory = "./dist"
-
+binding = "ASSETS"
 # A saját 404-es oldalunk jelenjen meg ismeretlen cím esetén, ne a Cloudflare-é.
 not_found_handling = "404-page"
+# Csak a hírlevél-végpontok futnak a Workerben, minden más statikus.
+run_worker_first = ["/api/*"]
+
+[vars]
+SITE_URL = "https://lumejournal.com"
+KIRAKAT_FROM = "Lume Kirakat <kirakat@lumejournal.com>"
+# "resend" (ingyenes csomag: napi 100 levél) vagy "cloudflare" (Workers Paid kell hozzá).
+EMAIL_PROVIDER = "resend"
+# Egy kiküldés legfeljebb ennyi címzettnek megy. A maradék másnap folytatható.
+KIRAKAT_DAILY_LIMIT = "80"
+
+# A feliratkozók adatbázisa. Létrehozás után vedd ki a megjegyzésből,
+# és írd be a `wrangler d1 create` által kiírt azonosítót (docs/kirakat.md, 2. lépés).
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "lume-kirakat"
+# database_id = "IDE-JÖN-AZ-AZONOSÍTÓ"
+# migrations_dir = "worker/migrations"
+
+# Csak ha EMAIL_PROVIDER = "cloudflare" (docs/kirakat.md, „Átváltás” rész).
+# [[send_email]]
+# name = "EMAIL"

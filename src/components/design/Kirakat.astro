@@ -1,0 +1,512 @@
+---
+/* KIRAKAT · a Lume saját hírlevelének feliratkozó felülete.
+   Egy éjszakai, kivilágított kirakat, benne egy felakasztott ártábla.
+   Az ártáblán adod meg a címed; beküldéskor a tábla meglendül és átfordul,
+   a hátoldalán a visszaigazolással. A megerősítő és leiratkozó linkek a
+   Workerből a nyitóoldalra térnek vissza egy #kirakat-… jelöléssel, ebből
+   tudja a komponens, melyik üzenetet mutassa.
+   Backend: worker/index.js · beállítás: docs/kirakat.md */
+import { DESIGN_STUDY, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const k = DESIGN_STUDY[lang].kirakat;
+---
+
+<section
+  class="kirakat"
+  id="kirakat"
+  aria-labelledby="kirakat-title"
+  data-lang={lang}
+  data-state="idle"
+  data-msg-done={k.done}
+  data-msg-confirmed={k.confirmed}
+  data-msg-unsubscribed={k.unsubscribed}
+  data-msg-expired={k.expired}
+  data-msg-invalid={k.invalid}
+  data-msg-bad={k.badEmail}
+  data-msg-error={k.error}
+  data-label-sending={k.sending}
+>
+  <div class="kirakat-inner">
+    <div class="kirakat-copy">
+      <p class="kirakat-eyebrow"><span class="kirakat-dot" aria-hidden="true"></span>{k.eyebrow}</p>
+      <h2 id="kirakat-title">{k.title}</h2>
+      <p class="kirakat-lede">{k.lede}</p>
+      <p class="kirakat-fine">{k.fine}</p>
+      <details class="kirakat-privacy">
+        <summary>{k.privacyTitle}</summary>
+        <p>{k.privacyBody}</p>
+      </details>
+    </div>
+
+    <div class="kirakat-pane">
+      <span class="kirakat-rail" aria-hidden="true"></span>
+      <span class="kirakat-sheen" aria-hidden="true"></span>
+      <span class="kirakat-string" aria-hidden="true"></span>
+
+      <div class="kirakat-tag">
+        <div class="kirakat-tag-inner">
+          <form class="kirakat-face kirakat-front" novalidate>
+            <span class="kirakat-hole" aria-hidden="true"></span>
+            <div class="kirakat-tag-head" aria-hidden="true">
+              <span>{k.tagNo} 001</span>
+              <span>{k.tagPrice}</span>
+            </div>
+            <label for={`kirakat-email-${lang}`}>{k.label}</label>
+            <input
+              id={`kirakat-email-${lang}`}
+              name="email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              placeholder={k.placeholder}
+              required
+              maxlength="254"
+            />
+            <label class="kirakat-trap" aria-hidden="true">
+              Website
+              <input name="website" type="text" tabindex="-1" autocomplete="off" />
+            </label>
+            <p class="kirakat-error" role="alert" hidden></p>
+            <button type="submit">{k.button}<span aria-hidden="true"> ↗</span></button>
+          </form>
+
+          <div class="kirakat-face kirakat-back" aria-hidden="true">
+            <span class="kirakat-hole" aria-hidden="true"></span>
+            <p class="kirakat-back-title">{k.backTitle}</p>
+            <p class="kirakat-back-msg" role="status" aria-live="polite"></p>
+            <button type="button" class="kirakat-again">{k.again}</button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="kirakat-shelf" aria-label={k.eyebrow}>
+        {k.shelf.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style is:inline>
+  .kirakat {
+    position: relative;
+    margin-top: clamp(40px, 6vw, 80px);
+    background: var(--night);
+    color: var(--night-ink);
+    padding-block: clamp(56px, 8vw, 112px);
+    padding-inline: var(--gutter);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* halvány utcai fény a kirakat előtt */
+  .kirakat::before {
+    content: '';
+    position: absolute;
+    inset: auto -10% -40% 30%;
+    height: 80%;
+    background: radial-gradient(closest-side, var(--lume-aura), transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .kirakat-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 440px);
+    gap: clamp(40px, 8vw, 130px);
+    align-items: center;
+  }
+  .kirakat-copy { min-width: 0; }
+  .kirakat-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: 500 11px/1 var(--font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 22px;
+  }
+  .kirakat-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--lume-halo);
+  }
+  .kirakat h2 {
+    font: 450 clamp(36px, 5vw, 66px)/1.02 var(--font-serif);
+    letter-spacing: -0.045em;
+    margin: 0 0 24px;
+    max-width: 14ch;
+    text-wrap: balance;
+  }
+  .kirakat-lede {
+    font: 400 clamp(17px, 1.5vw, 19px)/1.55 var(--font-sans);
+    color: var(--night-muted);
+    max-width: 46ch;
+    margin: 0 0 28px;
+  }
+  .kirakat-fine {
+    font: 400 13px/1.55 var(--font-sans);
+    color: var(--night-muted);
+    max-width: 52ch;
+    margin: 0 0 10px;
+    opacity: 0.85;
+  }
+  .kirakat-privacy {
+    font: 400 13px/1.55 var(--font-sans);
+    color: var(--night-muted);
+    max-width: 52ch;
+  }
+  .kirakat-privacy summary {
+    cursor: pointer;
+    font: 500 11px/2 var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--night-ink);
+    width: fit-content;
+  }
+  .kirakat-privacy summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .kirakat-privacy p { margin: 8px 0 0; }
+
+  /* ---------- a kirakat üvege ---------- */
+  .kirakat-pane {
+    position: relative;
+    min-height: 520px;
+    border: 1px solid color-mix(in srgb, var(--night-ink) 18%, transparent);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--night-ink) 6%, transparent), transparent 40%),
+      color-mix(in srgb, var(--night) 88%, var(--night-ink));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 22px 22px;
+    overflow: hidden;
+    --sheen: 30%;
+  }
+  .kirakat-rail {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 7px;
+    background: var(--brass);
+  }
+  .kirakat-sheen {
+    position: absolute;
+    inset: -20%;
+    background: linear-gradient(112deg,
+      transparent calc(var(--sheen) - 14%),
+      color-mix(in srgb, var(--night-ink) 9%, transparent) var(--sheen),
+      transparent calc(var(--sheen) + 10%));
+    pointer-events: none;
+    z-index: 3;
+    transition: background-position 0.2s;
+  }
+  .kirakat-string {
+    width: 1px;
+    height: 64px;
+    margin-top: 7px;
+    background: var(--night-muted);
+    flex: none;
+  }
+
+  /* ---------- az ártábla ---------- */
+  .kirakat-tag {
+    width: min(330px, 100%);
+    transform-origin: 50% -6px;
+    transform: rotate(-3deg);
+    perspective: 1400px;
+    z-index: 2;
+    margin: -2px 0 34px;
+  }
+  .kirakat-tag.is-swinging { animation: kirakat-swing 1.6s cubic-bezier(.3,.6,.3,1); }
+  @keyframes kirakat-swing {
+    0% { transform: rotate(-3deg); }
+    18% { transform: rotate(9deg); }
+    40% { transform: rotate(-7deg); }
+    62% { transform: rotate(4deg); }
+    82% { transform: rotate(-4deg); }
+    100% { transform: rotate(-3deg); }
+  }
+  .kirakat-tag-inner {
+    display: grid;
+    transition: transform 0.9s cubic-bezier(.5,.1,.2,1);
+    transform-style: preserve-3d;
+  }
+  .kirakat[data-state='sent'] .kirakat-tag-inner { transform: rotateY(180deg); }
+  .kirakat-face {
+    grid-area: 1 / 1;
+    position: relative;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 54px 24px 24px;
+    clip-path: polygon(16% 0, 84% 0, 100% 9%, 100% 100%, 0 100%, 0 9%);
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 270px;
+  }
+  .kirakat-back {
+    transform: rotateY(180deg);
+    justify-content: center;
+  }
+  .kirakat-hole {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+    border-radius: 50%;
+    background: var(--night);
+    box-shadow: 0 0 0 3px var(--brass);
+  }
+  .kirakat-tag-head {
+    display: flex;
+    justify-content: space-between;
+    font: 500 11px/1 var(--font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brass);
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+  .kirakat-front label {
+    font: 500 11px/1.3 var(--font-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .kirakat-front input[type='email'] {
+    font: 400 18px/1.3 var(--font-serif);
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+    padding: 8px 0;
+    width: 100%;
+  }
+  .kirakat-front input[type='email']::placeholder { color: var(--muted); opacity: 0.7; }
+  .kirakat-front input[type='email']:focus { outline: none; border-bottom-width: 2px; border-bottom-color: var(--brass); }
+  .kirakat-front input[aria-invalid='true'] { border-bottom-color: var(--brass); }
+  .kirakat-trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .kirakat-error {
+    font: 400 13px/1.4 var(--font-sans);
+    color: var(--brass);
+    margin: 0;
+  }
+  .kirakat-face button:not(.kirakat-again) {
+    margin-top: 8px;
+    font: 500 13px/1 var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--night);
+    color: var(--accent);
+    border: 0;
+    padding: 15px 18px;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .kirakat-face button:not(.kirakat-again):hover { transform: translateY(-1px); }
+  .kirakat-face button:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+  .kirakat-face button[disabled] { opacity: 0.7; cursor: progress; }
+  .kirakat-back-title {
+    font: 500 11px/1 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin: 0;
+  }
+  .kirakat-back-msg {
+    font: 450 22px/1.25 var(--font-serif);
+    letter-spacing: -0.02em;
+    margin: 6px 0 4px;
+  }
+  .kirakat-again {
+    align-self: flex-start;
+    margin-top: 6px;
+    font: 400 13px/1.3 var(--font-sans);
+    background: transparent;
+    color: var(--ink);
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 6px 0;
+    cursor: pointer;
+  }
+
+  /* ---------- polc a kirakat alján ---------- */
+  .kirakat-shelf {
+    list-style: none;
+    margin: auto 0 0;
+    padding: 18px 0 0;
+    width: 100%;
+    border-top: 2px solid var(--brass);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+  .kirakat-shelf li {
+    font: 500 10px/1 var(--font-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--night-ink);
+    border: 1px solid color-mix(in srgb, var(--night-ink) 30%, transparent);
+    padding: 7px 10px 7px 18px;
+    position: relative;
+  }
+  .kirakat-shelf li::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    margin-top: -2px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* ---------- lámpa le: a lume derengése ---------- */
+  [data-theme='dark'] .kirakat-eyebrow,
+  [data-theme='dark'] .kirakat-face button:not(.kirakat-again) {
+    text-shadow: 0 0 12px var(--lume-halo);
+  }
+  [data-theme='dark'] .kirakat-hole {
+    box-shadow: 0 0 0 3px var(--accent), 0 0 18px var(--lume-halo);
+  }
+  [data-theme='dark'] .kirakat-string { background: var(--accent); box-shadow: 0 0 6px var(--lume-halo); }
+  [data-theme='dark'] .kirakat-shelf li::before { box-shadow: 0 0 8px var(--lume-halo); }
+  [data-theme='dark'] .kirakat-face { box-shadow: inset 0 0 0 1px var(--line); }
+
+  @media (max-width: 860px) {
+    .kirakat-inner { grid-template-columns: minmax(0, 1fr); }
+    .kirakat-pane { min-height: 470px; }
+    .kirakat h2 { max-width: 18ch; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kirakat-tag.is-swinging { animation: none; }
+    .kirakat-tag-inner { transition: none; }
+    .kirakat-sheen { display: none; }
+  }
+</style>
+
+<script>
+  const ENDPOINT = '/api/kirakat/subscribe';
+  const STATES: Record<string, string> = {
+    'kirakat-fent': 'confirmed',
+    'kirakat-le': 'unsubscribed',
+    'kirakat-lejart': 'expired',
+    'kirakat-hiba': 'invalid',
+  };
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for (const root of document.querySelectorAll<HTMLElement>('.kirakat')) {
+    const form = root.querySelector<HTMLFormElement>('.kirakat-front');
+    const input = root.querySelector<HTMLInputElement>('input[type="email"]');
+    const trap = root.querySelector<HTMLInputElement>('input[name="website"]');
+    const error = root.querySelector<HTMLElement>('.kirakat-error');
+    const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const tag = root.querySelector<HTMLElement>('.kirakat-tag');
+    const back = root.querySelector<HTMLElement>('.kirakat-back');
+    const msg = root.querySelector<HTMLElement>('.kirakat-back-msg');
+    const again = root.querySelector<HTMLButtonElement>('.kirakat-again');
+    const pane = root.querySelector<HTMLElement>('.kirakat-pane');
+    if (!form || !input || !error || !button || !tag || !back || !msg || !again || !pane) continue;
+    const buttonLabel = button.innerHTML;
+
+    const swing = () => {
+      if (reduced) return;
+      tag.classList.remove('is-swinging');
+      void tag.offsetWidth;
+      tag.classList.add('is-swinging');
+    };
+    const showError = (text: string) => {
+      error.textContent = text;
+      error.hidden = false;
+      input.setAttribute('aria-invalid', 'true');
+    };
+    const flip = (key: string) => {
+      msg.textContent = root.dataset['msg' + key.charAt(0).toUpperCase() + key.slice(1)] || '';
+      root.dataset.state = 'sent';
+      form.setAttribute('aria-hidden', 'true');
+      form.inert = true;
+      back.removeAttribute('aria-hidden');
+      back.inert = false;
+      swing();
+    };
+    const unflip = () => {
+      root.dataset.state = 'idle';
+      back.setAttribute('aria-hidden', 'true');
+      back.inert = true;
+      form.removeAttribute('aria-hidden');
+      form.inert = false;
+      input.value = '';
+      input.focus();
+    };
+    back.inert = true;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      error.hidden = true;
+      input.removeAttribute('aria-invalid');
+      const email = input.value.trim();
+      if (!input.checkValidity() || email.indexOf('@') < 1) {
+        showError(root.dataset.msgBad || '');
+        input.focus();
+        return;
+      }
+      button.disabled = true;
+      button.textContent = root.dataset.labelSending || '';
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email, lang: root.dataset.lang, website: trap?.value || '' }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) flip('done');
+        else if (data.error === 'email') showError(root.dataset.msgBad || '');
+        else showError(root.dataset.msgError || '');
+      } catch {
+        showError(root.dataset.msgError || '');
+      } finally {
+        button.disabled = false;
+        button.innerHTML = buttonLabel;
+      }
+    });
+
+    again.addEventListener('click', unflip);
+
+    // A kirakat üvegén végigfut a fény, ahogy fölötte mozog az egér.
+    if (!reduced) {
+      pane.addEventListener('pointermove', (event) => {
+        const box = pane.getBoundingClientRect();
+        const x = ((event.clientX - box.left) / box.width) * 100;
+        pane.style.setProperty('--sheen', `${Math.round(x)}%`);
+      });
+    }
+
+    // Visszatérés a megerősítő vagy leiratkozó linkből.
+    const state = STATES[location.hash.slice(1)];
+    if (state) {
+      flip(state);
+      root.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+  }
+</script>

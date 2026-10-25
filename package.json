@@ -22,6 +22,7 @@
     "check:seo:http": "node scripts/check-seo-http.mjs",
     "check:security": "node --test scripts/security.test.mjs && node scripts/check-security.mjs",
     "check:journal": "node --test scripts/design-models.test.mjs scripts/design-release.test.mjs && node scripts/check-journal-build.mjs",
+    "kirakat": "node scripts/kirakat.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

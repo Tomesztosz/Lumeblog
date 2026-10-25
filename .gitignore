@@ -23,3 +23,9 @@ articles/
 
 # Search Console / Bing exports and query-level local reports are never public.
 /.seo-private/
+
+# Kirakat hírlevél: helyi Worker-titkok, helyi tesztkonfig és levélelőnézetek
+.dev.vars
+.wrangler/
+wrangler.localtest.toml
+.kirakat-preview/

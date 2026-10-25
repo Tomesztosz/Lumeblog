@@ -1,6 +1,8 @@
 ---
 import { DESIGN_STUDY, COLUMNS, COLUMN_KEYS, type Lang } from "../../i18n/ui";
 import { journalLinks } from "../../lib/design";
+import Kirakat from "./Kirakat.astro";
+import { KIRAKAT_ENABLED } from "../../site";
 const { designColumn } = journalLinks(Astro.locals.lumePreview === true);
 interface Props {
   lang: Lang;
@@ -37,3 +39,4 @@ const t = DESIGN_STUDY[lang];
     </div>
   </div>
 </section>
+{KIRAKAT_ENABLED && <Kirakat lang={lang} />}

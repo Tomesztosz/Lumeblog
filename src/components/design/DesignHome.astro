@@ -7,6 +7,8 @@ import { journalLinks } from '../../lib/design';
 import DesignMedia from './DesignMedia.astro';
 import DesignModel from './DesignModel.astro';
 import ModelShare from '../ModelShare.astro';
+import Kirakat from './Kirakat.astro';
+import { KIRAKAT_ENABLED } from '../../site';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = DESIGN_STUDY[lang];
@@ -52,3 +54,4 @@ const model = latestModel && sharedModel(latestModel);
   <div><p class="eyebrow">INDEX / LUME</p><h2>{t.browse}</h2><p>{t.browseText}</p></div>
   <ol>{t.routes.map((route, index) => <li><a href={designColumn(lang, route.column as ColumnKey)}><span class="route-number">0{index + 1}</span><div><h3>{route.label}</h3><p>{route.note}</p></div><span aria-hidden="true">↗</span></a></li>)}</ol>
 </section>
+{KIRAKAT_ENABLED && <Kirakat lang={lang} />}
