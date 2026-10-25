@@ -477,7 +477,8 @@ select:focus-visible {
 .reading-column {
   min-width: 0;
 }
-.article-body img[src*="ming-"][src*="-cutout-v2"] {
+.article-body img[src*="ming-"][src*="-cutout-v2"],
+.article-body img[src*="polerouter-"][src*="-cutout"] {
   display: block;
   width: 100%;
   height: auto;

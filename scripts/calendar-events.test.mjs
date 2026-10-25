@@ -128,7 +128,10 @@ test('October horizon refresh retains primary evidence, uncertain windows and re
   const store=await read('calendar-events'),releases=await read('releases'),announcements=await read('announcements');
   const entries=hydrateEvents([...releases,...announcements],store);
   const ids=['citizen-attesa-ever-since-2026','citizen-series8-damascus-2026','citizen-washi-limited-2026','grand-seiko-hi-beat-2026','cw-c1-loco-classic-gold-2026','kurono-calendrier-sbr-delivery-2026','seiko-panda-collection2-2026','seiko-edo-purple-2026'];
-  for(const id of ids){const e=entries.find(e=>e.id===id);assert(e);assert(['current','future'].includes(state(e)));assert.equal(e.lifecycle.schedule.precision,'month');assert.equal(e.lifecycle.evidence[0].eventId,id);assert(e.lifecycle.evidence[0].quote);}
+  for(const id of ids){const e=entries.find(e=>e.id===id);assert(e);assert.equal(e.lifecycle.schedule.precision,'month');assert.equal(e.lifecycle.evidence[0].eventId,id);assert(e.lifecycle.evidence[0].quote);
+    if(e.lifecycle.verification?.issue){assert.equal(state(e),'review');assert(!exportableEvent(e));}
+    else assert(['current','future'].includes(state(e)));
+  }
   for(const id of ['farer-stratton-restock-late-2026','baltic-hermetique-rift-delivery','casio-mrg-d5000-sapphire-2026']){const e=entries.find(e=>e.id===id);assert.equal(state(e),'awaiting');assert(!exportableEvent(e));}
   for(const id of ['omega-james-bond-spectre-2026','christopher-ward-c60-trident-biscay','rolex-oyster-perpetual-41-2026','tudor-northflag-2026']){const e=entries.find(e=>e.id===id);assert.equal(state(e),'occurred');assert(e.lifecycle.history.some(h=>h.verification?.issue==='legacy-completion-unverified'));assert(!exportableEvent(e));}
   const meta=await read('calendar-meta');assert.equal(meta.lastReviewed,'2026-09-06');assert(/^\d{4}-\d{2}-\d{2}$/.test(meta.lastTargetedReview));assert(meta.lastTargetedReview>='2026-10-18'&&Date.parse(meta.lastTargetedReview)<=Date.now());assert.equal(meta.targetThrough,'2026-12-31');assert.equal(meta.targetedReviewStatus,'partial');

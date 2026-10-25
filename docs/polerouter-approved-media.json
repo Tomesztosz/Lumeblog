@@ -1,0 +1,43 @@
+{
+  "approvedAt": "2026-10-25",
+  "ownerConfirmation": true,
+  "thirdPartyLicenceIndependentlyInspected": false,
+  "records": [
+    {
+      "file": "src/content/posts/_images/polerouter-hero.webp",
+      "sha256": "f304094eb85c971aeee3be12eb797be5f05ba9a186396c0222fac9ff5b03e065"
+    },
+    {
+      "file": "src/content/posts/_images/polerouter-card.webp",
+      "sha256": "e37a3dd4abd6eb5fc6ebb4e3f2c81ead3fc57e7690724ab21f363ee11777418c"
+    },
+    {
+      "file": "src/content/posts/_images/polerouter-bumper-cutout.png",
+      "sha256": "45974cfb2a764416395585164605220d55ea44a68445b7ef14f4b8c1b5566c65"
+    },
+    {
+      "file": "src/content/posts/_images/polerouter-date-cutout.png",
+      "sha256": "055f1c6357018d8dac478eb3b2ab4b0b60f8d5a3838f8625105226d7e2c30e84"
+    },
+    {
+      "file": "src/content/posts/_images/polerouter-sas-dc6b.webp",
+      "sha256": "3b4f57326b0b62710d4a2a1800161cc979a38c83ed073d50b30f047ecc9fc6fd"
+    },
+    {
+      "file": "src/content/posts/_images/polerouter-genta.webp",
+      "sha256": "b4dc9f60a70ac3096961fb0f3dc34c73e3fb904e86f6ce8c40559348ec0b2289"
+    },
+    {
+      "file": "src/content/posts/_images/polerouter-microtor-detail.webp",
+      "sha256": "b3e6b95c647245c30d4df10fa2872ba0a5d7e1a02c135a29a558c383931b22f5"
+    },
+    {
+      "file": "src/content/posts/_images/polerouter-138ss-detail.webp",
+      "sha256": "7ad5c4d3540e0e8a38f801e46ff8cc5a76005932ebbb3b1df5b5da8952f91ebb"
+    },
+    {
+      "file": "src/content/posts/_images/polerouter-tension-ring.webp",
+      "sha256": "adf194dba69cb0eb29bf29373552f60f8a2c1dbd7fd4943b662f0e904029f978"
+    }
+  ]
+}

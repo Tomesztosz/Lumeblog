@@ -1,0 +1,136 @@
+{
+  "translationKey": "polerouter",
+  "reviewed": "2026-10-25",
+  "status": "scheduled",
+  "publicationApproved": true,
+  "scheduled": true,
+  "proposedPublication": "2026-10-28T01:00:00+01:00",
+  "dateNote": "Confirmed Wednesday 28 October 2026, 01:00 CET, UTC+01:00. Future date gate and existing GitHub scheduler apply, builds may be delayed.",
+  "articles": [
+    "src/content/posts/hu/polerouter.md",
+    "src/content/posts/en/polerouter.md"
+  ],
+  "previews": [
+    "output/article-review/polerouter/megnezes.html",
+    "output/article-review/polerouter/english.html"
+  ],
+  "author": {
+    "instructions": [
+      "lume-szemely.md",
+      "lume-hang.md",
+      "hangcheck.py"
+    ],
+    "experience": "No Polerouter handling, ownership, flight or meeting supplied. No personal event invented and no documentary memory recycled from Monday's MING article.",
+    "derivedOpinions": "Owner approved the existing article on 25 October 2026. Private editorial questions removed from the public Markdown; approved prose preserved byte-for-byte after marker conversion.",
+    "structure": "Origins article with four narrative sections and one reference table. Independently written British English, not sentence-by-sentence translation. No links in the prose. References appear in the source list.",
+    "closingReview": "HU's checker flags the short final sentence. Manually retained because it asks for a concrete additional photograph of the case edges and completes the hypothetical purchase preference. It is not an aphorism or summary slogan."
+  },
+  "factChecks": [
+    {
+      "claim": "SAS opened the Copenhagen-Los Angeles polar service on 15 November 1954 using Douglas DC-6B aircraft, with Greenland and Winnipeg stops.",
+      "sources": [
+        "https://www.sasgroup.net/newsroom/press-releases/2024/70th-anniversary-of-sas-becoming-the-worlds-first-airline-to-fly-over-the-polar-regions/",
+        "https://sandiegoairandspace.org/exhibits/online-exhibit-page/polar-express-the-cold-war-and-beyond"
+      ],
+      "boundary": "Sarkvidéki/polar route, no claim that the itinerary crossed geographical latitude 90N. The archive aircraft is Arild Viking, not labelled as the exact inaugural airframe. The 1957 Tokyo route is not conflated with 1954."
+    },
+    {
+      "claim": "Genta was twenty-three, trained as a goldsmith/jeweller and designed the Polerouter early in his career.",
+      "sources": [
+        "https://www.geraldgenta-heritage.com/gerald-genta",
+        "https://www.universalgeneve.com/ch-en/history/"
+      ],
+      "boundary": "No invented commission meeting with Raoul Perret. Later portrait explicitly labelled later, not passed off as a twenty-three-year-old Genta."
+    },
+    {
+      "claim": "The earliest Polarouter was fitted with calibre 138 SS bumper automatic winding, rather than the subsequent Microtor.",
+      "sources": [
+        "https://universalgenevepolerouter.com/wp-content/uploads/2018/10/Cal-215-138-SS-rotated.pdf",
+        "https://www.bukowskis.com/en/auctions/618/21-universal-geneve-polerouter"
+      ],
+      "boundary": "The illustrated S-20217-4 is circa 1955 and is not represented as a pilot-issued SAS-logo watch or the exact first-flight watch. Original auction photographs show the 138 SS and its two spring buffers."
+    },
+    {
+      "claim": "The early inner ring was also a crystal tension/retaining component.",
+      "sources": [
+        "https://universalgenevepolerouter.com/wp-content/uploads/2018/10/Technical-Notes-rotated.pdf",
+        "https://universalgenevepolerouter.com/early-polarouter-and-polerouter-plexis/"
+      ],
+      "boundary": "Factory Technical Note 2, PDF page 6, visually inspected. The text explicitly distinguishes subsequent fitting changes, never claims that every Polerouter ring uses identical construction. No claim that the visible ring is a magnetic shield."
+    },
+    {
+      "claim": "Compass unreliability near the magnetic pole and magnetised watch components are different mechanisms.",
+      "sources": [
+        "https://www.geomag.nrcan.gc.ca/mag_fld/compass-en.php?wbdisable=true",
+        "https://www.seikowatches.com/sg-en/customerservice/faq/care-maintenance-5",
+        "https://www.universalgeneve.com/ch-en/history/"
+      ],
+      "boundary": "No invented field strength, soft-iron shield specification, test rating or statement that Earth's polar field itself stops watches. Brand magnetic-resistance positioning is reported without treating the navigation problem as proof of that engineering."
+    },
+    {
+      "claim": "CH329805 filed 27 May 1955 describes an offset mass and winding mechanism installed in space beside the barrel and balance, with bidirectional winding.",
+      "sources": [
+        "https://patents.google.com/patent/CH329805A/en",
+        "https://universalgenevepolerouter.com/documentation/microtor-patent-329805-swiss/",
+        "https://universalgenevepolerouter.com/wp-content/uploads/2018/10/Cal-215-138-SS-rotated.pdf"
+      ],
+      "boundary": "Patent accessed directly and cached because web reader failed. Filing is not equated with first retail shipment. No priority claim over Büren, legal dispute narrative, unsupported 60-hour reserve or precise production start year."
+    },
+    {
+      "claim": "Microtor 215/218 and 68/69 generations use different rotor supports; worn supports can cause rubbing and caseback marks.",
+      "sources": [
+        "https://universalgenevepolerouter.com/repairing-a-worn-microtor-from-calibers-215-218-68-69/"
+      ],
+      "boundary": "Adam Hambly's firsthand repair account. No claim that all examples fail or that the pictured watch has that fault. No extrapolated failure rate."
+    },
+    {
+      "claim": "The gold-coloured date example is reference 204605-7, circa 1960, with calibre 218-2 and catalogued 35mm diameter.",
+      "sources": [
+        "https://www.sothebys.com/en/buy/auction/2021/fine-watches-8/reference-204605-7-polerouter-date-a-gold-plated"
+      ],
+      "boundary": "Dimensions are individual auction descriptions, not universal family specifications. 329805 on a movement is a patent reference, not silently adopted as its movement serial."
+    }
+  ],
+  "knownConflictsOmitted": [
+    "Exact Polarouter-to-Polerouter renaming year",
+    "First commercial Microtor shipment year",
+    "1958 patent registration versus publication day",
+    "Unsubstantiated exact SAS-logo production totals"
+  ],
+  "images": {
+    "bodyCount": 7,
+    "heroCount": 1,
+    "roles": {
+      "cutout": 2,
+      "documentary": 2,
+      "macro": 2,
+      "document": 1
+    },
+    "privateRoot": "output/article-review/polerouter/sources",
+    "originals": "output/article-review/polerouter/originals",
+    "processingReport": "output/article-review/polerouter/media-checks.json",
+    "promptLog": "output/article-review/polerouter/image-prompts.json",
+    "rights": "Owner confirmed image use for scheduled publication on 25 October 2026. All source credits retained. This records owner confirmation, not independently inspected manufacturer/photographer permission.",
+    "productionPrivacy": "Approved image bytes promoted to src/content/posts/_images. Future article routes and feeds remain date-gated. Static image assets can be publicly emitted before publication.",
+    "approvedManifest": "docs/polerouter-approved-media.json"
+  },
+  "verification": {
+    "voice": "python hangcheck.py src/content/posts/hu/polerouter.md src/content/posts/en/polerouter.md",
+    "preview": "node scripts/render-article-review.mjs polerouter",
+    "browser": "node scripts/check-polerouter-review.mjs --build",
+    "build": "npm run build",
+    "results": [
+      "output/article-review/polerouter/hangcheck.txt",
+      "output/article-review/polerouter/rhythm-checks.json",
+      "output/article-review/polerouter/browser-checks.json",
+      "output/article-review/polerouter/build.log"
+    ],
+    "release": "node scripts/check-polerouter-release.mjs; --future checks an isolated test-clock build"
+  },
+  "calendar": "Mandatory source review recorded in docs/calendar-review-polerouter-2026-10-25.json. See explicit coverage limitations there.",
+  "ownerApproval": {
+    "date": "2026-10-25",
+    "quote": "Rendben mehet az időzítés szerda 1:00-ra rendben vannak a képek",
+    "scope": "Approved visible HU/EN article, persona-derived opinions and existing images, Wednesday 28 October 2026 at 01:00 Europe/Budapest."
+  }
+}

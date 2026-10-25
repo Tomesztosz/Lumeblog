@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": 15,
+  "version": 16,
   "events": {
     "citizen-attesa-eco-drive-50-2026": {
       "editorial": "approved",
@@ -880,7 +880,43 @@
           "en": "Mid-December 2026, estimated delivery"
         }
       },
-      "verification": null,
+      "verification": {
+        "issue": "date-conflict",
+        "reason": "Current product-page order estimate differs from accepted December plan. No dated correction ties this wording to the earlier order cohort. Preserve the accepted plan, flag review and suppress active display/ICS.",
+        "proposal": {
+          "eventId": "cw-c1-loco-classic-gold-2026",
+          "identity": {
+            "brand": "christopher-ward",
+            "model": "C1 Loco Classic",
+            "references": [
+              "C01-41H6D1-S00A0-VT"
+            ],
+            "type": "shipping",
+            "market": "worldwide",
+            "round": "cw-c1-loco-classic-gold-2026"
+          },
+          "baseRevision": 0,
+          "requestedAt": "2026-10-25T17:41:55.268Z",
+          "checkedAt": "2026-10-25T17:41:55.268Z",
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "month",
+            "value": "2027-01",
+            "certainty": "estimated",
+            "qualifier": "mid",
+            "originalText": "Pre-order for Mid January 2027"
+          },
+          "evidence": {
+            "eventId": "cw-c1-loco-classic-gold-2026",
+            "eventType": "shipping",
+            "claim": "planned",
+            "url": "https://www.christopherward.com/int/atelier-watches/C1-Loco-Classic/C01-41H6D1-S00A0-VT.html",
+            "quote": "Pre-order for Mid January 2027",
+            "checkedAt": "2026-10-25T17:41:55.268Z",
+            "accepted": false
+          }
+        }
+      },
       "evidence": [
         {
           "eventId": "cw-c1-loco-classic-gold-2026",
@@ -892,8 +928,38 @@
           "accepted": true
         }
       ],
-      "history": [],
-      "revision": 0,
+      "history": [
+        {
+          "revision": 0,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "month",
+            "value": "2026-12",
+            "certainty": "estimated",
+            "originalText": "Pre-order for Mid December 2026",
+            "qualifier": "mid",
+            "legacyLabels": {
+              "hu": "2026. december közepe, várható kiszállítás",
+              "en": "Mid-December 2026, estimated delivery"
+            }
+          },
+          "evidence": [
+            {
+              "eventId": "cw-c1-loco-classic-gold-2026",
+              "eventType": "shipping",
+              "claim": "planned",
+              "quote": "Pre-order for Mid December 2026",
+              "url": "https://www.christopherward.com/int/atelier-watches/C1-Loco-Classic/C01-41H6D1-S00A0-VT.html",
+              "checkedAt": "2026-10-18T08:51:06.990Z",
+              "accepted": true
+            }
+          ],
+          "verification": null,
+          "changedAt": "2026-10-25T17:41:55.268Z",
+          "reason": "Current product-page order estimate differs from accepted December plan. No dated correction ties this wording to the earlier order cohort. Preserve the accepted plan, flag review and suppress active display/ICS."
+        }
+      ],
+      "revision": 1,
       "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
       "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
     },
