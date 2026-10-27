@@ -19,7 +19,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from sound import synth  # noqa: E402
+from sound import SWITCHES, export_switch, synth  # noqa: E402
 
 
 def open_scene(p, name):
@@ -45,11 +45,14 @@ def stills(name, times, out):
         browser.close()
 
 
-def video(name, out):
+def video(name, out, switch='bakelit', audio_only=False, suffix=''):
     frames = out / 'frames'
+    start = time.time()
+    if audio_only:
+        meta = json.loads((out / 'meta.json').read_text())
+        return mux(name, out, frames, meta, switch, suffix, start)
     shutil.rmtree(frames, ignore_errors=True)
     frames.mkdir(parents=True)
-    start = time.time()
     with sync_playwright() as p:
         browser, page = open_scene(p, name)
         meta = page.evaluate('window.REEL')
@@ -62,26 +65,41 @@ def video(name, out):
         page.evaluate(f'window.renderAt({meta.get("cover", 15.6)})')
         page.screenshot(path=str(out / 'cover.jpg'), type='jpeg', quality=95)
         browser.close()
-    (out / 'beats.json').write_text(json.dumps(meta['beats']))
-    synth(meta, out / 'audio.wav')
-    mp4 = out / f'lume-{name}-reel.mp4'
+    (out / 'meta.json').write_text(json.dumps(meta))
+    return mux(name, out, frames, meta, switch, suffix, start)
+
+
+def mux(name, out, frames, meta, switch, suffix, start):
+    """A kész képkockákhoz új hangot készít és összefűzi; újrarenderelés nélkül."""
+    synth(meta, out / 'audio.wav', switch)
+    mp4 = out / f'lume-{name}-reel{suffix}.mp4'
     subprocess.run([
         'ffmpeg', '-y', '-loglevel', 'error',
         '-framerate', str(meta['FPS']), '-i', str(frames / '%05d.jpg'),
         '-i', str(out / 'audio.wav'),
         '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '17', '-pix_fmt', 'yuv420p',
         '-profile:v', 'high', '-r', str(meta['FPS']),
-        '-af', 'loudnorm=I=-15:TP=-1.5:LRA=11',
+        '-af', 'lowpass=f=15000:poles=2',
         '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
         '-shortest', '-movflags', '+faststart', str(mp4),
     ], check=True)
     print(f'kész: {mp4}  ({time.time() - start:.0f} mp)')
+    return mp4
 
 
 if __name__ == '__main__':
     name = sys.argv[1]
     out = ROOT / 'output' / 'reels' / name
-    if '--stills' in sys.argv:
+    switch = sys.argv[sys.argv.index('--switch') + 1] if '--switch' in sys.argv else 'bakelit'
+    if '--switches' in sys.argv:
+        # mindhárom kapcsolóhang külön fájlban, magában és a Reel lámpa le részletében
+        for sw in SWITCHES:
+            export_switch(sw, out / f'lume-kapcsolo-{sw}.wav')
+            mp4 = video(name, out, sw, audio_only=True, suffix=f'-{sw}')
+            subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', '11.6', '-t', '6',
+                            '-i', str(mp4), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
+                            '-c:a', 'aac', '-b:a', '192k', str(out / f'reszlet-{sw}.mp4')], check=True)
+    elif '--stills' in sys.argv:
         stills(name, [float(x) for x in sys.argv[sys.argv.index('--stills') + 1:]], out)
     else:
-        video(name, out)
+        video(name, out, switch, audio_only='--audio-only' in sys.argv)
