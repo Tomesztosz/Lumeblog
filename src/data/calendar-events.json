@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": 20,
+  "version": 21,
   "events": {
     "citizen-attesa-eco-drive-50-2026": {
       "editorial": "approved",
@@ -1162,7 +1162,40 @@
         "precision": "unknown",
         "originalText": "RETURNS LATE 2026"
       },
-      "verification": null,
+      "verification": {
+        "issue": "source-statement-changed",
+        "reason": "Current page replaces late-2026 return wording with a 29 October preorder statement lacking a year. No explicit correction identifies the old order cohort. Preserve accepted evidence and request review, without fabricating a dated event.",
+        "proposal": {
+          "eventId": "farer-stratton-restock-late-2026",
+          "identity": {
+            "brand": "farer",
+            "model": "Moonphase",
+            "references": [
+              "Stratton"
+            ],
+            "type": "restock",
+            "market": "worldwide",
+            "round": "farer-stratton-restock-late-2026"
+          },
+          "baseRevision": 0,
+          "requestedAt": "2026-10-27T18:00:15.922Z",
+          "checkedAt": "2026-10-27T18:00:15.922Z",
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "unknown",
+            "originalText": "PRE ORDER FROM 29TH OCTOBER"
+          },
+          "evidence": {
+            "eventId": "farer-stratton-restock-late-2026",
+            "eventType": "restock",
+            "claim": "planned",
+            "url": "https://farer.com/products/stratton",
+            "quote": "PRE ORDER FROM 29TH OCTOBER",
+            "checkedAt": "2026-10-27T18:00:15.922Z",
+            "accepted": false
+          }
+        }
+      },
       "evidence": [
         {
           "eventId": "farer-stratton-restock-late-2026",
@@ -1174,8 +1207,31 @@
           "accepted": true
         }
       ],
-      "history": [],
-      "revision": 0,
+      "history": [
+        {
+          "revision": 0,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "unknown",
+            "originalText": "RETURNS LATE 2026"
+          },
+          "evidence": [
+            {
+              "eventId": "farer-stratton-restock-late-2026",
+              "eventType": "restock",
+              "claim": "planned",
+              "quote": "RETURNS LATE 2026",
+              "url": "https://farer.com/products/stratton",
+              "checkedAt": "2026-10-18T08:51:06.990Z",
+              "accepted": true
+            }
+          ],
+          "verification": null,
+          "changedAt": "2026-10-27T18:00:15.922Z",
+          "reason": "Current page replaces late-2026 return wording with a 29 October preorder statement lacking a year. No explicit correction identifies the old order cohort. Preserve accepted evidence and request review, without fabricating a dated event."
+        }
+      ],
+      "revision": 1,
       "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
       "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
     },

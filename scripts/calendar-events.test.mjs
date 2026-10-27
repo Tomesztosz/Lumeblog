@@ -132,7 +132,15 @@ test('October horizon refresh retains primary evidence, uncertain windows and re
     if(e.lifecycle.verification?.issue){assert.equal(state(e),'review');assert(!exportableEvent(e));}
     else assert(['current','future'].includes(state(e)));
   }
-  for(const id of ['farer-stratton-restock-late-2026','baltic-hermetique-rift-delivery','casio-mrg-d5000-sapphire-2026']){const e=entries.find(e=>e.id===id);assert.equal(state(e),'awaiting');assert(!exportableEvent(e));}
+  for(const id of ['baltic-hermetique-rift-delivery','casio-mrg-d5000-sapphire-2026']){const e=entries.find(e=>e.id===id);assert.equal(state(e),'awaiting');assert(!exportableEvent(e));}
+  const stratton=entries.find(e=>e.id==='farer-stratton-restock-late-2026');
+  assert.equal(state(stratton),'review');assert(!exportableEvent(stratton));
+  assert.equal(stratton.lifecycle.schedule.precision,'unknown');
+  assert.equal(stratton.lifecycle.schedule.originalText,'RETURNS LATE 2026');
+  assert.equal(stratton.lifecycle.verification.proposal.schedule.precision,'unknown');
+  assert.equal(stratton.lifecycle.verification.proposal.evidence.quote,'PRE ORDER FROM 29TH OCTOBER');
+  assert.equal(stratton.lifecycle.verification.proposal.evidence.accepted,false);
+  assert(stratton.lifecycle.history.some(h=>h.schedule.originalText==='RETURNS LATE 2026'));
   for(const id of ['omega-james-bond-spectre-2026','christopher-ward-c60-trident-biscay','rolex-oyster-perpetual-41-2026','tudor-northflag-2026']){const e=entries.find(e=>e.id===id);assert.equal(state(e),'occurred');assert(e.lifecycle.history.some(h=>h.verification?.issue==='legacy-completion-unverified'));assert(!exportableEvent(e));}
   const meta=await read('calendar-meta');assert.equal(meta.lastReviewed,'2026-09-06');assert(/^\d{4}-\d{2}-\d{2}$/.test(meta.lastTargetedReview));assert(meta.lastTargetedReview>='2026-10-18'&&Date.parse(meta.lastTargetedReview)<=Date.now());assert.equal(meta.targetThrough,'2026-12-31');assert.equal(meta.targetedReviewStatus,'partial');
   assert.equal(entries.length,new Set(entries.map(e=>e.id)).size);

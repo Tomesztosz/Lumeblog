@@ -24,10 +24,10 @@ for (const lang of ['hu', 'en']) {
   assert.equal(textOf(home.elements.find(n => n.tagName === 'h1')), featured.data.title);
   const publicIds = new Set(orderedPublishedPosts(posts, now).map(p => p.id));
   for (const post of posts) {
-    const inlineKey = ['ugro-masodperc', 'rattrapante', 'co-axial', 'tourbillon'].find(key => post.data.translationKey === key && post.body.includes(`<!-- lume-model ${key} -->`));
+    const inlineKey = ['ugro-masodperc', 'rattrapante', 'co-axial', 'tourbillon', 'constant-escapement'].find(key => post.data.translationKey === key && post.body.includes(`<!-- lume-model ${key} -->`));
     const key = post.data.model?.src?.match(/^\/widgets\/([a-z0-9-]+)\.html$/)?.[1] ?? inlineKey;
     if (!key || post.data.column !== 'movement') continue;
-    assert(['ugro-masodperc', 'rattrapante', 'co-axial', 'tourbillon'].includes(key) || MODEL_NAMES.includes(key));
+    assert(['ugro-masodperc', 'rattrapante', 'co-axial', 'tourbillon', 'constant-escapement'].includes(key) || MODEL_NAMES.includes(key));
     const path = lang === 'hu' ? `/muhely/${key}/` : `/en/workshop/${key}/`;
     if (!publicIds.has(post.id)) {
       assert.equal(await exists(`dist${path}index.html`), false, `Private model exposed: ${path}`);

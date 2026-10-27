@@ -1,0 +1,37 @@
+{
+  "translationKey": "constant-escapement",
+  "approvedAt": "2026-10-27",
+  "ownerQuote": "Rendben mehet időzítésre péntek 1:00-ra rendben vannak a képek",
+  "scheduledFor": "2026-10-30T01:00:00+01:00",
+  "rightsNote": "Owner approved publication and images. No independent third-party licence document was inspected. Approved bytes unchanged.",
+  "records": [
+    {
+      "file": "src/content/posts/_images/constant-escapement-hero.webp",
+      "sha256": "88c04d0a0648119b83dd76cbcc6a2a148fb17beb35ca776f6da735fd4acd4490"
+    },
+    {
+      "file": "src/content/posts/_images/constant-escapement-card.webp",
+      "sha256": "3bd2c15427a05a1ba056628d2bf8f04546acc2bb7bdd9b0edc24c387303ff30a"
+    },
+    {
+      "file": "src/content/posts/_images/constant-escapement-titanium-cutout.png",
+      "sha256": "feee32c40e4f26ed1f4e7468c202a2db252ed01e2b17b95fd58e03e725a48e12"
+    },
+    {
+      "file": "src/content/posts/_images/constant-escapement-gold-cutout.png",
+      "sha256": "ac4ccf47a17d72557908319fa08b1012d8f5f854377d6d2373c7f885f9fcfbdc"
+    },
+    {
+      "file": "src/content/posts/_images/constant-escapement-calibre-cutout.png",
+      "sha256": "b7b5ba65d07dbd5e9ad218d6023cd6a46d08a41570f4aa4e5762c73c1a103a63"
+    },
+    {
+      "file": "src/content/posts/_images/constant-escapement-blade-detail.png",
+      "sha256": "5b0753e08c8a20458c2e2f8c705978ffaea4d4bdf53ef6fbe6b321b977aa310b"
+    },
+    {
+      "file": "src/content/posts/_images/constant-escapement-wrist.webp",
+      "sha256": "ed0d3e26220697d4e439dea2bc3c088791203d718dcb5eb708e461dc3c4b012c"
+    }
+  ]
+}

@@ -25,6 +25,7 @@ import DesignArticleBody from "./DesignArticleBody.astro";
 import JumpingSecondsModel from "../JumpingSecondsModel.astro";
 import RattrapanteModel from "../RattrapanteModel.astro";
 import CoaxialModel from "../CoaxialModel.astro";
+import ConstantEscapementModel from '../ConstantEscapementModel.astro';
 import TourbillonModel from "../TourbillonModel.astro";
 import ModelShare from '../ModelShare.astro';
 import { sharedModel } from '../../lib/shared-models';
@@ -128,6 +129,9 @@ const articleLinks = Object.fromEntries(
           articleLinks={articleLinks}
         >
           <Content />
+          {post.data.translationKey === 'constant-escapement' && (
+            <ConstantEscapementModel slot="inlineModel" lang={lang} />
+          )}
           {post.data.translationKey === 'tourbillon' && (
             <TourbillonModel slot="inlineModel" lang={lang} />
           )}

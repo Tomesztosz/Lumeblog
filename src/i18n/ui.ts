@@ -137,6 +137,10 @@ export const CONTENT_LINKS = {
 } as const;
 
 export const MODEL_READING_GUIDES = {
+  'constant-escapement': {
+    hu:{question:'Miért pattan át a penge, és mitől lesz egyenletesebb az energiaadag?',observe:'Indítsd el az automatikus terhelést, majd próbáld ki kézzel a két stabil állást. Az utolsó két lépésben külön energiaadagoló szemléltetés követi a hajtástól a billegőig vezető utat.',limitation:'A penge dimenziótlan, egyszabadságfokú rugalmas modell. Az energiaadagoló külön feltételezett állapotgép, nem a GP09200 geometriai másolata vagy mért pontossági szimuláció.'},
+    en:{question:'Why does the blade snap, and how can a prepared energy dose remain consistent?',observe:'Start automatic loading, then explore the two stable shapes manually. The final two lessons use a separate metering illustration to trace energy from the drive to the balance.',limitation:'The blade is a dimensionless single-coordinate elastic model. Energy metering uses a separate assumed state machine, not a geometric replica or measured accuracy simulation of the GP09200.'},
+  },
   'tourbillon': {
     hu:{question:'Mit forgat a tourbillon, és melyik hibát nem javítja ki?',observe:'Kövesd az öt lépést a billegőtől a térbeli nézetig. Hasonlítsd össze a gyors lengést a ketrec lassú fordulatával, majd a függőleges és vízszintes helyzet átlagát.',limitation:'Saját oktatóábra és kitalált járásadatok. A modell nem egy gyári kaliber fogkapcsolati, energia- vagy pontosságszimulációja.'},
     en:{question:'What does a tourbillon rotate, and which error does it leave unchanged?',observe:'Follow five steps from the balance to the spatial view. Compare rapid oscillation with the slow carriage rotation, then compare the average in upright and horizontal positions.',limitation:'An original teaching diagram with invented rate data, not a gear-contact, energy or accuracy simulation of a production calibre.'},

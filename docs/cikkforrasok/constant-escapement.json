@@ -1,0 +1,199 @@
+{
+  "translationKey": "constant-escapement",
+  "reviewed": "2026-10-27",
+  "status": "scheduled",
+  "publicationApproved": true,
+  "scheduled": true,
+  "proposedPublication": "2026-10-30T01:00:00+01:00",
+  "dateNote": "Approved for Friday 30 October at 01:00 Europe/Budapest (00:00 UTC). Future-date build gate remains active.",
+  "articles": [
+    "src/content/posts/hu/constant-escapement.md",
+    "src/content/posts/en/constant-escapement.md"
+  ],
+  "previews": [
+    "output/article-review/constant-escapement/megnezes.html",
+    "output/article-review/constant-escapement/english.html"
+  ],
+  "workshop": [
+    "output/article-review/constant-escapement/muhely.html",
+    "output/article-review/constant-escapement/workshop.html"
+  ],
+  "author": {
+    "instructions": [
+      "lume-szemely.md",
+      "lume-hang.md",
+      "hangcheck.py"
+    ],
+    "notes": "Owner supplied the technical subject and asked for a visual explanation of buckling. No personal handling, purchase, meeting or home experiment was supplied or invented.",
+    "opinions": "The owner approved the complete article and model. No personal handling experience has been added.",
+    "rhythm": "HU has 29 narrative paragraphs ranging from 5 to 107 words, including two sustained explanations. EN has 27, ranging from 8 to 131. Voice check has no errors. HU sentence-variation warning was manually reviewed, not treated as a complete voice certificate. Both endings are specific hypothetical observations, not summary slogans.",
+    "language": "Independent British English from the same verified factual notes. No prose hyperlinks. Credits and reference table kept outside narrative paragraphs."
+  },
+  "factChecks": [
+    {
+      "claim": "GP09200 is hand-wound, 3 Hz / 21,600 vibrations per hour, minimum seven-day reserve and COSC-certified.",
+      "source": "https://assets.girard-perregaux.com/asset/631ed8ce-53af-4e86-aeae-ab1a90b690f9/93510-21-1930-5CX-mde.pdf",
+      "detail": "Locally cached 22-page official manual, technical data on printed page 17. Six half-oscillations follows from three full oscillations, not an unsupported claim of twenty impulses per second."
+    },
+    {
+      "claim": "93510-21-1930-5CX titanium Neo, 45mm diameter, 14.8mm thickness, 266 components and 29 jewels; displayed USD105000.",
+      "source": "https://www.girard-perregaux.com/watches/bridges/93510-21-1930-5cx",
+      "detail": "Official product page read and cached. Price dated 27 October 2026, no conversion, no guarantee of local tax-inclusive price."
+    },
+    {
+      "claim": "93510-52-3552-5CX is the pink-gold Neo version.",
+      "source": "https://www.girard-perregaux.com/watches/bridges/93510-52-3552-5cx",
+      "detail": "Separate official page and separate original photograph. Not a recoloured titanium watch."
+    },
+    {
+      "claim": "Early 93500 example with GP09100-0002 and six-day linear indication, 48mm case.",
+      "source": "https://www.sothebys.com/en/buy/auction/2021/important-watches/girard-perregaux-constant-escapement-l-m-reference",
+      "detail": "First-hand auction description of that particular example. Not universal specification of every L.M. variant. Earlier literature conflicts on reserve and component totals, so no single total is attributed to the entire early generation."
+    },
+    {
+      "claim": "Déhon is inventor on Sowind's bistable/monostable spring escapement patent.",
+      "source": "https://patents.google.com/patent/EP3599514A1/en",
+      "detail": "Publication 29 January 2020, priority 25 July 2018. Not described as the first invention date, and patent drawings not silently equated with final Neo geometry."
+    },
+    {
+      "claim": "Train-ticket anecdote and a 14-micron blade are described in the CUHK authors' 2015 escapement-animation paper.",
+      "source": "https://www.cad-journal.net/files/vol_12/CAD_12(4)_2015_485-491.pdf",
+      "detail": "Read pages 485-487. Anecdote attributed, not reconstructed as an eyewitness scene. Paper discusses the earlier L.M. architecture and cites some secondary material. Its zero-energy-loss assertion is not repeated. Blade dimension is not conflated with the full silicon frame's other cross-sectional dimension."
+    },
+    {
+      "claim": "2013 Constant Escapement L.M. won the Aiguille d'Or.",
+      "source": "https://www2.gphg.org/uploads/winners_2001_23_a966148bc2.pdf",
+      "detail": "Official indexed prize list supports the result; direct PDF reader timed out. Independently confirmed by the downloaded official GP manual, printed page 4."
+    },
+    {
+      "claim": "Buckled elastic members can exhibit stable states separated by unstable equilibria and snap-through.",
+      "source": "https://doi.org/10.1016/j.taml.2019.04.006",
+      "detail": "Primary research abstract and publisher metadata read in search; publisher full-page access is 403. Used for the general mechanism, not numerical GP parameters."
+    },
+    {
+      "claim": "Reduced-order beam models have limits and are not automatically quantitatively equivalent to finite-element models.",
+      "source": "https://www.repository.cam.ac.uk/items/5ddb0400-2379-4913-a046-58ce1a230931",
+      "detail": "Primary accepted-manuscript metadata/abstract inspected. Their coupled microbeam geometry requires multiple modes for quantitative agreement. Our single-coordinate illustration makes no such quantitative validation claim."
+    }
+  ],
+  "model": {
+    "chapters": 5,
+    "geometry": "Interactive 3D ribbon geometry with a projective canvas view, drag camera and top view. Enlarged clamps and markers are schematic, not a manufactured CAD replica.",
+    "beam": "Dimensionless single-coordinate double-well potential U=(q²-1)²/4. m=1, damping .45, force-controlled RK4 with 1/240 steps. Stable minima, fold threshold, inertia and dissipation calculated.",
+    "meter": "Separate explicitly labelled energy-metering state machine. One unit of prepared energy per delivered impulse is an assumption. Weak drive causes missed teaching beats. Incoming energy equals stored plus delivered plus unused. Not inferred from the beam solver.",
+    "oscillator": "Balance/hairspring drawing is an illustrative timing marker in metering mode, not a solved torsional oscillator or measured amplitude.",
+    "limits": [
+      "No micrometre-to-screen scale",
+      "No finite-element silicon stress or fatigue prediction",
+      "No tooth-contact or locking-geometry solver",
+      "No claimed physical microsecond snap duration",
+      "No measured GP pulse-energy or rate accuracy"
+    ],
+    "guidedDemo": "Optional, clearly labelled external-force ramp for the beam experiment. The same RK4 elastic ODE still calculates q. Manual slider input disables automatic loading, and reset restores the demonstration. No scripted shape interpolation replaces the mechanics.",
+    "startRegression": "scripts/check-constant-start.mjs checks visible motion after a plain Start click, status text, pause/resume, page restoration and explained manual zero-load equilibrium across four bilingual inline/standalone scenarios, including file protocol.",
+    "tests": "node --test scripts/constant-escapement-model.test.mjs",
+    "browser": "node scripts/check-constant-review.mjs --build"
+  },
+  "images": {
+    "privateRoot": "output/article-review/constant-escapement",
+    "bodyImages": 5,
+    "originalAlphaCutouts": 3,
+    "macro": "Exact source-pixel crop of the official front photograph, crop stored in media-checks.json.",
+    "hero": "Code-native HTML/CSS composition of original manufacturer photographs and a newly drawn explanatory curve. No generative images, altered numerals, invented mechanism or founder portrait.",
+    "clearance": "Owner approved publication and images. No independent third-party licence document was inspected. Approved bytes unchanged.",
+    "manifest": "output/article-review/constant-escapement/research/downloads.json",
+    "pixelChecks": "output/article-review/constant-escapement/media-checks.json",
+    "publicManifest": "docs/constant-escapement-approved-media.json"
+  },
+  "calendar": "docs/calendar-review-constant-escapement-2026-10-27.json",
+  "publicationDate": "2026-10-30T01:00:00+01:00",
+  "approval": {
+    "translationKey": "constant-escapement",
+    "approvedAt": "2026-10-27",
+    "ownerQuote": "Rendben mehet időzítésre péntek 1:00-ra rendben vannak a képek",
+    "scheduledFor": "2026-10-30T01:00:00+01:00",
+    "rightsNote": "Owner approved publication and images. No independent third-party licence document was inspected. Approved bytes unchanged.",
+    "records": [
+      {
+        "file": "src/content/posts/_images/constant-escapement-hero.webp",
+        "sha256": "88c04d0a0648119b83dd76cbcc6a2a148fb17beb35ca776f6da735fd4acd4490"
+      },
+      {
+        "file": "src/content/posts/_images/constant-escapement-card.webp",
+        "sha256": "3bd2c15427a05a1ba056628d2bf8f04546acc2bb7bdd9b0edc24c387303ff30a"
+      },
+      {
+        "file": "src/content/posts/_images/constant-escapement-titanium-cutout.png",
+        "sha256": "feee32c40e4f26ed1f4e7468c202a2db252ed01e2b17b95fd58e03e725a48e12"
+      },
+      {
+        "file": "src/content/posts/_images/constant-escapement-gold-cutout.png",
+        "sha256": "ac4ccf47a17d72557908319fa08b1012d8f5f854377d6d2373c7f885f9fcfbdc"
+      },
+      {
+        "file": "src/content/posts/_images/constant-escapement-calibre-cutout.png",
+        "sha256": "b7b5ba65d07dbd5e9ad218d6023cd6a46d08a41570f4aa4e5762c73c1a103a63"
+      },
+      {
+        "file": "src/content/posts/_images/constant-escapement-blade-detail.png",
+        "sha256": "5b0753e08c8a20458c2e2f8c705978ffaea4d4bdf53ef6fbe6b321b977aa310b"
+      },
+      {
+        "file": "src/content/posts/_images/constant-escapement-wrist.webp",
+        "sha256": "ed0d3e26220697d4e439dea2bc3c088791203d718dcb5eb708e461dc3c4b012c"
+      }
+    ]
+  },
+  "releaseChecks": {
+    "scheduledFor": "2026-10-30T01:00:00+01:00",
+    "utc": "2026-10-30T00:00:00Z",
+    "timezone": "Europe/Budapest",
+    "schedulerWorkflow": {
+      "id": 325681639,
+      "state": "active",
+      "cron": "0 0,23 * * *",
+      "note": "GitHub and Cloudflare build latency means no exact-minute delivery guarantee."
+    },
+    "approvedTextUnchanged": true,
+    "approvedMediaHashes": 7,
+    "modelUnitTests": 9,
+    "publicationAndFeedTests": 10,
+    "futureBrowserViewports": 12,
+    "startMoves": true,
+    "pauseResume": true,
+    "actualClockRoutesHidden": true,
+    "futureClockRoutesVisible": true,
+    "fullCurrentBuildPassed": true,
+    "fullFutureBuildPassed": true,
+    "voice": {
+      "hu": "No HIBA; sentence-variation warning manually reviewed, approved prose preserved.",
+      "en": "No HIBA."
+    },
+    "calendar": {
+      "status": "partial",
+      "brands": 24,
+      "sources": 62,
+      "newDatedReleases": 0,
+      "changedStrattonStatementFlagged": true,
+      "report": "docs/calendar-review-constant-escapement-2026-10-27.json"
+    },
+    "dependencyAudit": {
+      "preExisting": true,
+      "total": 3,
+      "high": 1,
+      "moderate": 2,
+      "packages": [
+        "miniflare",
+        "undici",
+        "wrangler"
+      ],
+      "lockfileChanged": false,
+      "notBypassed": true
+    },
+    "externalActions": {
+      "newsletter": false,
+      "instagram": false,
+      "earlyArticlePublication": false
+    }
+  }
+}

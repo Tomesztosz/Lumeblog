@@ -118,5 +118,23 @@
     "hash": "e53c19b258803bac01f7bb0bdbfd84d60010b469069bdc3719c0791a7642ba6b",
     "reviewedAt": "2026-10-18",
     "reason": "Read detailed manufacturer source for casio-mrg-d5000-sapphire-2026. No verified year/month launch or delivery window: retained awaiting date, without ICS."
+  },
+  {
+    "url": "https://www.seikowatches.com/us-en/products/5sports/hdb010",
+    "hash": "1161998fac954cef2976d843e4ca0a1e3579d5ea65d7adf5aa3c23b94b080d18",
+    "reviewedAt": "2026-10-27",
+    "reason": "Official JSON feed manually inspected after browser news shell. Latest global press item is 6 October Panda, already represented. Additional Presage and Prospex details and Edo series checked. HDB010 related HDB006 link is not launch-date evidence."
+  },
+  {
+    "url": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
+    "hash": "be845019d816e8efd09b241c47fa54f4001134f5e6c9d074985996ff15fc0614",
+    "reviewedAt": "2026-10-27",
+    "reason": "Catalogue and exact Astra 278081 source read: late December 2026 shipping and out of stock. Existing ordering and delivery rounds kept separate."
+  },
+  {
+    "url": "https://rathwatches.com/products/rath-droma-gmt",
+    "hash": "6b16b006b6da4a4882399278857f67744e278b1273a474fe1ab12c16bc2c7685",
+    "reviewedAt": "2026-10-27",
+    "reason": "Home and exact Droma GMT Founder Series page read. October 2026 and late October 2026 agree with accepted event-store plan. Historical September legacy text is not authoritative."
   }
 ]

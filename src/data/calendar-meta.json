@@ -1,6 +1,6 @@
 {
   "lastReviewed": "2026-09-06",
-  "lastTargetedReview": "2026-10-25",
+  "lastTargetedReview": "2026-10-27",
   "targetThrough": "2026-12-31",
   "targetedReviewStatus": "partial",
   "unverifiedBrandKeys": [
@@ -14,5 +14,5 @@
     "ming",
     "nomos"
   ],
-  "reviewRecord": "docs/calendar-review-polerouter-2026-10-25.json"
+  "reviewRecord": "docs/calendar-review-constant-escapement-2026-10-27.json"
 }

@@ -1,3 +1,4 @@
+.article-body img[src*="constant-escapement-"][src*="-cutout"] { display: block; width: 100%; height: auto; max-height: 640px; object-fit: contain; }
 /* The complete preview shares these rules. No production page imports them. */
 .navigation a[aria-current] {
   color: var(--brass);

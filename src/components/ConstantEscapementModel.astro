@@ -1,0 +1,10 @@
+---
+import { renderConstantEscapementModel, constantEscapementCSS, constantEscapementScript } from '../lib/constant-escapement-view.mjs';
+import { modelPageUrl, type Lang } from '../i18n/ui';
+import detail from '../content/posts/_images/constant-escapement-blade-detail.png';
+interface Props { lang: Lang; standalone?: boolean }
+const { lang, standalone = false } = Astro.props;
+---
+<style is:inline set:html={constantEscapementCSS}/>
+<Fragment set:html={renderConstantEscapementModel(lang, { standalone, referenceSrc: detail.src, openHref: modelPageUrl(lang, 'constant-escapement') })}/>
+<script is:inline set:html={constantEscapementScript(lang)}/>

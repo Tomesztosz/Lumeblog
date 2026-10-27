@@ -159,20 +159,20 @@
     "imageCredit": "Farer",
     "copy": {
       "hu": {
-        "dateLabel": "2026 vége, pontosabb időpont nélkül",
+        "dateLabel": "Újrarendelés: október 29., évszám nélkül",
         "summary": "Kézi felhúzású holdfázisos óra Eisenkiesel kőszámlappal és sötétben világító Holddal. A 38,5 milliméteres acéltokban Sellita SW288-1 dolgozik.",
         "selection": "Nem új modell bemutatója, hanem egy karakteres kőszámlapos Farer visszatérése a kínálatba.",
-        "availability": "A gyártó 2026 végére jelzi az újrarendelhetőséget, de hónapot vagy napot nem nevez meg. A pontosításig nem készül hozzá ICS."
+        "availability": "Az október 27-én ellenőrzött oldal október 29-i előrendelést ír, de évszám nélkül. Ez eltér a korábbi, 2026 végi visszatérést jelző közléstől. A pontosításig nincs dátumozott esemény vagy ICS."
       },
       "en": {
-        "dateLabel": "Late 2026, no more precise date",
+        "dateLabel": "Preorders: 29 October, year not stated",
         "summary": "A hand-wound moonphase with an Eisenkiesel stone dial and a luminous moon. A Sellita SW288-1 powers the 38.5mm steel watch.",
         "selection": "A distinctive stone-dial Farer returning to the range, rather than a new-model unveiling.",
-        "availability": "The manufacturer states a late-2026 return without a month or day. No ICS is issued until the timing is clarified."
+        "availability": "Checked on 27 October: the page states preorders from 29 October without a year. This differs from its previous late-2026 return wording. No dated event or ICS is issued pending clarification."
       }
     },
     "sourceUrl": "https://farer.com/products/stratton",
-    "sourceChecked": "2026-10-18",
+    "sourceChecked": "2026-10-27",
     "image": "/img/calendar/farer-stratton.png",
     "imageWidth": 900,
     "imageHeight": 900,

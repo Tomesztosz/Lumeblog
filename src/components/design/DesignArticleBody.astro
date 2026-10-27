@@ -20,7 +20,7 @@ const inlineModel = Astro.slots.has("inlineModel")
 function walk(parent: DefaultTreeAdapterTypes.ParentNode) {
   let afterModel = false;
   parent.childNodes = parent.childNodes.flatMap((node) => {
-    if (inlineModel && ['ugro-masodperc', 'rattrapante', 'co-axial', 'tourbillon'].includes(inlineModelKey) && node.nodeName === "#comment" && "data" in node && node.data.trim() === `lume-model ${inlineModelKey}`) {
+    if (inlineModel && ['ugro-masodperc', 'rattrapante', 'co-axial', 'tourbillon', 'constant-escapement'].includes(inlineModelKey) && node.nodeName === "#comment" && "data" in node && node.data.trim() === `lume-model ${inlineModelKey}`) {
       const nodes = parseFragment(inlineModel).childNodes;
       nodes.forEach((child) => (child.parentNode = parent));
       return nodes;
