@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<title>Lume Reel · Tourbillon</title>
+<!-- A márka betűi a projekt saját @fontsource csomagjaiból, helyben. -->
+<link rel="stylesheet" href="../../../node_modules/@fontsource-variable/fraunces/opsz.css">
+<link rel="stylesheet" href="../../../node_modules/@fontsource-variable/hanken-grotesk/wght.css">
+<link rel="stylesheet" href="../../../node_modules/@fontsource/ibm-plex-mono/400.css">
+<link rel="stylesheet" href="../../../node_modules/@fontsource/ibm-plex-mono/500.css">
+<style>
+  html, body { margin: 0; background: #000; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+/* ============================================================
+   LUME REEL · TOURBILLON
+   Determinisztikus jelenet: render(frame) mindig ugyanazt a képet adja.
+   A képkockákat a render.py veszi fel, a hangot a billegő ütemeiből
+   (window.REEL.beats) a sound.py szintetizálja.
+   Minden rajz saját, kódból készül: nincs külső kép, nincs jogi kockázat.
+   ============================================================ */
+
+const W = 1080, H = 1920, FPS = 30, DUR = 22, N = DUR * FPS;
+const CX = 540, CY = 1130;           // a szerkezet középpontja a képernyőn
+const R = 520;                        // a főlemez sugara
+const AP = 250;                       // a tourbillon-nyílás sugara
+
+const COL = {
+  paper: [236, 232, 220], night: [11, 16, 11],
+  ink: '#242722', nightInk: '#f0f0e3',
+  brass: '#75613b', brassNight: '#cbbd8e',
+  accent: '#d7eb96', lumeDay: '#d6d9c4',
+};
+
+/* ---------- segédek ---------- */
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const smooth = (x) => { x = clamp(x); return x * x * (3 - 2 * x); };
+const ease = (x) => { x = clamp(x); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const lerp = (a, b, k) => a + (b - a) * k;
+const mix = (c1, c2, k) => `rgb(${c1.map((v, i) => Math.round(lerp(v, c2[i], k))).join(',')})`;
+const rgba = (c, a) => `rgba(${c.join(',')},${a})`;
+const TAU = Math.PI * 2, DEG = Math.PI / 180;
+
+/* Lépcsős érték lágy átmenetekkel: [[időpont, érték], ...] */
+function piece(t, pts, w = 0.7) {
+  let v = pts[0][1];
+  for (let i = 1; i < pts.length; i++) v += (pts[i][1] - pts[i - 1][1]) * smooth((t - pts[i][0] + w / 2) / w);
+  return v;
+}
+/* Kulcskockák közti lágy átmenet: [[t, a, b, c], ...] */
+function keys(t, ks) {
+  if (t <= ks[0][0]) return ks[0].slice(1);
+  for (let i = 1; i < ks.length; i++) {
+    if (t <= ks[i][0]) {
+      const k = ease((t - ks[i - 1][0]) / (ks[i][0] - ks[i - 1][0]));
+      return ks[i].slice(1).map((v, j) => lerp(ks[i - 1][j + 1], v, k));
+    }
+  }
+  return ks[ks.length - 1].slice(1);
+}
+
+/* ---------- idő: két óra, a billegőé és a ketrecé ----------
+   Valós sebesség = 1. A billegő 4 Hz-en leng (másodpercenként 8 féllengés),
+   a ketrec 60 másodperc alatt fordul körbe. A 2. jelenetben mindkettő 8× lassul,
+   a 3.-ban csak a ketrec gyorsul 8×-osra (ezt a felirat is kiírja).          */
+const RATE_BAL = [[0, 1], [3.6, 0.125], [8.6, 1]];
+const RATE_CAGE = [[0, 1], [3.6, 0.125], [8.6, 8], [13.4, 1]];
+const FINE = 600, M = DUR * FINE;
+const clockBal = new Float64Array(M + 1), clockCage = new Float64Array(M + 1);
+for (let i = 1; i <= M; i++) {
+  const t = (i - 0.5) / FINE;
+  clockBal[i] = clockBal[i - 1] + piece(t, RATE_BAL) / FINE;
+  clockCage[i] = clockCage[i - 1] + piece(t, RATE_CAGE) / FINE;
+}
+const at = (arr, t) => {
+  const x = clamp(t * FINE, 0, M), i = Math.floor(x), f = x - i;
+  return i >= M ? arr[M] : arr[i] * (1 - f) + arr[i + 1] * f;
+};
+const BEATS = [];
+for (let i = 1; i <= M; i++) {
+  const a = Math.floor(clockBal[i - 1] * 8), b = Math.floor(clockBal[i] * 8);
+  if (b > a) BEATS.push({ t: i / FINE, rate: piece(i / FINE, RATE_BAL), n: b });
+}
+
+const AMP = 205 * DEG;                       // a billegő amplitúdója
+const balAngle = (t) => AMP * Math.sin(TAU * 4 * at(clockBal, t));
+const cageAngle = (t) => TAU * at(clockCage, t) / 60 - 0.35;
+function escapeState(t) {
+  const b = at(clockBal, t) * 8, n = Math.floor(b), f = b - n;
+  const snap = smooth(f / 0.16);
+  return {
+    wheel: (n + snap) * 9 * DEG,              // 20 fog, ütemenként fél fog
+    lever: lerp(n % 2 ? 1 : -1, n % 2 ? -1 : 1, snap) * 7 * DEG,
+  };
+}
+const lightAt = (t) => 1 - smooth((t - 13.6) / 0.9);
+const endAt = (t) => smooth((t - 18.2) / 1.1);
+
+/* Kamera: [t, nagyítás, fókusz x, fókusz y] */
+const CAM = [
+  [0, 1.06, 0, 0], [3.4, 1.14, 0, 0], [4.7, 2.28, 0, -78], [8.4, 2.44, 0, -78],
+  [9.7, 1.38, 0, -10], [13.4, 1.46, 0, -10], [17.9, 1.6, 0, -10], [19.6, 1.06, 0, 60], [22, 1.02, 0, 60],
+];
+
+/* ---------- előre megrajzolt, álló elemek ---------- */
+function off(w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
+
+function buildPlate() {
+  const S = 2 * R + 40, c = off(S, S), g = c.getContext('2d');
+  g.translate(S / 2, S / 2);
+
+  // rodinált főlemez
+  let gr = g.createRadialGradient(-120, -160, 40, 0, 0, R);
+  gr.addColorStop(0, '#e1e3dd'); gr.addColorStop(1, '#a6aaa2');
+  g.beginPath(); g.arc(0, 0, R, 0, TAU); g.fillStyle = gr; g.fill();
+
+  // perlázs (körkörös csiszolás), a nyílás kivételével
+  g.save();
+  g.beginPath(); g.arc(0, 0, R - 6, 0, TAU); g.arc(0, 0, AP + 60, 0, TAU, true); g.clip('evenodd');
+  const step = 25;
+  for (let y = -R; y <= R; y += step * 0.86) {
+    const row = Math.round((y + R) / (step * 0.86));
+    for (let x = -R; x <= R; x += step) {
+      const px = x + (row % 2 ? step / 2 : 0);
+      const cg = g.createConicGradient(0.6 + ((px * 7 + y * 3) % 10) * 0.05, px, y);
+      cg.addColorStop(0, '#e8eae4'); cg.addColorStop(0.22, '#b7bbb2');
+      cg.addColorStop(0.5, '#e1e3dd'); cg.addColorStop(0.74, '#b2b6ad'); cg.addColorStop(1, '#e8eae4');
+      g.beginPath(); g.arc(px, y, 19, 0, TAU); g.fillStyle = cg; g.fill();
+      g.strokeStyle = 'rgba(40,44,38,0.07)'; g.lineWidth = 1; g.stroke();
+    }
+  }
+  g.restore();
+
+  // sima, polírozott gyűrű a nyílás körül
+  g.beginPath(); g.arc(0, 0, AP + 60, 0, TAU); g.arc(0, 0, AP + 14, 0, TAU, true);
+  gr = g.createLinearGradient(-AP, -AP, AP, AP);
+  gr.addColorStop(0, '#e9ebe6'); gr.addColorStop(1, '#b4b8b0'); g.fillStyle = gr; g.fill('evenodd');
+
+  // másodpercskála a gyűrűn (a ketrec mutatója ehhez olvasható)
+  g.strokeStyle = '#2d312c'; g.lineCap = 'round';
+  for (let i = 0; i < 60; i++) {
+    const a = i * 6 * DEG - Math.PI / 2, big = i % 5 === 0;
+    g.lineWidth = big ? 3 : 1.6;
+    g.beginPath();
+    g.moveTo(Math.cos(a) * (AP + 22), Math.sin(a) * (AP + 22));
+    g.lineTo(Math.cos(a) * (AP + (big ? 40 : 32)), Math.sin(a) * (AP + (big ? 40 : 32)));
+    g.stroke();
+  }
+  g.fillStyle = '#2d312c'; g.font = '500 20px "IBM Plex Mono"'; g.textAlign = 'center'; g.textBaseline = 'middle';
+  [[15, 0], [30, 90], [45, 180], [60, 270]].forEach(([n, d]) => {
+    const a = d * DEG; g.fillText(String(n), Math.cos(a) * (AP + 78), Math.sin(a) * (AP + 78));
+  });
+
+  // anglázs: ferdére polírozott perem a nyílásnál
+  g.beginPath(); g.arc(0, 0, AP + 14, 0, TAU); g.arc(0, 0, AP, 0, TAU, true);
+  gr = g.createLinearGradient(-AP, -AP, AP, AP);
+  gr.addColorStop(0, '#ffffff'); gr.addColorStop(0.45, '#c9ccc6'); gr.addColorStop(1, '#6e726b');
+  g.fillStyle = gr; g.fill('evenodd');
+
+  // a nyílás mélye
+  gr = g.createRadialGradient(0, 0, 40, 0, 0, AP);
+  gr.addColorStop(0, '#2c302b'); gr.addColorStop(1, '#151814');
+  g.beginPath(); g.arc(0, 0, AP, 0, TAU); g.fillStyle = gr; g.fill();
+
+  // álló negyedik kerék, befelé néző 96 foggal
+  g.beginPath(); g.arc(0, 0, 238, 0, TAU); g.arc(0, 0, 214, 0, TAU, true);
+  gr = g.createLinearGradient(-238, -238, 238, 238);
+  gr.addColorStop(0, '#e2c27a'); gr.addColorStop(1, '#8c6a2e'); g.fillStyle = gr; g.fill('evenodd');
+  g.beginPath();
+  for (let i = 0; i < 96; i++) {
+    const a = i * TAU / 96, h = TAU / 96;
+    g.moveTo(Math.cos(a - h * 0.38) * 214.5, Math.sin(a - h * 0.38) * 214.5);
+    g.lineTo(Math.cos(a - h * 0.12) * 203, Math.sin(a - h * 0.12) * 203);
+    g.lineTo(Math.cos(a + h * 0.12) * 203, Math.sin(a + h * 0.12) * 203);
+    g.lineTo(Math.cos(a + h * 0.38) * 214.5, Math.sin(a + h * 0.38) * 214.5);
+  }
+  g.fillStyle = '#c8a45b'; g.fill();
+
+  // kékített csavarok és kövek a lemezen
+  const screw = (x, y, rot) => {
+    g.save(); g.translate(x, y);
+    g.beginPath(); g.arc(0, 0, 17, 0, TAU); g.fillStyle = '#cfd2cb'; g.fill();
+    const sg = g.createRadialGradient(-4, -4, 2, 0, 0, 14);
+    sg.addColorStop(0, '#6f97e6'); sg.addColorStop(1, '#1b3473');
+    g.beginPath(); g.arc(0, 0, 13, 0, TAU); g.fillStyle = sg; g.fill();
+    g.rotate(rot); g.fillStyle = '#0e1a3a'; g.fillRect(-12, -2.2, 24, 4.4);
+    g.restore();
+  };
+  [[30, 0.4], [150, 1.2], [270, 2.1]].forEach(([d, r]) => screw(Math.cos(d * DEG) * 440, Math.sin(d * DEG) * 440, r));
+  const jewel = (x, y) => {
+    g.beginPath(); g.arc(x, y, 16, 0, TAU);
+    const cg = g.createLinearGradient(x - 16, y - 16, x + 16, y + 16);
+    cg.addColorStop(0, '#f1d58f'); cg.addColorStop(1, '#9a7533'); g.fillStyle = cg; g.fill();
+    const jg = g.createRadialGradient(x - 3, y - 3, 1, x, y, 9);
+    jg.addColorStop(0, '#ff8aa0'); jg.addColorStop(0.5, '#b3102e'); jg.addColorStop(1, '#5a0616');
+    g.beginPath(); g.arc(x, y, 9, 0, TAU); g.fillStyle = jg; g.fill();
+    g.beginPath(); g.arc(x, y, 2.6, 0, TAU); g.fillStyle = '#1a0306'; g.fill();
+  };
+  [[205, 380], [335, 380], [90, 392]].forEach(([d, r]) => jewel(Math.cos(d * DEG) * r, Math.sin(d * DEG) * r));
+
+  // gravírozás, aranyozott betűkkel
+  g.fillStyle = '#b08b45'; g.textAlign = 'center';
+  g.font = '500 40px "Fraunces Variable"'; g.letterSpacing = '12px'; g.fillText('LUME', 6, 448);
+  g.font = '500 15px "IBM Plex Mono"'; g.letterSpacing = '5px'; g.fillText('TOURBILLON · 4 HZ', 3, 480);
+  g.letterSpacing = '0px';
+
+  // a lemez pereme
+  g.beginPath(); g.arc(0, 0, R - 1, 0, TAU); g.lineWidth = 3; g.strokeStyle = 'rgba(60,64,58,0.55)'; g.stroke();
+  return c;
+}
+
+/* A ketrec felső hídjának egy karja (a ketrec saját koordinátáiban). */
+function armPath(len = 196) {
+  const p = new Path2D(), L = [], Rr = [];
+  for (let i = 0; i <= 24; i++) {
+    const u = i / 24, r = 30 + (len - 30) * u;
+    const w = 12 - 5 * u + 7 * Math.sin(Math.PI * u);
+    const off = 0.16 * Math.sin(Math.PI * u);
+    L.push([r, off - w / r]); Rr.push([r, off + w / r]);
+  }
+  const pt = ([r, a]) => [Math.cos(a) * r, Math.sin(a) * r];
+  p.moveTo(...pt(L[0])); L.forEach((q) => p.lineTo(...pt(q)));
+  Rr.reverse().forEach((q) => p.lineTo(...pt(q))); p.closePath();
+  return p;
+}
+function escapePath() {
+  const p = new Path2D();
+  for (let i = 0; i < 20; i++) {
+    const a = i * TAU / 20;
+    const P = (r, d) => [Math.cos(a + d) * r, Math.sin(a + d) * r];
+    if (i === 0) p.moveTo(...P(26, -0.08));
+    p.lineTo(...P(26, -0.08)); p.lineTo(...P(37, 0.02)); p.lineTo(...P(38.5, 0.1)); p.lineTo(...P(30, 0.2));
+  }
+  p.closePath();
+  p.moveTo(14, 0); p.arc(0, 0, 14, 0, TAU, true);
+  return p;
+}
+function leverPath() {
+  const p = new Path2D();
+  p.moveTo(-112, -4); p.lineTo(-104, -9); p.lineTo(-96, -4); p.lineTo(-10, -6); p.lineTo(18, -22);
+  p.lineTo(28, -18); p.lineTo(12, -2); p.lineTo(12, 2); p.lineTo(28, 18); p.lineTo(18, 22);
+  p.lineTo(-10, 6); p.lineTo(-96, 4); p.lineTo(-104, 9); p.lineTo(-112, 4); p.closePath();
+  return p;
+}
+
+let PLATE, ARM, POINTER_ARM, ESC, LEVER;
+const ctx = document.getElementById('c').getContext('2d');
+const bufA = off(W, H), bufB = off(W, H), A = bufA.getContext('2d'), B = bufB.getContext('2d');
+
+/* ---------- mozgó elemek ---------- */
+function steel(g, x0, y0, x1, y1, shine) {
+  const gr = g.createLinearGradient(x0, y0, x1, y1);
+  gr.addColorStop(0, `hsl(210,6%,${48 + 40 * shine}%)`);
+  gr.addColorStop(0.5, `hsl(210,5%,${70 + 22 * shine}%)`);
+  gr.addColorStop(1, `hsl(210,6%,${36 + 20 * shine}%)`);
+  return gr;
+}
+function drawSpring(g, theta, bal) {
+  g.beginPath();
+  const turns = 13, n = 900;
+  for (let i = 0; i <= n; i++) {
+    const u = i / n, r = 19 + 77 * u, a = theta + turns * TAU * u + bal * (1 - u) * 0.9;
+    const x = Math.cos(a) * r, y = Math.sin(a) * r;
+    i ? g.lineTo(x, y) : g.moveTo(x, y);
+  }
+  g.lineWidth = 1.5; g.strokeStyle = '#4c6fae'; g.stroke();
+}
+function drawBalance(g, a) {
+  g.save(); g.rotate(a);
+  // abroncs
+  g.beginPath(); g.arc(0, 0, 122, 0, TAU); g.arc(0, 0, 107, 0, TAU, true);
+  let gr = g.createLinearGradient(-122, -122, 122, 122);
+  gr.addColorStop(0, '#ecd08d'); gr.addColorStop(0.5, '#b88d43'); gr.addColorStop(1, '#7c5a24');
+  g.fillStyle = gr; g.fill('evenodd');
+  // három ívelt küllő
+  for (let k = 0; k < 3; k++) {
+    g.save(); g.rotate(k * TAU / 3);
+    g.beginPath(); g.moveTo(14, -6); g.quadraticCurveTo(60, -16, 108, -7); g.lineTo(108, 7); g.quadraticCurveTo(60, -2, 14, 6); g.closePath();
+    g.fillStyle = gr; g.fill(); g.restore();
+  }
+  // szabályozó csavarok
+  for (let k = 0; k < 16; k++) {
+    const t = k * TAU / 16 + 0.1;
+    const x = Math.cos(t) * 126, y = Math.sin(t) * 126;
+    g.beginPath(); g.arc(x, y, k % 4 === 0 ? 6.5 : 5, 0, TAU);
+    g.fillStyle = k % 4 === 0 ? '#e7c983' : '#c9a35e'; g.fill();
+  }
+  // tengely és ellipszis (kilincsköves tárcsa)
+  g.beginPath(); g.arc(0, 0, 13, 0, TAU); g.fillStyle = '#d9dcd6'; g.fill();
+  g.beginPath(); g.arc(0, 26, 4, 0, TAU); g.fillStyle = '#a11530'; g.fill();
+  g.restore();
+}
+function drawCageBelow(g, t, theta) {
+  // alsó ketrecgyűrű
+  g.beginPath(); g.arc(0, 0, 198, 0, TAU); g.arc(0, 0, 188, 0, TAU, true);
+  g.fillStyle = steel(g, -198, -198, 198, 198, 0.3); g.fill('evenodd');
+  const es = escapeState(t);
+  // gátlókerék (270°-on, két kar között)
+  g.save(); g.rotate(-Math.PI / 2); g.translate(190, 0);
+  g.beginPath(); g.arc(0, 0, 15, 0, TAU); g.fillStyle = '#8b9096'; g.fill();
+  g.rotate(es.wheel);
+  g.fillStyle = steel(g, -38, -38, 38, 38, 0.55); g.fill(ESC, 'evenodd');
+  g.beginPath(); g.arc(0, 0, 5.5, 0, TAU); g.fillStyle = '#b3102e'; g.fill();
+  g.restore();
+  // horgony (a billegő és a gátlókerék között)
+  g.save(); g.rotate(-Math.PI / 2); g.translate(150, 0); g.rotate(es.lever);
+  g.fillStyle = steel(g, -112, -20, 28, 20, 0.45); g.fill(LEVER);
+  g.fillStyle = '#c0163a'; g.fillRect(19, -24, 7, 9); g.fillRect(19, 15, 7, 9);
+  g.beginPath(); g.arc(0, 0, 5, 0, TAU); g.fillStyle = '#b3102e'; g.fill();
+  g.restore();
+}
+function drawCageAbove(g, theta, light) {
+  // felső híd: három polírozott acélkar, a 90°-os a mutató
+  const armAngles = [Math.PI / 2, Math.PI / 2 + TAU / 3, Math.PI / 2 + 2 * TAU / 3];
+  armAngles.forEach((a, k) => {
+    const world = a + theta, shine = 0.5 + 0.5 * Math.cos(world - 2.3);
+    g.save(); g.rotate(a);
+    g.shadowColor = 'rgba(0,0,0,0.35)'; g.shadowBlur = 10; g.shadowOffsetY = 4;
+    g.fillStyle = steel(g, 0, -20, 200, 20, shine);
+    g.fill(k === 0 ? POINTER_ARM : ARM);
+    g.shadowColor = 'transparent';
+    if (k !== 0) {
+      g.beginPath(); g.arc(196, 0, 11, 0, TAU); g.fillStyle = steel(g, 185, -11, 207, 11, shine); g.fill();
+      g.beginPath(); g.arc(196, 0, 4, 0, TAU); g.fillStyle = '#1b3473'; g.fill();
+    }
+    g.restore();
+  });
+  // központi kő aranyozott foglalatban
+  g.beginPath(); g.arc(0, 0, 30, 0, TAU); g.fillStyle = steel(g, -30, -30, 30, 30, 0.8); g.fill();
+  g.beginPath(); g.arc(0, 0, 17, 0, TAU); g.fillStyle = '#d8b56c'; g.fill();
+  const jg = g.createRadialGradient(-3, -3, 1, 0, 0, 10);
+  jg.addColorStop(0, '#ff8aa0'); jg.addColorStop(0.5, '#b3102e'); jg.addColorStop(1, '#5a0616');
+  g.beginPath(); g.arc(0, 0, 10, 0, TAU); g.fillStyle = jg; g.fill();
+}
+/* Világító (lume) elemek: a ketrec mutatójának hegye és a skála négy pontja. */
+function drawLume(g, theta, glow, base) {
+  g.save();
+  if (glow > 0) { g.shadowColor = COL.accent; g.shadowBlur = 28 * glow; }
+  g.fillStyle = base;
+  [0, 90, 180, 270].forEach((d) => {
+    const a = d * DEG - Math.PI / 2;
+    g.beginPath(); g.arc(Math.cos(a) * (AP + 56), Math.sin(a) * (AP + 56), 7, 0, TAU); g.fill();
+  });
+  g.rotate(theta + Math.PI / 2);
+  g.beginPath(); g.moveTo(206, -6.5); g.lineTo(240, 0); g.lineTo(206, 6.5); g.closePath(); g.fill();
+  g.restore();
+}
+
+/* ---------- feliratok ---------- */
+const CAPTIONS = [
+  { t0: -1, t1: 3.35, eyebrow: 'SZERKEZET · TOURBILLON', lines: ['Egy ötlet 1801-ből,', 'ami ma is forog.'] },
+  { t0: 3.9, t1: 8.35, eyebrow: 'BILLEGŐ · 4 HZ · 8× LASSÍTVA', lines: ['A billegő', 'másodpercenként', 'nyolcszor lendül át.'] },
+  { t0: 8.9, t1: 13.3, eyebrow: 'KETREC · 8× GYORSÍTVA', lines: ['Körülötte a ketrec', 'általában egy perc', 'alatt fordul körbe.'] },
+  { t0: 14.25, t1: 17.85, eyebrow: 'LÁMPA LE', lines: ['A gravitáció marad.', 'A hibája átlagolódik.'], note: 'Zsebórában ez sokat számított. A csuklón kevesebbet.' },
+];
+function drawCaptions(g, t, light) {
+  const night = 1 - light;
+  // olvashatósági sáv a kép tetején
+  const bg = mix(COL.paper, COL.night, night);
+  const gr = g.createLinearGradient(0, 120, 0, 900);
+  const c = bg.slice(4, -1);
+  gr.addColorStop(0, `rgba(${c},0.94)`); gr.addColorStop(0.55, `rgba(${c},0.72)`); gr.addColorStop(1, `rgba(${c},0)`);
+  g.fillStyle = gr; g.fillRect(0, 0, W, 900);
+
+  for (const cap of CAPTIONS) {
+    const a = smooth((t - cap.t0) / 0.45) * (1 - smooth((t - cap.t1 + 0.4) / 0.4));
+    if (a <= 0) continue;
+    const dy = (1 - smooth((t - cap.t0) / 0.6)) * 26;
+    g.save(); g.globalAlpha = a; g.textBaseline = 'alphabetic';
+    g.font = '500 28px "IBM Plex Mono"'; g.letterSpacing = '5px';
+    g.fillStyle = night > 0.5 ? COL.accent : COL.brass;
+    if (night > 0.5) { g.shadowColor = COL.accent; g.shadowBlur = 16 * night; }
+    g.fillText(cap.eyebrow, 92, 318 + dy);
+    g.shadowBlur = 0; g.letterSpacing = '0px';
+    g.font = '500 92px "Fraunces Variable"'; g.fillStyle = night > 0.5 ? COL.nightInk : COL.ink;
+    cap.lines.forEach((ln, i) => g.fillText(ln, 88, 438 + i * 104 + dy));
+    if (cap.note) {
+      g.font = '400 34px "Hanken Grotesk Variable"'; g.fillStyle = night > 0.5 ? '#c4caba' : '#61655b';
+      g.fillText(cap.note, 92, 438 + cap.lines.length * 104 + 18 + dy);
+    }
+    g.restore();
+  }
+}
+function drawEndCard(g, t) {
+  const a = smooth((t - 18.5) / 0.7);
+  if (a <= 0) return;
+  g.save(); g.globalAlpha = a; g.textAlign = 'center';
+  g.font = '500 168px "Fraunces Variable"'; g.letterSpacing = '18px';
+  g.shadowColor = COL.accent; g.shadowBlur = 46; g.fillStyle = COL.accent;
+  const wm = g.measureText('LUME').width;
+  g.fillText('LUME', W / 2 + 9, 560);
+  g.beginPath(); g.arc(W / 2 + wm / 2 + 12, 548, 13, 0, TAU); g.fill();
+  g.shadowBlur = 0; g.letterSpacing = '0px';
+  g.font = '500 58px "Fraunces Variable"'; g.fillStyle = COL.nightInk;
+  g.fillText('Értsd meg működés közben.', W / 2, 690);
+  g.font = '500 30px "IBM Plex Mono"'; g.letterSpacing = '3px'; g.fillStyle = '#c4caba';
+  g.fillText('lumejournal.com/muhely', W / 2, 760);
+  g.restore();
+}
+
+/* ---------- egy képkocka ---------- */
+function frame(t) {
+  const light = lightAt(t), night = 1 - light, end = endAt(t);
+  const [s, fx, fy] = keys(t, CAM);
+  const theta = cageAngle(t);
+
+  // háttér és a lemez árnyéka
+  A.setTransform(1, 0, 0, 1, 0, 0);
+  A.fillStyle = mix(COL.paper, COL.night, night); A.fillRect(0, 0, W, H);
+  const vg = A.createRadialGradient(CX, CY, 200, CX, CY, 1300);
+  vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, `rgba(0,0,0,${0.18 + 0.3 * night})`);
+  A.fillStyle = vg; A.fillRect(0, 0, W, H);
+  A.setTransform(s, 0, 0, s, CX - fx * s, CY - fy * s);
+  A.save(); A.shadowColor = 'rgba(20,18,12,0.45)'; A.shadowBlur = 70; A.shadowOffsetY = 26;
+  A.beginPath(); A.arc(0, 0, R, 0, TAU); A.fillStyle = '#a6aaa2'; A.fill(); A.restore();
+  A.drawImage(PLATE, -PLATE.width / 2, -PLATE.height / 2);
+
+  // ketrec alsó része
+  A.save(); A.rotate(theta); drawCageBelow(A, t, theta); A.restore();
+
+  // hajszálrugó és billegő mozgáselmosással (helyes átlagolás képkockák között)
+  const dt = 1 / FPS, shutter = 0.5 * dt;
+  const da = Math.abs(balAngle(t + shutter / 2) - balAngle(t - shutter / 2));
+  const n = Math.max(1, Math.min(10, Math.ceil(da / (5 * DEG))));
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  for (let k = 0; k < n; k++) {
+    const ts = n === 1 ? t : t - shutter / 2 + shutter * (k + 0.5) / n;
+    B.setTransform(1, 0, 0, 1, 0, 0); B.drawImage(bufA, 0, 0);
+    B.setTransform(s, 0, 0, s, CX - fx * s, CY - fy * s);
+    const th = cageAngle(ts), ba = balAngle(ts);
+    B.save(); B.rotate(th); drawSpring(B, 0, ba); drawBalance(B, ba); B.restore();
+    ctx.globalAlpha = 1 / (k + 1); ctx.drawImage(bufB, 0, 0);
+  }
+  ctx.globalAlpha = 1;
+
+  // ketrec felső hídja
+  ctx.setTransform(s, 0, 0, s, CX - fx * s, CY - fy * s);
+  ctx.save(); ctx.rotate(theta); drawCageAbove(ctx, theta, light); ctx.restore();
+  drawLume(ctx, theta, 0, COL.lumeDay);
+
+  // nappali fényfolt, lassan végigsöpör a lemezen
+  if (light > 0) {
+    ctx.save(); ctx.beginPath(); ctx.arc(0, 0, R, 0, TAU); ctx.clip();
+    const sx = -700 + (t / DUR) * 1400;
+    const sg = ctx.createLinearGradient(sx - 260, -400, sx + 260, 400);
+    sg.addColorStop(0, 'rgba(255,255,255,0)'); sg.addColorStop(0.5, `rgba(255,255,250,${0.16 * light})`); sg.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = sg; ctx.fillRect(-R, -R, 2 * R, 2 * R); ctx.restore();
+  }
+
+  // lámpa le: minden elsötétül, csak a lume dereng
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  if (night > 0) {
+    ctx.fillStyle = rgba(COL.night, 0.8 * night); ctx.fillRect(0, 0, W, H);
+    ctx.setTransform(s, 0, 0, s, CX - fx * s, CY - fy * s);
+    ctx.save(); ctx.globalAlpha = night;
+    drawLume(ctx, theta, 1, COL.accent); drawLume(ctx, theta, 0.6, COL.accent);
+    ctx.restore();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+  }
+  if (end > 0) { ctx.fillStyle = rgba(COL.night, 0.6 * end); ctx.fillRect(0, 0, W, H); }
+
+  drawCaptions(ctx, t, light);
+  drawEndCard(ctx, t);
+}
+
+window.render = (i) => frame(i / FPS);
+window.renderAt = (t) => frame(t);
+window.REEL = { FPS, DUR, N, beats: BEATS, lightsOff: 13.6, endCard: 18.5 };
+
+(async () => {
+  await Promise.all([
+    document.fonts.load('500 92px "Fraunces Variable"', 'Őűáé'),
+    document.fonts.load('400 34px "Hanken Grotesk Variable"', 'Őűáé'),
+    document.fonts.load('500 28px "IBM Plex Mono"', 'ŐŰ'),
+    document.fonts.load('400 28px "IBM Plex Mono"', 'A'),
+  ]);
+  PLATE = buildPlate(); ARM = armPath(196); POINTER_ARM = armPath(206); ESC = escapePath(); LEVER = leverPath();
+  frame(0);
+  window.READY = true;
+})();
+</script>
+</body>
+</html>
