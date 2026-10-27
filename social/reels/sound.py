@@ -55,76 +55,47 @@ def _click(t, d, rng, amp):
     return n * _decay(t, d) * amp
 
 
-def _ring(t, partials):
+def _modes(t, modes):
     out = np.zeros(len(t))
-    for f, d, a in partials:
-        out += np.sin(2 * np.pi * f * np.clip(t, 0, None)) * _decay(t, d) * a
+    tc = np.clip(t, 0, None)
+    for f, d, a in modes:
+        out += np.sin(2 * np.pi * f * tc) * _decay(t, d) * a
     return out
 
 
-def _thock(t, f0, f1, d, amp):
-    """Mély, tompa koppanás enyhén lefelé csúszó hangmagassággal."""
-    tc = np.clip(t, 0, None)
-    f = f1 + (f0 - f1) * np.exp(-tc / 0.012)
-    phase = 2 * np.pi * np.cumsum(f) / SR
-    return np.sin(phase) * _decay(t, d) * amp
+def _klikk(t, rng, snap, modes, settle_at, settle_modes):
+    """Kis lámpakapcsoló: egy nagyon rövid, magas pattanás a műanyag ház
+    rezonanciáival, és utána ezredmásodpercekkel az érintkező apró ráülése."""
+    return (_click(t, snap, rng, 0.9) + _modes(t, modes)
+            + _click(t - settle_at, snap * 0.8, rng, 0.38) + _modes(t - settle_at, settle_modes))
 
 
-def _glow(t, start, rng):
-    """A derengés: magas, tiszta hangok lassú felfutással és hosszú lecsengéssel,
-    alatta egy lehelletnyi levegős zaj. Mintha a lume felizzana."""
-    tt = t - start
-    tc = np.clip(tt, 0, None)
-    env = np.where(tt >= 0, (1 - np.exp(-tc / 0.12)) * np.exp(-tc / 1.25), 0.0)
-    vib = 1 + 0.003 * np.sin(2 * np.pi * 5.2 * tc)
-    tone = (np.sin(2 * np.pi * 1567.98 * vib * tc) * 1.0
-            + np.sin(2 * np.pi * 2349.32 * vib * tc) * 0.45
-            + np.sin(2 * np.pi * 3951.07 * tc) * 0.12)
-    # lehelletnyi levegő: lágyított, sávkorlátozott zaj, a hang alatt marad
-    air = np.diff(rng.standard_normal(len(t)), prepend=0.0)
-    air = np.convolve(air, np.ones(6) / 6, mode='same')
-    return env * (tone * 0.075 + air * 0.012)
+def _apro(t, rng):
+    """Apró: a legvékonyabb, legélesebb klikk."""
+    return _klikk(t, rng, 0.00025, [(6200, 0.0016, 0.35), (9100, 0.0009, 0.2), (3900, 0.0022, 0.16)],
+                  0.0016, [(7000, 0.001, 0.14)])
 
 
-def _bakelit(t, rng):
-    """Régi bakelit billenőkapcsoló: a kar átpattan, majd zár az érintkező."""
-    return (_click(t, 0.0007, rng, 0.55)
-            + _ring(t, [(1150, 0.012, 0.32), (2620, 0.006, 0.12)])
-            + _thock(t, 170, 118, 0.032, 0.55)
-            + _click(t - 0.011, 0.0006, rng, 0.32)
-            + _ring(t - 0.011, [(2600, 0.008, 0.14)]))
+def _billeno(t, rng):
+    """Billenő: asztali lámpa billenőkapcsolója, egy hajszálnyi testtel."""
+    return _klikk(t, rng, 0.00035, [(4700, 0.0025, 0.38), (7300, 0.0014, 0.2), (1250, 0.004, 0.1)],
+                  0.0024, [(5400, 0.0016, 0.18)])
 
 
-def _sargarez(t, rng):
-    """Sárgaréz forgókapcsoló: két halk fogazás, majd a súlyos reteszelés."""
-    out = np.zeros(len(t))
-    for d, a in ((-0.072, 0.13), (-0.036, 0.18)):
-        out += _click(t - d, 0.0005, rng, a) + _ring(t - d, [(3400, 0.006, a * 0.5)])
-    return (out + _click(t, 0.0009, rng, 0.5) + _thock(t, 130, 96, 0.045, 0.6)
-            + _ring(t, [(1870, 0.18, 0.16), (3120, 0.12, 0.11), (4410, 0.08, 0.07), (6230, 0.05, 0.045)]))
+def _zsinor(t, rng):
+    """Zsinór: a lámpa vezetékén lévő kis kapcsoló, kicsit üregesebb házzal."""
+    return _klikk(t, rng, 0.0003, [(3600, 0.003, 0.34), (5800, 0.0018, 0.22), (950, 0.006, 0.12)],
+                  0.003, [(4200, 0.002, 0.2)])
 
 
-def _lanc(t, rng):
-    """Húzóláncos lámpa: a gyöngyös lánc csörren, kattan a kapcsoló, a lánc visszaleng."""
-    out = np.zeros(len(t))
-    for d in sorted(rng.uniform(-0.22, -0.04, 7)):
-        a = rng.uniform(0.05, 0.11)
-        out += _click(t - d, 0.0003, rng, a) + _ring(t - d, [(rng.uniform(6000, 8200), 0.003, a * 0.6)])
-    for d in sorted(rng.uniform(0.08, 0.2, 4)):
-        a = rng.uniform(0.03, 0.06)
-        out += _click(t - d, 0.0003, rng, a) + _ring(t - d, [(rng.uniform(6000, 8200), 0.003, a * 0.6)])
-    return (out + _click(t, 0.0008, rng, 0.5) + _ring(t, [(2200, 0.02, 0.2), (3500, 0.01, 0.08)])
-            + _thock(t, 185, 140, 0.028, 0.45))
+SWITCHES = {'apro': _apro, 'billeno': _billeno, 'zsinor': _zsinor}
 
 
-SWITCHES = {'bakelit': _bakelit, 'sargarez': _sargarez, 'lanc': _lanc}
-
-
-def lume_switch(name, rng, seconds=2.6):
-    """A kapcsolóhang és a derengés együtt. A kattanás a PRE másodpercnél van."""
+def lume_switch(name, rng, seconds=0.4):
+    """A kapcsolóhang. A klikk a PRE másodpercnél van."""
     n = int(SR * seconds)
     t = np.arange(n) / SR - PRE
-    return SWITCHES[name](t, rng) + _glow(t, 0.12, rng)
+    return SWITCHES[name](t, rng)
 
 
 def _write(path, x):
@@ -139,15 +110,15 @@ def _write(path, x):
 
 
 def export_switch(name, path):
-    """Önálló hangfájl: kis csend, kattanás, derengés. Ez a márkahang magában."""
+    """Önálló hangfájl: a klikk kétszer, egy másodperc különbséggel, kis szobában."""
     rng = np.random.default_rng(1801)
-    x = np.concatenate([np.zeros(int(0.25 * SR)), lume_switch(name, rng, 2.8)])
-    x = _reverb(x, seconds=0.45, mix=0.14, rng=rng)
-    x *= np.clip((len(x) / SR - np.arange(len(x)) / SR) / 0.3, 0, 1)
-    _write(path, x / np.max(np.abs(x)) * 0.8)
+    one = lume_switch(name, rng, 1.0)
+    x = np.concatenate([one, one, np.zeros(int(0.3 * SR))])
+    x = _reverb(x, seconds=0.12, mix=0.07, rng=rng)
+    _write(path, x / np.max(np.abs(x)) * 0.7)
 
 
-def synth(meta, path, switch='bakelit'):
+def synth(meta, path, switch='billeno'):
     rng = np.random.default_rng(1801)
     dur = meta['DUR']
     total = int(SR * dur)
@@ -162,21 +133,16 @@ def synth(meta, path, switch='bakelit'):
             continue
         s = _tick(b['rate'], b['n'] % 2 == 1, rng)
         gain = 0.32 + 0.3 * (1 - min(b['rate'], 1)) ** 0.5
-        if b['t'] > lights_off:
-            # a kattanás után a ketyegés egy pillanatra elcsendesedik,
-            # hogy a derengés tisztán szóljon, aztán visszatér
+        if b['t'] > lights_off - 0.15:
+            # a klikk körül a ketyegés egy pillanatra elcsendesedik, hogy a
+            # kapcsoló magában szóljon, aztán az óra visszatér
             dt = b['t'] - lights_off
-            gain *= 0.82 * (0.15 + 0.85 * min(1.0, max(0.0, (dt - 0.5) / 0.9)))
+            gain *= 0.82 * (0.2 + 0.8 * min(1.0, max(0.0, (dt - 0.3) / 0.6)))
         if b['t'] > end_card:
             gain *= max(0.0, 1 - (b['t'] - end_card) / 2.6)
         seg = s[: total - start] * gain
         x[start:start + len(seg)] += seg
 
-    # lámpa le: a Lume kapcsolóhangja, a kattanás pontosan a sötétedés kezdetén
-    sw = lume_switch(switch, np.random.default_rng(1801)) * 1.45
-    i = int((lights_off - PRE) * SR)
-    seg = sw[: total - i]
-    x[i:i + len(seg)] += seg
 
     # zárókártya: csendes, meleg lecsengés (két tiszta szinusz)
     pad_env = np.clip((t_all - end_card) / 0.9, 0, 1) * np.clip((dur - t_all) / 1.2, 0, 1)
@@ -188,11 +154,19 @@ def synth(meta, path, switch='bakelit'):
     x += pink / np.max(np.abs(pink)) * 0.006
 
     x = _reverb(x, rng=rng)
+
+    # lámpa le: a klikk a zengetés után kerül be, hogy száraz és éles maradjon
+    sw = _reverb(lume_switch(switch, np.random.default_rng(1801)), seconds=0.12, mix=0.07, rng=rng)
+    sw = np.convolve(sw, [0.25, 0.5, 0.25], mode='same')  # a hallhatatlan legfelső él lágyítása
+    sw = sw / np.max(np.abs(sw)) * np.max(np.abs(x)) * 2.2
+    i = int((lights_off - PRE) * SR)
+    seg = sw[: total - i]
+    x[i:i + len(seg)] += seg
     fade = np.clip((dur - t_all) / 0.25, 0, 1) * np.clip(t_all / 0.02, 0, 1)
     x *= fade
     # hangosság: átlagszint beállítása, majd lágy limiter, ami a csúcsokat
     # (kattanás, ketyegés) arányában megtartja, csak a legtetejét kerekíti
-    x = x / np.sqrt(np.mean(x ** 2)) * 0.07
-    x = np.tanh(x / 0.62) * 0.62
+    x = x / np.sqrt(np.mean(x ** 2)) * 0.064
+    x = np.tanh(x / 0.5) * 0.5
 
     _write(path, x)
