@@ -1,7 +1,9 @@
 """Saját, szintetizált hang a Reelekhez: a gátlómű ketyegése a jelenet
 valódi ütemeiből, egy halk szobazaj, a lámpa le kattanása és egy csendes
 lecsengés a zárókártyán. Nincs külső hangfájl, nincs jogdíjas zene."""
+import subprocess
 import wave
+from pathlib import Path
 
 import numpy as np
 
@@ -98,6 +100,25 @@ def lume_switch(name, rng, seconds=0.4):
     return SWITCHES[name](t, rng)
 
 
+SWITCH_FILE = Path(__file__).resolve().parent / 'assets' / 'eredeti-light-switch-off-86314.mp3'
+
+
+def load_switch(path=SWITCH_FILE):
+    """A Lume kapcsolóhangja egy valódi felvételből: a klikk elé vágva,
+    lágy be- és kiúsztatással, a mély dörmögés nélkül. Visszaadja a mintákat
+    és azt, hogy hányadik mintánál van a klikk."""
+    raw = subprocess.run(['ffmpeg', '-loglevel', 'error', '-i', str(path), '-af', 'highpass=f=90',
+                          '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-'], capture_output=True, check=True).stdout
+    x = np.frombuffer(raw, '<f4').astype(np.float64)
+    onset = int(np.argmax(np.abs(x) > 0.2 * np.max(np.abs(x))))
+    start = max(0, onset - int(0.012 * SR))
+    x = x[start:start + int(0.42 * SR)].copy()
+    x[: int(0.004 * SR)] *= np.linspace(0, 1, int(0.004 * SR))
+    tail = int(0.12 * SR)
+    x[-tail:] *= np.linspace(1, 0, tail) ** 2
+    return x / np.max(np.abs(x)), onset - start
+
+
 def _write(path, x):
     left = x
     right = np.roll(x, int(0.00035 * SR))
@@ -118,7 +139,7 @@ def export_switch(name, path):
     _write(path, x / np.max(np.abs(x)) * 0.7)
 
 
-def synth(meta, path, switch='billeno'):
+def synth(meta, path, switch='felvetel'):
     rng = np.random.default_rng(1801)
     dur = meta['DUR']
     total = int(SR * dur)
@@ -155,18 +176,28 @@ def synth(meta, path, switch='billeno'):
 
     x = _reverb(x, rng=rng)
 
-    # lámpa le: a klikk a zengetés után kerül be, hogy száraz és éles maradjon
-    sw = _reverb(lume_switch(switch, np.random.default_rng(1801)), seconds=0.12, mix=0.07, rng=rng)
-    sw = np.convolve(sw, [0.25, 0.5, 0.25], mode='same')  # a hallhatatlan legfelső él lágyítása
-    sw = sw / np.max(np.abs(sw)) * np.max(np.abs(x)) * 2.2
-    i = int((lights_off - PRE) * SR)
-    seg = sw[: total - i]
-    x[i:i + len(seg)] += seg
+    # lámpa le (szintetizált változat): a zengetés után, hogy száraz maradjon
+    if switch != 'felvetel':
+        sw = _reverb(lume_switch(switch, np.random.default_rng(1801)), seconds=0.12, mix=0.07, rng=rng)
+        sw = np.convolve(sw, [0.25, 0.5, 0.25], mode='same')
+        sw = sw / np.max(np.abs(sw)) * np.max(np.abs(x)) * 2.2
+        i = int((lights_off - PRE) * SR)
+        seg = sw[: total - i]
+        x[i:i + len(seg)] += seg
     fade = np.clip((dur - t_all) / 0.25, 0, 1) * np.clip(t_all / 0.02, 0, 1)
     x *= fade
     # hangosság: átlagszint beállítása, majd lágy limiter, ami a csúcsokat
     # (kattanás, ketyegés) arányában megtartja, csak a legtetejét kerekíti
     x = x / np.sqrt(np.mean(x ** 2)) * 0.064
     x = np.tanh(x / 0.5) * 0.5
+
+    # lámpa le (felvétel): a limiter után kerül be, így megtartja az élét,
+    # és kb. 5 dB-lel szól a ketyegés fölött
+    if switch == 'felvetel':
+        sw, onset = load_switch()
+        i = int(lights_off * SR) - onset
+        sw = np.tanh(9 * sw) / np.tanh(9) * 0.66
+        seg = sw[: total - i]
+        x[i:i + len(seg)] += seg
 
     _write(path, x)

@@ -45,7 +45,7 @@ def stills(name, times, out):
         browser.close()
 
 
-def video(name, out, switch='billeno', audio_only=False, suffix=''):
+def video(name, out, switch='felvetel', audio_only=False, suffix=''):
     frames = out / 'frames'
     start = time.time()
     if audio_only:
@@ -90,7 +90,7 @@ def mux(name, out, frames, meta, switch, suffix, start):
 if __name__ == '__main__':
     name = sys.argv[1]
     out = ROOT / 'output' / 'reels' / name
-    switch = sys.argv[sys.argv.index('--switch') + 1] if '--switch' in sys.argv else 'billeno'
+    switch = sys.argv[sys.argv.index('--switch') + 1] if '--switch' in sys.argv else 'felvetel'
     if '--switches' in sys.argv:
         # mindhárom kapcsolóhang külön fájlban, magában és a Reel lámpa le részletében
         for sw in SWITCHES:
