@@ -70,7 +70,10 @@ const DESIGNS = {
   'perem': { title: 'Perembeosztás', note: 'A tok a számlap, a kamera eltakarja a 12-t', draw: (g, c) => {
       const inset = 4.6;
       track(g, roundedRectPath(inset, inset, CASE_W - 2 * inset, CASE_H - 2 * inset, 12 - inset * 0.6), {
-        ink: c.ink, inward: true, avoid: cameraZone(1.4), accent: c.dot });
+        ink: c.ink, inward: true, avoid: cameraZone(1.4), accent: c.dot,
+        // a 12-es a kamera alá esne: fő jelölőként közvetlenül a kamera mellé kerül,
+        // és a felső sor osztásai egyenletesen elférnek közte és a sarok között
+        topRow: { from: CAM.x + CAM.w + 2.2, until: 4 } });
       wordmark(g, { width: 19, cx: CASE_W / 2, baseline: 136.5, opsz: 9, weight: 780, ink: c.ink, dot: c.dot, th: c.th });
   } },
   'kifuto': { title: 'Kifutó', note: 'Óriási LUME, ami lelóg a tokról', draw: (g, c) => {
@@ -109,16 +112,24 @@ function track(g, d, o) {
   const L = path.getTotalLength();
   const minor = o.short ? 1.5 : 1.8, major = o.short ? 2.9 : 3.6;
   let accentDone = false;
+  const endTop = o.topRow ? path.getPointAtLength((L * o.topRow.until) / 60) : null;
   for (let i = 0; i < 60; i++) {
     const s = (L * i) / 60;
-    const p = path.getPointAtLength(s), q = path.getPointAtLength((s + 0.2) % L);
-    if (o.avoid && o.avoid(p)) continue;
+    let p = path.getPointAtLength(s), q = path.getPointAtLength((s + 0.2) % L);
+    if (o.topRow && i >= 1 && i < o.topRow.until) {
+      // a felső sor: i = 1 a 12-es fő jelölő, utána egyenletes osztás a következő jelölőig
+      const k = (i - 1) / (o.topRow.until - 1);
+      p = { x: o.topRow.from + k * (endTop.x - o.topRow.from), y: p.y };
+      q = { x: p.x + 0.2, y: p.y };
+    } else if (o.topRow && i === 0) {
+      continue;
+    } else if (o.avoid && o.avoid(p)) continue;
     const tx = q.x - p.x, ty = q.y - p.y, n = Math.hypot(tx, ty);
     // befelé mutató normális (óramutató irányú pályán jobbra)
     let nx = -ty / n, ny = tx / n;
     if (!o.inward) { nx = -nx; ny = -ny; }
-    const big = i % 5 === 0, len = big ? major : minor;
-    if (big && !accentDone && o.accent) {
+    const big = i % 5 === 0 || (o.topRow && i === 1), len = big ? major : minor;
+    if (big && !accentDone && o.accent && !(o.topRow && i === 1)) {
       el('circle', { cx: p.x + nx * 1.2, cy: p.y + ny * 1.2, r: 1.15, fill: o.accent }, g);
       accentDone = true;
       continue;
@@ -212,7 +223,8 @@ function inkWidth(t) {
 function inkLeft(t) { return t.getExtentOfChar(0).x - (parseFloat(t.getAttribute('x')) || 0); }
 
 /* ---------- jelenetek ---------- */
-const PX_PER_MM = 24; // 610 dpi
+let PX_PER_MM = 24; // 610 dpi
+window.setScale = (v) => { PX_PER_MM = v; window.PX_PER_MM = v; };
 function setup(w, h) {
   const s = document.getElementById('s');
   s.innerHTML = '';
