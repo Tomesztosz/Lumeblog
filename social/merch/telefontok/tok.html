@@ -67,7 +67,67 @@ const DESIGNS = {
   } },
   'ritkitott': { title: 'Ritkított', note: 'Széles betűköz, mint a Reel záróképén', draw: (g, c) =>
       spaced(g, { text: 'LUME', width: 44, cx: CASE_W / 2, baseline: 128, opsz: 24, weight: 520, ink: c.ink, dot: c.dot, th: c.th }) },
+  'perem': { title: 'Perembeosztás', note: 'A tok a számlap, a kamera eltakarja a 12-t', draw: (g, c) => {
+      const inset = 4.6;
+      track(g, roundedRectPath(inset, inset, CASE_W - 2 * inset, CASE_H - 2 * inset, 12 - inset * 0.6), {
+        ink: c.ink, inward: true, avoid: cameraZone(1.4), accent: c.dot });
+      wordmark(g, { width: 19, cx: CASE_W / 2, baseline: 136.5, opsz: 9, weight: 780, ink: c.ink, dot: c.dot, th: c.th });
+  } },
+  'kifuto': { title: 'Kifutó', note: 'Óriási LUME, ami lelóg a tokról', draw: (g, c) => {
+      const t = el('text', { 'font-family': 'Fraunces', 'font-weight': 560, fill: c.ink, 'font-size': 10,
+        style: "font-variation-settings: 'opsz' 36; letter-spacing: -0.04em", 'text-anchor': 'start' }, g);
+      t.textContent = 'LUME';
+      let fs = 10;
+      for (let i = 0; i < 6; i++) { t.setAttribute('font-size', fs); fs *= 84 / inkWidth(t); }
+      t.setAttribute('font-size', fs);
+      t.setAttribute('x', CASE_W / 2 - inkWidth(t) / 2 - inkLeft(t));
+      t.setAttribute('y', CASE_H + fs * 0.2);   // a betűk alsó harmada a tok alatt van
+  } },
+  'kamera': { title: 'Kamera-beosztás', note: 'A kamera a lünetta, mellette a LUME', draw: (g, c) => {
+      const o = 2.3;
+      track(g, roundedRectPath(CAM.x - o, CAM.y - o, CAM.w + 2 * o, CAM.h + 2 * o, CAM.r + o), {
+        ink: c.ink, inward: false, avoid: (p) => p.x < 4.5 || p.y < 4.5, accent: c.dot, short: true });
+      wordmark(g, { width: 17.5, x: CAM.x + CAM.w + 7.2, baseline: 25.6, opsz: 9, weight: 780, ink: c.ink, dot: c.dot, th: c.th });
+  } },
 };
+
+/* ---------- beosztás ---------- */
+function roundedRectPath(x, y, w, h, r) {
+  // a felső közepéről indul, óramutató járásával megegyezően: így az első osztás a „12”
+  const cx = x + w / 2;
+  return `M ${cx} ${y} H ${x + w - r} A ${r} ${r} 0 0 1 ${x + w} ${y + r} V ${y + h - r} ` +
+         `A ${r} ${r} 0 0 1 ${x + w - r} ${y + h} H ${x + r} A ${r} ${r} 0 0 1 ${x} ${y + h - r} ` +
+         `V ${y + r} A ${r} ${r} 0 0 1 ${x + r} ${y} Z`;
+}
+function cameraZone(m) {
+  return (p) => p.x < CAM.x + CAM.w + m && p.y < CAM.y + CAM.h + m;
+}
+/* 60 osztás a pálya mentén, ötpercenként hosszabb; a lume-pont a 12-n,
+   ha az látszik, különben az első látható főosztáson. */
+function track(g, d, o) {
+  const path = el('path', { d, fill: 'none' }, g);
+  const L = path.getTotalLength();
+  const minor = o.short ? 1.5 : 1.8, major = o.short ? 2.9 : 3.6;
+  let accentDone = false;
+  for (let i = 0; i < 60; i++) {
+    const s = (L * i) / 60;
+    const p = path.getPointAtLength(s), q = path.getPointAtLength((s + 0.2) % L);
+    if (o.avoid && o.avoid(p)) continue;
+    const tx = q.x - p.x, ty = q.y - p.y, n = Math.hypot(tx, ty);
+    // befelé mutató normális (óramutató irányú pályán jobbra)
+    let nx = -ty / n, ny = tx / n;
+    if (!o.inward) { nx = -nx; ny = -ny; }
+    const big = i % 5 === 0, len = big ? major : minor;
+    if (big && !accentDone && o.accent) {
+      el('circle', { cx: p.x + nx * 1.2, cy: p.y + ny * 1.2, r: 1.15, fill: o.accent }, g);
+      accentDone = true;
+      continue;
+    }
+    el('line', { x1: p.x, y1: p.y, x2: p.x + nx * len, y2: p.y + ny * len,
+      stroke: o.ink, 'stroke-width': big ? 1.05 : 0.82, 'stroke-linecap': 'butt' }, g);
+  }
+  path.remove();
+}
 
 /* ---------- betűkészítők ---------- */
 const NS = 'http://www.w3.org/2000/svg';
@@ -184,7 +244,10 @@ window.mockup = (id, caseKey, tone, th = 0) => {
   el('rect', { x: 1.5, y: 3, width: CASE_W, height: CASE_H, rx: 12, fill: '#000', opacity: 0.18, filter: 'url(#bl)' }, g);
   el('rect', { x: 0, y: 0, width: CASE_W, height: CASE_H, rx: 12, fill: c.fill }, g);
 
-  DESIGNS[id].draw(g, colors(tone, th));
+  const clip = el('clipPath', { id: 'tokforma' }, defs);
+  el('rect', { x: 0, y: 0, width: CASE_W, height: CASE_H, rx: 12 }, clip);
+  const art = el('g', { 'clip-path': 'url(#tokforma)' }, g);
+  DESIGNS[id].draw(art, colors(tone, th));
 
   // kamera: a tok pereme, benne a telefon kameraszigete
   el('rect', { x: CAM.x - 0.4, y: CAM.y + 0.6, width: CAM.w, height: CAM.h, rx: CAM.r, fill: '#000', opacity: 0.18, filter: 'url(#bl)' }, g);

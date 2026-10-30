@@ -27,6 +27,12 @@ PAIRS = [
     ('sarok', 'grey', 'light'),
     ('ritkitott', 'black', 'dark'),
 ]
+# második kör: a tok formájával játszó tervek, mindegyik két tokszínen
+PAIRS2 = [
+    ('perem', 'beige', 'light'), ('perem', 'black', 'dark'),
+    ('kifuto', 'beige', 'light'), ('kifuto', 'olive', 'dark'),
+    ('kamera', 'beige', 'light'), ('kamera', 'navy', 'dark'),
+]
 COLORWAYS = [('beige', 'light'), ('olive', 'dark'), ('black', 'dark'), ('navy', 'dark')]
 MIN_LINE_MM = 0.7
 # A mottóban csak az ékezetek (Ó, Á, Ő) maradnak 0,7 mm alatt: rövid, elvékonyodó
@@ -124,7 +130,7 @@ def main():
         ppm = page.evaluate('window.PX_PER_MM')
 
         thick = {}
-        for d, _, _ in PAIRS:
+        for d, _, _ in PAIRS + PAIRS2[::2]:
             if d in THICK_OVERRIDE:
                 th = THICK_OVERRIDE[d]
                 probe = OUT / '_probe.png'
@@ -154,6 +160,21 @@ def main():
                 full = OUT / 'nyomdai' / f'{i:02d}-{d}-{name}-teljes-tok.png'
                 shot(page, 'printFile', [d, tone, thick[d]], full, True)
                 crop_png(full, OUT / 'nyomdai' / f'{i:02d}-{d}-{name}.png', int(2 * ppm))
+
+        tiles2 = []
+        for i, (d, case, tone) in enumerate(PAIRS2):
+            n = 7 + i // 2
+            m = OUT / 'latvany' / f'{n:02d}-{d}-{case}.png'
+            shot(page, 'mockup', [d, case, tone, thick[d]], m, True)
+            tiles2.append((m, f'{n}. {meta[d]["title"]}', f'{cases[case]["name"]} tok · {meta[d]["note"]}'))
+        for i, (d, _, _) in enumerate(PAIRS2[::2]):
+            n = 7 + i
+            for tone, name in (('light', 'sotet-felirat'), ('dark', 'vilagos-felirat')):
+                full = OUT / 'nyomdai' / f'{n:02d}-{d}-{name}-teljes-tok.png'
+                shot(page, 'printFile', [d, tone, thick[d]], full, True)
+                if d != 'kifuto':  # a kifutó csak a teljes hátlapon értelmes
+                    crop_png(full, OUT / 'nyomdai' / f'{n:02d}-{d}-{name}.png', int(2 * ppm))
+        sheet(page, tiles2, 3, OUT / 'opciok-2.png', 'Játék a tokkal', 600)
 
         sheet(page, tiles, 3, OUT / 'opciok.png', 'Lume telefontok · iPhone 16 Pro', 600)
         sheet(page, cw, 8, OUT / 'szinek.png', 'Ugyanezek más tokszínen', 300)
