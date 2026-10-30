@@ -71,7 +71,7 @@ const DESIGNS = {
       const inset = 4.6;
       track(g, roundedRectPath(inset, inset, CASE_W - 2 * inset, CASE_H - 2 * inset, 12 - inset * 0.6), {
         ink: c.ink, inward: true, avoid: cameraZone(1.4), accent: c.dot,
-        // a 12-es a kamera alá esne: fő jelölőként közvetlenül a kamera mellé kerül,
+        // a 12-es a kamera alá esne: helyette a kamera mellé egy sima osztás kerül,
         // és a felső sor osztásai egyenletesen elférnek közte és a sarok között
         topRow: { from: CAM.x + CAM.w + 2.2, until: 4 } });
       wordmark(g, { width: 19, cx: CASE_W / 2, baseline: 136.5, opsz: 9, weight: 780, ink: c.ink, dot: c.dot, th: c.th });
@@ -128,8 +128,8 @@ function track(g, d, o) {
     // befelé mutató normális (óramutató irányú pályán jobbra)
     let nx = -ty / n, ny = tx / n;
     if (!o.inward) { nx = -nx; ny = -ny; }
-    const big = i % 5 === 0 || (o.topRow && i === 1), len = big ? major : minor;
-    if (big && !accentDone && o.accent && !(o.topRow && i === 1)) {
+    const big = i % 5 === 0, len = big ? major : minor;
+    if (big && !accentDone && o.accent) {
       el('circle', { cx: p.x + nx * 1.2, cy: p.y + ny * 1.2, r: 1.15, fill: o.accent }, g);
       accentDone = true;
       continue;
