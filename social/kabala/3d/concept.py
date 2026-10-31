@@ -24,9 +24,9 @@ if __name__ == '__main__':
     srv, port = serve()
     try:
         with sync_playwright() as p:
-            b = p.chromium.launch(args=ARGS); pg = b.new_page(viewport={'width': 1200, 'height': 1400})
+            b = p.chromium.launch(args=ARGS); pg = b.new_page(viewport={'width': 1200, 'height': 1500})
             errs = []; pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and errs.append(m.text))
-            pg.goto(f'http://127.0.0.1:{port}/concept.html'); pg.wait_for_function('window.READY === true', timeout=60000)
+            pg.goto(f'http://127.0.0.1:{port}/' + (sys.argv[2] if len(sys.argv) > 2 else 'concept.html')); pg.wait_for_function('window.READY === true', timeout=120000)
             shots = json.loads(sys.argv[1]) if len(sys.argv) > 1 else SHOTS
             for name, o in shots.items():
                 pg.evaluate(f'window.show({json.dumps(o)})'); pg.locator('#c').screenshot(path=str(OUT / f'{name}.png')); print(name)

@@ -1,0 +1,38 @@
+<!doctype html><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+<canvas id="c"></canvas>
+<script type="module">
+import { makeStage, THREE } from './tenten3d.js';
+import { makeTenTen, loadFonts } from './tenten.js';
+import { RoomEnvironment } from './vendor/jsm/environments/RoomEnvironment.js';
+const W = 1200, H = 1500;
+await loadFonts();
+const st = makeStage(document.getElementById('c'), W, H);
+const pm = new THREE.PMREMGenerator(st.renderer);
+const env = pm.fromScene(new RoomEnvironment(), .04).texture;
+st.scene.environment = env;
+const cache = {};
+let rig = null;
+window.show = (o) => {
+  const night = !!o.night;
+  if (rig) st.scene.remove(rig.root);
+  rig = cache[night] || (cache[night] = makeTenTen({ night }));
+  st.scene.add(rig.root);
+  rig.root.rotation.y = o.yaw ?? -.38;
+  rig.body.rotation.z = o.tilt ?? .03;
+  rig.setTime(...(o.time || [305, 55])); rig.setChrono(o.chrono ?? 0);
+  rig.setEyes(o.eyes || {}); rig.talk(...(o.talk || [0, 0]));
+  const arms = o.arms || [-.22, .22];
+  rig.arms.forEach((a, i) => { a.sh.rotation.z = arms[i]; a.sh.rotation.x = (o.armsX || [0, 0])[i]; });
+  st.scene.environmentIntensity = night ? .08 : 1;
+  st.scene.background = new THREE.Color(o.bg || (night ? '#1b2019' : '#ece5d6'));
+  st.lights.hemi.intensity = night ? .18 : .7; st.lights.key.intensity = night ? .2 : 2.2;
+  st.lights.fill.intensity = night ? .08 : .5; st.lights.rim.intensity = night ? .6 : 1.6;
+  st.renderer.toneMappingExposure = night ? 1 : 1.05;
+  st.bloom.strength = night ? .6 : 0; st.bloom.threshold = .35; st.bloom.radius = .5;
+  const [cx, cy, cz, tx, ty] = o.cam || [0, 1.7, 9, 0, 1.45];
+  st.cam.position.set(cx, cy, cz); st.cam.lookAt(tx, ty, 0);
+  st.render(); return true;
+};
+window.READY = true;
+</script>
