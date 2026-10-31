@@ -149,6 +149,14 @@ function mouthTT(type, n) {
   const st = n ? '#4f574a' : K.ink, dark = n ? '#121510' : '#2a1d18', tongue = n ? '#3b2a25' : '#cf6f5c';
   const tooth = n ? '#3a4136' : '#fff';
   const W = { 'stroke-width': 4.5, stroke: st, 'stroke-linejoin': 'round' };
+  if (type && typeof type === 'object') { // beszéd: o = nyitás, w = szélesség (magas hangoknál szélesebb száj)
+    const o = type.o, w = type.w || 0;
+    if (o < .1) return E('rect', { x: -19 - 4 * w, y: -6, width: 38 + 8 * w, height: 12, rx: 6, fill: dark, ...W });
+    const ww = 32 + 22 * w, hh = 14 + 36 * o * (1 - .35 * w);
+    return E('rect', { x: -ww / 2, y: -12, width: ww, height: hh, rx: Math.min(ww, hh) / 2.2, fill: dark, ...W }) +
+      (hh > 22 ? E('rect', { x: -ww / 2 + 5, y: -9.5, width: ww - 10, height: 6, rx: 3, fill: tooth }) : '') +
+      E('ellipse', { cx: 0, cy: -12 + hh - 6, rx: ww * .28, ry: 4 + 3 * o, fill: tongue });
+  }
   if (typeof type === 'number') { // beszéd: a nyitás mértéke 0..1
     const v = type;
     if (v < .12) type = 'date';
