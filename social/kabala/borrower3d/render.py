@@ -106,7 +106,7 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,LumeCaption,64,&H00F4F1E9,&H9AF4F1E9,&H00191C17,&H64191C17,0,0,0,0,100,100,0,0,1,5,2,2,90,90,560,1
+Style: Cap,LumeCaption,104,&H00F4F1E9,&H9AF4F1E9,&H00191C17,&H64191C17,0,0,0,0,100,100,0,0,1,7,3,2,80,80,500,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
