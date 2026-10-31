@@ -1,0 +1,31 @@
+<!doctype html><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+<canvas id="c"></canvas>
+<script type="module">
+import { makeTenTen, makeStage, THREE } from './tenten3d.js';
+const W = 1200, H = 1400;
+const st = makeStage(document.getElementById('c'), W, H);
+let rig = null;
+window.show = (o) => {
+  if (rig) st.scene.remove(rig.root);
+  rig = makeTenTen(o);
+  st.scene.add(rig.root);
+  rig.root.rotation.y = o.yaw ?? -.32;
+  rig.body.rotation.z = o.tilt ?? .04;
+  if (o.time) rig.setTime(...o.time);
+  if (o.look) rig.look(...o.look);
+  if (o.blink) rig.blink(o.blink);
+  if (o.talk) rig.talk(...o.talk);
+  if (o.arms) rig.arms.forEach((a, i) => a.rotation.z = o.arms[i]);
+  const night = o.style === 'night';
+  st.scene.background = new THREE.Color(o.bg || (night ? '#1e241c' : '#efe9dc'));
+  st.lights.hemi.intensity = night ? .25 : 1.1; st.lights.key.intensity = night ? .25 : 2.4;
+  st.lights.fill.intensity = night ? .1 : .7; st.lights.rim.intensity = night ? .5 : 1.4;
+  st.renderer.toneMappingExposure = night ? 1.0 : 1.15;
+  st.bloom.strength = night ? .55 : 0; st.bloom.threshold = .35; st.bloom.radius = .5;
+  st.cam.position.set(0, 1.5, 7.6); st.cam.lookAt(0, 1.18, 0);
+  st.render();
+  return true;
+};
+window.READY = true;
+</script>
