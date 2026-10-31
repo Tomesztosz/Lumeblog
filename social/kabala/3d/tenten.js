@@ -7,9 +7,9 @@ import { RoundedBoxGeometry } from './vendor/jsm/geometries/RoundedBoxGeometry.j
 const D2R = THREE.MathUtils.degToRad;
 export const COL = { gold: '#d6b06a', dial: '#f4eee0', ink: '#1f221d', lume: '#d7eb96', leather: '#6a3f26', leatherDark: '#45281a', red: '#b8432c' };
 
-export async function loadFonts() {
+export async function loadFonts(base = 'fonts/') {
   for (const [fam, file, w] of [['Fraunces', 'fraunces-latin-full-normal.woff2', '100 900'], ['Mono', 'ibm-plex-mono-latin-500-normal.woff2', '500'], ['Hanken', 'hanken-grotesk-latin-wght-normal.woff2', '100 900']]) {
-    const f = new FontFace(fam, `url(fonts/${file})`, { weight: w }); await f.load(); document.fonts.add(f);
+    const f = new FontFace(fam, `url(${base}${file})`, { weight: w }); await f.load(); document.fonts.add(f);
   }
 }
 
@@ -202,13 +202,16 @@ export function makeTenTen(o = {}) {
   const arms = [];
   for (const s of [-1, 1]) {
     const sh = new THREE.Group(); sh.position.set(s * .9, -.4, -.04); body.add(sh);
-    const up = S(M.gold, new THREE.CapsuleGeometry(.065, .38, 8, 24)); up.position.y = -.25; sh.add(up);
-    const hand = new THREE.Group(); hand.position.y = -.52; sh.add(hand);
+    const up = S(M.gold, new THREE.CapsuleGeometry(.065, .2, 8, 24)); up.position.y = -.13; sh.add(up);
+    const el = new THREE.Group(); el.position.y = -.27; sh.add(el);
+    const elj = S(M.polish, new THREE.SphereGeometry(.07, 20, 12)); el.add(elj);
+    const fo = S(M.gold, new THREE.CapsuleGeometry(.06, .18, 8, 24)); fo.position.y = -.13; el.add(fo);
+    const hand = new THREE.Group(); hand.position.y = -.27; el.add(hand);
     const palm = S(M.glove, new THREE.SphereGeometry(.11, 32, 20)); palm.scale.set(1, 1.1, .75); palm.position.y = -.06; hand.add(palm);
     for (let f = 0; f < 3; f++) { const fi = S(M.glove, new THREE.CapsuleGeometry(.032, .07, 6, 12)); fi.position.set((f - 1) * .055, -.17, .01); hand.add(fi); }
     const th = S(M.glove, new THREE.CapsuleGeometry(.03, .06, 6, 12)); th.position.set(-s * .1, -.07, .03); th.rotation.z = s * .9; hand.add(th);
     const cuff = S(M.glove, new THREE.CylinderGeometry(.085, .095, .06, 24)); cuff.position.y = .02; hand.add(cuff);
-    sh.rotation.z = s * .22; arms.push({ sh, hand });
+    sh.rotation.z = s * .22; arms.push({ sh, el, hand, side: s });
   }
   // lábak: szíjvégek, cipővel
   const legs = [];
@@ -221,6 +224,13 @@ export function makeTenTen(o = {}) {
     legs.push({ hip, foot });
   }
   const rig = { root, body, face, eyes, hands, hourP, minP, chrono, mouth, open, win, frame, arms, legs, top, crown, M };
+  // kar-póz: a = oldalra emelés (fok), f = előre emelés (fok), e = könyökhajlítás (fok), w = csukló
+  rig.setArm = (i, { a = 12, f = 0, e = 10, w = 0, tw = 0 } = {}) => {
+    const r = arms[i], s = r.side;
+    r.sh.rotation.set(-D2R(f), D2R(tw) * s, D2R(a) * s, 'YXZ');
+    r.el.rotation.set(-D2R(e * .6), 0, D2R(e) * s * .6);
+    r.hand.rotation.set(0, 0, D2R(w) * s);
+  };
   rig.setTime = (hd, md) => { hourP.rotation.z = -D2R(hd); minP.rotation.z = -D2R(md); };
   rig.setChrono = d => { chrono.rotation.z = -D2R(d); };
   rig.setEyes = ({ look = [0, 0], lid = .15, tilt = 0, brow = 0, browTilt = 0, L = {}, R = {} } = {}) => {

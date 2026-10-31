@@ -1,0 +1,33 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>The Borrower · Lume</title>
+<style>
+@font-face { font-family: Hanken; font-weight: 100 900; src: url('/3d/fonts/hanken-grotesk-latin-wght-normal.woff2'); }
+@font-face { font-family: Fraunces; font-weight: 100 900; src: url('/3d/fonts/fraunces-latin-full-normal.woff2'); }
+@font-face { font-family: Mono; font-weight: 500; src: url('/3d/fonts/ibm-plex-mono-latin-500-normal.woff2'); }
+html, body { margin: 0; background: #000; }
+#wrap { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+canvas { display: block; }
+#cap { position: absolute; left: 70px; right: 70px; top: 1300px; text-align: center; font: 800 58px/1.18 Hanken; letter-spacing: -.5px;
+  color: #f6f1e4; text-shadow: 0 3px 0 rgba(20,22,18,.55), 0 0 18px rgba(20,22,18,.55); }
+#cap span { opacity: .38; transition: none; }
+#cap span.on { opacity: 1; }
+#cap span.emp { color: #ffd27a; }
+#cap.night span.emp { color: #d7eb96; text-shadow: 0 0 16px rgba(215,235,150,.7); }
+#cap.dot span { color: #e4f3a8; }
+#cap.dot span.emp { color: #ffd27a; }
+#endcard { position: absolute; left: 0; right: 0; top: 330px; text-align: center; opacity: 0; color: #d7eb96; text-shadow: 0 0 24px rgba(215,235,150,.6); }
+#endcard .t { font: 600 150px/1 Fraunces; font-variation-settings: 'opsz' 144, 'SOFT' 60; letter-spacing: -3px; }
+#endcard .s { font: italic 400 50px/1.25 Fraunces; margin-top: 18px; color: #f2f0e8; text-shadow: none; }
+#endcard .u { font: 500 34px Mono; letter-spacing: 8px; margin-top: 40px; }
+#fade { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; }
+</style>
+<script type="importmap">{"imports":{"three":"/3d/vendor/three.module.js"}}</script>
+<div id="wrap">
+  <canvas id="c"></canvas>
+  <div id="cap"></div>
+  <div id="endcard"><div class="t">MING.</div><div class="s">When a photographer<br>designs a watch</div><div class="u">LUMEJOURNAL.COM</div></div>
+  <div id="fade"></div>
+</div>
+<script src="/anim.js"></script>
+<script type="module" src="scene.js"></script>

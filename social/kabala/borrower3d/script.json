@@ -1,0 +1,163 @@
+{
+ "title": "The Borrower",
+ "lines": [
+  {
+   "id": "l01",
+   "who": "TEN-TEN",
+   "text": "[leans in] This watch costs three and a half thousand francs. [pause] And there's no name on it.",
+   "caption": {
+    "three and a half thousand francs.": "CHF 3,500."
+   },
+   "emph": [
+    "CHF",
+    "3,500.",
+    "no",
+    "name"
+   ],
+   "gap": 0.3
+  },
+  {
+   "id": "l02",
+   "who": "DOT",
+   "text": "[gasps] Wait. Who made it?!",
+   "emph": [
+    "Who"
+   ],
+   "gap": 0.15
+  },
+  {
+   "id": "l03",
+   "who": "TEN-TEN",
+   "text": "[smugly] A man who couldn't afford watches.",
+   "emph": [
+    "couldn't"
+   ],
+   "gap": 0.15
+  },
+  {
+   "id": "l04",
+   "who": "TEN-TEN",
+   "text": "Back then, the watches he loved were way beyond an intern's salary.",
+   "emph": [
+    "way",
+    "beyond"
+   ],
+   "gap": 0.2
+  },
+  {
+   "id": "l05",
+   "who": "TEN-TEN",
+   "text": "So he borrowed them. From collectors.",
+   "emph": [
+    "borrowed"
+   ],
+   "gap": 0.2
+  },
+  {
+   "id": "l06",
+   "who": "TEN-TEN",
+   "text": "Photographed them. Studied them. Gave them back. [dry] A collection with return dates. Very sensible.",
+   "emph": [
+    "return",
+    "dates.",
+    "sensible."
+   ],
+   "gap": 0.25
+  },
+  {
+   "id": "l07",
+   "who": "DOT",
+   "text": "[giggles] Can we do that?",
+   "emph": [],
+   "gap": 0.12
+  },
+  {
+   "id": "l08",
+   "who": "TEN-TEN",
+   "text": "[flat] No.",
+   "emph": [
+    "No."
+   ],
+   "gap": 0.25
+  },
+  {
+   "id": "l09",
+   "who": "TEN-TEN",
+   "text": "Photography became his career. All the way to Hasselblad, as Chief of Strategy.",
+   "emph": [
+    "Hasselblad,",
+    "Strategy."
+   ],
+   "gap": 0.2
+  },
+  {
+   "id": "l10",
+   "who": "DOT",
+   "text": "[whispers] The camera people?!",
+   "emph": [
+    "camera"
+   ],
+   "gap": 0.15
+  },
+  {
+   "id": "l11",
+   "who": "TEN-TEN",
+   "text": "In twenty seventeen, he made his own watches. And this one? Designed like a photograph. Light first.",
+   "caption": {
+    "twenty seventeen,": "2017,"
+   },
+   "emph": [
+    "2017,",
+    "Light",
+    "first."
+   ],
+   "gap": 0.35
+  },
+  {
+   "id": "l12",
+   "who": "TEN-TEN",
+   "text": "Watch.",
+   "emph": [
+    "Watch."
+   ],
+   "gap": 0.35
+  },
+  {
+   "id": "l13",
+   "who": "TEN-TEN",
+   "text": "[softly] The markers are cut into the sapphire. They float above the hands.",
+   "emph": [
+    "sapphire.",
+    "float"
+   ],
+   "gap": 1.0
+  },
+  {
+   "id": "l14",
+   "who": "TEN-TEN",
+   "text": "[softly] It doesn't need a name. You know it in the dark.",
+   "emph": [
+    "dark."
+   ],
+   "gap": 0.35
+  },
+  {
+   "id": "l15",
+   "who": "DOT",
+   "text": "[small voice] ...Can we borrow one?",
+   "emph": [
+    "borrow"
+   ],
+   "gap": 0.25
+  },
+  {
+   "id": "l16",
+   "who": "TEN-TEN",
+   "text": "[sighs] Full story on Lume.",
+   "emph": [
+    "Lume."
+   ],
+   "gap": 0.2
+  }
+ ]
+}
