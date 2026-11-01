@@ -55,7 +55,7 @@ export async function journalMetadata({lang,view,column,post,posts,twin,site}: {
   }
   if(view==='about')return {title:JOURNAL_META[lang].aboutTitle,description:JOURNAL_META[lang].aboutDescription,altUrl:aboutUrl(other),
     structuredData:authorProfileSchema({site,lang,canonical:absolute(aboutUrl(lang)),name:AUTHOR[lang],alternateName:AUTHOR[other],
-      description:lang==='hu'?'Közgazdász végzettségű órarajongó, a Lume Journal szerzője.':'Economics graduate and watch enthusiast, the author of Lume Journal.'})};
+      description:lang==='hu'?'A Lume Journal szerzője.':'The author of Lume Journal.'})};
   if(view==='404')return {title:'404',description:JOURNAL_META[lang].notFoundDescription,altUrl:'/en/',noindex:true,hasTranslation:false};
   if(view==='archive')return {title:t.archiveSeoTitle,description:t.archiveDescription,altUrl:archiveUrl(other),
     structuredData:collectionSchema({site,lang,canonical:absolute(archiveUrl(lang)),title:t.archiveSeoTitle,description:t.archiveDescription,
