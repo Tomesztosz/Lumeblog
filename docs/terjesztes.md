@@ -92,4 +92,22 @@ Webmaster Tools AI Performance a `.seo-private/` mappába, majd
 
 ## Márkák elérhetősége
 
-(A táblázat a hivatalos oldalakon közzétett címek alapján készül.)
+Ellenőrizve 2026. november 1-jén, kizárólag a márkák saját oldalán közzétett
+címek alapján. Ahol van sajtócím, oda menjen a levél; máshol az általános cím
+vagy az űrlap a hivatalos út, kiegészítve egy rövid Instagram-üzenettel.
+
+| Márka | Cikk | Hova írjunk | Instagram | Megjegyzés |
+| --- | --- | --- | --- | --- |
+| Brew Watch Co. | [Brew](https://lumejournal.com/en/in-hand/brew-ten-seconds/) | press@brew-watches.com | @brewwatches | Sajtó és együttműködés |
+| Christopher Ward | [Christopher Ward](https://lumejournal.com/en/in-hand/christopher-ward/) | press@christopherward.co.uk | @chriswardlondon | Saját PR-csapat, [sajtóoldal](https://www.christopherward.com/int/press-landing.html) |
+| Furlan Marri | [Furlan Marri](https://lumejournal.com/en/in-hand/furlan-marri/) | media@furlanmarri.com | @furlanmarri | |
+| MING | [MING](https://lumejournal.com/en/in-hand/ming-sapphire-and-light/) | media@ming.watch | @mingwatches | A Press Room oldalon |
+| Sea-Gull | [Sea-Gull 1963](https://lumejournal.com/en/in-hand/seagull-1963/) | marketing@seagullwatch.com | @seagullwatch_official | Az oldal „Business” címe; a gmail-es cím kerülendő |
+| Atelier Wen | [Atelier Wen](https://lumejournal.com/en/in-hand/atelier-wen/) | hello@atelierwen.com | @atelierwenwatches | Nincs külön sajtócím |
+| Baltic | [Baltic](https://lumejournal.com/en/in-hand/baltic/) | [űrlap](https://baltic-watches.com/en/contact) („Question”) vagy support@baltic-watches.com | @balticwatches | Francia vagy angol |
+| Bravur | [Bravur](https://lumejournal.com/en/in-hand/bravur-swedish-watches/) | [űrlap](https://bravurwatches.com/pages/contact-us-1) | @bravurwatches | A hivatalos domain bravurwatches.com |
+| Habring² | [Habring²](https://lumejournal.com/en/in-hand/habring2-austrian-watches/) | [űrlap](https://habring2.com/index.php/en/contact-habring) | nincs hivatalosan linkelt fiók | Kis családi manufaktúra, Facebook: habring2 |
+| Kurono Tokyo | [Kurono Tokyo](https://lumejournal.com/en/in-hand/kurono-tokyo/) | info@kuronotokyo.com | @kuronotokyo | Csak az adatvédelmi oldalon szerepel |
+| Lorier | [Lorier](https://lumejournal.com/en/in-hand/lorier-two-teachers-one-watch/) | info@lorierwatches.com | @lorierwatches | Képengedély már van tőlük |
+| Ōtsuka Lōtec | [Ōtsuka Lōtec](https://lumejournal.com/en/in-hand/otsuka-lotec-japanese-watches/) | [BASE-űrlap](https://thebase.com/inquiry/otsukalotec-base-shop) | @jiro.katayama | Japán oldal, egy rövid japán összefoglaló segíthet |
+| Ludovic Ballouard | [Ballouard](https://lumejournal.com/en/in-hand/ludovic-ballouard-upside-down-watch/) | info@ballouard.com | @ludovicballouard | Francia nyelvű oldal |
