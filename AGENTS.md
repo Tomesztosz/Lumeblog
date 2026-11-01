@@ -55,3 +55,23 @@ kötelező a megjelenési naptár ellenőrzése is.
 
 Ez a lépés minden hétfői, szerdai és pénteki cikkfolyamat része, nem külön kérhető
 extra feladat.
+
+## Keresési cím, leírás és frissítés (2026. november 1-től)
+
+A Search Console szerint a Lume cikkei gyakran az első oldalon jelennek meg, de a
+találati cím nem arra a kérdésre felel, amit kerestek. Ezért minden új és
+átdolgozott cikknél:
+
+1. A `seoTitle` a keresett dolog nevével kezdődjön (márka, modell, szerkezet),
+   utána jöjjön az, amit az olvasó tudni akar róla (pl. alapító, eredet,
+   működés). Legfeljebb kb. 50 karakter, mert a rendszer hozzáteszi a
+   „ | Lume Journal” utótagot. A látható szerkesztői `title` maradhat irodalmi.
+2. A `seoDescription` (kb. 140-160 karakter) első mondata egyenes, tényszerű
+   válasz legyen a legvalószínűbb kérdésre, kizárólag a cikkben forrással
+   alátámasztott tényekből. Hosszú gondolatjel itt sem lehet.
+3. Ha egy megjelent cikk érdemben változik (új tény, új modell, javított adat),
+   töltsd ki az `updated` mezőt. Elírásjavításnál ne.
+4. A szerző minden cikknél Földi Tamás. Róla a nevén kívül semmilyen személyes
+   adat (végzettség, kor, saját órák) nem kerülhet nyilvános szövegbe vagy sémába.
+5. Ha egy cikk egy konkrét márkáról szól, a publikálási összefoglalóban jelezd,
+   hogy mehet a márkának az értesítő levél (`docs/terjesztes.md`).
