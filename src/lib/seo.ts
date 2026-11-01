@@ -118,12 +118,15 @@ export function breadcrumbSchema(canonical: string, items: {name:string;url:stri
 export function articleSchema(input: {
   site: URL | string; lang: Lang; canonical: string; title: string; description: string;
   section: string; sectionUrl: string; published: string; modified?: string; image?: SocialImage;
+  author?: {name: string; url: string};
 }): JsonLd {
   const root=siteOrigin(input.site),organizationId=`${root}/#organization`;
+  const author=input.author?{'@type':'Person','@id':`${root}/#author`,name:input.author.name,url:input.author.url}
+    :{'@type':'Organization','@id':organizationId,name:'Lume',url:`${root}/`};
   return {'@context':'https://schema.org','@graph':[
     {'@type':'BlogPosting','@id':`${input.canonical}#article`,headline:input.title,description:input.description,
       datePublished:input.published,...(input.modified?{dateModified:input.modified}:{}),
-      author:{'@type':'Organization','@id':organizationId,name:'Lume',url:`${root}/`},publisher:{'@id':organizationId},
+      author,publisher:{'@id':organizationId},
       isAccessibleForFree:true,inLanguage:input.lang==='hu'?'hu-HU':'en-GB',articleSection:input.section,
       mainEntityOfPage:{'@type':'WebPage','@id':input.canonical},isPartOf:{'@id':`${root}/#website`},
       ...(input.image?{image:{'@type':'ImageObject',url:new URL(input.image.src,root).href,
@@ -131,6 +134,18 @@ export function articleSchema(input: {
     breadcrumbSchema(input.canonical,[{name:'Lume',url:`${root}${input.lang==='hu'?'/':'/en/'}`},
       {name:input.section,url:input.sectionUrl},{name:input.title,url:input.canonical}]),
   ]};
+}
+
+/** Szerzői profil a bemutatkozó oldalra: ProfilePage, benne a Person. */
+export function authorProfileSchema(input: {
+  site: URL | string; lang: Lang; canonical: string; name: string; alternateName: string; description: string; sameAs?: string[];
+}): JsonLd {
+  const root=siteOrigin(input.site);
+  return {'@context':'https://schema.org','@type':'ProfilePage','@id':`${input.canonical}#profile`,url:input.canonical,
+    inLanguage:input.lang==='hu'?'hu-HU':'en-GB',isPartOf:{'@id':`${root}/#website`},
+    mainEntity:{'@type':'Person','@id':`${root}/#author`,name:input.name,alternateName:input.alternateName,url:input.canonical,
+      description:input.description,knowsAbout:['Watches','Horology','Watch movements','Watch history'],
+      worksFor:{'@id':`${root}/#organization`},...(input.sameAs?.length?{sameAs:input.sameAs}:{})}};
 }
 
 export function collectionSchema(input: {

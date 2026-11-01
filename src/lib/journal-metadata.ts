@@ -4,7 +4,8 @@ import { urlOf, type Post } from './posts';
 import type { DesignView } from './design';
 import { CALENDAR_UI, calendarEntries, calendarUrl } from './releases';
 import { sharedModel, publicModelPosts } from './shared-models';
-import { articleDescription, articleDates, articleSchema, collectionSchema, modelSchema, type JsonLd, type SeoHeadProps, type SocialImage } from './seo';
+import { articleDescription, articleDates, articleSchema, authorProfileSchema, collectionSchema, modelSchema, type JsonLd, type SeoHeadProps, type SocialImage } from './seo';
+import { AUTHOR } from '../site';
 import { calendarSchema } from './calendar-seo';
 
 export interface JournalMetadata extends Omit<SeoHeadProps,'lang'> {
@@ -43,7 +44,8 @@ export async function journalMetadata({lang,view,column,post,posts,twin,site}: {
       altUrl:twin?urlOf(twin):columnUrl(other,post.data.column),hasTranslation:Boolean(twin),ogType:'article',
       socialImage,...dates,section:section.name,
       structuredData:articleSchema({site,lang,canonical:absolute(urlOf(post)),title:post.data.heading??post.data.title,description,
-        section:section.name,sectionUrl:absolute(columnUrl(lang,post.data.column)),...dates,image:socialImage})};
+        section:section.name,sectionUrl:absolute(columnUrl(lang,post.data.column)),...dates,image:socialImage,
+        author:{name:AUTHOR[lang],url:absolute(aboutUrl(lang))}})};
   }
   if(view==='column'&&column){
     const c=COLUMNS[column][lang];
@@ -51,7 +53,9 @@ export async function journalMetadata({lang,view,column,post,posts,twin,site}: {
       structuredData:collectionSchema({site,lang,canonical:absolute(columnUrl(lang,column)),title:c.seoTitle,description:c.seoDescription,
         items:posts.filter(p=>p.data.column===column).map(p=>({name:p.data.title,url:absolute(urlOf(p))}))})};
   }
-  if(view==='about')return {title:JOURNAL_META[lang].aboutTitle,description:JOURNAL_META[lang].aboutDescription,altUrl:aboutUrl(other)};
+  if(view==='about')return {title:JOURNAL_META[lang].aboutTitle,description:JOURNAL_META[lang].aboutDescription,altUrl:aboutUrl(other),
+    structuredData:authorProfileSchema({site,lang,canonical:absolute(aboutUrl(lang)),name:AUTHOR[lang],alternateName:AUTHOR[other],
+      description:lang==='hu'?'Közgazdász végzettségű órarajongó, a Lume Journal szerzője.':'Economics graduate and watch enthusiast, the author of Lume Journal.'})};
   if(view==='404')return {title:'404',description:JOURNAL_META[lang].notFoundDescription,altUrl:'/en/',noindex:true,hasTranslation:false};
   if(view==='archive')return {title:t.archiveSeoTitle,description:t.archiveDescription,altUrl:archiveUrl(other),
     structuredData:collectionSchema({site,lang,canonical:absolute(archiveUrl(lang)),title:t.archiveSeoTitle,description:t.archiveDescription,

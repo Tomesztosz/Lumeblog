@@ -16,6 +16,9 @@ export const LAUNCHED = true;
 /** A Lume hivatalos Instagram-profilja. */
 export const INSTAGRAM_URL = 'https://www.instagram.com/lume_journal/';
 
+/** A Lume szerzője. Magyarul családnév elöl, angolul utónév elöl. */
+export const AUTHOR = { hu: 'Földi Tamás', en: 'Tamás Földi' } as const;
+
 /**
  * Cikkolvasási segédek. Az egész csomag, illetve minden eleme külön kapcsolható,
  * így a próba egyetlen fájlból visszavonható anélkül, hogy a cikkekhez vagy a
