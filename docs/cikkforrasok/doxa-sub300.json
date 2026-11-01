@@ -1,0 +1,211 @@
+{
+  "translationKey": "doxa-sub300",
+  "preparedFor": "2026-11-04",
+  "column": "origins",
+  "status": "scheduled",
+  "draft": false,
+  "scheduled": true,
+  "published": false,
+  "publicationPermissionRecorded": false,
+  "proposedDateOnly": "2026-11-04T01:00:00+01:00",
+  "authorInstructionsRead": [
+    "CLAUDE.md",
+    "lume-brief.md",
+    "lume-szemely.md",
+    "lume-hang.md",
+    "docs/cikk-kephasznalat.md"
+  ],
+  "authorExperience": "No handling or diving experience supplied. Persona-derived opinions are identified in private HTML comments in both article files.",
+  "articleFiles": [
+    "src/content/posts/hu/doxa-sub300.md",
+    "src/content/posts/en/doxa-sub300.md"
+  ],
+  "previews": [
+    "output/article-review/doxa-sub300/megnezes.html",
+    "output/article-review/doxa-sub300/english.html"
+  ],
+  "researchDirectory": "output/article-review/doxa-sub300/research",
+  "imageDownloads": "output/article-review/doxa-sub300/research/downloads.json",
+  "imageProcessing": "output/article-review/doxa-sub300/media-checks.json",
+  "imageGeneration": "None. Original photographic RGB is retained in the two deterministic alpha masks. Hero is code-native composition of original photographs.",
+  "sourceCount": 13,
+  "criticalCorrections": [
+    "The current DOXA timeline names the 1967 debut SUB 300. The article distinguishes the later 300T family and current descendants instead of backdating today's SUB 300T to 1967.",
+    "DOXA history and Eschle's firsthand retrospective interview name Lake Neuchatel. Lake Geneva and laboratory test pools were not verified and are not described as facts.",
+    "Thirty metres is attributed to Eschle's reported trials, not presented as a universal optimum or a depth where orange remains unchanged in every body of water.",
+    "Claude Wesly worked with the team and connected Eschle to US Divers. Cousteau personally performing the lake colour trials was not established.",
+    "Patent US3505808A states Swiss priority 1967-04-14, US filing 1968-04-10 and grant 1970-04-14. Manufacturer blog's conflated dates are not repeated.",
+    "Conquistador chronology conflicts between current DOXA material (1968) and Eschle interview (1969). A precise debut year and helium-valve priority are not asserted.",
+    "The 1966 debut in Eschle's retrospective interview and 1967 SUB 300T naming in the MIH release differ from the current manufacturer's 1967 SUB 300 timeline. These discrepancies remain explicitly documented in private comments.",
+    "Historical bezel direction is not generalised from modern specifications. The MIH release calls its archival bezel bidirectional; the article explicitly attributes unidirectionality to today's watch.",
+    "Modern references 821.10.351.10 and 840.10.351.10 describe current steel-bracelet Professional models, not historical 1967 examples. ETA 2872 is restricted to the later French naval variant reported by DOXA. Modern movement supplier is not guessed.",
+    "Museum number 5042 identifies the specific 1970 naval watch, not a retail model reference."
+  ],
+  "technicalSafety": {
+    "purpose": "Historical watch-design explanation, not diving instruction",
+    "noUsableDivePlan": true,
+    "noDepthTimeExample": true,
+    "noAscentRateAdvice": true,
+    "noSafetyStopWaiver": true,
+    "limitsExplained": [
+      "No depth sensor",
+      "Static table subset, not a complete dive planner",
+      "No repetitive-dive or surface-interval calculation",
+      "Training, equipment and current procedures remain necessary"
+    ]
+  },
+  "sourceAvailabilityNotes": [
+    "The Swiss watch federation anniversary article was readable in search-index results but returned HTTP 404 on direct verification. It was replaced in the final public source list by the live DOXA SUB 300 Ti5 account for the enlarged minute hand. The failed URL is not offered to readers.",
+    "The manufacturer links to Dropbox product folders from its public media kit. A whole-folder download was cancelled immediately after headers revealed an approximately 3.8 GB archive. No archive was saved. Only individual public website images were downloaded."
+  ],
+  "calendarReview": "Not performed for this private writing task. Mandatory complete official radar review remains part of any later approved publication or scheduling; calendar-meta was not changed.",
+  "qa": {
+    "hangcheck": {
+      "huErrors": 0,
+      "huWarnings": 0,
+      "enErrors": 0,
+      "enWarnings": 0
+    },
+    "manualReview": "Checked variable paragraph and sentence lengths, shared facts with independently phrased English, final paragraphs, qualified historical claims, genuine alpha and source/photo captions.",
+    "browser": {
+      "viewports": [
+        1440,
+        390,
+        320
+      ],
+      "languages": [
+        "hu",
+        "en"
+      ],
+      "runtimeErrors": 0,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "localFileProtocol": true
+    },
+    "images": {
+      "displayedPerArticle": 7,
+      "realAlphaCutouts": 2,
+      "originalCutoutRGBExact": true,
+      "generativeImages": false
+    },
+    "build": {
+      "passed": true,
+      "pages": 113,
+      "draftRoutesAbsent": true,
+      "draftPhotosAbsentFromPublicBuild": true,
+      "draftAbsentFromFeedsAndIndexes": true
+    },
+    "sourceAvailability": {
+      "checked": 13,
+      "successful": 13,
+      "report": "output/article-review/doxa-sub300/research/source-availability.json"
+    },
+    "commands": [
+      "python hangcheck.py src/content/posts/hu/doxa-sub300.md src/content/posts/en/doxa-sub300.md",
+      "node scripts/check-doxa-review.mjs --build",
+      "npm run build"
+    ],
+    "reports": [
+      "output/article-review/doxa-sub300/rhythm-checks.json",
+      "output/article-review/doxa-sub300/browser-checks.json",
+      "output/article-review/doxa-sub300/build-privacy.json",
+      "output/article-review/doxa-sub300/build.log"
+    ]
+  },
+  "publicationApproved": true,
+  "publicationDate": "2026-11-04T01:00:00+01:00",
+  "approval": {
+    "translationKey": "doxa-sub300",
+    "approvedAt": "2026-11-01",
+    "ownerQuote": "Rendben mehet mind a 3 cikk a saját napjára. Hétfő, Szerda és Péntek 1:00. Minden rendben a képekkel.",
+    "scheduledFor": "2026-11-04T01:00:00+01:00",
+    "timezone": "Europe/Budapest",
+    "rightsNote": "The owner approved article and image publication. No independent third-party licence was inferred or newly obtained. Image bytes match the approved private preview.",
+    "records": [
+      {
+        "file": "src/content/posts/_images/doxa-hero.webp",
+        "sha256": "7c98339e992ec4d035e8fea8ea84c81e7e53ab8368b6433dae7ffc128ba5058c"
+      },
+      {
+        "file": "src/content/posts/_images/doxa-card.webp",
+        "sha256": "2139f6181ce13fd2a533b7b39f1596bc279baab80b465b20922dcd87d52779f4"
+      },
+      {
+        "file": "src/content/posts/_images/doxa-sub300-cutout.png",
+        "sha256": "dfecc3f76ae31b6977452c73f01cc0d1a58db5d970ae953ce4fb045e392f71ae"
+      },
+      {
+        "file": "src/content/posts/_images/doxa-le-locle-factory.webp",
+        "sha256": "2660c50e57cb1ad1c0e9ff12e83972dad313e88938c8391f3b2fdb89b4cd2a6f"
+      },
+      {
+        "file": "src/content/posts/_images/doxa-eschle-patent.png",
+        "sha256": "8e56464f289d5235ea2bf24e2d1147f22f9aab6c2cc8db196d4e9fb9eaf7a0e7"
+      },
+      {
+        "file": "src/content/posts/_images/doxa-no-deco-bezel-macro.webp",
+        "sha256": "666efa07a8ff70f7e3ccd77fd473885460d277a8f1f4aac38972c7bef61f9519"
+      },
+      {
+        "file": "src/content/posts/_images/doxa-diving-archive.webp",
+        "sha256": "608ae3f2d2f9cfb3bdd75976a84fdbebe967156f309a5160461b853618b1ed99"
+      },
+      {
+        "file": "src/content/posts/_images/doxa-sub300t-cutout.png",
+        "sha256": "adc31c4a13a5a5f90a256c4edbb2e935e25da6bd577563acfad2d22ccb749660"
+      }
+    ]
+  },
+  "calendar": "docs/calendar-review-week-20261102.json",
+  "releaseChecks": {
+    "timezone": "Europe/Budapest",
+    "publicationInstantsUTC": [
+      "2026-11-02T00:00:00Z",
+      "2026-11-04T00:00:00Z",
+      "2026-11-06T00:00:00Z"
+    ],
+    "approvedTextUnchanged": true,
+    "approvedMediaHashes": 24,
+    "voice": "All six article variants passed hangcheck with no HIBA or FIGYELEM.",
+    "modelTests": 38,
+    "futureBrowserViewports": 24,
+    "darkPages": 7,
+    "calendarBrowserChecks": 18,
+    "exactBoundaries": true,
+    "uniqueBilingualSlugs": true,
+    "currentBuildPassed": true,
+    "futureBuildPassed": true,
+    "calendar": {
+      "status": "partial",
+      "brands": 24,
+      "sources": 62,
+      "newAnnouncements": 1,
+      "newDatedReleases": 0,
+      "newICS": 0,
+      "report": "docs/calendar-review-week-20261102.json"
+    },
+    "scheduler": {
+      "state": "active",
+      "workflow": "utemezett-megjelenes.yml",
+      "cron": [
+        "0 0,23 * * *",
+        "0 3 * * *"
+      ],
+      "precision": "GitHub scheduling and Cloudflare build latency can delay actual availability after 01:00."
+    },
+    "dependencyAudit": {
+      "preExisting": true,
+      "lockfileChanged": false,
+      "high": 1,
+      "moderate": 2,
+      "remoteBaselineVerify": "failure",
+      "notBypassed": true
+    },
+    "externalActions": {
+      "instagram": false,
+      "newsletter": false,
+      "earlyArticlePublication": false
+    }
+  },
+  "dateNote": "The owner approved scheduling on 1 November 2026. Date filtering remains in place until the article-specific 01:00 Budapest instant."
+}

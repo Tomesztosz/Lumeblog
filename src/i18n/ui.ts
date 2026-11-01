@@ -137,6 +137,10 @@ export const CONTENT_LINKS = {
 } as const;
 
 export const MODEL_READING_GUIDES = {
+  'freak': {
+    hu:{question:'Melyik alkatrész mutatja a percet, és mikor kap impulzust a billegő?',observe:'Állítsd előre a kijelzést egy órával, majd nyisd szét a híd rétegeit. A két utolsó fejezetben fázisonként követheted az A és B gátkerék impulzusát és a köztük lévő zárást.',limitation:'Elvi, kulcsképes térbeli szemléltetés az US6301981B1 szabadalom fázisrendjével. Nem gyári CAD vagy fogérintkezési, energia- és pontosságszimuláció. A kijelzés és a lassított gátszerkezet időskálája külön vezérelhető.'},
+    en:{question:'Which part indicates minutes, and when does the balance receive an impulse?',observe:'Advance the display by one hour, then separate the bridge layers. The last two chapters step through the A and B wheel impulses and the locked arcs between them.',limitation:'A keyframed spatial teaching model following the phase sequence in patent US6301981B1. It is not production CAD or a contact, energy or accuracy simulation. The display and slow-motion escapement have separate time controls.'},
+  },
   'constant-escapement': {
     hu:{question:'Miért pattan át a penge, és mitől lesz egyenletesebb az energiaadag?',observe:'Indítsd el az automatikus terhelést, majd próbáld ki kézzel a két stabil állást. Az utolsó két lépésben külön energiaadagoló szemléltetés követi a hajtástól a billegőig vezető utat.',limitation:'A penge dimenziótlan, egyszabadságfokú rugalmas modell. Az energiaadagoló külön feltételezett állapotgép, nem a GP09200 geometriai másolata vagy mért pontossági szimuláció.'},
     en:{question:'Why does the blade snap, and how can a prepared energy dose remain consistent?',observe:'Start automatic loading, then explore the two stable shapes manually. The final two lessons use a separate metering illustration to trace energy from the drive to the balance.',limitation:'The blade is a dimensionless single-coordinate elastic model. Energy metering uses a separate assumed state machine, not a geometric replica or measured accuracy simulation of the GP09200.'},

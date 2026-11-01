@@ -1,0 +1,42 @@
+{
+  "translationKey": "doxa-sub300",
+  "approvedAt": "2026-11-01",
+  "ownerQuote": "Rendben mehet mind a 3 cikk a saját napjára. Hétfő, Szerda és Péntek 1:00. Minden rendben a képekkel.",
+  "scheduledFor": "2026-11-04T01:00:00+01:00",
+  "timezone": "Europe/Budapest",
+  "rightsNote": "The owner approved article and image publication. No independent third-party licence was inferred or newly obtained. Image bytes match the approved private preview.",
+  "records": [
+    {
+      "file": "src/content/posts/_images/doxa-hero.webp",
+      "sha256": "7c98339e992ec4d035e8fea8ea84c81e7e53ab8368b6433dae7ffc128ba5058c"
+    },
+    {
+      "file": "src/content/posts/_images/doxa-card.webp",
+      "sha256": "2139f6181ce13fd2a533b7b39f1596bc279baab80b465b20922dcd87d52779f4"
+    },
+    {
+      "file": "src/content/posts/_images/doxa-sub300-cutout.png",
+      "sha256": "dfecc3f76ae31b6977452c73f01cc0d1a58db5d970ae953ce4fb045e392f71ae"
+    },
+    {
+      "file": "src/content/posts/_images/doxa-le-locle-factory.webp",
+      "sha256": "2660c50e57cb1ad1c0e9ff12e83972dad313e88938c8391f3b2fdb89b4cd2a6f"
+    },
+    {
+      "file": "src/content/posts/_images/doxa-eschle-patent.png",
+      "sha256": "8e56464f289d5235ea2bf24e2d1147f22f9aab6c2cc8db196d4e9fb9eaf7a0e7"
+    },
+    {
+      "file": "src/content/posts/_images/doxa-no-deco-bezel-macro.webp",
+      "sha256": "666efa07a8ff70f7e3ccd77fd473885460d277a8f1f4aac38972c7bef61f9519"
+    },
+    {
+      "file": "src/content/posts/_images/doxa-diving-archive.webp",
+      "sha256": "608ae3f2d2f9cfb3bdd75976a84fdbebe967156f309a5160461b853618b1ed99"
+    },
+    {
+      "file": "src/content/posts/_images/doxa-sub300t-cutout.png",
+      "sha256": "adc31c4a13a5a5f90a256c4edbb2e935e25da6bd577563acfad2d22ccb749660"
+    }
+  ]
+}

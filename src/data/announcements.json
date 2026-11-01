@@ -159,20 +159,20 @@
     "imageCredit": "Farer",
     "copy": {
       "hu": {
-        "dateLabel": "Újrarendelés: október 29., évszám nélkül",
+        "dateLabel": "A régi Stratton-oldal most Stratton II-re vezet",
         "summary": "Kézi felhúzású holdfázisos óra Eisenkiesel kőszámlappal és sötétben világító Holddal. A 38,5 milliméteres acéltokban Sellita SW288-1 dolgozik.",
         "selection": "Nem új modell bemutatója, hanem egy karakteres kőszámlapos Farer visszatérése a kínálatba.",
-        "availability": "Az október 27-én ellenőrzött oldal október 29-i előrendelést ír, de évszám nélkül. Ez eltér a korábbi, 2026 végi visszatérést jelző közléstől. A pontosításig nincs dátumozott esemény vagy ICS."
+        "availability": "A november 1-jén ellenőrzött régi cím már a Stratton II-re vezet. Ott december 21-i szállítás szerepel évszám nélkül. Ez nem igazolja az eredeti Stratton visszatérésének időpontját, ezért a korábbi bejegyzés felülvizsgálatra vár és nincs ICS."
       },
       "en": {
-        "dateLabel": "Preorders: 29 October, year not stated",
+        "dateLabel": "Original Stratton URL now leads to Stratton II",
         "summary": "A hand-wound moonphase with an Eisenkiesel stone dial and a luminous moon. A Sellita SW288-1 powers the 38.5mm steel watch.",
         "selection": "A distinctive stone-dial Farer returning to the range, rather than a new-model unveiling.",
-        "availability": "Checked on 27 October: the page states preorders from 29 October without a year. This differs from its previous late-2026 return wording. No dated event or ICS is issued pending clarification."
+        "availability": "Checked on 1 November: the old URL now redirects to Stratton II, which states 21 December shipping without a year. This does not confirm the original Stratton restock round. The existing entry remains under review without ICS."
       }
     },
     "sourceUrl": "https://farer.com/products/stratton",
-    "sourceChecked": "2026-10-27",
+    "sourceChecked": "2026-11-01",
     "image": "/img/calendar/farer-stratton.png",
     "imageWidth": 900,
     "imageHeight": 900,
@@ -237,6 +237,36 @@
         "summary": "Two analogue families reinterpret the DW-5000C with a three-cell multifunction date display.",
         "selection": "The window also shows stopwatch and setting information. One announcement covers both families.",
         "availability": "The release gives no separate retail date."
+      }
+    }
+  },
+  {
+    "id": "casio-cmk100-2026",
+    "brand": "Casio / G-Shock",
+    "brandKey": "g-shock",
+    "family": "Mechanical",
+    "model": "CMK-100",
+    "reference": "CMK-100TD-1A / CMK-100TC-1A / CMK-100TCC-8A / CMK-100TL-1A / CMK-100TCL-5A",
+    "status": "introduced",
+    "firstSeen": "2026-11-01",
+    "sourceChecked": "2026-11-01",
+    "sourceUrl": "https://www.casio.com/intl/news/2026/1029-CMK-100/",
+    "image": "/img/calendar/casio-cmk100-2026.jpg",
+    "imageWidth": 1440,
+    "imageHeight": 835,
+    "imageCredit": "CASIO COMPUTER CO., LTD.",
+    "copy": {
+      "hu": {
+        "dateLabel": "Bemutatva 2026. október 29-én",
+        "summary": "Automata mechanikus Casio titántokkal, matt számlappal és többrétegű világító indexekkel. Öt referencia, titáncsattal vagy textil-, illetve bőrszíjjal.",
+        "selection": "A mechanikus szerkezet és a könnyű tok új irány a gyártó megszokott elektronikus órái mellett.",
+        "availability": "A hivatalos közlemény külön értékesítési időpontot nem ad meg. A bemutatás dátuma nem rendelési vagy kiszállítási ígéret, ezért nincs ICS."
+      },
+      "en": {
+        "dateLabel": "Introduced on 29 October 2026",
+        "summary": "An automatic mechanical Casio with a titanium case, matte dial and layered luminous markers. Five references offer a titanium bracelet, nylon or leather straps.",
+        "selection": "The mechanical movement and lightweight case take a different direction alongside the maker's electronic watches.",
+        "availability": "The official announcement gives no separate on-sale date. Its publication date is not an ordering or shipping promise, so no ICS is issued."
       }
     }
   }

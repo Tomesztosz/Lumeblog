@@ -1295,3 +1295,7 @@ html:not([data-js]) .workshop-load-note {
   text-indent: 0;
   margin-top: 12px;
 }
+
+/* Approved November article cutouts retain the native transparent source bytes. */
+.article-body img:is([src*="ballouard-"][src*="-cutout"],[src*="doxa-"][src*="-cutout"],[src*="freak-"][src*="-cutout"]) { display: block; width: 100%; height: auto; max-height: 650px; object-fit: contain; }
+.article-body img[src*="freak-dual-direct-patent"] { max-height: 740px; object-fit: contain; }

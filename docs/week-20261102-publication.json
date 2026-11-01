@@ -1,0 +1,74 @@
+{
+  "approvedAt": "2026-11-01",
+  "status": "scheduled",
+  "articles": [
+    {
+      "key": "ballouard",
+      "date": "2026-11-02T01:00:00+01:00",
+      "hu": "/kezben/ludovic-ballouard-upside-down/",
+      "en": "/en/in-hand/ludovic-ballouard-upside-down-watch/"
+    },
+    {
+      "key": "doxa-sub300",
+      "date": "2026-11-04T01:00:00+01:00",
+      "hu": "/eredet/doxa-sub-300-300t/",
+      "en": "/en/origins/doxa-sub-300-300t-orange-dial/"
+    },
+    {
+      "key": "freak",
+      "date": "2026-11-06T01:00:00+01:00",
+      "hu": "/szerkezet/ulysse-nardin-freak/",
+      "en": "/en/movement/ulysse-nardin-freak-dual-direct/"
+    }
+  ],
+  "checks": {
+    "timezone": "Europe/Budapest",
+    "publicationInstantsUTC": [
+      "2026-11-02T00:00:00Z",
+      "2026-11-04T00:00:00Z",
+      "2026-11-06T00:00:00Z"
+    ],
+    "approvedTextUnchanged": true,
+    "approvedMediaHashes": 24,
+    "voice": "All six article variants passed hangcheck with no HIBA or FIGYELEM.",
+    "modelTests": 38,
+    "futureBrowserViewports": 24,
+    "darkPages": 7,
+    "calendarBrowserChecks": 18,
+    "exactBoundaries": true,
+    "uniqueBilingualSlugs": true,
+    "currentBuildPassed": true,
+    "futureBuildPassed": true,
+    "calendar": {
+      "status": "partial",
+      "brands": 24,
+      "sources": 62,
+      "newAnnouncements": 1,
+      "newDatedReleases": 0,
+      "newICS": 0,
+      "report": "docs/calendar-review-week-20261102.json"
+    },
+    "scheduler": {
+      "state": "active",
+      "workflow": "utemezett-megjelenes.yml",
+      "cron": [
+        "0 0,23 * * *",
+        "0 3 * * *"
+      ],
+      "precision": "GitHub scheduling and Cloudflare build latency can delay actual availability after 01:00."
+    },
+    "dependencyAudit": {
+      "preExisting": true,
+      "lockfileChanged": false,
+      "high": 1,
+      "moderate": 2,
+      "remoteBaselineVerify": "failure",
+      "notBypassed": true
+    },
+    "externalActions": {
+      "instagram": false,
+      "newsletter": false,
+      "earlyArticlePublication": false
+    }
+  }
+}

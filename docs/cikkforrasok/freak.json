@@ -1,0 +1,257 @@
+{
+  "translationKey": "freak",
+  "preparedFor": "2026-11-06",
+  "column": "movement",
+  "status": "scheduled",
+  "draft": false,
+  "scheduled": true,
+  "published": false,
+  "proposedDateOnly": "2026-11-06T01:00:00+01:00",
+  "publicationPermissionRecorded": false,
+  "authorInstructionsRead": [
+    "CLAUDE.md",
+    "lume-brief.md",
+    "lume-szemely.md",
+    "lume-hang.md",
+    "docs/cikk-kephasznalat.md"
+  ],
+  "authorExperience": "No original Freak handling, wearing or meeting supplied. Proposed persona-based opinions are itemised in both private article comments.",
+  "articleFiles": [
+    "src/content/posts/hu/freak.md",
+    "src/content/posts/en/freak.md"
+  ],
+  "previews": [
+    "output/article-review/freak/megnezes.html",
+    "output/article-review/freak/english.html"
+  ],
+  "workshopPreviews": [
+    "output/article-review/freak/muhely.html",
+    "output/article-review/freak/workshop.html"
+  ],
+  "sources": {
+    "count": 13,
+    "research": "output/article-review/freak/research/pages.json",
+    "availability": "output/article-review/freak/research/source-availability.json",
+    "verifiedAccessible": 13,
+    "imageDownloads": "output/article-review/freak/research/downloads.json",
+    "mediaChecks": "output/article-review/freak/media-checks.json"
+  },
+  "checkedFactsAndBoundaries": [
+    "The 2001 Freak introduced silicon escape wheels in a production mechanical wristwatch, not an entirely silicon mechanism or the first silicon hairspring.",
+    "The upper gear-train/regulator carrier turns once per hour. The lower barrel-associated hour indication turns over twelve hours. Not every component of the calibre rotates hourly.",
+    "The original watch uses back-bezel winding and upper-bezel setting. The current Freak X has a crown, so crownless cannot describe every Freak.",
+    "Carrousel is the manufacturer's term for the orbital architecture. A one-hour indicating carrier is not conflated with a conventional one-minute Breguet tourbillon. The original is not indiscriminately described as flying.",
+    "Forestier-Kasapi supplied the rotating-movement concept, Schnyder backed the project, Oechslin reworked the architecture and developed the Dual Direct, and Gygax proposed silicon for the wheels. No invented workshop dialogue or precise scene is supplied.",
+    "The two original impulse wheels mesh and counterrotate. They alternately impulse a roller on the balance arbor directly. A separate rocking member locks each wheel in turn, stopping both through their mesh.",
+    "US6301981B1 is the primary source for phase order and the illustrative 25 teeth including five long teeth. Its 4 Hz numerical example is not a measurement of the first production Freak.",
+    "The subsequent Dual Ulysse introduces an intervening impulse part. Two wheels or DIAMonSIL treatment alone do not identify an unchanged 2001 Dual Direct escapement.",
+    "No universal zero-friction, wholly maintenance-free or microsecond tooth-contact accuracy claim is made.",
+    "016-88/P001 belongs to the circa-2001 pink-gold prototype documented by Phillips. 026-88/UN-01 identifies the later example catalogued by Christie's. The manufacturer's archive cutout is not assigned an unverified unique specimen code.",
+    "UN-240, 3 Hz, 21,600 vph, 90 hours and 229 parts are current Freak ONE data. UN-230, 72 hours and 214 parts follow the current blue Freak X manufacturer page. Historical reviews with other component counts are not silently substituted."
+  ],
+  "images": {
+    "displayedPerArticle": 7,
+    "nativeAlphaWatchImages": 3,
+    "watchFilesUnchanged": true,
+    "generativeImages": false,
+    "hero": "Code-native composition of the original early Freak image and manufacturer materials photograph. The silicon photograph is not claimed to date from 2001.",
+    "patent": "The original first-phase figure is cropped and rotated, not re-drawn."
+  },
+  "model": {
+    "implementation": [
+      "src/lib/freak-model.mjs",
+      "src/lib/freak-view.mjs",
+      "src/i18n/freak.ts",
+      "scripts/lib/freak-review-page.mjs"
+    ],
+    "chapters": 5,
+    "components": 7,
+    "features": [
+      "Hour/minute reading",
+      "Exact one-hour/twelve-hour kinematic ratio",
+      "Start, pause, step, reset and one-hour jump",
+      "Three view presets and pointer/keyboard camera controls",
+      "Exploded component planes",
+      "Part highlighting",
+      "Direct-impulse enlargement",
+      "Four phase stepping",
+      "Locked wheels with a moving balance",
+      "Carrier-fixed outer hairspring anchor",
+      "Separate display and escapement teaching clocks",
+      "Offline local-file operation",
+      "No automatic playback or external dependency"
+    ],
+    "limitations": "Source-led kinematic and keyframe teaching model with extruded 3D geometry rendered by orthographic projection. Not a factory CAD reconstruction, contact/inertial solver, torque calculation, silicon stress simulation or timekeeping prediction. Balance amplitude and the phase durations are illustrative.",
+    "publicWidgetCreated": false,
+    "publicWorkshopListed": false,
+    "networkAccessAtRuntime": false,
+    "publicWorkshopScheduled": true,
+    "publicRoutes": {
+      "hu": "/muhely/freak/",
+      "en": "/en/workshop/freak/"
+    },
+    "publicComponent": "src/components/FreakModel.astro",
+    "integration": "Article, Workshop list, standalone share page, model reading guide and automated shared-model checks. All wait for the article publication instant."
+  },
+  "qa": {
+    "hangcheck": {
+      "huErrors": 0,
+      "huWarnings": 0,
+      "enErrors": 0,
+      "enWarnings": 0
+    },
+    "modelAndRelatedRegressionTests": 37,
+    "testsPassed": true,
+    "build": {
+      "passed": true,
+      "pages": 113,
+      "errors": 0
+    },
+    "articleBrowser": {
+      "viewports": 6,
+      "brokenImages": 0,
+      "runtimeErrors": 0,
+      "horizontalOverflow": false,
+      "startWorks": true,
+      "fileProtocol": true
+    },
+    "standaloneModelBrowser": {
+      "viewports": 6,
+      "startWorks": true,
+      "phaseStepping": true,
+      "cameraKeyboard": true,
+      "explodedLayers": true,
+      "darkTheme": true,
+      "runtimeErrors": 0,
+      "fileProtocol": true
+    },
+    "privacy": {
+      "articleHidden": true,
+      "imagesHidden": true,
+      "modelHidden": true,
+      "feedsHidden": true
+    },
+    "browserViewports": [
+      1440,
+      390,
+      320
+    ],
+    "browserLanguages": [
+      "hu",
+      "en"
+    ],
+    "commands": [
+      "python hangcheck.py src/content/posts/hu/freak.md src/content/posts/en/freak.md",
+      "node --test scripts/freak-model.test.mjs scripts/coaxial-model.test.mjs scripts/tourbillon-model.test.mjs scripts/constant-escapement-model.test.mjs",
+      "node scripts/check-freak-review.mjs --build",
+      "node scripts/check-freak-model.mjs",
+      "npm run build"
+    ],
+    "reports": [
+      "output/article-review/freak/hangcheck.log",
+      "output/article-review/freak/model-tests.log",
+      "output/article-review/freak/rhythm-checks.json",
+      "output/article-review/freak/browser-checks.json",
+      "output/article-review/freak/model-browser-checks.json",
+      "output/article-review/freak/build-privacy.json",
+      "output/article-review/freak/build.log"
+    ]
+  },
+  "publicationGate": "Owner review and image approval remain required. No push, deployment or active schedule was requested in this writing task. A future approved publication must integrate the private model into public widget/sharing routes and perform the complete official calendar-radar review. Calendar review metadata was not changed for private drafting.",
+  "publicationApproved": true,
+  "publicationDate": "2026-11-06T01:00:00+01:00",
+  "approval": {
+    "translationKey": "freak",
+    "approvedAt": "2026-11-01",
+    "ownerQuote": "Rendben mehet mind a 3 cikk a saját napjára. Hétfő, Szerda és Péntek 1:00. Minden rendben a képekkel.",
+    "scheduledFor": "2026-11-06T01:00:00+01:00",
+    "timezone": "Europe/Budapest",
+    "rightsNote": "The owner approved article and image publication. No independent third-party licence was inferred or newly obtained. Image bytes match the approved private preview.",
+    "records": [
+      {
+        "file": "src/content/posts/_images/freak-hero.webp",
+        "sha256": "dd04a26780c9e62ebf6fbab65893a5738c52e39b9a1372387192e41bb5fd4169"
+      },
+      {
+        "file": "src/content/posts/_images/freak-card.webp",
+        "sha256": "ede577f07a9e15f17609e689a0a4dc6e9a1748704f4639632bd1e73dac2557a3"
+      },
+      {
+        "file": "src/content/posts/_images/freak-2001-cutout.png",
+        "sha256": "f519a1ba93d990cdf21a22fb8ee145faf5c61ce28c7a922100b51202d8283b07"
+      },
+      {
+        "file": "src/content/posts/_images/freak-launch-2001.webp",
+        "sha256": "204dcd0d9e20b7913bb9ac77e2e313f24a2f344915df46e8cdaba847771a683d"
+      },
+      {
+        "file": "src/content/posts/_images/freak-2001-bridge.webp",
+        "sha256": "d839fc47b2c3fd9f206c81fe69d32f743898fb337f05a068b15124c8bcd3f3f8"
+      },
+      {
+        "file": "src/content/posts/_images/freak-dual-direct-patent.png",
+        "sha256": "728368e3e56f44ce2d5abe9949448ac01fde657edf0658e74c74e38b17b9e84c"
+      },
+      {
+        "file": "src/content/posts/_images/freak-one-cutout.png",
+        "sha256": "cbd2e0d9741ea68d54233ef1dff2c35f8a80df9ec70b43cc9b424f8c1dc00956"
+      },
+      {
+        "file": "src/content/posts/_images/freak-x-cutout.png",
+        "sha256": "92e468a270d9518c764931353db2f5ed54abc8bfefd701c58dee52ee3c05b5ec"
+      }
+    ]
+  },
+  "calendar": "docs/calendar-review-week-20261102.json",
+  "releaseChecks": {
+    "timezone": "Europe/Budapest",
+    "publicationInstantsUTC": [
+      "2026-11-02T00:00:00Z",
+      "2026-11-04T00:00:00Z",
+      "2026-11-06T00:00:00Z"
+    ],
+    "approvedTextUnchanged": true,
+    "approvedMediaHashes": 24,
+    "voice": "All six article variants passed hangcheck with no HIBA or FIGYELEM.",
+    "modelTests": 38,
+    "futureBrowserViewports": 24,
+    "darkPages": 7,
+    "calendarBrowserChecks": 18,
+    "exactBoundaries": true,
+    "uniqueBilingualSlugs": true,
+    "currentBuildPassed": true,
+    "futureBuildPassed": true,
+    "calendar": {
+      "status": "partial",
+      "brands": 24,
+      "sources": 62,
+      "newAnnouncements": 1,
+      "newDatedReleases": 0,
+      "newICS": 0,
+      "report": "docs/calendar-review-week-20261102.json"
+    },
+    "scheduler": {
+      "state": "active",
+      "workflow": "utemezett-megjelenes.yml",
+      "cron": [
+        "0 0,23 * * *",
+        "0 3 * * *"
+      ],
+      "precision": "GitHub scheduling and Cloudflare build latency can delay actual availability after 01:00."
+    },
+    "dependencyAudit": {
+      "preExisting": true,
+      "lockfileChanged": false,
+      "high": 1,
+      "moderate": 2,
+      "remoteBaselineVerify": "failure",
+      "notBypassed": true
+    },
+    "externalActions": {
+      "instagram": false,
+      "newsletter": false,
+      "earlyArticlePublication": false
+    }
+  },
+  "dateNote": "The owner approved scheduling on 1 November 2026. Date filtering remains in place until the article-specific 01:00 Budapest instant."
+}

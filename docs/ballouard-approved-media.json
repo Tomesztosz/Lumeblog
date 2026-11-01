@@ -1,0 +1,42 @@
+{
+  "translationKey": "ballouard",
+  "approvedAt": "2026-11-01",
+  "ownerQuote": "Rendben mehet mind a 3 cikk a saját napjára. Hétfő, Szerda és Péntek 1:00. Minden rendben a képekkel.",
+  "scheduledFor": "2026-11-02T01:00:00+01:00",
+  "timezone": "Europe/Budapest",
+  "rightsNote": "The owner approved article and image publication. No independent third-party licence was inferred or newly obtained. Image bytes match the approved private preview.",
+  "records": [
+    {
+      "file": "src/content/posts/_images/ballouard-hero.webp",
+      "sha256": "b3d4c802161bf556e6e7c215409bf8dcd2d689243088a7d6a3922d0743a66dc2"
+    },
+    {
+      "file": "src/content/posts/_images/ballouard-card.webp",
+      "sha256": "5a1d716a575aa18782666402fdc160f372507aab4a077174eb7d21c0b8988767"
+    },
+    {
+      "file": "src/content/posts/_images/ballouard-upside-blue-cutout.png",
+      "sha256": "2bf2771017aacd44d53221da2d572c6268ef0bc1d2c3b8b485948a652833a001"
+    },
+    {
+      "file": "src/content/posts/_images/ballouard-founder.webp",
+      "sha256": "b658cd11f6343edd7a8a73629ba95294cae10a82f6254c012242b75932935803"
+    },
+    {
+      "file": "src/content/posts/_images/ballouard-upside-white-cutout.png",
+      "sha256": "a414a1c45f8e32b51bd4c21fa38b20ce5243daa0625c5d50f4f2d9aacf606484"
+    },
+    {
+      "file": "src/content/posts/_images/ballouard-b01-workbench.webp",
+      "sha256": "1602b37109c96f55cc145d72f6cc48e13b5b5e6181740776b2c24ff99ced89de"
+    },
+    {
+      "file": "src/content/posts/_images/ballouard-b01-detail.webp",
+      "sha256": "c70d8b67c6408e1099ee87c4edde7aacd40e3410fdc49ef24655896bc66a6374"
+    },
+    {
+      "file": "src/content/posts/_images/ballouard-half-time-cutout.png",
+      "sha256": "31eb1a1f5fbc672409cfdde0ead60032cf7e3c567ac537288fd702bfd40217df"
+    }
+  ]
+}

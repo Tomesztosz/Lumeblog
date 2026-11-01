@@ -1,0 +1,42 @@
+{
+  "translationKey": "freak",
+  "approvedAt": "2026-11-01",
+  "ownerQuote": "Rendben mehet mind a 3 cikk a saját napjára. Hétfő, Szerda és Péntek 1:00. Minden rendben a képekkel.",
+  "scheduledFor": "2026-11-06T01:00:00+01:00",
+  "timezone": "Europe/Budapest",
+  "rightsNote": "The owner approved article and image publication. No independent third-party licence was inferred or newly obtained. Image bytes match the approved private preview.",
+  "records": [
+    {
+      "file": "src/content/posts/_images/freak-hero.webp",
+      "sha256": "dd04a26780c9e62ebf6fbab65893a5738c52e39b9a1372387192e41bb5fd4169"
+    },
+    {
+      "file": "src/content/posts/_images/freak-card.webp",
+      "sha256": "ede577f07a9e15f17609e689a0a4dc6e9a1748704f4639632bd1e73dac2557a3"
+    },
+    {
+      "file": "src/content/posts/_images/freak-2001-cutout.png",
+      "sha256": "f519a1ba93d990cdf21a22fb8ee145faf5c61ce28c7a922100b51202d8283b07"
+    },
+    {
+      "file": "src/content/posts/_images/freak-launch-2001.webp",
+      "sha256": "204dcd0d9e20b7913bb9ac77e2e313f24a2f344915df46e8cdaba847771a683d"
+    },
+    {
+      "file": "src/content/posts/_images/freak-2001-bridge.webp",
+      "sha256": "d839fc47b2c3fd9f206c81fe69d32f743898fb337f05a068b15124c8bcd3f3f8"
+    },
+    {
+      "file": "src/content/posts/_images/freak-dual-direct-patent.png",
+      "sha256": "728368e3e56f44ce2d5abe9949448ac01fde657edf0658e74c74e38b17b9e84c"
+    },
+    {
+      "file": "src/content/posts/_images/freak-one-cutout.png",
+      "sha256": "cbd2e0d9741ea68d54233ef1dff2c35f8a80df9ec70b43cc9b424f8c1dc00956"
+    },
+    {
+      "file": "src/content/posts/_images/freak-x-cutout.png",
+      "sha256": "92e468a270d9518c764931353db2f5ed54abc8bfefd701c58dee52ee3c05b5ec"
+    }
+  ]
+}
