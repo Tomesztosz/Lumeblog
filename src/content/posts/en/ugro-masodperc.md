@@ -7,6 +7,7 @@ date: 2026-09-18T05:00:00+02:00
 column: movement
 lang: en
 translationKey: ugro-masodperc
+slug: jumping-seconds
 draft: false
 cover:
   src: '../_images/seconde-morte-hero-v1.webp'

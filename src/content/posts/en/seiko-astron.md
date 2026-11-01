@@ -1,8 +1,8 @@
 ---
 title: "The watch that started the quartz revolution on Christmas Day"
 description: "On Christmas Day 1969, Seiko released a gold watch that cost as much as a car. The Quartz Astron still changed the entire watch industry."
-seoTitle: "Seiko Quartz Astron: the watch that started the quartz revolution"
-seoDescription: "The story of the 1969 Seiko Quartz Astron: ten years of development, a car-sized price and the technology that rewrote Swiss watchmaking."
+seoTitle: "Seiko Quartz Astron 35SQ: The 1969 Quartz Pioneer"
+seoDescription: "On Christmas Day 1969 the Seiko Quartz Astron 35SQ became the first quartz wristwatch ever sold, at the price of a car. How it changed watchmaking."
 date: 2026-08-26
 column: 'origins'
 lang: 'en'

@@ -46,8 +46,9 @@ export function canonicalUrl(path: string, site: URL | string): string {
 export function seoTitle(title: string | undefined, fallback: string): string {
   const chosen = title?.trim() || fallback.trim();
   if (!chosen) throw new Error('Missing SEO title');
-  const base = chosen.replace(/(?:\s*\|\s*Lume)+\s*$/i, '').trim() || 'Lume';
-  return /\blume\b/i.test(base) ? base : `${base} | Lume`;
+  // A „Lume" egyben órás szakszó (világító anyag), ezért a márka a találatban „Lume Journal".
+  const base = chosen.replace(/(?:\s*\|\s*Lume(?:\s+Journal)?)+\s*$/i, '').trim() || 'Lume Journal';
+  return /\blume\b/i.test(base) ? base : `${base} | Lume Journal`;
 }
 
 export function articleDescription(seo: string | undefined, description: string | undefined, body = ''): string {
@@ -100,10 +101,10 @@ export function articleDates(published: Date, updated?: Date, now = new Date()) 
 export function websiteSchema(site: URL | string, description: string, sameAs: string[] = []): JsonLd {
   const origin = siteOrigin(site),organizationId = `${origin}/#organization`;
   return {'@context':'https://schema.org','@graph':[
-    {'@type':'Organization','@id':organizationId,name:'Lume',url:`${origin}/`,description,
+    {'@type':'Organization','@id':organizationId,name:'Lume Journal',alternateName:'Lume',url:`${origin}/`,description,
       logo:{'@type':'ImageObject',url:`${origin}/apple-touch-icon.png`,width:180,height:180},
       ...(sameAs.length ? {sameAs:sameAs.filter(url=>new URL(url).protocol==='https:')} : {})},
-    {'@type':'WebSite','@id':`${origin}/#website`,name:'Lume',alternateName:'Lume Journal',url:`${origin}/`,
+    {'@type':'WebSite','@id':`${origin}/#website`,name:'Lume Journal',alternateName:'Lume',url:`${origin}/`,
       inLanguage:['hu-HU','en-GB'],publisher:{'@id':organizationId}},
   ]};
 }

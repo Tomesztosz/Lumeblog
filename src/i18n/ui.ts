@@ -568,7 +568,7 @@ export const WORKSHOP_SLUG: Record<Lang, string> = { hu: 'muhely', en: 'workshop
 /* ---------- felületi szövegek ---------- */
 export const UI = {
   hu: {
-    siteTitle: 'Lume | Karórák, óratörténetek és óraszerkezetek',
+    siteTitle: 'Lume Journal | Karórák, óratörténetek és óraszerkezetek',
     siteDescription:
       'Kétnyelvű órás napló: microbrandek kézben, márkatörténelem a legenda mögötti tényekkel, és a számlap alatti mechanika. Heti három írás.',
     tagline: 'Órás napló. Magyarul és angolul.',
@@ -684,7 +684,7 @@ export const UI = {
   },
 
   en: {
-    siteTitle: 'Lume | Watches, Watch History and Movements',
+    siteTitle: 'Lume Journal | Watches, Watch History and Movements',
     siteDescription:
       'A bilingual watch journal: microbrands in hand, brand history with the facts behind the legend, and the machinery under the dial. Three pieces a week.',
     tagline: 'A watch journal. In Hungarian and English.',

@@ -57,3 +57,19 @@ https://:version.:project.pages.dev/*
 
 https://:worker.:account.workers.dev/*
   X-Robots-Tag: noindex
+
+# Technikai fájlok: a naptárfájlok, hírcsatornák és beágyazható modellek ne kerüljenek a keresőindexbe.
+/naptar/*.ics
+  X-Robots-Tag: noindex
+
+/en/calendar/*.ics
+  X-Robots-Tag: noindex
+
+/rss.xml
+  X-Robots-Tag: noindex
+
+/en/rss.xml
+  X-Robots-Tag: noindex
+
+/widgets/*
+  X-Robots-Tag: noindex

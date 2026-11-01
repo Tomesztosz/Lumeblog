@@ -1,0 +1,4 @@
+# Végleges átirányítások (Cloudflare Workers statikus fájlok).
+# Az angol ugró másodperc cikk korábban magyar URL-szeletet kapott.
+/en/movement/ugro-masodperc/ /en/movement/jumping-seconds/ 301
+/en/movement/ugro-masodperc /en/movement/jumping-seconds/ 301

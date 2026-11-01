@@ -14,10 +14,10 @@ const head=extra=>resolveSeo({lang:'hu',path:'/naptar/',site,launched:true,title
   fallbackTitle:'Lume | Órás folyóirat',fallbackDescription:'Forrásolt órás történetek.',fallbackAlt:'Lume',...extra});
 
 test('Titles brand once without truncating or changing an editorial heading',()=>{
- for(const input of ['Gátlómű','Gátlómű | Lume','Gátlómű | Lume | Lume'])assert.equal(seoTitle(input,'Lume'),'Gátlómű | Lume');
+ for(const input of ['Gátlómű','Gátlómű | Lume','Gátlómű | Lume | Lume','Gátlómű | Lume Journal'])assert.equal(seoTitle(input,'Lume'),'Gátlómű | Lume Journal');
  assert.equal(seoTitle('Lume Műhely: működő modellek | Lume','Lume'),'Lume Műhely: működő modellek');
  assert.equal(seoTitle(undefined,'Lume | Watches'),'Lume | Watches');
- const long='Egy hosszú, valóban leíró cím '.repeat(12).trim();assert.equal(seoTitle(long,'Lume'),long+' | Lume');
+ const long='Egy hosszú, valóban leíró cím '.repeat(12).trim();assert.equal(seoTitle(long,'Lume'),long+' | Lume Journal');
 });
 test('Canonical URLs consolidate document variants, not unrelated languages or external hosts',()=>{
  for(const input of ['/kezben/bravur-orak','/kezben/bravur-orak/','/kezben/bravur-orak/index.html','/kezben/bravur-orak/?utm_source=x#ora'])

@@ -1,8 +1,8 @@
 ---
 title: "Baltic, and the watches a father left behind"
 description: "Etienne Malec lost his father when he was five. At sixteen he opened a suitcase filled with his watches, then turned that inheritance into one of France's best-known microbrands."
-seoTitle: "Baltic Watches: The Story Behind the French Microbrand"
-seoDescription: "How Etienne Malec turned his father's watch collection into Baltic, from Kickstarter and the Aquascaphe to the micro-rotor MR01."
+seoTitle: "Baltic Watches: Founder, Origin and Story"
+seoDescription: "Baltic is a French microbrand founded by Etienne Malec and launched on Kickstarter in 2017. Designed in France, assembled in Besançon. Here is the full story."
 date: 2026-08-24
 column: 'in-hand'
 lang: 'en'

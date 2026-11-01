@@ -1,8 +1,8 @@
 ---
 title: "The square watch nobody wanted at first"
 description: "The Heuer Monaco arrived in 1969 with a water-resistant square case, an automatic chronograph and its crown on the left. It failed, disappeared, then returned as Steve McQueen’s watch."
-seoTitle: "TAG Heuer Monaco: the square watch that failed first"
-seoDescription: "The TAG Heuer Monaco story, from the Calibre 11 race and Steve McQueen in Le Mans to the modern revival."
+seoTitle: "TAG Heuer Monaco: The Square Watch's Real Story"
+seoDescription: "The square Heuer Monaco launched in March 1969 with the automatic Calibre 11 and a left-hand crown. It failed, vanished, then Steve McQueen made it an icon."
 date: 2026-09-02
 column: 'origins'
 lang: 'en'
