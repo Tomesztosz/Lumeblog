@@ -132,7 +132,7 @@ test('October horizon refresh retains primary evidence, uncertain windows and re
     if(e.lifecycle.verification?.issue){assert.equal(state(e),'review');assert(!exportableEvent(e));}
     else assert(['current','future'].includes(state(e)));
   }
-  for(const id of ['baltic-hermetique-rift-delivery','casio-mrg-d5000-sapphire-2026']){const e=entries.find(e=>e.id===id);assert.equal(state(e),'awaiting');assert(!exportableEvent(e));}
+  for(const id of ['baltic-hermetique-rift-delivery','casio-mrg-d5000-sapphire-2026']){const e=entries.find(e=>e.id===id);assert.equal(state(e),e.lifecycle.verification?.issue?'review':'awaiting');assert(!exportableEvent(e));}
   const stratton=entries.find(e=>e.id==='farer-stratton-restock-late-2026');
   assert.equal(state(stratton),'review');assert(!exportableEvent(stratton));
   assert.equal(stratton.lifecycle.schedule.precision,'unknown');
@@ -145,6 +145,14 @@ test('October horizon refresh retains primary evidence, uncertain windows and re
   const meta=await read('calendar-meta');assert.equal(meta.lastReviewed,'2026-09-06');assert(/^\d{4}-\d{2}-\d{2}$/.test(meta.lastTargetedReview));assert(meta.lastTargetedReview>='2026-10-18'&&Date.parse(meta.lastTargetedReview)<=Date.now());assert.equal(meta.targetThrough,'2026-12-31');assert.equal(meta.targetedReviewStatus,'partial');
   assert.equal(entries.length,new Set(entries.map(e=>e.id)).size);
 });
+test('November source review preserves the earlier shipping plans without inventing fulfilment',async()=>{
+  const store=JSON.parse(await readFile('src/data/calendar-events.json','utf8'));
+  for(const [id,original]of [['rath-droma-gmt-founder-series','Ships late October 2026'],['baltic-hermetique-rift-delivery','Delivery end of October']]){
+    const e=store.events[id];assert.equal(e.verification.issue,'field-not-found');assert.equal(e.sourceStatus,'planned');assert.equal(e.schedule.originalText,original);assert(e.evidence.some(x=>x.quote===original&&x.accepted));assert(e.history.some(x=>x.schedule.originalText===original));assert(!e.evidence.some(x=>x.claim==='occurred'&&x.accepted));
+  }
+  const n=store.events['nomos-club-sport-neomatik34'];assert.equal(n.identity.type,'presentation');assert.equal(n.schedule.precision,'unknown');assert.equal(n.sourceStatus,'occurred');assert(!n.schedule.value);assert(n.evidence.every(e=>e.eventType==='presentation'));
+});
+
 test('Daily unchanged verification updates freshness, not revision or history',()=>{
   const e=event(),store={version:0,events:{one:e.lifecycle}};
   const o=observed(e,{schedule:e.lifecycle.schedule});

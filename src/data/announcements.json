@@ -132,17 +132,17 @@
         "dateLabel": "Október végi kiszállítás szerepel, évszám nélkül",
         "summary": "Az izlandi The Rift kerékpárversenyhez készült Hermétique, 34 és 37 milliméteres tokban. Teljesen világító számlap, kovácsolt karbon részletek és világoskék gumiszíj kíséri a 150 méteres vízállóságot.",
         "selection": "A két méretből egyenként 200 darab készül. A képen a 37 milliméteres változat szerepel, nem egy általános Hermétique.",
-        "availability": "A termékoldal október végi kiszállítást ígér, de nem ír hozzá évszámot. Ezért még nem kezeljük igazolt 2026-os dátumként, és nincs hozzá naptárletöltés."
+        "availability": "A november 8-án ellenőrzött oldalon már nem szerepel a korábban idézett, évszám nélküli októberi szállítás. Új, igazolt időpontot nem találtunk. A korábbi bejegyzés felülvizsgálatra vár, ICS nélkül."
       },
       "en": {
         "dateLabel": "Late-October delivery stated without a year",
         "summary": "A Hermétique made for Iceland's The Rift cycling race, in 34mm and 37mm cases. A fully luminous dial, forged-carbon details and a pale-blue rubber strap accompany 150-metre water resistance.",
         "selection": "Each size is limited to 200 pieces. The image shows the 37mm version, rather than a generic Hermétique.",
-        "availability": "The product page promises delivery at the end of October but omits the year. It is not yet treated as a verified 2026 date and has no calendar download."
+        "availability": "The page checked on November 8 no longer repeats the previously quoted October delivery estimate, which had no year. No verified replacement date was found. The original entry remains under review without ICS."
       }
     },
     "sourceUrl": "https://baltic-watches.com/en/products/hermetique-the-rift",
-    "sourceChecked": "2026-10-18",
+    "sourceChecked": "2026-11-08",
     "image": "/img/calendar/baltic-hermetique-rift.png",
     "imageWidth": 900,
     "imageHeight": 1330,
@@ -267,6 +267,36 @@
         "summary": "An automatic mechanical Casio with a titanium case, matte dial and layered luminous markers. Five references offer a titanium bracelet, nylon or leather straps.",
         "selection": "The mechanical movement and lightweight case take a different direction alongside the maker's electronic watches.",
         "availability": "The official announcement gives no separate on-sale date. Its publication date is not an ordering or shipping promise, so no ICS is issued."
+      }
+    }
+  },
+  {
+    "id": "nomos-club-sport-neomatik34",
+    "brand": "NOMOS",
+    "brandKey": "nomos",
+    "family": "Club Sport",
+    "model": "neomatik 34",
+    "reference": "755 / 755.SB / 756 / 756.SB / 757 / 757.SB / 758 / 758.SB",
+    "status": "introduced",
+    "firstSeen": "2026-11-08",
+    "sourceChecked": "2026-11-08",
+    "sourceUrl": "https://nomos-glashuette.com/en/watches/new-releases/club-sport-neomatik-34",
+    "image": "/img/calendar/nomos-club-sport-neomatik34.jpg",
+    "imageWidth": 2560,
+    "imageHeight": 2560,
+    "imageCredit": "NOMOS Glashütte",
+    "copy": {
+      "hu": {
+        "dateLabel": "Hivatalosan bemutatva, pontos dátum nélkül",
+        "summary": "A 34 milliméteres automata Club Sport négy napsugaras számlappal szerepel az újdonságok között. Ezüst, aranyszínű, rozé és lila változat, acélcsattal.",
+        "selection": "Kompakt sportóra saját automata szerkezettel. A négy számlapszín egyetlen modellcsaládként szerepel.",
+        "availability": "A gyártó részletes újdonságoldala bemutatja a négy változatot, de nem ad külön jövőbeli megjelenési vagy kiszállítási dátumot. November 8. a Lume ellenőrzésének napja, nem a bevezetés dátuma. Nincs ICS."
+      },
+      "en": {
+        "dateLabel": "Officially presented, exact date unspecified",
+        "summary": "The 34 mm automatic Club Sport appears in the official new-release selection with four sunburst dials. Silver, gold-coloured, rosé and purple versions share a steel bracelet.",
+        "selection": "A compact sports watch with an in-house automatic movement. Four dial colours are grouped as one model family.",
+        "availability": "The detailed official new-release page presents all four versions without specifying a separate future launch or delivery date. November 8 is the Lume review date, not an inferred introduction date. No ICS is issued."
       }
     }
   }

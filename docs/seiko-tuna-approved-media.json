@@ -1,0 +1,44 @@
+{
+  "translationKey": "seiko-tuna",
+  "recordedAt": "2026-11-08T18:30:04Z",
+  "ownerQuote": "rendben vannak a képek, mehetnek fel a saját idejükben 1:00",
+  "scheduledFor": "2026-11-11T01:00:00+01:00",
+  "timezone": "Europe/Budapest",
+  "ownerAuthorizedPublication": true,
+  "thirdPartyLicenseObtainedInThisTask": false,
+  "rightsNote": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged.",
+  "records": [
+    {
+      "file": "src/content/posts/_images/tuna-hero.webp",
+      "sha256": "c6959cb5053427238e60b46141b7c0cd305a4de3d879d2a92ae4f5d6e6564c7f"
+    },
+    {
+      "file": "src/content/posts/_images/tuna-card.webp",
+      "sha256": "117b578760f80e7d3251f903955968004172e5eae1fd711f6a46846ea3178b1f"
+    },
+    {
+      "file": "src/content/posts/_images/tuna-6159-cutout.png",
+      "sha256": "c07d1c8d456c0cc359d0b6475f79068aef0e9530c1ca2ceec1181cd1c834cc8e"
+    },
+    {
+      "file": "src/content/posts/_images/tuna-300m-predecessor.webp",
+      "sha256": "aef42e67e01e1463328a6ad623bc2011de69a217dcefd76a8a53588a6811b200"
+    },
+    {
+      "file": "src/content/posts/_images/tuna-helium-hu.png",
+      "sha256": "ab3a2fa057236bc42003268135221f43d22abde4cbbd2a89e58e0b2a9c2c0a6b"
+    },
+    {
+      "file": "src/content/posts/_images/tuna-1975-dial-detail.webp",
+      "sha256": "845041af3c9f132ddd76a3eb0bcb38ec132c37978e62258139dc378e1157a28c"
+    },
+    {
+      "file": "src/content/posts/_images/tuna-1986-detail.webp",
+      "sha256": "b565f81680b551f466139cae7e7a0e738975e9ab55eebcad756c932c1840ee33"
+    },
+    {
+      "file": "src/content/posts/_images/tuna-helium-en.png",
+      "sha256": "1de18a90af5f9b3cfa9bcf8d33bb1e24d19393169b8e63f30158091663e45d1a"
+    }
+  ]
+}

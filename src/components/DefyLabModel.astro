@@ -1,0 +1,14 @@
+---
+import { renderDefyModel, defyCSS, defyScript } from '../lib/defy-lab-view.mjs';
+import { modelPageUrl, type Lang } from '../i18n/ui';
+interface Props { lang: Lang; standalone?: boolean }
+const {lang, standalone = false} = Astro.props;
+---
+<style is:inline set:html={defyCSS}/>
+<Fragment set:html={renderDefyModel(lang, {
+  standalone,
+  openHref: modelPageUrl(lang, 'zenith-defy-lab'),
+  referenceSrc: '/img/workshop/zenith-defy-lab-oscillator.jpg',
+  publicView: true,
+})}/>
+<script is:inline set:html={defyScript(lang)}/>

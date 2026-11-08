@@ -1,0 +1,140 @@
+{
+  "translationKey": "seiko-tuna",
+  "preparedFor": "2026-11-11",
+  "checkedOn": "2026-11-08",
+  "column": "origins",
+  "status": "scheduled",
+  "draft": false,
+  "scheduled": true,
+  "published": false,
+  "proposedDateOnly": "2026-11-11T01:00:00+01:00",
+  "publicationPermissionRecorded": true,
+  "authorInstructionsRead": [
+    "CLAUDE.md",
+    "lume-brief.md",
+    "lume-szemely.md",
+    "lume-hang.md",
+    "docs/cikk-kephasznalat.md"
+  ],
+  "authorExperience": "No handling or diving experience was supplied. None has been invented. Persona-derived photographic reactions, size reservation and opinions are identified in private comments for author review.",
+  "articleFiles": [
+    "src/content/posts/hu/seiko-tuna.md",
+    "src/content/posts/en/seiko-tuna.md"
+  ],
+  "previews": [
+    "output/article-review/seiko-tuna/megnezes.html",
+    "output/article-review/seiko-tuna/english.html"
+  ],
+  "sourceCount": 13,
+  "sourceList": "The two frontmatters contain the same verified source URLs. Primary sources include Tanaka's firsthand account reproduced by the Seiko Museum, Tokunaga's direct interview, factory technical sheets, original catalogue scans, manufacturer press releases, Rolex's own technical explanation, the patent record and the auctioneer's examined specimen.",
+  "researchDirectory": "output/article-review/seiko-tuna/research",
+  "imageDownloads": "output/article-review/seiko-tuna/research/downloads.json",
+  "imageProcessing": "output/article-review/seiko-tuna/media-checks.json",
+  "imageGeneration": "None. Original watch RGB is preserved exactly while alpha is replaced with an inspected silhouette mask. The hero and separate 4:3 card combine the original identified 1975 auction watch and an original Seiko prototype case section at native resolution. Historical manufacturer macros retain their actual pixels and framing. The bilingual comparison is a code-native qualitative concept diagram, not an anatomical case reconstruction or physical simulation.",
+  "rights": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged.",
+  "criticalCorrections": [
+    "The 1968 complaint and 350m work are documented. The museum calls the diver Yo Oshima, whereas other retellings use Hiroshi. The article uses the surname only.",
+    "Kure is the visited drillship's port, not an established address or letter-posting location. The cited letter excerpt does not identify every failed watch by reference or prove a series of sapphire crystals exploding at 350m.",
+    "The earlier 300m watch already used a one-piece case. The design is not presented as a wholly unprecedented architecture invented by one person.",
+    "Tanaka's role as development leader and designer is retained alongside Tokunaga's material and sealing work. Seven years refers to the interval from the letter to the 1975 release, not proof that Tokunaga personally led every day of that interval.",
+    "The Seiko 6159B factory sheet was visually inspected. Page 1 gives 36,000 vibrations per hour and automatic plus auxiliary hand winding. The PDF has no extractable text layer.",
+    "The archived 1977 Japanese factory catalogue was downloaded and visually inspected at PDF page 39, printed page 42. It identifies Hardlex, calibre 6159, case reference 6159-7010 and a price of 85,000 yen.",
+    "Tanaka recalls an 89,000-yen launch price. Rather than silently equating this with the 1977 printed price, the table gives the verified 1977 price as a dated example, not an initial retail price.",
+    "The original crystal is hardened mineral glass, not sapphire. The 2020 SLA041's sapphire and 8L35 are explicitly later specifications.",
+    "The original outer protector is coated titanium. Solid ceramic belongs to the 1986 generation. The museum describes black thermal spraying and Antiquorum calls its examined example ceramic-coated titanium. An unverified coating formulation is not asserted.",
+    "The protective outer shell is distinct from the pressure-resistant inner case. The shell is not presented as a helium barrier.",
+    "Helium is monatomic. The text uses atoms, not helium molecules. Water resistance and gas permeation are distinct properties.",
+    "The L-profile gasket, material properties, crystal-retaining system and one-piece case work together. No claim of zero permeation at all pressures and exposure durations is made. The forum-hosted purported Tokunaga letter's 1/100 figure is not promoted to verified experimental data.",
+    "No authenticated Tokunaga quote dismissing the valve as a patch for defective seals was found. Rolex's valve is explained as a functioning engineering solution, while the marketing myth is its supposed necessity for every quality dive watch.",
+    "CH492246A names Rolex Montres as original applicant and records filing on 1967-11-06. The article does not call it a jointly owned DOXA-Rolex patent or conflate filing with grant. DOXA's Conquistador is included without adjudicating disputed introduction dates or retail priority.",
+    "The 1967 predecessor, the 1975 mechanical Tuna and the 1986 quartz descendant are labelled separately. The old rating is historical, not certification that an individual vintage watch remains suitable for diving today."
+  ],
+  "sourceAvailabilityNotes": [
+    "The current historyofdiverswatches URL returned an empty shell, so no factual claim depends on that download.",
+    "The makedostudio archive returned 403 and is not in the public source list.",
+    "A theseikoguy 1977 catalogue URL returned 404. A complete 18.6 MB archive copy at WatchHunter was obtained and inspected locally; the web reader's size limit is not treated as an unread document.",
+    "The web PDF screenshot tool could not render the scanned 6159B sheet. PyMuPDF rendered the actual local original for visual inspection. Its dimensions, frequency and functions were read from that scan, not inferred from search snippets.",
+    "The indexed 2018 Rolex helium-valve PDF now resolves to an HTML 404 page despite a 200 response. Replaced it in both source lists with the live official Sea-Dweller newsroom page. The failed response is kept as HTML research evidence, not misrepresented as a PDF. PDF downloads now verify the actual file signature."
+  ],
+  "technicalSafety": {
+    "purpose": "Watch history and a conceptual explanation of sealing and pressure differences",
+    "notDivingInstruction": true,
+    "noDivePlan": true,
+    "noGasMixRecipe": true,
+    "noAscentRate": true,
+    "noDecompressionSchedule": true,
+    "vintageRatingNotCurrentCertification": true
+  },
+  "qa": {
+    "hangcheck": {
+      "huErrors": 0,
+      "enErrors": 0,
+      "huWarnings": 1,
+      "enWarnings": 1,
+      "warningReview": "Both warnings concern sentence-length CV just below 0.45. Reviewed manually alongside the actual short standalone paragraphs and two longer explanations. No change is made merely to game the statistic. Endings are concrete photographic observations, not slogans or balancing conclusions."
+    },
+    "browserCommand": "node scripts/check-seiko-tuna-review.mjs --build",
+    "browserReport": "output/article-review/seiko-tuna/browser-checks.json",
+    "rhythmReport": "output/article-review/seiko-tuna/rhythm-checks.json",
+    "buildPrivacy": "output/article-review/seiko-tuna/build-privacy.json",
+    "imagesPerArticle": 6,
+    "genuineAlphaCutouts": 1,
+    "cutoutRGBExact": true,
+    "generativeImages": false,
+    "build": {
+      "command": "npm run build",
+      "log": "output/seiko-tuna-build.log",
+      "exitCode": 0,
+      "pages": 121
+    }
+  },
+  "calendarReview": "No publication or scheduling was requested. Calendar metadata has not been changed by this task. A complete official-source radar review remains mandatory on later approved publication or scheduling.",
+  "publicationApproved": true,
+  "publicationDate": "2026-11-11T01:00:00+01:00",
+  "approval": {
+    "translationKey": "seiko-tuna",
+    "recordedAt": "2026-11-08T18:30:04Z",
+    "ownerQuote": "rendben vannak a képek, mehetnek fel a saját idejükben 1:00",
+    "scheduledFor": "2026-11-11T01:00:00+01:00",
+    "timezone": "Europe/Budapest",
+    "ownerAuthorizedPublication": true,
+    "thirdPartyLicenseObtainedInThisTask": false,
+    "rightsNote": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged.",
+    "records": [
+      {
+        "file": "src/content/posts/_images/tuna-hero.webp",
+        "sha256": "c6959cb5053427238e60b46141b7c0cd305a4de3d879d2a92ae4f5d6e6564c7f"
+      },
+      {
+        "file": "src/content/posts/_images/tuna-card.webp",
+        "sha256": "117b578760f80e7d3251f903955968004172e5eae1fd711f6a46846ea3178b1f"
+      },
+      {
+        "file": "src/content/posts/_images/tuna-6159-cutout.png",
+        "sha256": "c07d1c8d456c0cc359d0b6475f79068aef0e9530c1ca2ceec1181cd1c834cc8e"
+      },
+      {
+        "file": "src/content/posts/_images/tuna-300m-predecessor.webp",
+        "sha256": "aef42e67e01e1463328a6ad623bc2011de69a217dcefd76a8a53588a6811b200"
+      },
+      {
+        "file": "src/content/posts/_images/tuna-helium-hu.png",
+        "sha256": "ab3a2fa057236bc42003268135221f43d22abde4cbbd2a89e58e0b2a9c2c0a6b"
+      },
+      {
+        "file": "src/content/posts/_images/tuna-1975-dial-detail.webp",
+        "sha256": "845041af3c9f132ddd76a3eb0bcb38ec132c37978e62258139dc378e1157a28c"
+      },
+      {
+        "file": "src/content/posts/_images/tuna-1986-detail.webp",
+        "sha256": "b565f81680b551f466139cae7e7a0e738975e9ab55eebcad756c932c1840ee33"
+      },
+      {
+        "file": "src/content/posts/_images/tuna-helium-en.png",
+        "sha256": "1de18a90af5f9b3cfa9bcf8d33bb1e24d19393169b8e63f30158091663e45d1a"
+      }
+    ]
+  },
+  "calendar": "docs/calendar-review-week-20261109.json",
+  "schedulingValidation": "output/week-20261109/current-checks.json and future-checks.json; earlier local private-preview test reports refer to the preparation stage."
+}

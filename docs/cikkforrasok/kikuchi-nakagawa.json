@@ -1,0 +1,118 @@
+{
+  "translationKey": "kikuchi-nakagawa",
+  "preparedFor": "2026-11-09",
+  "checkedOn": "2026-11-06",
+  "column": "in-hand",
+  "status": "scheduled",
+  "draft": false,
+  "scheduled": true,
+  "published": false,
+  "proposedDateOnly": "2026-11-09T01:00:00+01:00",
+  "publicationPermissionRecorded": true,
+  "authorInstructionsRead": [
+    "CLAUDE.md",
+    "lume-brief.md",
+    "lume-szemely.md",
+    "lume-hang.md",
+    "docs/cikk-kephasznalat.md"
+  ],
+  "authorExperience": {
+    "question": "Volt már Kikuchi Nakagawa a kezedben, vagy van róluk olyan saját benyomásod, amit szeretnél a cikkben látni?",
+    "answer": "nem volt",
+    "handlingExperience": false,
+    "opinions": "Persona-derived impressions are identified with [VÉLEMÉNY?] in private HTML comments in both language versions. They require the author's review. No handling, ownership, purchase or maker meeting is invented."
+  },
+  "articleFiles": [
+    "src/content/posts/hu/kikuchi-nakagawa.md",
+    "src/content/posts/en/kikuchi-nakagawa.md"
+  ],
+  "previews": [
+    "output/article-review/kikuchi-nakagawa/megnezes.html",
+    "output/article-review/kikuchi-nakagawa/english.html"
+  ],
+  "sourceCount": 11,
+  "sourceList": "Both article frontmatters contain the same verified primary URLs. Maker biographies, philosophy, three product pages and ordering information are archived under the research directory. GPHG is the manufacturer's own entry; Phillips describes its examined lot. Vaucher and Lange document their own movement specifications and finishing processes.",
+  "researchDirectory": "output/article-review/kikuchi-nakagawa/research",
+  "imageDownloads": "output/article-review/kikuchi-nakagawa/research/downloads.json",
+  "imageProcessing": "output/article-review/kikuchi-nakagawa/media-checks.json",
+  "imageGeneration": "None. Original photographic RGB is retained exactly in manually traced alpha masks. Hero and card use code-native compositions of two identified original portraits and the original white Murakumo photograph.",
+  "rights": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged.",
+  "criticalCorrections": [
+    "Founders are Yusuke Kikuchi and Tomonari Nakagawa, not Eiichi Kikuchi and Tomonori Nakagawa.",
+    "The product is Ichimonji, not Ichirin. KN001 is a calibre designation, not an Ichirin retail reference.",
+    "KN001WH identifies the white Murakumo in the manufacturer's GPHG entry. It is not applied to every colour or to the Ichimonji.",
+    "KN001 and KN002 are maker designations for Vaucher-supplied movements. The KN001's dimensions, reserve, frequency and component count match the VMF 5401 family. The 5401/190 skeleton moonphase and 5401/50 perpetual variants are not confused with the base calibre.",
+    "Exterior hand finishing is the focus. Official descriptions name Matsuura casework, YUKI Precision hands, Comblémine dials, Bright Sapphire crystals and Matsushita-an straps. The watches are not represented as wholly manufactured in-house.",
+    "Proprietary steel bridges and hand-frosted German-silver bridges were not established. The German-silver item identified by the manufacturer is the small-seconds hand pipe.",
+    "A specific zinc plate, workshop diamond-paste recipe and a Neuchatel origin were not established. Generic black-polishing principles are sourced separately, not presented as witnessed workshop practice.",
+    "Black polish changes with light and observer angle, not because the steel has a black coating. Curved and flat case surfaces coexist and are not described as one plane.",
+    "No verified current production of 10 to 15 watches per year is asserted. The order page currently pauses all new orders and does not supply a present fixed waiting period.",
+    "Murakumo and Ichimonji have solid casebacks. Genmon back construction is omitted because its official solid-back text conflicts with its display-back photograph.",
+    "The Vaucher photograph is actually embedded on the Murakumo product page but its source filename contains GENMON_movement. The caption calls it a factory movement photograph and does not claim evidence of proprietary bridge architecture.",
+    "English product pages specify calf leather while Japanese pages mention crocodile. No strap leather species is promised in either article.",
+    "Prices are current manufacturer pre-tax US dollar prices checked on 6 November 2026, not historical GPHG or secondary-market prices."
+  ],
+  "qaArtifacts": {
+    "voice": "python hangcheck.py src/content/posts/hu/kikuchi-nakagawa.md src/content/posts/en/kikuchi-nakagawa.md",
+    "browser": "output/article-review/kikuchi-nakagawa/browser-checks.json",
+    "rhythm": "output/article-review/kikuchi-nakagawa/rhythm-checks.json",
+    "buildPrivacy": "output/article-review/kikuchi-nakagawa/build-privacy.json",
+    "browserAndAlphaCommand": "node scripts/check-kikuchi-nakagawa-review.mjs --build"
+  },
+  "manualReview": "Checked irregular paragraph lengths, the two longer explanations, concrete observations from source photographs, independent British English, no invented handling, source-specific reference labels and the final paragraphs. Four alpha masks retain original RGB. Inspected both light and dark previews at desktop and mobile sizes. Generic optical polishing explanation is kept separate from unverified workshop-specific recipes.",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "pages": 121,
+    "productionChanged": false
+  },
+  "calendarReview": "Not part of private drafting. Calendar metadata was not changed. Complete official radar review is mandatory when a later publication or scheduling request is approved.",
+  "publicationApproved": true,
+  "publicationDate": "2026-11-09T01:00:00+01:00",
+  "approval": {
+    "translationKey": "kikuchi-nakagawa",
+    "recordedAt": "2026-11-08T18:30:04Z",
+    "ownerQuote": "rendben vannak a képek, mehetnek fel a saját idejükben 1:00",
+    "scheduledFor": "2026-11-09T01:00:00+01:00",
+    "timezone": "Europe/Budapest",
+    "ownerAuthorizedPublication": true,
+    "thirdPartyLicenseObtainedInThisTask": false,
+    "rightsNote": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged.",
+    "records": [
+      {
+        "file": "src/content/posts/_images/kikuchi-hero.webp",
+        "sha256": "1a3a018ddf8c942606561b74a1cdc58b359ea106a971068869e7f77c694b813e"
+      },
+      {
+        "file": "src/content/posts/_images/kikuchi-card.webp",
+        "sha256": "bca0c5efdde2b84da7cfa05bedeeb95bb880a732863a85735d6c30900cb27a9d"
+      },
+      {
+        "file": "src/content/posts/_images/kikuchi-murakumo-black-cutout.png",
+        "sha256": "8f924485b68dc99bc696802b2735af99cb656434b0a4ef28a0dc76046a4b0848"
+      },
+      {
+        "file": "src/content/posts/_images/kikuchi-founders.webp",
+        "sha256": "610b3e3f15f245b5dffaee3049979d8cfe0b6155401737b537a7364e7f299bdc"
+      },
+      {
+        "file": "src/content/posts/_images/kikuchi-murakumo-hands.webp",
+        "sha256": "80c5db8619d2b595d119b281d5019fc18a3e1d0774b43b3ba0b39487f06a1f36"
+      },
+      {
+        "file": "src/content/posts/_images/kikuchi-murakumo-white-cutout.png",
+        "sha256": "75d6921501f456505dbaca6af3e67fe278225757c204cd930bf2832e4d52aaa9"
+      },
+      {
+        "file": "src/content/posts/_images/kikuchi-ichimonji-white-cutout.png",
+        "sha256": "6092c3365fc10b9f76eb8ce677b2fcda82491d2f6958b95339af824ae20d183b"
+      },
+      {
+        "file": "src/content/posts/_images/kikuchi-vaucher-movement-cutout.png",
+        "sha256": "c5c12897f7fd26210c879833a1df934748e00ee539cb9d8ddfd81db18c29c3e0"
+      }
+    ]
+  },
+  "calendar": "docs/calendar-review-week-20261109.json",
+  "schedulingValidation": "output/week-20261109/current-checks.json and future-checks.json; earlier local private-preview test reports refer to the preparation stage."
+}

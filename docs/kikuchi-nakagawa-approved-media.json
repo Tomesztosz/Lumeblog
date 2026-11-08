@@ -1,0 +1,44 @@
+{
+  "translationKey": "kikuchi-nakagawa",
+  "recordedAt": "2026-11-08T18:30:04Z",
+  "ownerQuote": "rendben vannak a képek, mehetnek fel a saját idejükben 1:00",
+  "scheduledFor": "2026-11-09T01:00:00+01:00",
+  "timezone": "Europe/Budapest",
+  "ownerAuthorizedPublication": true,
+  "thirdPartyLicenseObtainedInThisTask": false,
+  "rightsNote": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged.",
+  "records": [
+    {
+      "file": "src/content/posts/_images/kikuchi-hero.webp",
+      "sha256": "1a3a018ddf8c942606561b74a1cdc58b359ea106a971068869e7f77c694b813e"
+    },
+    {
+      "file": "src/content/posts/_images/kikuchi-card.webp",
+      "sha256": "bca0c5efdde2b84da7cfa05bedeeb95bb880a732863a85735d6c30900cb27a9d"
+    },
+    {
+      "file": "src/content/posts/_images/kikuchi-murakumo-black-cutout.png",
+      "sha256": "8f924485b68dc99bc696802b2735af99cb656434b0a4ef28a0dc76046a4b0848"
+    },
+    {
+      "file": "src/content/posts/_images/kikuchi-founders.webp",
+      "sha256": "610b3e3f15f245b5dffaee3049979d8cfe0b6155401737b537a7364e7f299bdc"
+    },
+    {
+      "file": "src/content/posts/_images/kikuchi-murakumo-hands.webp",
+      "sha256": "80c5db8619d2b595d119b281d5019fc18a3e1d0774b43b3ba0b39487f06a1f36"
+    },
+    {
+      "file": "src/content/posts/_images/kikuchi-murakumo-white-cutout.png",
+      "sha256": "75d6921501f456505dbaca6af3e67fe278225757c204cd930bf2832e4d52aaa9"
+    },
+    {
+      "file": "src/content/posts/_images/kikuchi-ichimonji-white-cutout.png",
+      "sha256": "6092c3365fc10b9f76eb8ce677b2fcda82491d2f6958b95339af824ae20d183b"
+    },
+    {
+      "file": "src/content/posts/_images/kikuchi-vaucher-movement-cutout.png",
+      "sha256": "c5c12897f7fd26210c879833a1df934748e00ee539cb9d8ddfd81db18c29c3e0"
+    }
+  ]
+}

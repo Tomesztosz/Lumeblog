@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "preparedOn": "2026-11-08",
+  "timezone": "Europe/Budapest",
+  "ownerApproval": "rendben vannak a képek, mehetnek fel a saját idejükben 1:00",
+  "schedule": [
+    { "translationKey": "kikuchi-nakagawa", "date": "2026-11-09T01:00:00+01:00", "languages": ["hu", "en"] },
+    { "translationKey": "seiko-tuna", "date": "2026-11-11T01:00:00+01:00", "languages": ["hu", "en"] },
+    { "translationKey": "zenith-defy-lab", "date": "2026-11-13T01:00:00+01:00", "languages": ["hu", "en"] }
+  ],
+  "approvedBodyTextUnchanged": true,
+  "approvedImageBytesUnchanged": true,
+  "imageApprovalRecords": [
+    "docs/kikuchi-nakagawa-approved-media.json",
+    "docs/seiko-tuna-approved-media.json",
+    "docs/zenith-defy-lab-approved-media.json"
+  ],
+  "publication": {
+    "mechanism": "Existing active scheduled GitHub workflow requests a fresh Cloudflare build when a published article becomes due.",
+    "workflow": ".github/workflows/utemezett-megjelenes.yml",
+    "exactTimeGuarantee": false,
+    "note": "GitHub scheduling and Cloudflare build duration may delay public availability beyond 01:00. Future posts and the future Zenith workshop are excluded from the current build, public feeds and LLMS index."
+  },
+  "validation": {
+    "currentFullBuild": "passed",
+    "futureFullBuild": "passed with a test-only Date shim at 2026-11-13T00:05:00Z; shim not included in production",
+    "futureArticleAndSharedModelViewports": 24,
+    "viewportWidths": [1440, 390, 320],
+    "browserRuntimeErrors": 0,
+    "imagesDecoded": true,
+    "horizontalOverflow": false,
+    "publicZenithModelStarts": true,
+    "publicZenithStressViewWorks": true,
+    "calendarBrowserChecks": 18,
+    "calendarLanguagesChecked": ["hu", "en"],
+    "exactPublicationBoundaries": "Checked before, at and after each due time; Monday, Wednesday and Friday ordering checked.",
+    "approvedImageSha256": "All files match their media approval manifests.",
+    "hangcheck": "All six articles: zero HIBA. Three length-variation FIGYELEM warnings manually reviewed; approved paragraphs and endings preserved.",
+    "npmAudit": "Zero known vulnerabilities after the scoped build-tool lockfile update.",
+    "modelRegression": "Nine Defy tests include isolated execution of the browser program with simulated SSR-renamed helpers."
+  },
+  "calendar": {
+    "reviewRecord": "docs/calendar-review-week-20261109.json",
+    "status": "partial",
+    "brands": 24,
+    "configuredAndExistingCardSourceUrls": 63,
+    "newAnnouncements": ["nomos-club-sport-neomatik34"],
+    "newDatedReleases": 0,
+    "newIcsFiles": 0,
+    "shippingEvidenceFlagged": ["rath-droma-gmt", "baltic-rift"],
+    "lastReviewedAdvanced": false,
+    "note": "Blocked or incomplete official pages and historical radar backlog remain explicitly unresolved. No complete calendar coverage is claimed."
+  },
+  "localEvidence": "Local output/week-20261109 contains current and future build logs, approval snapshots, browser checks and screenshots. These private review files are intentionally excluded from the deployment."
+}

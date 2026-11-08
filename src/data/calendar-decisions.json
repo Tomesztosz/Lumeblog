@@ -28,5 +28,35 @@
     "decision": "excluded",
     "reason": "Hivatalos kereskedőkről és garanciáról szóló tájékoztató, nem új óra vagy megjelenési esemény.",
     "reviewedAt": "2026-10-18"
+  },
+  {
+    "url": "https://press.jaeger-lecoultre.com/introducing-ahaan-panday/",
+    "decision": "excluded",
+    "reviewedAt": "2026-11-08",
+    "reason": "Márkanagykövet bejelentése, nem új óra vagy megjelenési időpont."
+  },
+  {
+    "url": "https://press.jaeger-lecoultre.com/introducing-the-collectibles-viii-lecoultre/",
+    "decision": "excluded",
+    "reviewedAt": "2026-11-08",
+    "reason": "Restaurált vintage órák értékesítése és New York-i kiállítása. A megjelenési naptárba most nem választottunk új modellbevezetésként. A november 6–20. kiállítási időszak nem új karóra megjelenési dátuma."
+  },
+  {
+    "url": "https://www.grand-seiko.com/global-en/news/2026/topics/20261104",
+    "decision": "excluded",
+    "reviewedAt": "2026-11-08",
+    "reason": "A hivatalos hírfolyam címe szerint szolgáltatás-helyreállítás, nem új óramegjelenés. A részletes oldal nem teljesen ellenőrizhető."
+  },
+  {
+    "url": "https://www.citizenwatch.com/ca/en/product/GWP-TOTE1FTP.html",
+    "decision": "excluded",
+    "reviewedAt": "2026-11-08",
+    "reason": "Promóciós vászontáska, nem óramegjelenés."
+  },
+  {
+    "url": "https://www.lorierwatches.com/blogs/journal/miyota-9-series-movement",
+    "decision": "excluded",
+    "reviewedAt": "2026-11-08",
+    "reason": "Szerkezetismertető, nem új modell vagy új rendelési kör."
   }
 ]

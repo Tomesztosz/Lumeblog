@@ -1,0 +1,665 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-08T18:30:04Z",
+  "reason": "Owner-approved Kikuchi Nakagawa, Seiko Tuna and Zenith Defy Lab article pairs scheduled for November 9, 11 and 13 at 01:00 Europe/Budapest.",
+  "status": "partial",
+  "scope": "24 registered brands, 63 configured and existing-card source URLs captured. Source text/news feeds read and failed or partial pages attempted in web browser. Full historical backlog and blocked/dynamic catalogues are not cleared.",
+  "githubChecklist": {
+    "url": "https://github.com/Tomesztosz/Lumeblog/issues/10",
+    "read": true,
+    "machineCheckedAt": "2026-11-08T07:27:18.259Z",
+    "highlightedCandidates": 27,
+    "cardReviews": 57,
+    "backgroundItems": 1189,
+    "bulkClosed": false
+  },
+  "discovery": {
+    "checkedAt": "2026-11-08T18:21:19.474Z",
+    "sources": [
+      {
+        "brand": "rolex",
+        "id": "rolex-0",
+        "url": "https://www.rolex.com/watches/new-watches",
+        "status": "readable",
+        "characters": 984,
+        "hash": "3da63fb20da915cb29102edf0cacad1d157ab0c66cbbdd7de66dc7aaaacc187c"
+      },
+      {
+        "brand": "rolex",
+        "id": "rolex-1",
+        "url": "https://www.rolex.com/watches/new-watches/oyster-perpetual-41",
+        "status": "readable",
+        "characters": 2385,
+        "hash": "4c8befd6155126c6c3004053bea461c1ec99c57bebc11db850f258f5b21d1443"
+      },
+      {
+        "brand": "omega",
+        "id": "omega-0",
+        "url": "https://press.omegawatches.com/",
+        "status": "readable",
+        "characters": 2005,
+        "hash": "f2a2e902c034e7f3e7dcafd3b5349b6af52181c90180f979da3310e4f126a6c7"
+      },
+      {
+        "brand": "omega",
+        "id": "omega-1",
+        "url": "https://press.omegawatches.com/omega-introduces-the-seamaster-diver-300m-james-bond-and-spectre-collection/",
+        "status": "failed",
+        "error": "HTTP 500"
+      },
+      {
+        "brand": "cartier",
+        "id": "cartier-0",
+        "url": "https://www.cartier.com/en-us/watches/collections/",
+        "status": "readable",
+        "characters": 7736,
+        "hash": "ebe0103b514660a41b7f022a53fb13f150388d8cd91c482a8c0e13237dc0c9b4"
+      },
+      {
+        "brand": "tudor",
+        "id": "tudor-0",
+        "url": "https://www.tudorwatch.com/en/new-watches",
+        "status": "readable",
+        "characters": 1412,
+        "hash": "7a05eaa14c81e1e6c17998c76f7c7a7924574f3edab3e694307119c13f29b850"
+      },
+      {
+        "brand": "tudor",
+        "id": "tudor-1",
+        "url": "https://www.tudorwatch.com/en/watches/tudor-northflag/m9140g1a0u-0001",
+        "status": "readable",
+        "characters": 8012,
+        "hash": "38beb66f4dd421b984fb79c2e5102742a1f8c3d904f53e5ff6b1d931068654b1"
+      },
+      {
+        "brand": "tag-heuer",
+        "id": "tag-heuer-0",
+        "url": "https://www.tagheuer.com/us/en/new-watches/",
+        "status": "failed",
+        "error": "HTTP 403"
+      },
+      {
+        "brand": "tag-heuer",
+        "id": "tag-heuer-1",
+        "url": "https://magazine.tagheuer.com/en/",
+        "status": "readable",
+        "characters": 1351,
+        "hash": "1d719f38c8d7b364532059f9ef758c25feee6771745148ab03a1b2633344a3f1"
+      },
+      {
+        "brand": "breitling",
+        "id": "breitling-0",
+        "url": "https://www.breitling.com/us-en/watches/",
+        "status": "readable",
+        "characters": 1845,
+        "hash": "69e7144cf3cfd324bcd14921d80cee550165e9d9fb6c933af04fceb67adef52f"
+      },
+      {
+        "brand": "longines",
+        "id": "longines-0",
+        "url": "https://www.longines.com/universe/news",
+        "status": "partial",
+        "characters": 43,
+        "hash": "bd337f7be579fa7490f90dc316dd528ee6cf5f9be5012fc965d0f6bd50505441"
+      },
+      {
+        "brand": "longines",
+        "id": "longines-1",
+        "url": "https://mediacenter.longines.com/",
+        "status": "partial",
+        "characters": 1250,
+        "hash": "1cd4d95af01a3a178b2a54f82fb69f4388e7b0554d19e7ca70daa6a1a18f9251"
+      },
+      {
+        "brand": "iwc",
+        "id": "iwc-0",
+        "url": "https://www.iwc.com/ww-en/watches",
+        "status": "partial",
+        "characters": 0,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "brand": "iwc",
+        "id": "iwc-1",
+        "url": "https://press.iwc.com/",
+        "status": "readable",
+        "characters": 4723,
+        "hash": "341ffb6a9ae15d833bbacafa5c35005af9bcbf777a093e63abb0f7d39da0bc85"
+      },
+      {
+        "brand": "zenith",
+        "id": "zenith-0",
+        "url": "https://pressroom.zenith-watches.com/?lang=eng",
+        "status": "readable",
+        "characters": 763,
+        "hash": "4197c417f0dd04f5348d19218074feb57c0414e14fca594072068d1b9d90a536"
+      },
+      {
+        "brand": "zenith",
+        "id": "zenith-1",
+        "url": "https://pressroom.zenith-watches.com/paris-on-the-horizon-zenith-unveils-the-chronomaster-original-paris-edition/?lang=eng",
+        "status": "readable",
+        "characters": 6332,
+        "hash": "d7088d0cb0f2cab71e68218e9f4b2b6b6ddf51879c39485f387c67f198e9db53"
+      },
+      {
+        "brand": "seiko",
+        "id": "seiko-0",
+        "url": "https://www.seikowatches.com/global-en/news",
+        "status": "partial",
+        "characters": 4,
+        "hash": "69752f2313b2f0173a64afafc8fd7c6342a4a03ebaf47f7fe56792c146082232"
+      },
+      {
+        "brand": "seiko",
+        "id": "seiko-1",
+        "url": "https://www.seikowatches.com/v3/api/news?country=GlobalEn&language=en&sc_site=seiko_common&ttl=3",
+        "status": "partial",
+        "characters": 327083,
+        "hash": "2b7ec711cf968d469aa9ee2a83a938bc6ac72ada386a4eda03385de50e4b2cc0"
+      },
+      {
+        "brand": "seiko",
+        "id": "seiko-2",
+        "url": "https://www.seikowatches.com/us-en/products/5sports/hdb010",
+        "status": "readable",
+        "characters": 2964,
+        "hash": "8719b17d75b593e9f6bc6892158661aa3e3daa61ec517471c0d6aff5c4a0f99d"
+      },
+      {
+        "brand": "seiko",
+        "id": "seiko-3",
+        "url": "https://www.seikowatches.com/sg-en/news/2026/pr/20260813",
+        "status": "readable",
+        "characters": 6103,
+        "hash": "ae152bbe9d089b1391a9531da3718f7883ec310c59acd0450f8e20650336aed6"
+      },
+      {
+        "brand": "seiko",
+        "id": "seiko-4",
+        "url": "https://www.seikowatches.com/us-en/news/2026/pr/20260826",
+        "status": "readable",
+        "characters": 3864,
+        "hash": "9ef2a7050fd1b77e939a60972e643c594079cd7e3be5405b9cb0988e5e1bc26b"
+      },
+      {
+        "brand": "seiko",
+        "id": "seiko-5",
+        "url": "https://www.seikowatches.com/global-en/news/2026/pr/20261006",
+        "status": "readable",
+        "characters": 4862,
+        "hash": "03225165d03d4b6cd0d12b4e2dfaa0593045afd97a05396b31fd292af3343c4a"
+      },
+      {
+        "brand": "seiko",
+        "id": "seiko-6",
+        "url": "https://www.seikowatches.com/global-en/news/2026/pr/20260806",
+        "status": "partial",
+        "characters": 9066,
+        "hash": "9e5688755e8c1753ca6a3ef73faa497611071c7572394884407dbda4ce570372"
+      },
+      {
+        "brand": "grand-seiko",
+        "id": "grand-seiko-0",
+        "url": "https://www.grand-seiko.com/global-en/news",
+        "status": "partial",
+        "characters": 4,
+        "hash": "69752f2313b2f0173a64afafc8fd7c6342a4a03ebaf47f7fe56792c146082232"
+      },
+      {
+        "brand": "grand-seiko",
+        "id": "grand-seiko-1",
+        "url": "https://www.grand-seiko.com/v3/api/news?country=GlobalEn&language=en&sc_site=gs_common&ttl=3",
+        "status": "partial",
+        "characters": 206030,
+        "hash": "db00d1f4c2ba82533754e0d969d7c7ef0a43bfa3b0ce470d1baafc53a53a7c30"
+      },
+      {
+        "brand": "grand-seiko",
+        "id": "grand-seiko-2",
+        "url": "https://www.grand-seiko.com/au-en/news/2026/pr/20260624",
+        "status": "readable",
+        "characters": 9492,
+        "hash": "a0eccaa5444d454a0c6e00b50caee11d9c7938bec53a9f3ee9671e90d4c5c198"
+      },
+      {
+        "brand": "citizen",
+        "id": "citizen-0",
+        "url": "https://www.citizenwatch-global.com/news/index.html",
+        "status": "readable",
+        "characters": 20134,
+        "hash": "4593d76971c583cfcc891c7725cec02dda92c71463f419c78707d9086eddd344"
+      },
+      {
+        "brand": "citizen",
+        "id": "citizen-1",
+        "url": "https://www.citizenwatch.com/ca/en/product/AV0104-06W.html",
+        "status": "readable",
+        "characters": 5071,
+        "hash": "cda4c451ec49839bbc76eadfe01def96f0873f9f7c93e5c63281edaa5f037014"
+      },
+      {
+        "brand": "citizen",
+        "id": "citizen-2",
+        "url": "https://www.citizenwatch.com/ca/en/product/JY8144-50E.html",
+        "status": "readable",
+        "characters": 5827,
+        "hash": "2cce45c24457a2017861f199317089941d6833ef66e4a1fe414c51e472ea4da5"
+      },
+      {
+        "brand": "citizen",
+        "id": "citizen-3",
+        "url": "https://www.citizenwatch-global.com/news/2026/20260901/index.html",
+        "status": "partial",
+        "characters": 6785,
+        "hash": "6388af09766a5bdabb10bd0feaead87db7a66753d790b93235e2486cb46f3c80"
+      },
+      {
+        "brand": "citizen",
+        "id": "citizen-4",
+        "url": "https://www.citizenwatch-global.com/news/2026/20260909/index.html",
+        "status": "partial",
+        "characters": 11231,
+        "hash": "d32ebd73157d8e1554de5ddfd57b6133ac1d5b81bce4553f50f5e169eb8bf2ac"
+      },
+      {
+        "brand": "citizen",
+        "id": "citizen-5",
+        "url": "https://www.citizenwatch-global.com/news/2026/20261013/index.html",
+        "status": "partial",
+        "characters": 6786,
+        "hash": "64502bdc016278ff4c8ca21dd1e9081bed66482540f5c177fbbae03f4736a518"
+      },
+      {
+        "brand": "citizen",
+        "id": "citizen-6",
+        "url": "https://www.citizenwatch-global.com/news/2026/20260924/index.html",
+        "status": "partial",
+        "characters": 5380,
+        "hash": "26ba2fed7debd213815d2292b4aac61f8085e55e63250a880ab386aefbeb8b20"
+      },
+      {
+        "brand": "citizen",
+        "id": "citizen-7",
+        "url": "https://www.citizenwatch-global.com/news/2026/20260917/index.html",
+        "status": "partial",
+        "characters": 9634,
+        "hash": "affc20f3814d47e75e9d67c7ed09be1dba993e93c2850a1a12b90c562c350bcd"
+      },
+      {
+        "brand": "g-shock",
+        "id": "g-shock-0",
+        "url": "https://gshock.casio.com/intl/products/",
+        "status": "readable",
+        "characters": 339,
+        "hash": "57b48d6732c6ac607e0317b05c862b91364f8fa07a03926c31a169d2cb99a982"
+      },
+      {
+        "brand": "g-shock",
+        "id": "g-shock-1",
+        "url": "https://www.casio.com/intl/news/",
+        "status": "readable",
+        "characters": 8919,
+        "hash": "bbcc92fb01da3f20a7659e4a5fa7354cc033b07a724f3f369004a766f141307f"
+      },
+      {
+        "brand": "g-shock",
+        "id": "g-shock-2",
+        "url": "https://www.casio.com/intl/news/2026/1001-mrg-d5000/",
+        "status": "readable",
+        "characters": 2950,
+        "hash": "e53c19b258803bac01f7bb0bdbfd84d60010b469069bdc3719c0791a7642ba6b"
+      },
+      {
+        "brand": "g-shock",
+        "id": "g-shock-3",
+        "url": "https://www.casio.com/intl/news/2026/1022-gac-2500gmc-2500/",
+        "status": "readable",
+        "characters": 2907,
+        "hash": "920d8c5e2d811a663222c103eebffa2a7e7363f0b66d5bd13eb43baf7aa9009f"
+      },
+      {
+        "brand": "g-shock",
+        "id": "g-shock-4",
+        "url": "https://www.casio.com/intl/news/2026/1029-CMK-100/",
+        "status": "readable",
+        "characters": 2119,
+        "hash": "cbea500f75a9d3901e478c765e847a5a536a1e7adabde5f35c51b594ae26fd04"
+      },
+      {
+        "brand": "jaeger-lecoultre",
+        "id": "jaeger-lecoultre-0",
+        "url": "https://www.jaeger-lecoultre.com/us-en/news/watchmaking",
+        "status": "readable",
+        "characters": 2924,
+        "hash": "60940e7f5db6c5745d7c452c05aaa57ebdfb08899fd75ca5c969d2dc3033b33d"
+      },
+      {
+        "brand": "jaeger-lecoultre",
+        "id": "jaeger-lecoultre-1",
+        "url": "https://press.jaeger-lecoultre.com/",
+        "status": "readable",
+        "characters": 5547,
+        "hash": "ddd12f47af4484da624c62b1ddb93fa3d1c66b71f62ab1c96e8487e699df2583"
+      },
+      {
+        "brand": "baltic",
+        "id": "baltic-0",
+        "url": "https://baltic-watches.com/en/collections",
+        "status": "readable",
+        "characters": 360,
+        "hash": "44a9b7c1e660eb76b7364dd671c25d806b039993cdc037f69e65172ea009d29b"
+      },
+      {
+        "brand": "baltic",
+        "id": "baltic-1",
+        "url": "https://baltic-watches.com/en/products/hermetique-the-rift",
+        "status": "readable",
+        "characters": 6621,
+        "hash": "83a586296db5d5217c59eed698fd2a95e43e9a8ec312c5f5f7569c0906dc7a56"
+      },
+      {
+        "brand": "christopher-ward",
+        "id": "christopher-ward-0",
+        "url": "https://www.christopherward.com/",
+        "status": "partial",
+        "characters": 2660,
+        "hash": "0b54824db9abf3f25414e10f50914b87172be9faa21b11c8b38aed8478f06af9"
+      },
+      {
+        "brand": "christopher-ward",
+        "id": "christopher-ward-1",
+        "url": "https://www.christopherward.com/int/dive-watches",
+        "status": "partial",
+        "characters": 2873,
+        "hash": "a6813ba2ae1c160ea2c705bd610d88af5fffc1b3e2d28240915ee04896448de4"
+      },
+      {
+        "brand": "christopher-ward",
+        "id": "christopher-ward-2",
+        "url": "https://www.christopherward.com/int/press-landing.html",
+        "status": "partial",
+        "characters": 935,
+        "hash": "7afdb03058ba9e38d5c8a910da11632359c2f883a35dfada6798af9aca83c269"
+      },
+      {
+        "brand": "christopher-ward",
+        "id": "christopher-ward-3",
+        "url": "https://www.christopherward.com/int/atelier-watches/C1-Loco-Classic/C01-41H6D1-S00A0-VT.html",
+        "status": "readable",
+        "characters": 10313,
+        "hash": "f40edc8ad07ae21a57bfa62dc16159008156fcf4a9d57852a1f2bf319e33c70f"
+      },
+      {
+        "brand": "christopher-ward",
+        "id": "christopher-ward-4",
+        "url": "https://www.christopherward.com/int/trident-biscay.html",
+        "status": "partial",
+        "characters": 2808,
+        "hash": "333c5b26aad54cc754fc4bafdeb8a48f3a4b6fd20fcc2e2d3650e3dfdc890a1d"
+      },
+      {
+        "brand": "kurono-tokyo",
+        "id": "kurono-tokyo-0",
+        "url": "https://kuronotokyo.com/",
+        "status": "readable",
+        "characters": 1415,
+        "hash": "93bdad597de972a1fb2a9e5d9325673f89ee1d5917eb4d9f6110df8d22c14ce6"
+      },
+      {
+        "brand": "kurono-tokyo",
+        "id": "kurono-tokyo-1",
+        "url": "https://kuronotokyo.com/pages/calendrier-sbr",
+        "status": "readable",
+        "characters": 14312,
+        "hash": "bd97672d25d52e915a211132b0409c74c0aa4b4a85cdf1af5c9cf1ce084d3ea1"
+      },
+      {
+        "brand": "furlan-marri",
+        "id": "furlan-marri-0",
+        "url": "https://www.furlanmarri.com/collections/all-watches",
+        "status": "readable",
+        "characters": 1197,
+        "hash": "96a7726ddbc48b5c5cd9aeab5ea51347f31138e52edbab792a7926a70708f157"
+      },
+      {
+        "brand": "lorier",
+        "id": "lorier-0",
+        "url": "https://www.lorierwatches.com/collections/watches",
+        "status": "failed",
+        "error": "HTTP 429"
+      },
+      {
+        "brand": "lorier",
+        "id": "lorier-1",
+        "url": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
+        "status": "failed",
+        "error": "HTTP 429"
+      },
+      {
+        "brand": "rath",
+        "id": "rath-0",
+        "url": "https://rathwatches.com/",
+        "status": "readable",
+        "characters": 2389,
+        "hash": "fe79bf2244d1ca05dd9049bf7dfb0fcb8ea68068e1061cd9096776ba51656aee"
+      },
+      {
+        "brand": "rath",
+        "id": "rath-1",
+        "url": "https://rathwatches.com/products/rath-droma-gmt",
+        "status": "readable",
+        "characters": 7851,
+        "hash": "42bfbaf34ef4eac0fd4c1369c2cc43b644cec2dd712f7bba50f91c8847b98cbe"
+      },
+      {
+        "brand": "ming",
+        "id": "ming-0",
+        "url": "https://www.ming.watch/",
+        "status": "readable",
+        "characters": 3826,
+        "hash": "907cd6e2bab13a81e26d3449626d255be3b01be5436f6f2144685becbc58fa76"
+      },
+      {
+        "brand": "ming",
+        "id": "ming-1",
+        "url": "https://www.ming.watch/journal",
+        "status": "readable",
+        "characters": 21071,
+        "hash": "b3794b09604f7fef98794184c2fcd5ea7a63c1a852caead734e4d3f1dacac581"
+      },
+      {
+        "brand": "ming",
+        "id": "ming-2",
+        "url": "https://www.ming.watch/featured-product/ming-shapiro-37-06-lightning",
+        "status": "readable",
+        "characters": 14999,
+        "hash": "e9219f47b44ef8e1c97a8475e0d133c1d80aaecc6ed5eeeea1b4f24460274367"
+      },
+      {
+        "brand": "farer",
+        "id": "farer-0",
+        "url": "https://farer.com/collections/all-watches",
+        "status": "failed",
+        "error": "HTTP 429"
+      },
+      {
+        "brand": "farer",
+        "id": "farer-1",
+        "url": "https://farer.com/products/stratton",
+        "status": "failed",
+        "error": "HTTP 429"
+      },
+      {
+        "brand": "studio-underd0g",
+        "id": "studio-underd0g-0",
+        "url": "https://underd0g.com/",
+        "status": "readable",
+        "characters": 2933,
+        "hash": "2ffbac2c57d23745657be89d1b0167fe43f7e3789b48672a022147dc99332561"
+      },
+      {
+        "brand": "studio-underd0g",
+        "id": "studio-underd0g-1",
+        "url": "https://underd0g.com/pages/mantis",
+        "status": "readable",
+        "characters": 2791,
+        "hash": "a3e9ee4053f6b6b763672dfa105d0be627f914b13d93fc4c46df8888431ceab7"
+      },
+      {
+        "brand": "nomos",
+        "id": "nomos-0",
+        "url": "https://nomos-glashuette.com/en/watches/new-releases",
+        "status": "readable",
+        "characters": 652,
+        "hash": "33d3947f7db64364f5d507bbfe9b1c87dbf352d0d41ee7f22471222cbc83e6e4"
+      }
+    ]
+  },
+  "brands": [
+    {
+      "brand": "rolex",
+      "status": "reviewed",
+      "note": "Annual new-watch index and exact Oyster Perpetual 41 detail inspected. No independently dated new future event selected."
+    },
+    {
+      "brand": "omega",
+      "status": "partial",
+      "note": "Press index read, Bond/Spectre detailed source returned 500 and timed out in web browser recovery. No unsupported negative result or fresh card verification."
+    },
+    {
+      "brand": "cartier",
+      "status": "partial",
+      "note": "Collection catalogue read but pagination and changing NEW flags do not establish complete new-release coverage or dates."
+    },
+    {
+      "brand": "tudor",
+      "status": "reviewed",
+      "note": "Annual index and exact Northflag GMT reference inspected. Existing presentation retained; no retail date inferred."
+    },
+    {
+      "brand": "tag-heuer",
+      "status": "partial",
+      "note": "Configured catalogue returned 403 and timed out in browser recovery. Official magazine fallback read, with February and January stories."
+    },
+    {
+      "brand": "breitling",
+      "status": "reviewed",
+      "note": "Watch index and NFL selection inspected. Existing decision excludes team-colour variants from the curated release calendar."
+    },
+    {
+      "brand": "longines",
+      "status": "partial",
+      "note": "Dynamic news shell remains incomplete. Official media centre recovered with Spirit Pilot, Master and Conquest Heritage product stories, no new verified future date."
+    },
+    {
+      "brand": "iwc",
+      "status": "recovered",
+      "note": "Catalogue recovered in browser after an empty machine result. Official press feed inspected. No new future date selected from promotional catalogue pages."
+    },
+    {
+      "brand": "zenith",
+      "status": "partial",
+      "note": "Press search index reports no results. Existing Paris Edition detail read, without proof of a newly dated event. Cannot claim exhaustive new-news coverage."
+    },
+    {
+      "brand": "seiko",
+      "status": "recovered",
+      "note": "Official JSON feed read directly. Latest listed story remains the October 30 Astron design feature. All configured detail URLs and existing panda/Edo releases inspected. New SSK059 and HDB006 catalogue links provide no verified future date."
+    },
+    {
+      "brand": "grand-seiko",
+      "status": "recovered",
+      "note": "Official JSON feed read directly. November 4 service restoration, craftsmanship content and Ohtani interview are not new watch launches. Existing June core-collection release retained."
+    },
+    {
+      "brand": "citizen",
+      "status": "recovered",
+      "note": "News index, configured Canadian product pages and all configured detailed releases read, with browser checks for linkless press pages. ATTESA November 2026 estimate remains explicit. Latest October 29 corporate item concerns skating sponsorship."
+    },
+    {
+      "brand": "g-shock",
+      "status": "reviewed",
+      "note": "Products/news and three recorded October press releases inspected. CMK-100 already present. No new dated event selected."
+    },
+    {
+      "brand": "jaeger-lecoultre",
+      "status": "reviewed",
+      "note": "Official watchmaking and press pages inspected. November 6 Collectibles VIII is a restored vintage sale and exhibition, not a new watch model. November 5 Ahaan Panday is an ambassador announcement. Both editorially excluded."
+    },
+    {
+      "brand": "baltic",
+      "status": "reviewed",
+      "note": "Collection and Rift page inspected. Earlier yearless October delivery text is absent from the current page. Original unknown schedule/evidence retained and a source-review flag added, not marked shipped."
+    },
+    {
+      "brand": "christopher-ward",
+      "status": "partial",
+      "note": "Home, dive listing and press resources recovered in browser. Exact gold/brown Loco reference still offers mid-February 2027 for current preorders, without identifying the original December cohort. Existing conflict remains. Full paginated catalogue not cleared."
+    },
+    {
+      "brand": "kurono-tokyo",
+      "status": "reviewed",
+      "note": "Home and Calendrier SBR detail inspected. End-October 2026 onwards remains a shipping estimate. Sold-out ordering does not prove completed shipping."
+    },
+    {
+      "brand": "furlan-marri",
+      "status": "reviewed",
+      "note": "Current catalogue inspected. No new independently dated future event selected."
+    },
+    {
+      "brand": "lorier",
+      "status": "recovered",
+      "note": "Machine requests rate-limited; official collection and exact Astra page recovered in browser. Still late December 2026. Miyota journal item is educational, not a new release."
+    },
+    {
+      "brand": "rath",
+      "status": "reviewed",
+      "note": "Home and DROMA Founder Series page inspected. Earlier late-October 2026 shipping text is absent. Generic delivery durations do not prove fulfilment of that cohort. Earlier accepted October schedule retained under explicit review."
+    },
+    {
+      "brand": "ming",
+      "status": "partial",
+      "note": "Home, journal and Lightning detail inspected. Production slots through late 2027 and temporary pause do not identify a new dated ordering round. Historical conflicting wording remains unresolved."
+    },
+    {
+      "brand": "farer",
+      "status": "recovered",
+      "note": "Rate-limited machine requests recovered in browser. Old Stratton URL leads to Stratton II. December 21 delivery has no explicit year, so no invented 2026 event or silent identity merge. Cross II has similarly yearless shipping; Arber returns 404."
+    },
+    {
+      "brand": "studio-underd0g",
+      "status": "reviewed",
+      "note": "Home and Mantis detail inspected. Old September 1 order window remains, not a fresh opening. General availability does not prove old cohort fulfilment."
+    },
+    {
+      "brand": "nomos",
+      "status": "partial",
+      "note": "New-release index and full Club Sport neomatik 34 detail read. Four actual references selected as one official undated presentation. Club 38 detail could not be fully recovered; no exhaustive claim."
+    }
+  ],
+  "changes": {
+    "datedReleasesAdded": 0,
+    "undatedPresentationsAdded": [
+      "nomos-club-sport-neomatik34"
+    ],
+    "shippingSourcesFlagged": [
+      "rath-droma-gmt-founder-series",
+      "baltic-hermetique-rift-delivery"
+    ],
+    "newICS": 0,
+    "priorDatesAndHistoryPreserved": true
+  },
+  "newImage": {
+    "file": "public/img/calendar/nomos-club-sport-neomatik34.jpg",
+    "sourcePage": "https://nomos-glashuette.com/en/watches/new-releases/club-sport-neomatik-34",
+    "sourceUrl": "https://cdn.nomos-glashuette.com/img/f%3Dscale-down%2Cw%3D1024/cms/content/new-releases/club-34-all-silver/0769-club-sport-neomatik-34-all-silver-cms-header.jpg",
+    "width": 2560,
+    "height": 2560,
+    "credit": "NOMOS Glashütte",
+    "processing": "Original documentary wrist photograph, unchanged bytes, no generative editing."
+  },
+  "lastReviewedUnchanged": true,
+  "lastTargetedReview": "2026-11-08",
+  "previousReview": "docs/calendar-review-week-20261102.json"
+}

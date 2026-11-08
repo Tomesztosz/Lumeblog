@@ -1,0 +1,44 @@
+{
+  "translationKey": "zenith-defy-lab",
+  "recordedAt": "2026-11-08T18:30:04Z",
+  "ownerQuote": "rendben vannak a képek, mehetnek fel a saját idejükben 1:00",
+  "scheduledFor": "2026-11-13T01:00:00+01:00",
+  "timezone": "Europe/Budapest",
+  "ownerAuthorizedPublication": true,
+  "thirdPartyLicenseObtainedInThisTask": false,
+  "rightsNote": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged.",
+  "records": [
+    {
+      "file": "src/content/posts/_images/defy-hero.webp",
+      "sha256": "48c2de5c5288c6639d73d502c062ad29d33b2d358e0a87ff2a3326a8e7e2f1d4"
+    },
+    {
+      "file": "src/content/posts/_images/defy-card.webp",
+      "sha256": "a80692aff551b64b10e84c897d9237bba93ff091cc8fa703b88b38be9a65cfb4"
+    },
+    {
+      "file": "src/content/posts/_images/lab-cutout.png",
+      "sha256": "98b01ebd7172981c3c01898908ba9b7cec1fda9016c69e14a7e512afa3190b87"
+    },
+    {
+      "file": "src/content/posts/_images/oscillator-original.jpg",
+      "sha256": "e8c0160b1f042cc035fe814778798a4fbbeb482c1f7bff7826b68a3a0836d90f"
+    },
+    {
+      "file": "src/content/posts/_images/lab-dial-detail.webp",
+      "sha256": "d9e2c2712db2031a6788b771d62cb5b89cec1b1fd2807e2fc2d11e3b28e3f047"
+    },
+    {
+      "file": "src/content/posts/_images/lab-wrist.webp",
+      "sha256": "92dc1c68dd6542f5488c7fe26b3b6fdda11854ae8b43d918ae77c8db17a7b8d2"
+    },
+    {
+      "file": "src/content/posts/_images/inventor-cutout.png",
+      "sha256": "70fe815a0c97aea572f131a8f56a0e3b232744902d62817f74d8b447034bd234"
+    },
+    {
+      "file": "public/img/workshop/zenith-defy-lab-oscillator.jpg",
+      "sha256": "e8c0160b1f042cc035fe814778798a4fbbeb482c1f7bff7826b68a3a0836d90f"
+    }
+  ]
+}

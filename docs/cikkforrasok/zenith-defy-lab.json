@@ -1,0 +1,161 @@
+{
+  "translationKey": "zenith-defy-lab",
+  "checkedOn": "2026-11-08",
+  "preparedFor": "2026-11-13",
+  "column": "movement",
+  "status": "scheduled",
+  "draft": false,
+  "scheduled": true,
+  "published": false,
+  "proposedDateOnly": "2026-11-13T01:00:00+01:00",
+  "publicationPermissionRecorded": true,
+  "authorInstructionsRead": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "lume-brief.md",
+    "lume-szemely.md",
+    "lume-hang.md",
+    "docs/cikk-kephasznalat.md"
+  ],
+  "authorExperience": "No handling, meeting or personal technical test supplied. None invented. Persona-derived visual reactions and closing opinions are marked privately for author review.",
+  "articleFiles": [
+    "src/content/posts/hu/zenith-defy-lab.md",
+    "src/content/posts/en/zenith-defy-lab.md"
+  ],
+  "previews": [
+    "output/article-review/zenith-defy-lab/megnezes.html",
+    "output/article-review/zenith-defy-lab/english.html",
+    "output/article-review/zenith-defy-lab/muhely.html",
+    "output/article-review/zenith-defy-lab/workshop.html"
+  ],
+  "sourceCount": 11,
+  "sources": "Matching verified frontmatter source lists. Manufacturer releases, original manufacturer GPHG entries, a contemporary CW21 technical explanation, the actual patent, a museum curator's historical account, FHH, a university FE derivation and the original elasticity paper author's explanation.",
+  "sourceAvailabilityNotes": [
+    "The 2017 Zenith release page survives, but old English press-kit PDF links redirect to non-PDF responses. These responses were rejected, not passed off as valid PDF evidence.",
+    "The FH 2017 announcement is search-indexed but the live URL returns 404. It is not a final article source.",
+    "The manufacturer's original 2017 GPHG award release survives as a 470854-byte PDF at Asemankello. Its one page was rendered and visually read locally. It supports the stated manufacturer performance claims.",
+    "The AWCI PDF is directly publicly downloadable despite MembersOnly in its filename. No login or access restriction was bypassed. Printed and PDF page 33 was read and rendered. Its original embedded oscillator photograph is 404 by 332 pixels and is not enlarged beyond native size in the article.",
+    "Stanford and Berkeley copies of Hopcroft's 2010 paper were search-indexed but the web reader timed out or could not open them. The final source is Hopcroft's own live explanation at silicon.reddogresearch.com, explicitly citing the paper and tabulating 130 and 169 GPa by crystal direction. No unseen full PDF is claimed to have been read.",
+    "GPHG Inventor technical data were retrieved and read locally even when the web reader returned no text. The exact reference suffix is retained from that specific manufacturer entry."
+  ],
+  "criticalCorrections": [
+    "Huygens 1675 concerns the balance spring, not invention of the complete modern Swiss lever escapement. The Met's contemporary watch retains a verge escapement.",
+    "The approximate thirty-part reduction concerns a regulating assembly. GPHG prose also uses 31 and AWCI counts twelve under another boundary. No universal exact thirty-part bill is asserted. Intermediate slider counts are transition indicators only.",
+    "The separate silicon escape wheel remains. Winding, barrel, transmission and hand indication are not replaced by the oscillator plate.",
+    "A monocrystalline silicon plate is patterned by micromachining. The patent lists DRIE among possible methods. It is not cast. Thickness 0.5 mm and compliant blade in-plane width about 20 micrometres are different dimensions.",
+    "The centre is fixed at three mounting points. Outer regions oscillate through a small angle, flexing compliant connections. They are not stationary while only the inner arms move, and they do not make continuous revolutions.",
+    "15 Hz means fifteen full oscillations and thirty half-oscillations per second, giving 108000 vibrations per hour. Six degrees each way is a separate amplitude quantity.",
+    "The 2017 award release's mean 0.3 s/day and precision over 95 percent of reserve are attributed manufacturer claims. Isochronism concerns period dependence on amplitude, not necessarily constant amplitude.",
+    "Lab reserve conflicts between GPHG's 60-hour heading and 55-hour prose. The article explicitly uses the original 2017 award release's 60 hours. Inventor reserve and water resistance conflict between GPHG and FHH and are omitted.",
+    "The 1100-gauss figure is a stated completed-watch test level, not absolute magnetic immunity under every exposure. A higher frequency alone does not guarantee a daily rate.",
+    "The regulating organ removes several lubricated pivot interfaces. The complete watch is not frictionless, lubricant-free, lossless or immune to all wear. Elasticity does not eliminate internal damping or contact interactions.",
+    "Lab 2017 ZO 342 operates at 15 Hz. Inventor 2019 Calibre 9100 operates at 18 Hz. Later Inventor innovations are not backdated to Lab.",
+    "A visually smooth seconds hand still advances through discrete escapement-mediated increments. No light emission or mathematically continuous transmission is claimed."
+  ],
+  "media": {
+    "downloads": "output/article-review/zenith-defy-lab/research/downloads.json",
+    "processing": "output/article-review/zenith-defy-lab/media-checks.json",
+    "generativeImages": false,
+    "productCutouts": "Original decoded manufacturer RGB retained exactly. Only exterior-connected background alpha replaced. Pixel comparisons cover both full-size cutouts and real transparent backgrounds.",
+    "hero": "Original Zenith wrist photo and product cutout overlap, with the original oscillator document photo in a separate inset and a labelled Lume flexure motif. HTML/SVG-native editorial layout, no generated watch geometry or invented archival photograph.",
+    "rights": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged. The AWCI documentary photograph remains credited; no written AWCI licence is asserted."
+  },
+  "workshop": {
+    "implementation": [
+      "src/lib/defy-lab-model.mjs",
+      "src/lib/defy-lab-view.mjs",
+      "src/i18n/defy-lab.ts",
+      "scripts/lib/defy-lab-review-page.mjs"
+    ],
+    "delivery": "Integrated into the public article, workshop listing and shareable HU/EN workshop routes. All article and workshop routes remain date-gated until November 13. Local private previews are also retained.",
+    "geometry": "Actual orthographic projection of model-space polygons, extruded surfaces and compliant paths. Fixed centre, three oscillating sectors, folded illustrative suspensions and a separate escape wheel. Native 3D camera rotation, planar magnification views explicitly identified. Geometry is an educational reconstruction, not manufacturer CAD.",
+    "motion": "Prescribed plus/minus six-degree cosine motion at 15 physical Hz. Default display speed 1/30. Start, pause, reset, exact 1 ms physical stepping, phase slider, explosion slider, transition slider, spatial/top/side views, pointer and keyboard control. Reduced-motion starts paused; offscreen and hidden document timing does not catch up in a jump.",
+    "contacts": "Two labelled A/B teaching windows and a separate illustrative 24-tooth wheel. Not an actual Zenith tooth-count claim, solved contact geometry, torque model or factory timing diagram.",
+    "finiteElements": {
+      "type": "Assembled linear Euler–Bernoulli beam element matrix, two degrees of freedom per node, cubic Hermite interpolation, dense Gaussian elimination with pivoting",
+      "boundaryConditions": "Left displacement and rotation fixed. Right end has prescribed lateral displacement and zero rotation. No axial force or distributed load.",
+      "assumedLengthMM": 5,
+      "assumedInPlaneWidthUM": 20,
+      "assumedPlateThicknessMM": 0.5,
+      "assumedYoungGPA": 130,
+      "materialQualification": "Isotropic scalar teaching approximation, not Zenith wafer orientation or an anisotropic plate tensor. Real monocrystalline silicon depends on direction.",
+      "meshChoices": [
+        2,
+        6,
+        12,
+        24
+      ],
+      "endDisplacementRangeUM": [
+        1,
+        40
+      ],
+      "defaultDisplacementUM": 20,
+      "outputs": "Displacement, curvature, surface normal bending stress, end reaction and strain energy 0.5*d^T*K*d. Colour shows absolute surface stress, not von Mises stress.",
+      "colourScale": "Fixed over each selected load amplitude, not renormalized to each animation frame. It reaches blue at zero curvature/loading rather than always showing red.",
+      "validation": "For this imposed-end-displacement case the analytical solution is cubic and is reproduced by the beam interpolation for all tested meshes. Doubling displacement doubles stress and quadruples energy. Both end signs reverse and centre bending stress vanishes.",
+      "limits": "Separate beam bench, not a finite-element analysis of the full Zenith plate. Displayed deformation is amplified. No eigenmode, contact dynamics, molecular/atomic simulation, fracture prediction or rate certification. No claim of 1000 rendered frames per second."
+    },
+    "handComparison": "4 Hz and 15 Hz with one illustrative hand increment per half-oscillation, 8 versus 30 steps per second. Both average one turn per minute. The hand clock is real-time while the oscillator is slowed. This is not a measured reproduction of a production transmission.",
+    "visualQualifications": "Silicon is not transparent sapphire. Blue indicates the moving plate. The wire grid shows continuum deformation, not atoms. No fake radiated light or optical trail."
+  },
+  "validation": {
+    "voice": "python hangcheck.py on both article files, zero HIBA. English has no warnings. Hungarian retains one sentence-length coefficient warning, manually reviewed. Short definition sentences and longer explanations are intentional. Paragraph lengths, minimum three meaningful short paragraphs and two 90-to-150-word explanations checked independently. Both final paragraphs read manually, no summary or slogan.",
+    "math": "Eight focused Defy tests passed. Also ran Co-Axial, rattrapante and tourbillon targeted regressions, 33 combined tests passed including Defy. Full build ran the existing constant-escapement and Freak model regressions.",
+    "browser": "HU/EN article at 1440 and 390 pixels, light/dark, seven visible image elements each, four chapters, Start/Pause/Step/Reset, phase, transition count, mesh and load controls, zero console errors. Standalone HU/EN pages run under file protocol. Reduced motion starts paused. Browser screenshots and checks in local qa folder.",
+    "build": "npm run build passed including calendar, SEO, LLMS, security and journal checks. Additional privacy test confirms no new article route, image, model, feed, sitemap or llms entry was emitted.",
+    "reports": [
+      "output/article-review/zenith-defy-lab/qa/browser-report.json",
+      "output/article-review/zenith-defy-lab/rhythm-checks.json",
+      "output/article-review/zenith-defy-lab/build-privacy.json"
+    ]
+  },
+  "calendar": "docs/calendar-review-week-20261109.json",
+  "publicationApproved": true,
+  "publicationDate": "2026-11-13T01:00:00+01:00",
+  "approval": {
+    "translationKey": "zenith-defy-lab",
+    "recordedAt": "2026-11-08T18:30:04Z",
+    "ownerQuote": "rendben vannak a képek, mehetnek fel a saját idejükben 1:00",
+    "scheduledFor": "2026-11-13T01:00:00+01:00",
+    "timezone": "Europe/Budapest",
+    "ownerAuthorizedPublication": true,
+    "thirdPartyLicenseObtainedInThisTask": false,
+    "rightsNote": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged.",
+    "records": [
+      {
+        "file": "src/content/posts/_images/defy-hero.webp",
+        "sha256": "48c2de5c5288c6639d73d502c062ad29d33b2d358e0a87ff2a3326a8e7e2f1d4"
+      },
+      {
+        "file": "src/content/posts/_images/defy-card.webp",
+        "sha256": "a80692aff551b64b10e84c897d9237bba93ff091cc8fa703b88b38be9a65cfb4"
+      },
+      {
+        "file": "src/content/posts/_images/lab-cutout.png",
+        "sha256": "98b01ebd7172981c3c01898908ba9b7cec1fda9016c69e14a7e512afa3190b87"
+      },
+      {
+        "file": "src/content/posts/_images/oscillator-original.jpg",
+        "sha256": "e8c0160b1f042cc035fe814778798a4fbbeb482c1f7bff7826b68a3a0836d90f"
+      },
+      {
+        "file": "src/content/posts/_images/lab-dial-detail.webp",
+        "sha256": "d9e2c2712db2031a6788b771d62cb5b89cec1b1fd2807e2fc2d11e3b28e3f047"
+      },
+      {
+        "file": "src/content/posts/_images/lab-wrist.webp",
+        "sha256": "92dc1c68dd6542f5488c7fe26b3b6fdda11854ae8b43d918ae77c8db17a7b8d2"
+      },
+      {
+        "file": "src/content/posts/_images/inventor-cutout.png",
+        "sha256": "70fe815a0c97aea572f131a8f56a0e3b232744902d62817f74d8b447034bd234"
+      },
+      {
+        "file": "public/img/workshop/zenith-defy-lab-oscillator.jpg",
+        "sha256": "e8c0160b1f042cc035fe814778798a4fbbeb482c1f7bff7826b68a3a0836d90f"
+      }
+    ]
+  },
+  "schedulingValidation": "output/week-20261109/current-checks.json and future-checks.json; earlier local private-preview test reports refer to the preparation stage.",
+  "rights": "The owner authorised publication of the current article and images. No independent third-party licence has been newly obtained or inferred. Approved article text and original approved image files are unchanged."
+}

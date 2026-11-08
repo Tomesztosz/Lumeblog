@@ -1,3 +1,4 @@
+import { DEFY_TEXT } from '../i18n/defy-lab';
 import { FREAK_LESSON } from '../i18n/freak';
 import { CONSTANT_LESSON } from '../i18n/constant-escapement';
 import { MODEL_NAMES } from './design-models.mjs';
@@ -7,6 +8,10 @@ import { getPosts, type Post } from './posts';
 
 export function sharedModel(post: Post) {
   if (post.data.column !== 'movement') return undefined;
+  if (post.data.translationKey === 'zenith-defy-lab' && post.body?.includes('<!-- lume-model zenith-defy-lab -->')) {
+    const t = DEFY_TEXT[post.data.lang];
+    return { key: 'zenith-defy-lab', kind: 'inline' as const, title: t.modelTitle, description: t.intro, level: 'advanced' as const, url: modelPageUrl(post.data.lang, 'zenith-defy-lab') };
+  }
   if (post.data.translationKey === 'freak' && post.body?.includes('<!-- lume-model freak -->')) {
     const t = FREAK_LESSON[post.data.lang];
     return { key: 'freak', kind: 'inline' as const, title: t.title, description: t.intro, level: 'advanced' as const, url: modelPageUrl(post.data.lang, 'freak') };

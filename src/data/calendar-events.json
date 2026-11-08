@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": 35,
+  "version": 38,
   "events": {
     "citizen-attesa-eco-drive-50-2026": {
       "editorial": "approved",
@@ -233,7 +233,12 @@
         "qualifier": "late",
         "originalText": "Ships late October 2026"
       },
-      "verification": null,
+      "verification": {
+        "issue": "field-not-found",
+        "reason": "The current source no longer contains the accepted late-October 2026 Founder Series shipping estimate. Generic delivery durations do not prove that this original batch shipped or identify a revised month.",
+        "recordedAt": "2026-11-08T18:30:04Z",
+        "sourceUrl": "https://rathwatches.com/products/rath-droma-gmt"
+      },
       "evidence": [
         {
           "eventId": "rath-droma-gmt-founder-series",
@@ -268,10 +273,35 @@
           },
           "changedAt": "2026-10-18T07:57:28Z",
           "reason": "editorial-source-review"
+        },
+        {
+          "revision": 1,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "month",
+            "value": "2026-10",
+            "certainty": "estimated",
+            "qualifier": "late",
+            "originalText": "Ships late October 2026"
+          },
+          "evidence": [
+            {
+              "eventId": "rath-droma-gmt-founder-series",
+              "eventType": "shipping",
+              "claim": "planned",
+              "url": "https://rathwatches.com/products/rath-droma-gmt",
+              "quote": "Ships late October 2026",
+              "checkedAt": "2026-10-29T15:32:02.941Z",
+              "accepted": true
+            }
+          ],
+          "verification": null,
+          "changedAt": "2026-11-08T18:30:04Z",
+          "reason": "editorial-source-review; earlier accepted shipping evidence preserved"
         }
       ],
-      "revision": 1,
-      "editorialReviewedAt": "2026-10-18T07:57:28Z",
+      "revision": 2,
+      "editorialReviewedAt": "2026-11-08T18:30:04Z",
       "allowedSources": [
         "https://rathwatches.com/products/rath-droma-gmt"
       ],
@@ -1188,7 +1218,12 @@
         "precision": "unknown",
         "originalText": "Delivery end of October"
       },
-      "verification": null,
+      "verification": {
+        "issue": "field-not-found",
+        "reason": "The current source no longer contains the previously quoted yearless October delivery estimate. No revised dated shipping claim was found. Original evidence and unknown schedule retained.",
+        "recordedAt": "2026-11-08T18:30:04Z",
+        "sourceUrl": "https://baltic-watches.com/en/products/hermetique-the-rift"
+      },
       "evidence": [
         {
           "eventId": "baltic-hermetique-rift-delivery",
@@ -1200,9 +1235,32 @@
           "accepted": true
         }
       ],
-      "history": [],
-      "revision": 0,
-      "editorialReviewedAt": "2026-10-18T08:51:06.990Z",
+      "history": [
+        {
+          "revision": 0,
+          "sourceStatus": "planned",
+          "schedule": {
+            "precision": "unknown",
+            "originalText": "Delivery end of October"
+          },
+          "evidence": [
+            {
+              "eventId": "baltic-hermetique-rift-delivery",
+              "eventType": "shipping",
+              "claim": "planned",
+              "quote": "Delivery end of October",
+              "url": "https://baltic-watches.com/en/products/hermetique-the-rift",
+              "checkedAt": "2026-10-18T08:51:06.990Z",
+              "accepted": true
+            }
+          ],
+          "verification": null,
+          "changedAt": "2026-11-08T18:30:04Z",
+          "reason": "editorial-source-review; earlier accepted shipping evidence preserved"
+        }
+      ],
+      "revision": 1,
+      "editorialReviewedAt": "2026-11-08T18:30:04Z",
       "semanticVerifiedAt": "2026-10-18T08:51:06.990Z"
     },
     "farer-stratton-restock-late-2026": {
@@ -1415,6 +1473,50 @@
       "revision": 0,
       "editorialReviewedAt": "2026-11-01T15:43:55.437Z",
       "semanticVerifiedAt": "2026-11-01T15:43:55.437Z"
+    },
+    "nomos-club-sport-neomatik34": {
+      "editorial": "approved",
+      "identity": {
+        "brand": "nomos",
+        "model": "Club Sport neomatik 34",
+        "references": [
+          "755",
+          "755.SB",
+          "756",
+          "756.SB",
+          "757",
+          "757.SB",
+          "758",
+          "758.SB"
+        ],
+        "type": "presentation",
+        "market": "official-global-site",
+        "round": "four-sunburst-dial-variants"
+      },
+      "identityVerified": true,
+      "allowedSources": [
+        "https://nomos-glashuette.com/en/watches/new-releases/club-sport-neomatik-34"
+      ],
+      "sourceStatus": "occurred",
+      "schedule": {
+        "precision": "unknown"
+      },
+      "verification": null,
+      "evidence": [
+        {
+          "eventId": "nomos-club-sport-neomatik34",
+          "eventType": "presentation",
+          "claim": "occurred",
+          "quote": "the smallest sports watch from NOMOS Glashütte is now available in four dial colors",
+          "url": "https://nomos-glashuette.com/en/watches/new-releases/club-sport-neomatik-34",
+          "checkedAt": "2026-11-08T18:30:04Z",
+          "accepted": true
+        }
+      ],
+      "history": [],
+      "revision": 0,
+      "editorialReviewedAt": "2026-11-08T18:30:04Z",
+      "semanticVerifiedAt": "2026-11-08T18:30:04Z"
     }
   }
 }

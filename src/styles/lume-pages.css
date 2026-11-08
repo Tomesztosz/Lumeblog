@@ -1299,3 +1299,6 @@ html:not([data-js]) .workshop-load-note {
 /* Approved November article cutouts retain the native transparent source bytes. */
 .article-body img:is([src*="ballouard-"][src*="-cutout"],[src*="doxa-"][src*="-cutout"],[src*="freak-"][src*="-cutout"]) { display: block; width: 100%; height: auto; max-height: 650px; object-fit: contain; }
 .article-body img[src*="freak-dual-direct-patent"] { max-height: 740px; object-fit: contain; }
+
+/* The approved November 9/11/13 product masks use the reader's own background. */
+.article-body img:is([src*="kikuchi-"][src*="-cutout"],[src*="tuna-"][src*="-cutout"],[src*="lab-cutout"],[src*="inventor-cutout"]) { display:block; width:100%; height:auto; max-height:650px; object-fit:contain; }

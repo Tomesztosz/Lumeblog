@@ -1,6 +1,6 @@
 {
   "lastReviewed": "2026-09-06",
-  "lastTargetedReview": "2026-11-01",
+  "lastTargetedReview": "2026-11-08",
   "targetThrough": "2026-12-31",
   "targetedReviewStatus": "partial",
   "unverifiedBrandKeys": [
@@ -9,10 +9,9 @@
     "tag-heuer",
     "longines",
     "zenith",
-    "baltic",
     "christopher-ward",
     "ming",
     "nomos"
   ],
-  "reviewRecord": "docs/calendar-review-week-20261102.json"
+  "reviewRecord": "docs/calendar-review-week-20261109.json"
 }
