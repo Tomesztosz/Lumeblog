@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": 54,
+  "version": 55,
   "events": {
     "citizen-attesa-eco-drive-50-2026": {
       "editorial": "approved",
@@ -461,7 +461,7 @@
           "claim": "planned",
           "url": "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081",
           "quote": "Ships late December 2026",
-          "checkedAt": "2026-11-27T03:15:41.754Z",
+          "checkedAt": "2026-11-28T04:13:51.552Z",
           "accepted": true
         }
       ],
@@ -491,8 +491,8 @@
       "allowedSources": [
         "https://www.lorierwatches.com/products/watch-astra-white-nodate-bracelet-278081"
       ],
-      "semanticVerifiedAt": "2026-11-27T03:15:41.754Z",
-      "acceptedRequestAt": "2026-11-27T03:15:41.290Z"
+      "semanticVerifiedAt": "2026-11-28T04:13:51.552Z",
+      "acceptedRequestAt": "2026-11-28T04:13:51.176Z"
     },
     "omega-james-bond-spectre-2026": {
       "editorial": "approved",
